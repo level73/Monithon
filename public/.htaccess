@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Request is an explicit file or directory
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Exclude routing for images, css & js, fonts
+  RewriteCond %{REQUEST_URI} !\.(png|jpg|jpeg|gif|svg|ico)$
+  RewriteCond %{REQUEST_URI} !\.(pdf|doc|docx|xls|xlsx)$
+  RewriteCond %{REQUEST_URI} !\.(css|js|less|scss)$
+  RewriteCond %{REQUEST_URI} !\.(eot|ttf|otf|woff)$
+
+  # Route everything to index.php and attach querystring params
+  RewriteRule ^(.*)$ index.php?url=$1 [PT,QSA,L]
+
+</IfModule>
