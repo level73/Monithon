@@ -13,9 +13,7 @@
     public function __construct($controller, $method) {
       $this->_controller = $controller;
       $this->_method = $method;
-
       $this->Auth = new Auth;
-
     }
 
     /** Set Variables **/
@@ -36,9 +34,7 @@
         if (file_exists(ROOT . DS . 'app' . DS . 'view' . DS . $this->_controller . DS . 'header.php')) {
           include (ROOT . DS . 'app' . DS . 'view' . DS . $this->_controller . DS . 'header.php');
         } else {
-          if($this->Auth->isLoggedIn()){
-            include (ROOT . DS . 'app' . DS . 'view' . DS . 'header.php');
-          }
+          include (ROOT . DS . 'app' . DS . 'view' . DS . 'header.php');
         }
         /** check for sub-menus **/
         if( file_exists(ROOT . DS . 'app' . DS . 'view' . DS . $this->_controller . DS . 'sub-menu.php' )){
