@@ -4,3 +4,4 @@ config/local.php
 public/src/components
 public/info.php
 logs
+.idea
