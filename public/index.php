@@ -12,11 +12,11 @@ define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 define('DS', '/');
 
 // Load configuration files
-require(ROOT . DS . 'config' . DS . 'local.php');
-require(ROOT . DS . 'config' . DS . 'system.php');
+require(ROOT . 'config' . DS . 'local.php');
+require(ROOT . 'config' . DS . 'system.php');
 
-require(ROOT . DS . 'lib' . DS . 'functions.php');
-require(ROOT . DS . 'lib' . DS . 'main.php');
+require(ROOT . 'lib' . DS . 'functions.php');
+require(ROOT . 'lib' . DS . 'main.php');
 
 
 // Launch Application

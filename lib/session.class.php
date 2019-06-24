@@ -62,7 +62,7 @@ class Session extends Model {
   protected function getSession() {
       $session = $_SESSION[APPNAME][SESSIONKEY];
 
-      $sql = 'SELECT auth.idauth AS id, auth.username, auth.email, auth.organisation, lang.shorthand AS lang FROM auth
+      $sql = 'SELECT auth.idauth AS id, auth.username, auth.email FROM auth
               INNER JOIN auth_session ON auth_session.auth = auth.idauth
               WHERE auth_session.session = :session';
 

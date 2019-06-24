@@ -11,24 +11,28 @@ function dbga($array){
 
 /** Style and Script loader **/
 function loadCSS($css){
-  if(is_array($css)){
-    foreach($css as $i => $file){
+  if(!empty($css)){
+    if(is_array($css)){
+      foreach($css as $i => $file){
+        echo "<link href=\"/css/" . $file . "\" rel=\"stylesheet\" />\n";
+      }
+    }
+    else {
       echo "<link href=\"/css/" . $file . "\" rel=\"stylesheet\" />\n";
     }
-  }
-  else {
-    echo "<link href=\"/css/" . $file . "\" rel=\"stylesheet\" />\n";
   }
 }
 
 function loadJS($js){
-  if(is_array($js)){
-    foreach($js as $i => $file){
+  if(!empty($js)){
+    if(is_array($js)){
+      foreach($js as $i => $file){
+        echo "<script src=\"/js/" . $file . "\"></script>\n";
+      }
+    }
+    else {
       echo "<script src=\"/js/" . $file . "\"></script>\n";
     }
-  }
-  else {
-    echo "<script src=\"/js/" . $file . "\"></script>\n";
   }
 }
 
@@ -52,6 +56,26 @@ function utf8_encode_deep(&$input) {
 	}
 }
 
+/** check for http server vars
+  * @var string $method: the http method to check
+  * @var bool $not_empty: check if the var is also filled with values
+  * @return bool true if method used corresponds to what is being checked
+  */
+function httpCheck($method = 'post', $not_empty = false){
+    $METHOD = strtoupper($method);
+    if(strtoupper($_SERVER['REQUEST_METHOD']) === $METHOD){
+        if($not_empty){
+            if($METHOD == 'POST'){
+                return (isset($_POST) && !empty($_POST) && count(array_keys($_POST)) > 0) ? true : false;
+            } elseif($METHOD == 'GET') {
+                return (isset($_GET) && !empty($_GET) && count(array_keys($_GET)) > 0) ? true : false;
+            }
+        }
+        return true;
+    } else {
+        return false;
+    }
+}
 
 /** check for value **/
 function ckv($arr, $key){

@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "AAEA,IAAK;EAAE,UAAU,EAAE,MAAM;EAAE,KAAK,EAAE,KAAK;EAAE,WAAW,ECFxC,+BAA+B",
-"sources": ["../src/sass/main.scss","../src/sass/_variables.scss"],
+"mappings": "AAAA,0BAA0B;ACG1B,IAAK;EACH,UAAU,EDAI,OAAsB;ECCpC,KAAK,EDJS,OAAsB;ECKpC,WAAW,EDGD,+BAA+B",
+"sources": ["../src/sass/_variables.scss","../src/sass/main.scss"],
 "names": [],
 "file": "main.css"
 }

@@ -19,7 +19,8 @@
 
       // generate variable to append to html body tag
       $this->_template->set('bodyClass', strtolower($model . ' ' . $method));
-
+      $this->set('css', '');
+      $this->set('js', '');
     }
 
     function set($name,$value) {

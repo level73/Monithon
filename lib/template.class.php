@@ -42,7 +42,7 @@
         }
         /** If we have any errors, this is where we print them without breaking the whole thing ***/
         if( isset($errors) && $errors instanceof Errors ){
-          $errors->display();
+            include(ROOT . DS . 'app' . DS . 'view' . DS . '_partials' . DS . 'errors.php');
         }
 
         /** Include desired center template **/

@@ -13,3 +13,5 @@ define('DEFAULT_METHOD', 'index');
 /** Paths **/
 define('DIR_REPO', $_SERVER['DOCUMENT_ROOT'] . '/public/resources/' );
 define('URL_REPO', '/public/resources/');
+
+
