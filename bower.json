@@ -1,0 +1,26 @@
+{
+  "name": "monithon",
+  "description": "Monithon",
+  "main": "public/index.php",
+  "authors": [
+    "level73"
+  ],
+  "license": "GPL 3.0",
+  "keywords": [
+    "monithon"
+  ],
+  "homepage": "https://github.com/level73/Monithon",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/src/components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "bootstrap-select": "^1.13.10",
+    "jquery": "^3.4.1"
+  }
+}

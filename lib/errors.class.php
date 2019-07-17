@@ -16,43 +16,43 @@
 
     private $dictionary = array(
       /** Success **/
-      0   => 'Email sent! Please check your inbox <strong> and your spam directory</strong>.',
-      1   => 'The User has been correctly created',
-      2   => 'The User has been correctly updated',
-      3   => 'The Password has been successfully changed! You\'ll be redirected to the <a href="/user/login">login screen</a> in 5 seconds to access the platform.',
-      20  => 'Object successfully deleted',
+      0   => 'Email inviata! Cortesemente, controllate la vostra casella email <strong>con attenzione alla cartella dello spam.</strong>.',
+      1   => 'Utente creato correttamente',
+      2   => 'Utente modificato correttamente',
+      3   => 'Password modificata con successo. Verrai reindirizzato <a href="/user/login">alla pagina di login</a> in 5 secondi.',
+      20  => 'Oggetto cancellato.',
 
       /** Warnings **/
 
       /** Errors **/
-      500 => 'Could not connect to the database!',
-      501 => 'Could not run the query (missing or wrong type parameters).',
-      502 => 'Could not run the query',
-      503 => 'Invalid parameter, I couldn\'t execute the query',
-      504 => 'Could not delete the object',
+      500 => 'Impossibile connettersi al database',
+      501 => 'Impossibile eseguire la query (parametri mancanti o tipo di parametro errato)',
+      502 => 'Non ho potuto eseguire la query',
+      503 => 'Parametro non permesso, query non eseguita',
+      504 => 'Impossibile cancellare l\'oggetto',
 
-      520 => 'Could not reset the metadata references',
-      550 => 'Could not fetch the entity\'s fields',
-      551 => 'Couldn\'t create the data record.',
-      552 => 'There are missing required (*) fields. Data not saved.',
-      580 => 'Could not send the email, there might be an issue with our server. Please contact the ILC Secretariat.',
+      520 => 'Impossibile reinizializzare i metadati',
+      550 => 'Impossibile recuperare i campi dell\'entità',
+      551 => 'Impossibile creare il record',
+      552 => 'Mancano idei valori in campi obbligatori (*). Dati non salvati. ',
+      580 => 'Impossibile inviare l\'email a causa di problemi tecnici',
 
-      600 => 'Email cannot be empty',
-      601 => 'Please use a valid email address',
-      602 => 'Password cannot be empty',
-      603 => 'Could not create user session',
-      604 => 'Could not retrieve user profile',
-      605 => 'Could not execute query. (session.model.php, 113)',
-      606 => 'Incorrect password.',
-      607 => 'No active account found with that email',
-      608 => 'Could not retrieve a permission list',
-      609 => 'The passwords do not match',
-      610 => 'This email is already in use',
-      611 => 'The password couldn\'t be reset',
+      600 => 'L\'email non può essere vuota',
+      601 => 'Usare un indirizzo email valido',
+      602 => 'La password non può essere vuota',
+      603 => 'Impossibile creare la sessione utente',
+      604 => 'Impossibile recuperare il profilo utente',
+      605 => 'Impossibile eseguire la query. (session.model.php, 113)',
+      606 => 'Password errata',
+      607 => 'Nessun account (attivo) con quella email',
+      608 => 'Impossibile recuperare la lista dei permessi',
+      609 => 'Le password non coincidono',
+      610 => 'Questa email è già in uso',
+      611 => 'Impossibile reinizializzare la password',
 
-      650 => 'Error uploading a file.',
-      651 => 'File type not allowed.',
-      652 => 'Error saving the file to our filesystem.',
+      650 => 'Errore nel caricamento del file. File non salvato.',
+      651 => 'Tipo di file non permesso. File non salvato.',
+      652 => 'Errore nel salvataggio del file sul server. File non salvato.',
 
       /** Notices **/
     );
@@ -71,7 +71,6 @@
     }
 
     public function display(){
-      echo "<div class=\"container-fluid error-wrapper\"><div class=\"row errors\"><div class=\"col-xs-12\">";
 
       foreach($this->errors as $code => $message){
 
@@ -92,7 +91,7 @@
           echo '<div class="alert alert-notice"><i class="far fa-exclamation-circle"></i> ' . $message . ' [' . $code . ']</div>';
         }
       }
-      echo "</div></div></div>";
+
     }
 
   }

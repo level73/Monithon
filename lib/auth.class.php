@@ -8,6 +8,7 @@
   class Auth extends Session {
 
       public $url;
+
       protected $authorized = false;
       protected $openroutes = array(
                               'user/login',
@@ -60,5 +61,8 @@
         return crypt($token, $salt);
       }
 
-      
+      public function getProfile(){
+          return true;
+      }
+
   }

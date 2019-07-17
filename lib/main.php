@@ -46,6 +46,7 @@ function init(){
   // Capture Routing Params
   global $url;
 
+  $exclude = array('js', 'css');
 
 
 
@@ -79,16 +80,18 @@ function init(){
   $baseClassName = rtrim(ucwords($route));
   $controller = $baseClassName . 'Ctrl';
   $model = $baseClassName;
+  // avoid dispatching for js and css
+  if(!in_array($route, $exclude)){
 
-  // Create Instance
-  // refer to lib/ctrl.class.php to see how the controller handles the business logic
-  $dispatch = new $controller($model, $route, $method);
+      // Create Instance
+    // refer to lib/ctrl.class.php to see how the controller handles the business logic
+    $dispatch = new $controller($model, $route, $method);
 
-  if ( method_exists($controller, $method) == true ) {
-    // Execute method
-    call_user_func_array( array($dispatch, $method), $queryString);
-  } else {
-    echo "No such method";
+    if (method_exists($controller, $method) == true) {
+        // Execute method
+        call_user_func_array(array($dispatch, $method), $queryString);
+    } else {
+        echo "No such method";
+    }
   }
-
 }
