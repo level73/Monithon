@@ -9,6 +9,7 @@
       <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,900" rel="stylesheet">
       <script src="https://kit.fontawesome.com/faba35a8a9.js"></script>
       <link rel="stylesheet" type="text/css" href="/public/css/vendor/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="/public/css/vendor/bootstrap-select.min.css">
       <link rel="stylesheet" type="text/css" href="/public/css/main.css">
       <?php loadCSS($css); ?>
 

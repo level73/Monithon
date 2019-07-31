@@ -1,16 +1,10 @@
-<<<<<<< HEAD
-body {
-  background: yellow;
-  color: black;
-  font-family: "Roboto", Helvetica, Sans-serif; }
-
-/*# sourceMappingURL=main.css.map */
-=======
 /** Main Color Palette **/
+header#monithon-header {
+  background: #89b0ae; }
+
 body {
   background: #faf9f9;
   color: #555b6e;
   font-family: "Roboto", Helvetica, Sans-serif; }
 
 /*# sourceMappingURL=main.css.map */
->>>>>>> b6b931357f0d56aee72fcdb78dc4c6a687f84b36

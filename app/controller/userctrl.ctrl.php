@@ -31,7 +31,7 @@
                     $email    = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
                     $password = filter_var($_POST['pwd'], FILTER_SANITIZE_STRING);
 
-                    $user = $this->User->findBy(array('email' => $email, 'active' => 1));
+                    $user = $this->User->findBy(array('email' => $email, 'active' => 2));
 
                     if($user){
                         if(password_verify($password, $user[0]->password)){
@@ -75,11 +75,28 @@
                 $this->User = $this->Auth->getProfile();
                 $this->set('user', $this->User);
                 $this->set('title', 'Nuovo Utente');
-                if(!(in_array(P_ADMIN, array_keys($this->User->permissions)))){
+                if(!(in_array(P_CREATE_USER, array_keys($this->User->permissions)))){
                     header('Location: /user/ops');
                 }
                 else {
+                  // Check for data in the post
+                  if( httpCheck('post', true) ){
+                    $data = array();
 
+                    $data['email'] = 'code@level73.it';
+                    $data['password'] = password_hash('secret', PASSWORD_BCRYPT);
+                    $data['username'] = 'lvl73';
+                    $data['role'] = 1;
+                    $data['active'] = 2;
+                    $data['modified_by'] = 1;
+
+
+
+                  // Create USER
+
+                  // Create SESSION
+
+                  }
                 }
 
             }

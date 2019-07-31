@@ -229,3 +229,8 @@ function FileSizeConvert($bytes){
     }
     return $result;
 }
+
+/** Translator **/
+function t($string){
+  echo $string; 
+}

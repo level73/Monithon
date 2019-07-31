@@ -1,17 +1,7 @@
-<<<<<<< HEAD
 {
 "version": 3,
-"mappings": "AAEA,IAAK;EAAE,UAAU,EAAE,MAAM;EAAE,KAAK,EAAE,KAAK;EAAE,WAAW,ECFxC,+BAA+B",
-"sources": ["../src/sass/main.scss","../src/sass/_variables.scss"],
+"mappings": "AAAA,0BAA0B;ACA1B,sBAAuB;EACrB,UAAU,EDCI,OAAsB;;AECtC,IAAK;EACH,UAAU,EFAI,OAAsB;EECpC,KAAK,EFJS,OAAsB;EEKpC,WAAW,EFGD,+BAA+B",
+"sources": ["../src/sass/_variables.scss","../src/sass/_header.scss","../src/sass/main.scss"],
 "names": [],
 "file": "main.css"
 }
-=======
-{
-"version": 3,
-"mappings": "AAAA,0BAA0B;ACG1B,IAAK;EACH,UAAU,EDAI,OAAsB;ECCpC,KAAK,EDJS,OAAsB;ECKpC,WAAW,EDGD,+BAA+B",
-"sources": ["../src/sass/_variables.scss","../src/sass/main.scss"],
-"names": [],
-"file": "main.css"
-}
->>>>>>> b6b931357f0d56aee72fcdb78dc4c6a687f84b36

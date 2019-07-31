@@ -62,7 +62,9 @@
       }
 
       public function getProfile(){
-          return true;
+        $session = $this->getSession();
+        // add permission loading
+        return $session;
       }
 
   }
