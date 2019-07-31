@@ -102,6 +102,11 @@
             }
         }
 
+        public function register(){
+          $this->set('title', 'Registrati');
+          $Errors = new Errors();
+        }
+
         public function update($id){
 
         }
