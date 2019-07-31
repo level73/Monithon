@@ -6,7 +6,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
       <!-- Load Fonts -->
-      <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,900" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,900" rel="stylesheet">
       <script src="https://kit.fontawesome.com/faba35a8a9.js"></script>
       <link rel="stylesheet" type="text/css" href="/public/css/vendor/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="/public/css/vendor/bootstrap-select.min.css">

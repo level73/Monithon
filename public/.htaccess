@@ -5,11 +5,12 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
 
-  # Exclude routing for images, css & js, fonts
+  # Exclude routing for images, css & js, fonts, including asset directories
   RewriteCond %{REQUEST_URI} !\.(png|jpg|jpeg|gif|svg|ico)$
   RewriteCond %{REQUEST_URI} !\.(pdf|doc|docx|xls|xlsx)$
   RewriteCond %{REQUEST_URI} !\.(css|js|less|scss)$
   RewriteCond %{REQUEST_URI} !\.(eot|ttf|otf|woff)$
+  RewriteCond %{REQUEST_URI} !^/(css|js|images/.*)$
 
   # Route everything to index.php and attach querystring params
   RewriteRule ^(.*)$ index.php?url=$1 [PT,QSA,L]

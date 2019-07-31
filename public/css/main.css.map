@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
 "version": 3,
 "mappings": "AAAA,0BAA0B;ACA1B,sBAAuB;EACrB,UAAU,EDCI,OAAsB;;AECtC,IAAK;EACH,UAAU,EFAI,OAAsB;EECpC,KAAK,EFJS,OAAsB;EEKpC,WAAW,EFGD,+BAA+B",
@@ -5,3 +6,12 @@
 "names": [],
 "file": "main.css"
 }
+=======
+{
+"version": 3,
+"mappings": "AAAA,0BAA0B;AAC1B;;;;;;EAME;ACPF,EAAG;EACD,cAAc,EAAE,SAAS;EACzB,WAAW,EAAE,GAAG;EAChB,SAAS,EAAE,GAAG;;AAEhB,EAAG;EACD,SAAS,EAAE,KAAK;EAChB,WAAW,EAAE,GAAG;;AAElB,EAAG;EACD,SAAS,EAAE,KAAK;EAChB,WAAW,EAAE,GAAG;;AAElB,EAAG;EACD,SAAS,EAAE,KAAK;EAChB,WAAW,EAAE,GAAG;;AAKlB,CAAE;EACA,SAAS,EAAE,GAAG;EACd,WAAW,EAAE,GAAG;EAChB,WAAW,EAAE,IAAI;EACjB,GAAE;IACA,KAAK,EDbK,OAAoB;ICc9B,SAAQ;MACN,KAAK,EDfG,OAAoB;;AEZlC,YAAa;EACX,UAAU,EFUE,OAAqB;;AGPnC,IAAK;EACH,UAAU,EHKE,OAAsB;EGJlC,KAAK,EHGO,OAAkB;EGF9B,WAAW,EHSD,+BAA+B",
+"sources": ["../src/sass/_variables.scss","../src/sass/_typography.scss","../src/sass/_header.scss","../src/sass/main.scss"],
+"names": [],
+"file": "main.css"
+}
+>>>>>>> aedf6ae5403938e1964edf98fd71bbf8f087dd01

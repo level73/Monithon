@@ -1,8 +1,9 @@
 @import 'variables';
-
+@import 'typography';
 @import 'header';
+
 body {
-  background: $snow;
+  background: $seafoam;
   color: $blackcoral;
   font-family: $fontStack;
 }
