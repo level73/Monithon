@@ -1,16 +1,43 @@
-<<<<<<< HEAD
-body {
-  background: yellow;
-  color: black;
-  font-family: "Roboto", Helvetica, Sans-serif; }
-
-/*# sourceMappingURL=main.css.map */
-=======
 /** Main Color Palette **/
+/*
+$blackcoral:    rgba( 85,  91, 110, 1);
+$pewterblue:    rgba(137, 176, 174, 1);
+$columbiablue:  rgba(190, 227, 219, 1);
+$snow:          rgba(250, 249, 249, 1);
+$peachpuff:     rgba(255, 214, 186, 1);
+*/
+h1 {
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 2em; }
+
+h2 {
+  font-size: 1.5em;
+  font-weight: 900; }
+
+h3 {
+  font-size: 1.2em;
+  font-weight: 400; }
+
+h4 {
+  font-size: 1.2em;
+  font-weight: 300; }
+
+p {
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 160%; }
+  p a {
+    color: #e71d36; }
+    p a:hover {
+      color: #e71d36; }
+
+#main-header {
+  background: #2ec4b6; }
+
 body {
-  background: #faf9f9;
-  color: #555b6e;
+  background: #fdfffc;
+  color: #011627;
   font-family: "Roboto", Helvetica, Sans-serif; }
 
 /*# sourceMappingURL=main.css.map */
->>>>>>> b6b931357f0d56aee72fcdb78dc4c6a687f84b36
