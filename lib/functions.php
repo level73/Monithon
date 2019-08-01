@@ -14,11 +14,11 @@ function loadCSS($css){
   if(!empty($css)){
     if(is_array($css)){
       foreach($css as $i => $file){
-        echo "<link href=\"/css/" . $file . "\" rel=\"stylesheet\" />\n";
+        echo "<link href=\"/public/css/" . $file . "\" rel=\"stylesheet\" />\n";
       }
     }
     else {
-      echo "<link href=\"/css/" . $file . "\" rel=\"stylesheet\" />\n";
+      echo "<link href=\"/public/css/" . $file . "\" rel=\"stylesheet\" />\n";
     }
   }
 }
@@ -27,11 +27,11 @@ function loadJS($js){
   if(!empty($js)){
     if(is_array($js)){
       foreach($js as $i => $file){
-        echo "<script src=\"/js/" . $file . "\"></script>\n";
+        echo "<script src=\"/public/js/" . $file . "\"></script>\n";
       }
     }
     else {
-      echo "<script src=\"/js/" . $file . "\"></script>\n";
+      echo "<script src=\"/public/js/" . $file . "\"></script>\n";
     }
   }
 }
@@ -232,5 +232,5 @@ function FileSizeConvert($bytes){
 
 /** Translator **/
 function t($string){
-  echo $string; 
+  echo $string;
 }
