@@ -60,29 +60,33 @@ class Session extends Model {
   }
 
   protected function getSession() {
-      $session = $_SESSION[APPNAME][SESSIONKEY];
+      if(array_key_exists(APPNAME, $_SESSION)){
+        $session = $_SESSION[APPNAME][SESSIONKEY];
 
-      $sql = 'SELECT auth.idauth AS id, auth.username, auth.email FROM auth
-              INNER JOIN auth_session ON auth_session.auth = auth.idauth
-              WHERE auth_session.session = :session';
+        $sql = 'SELECT auth.idauth AS id, auth.username, auth.email FROM auth
+                INNER JOIN auth_session ON auth_session.auth = auth.idauth
+                WHERE auth_session.session = :session';
 
-      $stmt = $this->database->prepare($sql);
-      $stmt->bindParam(':session', $session, PDO::PARAM_STR);
-      $q = $stmt->execute();
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(':session', $session, PDO::PARAM_STR);
+        $q = $stmt->execute();
 
 
-      if(!$q){
-          $this->Errors->set(604);
-          return false;
-      }
-      else {
-          $objectUser = $stmt->fetch(PDO::FETCH_OBJ);
+        if(!$q){
+            $this->Errors->set(604);
+            return false;
+        }
+        else {
+            $objectUser = $stmt->fetch(PDO::FETCH_OBJ);
 
-          if(is_object($objectUser)){
-              $objectUser->permissions = self::getPermissions($objectUser->id);
-          }
-          return $objectUser;
-      }
+            if(is_object($objectUser)){
+                $objectUser->permissions = self::getPermissions($objectUser->id);
+            }
+            return $objectUser;
+        }
+    } else {
+      return false;
+    }
   }
 
 

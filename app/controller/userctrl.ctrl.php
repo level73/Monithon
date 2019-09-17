@@ -10,7 +10,7 @@
 
         protected $Auth;
         protected $User;
-
+        
 
         public function login(){
             $this->set('title', 'Login');

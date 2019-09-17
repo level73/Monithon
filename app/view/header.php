@@ -12,6 +12,9 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
+        <?php if(isset($logged) && $logged == true){ ?>
+
+        <?php } ?>
         <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
@@ -30,10 +33,12 @@
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <!-- <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      </form> -->
+      <?php echo (isset($logged) && $logged == true ? ' <a href="/user/logout" class="btn btn-sm btn-outline-light"><i class="fal fa-sign-out"></i> Logout</a> ' : ' <a href="/user/login" class="btn btn-outline-light btn-sm">Accedi</a>  <a href="/user/register"  class="btn btn-light btn-sm">Registrati</a>'); ?>
+
     </div>
   </nav>
 
