@@ -104,6 +104,7 @@
 
         public function register(){
           $this->set('title', 'Registrati');
+          $this->set('js', array('section/user.js'));
           $Errors = new Errors();
         }
 

@@ -2,7 +2,7 @@
 .btn {
   border-radius: 0;
   font-weight: 900;
-  text-transform: uppercase; 
+  text-transform: uppercase;
   &.btn-primary {
     background: $lagoon;
     border-color: $lagoon;
@@ -17,4 +17,7 @@
 /** FORM ELEMENTS **/
 .form-control {
   border-radius: 0;
+}
+.required {
+  color: $scallop;
 }
