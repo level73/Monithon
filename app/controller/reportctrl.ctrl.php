@@ -94,7 +94,7 @@
                 }
               }
 
-              if(count($fileList > 0)) { $Files->updateFileReferences(T_REP_BASIC, $report, $filelist); }
+              if(count($fileList) > 0) { $Files->updateFileReferences(T_REP_BASIC, $report, $filelist); }
             }
 
             // Upload Links
