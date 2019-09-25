@@ -1,4 +1,4 @@
-<footer class="container-fluid fixed-bottom" id="main-footer">
+<footer class="container-fluid " id="main-footer">
 
   <div class="row">
     <div class="col-2">Monithon 2016 - <?php echo strftime('%Y', time()); ?></div>

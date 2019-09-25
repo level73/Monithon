@@ -3,10 +3,12 @@
 @import 'components';
 @import 'header';
 @import 'user';
+@import 'maps';
 
 @import 'footer';
 body {
   background: $seafoam;
   color: $blackcoral;
   font-family: $fontStack;
+  height: 100% !important;
 }

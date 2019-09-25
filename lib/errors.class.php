@@ -21,6 +21,9 @@
       2   => 'Utente modificato correttamente',
       3   => 'Password modificata con successo. Verrai reindirizzato <a href="/user/login">alla pagina di login</a> in 5 secondi.',
       20  => 'Oggetto cancellato.',
+      21  => 'Report salvato con successo.',
+      91  => 'File caricato!',
+
 
       /** Warnings **/
 

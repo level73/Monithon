@@ -133,10 +133,9 @@ function rearrange_files($file_post) {
     $file_keys = array_keys($file_post);
     for ($i=0; $i<$file_count; $i++) {
         foreach ($file_keys as $key) {
-            $file_ary[$i][$key] = $file_post[$key][$i]['file'];
+            $file_ary[$i][$key] = $file_post[$key][$i];
         }
     }
-
     return $file_ary;
 }
 
@@ -228,6 +227,12 @@ function FileSizeConvert($bytes){
         }
     }
     return $result;
+}
+
+/** Print Styles for status **/
+function status($status){
+  $s = '<div class="status status-' . $status . '"></div>';
+  echo $s;
 }
 
 /** Translator **/

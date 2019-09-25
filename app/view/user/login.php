@@ -3,7 +3,10 @@
         <div class="col-6">
           <img src="/images/monithon-logo.png" alt="Monithon" class="mx-auto d-block login-logo" />
           <h1>Login</h1>
-            <form class="" method="post" action="/user/login">
+            <form class="" method="post" action="">
+                <?php if(isset($referrer)){ ?>
+                <input type="hidden" name="r" value="<?php echo $referrer; ?>">
+                <?php } ?>
                 <div class="form-group">
                     <label for="email" class="sr-only">Email:</label>
                     <input type="email" name="email" placeholder="email" class="form-control">
@@ -17,7 +20,7 @@
                   <div class="col-6"><a href="/user/recover">Password dimenticata?</a></div>
                   <div class="col-6 text-right"><a href="/user/register">Registrati</a></div>
                 </div>
-                
+
             </form>
         </div>
     </section>

@@ -21,3 +21,67 @@
 .required {
   color: $scallop;
 }
+.help-text {
+  font-size: 0.8em;
+  color: $snapper;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+fieldset {
+  border-bottom: 1px solid $lagoon;
+  padding-bottom: 1.5em;
+  margin-bottom: 2.5em;
+}
+
+textarea { min-height: 6em; }
+
+/** IMAGES **/
+.avatar {
+  max-width: 40px;
+  border-radius: 20px;
+}
+
+
+/** STATUS FLAGGER **/
+.status {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-family: "Font Awesome 5 Pro";
+  text-align: center;
+  font-size: 1em;
+  padding: 0.2em 0em;
+
+  &.status-1 {
+    background: $draft;
+    color: darken($draft, 20%);
+    &:before {
+      content: "\f5ae";
+    }
+  }
+  &.status-3 {
+    background: $pending;
+    color: darken( $pending, 20%);
+    &:before {
+      content: "\f5ae";
+    }
+  }
+
+  &.status-5 {
+    background: $review;
+    color: darken($review, 20%);
+    &:before {
+      content: "\f591";
+    }
+  }
+
+  &.status-7 {
+    background: $published;
+    color: darken($published, 20%);
+    &:before {
+      content: "\f058";
+    }
+  }
+
+}

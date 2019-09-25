@@ -1,11 +1,5 @@
 /** Main Color Palette **/
-/*
-$blackcoral:    rgba( 85,  91, 110, 1);
-$pewterblue:    rgba(137, 176, 174, 1);
-$columbiablue:  rgba(190, 227, 219, 1);
-$snow:          rgba(250, 249, 249, 1);
-$peachpuff:     rgba(255, 214, 186, 1);
-*/
+/** UI colors **/
 h1 {
   text-transform: uppercase;
   font-weight: 900;
@@ -55,6 +49,55 @@ a {
 .required {
   color: #ff9f1c; }
 
+.help-text {
+  font-size: 0.8em;
+  color: #e71d36;
+  text-transform: uppercase;
+  cursor: pointer; }
+
+fieldset {
+  border-bottom: 1px solid #2ec4b6;
+  padding-bottom: 1.5em;
+  margin-bottom: 2.5em; }
+
+textarea {
+  min-height: 6em; }
+
+/** IMAGES **/
+.avatar {
+  max-width: 40px;
+  border-radius: 20px; }
+
+/** STATUS FLAGGER **/
+.status {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-family: "Font Awesome 5 Pro";
+  text-align: center;
+  font-size: 1em;
+  padding: 0.2em 0em; }
+  .status.status-1 {
+    background: #E2E2E2;
+    color: #afafaf; }
+    .status.status-1:before {
+      content: "\f5ae"; }
+  .status.status-3 {
+    background: #FFED00;
+    color: #998e00; }
+    .status.status-3:before {
+      content: "\f5ae"; }
+  .status.status-5 {
+    background: #FF9C2A;
+    color: #c36800; }
+    .status.status-5:before {
+      content: "\f591"; }
+  .status.status-7 {
+    background: #66CC00;
+    color: #336600; }
+    .status.status-7:before {
+      content: "\f058"; }
+
 #main-header {
   background: #2ec4b6; }
 
@@ -64,16 +107,21 @@ a {
     text-transform: uppercase;
     font-size: 0.8em; }
 
+#location_map {
+  height: 350px; }
+
 footer#main-footer {
   background: #011627;
   color: #fdfffc;
   font-size: 0.8em;
   padding-top: 30px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  margin-top: auto !important; }
 
 body {
   background: #fdfffc;
   color: #011627;
-  font-family: "Roboto", Helvetica, Sans-serif; }
+  font-family: "Roboto", Helvetica, Sans-serif;
+  height: 100% !important; }
 
 /*# sourceMappingURL=main.css.map */

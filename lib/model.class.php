@@ -55,8 +55,6 @@
       $sql .= ' FROM `' . $this->table . '`';
       $sql .= ' WHERE `' . $this->pkey . '` = :id ';
 
-    //  echo $sql;
-
       $stmt = $this->database->prepare($sql);
       $stmt->bindParam(':id', $id, PDO::PARAM_INT);
       $query = $stmt->execute();
@@ -138,12 +136,12 @@
       $sql = 'INSERT INTO ' . $this->table . ' (`' . implode('`, `', array_keys($data)) . '`) VALUES (' . implode(', ', query_placeholders($data, true)) . ')';
       $stmt = $this->database->prepare($sql);
 
-      //echo $sql;
-
       foreach($data as $field => &$value){
         $stmt->bindParam(':' . $field, $value);
       }
+
       $query = $stmt->execute();
+
       if(!$query){
         $this->Errors->set(501);
         if(SYSTEM_STATUS == 'development'){
