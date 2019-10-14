@@ -21,39 +21,6 @@
             <textarea name="descrizione" id="descrizione" class="form-control"><?php echo ckv($data, 'descrizione'); ?></textarea>
           </div>
 
-          <!-- Giudizio Sintetico -->
-          <div class="form-group">
-            <label for="giudizio_sintetico">Giudizio Sintetico sul Progetto monitorato: </label>
-            <div class="custom-control custom-radio">
-              <input type="radio" id="giudizio_sintetico_1" name="giudizio_sintetico" class="custom-control-input" value="1"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 1 ? 'checked' : ''); ?>>
-              <label class="custom-control-label" for="giudizio_sintetico_1">Appena iniziato <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è iniziato da troppo poco tempo per poter esprimere un giudizio. Si sa che è stato avviato, anche se i risultati non sono ancora visibili e monitorabili."></i></label>
-            </div>
-
-            <div class="custom-control custom-radio">
-              <input type="radio" id="giudizio_sintetico_2" name="giudizio_sintetico" class="custom-control-input" value="2" <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 2 ? 'checked' : ''); ?>>
-              <label class="custom-control-label" for="giudizio_sintetico_2">In corso e procede bene <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è avviato e, tutto sommato, i risultati parziali sembrano positivi. Tutte (o almeno la maggior parte) delle attività avviate sembrano procedere nella direzione pianificata."></i></label>
-            </div>
-
-            <div class="custom-control custom-radio">
-              <input type="radio" id="giudizio_sintetico_3" name="giudizio_sintetico" class="custom-control-input" value="3"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 3 ? 'checked' : ''); ?>>
-              <label class="custom-control-label" for="giudizio_sintetico_3">Procede con difficoltà <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è stato avviato, ma ci sono problemi rilevanti nella sua attuazione (es. ritardi significativi, alcune attività ferme o alcune differenze significative rispetto a quanto preventivato)."></i></label>
-            </div>
-
-            <div class="custom-control custom-radio">
-              <input type="radio" id="giudizio_sintetico_4" name="giudizio_sintetico" class="custom-control-input" value="4"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 4 ? 'checked' : ''); ?>>
-              <label class="custom-control-label" for="giudizio_sintetico_4">Bloccato <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato non procede. Può essere bloccato all'inizio (mai avviato) o in una fase successiva."></i></label>
-            </div>
-
-            <div class="custom-control custom-radio">
-              <input type="radio" id="giudizio_sintetico_5" name="giudizio_sintetico" class="custom-control-input" value="5"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 5 ? 'checked' : ''); ?>>
-              <label class="custom-control-label" for="giudizio_sintetico_5">Concluso e utile <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è finito ed è ritenuto complessivamente efficace dal punto di vista dell'utilizzatore finale."></i></label>
-            </div>
-
-            <div class="custom-control custom-radio">
-              <input type="radio" id="giudizio_sintetico_6" name="giudizio_sintetico" class="custom-control-input" value="6"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 6 ? 'checked' : ''); ?>>
-              <label class="custom-control-label" for="giudizio_sintetico_6">Concluso e inefficace <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è finito ma è ritenuto complessivamente inefficace (es. mancano altri interventi complementari, il progetto è concluso ma non è entrato in funzione, oppure non è funzionale, è obsoleto o comunque non rispondente ai bisogni dell'utenza)."></i></label>
-            </div>
-          </div>
 
           <!-- Codice OpenCoesione -->
           <div class="form-group">
@@ -125,6 +92,41 @@
             <label for="soluzioni_progetto">Soluzioni ed idee da proporre per il progetto monitorato:</label>
             <textarea name="soluzioni_progetto" id="soluzioni_progetto" class="form-control"><?php echo ckv($data, 'soluzioni_progetto'); ?></textarea>
           </div>
+
+          <!-- Giudizio Sintetico -->
+          <div class="form-group">
+            <label for="giudizio_sintetico">Giudizio Sintetico sul Progetto monitorato: </label>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="giudizio_sintetico_1" name="giudizio_sintetico" class="custom-control-input" value="1"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 1 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="giudizio_sintetico_1">Appena iniziato <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è iniziato da troppo poco tempo per poter esprimere un giudizio. Si sa che è stato avviato, anche se i risultati non sono ancora visibili e monitorabili."></i></label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" id="giudizio_sintetico_2" name="giudizio_sintetico" class="custom-control-input" value="2" <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 2 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="giudizio_sintetico_2">In corso e procede bene <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è avviato e, tutto sommato, i risultati parziali sembrano positivi. Tutte (o almeno la maggior parte) delle attività avviate sembrano procedere nella direzione pianificata."></i></label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" id="giudizio_sintetico_3" name="giudizio_sintetico" class="custom-control-input" value="3"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 3 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="giudizio_sintetico_3">Procede con difficoltà <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è stato avviato, ma ci sono problemi rilevanti nella sua attuazione (es. ritardi significativi, alcune attività ferme o alcune differenze significative rispetto a quanto preventivato)."></i></label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" id="giudizio_sintetico_4" name="giudizio_sintetico" class="custom-control-input" value="4"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 4 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="giudizio_sintetico_4">Bloccato <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato non procede. Può essere bloccato all'inizio (mai avviato) o in una fase successiva."></i></label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" id="giudizio_sintetico_5" name="giudizio_sintetico" class="custom-control-input" value="5"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 5 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="giudizio_sintetico_5">Concluso e utile <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è finito ed è ritenuto complessivamente efficace dal punto di vista dell'utilizzatore finale."></i></label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" id="giudizio_sintetico_6" name="giudizio_sintetico" class="custom-control-input" value="6"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 6 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="giudizio_sintetico_6">Concluso e inefficace <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è finito ma è ritenuto complessivamente inefficace (es. mancano altri interventi complementari, il progetto è concluso ma non è entrato in funzione, oppure non è funzionale, è obsoleto o comunque non rispondente ai bisogni dell'utenza)."></i></label>
+            </div>
+          </div>
+
         </fieldset>
 
         <fieldset>

@@ -61,3 +61,8 @@ LocationMap.on('click', function(ev){
   addMarkerToMap(latlng);
   setLocationCoords(latlng)
 });
+
+if($('#lat').val() > 0 && $('#lon').val() > 0){
+	var latlng = [ $('#lat').val(), $('#lon').val()];
+	addMarkerToMap(latlng);
+}

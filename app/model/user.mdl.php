@@ -23,4 +23,21 @@
         return $user;
       }
     }
+
+    public function getPermissions(){
+      $sql = 'SELECT * FROM `auth_lexicon_permission`';
+      $stmt = $this->database->prepare($sql);
+      $query = $stmt->execute();
+      if(!$query){
+        $this->Errors->set(502);
+        if(SYSTEM_STATUS == 'development'){
+          dbga($stmt->errorInfo());
+        }
+        return $this->Errors;
+      } else {
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+      }
+    }
+
+    
  }

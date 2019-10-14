@@ -2,7 +2,8 @@
 
 var MonithonUser = {
   init: function(){
-    // this.checkPasswords();
+    this.checkPasswords();
+    this.checkAsoc();
   },
 
   checkPasswords: function(){
@@ -33,6 +34,19 @@ var MonithonUser = {
       }
     }
     Monithon.validateForms();
+  },
+
+  checkAsoc: function(){
+    $('#role').change(function(e) {
+      console.log('Changing...');
+      var role = $(this).val();
+      if(role > 3){
+        $('#asoc').removeClass('d-none');
+      }
+      else {
+        $('#asoc').addClass('d-none');
+      }
+    });
   }
 
 }

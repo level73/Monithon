@@ -83,7 +83,7 @@
               $File = new Repo();
 
               $fileInfo = array('title' => 'Report File - ' . $report, 'file_type' => 2, 'disclosure' => 100, 'uid' => $this->User->id);
-              $fileList = array();
+              $filelist = array();
 
               foreach($files as $i => $file){
                 if($file['error'] == 0){
@@ -94,7 +94,12 @@
                 }
               }
 
-              if(count($fileList) > 0) { $Files->updateFileReferences(T_REP_BASIC, $report, $filelist); }
+              if(count($filelist) > 0) {
+                $f = $Files->updateFileReferences(T_REP_BASIC, $report, $filelist);
+              }
+              if(!$f instanceof Errors){
+                $this->Errors->set(91);
+              }
             }
 
             // Upload Links
@@ -107,7 +112,10 @@
                 $link_id = $Link->create(array('URL' => $link));
                 $linkList[] = $link_id;
               }
-              $Links->updateReferences(T_REP_BASIC, $report, $linkList);
+              $f = $Links->updateReferences(T_REP_BASIC, $report, $linkList);
+              if(!$f instanceof Errors){
+                $this->Errors->set(92);
+              }
             }
 
             // Upload Video Links
@@ -120,14 +128,15 @@
                 $video_id = $Video->create(array('URL' => $video));
                 $videoList[] = $video_id;
               }
-              $Videos->updateReferences(T_REP_BASIC, $report, $videoList);
+              $f = $Videos->updateReferences(T_REP_BASIC, $report, $videoList);
+              if(!$f instanceof Errors){
+                $this->Errors->set(93);
+              }
             }
           }
           else {
             $this->Errors->set(551);
           }
-
-
         }
         $this->set('data', $data);
       }

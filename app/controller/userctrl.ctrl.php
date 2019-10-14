@@ -80,12 +80,13 @@
         public function create(){
             $this->Auth = new Auth();
             $Errors = new Errors();
+            $UserModel = new User();
 
             if(!$this->Auth->isLoggedIn()){
                 header('Location: /user/login');
             }
             else {
-
+                $this->set('js', array('section/user.js'));
                 $this->logged = true;
                 $this->set('logged', $this->logged);
                 $this->User = $this->Auth->getProfile();
@@ -96,26 +97,105 @@
                     header('Location: /user/ops');
                 }
                 else {
+                  $Region = new Meta('region', true);
+                  $Provincia = new Meta('provincia', true);
+
+                  $this->set('regioni', $Region->lexiconList);
+                  $this->set('province', $Provincia->listProvinceByRegion() );
+
+                  $this->set('permissions', $UserModel->getPermissions());
                   // Check for data in the post
                   if( httpCheck('post', true) ){
                     $data = array();
 
-                    $data['email'] = 'code@level73.it';
-                    $data['password'] = password_hash('secret', PASSWORD_BCRYPT);
-                    $data['username'] = 'lvl73';
-                    $data['role'] = 1;
-                    $data['active'] = 2;
-                    $data['modified_by'] = 1;
+                    $data = filter_var_array($_POST);
+                    if(!empty($data['email'])){
+                      if(filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+                        $data['email'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
+                      } else {
+                        $Errors->set(601);
+                      }
+                    }
+                    else {
+                      $Errors->set(600);
+                    }
+
+                    if(!empty($data['pwd'])) {
+                      if($data['pwd'] != $data['c_pwd']){
+                        $Errors->set(609);
+                      }
+                    } else {
+                      $Errors->set(602);
+                    }
+
+                    // $Usr = new User;
+                    $email_check = $UserModel->findBy( array('email' => $data['email']) );
+                    if(count($email_check) > 0){
+                      $Errors->set(610);
+                    }
 
 
+                    if(empty($Errors->errors)){
+                      /** encrypts password **/
+                      $userdata['password']         = password_hash($data['pwd'], PASSWORD_BCRYPT);
+                      $userdata['email']            = $data['email'];
+                      $userdata['secondary_email']  = filter_var($data['secondary_email'], FILTER_SANITIZE_EMAIL);
+                      $userdata['username']         = filter_var($data['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                      $userdata['role']             = filter_var($data['role'], FILTER_SANITIZE_NUMBER_INT);
+                      $userdata['active']           = 2;
 
-                  // Create USER
+                      $permissions = filter_var_array($data['permissions'], FILTER_SANITIZE_NUMBER_INT);
 
-                  // Create SESSION
+                      unset($data['pwd']);
+                      unset($data['c_pwd']);
 
+                      $idUser = $UserModel->create($userdata);
+                      if($idUser){
+                        $RegSession = new Session;
+                        $RegSession->createSession($idUser);
+
+                        // set Permissions
+                        if(!empty($permissions)){
+                          $RegSession->setPermissions($idUser, $permissions);
+                        }
+                        $Errors->set(1);
+
+                        // Set other data, as in ASOC profiles
+                        if($userdata['role'] > 3){
+                          $region = null;
+                          if(!empty($data['provincia'])){
+                            $p = $Provincia->findLexiconEntry('idprovincia', $data['provincia']);
+                            if($p){
+                              $region = $p->region;
+                            }
+                          }
+
+
+                          $asoc['remote_id']      = filter_var($data['remote_id'], FILTER_SANITIZE_NUMBER_INT);
+                          $asoc['auth']           = $idUser;
+                          $asoc['istituto']       = filter_var($data['istituto'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                          $asoc['tipo_istituto']  = filter_var($data['tipo_istituto'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                          $asoc['regione']        = $region;
+                          $asoc['provincia']      = filter_var($data['provincia'], FILTER_SANITIZE_NUMBER_INT);
+                          $asoc['comune']         = filter_var($data['comune'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                          $asoc['link_blog']      = filter_var($data['link_blog'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                          $asoc['link_elaborato'] = filter_var($data['link_elaborato'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+                          $ASOC = new Asoc;
+                          $idasoc = $ASOC->create($asoc);
+
+                          if($idasoc){
+                            $Errors->set(5)
+                          }
+                          else {
+                            $Errors->set(612);
+                          }
+                        }
+                      }
+                    }
+                    $this->set('errors', $Errors);
                   }
                 }
-
             }
         }
 

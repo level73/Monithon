@@ -25,7 +25,11 @@
       }
 
       parent::__construct();
+      if($meta == 'provincia'){
+        // Costruzione della lista di Province con le regioni
 
+
+      }
       if($lexicon){
         $this->lexiconList = $this->all();
       }
@@ -201,8 +205,12 @@
             return $this->Errors;
           }
         }
+        return true;
       }
-
+      else {
+        $this->Errors->set(520);
+        return $this->Errors;
+      }
     }
 
     public function updateFileReferences($entity, $record, $meta_records){
@@ -224,9 +232,10 @@
           return $this->Errors;
         }
       }
+      return true;
     }
 
-    
+
 
 
     public function unsetReferences($entity, $record){
@@ -464,21 +473,26 @@
 
     }
 
-    /** countryNames method
-      * used to produce a translation matrix
-      * for all country names
-      * to be used
-      * in maps
-    **/
-    public function countryNames() {
-      if($this->meta == 'country'){
-        $countryNames = array();
-        foreach($this->lexiconList as $c) {
-          $countryNames['en'][$c->ISO2] = $c->list_name_en;
-          $countryNames['es'][$c->ISO2] = $c->list_name_es;
-          $countryNames['fr'][$c->ISO2] = $c->list_name_fr;
+    public function listProvinceByRegion(){
+      $sql = 'SELECT *, lexicon_region.region AS region_label  FROM lexicon_provincia INNER JOIN lexicon_region ON lexicon_region.idregion=lexicon_provincia.region ORDER BY lexicon_region.region ASC';
+
+      $stmt = $this->database->prepare($sql);
+
+      $query = $stmt->execute();
+
+      if(!$query){
+        $this->Errors->set(501);
+        if(SYSTEM_STATUS == 'development'){
+          dbga($stmt->errorInfo());
         }
-        return $countryNames;
+        return $this->Errors;
+      } else {
+        $List = $stmt->fetchAll(PDO::FETCH_OBJ);
+        $response = array();
+        foreach($List as $l){
+          $response[$l->region_label][] = $l;
+        }
+        return $response;
       }
     }
 

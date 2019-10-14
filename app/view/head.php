@@ -34,3 +34,4 @@
   </head>
 
   <body class="<?php echo $bodyClass; ?>">
+    <div class="d-flex flex-column full-wrap">

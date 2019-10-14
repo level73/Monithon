@@ -35,6 +35,10 @@ var Monithon = {
 
   bootstrapComponents: function(){
     $('[data-toggle="tooltip"]').tooltip();
+    $('.custom-file-input').on('change', function(e){
+      var file = $(this).val().replace("C:\\fakepath\\", "");
+      $(this).next('.custom-file-label').text(file);
+    });
   },
 
   fileFieldDuplicator: function(){
@@ -51,7 +55,6 @@ var Monithon = {
 
       var duplicated = duplicator.clone(true);
       var counter = $(toDuplicate).length;
-      console.log(counter);
 
       var inputField = duplicated.find('input').first();
       var labelField = duplicated.find('label').first();
@@ -78,7 +81,6 @@ var Monithon = {
 
       var duplicated = duplicator.clone(true);
       var counter = $(toDuplicate).length;
-      console.log(counter);
 
       var inputField = duplicated.find('input').first();
       var labelField = duplicated.find('label').first();
@@ -105,7 +107,6 @@ var Monithon = {
 
       var duplicated = duplicator.clone(true);
       var counter = $(toDuplicate).length;
-      console.log(counter);
 
       var inputField = duplicated.find('input').first();
       var labelField = duplicated.find('label').first();
@@ -121,4 +122,6 @@ var Monithon = {
 
 }
 
-Monithon.init();
+$(document).ready(function(){
+  Monithon.init();
+});
