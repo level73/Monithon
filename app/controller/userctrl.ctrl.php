@@ -185,7 +185,7 @@
                           $idasoc = $ASOC->create($asoc);
 
                           if($idasoc){
-                            $Errors->set(5)
+                            $Errors->set(5);
                           }
                           else {
                             $Errors->set(612);
