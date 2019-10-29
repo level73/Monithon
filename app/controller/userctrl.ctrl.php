@@ -275,6 +275,35 @@
 
         }
 
+        /* User list for platform admins **/
+        public function list(){
+          $this->Auth = new Auth();
+          $Errors = new Errors();
+          $UserModel = new User();
+
+          if(!$this->Auth->isLoggedIn()){
+              header('Location: /user/login');
+          }
+          else {
+              $this->set('js', array('section/user.js'));
+              $this->logged = true;
+              $this->set('logged', $this->logged);
+              $this->User = $this->Auth->getProfile();
+              $this->set('user', $this->User);
+              $this->set('title', 'Lista Utenti');
+
+              if(!(in_array(P_CREATE_USER, array_keys($this->User->permissions)))){
+                  header('Location: /user/ops');
+              }
+              else {
+                $List = $UserModel->listProfiles();
+                $this->set('list', $List);
+
+              }
+            }
+        }
+
+
         public function recover(){ }
 
         public function reset(){ }

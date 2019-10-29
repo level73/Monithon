@@ -4,6 +4,27 @@
 
       <h1>Nuovo Report</h1>
 
+      <h2>
+        Step 1: Desk Analysis<br />
+        <small>Cosa puoi fare prima della visita di Monitoraggio</small>
+      </h2>
+
+      <!-- Codice OpenCoesione -->
+      <div class="form-group">
+          <label for="oc_api_code">URL del Progetto su OpenCoesione:</label>
+          <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Il Codice Univoco OpenCoesione è utilizzato per individuare i dati aperti messi a disposizione dal Dipartimento per le Politiche di Coesione della Presidenza del consiglio dei Ministri. ">Che cos'è?</span>
+          <div class="input-group">
+            <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="Codice univoco..." class="form-control" value="<?php echo ckv($data, 'id_open_coesione'); ?>">
+            <div class="input-group-append">
+              <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
+            </div>
+          </div>
+          <div class="invisible" id="oc_api_content_s1">
+            <i class="fal fa-sync fa-spin"></i>
+          </div>
+      </div>
+
+
       <form class="" method="post" enctype="multipart/form-data" action="/report/create">
         <fieldset>
           <legend>Informazioni di Base</legend>
@@ -22,20 +43,7 @@
           </div>
 
 
-          <!-- Codice OpenCoesione -->
-          <div class="form-group">
-              <label for="oc_api_code">Codice Univoco OpenCoesione:</label>
-              <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Il Codice Univoco OpenCoesione è utilizzato per individuare i dati aperti messi a disposizione dal Dipartimento per le Politiche di Coesione della Presidenza del consiglio dei Ministri. ">Che cos'è?</span>
-              <div class="input-group">
-                <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="Codice univoco..." class="form-control" value="<?php echo ckv($data, 'id_open_coesione'); ?>">
-                <div class="input-group-append">
-                  <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
-                </div>
-              </div>
-              <div class="invisible" id="oc_api_content">
-                <i class="fal fa-sync fa-spin"></i>
-              </div>
-          </div>
+
 
           <!-- Mappa -->
           <div class="form-group">

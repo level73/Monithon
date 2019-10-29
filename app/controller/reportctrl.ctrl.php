@@ -18,6 +18,7 @@
       $logged = false;
       if($this->Auth->isLoggedIn()){
         $this->User = $this->Auth->getProfile();
+        $this->set('user', $this->User);
         $logged = true;
       }
       $this->set('logged', $logged);

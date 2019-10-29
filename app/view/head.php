@@ -10,6 +10,7 @@
       <script src="https://kit.fontawesome.com/faba35a8a9.js"></script>
       <link rel="stylesheet" type="text/css" href="/public/css/vendor/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="/public/css/vendor/bootstrap-select.min.css">
+      <link rel="stylesheet" type="text/css" href="/public/css/vendor/dataTables.bootstrap4.min.css">
       <link rel="stylesheet" type="text/css" href="/public/css/main.css">
       <?php if( isset($street_map) && $street_map == true ){ ?>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"

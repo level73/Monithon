@@ -5,6 +5,7 @@ var Monithon = {
   init: function(){
     console.log('MONITHON V3.0');
     this.selects();
+    this.dtables();
     this.validateForms();
     this.bootstrapComponents();
     this.fileFieldDuplicator();
@@ -14,6 +15,10 @@ var Monithon = {
 
   selects: function(){
     $('.pck').selectpicker();
+  },
+
+  dtables: function(){
+    $('.dtable').DataTable();
   },
 
   validateForms: function(){
