@@ -110,6 +110,25 @@ textarea {
 #location_map {
   height: 600px; }
 
+.guide {
+  background: white;
+  padding: 20px;
+  margin: 25px auto;
+  border: 1px solid #2ec4b6; }
+  .guide h2 {
+    margin-bottom: 25px;
+    padding-bottom: 30px; }
+  .guide .row-guide {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DDD; }
+  .guide .guide-title {
+    font-weight: 900; }
+  .guide .guide-hilite {
+    color: #2ec4b6;
+    font-style: italic;
+    font-weight: 900; }
+
 footer#main-footer {
   background: #011627;
   color: #fdfffc;

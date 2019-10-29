@@ -123,7 +123,6 @@ var Monithon = {
 
     });
   }
-
 }
 
 $(document).ready(function(){

@@ -1,0 +1,23 @@
+.guide {
+  background: white;
+  padding: 20px;
+  margin: 25px auto;
+  border: 1px solid $lagoon;
+  h2 {
+    margin-bottom: 25px;
+    padding-bottom: 30px; 
+  }
+  .row-guide{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DDD;
+  }
+  .guide-title {
+    font-weight: 900;
+  }
+  .guide-hilite {
+    color: $lagoon;
+    font-style: italic;
+    font-weight: 900;
+  }
+}

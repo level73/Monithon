@@ -4,10 +4,7 @@
 
       <h1>Nuovo Report</h1>
 
-      <h2>
-        Step 1: Desk Analysis<br />
-        <small>Cosa puoi fare prima della visita di Monitoraggio</small>
-      </h2>
+
 
       <!-- Codice OpenCoesione -->
       <div class="form-group">
