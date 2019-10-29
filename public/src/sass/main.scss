@@ -6,9 +6,12 @@
 @import 'maps';
 
 @import 'footer';
+
 body {
   background: $seafoam;
   color: $blackcoral;
   font-family: $fontStack;
   height: 100% !important;
+  min-height: 100vh;
 }
+.full-wrap { min-height: 100vh; }

@@ -143,6 +143,16 @@ function rearrange_files($file_post) {
 function hellip($title, $length = 60){
   return (strlen($title) > $length ? substr($title, 0, $length) . '&hellip;' : $title);
 }
+/** Check if user has permission **/
+function hasPermission($user, $permission){
+    $permissions = array_keys($user->permissions);
+    if(in_array($permission, $permissions)){
+      return true;
+    }
+    else {
+      return false; 
+    }
+}
 
 /** Check value for meta tables **/
 function filterForMeta($data, $field){

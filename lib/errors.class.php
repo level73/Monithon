@@ -20,9 +20,12 @@
       1   => 'Utente creato correttamente',
       2   => 'Utente modificato correttamente',
       3   => 'Password modificata con successo. Verrai reindirizzato <a href="/user/login">alla pagina di login</a> in 5 secondi.',
+      4   => 'Profilo ASOC creato con successo',
       20  => 'Oggetto cancellato.',
       21  => 'Report salvato con successo.',
-      91  => 'File caricato!',
+      91  => 'File caricati!',
+      92  => 'Link registrati!',
+      93  => 'Video salvati!',
 
 
       /** Warnings **/
@@ -37,7 +40,7 @@
       520 => 'Impossibile reinizializzare i metadati',
       550 => 'Impossibile recuperare i campi dell\'entità',
       551 => 'Impossibile creare il record',
-      552 => 'Mancano idei valori in campi obbligatori (*). Dati non salvati. ',
+      552 => 'Mancano dei valori in campi obbligatori (*). Dati non salvati. ',
       580 => 'Impossibile inviare l\'email a causa di problemi tecnici',
 
       600 => 'L\'email non può essere vuota',
@@ -52,6 +55,7 @@
       609 => 'Le password non coincidono',
       610 => 'Questa email è già in uso',
       611 => 'Impossibile reinizializzare la password',
+      612 => 'problemi durante il salvattgio dei dati del team Asoc',
 
       650 => 'Errore nel caricamento del file. File non salvato.',
       651 => 'Tipo di file non permesso. File non salvato.',

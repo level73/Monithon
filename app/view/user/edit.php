@@ -64,7 +64,7 @@
   </form>
   <hr />
   <?php if( count($reports) > 0){ ?>
-  <section class="row" id="#my-reports">
+  <section class="row" id="my-reports">
     <div class="col">
       <h1>I Miei Report</h1>
 

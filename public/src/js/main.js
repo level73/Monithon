@@ -5,6 +5,7 @@ var Monithon = {
   init: function(){
     console.log('MONITHON V3.0');
     this.selects();
+    this.dtables();
     this.validateForms();
     this.bootstrapComponents();
     this.fileFieldDuplicator();
@@ -14,6 +15,10 @@ var Monithon = {
 
   selects: function(){
     $('.pck').selectpicker();
+  },
+
+  dtables: function(){
+    $('.dtable').DataTable();
   },
 
   validateForms: function(){
@@ -36,13 +41,9 @@ var Monithon = {
   bootstrapComponents: function(){
     // Initialize Tooltips
     $('[data-toggle="tooltip"]').tooltip();
-
-    // Show filename on change of filebrowser input
-    $('input[type="file"]').on('change',function(){
-      //get the file name
-      var fileName = $(this).val();
-      //replace the "Choose a file" label
-      $(this).next('.custom-file-label').text(fileName);
+    $('.custom-file-input').on('change', function(e){
+      var file = $(this).val().replace("C:\\fakepath\\", "");
+      $(this).next('.custom-file-label').text(file);
     });
   },
 
@@ -58,7 +59,6 @@ var Monithon = {
       e.preventDefault();
       var duplicated = duplicator.clone(true);
       var counter = $(toDuplicate).length;
-      console.log(counter);
 
       var inputField = duplicated.find('input').first();
       var labelField = duplicated.find('label').first();
@@ -85,7 +85,6 @@ var Monithon = {
 
       var duplicated = duplicator.clone(true);
       var counter = $(toDuplicate).length;
-      console.log(counter);
 
       var inputField = duplicated.find('input').first();
       var labelField = duplicated.find('label').first();
@@ -112,7 +111,6 @@ var Monithon = {
 
       var duplicated = duplicator.clone(true);
       var counter = $(toDuplicate).length;
-      console.log(counter);
 
       var inputField = duplicated.find('input').first();
       var labelField = duplicated.find('label').first();
@@ -128,4 +126,6 @@ var Monithon = {
 
 }
 
-Monithon.init();
+$(document).ready(function(){
+  Monithon.init();
+});
