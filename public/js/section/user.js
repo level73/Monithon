@@ -2,7 +2,7 @@
 
 var MonithonUser = {
   init: function(){
-    // this.checkPasswords();
+    this.checkPasswords();
   },
 
   checkPasswords: function(){
@@ -20,7 +20,6 @@ var MonithonUser = {
         }, false);
       });
     }, false);
-
 
 
     if($('#pwd').length > 0 && $('#c_pwd').length > 0){

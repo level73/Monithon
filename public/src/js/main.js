@@ -34,7 +34,16 @@ var Monithon = {
   },
 
   bootstrapComponents: function(){
+    // Initialize Tooltips
     $('[data-toggle="tooltip"]').tooltip();
+
+    // Show filename on change of filebrowser input
+    $('input[type="file"]').on('change',function(){
+      //get the file name
+      var fileName = $(this).val();
+      //replace the "Choose a file" label
+      $(this).next('.custom-file-label').text(fileName);
+    });
   },
 
   fileFieldDuplicator: function(){
@@ -44,11 +53,9 @@ var Monithon = {
     var duplicator = elementToDupe.clone(true);
     duplicator.removeClass('origin');
 
-
     $('.file-duplicator').click(function(e){
 
       e.preventDefault();
-
       var duplicated = duplicator.clone(true);
       var counter = $(toDuplicate).length;
       console.log(counter);

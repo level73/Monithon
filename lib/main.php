@@ -83,15 +83,25 @@ function init(){
   // avoid dispatching for js and css
   if(!in_array($route, $exclude)){
 
-      // Create Instance
+    // Create Instance
     // refer to lib/ctrl.class.php to see how the controller handles the business logic
-    $dispatch = new $controller($model, $route, $method);
+    try { 
+      $dispatch = new $controller($model, $route, $method);
 
-    if (method_exists($controller, $method) == true) {
-        // Execute method
-        call_user_func_array(array($dispatch, $method), $queryString);
-    } else {
-        echo "No such method";
+      if (method_exists($controller, $method) == true) {
+          // Execute method
+          call_user_func_array(array($dispatch, $method), $queryString);
+      } else {
+        /** TO DO
+          * Set to 404 Page, with links and
+          * suggestions for action
+          **/
+          echo "No such method";
+      }
     }
+    catch (Errors $e){
+
+    }
+
   }
 }
