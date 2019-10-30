@@ -8,4 +8,12 @@
       echo $data;
     }
 
+    public function programma_operativo($code, $mode = 'json'){
+      $PO = new Meta('programma_operativo', true);
+      $po = $PO->findLexiconEntry('oc_codice_programma', $code);
+      if($mode == 'json'){
+        echo json_encode($po);
+      }
+    }
+
   }

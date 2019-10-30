@@ -38,6 +38,32 @@ var OpenCoesione = {
 
             for(i = 0; i < data.programmi.length; i++){
               var oc_cod_fonte = data.programmi[i].oc_cod_fonte;
+              var po;
+
+              // Sync call to PO TABLE
+              $.ajax({
+                url: '/ajax/programma_operativo/' + data.programmi[i].oc_codice_programma,
+                dataType: 'json',
+                async: false,
+                success: function(data) {
+                  po = data;
+                }
+              });
+              /*
+              $.getJSON( '/ajax/programma_operativo/' + data.programmi[i].oc_codice_programma,
+                function(data){
+                  po = data;
+                })
+              .done(
+                  function(){
+
+                    console.log('LOADED CONTENT FROM PO TABLE');
+              });
+              */
+              
+              console.log(po);
+
+
 
               Block1 += 'Il tuo progetto è finanziato dal <strong><a href="' + oc_api_url + '">' + data.programmi[i].oc_descrizione_programma + '</a></strong><br />';
 
@@ -52,6 +78,15 @@ var OpenCoesione = {
               if(oc_cod_fonte == 'FSC0713' || oc_cod_fonte == 'FSC1420' || oc_cod_fonte == 'PAC' || oc_cod_fonte == 'PAC1420'){
                 Block1 += 'Il tuo progetto è stato finanziato da fondi nazionali per la coesione.<br />';
               }
+
+              if(oc_cod_fonte == 'FSC1420' || oc_cod_fonte == 'PAC1420') {
+                Block1 += 'Leggi la delibera del CIPE che descrive gli obiettivi dell’intervento. => <Del_CIPE> from nostra tabella “PO” href <Del_CIPE_link>';
+              }
+              /*
+              {IF <oc_cod_fonte> = “FSC0713” => Consulta questa relazione sull’utilizzo del Fondo Sviluppo e Coesione nel 2007-13}
+              {IF <oc_cod_fonte> = “PAC” => Consulta il Piano Azione Coesione del 2011}
+              {IF <OC_TIPOLOGIA_PROGRAMMA> = “patti per lo sviluppo” from nostra tabella “PO” => Scarica la scheda degli interventi: <Scheda_interventi_patti> from nostra tabella “PO”}
+              */
             }
 
             $('#oc_guide_s1_1').html(Block1);
@@ -74,7 +109,7 @@ var OpenCoesione = {
             Block3 += 'Cerca il titolo del tuo progetto nelle news!<br />';
             Block3 += 'Vai qui: <a href="https://news.google.com/search?q=' + data.oc_titolo_progetto + '" target="_blank" class="btn btn-primary btn-sm">CERCA SU GOOGLE "' + data.oc_titolo_progetto + '"</a><br />';
             Block3 += '<small><i>Il link si aprirà in un\'altra finestra.</i></small><br />';
-            if(data.oc_sintesi_progetto){
+            if(data.oc_sintesi_progetto && data.oc_sintesi_progetto != ' '){
               Block3 += 'Poi raffina la tua ricerca individuando delle parole chiave a partire dalla sintesi del progetto: <span class="guide-hilite">' + data.oc_sintesi_progetto + '</span>.';
             }
             $('#oc_guide_s1_3').html(Block3);

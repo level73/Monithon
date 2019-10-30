@@ -14,7 +14,6 @@
       Quali sono gli obiettivi che si erano posti?
     </div>
     <div class="col-8" id="oc_guide_s1_1"></div>
-
   </div>
 
   <div class="row row-guide">
@@ -22,7 +21,6 @@
       Quali sono i passaggi amministrativi che hanno portato al finanziamento?
     </div>
     <div class="col-8" id="oc_guide_s1_2"></div>
-
   </div>
 
   <div class="row row-guide">
@@ -30,7 +28,6 @@
       Il progetto è un “tema caldo” nelle notizie?
     </div>
     <div class="col-8" id="oc_guide_s1_3"></div>
-
   </div>
 
   <div class="row row-guide">
@@ -38,7 +35,6 @@
       Controlla l’avanzamento del progetto nel tempo
     </div>
     <div class="col-8" id="oc_guide_s1_4"></div>
-
   </div>
 
   <div class="row row-guide">
@@ -46,8 +42,6 @@
       Come approcciare la tua indagine? I consigli degli esperti tematici di Monithon
     </div>
     <div class="col-8" id="oc_guide_s1_5"></div>
-
   </div>
-
 
 </section>
