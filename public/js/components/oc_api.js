@@ -49,23 +49,11 @@ var OpenCoesione = {
                   po = data;
                 }
               });
-              /*
-              $.getJSON( '/ajax/programma_operativo/' + data.programmi[i].oc_codice_programma,
-                function(data){
-                  po = data;
-                })
-              .done(
-                  function(){
 
-                    console.log('LOADED CONTENT FROM PO TABLE');
-              });
-              */
-              
               console.log(po);
 
 
-
-              Block1 += 'Il tuo progetto è finanziato dal <strong><a href="' + oc_api_url + '">' + data.programmi[i].oc_descrizione_programma + '</a></strong><br />';
+              Block1 += 'Il tuo progetto è finanziato dal <strong><a href="' + po.url_oc + '">' + data.programmi[i].oc_descrizione_programma + '</a></strong><br />';
 
               if(oc_cod_fonte == 'FS0713' || oc_cod_fonte == 'FS0713'){
                 var descr_obiettivo_specifico = data.programmi[i].descr_obiettivo_specifico;
@@ -74,19 +62,30 @@ var OpenCoesione = {
                 }
                 Block1 += 'Per rispondere a questo obiettivo specifico: <span class="guide-hilite">' + descr_obiettivo_specifico + '</span><br />';
               }
+              if(po.pdf_po){
+                Block1 += '<a href="' + po.pdf_po + '">Scarica il testo del Programma</a> e cerca gli obiettivi all’interno del documento.<br />';
+              }
+              if(po.url_ec){
+                Block1 += 'Vedi la <a href="' + po.url_ec + '" target="_blank">sintesi del programma sul sito della Commissione Europea</a>.';
+              }
 
               if(oc_cod_fonte == 'FSC0713' || oc_cod_fonte == 'FSC1420' || oc_cod_fonte == 'PAC' || oc_cod_fonte == 'PAC1420'){
                 Block1 += 'Il tuo progetto è stato finanziato da fondi nazionali per la coesione.<br />';
               }
 
-              if(oc_cod_fonte == 'FSC1420' || oc_cod_fonte == 'PAC1420') {
-                Block1 += 'Leggi la delibera del CIPE che descrive gli obiettivi dell’intervento. => <Del_CIPE> from nostra tabella “PO” href <Del_CIPE_link>';
+              if( (oc_cod_fonte == 'FSC1420' || oc_cod_fonte == 'PAC1420') && po.url_del_cipe) {
+                Block1 += 'Leggi la delibera del CIPE che descrive gli obiettivi dell’intervento. <a href="'+ po.url_del_cipe +'">' + po.del_cipe + '</a>';
               }
-              /*
-              {IF <oc_cod_fonte> = “FSC0713” => Consulta questa relazione sull’utilizzo del Fondo Sviluppo e Coesione nel 2007-13}
-              {IF <oc_cod_fonte> = “PAC” => Consulta il Piano Azione Coesione del 2011}
-              {IF <OC_TIPOLOGIA_PROGRAMMA> = “patti per lo sviluppo” from nostra tabella “PO” => Scarica la scheda degli interventi: <Scheda_interventi_patti> from nostra tabella “PO”}
-              */
+              if(oc_cod_fonte == 'FSC0713'){
+                Block1 += 'Consulta a href="https://opencoesione.gov.it/media/uploads/relazione_fsc_regionale_2007_2013.pdf">questa relazione sull’utilizzo del Fondo Sviluppo e Coesione nel 2007-13</a>.<br />';
+              }
+              if(oc_cod_fonte == 'PAC'){
+                Block1 += 'Consulta il Piano Azione Coesione del 2011<br />';
+              }
+              if(po.oc_tipologia_programma_fsc.toLowerCase() == 'patti per lo sviluppo'){
+                Block1 += '<a href="' + po.url_interventi_patti + '">Scarica la scheda degli interventi</a>.';
+              }
+
             }
 
             $('#oc_guide_s1_1').html(Block1);
