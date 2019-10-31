@@ -82,7 +82,7 @@ var OpenCoesione = {
               if(oc_cod_fonte == 'PAC'){
                 Block1 += 'Consulta il Piano Azione Coesione del 2011<br />';
               }
-              if(po.oc_tipologia_programma_fsc.toLowerCase() == 'patti per lo sviluppo'){
+              if(po.oc_tipologia_programma_fsc && po.oc_tipologia_programma_fsc.toLowerCase() == 'patti per lo sviluppo'){
                 Block1 += '<a href="' + po.url_interventi_patti + '">Scarica la scheda degli interventi</a>.';
               }
 
