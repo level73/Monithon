@@ -29,9 +29,17 @@ var OpenCoesione = {
         console.log(oc_api_endpoint);
 
         $.getJSON('/ajax/oc_api/' + oc_api_code, {'code': oc_api_code}, function(data){
+
           console.log(data);
+
+          if(data.code == 404){
+            alert('Sembra che il codice progetto non sia disponibile nella API di OpenCoesione. Controlla di aver copiato ed incollato correttamente la URL del Progetto.');
+          }
+
+          else {
+
           // Load S1 Template
-          $('#oc_api_content_s1').load('/public/assets/guide_s1.php', function(){
+            $('#oc_api_content_s1').load('/public/assets/guide_s1.php', function(){
 
             /** BOF BLOCK 1 OF STEP 1 **/
             var Block1 = '';
@@ -146,6 +154,8 @@ var OpenCoesione = {
 
             /** EOF BLOCK 6 STEP 1 **/
           });
+
+          }
 
 
           /*
