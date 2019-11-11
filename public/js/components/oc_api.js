@@ -83,7 +83,7 @@ var OpenCoesione = {
                   Block1 += 'Leggi la delibera del CIPE che descrive gli obiettivi dell’intervento. <a href="'+ po.url_del_cipe +'">' + po.del_cipe + '</a>';
                 }
                 if(oc_cod_fonte == 'FSC0713'){
-                  Block1 += 'Consulta a href="https://opencoesione.gov.it/media/uploads/relazione_fsc_regionale_2007_2013.pdf">questa relazione sull’utilizzo del Fondo Sviluppo e Coesione nel 2007-13</a>.<br />';
+                  Block1 += 'Consulta <a href="https://opencoesione.gov.it/media/uploads/relazione_fsc_regionale_2007_2013.pdf">questa relazione sull’utilizzo del Fondo Sviluppo e Coesione nel 2007-13</a>.<br />';
                 }
                 if(oc_cod_fonte == 'PAC'){
                   Block1 += 'Consulta il Piano Azione Coesione del 2011<br />';
