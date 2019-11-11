@@ -3,6 +3,7 @@ var OpenCoesione = {
   config: {
     api_url: 'https://opencoesione.gov.it/it/api/progetti/',
     api_format: '/?format=json',
+    lang: 'it' // TODO: Change to dynamically set param from Monithon.config
   },
 
 
@@ -106,7 +107,7 @@ var OpenCoesione = {
             /** BOF BLOCK 3 STEP 1 **/
             var Block3 = '';
             Block3 += 'Cerca il titolo del tuo progetto nelle news!<br />';
-            Block3 += 'Vai qui: <a href="https://news.google.com/search?q=' + data.oc_titolo_progetto + '" target="_blank" class="btn btn-primary btn-sm">CERCA SU GOOGLE "' + data.oc_titolo_progetto + '"</a><br />';
+            Block3 += 'Vai qui: <a href="https://news.google.com/search?hl=' + OC.config.lang + '&gl=' + OC.config.lang.toUpperCase() + '&ceid=' + OC.config.lang.toUpperCase() + ':' + OC.config.lang + '&q=' + data.oc_titolo_progetto + '" target="_blank" class="btn btn-primary btn-sm">CERCA SU GOOGLE "' + data.oc_titolo_progetto + '"</a><br />';
             Block3 += '<small><i>Il link si aprirà in un\'altra finestra.</i></small><br />';
             if(data.oc_sintesi_progetto && data.oc_sintesi_progetto != ' '){
               Block3 += 'Poi raffina la tua ricerca individuando delle parole chiave a partire dalla sintesi del progetto: <span class="guide-hilite">' + data.oc_sintesi_progetto + '</span>.';
