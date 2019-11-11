@@ -59,7 +59,7 @@ var OpenCoesione = {
                 console.log(po);
 
 
-                Block1 += 'Il tuo progetto è finanziato dal <strong><a href="' + po.url_oc + '">' + data.programmi[i].oc_descrizione_programma + '</a></strong><br />';
+                Block1 += 'Il tuo progetto è finanziato dal <strong><a href="' + po.url_oc + '" target="_blank">' + data.programmi[i].oc_descrizione_programma + '</a></strong><br />';
 
                 if(oc_cod_fonte == 'FS0713' || oc_cod_fonte == 'FS0713'){
                   var descr_obiettivo_specifico = data.programmi[i].descr_obiettivo_specifico;
@@ -69,7 +69,7 @@ var OpenCoesione = {
                   Block1 += 'Per rispondere a questo obiettivo specifico: <span class="guide-hilite">' + descr_obiettivo_specifico + '</span><br />';
                 }
                 if(po.pdf_po){
-                  Block1 += '<a href="' + po.pdf_po + '">Scarica il testo del Programma</a> e cerca gli obiettivi all’interno del documento.<br />';
+                  Block1 += '<a href="' + po.pdf_po + '" target="_blank">Scarica il testo del Programma</a> e cerca gli obiettivi all’interno del documento.<br />';
                 }
                 if(po.url_ec){
                   Block1 += 'Vedi la <a href="' + po.url_ec + '" target="_blank">sintesi del programma sul sito della Commissione Europea</a>.';
@@ -80,16 +80,16 @@ var OpenCoesione = {
                 }
 
                 if( (oc_cod_fonte == 'FSC1420' || oc_cod_fonte == 'PAC1420') && po.url_del_cipe) {
-                  Block1 += 'Leggi la delibera del CIPE che descrive gli obiettivi dell’intervento. <a href="'+ po.url_del_cipe +'">' + po.del_cipe + '</a>';
+                  Block1 += 'Leggi la delibera del CIPE che descrive gli obiettivi dell’intervento. <a href="'+ po.url_del_cipe +'" target="_blank">' + po.del_cipe + '</a>';
                 }
                 if(oc_cod_fonte == 'FSC0713'){
-                  Block1 += 'Consulta <a href="https://opencoesione.gov.it/media/uploads/relazione_fsc_regionale_2007_2013.pdf">questa relazione sull’utilizzo del Fondo Sviluppo e Coesione nel 2007-13</a>.<br />';
+                  Block1 += 'Consulta <a href="https://opencoesione.gov.it/media/uploads/relazione_fsc_regionale_2007_2013.pdf" target="_blank">questa relazione sull’utilizzo del Fondo Sviluppo e Coesione nel 2007-13</a>.<br />';
                 }
                 if(oc_cod_fonte == 'PAC'){
                   Block1 += 'Consulta il Piano Azione Coesione del 2011<br />';
                 }
                 if(po.oc_tipologia_programma_fsc && po.oc_tipologia_programma_fsc.toLowerCase() == 'patti per lo sviluppo'){
-                  Block1 += '<a href="' + po.url_interventi_patti + '">Scarica la scheda degli interventi</a>.';
+                  Block1 += '<a href="' + po.url_interventi_patti + '" target="_blank">Scarica la scheda degli interventi</a>.';
                 }
 
               }
@@ -112,7 +112,7 @@ var OpenCoesione = {
               /** BOF BLOCK 3 STEP 1 **/
               var Block3 = '';
               Block3 += 'Cerca il titolo del tuo progetto nelle news!<br />';
-              Block3 += 'Vai qui: <a href="https://news.google.com/search?hl=' + OC.config.lang + '&gl=' + OC.config.lang.toUpperCase() + '&ceid=' + OC.config.lang.toUpperCase() + ':' + OC.config.lang + '&q=' + data.oc_titolo_progetto + '" target="_blank" class="btn btn-primary btn-sm">CERCA SU GOOGLE "' + data.oc_titolo_progetto + '"</a><br />';
+              Block3 += 'Vai qui: <a target="_blank" href="https://news.google.com/search?hl=' + OC.config.lang + '&gl=' + OC.config.lang.toUpperCase() + '&ceid=' + OC.config.lang.toUpperCase() + ':' + OC.config.lang + '&q=' + data.oc_titolo_progetto + '" target="_blank" class="btn btn-primary btn-sm">CERCA SU GOOGLE "' + data.oc_titolo_progetto + '"</a><br />';
               Block3 += '<small><i>Il link si aprirà in un\'altra finestra.</i></small><br />';
               if(data.oc_sintesi_progetto && data.oc_sintesi_progetto != ' '){
                 Block3 += 'Poi raffina la tua ricerca individuando delle parole chiave a partire dalla sintesi del progetto: <span class="guide-hilite">' + data.oc_sintesi_progetto + '</span>.';
