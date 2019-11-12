@@ -140,6 +140,7 @@
           }
         }
         $this->set('data', $data);
+        $this->set('errors', $this->Errors);
       }
     }
 

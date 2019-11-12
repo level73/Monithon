@@ -102,7 +102,7 @@ var OpenCoesione = {
               for(i = 0; i < data.programmi.length; i++){
                 Block2 += 'Nei dati OpenCoesione trovi un’informazione che potrebbe essere utile a seconda della qualità dei dati immessi dai soggetti programmatori. Si tratta della procedura amministrativa che ha dato inizio al finanziamento. Potrebbe essere il riferimento a un bando pubblico o a un altro atto amministrativo che puoi cercare su Internet.<br />';
                 Block2 += 'La procedura che ha dato origine a questo progetto è <span class="guide-hilite">' + data.programmi[i].descr_proced_attivazione + '</span>.<br />';
-                Block2 += 'Si tratta di <span class="guide-hilite">' + data.programmi[i].descr_tipo_proced_attivazione + '</span>';
+                Block2 += 'La tipologia di questa procedura è <span class="guide-hilite">' + data.programmi[i].descr_tipo_proced_attivazione + '</span>';
               }
 
               $('#oc_guide_s1_2').html(Block2);
@@ -132,7 +132,7 @@ var OpenCoesione = {
               if(data.oc_stato_progetto.toLowerCase() == 'in corso' && projectEndDate < currentDate ){
                 Block4 += '<strong>Il tuo progetto sembra in ritardo, è davvero così?</strong><br />';
               }
-              Block4 += 'Controlla sulla pagina di progetto di <a href="' + oc_api_url + '" target="_blank">OpenCoesione</a>. <br />';
+              Block4 += 'Controlla sulla <a href="' + oc_api_url + '" target="_blank">pagina di progetto</a> di OpenCoesione. <br />';
               Block4 += 'Se i pagamenti salgono in modo uniforme o ci sono stati dei blocchi in passato… o ci sono ancora!<br />';
               Block4 += 'Potrebbe essere una domanda interessante da fare durante le interviste.<br />';
 
