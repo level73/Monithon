@@ -253,6 +253,7 @@
 
                 $send = mail('code@level73.it', 'Monithon', 'test');
                 var_dump($send);
+              }
 
             }
 
