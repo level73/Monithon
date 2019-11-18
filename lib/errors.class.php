@@ -5,7 +5,7 @@
    *
    * @private $dictionary : sets message to corresponding error code.
    *  0   -> 299 : success messages
-   *  299 -> 499 : warning messages
+   *  300 -> 499 : warning messages
    *  500 -> 699 : error messages
    *  700 -> 999 : notices
    **/
@@ -57,6 +57,7 @@
       611 => 'Impossibile reinizializzare la password',
       612 => 'problemi durante il salvataggio dei dati del team Asoc',
 
+
       650 => 'Errore nel caricamento del file. File non salvato.',
       651 => 'Tipo di file non permesso. File non salvato.',
       652 => 'Errore nel salvataggio del file sul server. File non salvato.',
@@ -75,6 +76,15 @@
 
     public function set($code){
       $this->errors[$code] = $this->dictionary[$code];
+    }
+
+    public function noErrors(){
+      if( max(array_keys($this->errors)) < 300){
+        return true;
+      }
+      else {
+        return false;
+      }
     }
 
     public function display(){

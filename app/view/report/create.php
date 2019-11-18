@@ -9,14 +9,14 @@
       <!-- Codice OpenCoesione -->
       <div class="form-group">
           <label for="oc_api_code">URL del Progetto su OpenCoesione:</label>
-          <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Il Codice Univoco OpenCoesione è utilizzato per individuare i dati aperti messi a disposizione dal Dipartimento per le Politiche di Coesione della Presidenza del consiglio dei Ministri. ">Che cos'è?</span>
+          <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Incolla qui l\'indirizzo (URL) della pagina di OpenCoesione dedicata al progetto che hai scelto di monitorare. Lo trovi nella barra degli indirizzi del tuo browser. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/">Che cos'è?</span>
           <div class="input-group">
             <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="Codice univoco..." class="form-control" value="<?php echo ckv($data, 'id_open_coesione'); ?>">
             <div class="input-group-append">
               <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
             </div>
           </div>
-          <div class="invisible" id="oc_api_content_s1">
+          <div class="d-none" id="oc_api_content_s1">
             <i class="fal fa-sync fa-spin"></i>
           </div>
       </div>
@@ -44,7 +44,7 @@
 
           <!-- Mappa -->
           <div class="form-group">
-            <label for="indirizzo">Luogo del Monitoraggio: </label>
+            <label for="indirizzo">Luogo di riferimento del progetto: </label>
             <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Abbiamo bisogno delle coordinate di Latitudine e Longitudine del progetto monitorato! Inserendo l'indirizzo più vicino al luogo del monitoraggio e cliccando sul pulsante con la lente d'ingrandimento, la mappa vi si centerà e collocherà un marker in quel luogo. Se necessario, è possibile trascinare il marker sulla mappa per essere ancora più precisi nel posizionamento del marker (e quindi del tracciamento delle coordinate!).">Cosa devo fare qui?</span>
             <div class="input-group">
               <input type="text" name="indirizzo" id="indirizzo" placeholder="Indirizzo..." class="form-control" value="<?php echo ckv($data, 'indirizzo'); ?>">
@@ -140,13 +140,25 @@
           <div class="form-group">
             <label for="">Raccolta Informazioni</label>
             <div class="custom-control custom-checkbox">
-              <input class="custom-control-input" type="checkbox" value="1" id="visita_diretta" name="visita_diretta" <?php echo (isset($data['visita_diretta']) && $data['visita_diretta'] == 1 ? 'checked' : ''); ?>>
-              <label class="custom-control-label" for="visita_diretta">Visita Diretta</label>
+              <input class="custom-control-input" type="checkbox" value="1" id="raccolta_info_web" name="raccolta_info_web" <?php echo (isset($data['raccolta_info_web']) && $data['raccolta_info_web'] == 1 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="raccolta_info_web">Raccolta di informazioni via web</label>
             </div>
             <div class="custom-control custom-checkbox">
-              <input class="custom-control-input" type="checkbox" value="1" id="intervista_responsabili_progetto" name="intervista_responsabili_progetto" <?php echo (isset($data['intervista_responsabili_progetto']) && $data['intervista_responsabili_progetto'] == 1 ? 'checked' : ''); ?>>
-              <label class="custom-control-label" for="intervista_responsabili_progetto">Intervista con i responsabili del progetto</label>
+              <input class="custom-control-input" type="checkbox" value="1" id="visita_diretta" name="visita_diretta" <?php echo (isset($data['visita_diretta']) && $data['visita_diretta'] == 1 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="visita_diretta">Visita diretta documentata da foto e video</label>
             </div>
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" value="1" id="intervista_autorita_gestione" name="intervista_autorita_gestione" <?php echo (isset($data['intervista_autorita_gestione']) && $data['intervista_autorita_gestione'] == 1 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="intervista_autorita_gestione">Intervista con l'Autorità di Gestione del Programma</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" value="1" id="intervista_soggetto_programmatore" name="intervista_soggetto_programmatore" <?php echo (isset($data['intervista_soggetto_programmatore']) && $data['intervista_soggetto_programmatore'] == 1 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="intervista_soggetto_programmatore">Intervista con i soggetti che hanno programmato l'intervento (soggetto programmatore)</label>
+            </div>
+
+
             <div class="custom-control custom-checkbox">
               <input class="custom-control-input" type="checkbox" value="1" id="intervista_utenti_beneficiari" name="intervista_utenti_beneficiari" <?php echo (isset($data['intervista_utenti_beneficiari']) && $data['intervista_utenti_beneficiari'] == 1 ? 'checked' : ''); ?>>
               <label class="custom-control-label" for="intervista_utenti_beneficiari">Intervista con gli utenti/beneficiari dell'intervento</label>
@@ -155,13 +167,10 @@
               <input class="custom-control-input" type="checkbox" value="1" id="intervista_altri_utenti" name="intervista_altri_utenti" <?php echo (isset($data['intervista_altri_utenti']) && $data['intervista_altri_utenti'] == 1 ? 'checked' : ''); ?>>
               <label class="custom-control-label" for="intervista_altri_utenti">Intervista con altre tipologie di persone</label>
             </div>
-            <div class="custom-control custom-checkbox">
-              <input class="custom-control-input" type="checkbox" value="1" id="raccolta_info_web" name="raccolta_info_web" <?php echo (isset($data['raccolta_info_web']) && $data['raccolta_info_web'] == 1 ? 'checked' : ''); ?>>
-              <label class="custom-control-label" for="raccolta_info_web">Raccolta di informazioni via web</label>
-            </div>
+
             <div class="custom-control custom-checkbox">
               <input class="custom-control-input" type="checkbox" value="1" id="raccolta_info_attuatore" name="raccolta_info_attuatore" <?php echo (isset($data['raccolta_info_attuatore']) && $data['raccolta_info_attuatore'] == 1 ? 'checked' : ''); ?>>
-              <label class="custom-control-label" for="raccolta_info_attuatore">Raccolta di informazioni presso il soggetto attuatore</label>
+              <label class="custom-control-label" for="raccolta_info_attuatore">Intervista con i soggetti che hanno o stanno attuando l'intervento (attuatore o realizzatore)</label>
             </div>
             <div class="custom-control custom-checkbox">
               <input class="custom-control-input" type="checkbox" value="1" id="referenti_politici" name="referenti_politici" <?php echo (isset($data['referenti_politici']) && $data['referenti_politici'] == 1 ? 'checked' : ''); ?>>
@@ -172,15 +181,16 @@
           <div class="form-group">
             <label for="intervista_intervistati">Chi è stato intervistato? Che ruolo ha la persona nel progetto? (es. gestore, funzionario comunale, cittadino informato…):</label>
             <textarea name="intervista_intervistati" id="intervista_intervistati" class="form-control"><?php echo ckv($data, 'intervista_intervistati'); ?></textarea>
+            <span class="form-text text-muted">Riportare i ruoli di tutte le persone intervistate</span>
           </div>
 
           <div class="form-group">
-            <label for="intervista_domande">Domande poste agli intervistati:</label>
+            <label for="intervista_domande">Principali due domande poste agli intervistati (specificare quali):</label>
             <textarea name="intervista_domande" id="intervista_domande" class="form-control"><?php echo ckv($data, 'intervista_domande'); ?></textarea>
           </div>
 
           <div class="form-group">
-            <label for="intervista_risposte">Risposte degli intervistati:</label>
+            <label for="intervista_risposte">Principali due risposte degli intervistati:</label>
             <textarea name="intervista_risposte" id="intervista_risposte" class="form-control"><?php echo ckv($data, 'intervista_risposte'); ?></textarea>
           </div>
 
