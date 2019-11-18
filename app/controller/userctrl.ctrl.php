@@ -239,7 +239,7 @@
               }
 
               // Sanitize username
-              $data['username'] = !empty($data['username'] ? filter_var($data['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'username';
+              $data['username'] = !empty($data['username']) ? filter_var($data['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'username';
 
               if(empty($Errors->errors)){
                 /** encrypts password **/
@@ -250,7 +250,7 @@
                 $userdata['active']           = 1;
                 $userdata['recover']          = strtoupper(bin2hex(random_bytes(12)));
                 dbga($userdata);
-                
+
                 $send = mail('code@level73.it', 'Monithon', 'test');
                 var_dump($send);
 
