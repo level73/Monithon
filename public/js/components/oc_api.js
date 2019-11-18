@@ -1,8 +1,11 @@
+import config as MonithonConfig from '/public/js/main.min.js';
 var OpenCoesione = {
 
   config: {
     api_url: 'https://opencoesione.gov.it/it/api/progetti/',
     api_format: '/?format=json',
+
+    user_lang: 'it'; // TODO change this to become either a cookie preference or user-agent default
   },
 
 

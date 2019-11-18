@@ -24,4 +24,5 @@
 	/** Application base URL **/
 	define('APPURL', 'http://yourdomain.tld');
 
-	/** **/
+	/** LANGUAGES **/
+	define('PRIMARY_LANG', 'it');

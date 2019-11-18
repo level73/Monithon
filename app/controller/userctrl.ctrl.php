@@ -202,7 +202,65 @@
         public function register(){
           $this->set('title', 'Registrati');
           $this->set('js', array('section/user.js'));
+
+          $this->Auth = new Auth();
           $Errors = new Errors();
+          $UserModel = new User();
+
+          if(!$this->Auth->isLoggedIn()){
+            if( httpCheck('post', true) ){
+              $data = array();
+              $data = filter_var_array($_POST);
+
+              // Check if email is in use already
+              $email_check = $UserModel->findBy( array('email' => $data['email']) );
+              if(count($email_check) > 0){
+                $Errors->set(610);
+              }
+              // check validity of email
+              if(!empty($data['email'])){
+                if(filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+                  $data['email'] = filter_var($data['email'], FILTER_SANITIZE_EMAIL);
+                } else {
+                  $Errors->set(601);
+                }
+              }
+              else {
+                $Errors->set(600);
+              }
+
+              // Check Password correspondance
+              if(!empty($data['pwd'])) {
+                if($data['pwd'] != $data['c_pwd']){
+                  $Errors->set(609);
+                }
+              } else {
+                $Errors->set(602);
+              }
+
+              // Sanitize username
+              $data['username'] = !empty($data['username'] ? filter_var($data['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS) : 'username';
+
+              if(empty($Errors->errors)){
+                /** encrypts password **/
+                $userdata['password']         = password_hash($data['pwd'], PASSWORD_BCRYPT);
+                $userdata['email']            = $data['email'];
+                $userdata['username']         = filter_var($data['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $userdata['role']             = 4;
+                $userdata['active']           = 1;
+                $userdata['recover']          = strtoupper(bin2hex(random_bytes(12)));
+                dbga($userdata);
+                
+                $send = mail('code@level73.it', 'Monithon', 'test');
+                var_dump($send);
+
+            }
+
+          }
+          else {
+
+          }
+
         }
 
         public function edit(){
@@ -211,7 +269,7 @@
           $Avatar     = new Repo();
           $File       = new Meta('file_repository');
           $Errors     = new Errors();
-          $Report    = new Report();
+          $Report     = new Report();
 
           if(!$this->Auth->isLoggedIn()){
             header('Location: /user/login');
@@ -264,10 +322,7 @@
             $this->set('errors', $Errors);
             $this->set('Profile', $Profile);
             $this->set('reports', $Reports);
-
-
           }
-
         }
 
         public function update($id){

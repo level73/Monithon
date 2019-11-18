@@ -1,7 +1,9 @@
 /** START UP THE APP **/
 
-
 var Monithon = {
+  config: {
+    lang: 'it'
+  },
   init: function(){
     console.log('MONITHON V3.0');
     this.selects();
@@ -123,7 +125,9 @@ var Monithon = {
 
     });
   }
-}
+};
+
+export default Monithon;
 
 $(document).ready(function(){
   Monithon.init();
