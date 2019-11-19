@@ -268,7 +268,8 @@
                   // Additional headers
                   $headers[] = 'From: Monithon <' . APPEMAIL . '>';
 
-                  $send = mail($userdata['email'], 'Monithon - Attivazione Account', $message, implode("\r\n", $headers));
+                  $send = mail($userdata['email'], 'Monithon - Attivazione Account', wordwrap($message, 70, "\r\n"), implode("\r\n", $headers));
+                  var_dump($send);
 
                 }
 
