@@ -261,14 +261,19 @@
                   $message  = '<h2>Benvenuto!</h2>E grazie di esserti registrato su Monithon, la piattaforma per il monitoraggio civico.<br />Per attivare il tuo account, clicca sul link qui sotto, o copialo ed incollalo nel tuo browser.<br /><br />';
                   $message .= '<a href="' . APPURL . 'user/activate/' . $userdata['recover'] . '">Attiva il tuo Account.</a>';
 
+                  echo $message;
+
+                  dbga($userdata);
+
                   // To send HTML mail, the Content-type header must be set
                   $headers[] = 'MIME-Version: 1.0';
                   $headers[] = 'Content-type: text/html; charset=iso-8859-1';
 
                   // Additional headers
                   $headers[] = 'From: Monithon <' . APPEMAIL . '>';
-
-                  $send = mail($userdata['email'], 'Monithon - Attivazione Account', wordwrap($message, 70, "\r\n"), implode("\r\n", $headers));
+                  dbga($headers);
+                  
+                  $send = mail($userdata['email'], 'Monithon - Attivazione Account', $message, implode("\r\n", $headers));
                   var_dump($send);
 
                 }
@@ -279,7 +284,7 @@
               }
 
             }
-
+              $this->set('errors', $Errors);
           }
           else {
 
