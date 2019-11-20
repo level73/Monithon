@@ -50,7 +50,7 @@
     }
 
     /** Find by Table PK **/
-    public function find($id){
+    public function find($id, $array = false){
       $sql = 'SELECT `' . $this->table . '`.* ';
       $sql .= ' FROM `' . $this->table . '`';
       $sql .= ' WHERE `' . $this->pkey . '` = :id ';

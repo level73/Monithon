@@ -235,6 +235,50 @@
       return true;
     }
 
+    public function updateLinkReferences($entity, $record, $meta_records){
+      // set new references
+      $sql = 'INSERT INTO `' . $this->meta_table . '`(`entity`, `record`, `' . $this->meta . '`) VALUES (:entity, :record, :meta)';
+
+      $stmt = $this->database->prepare($sql);
+      $stmt->bindParam(':entity', $entity, PDO::PARAM_INT);
+      $stmt->bindParam(':record', $record, PDO::PARAM_INT);
+
+      foreach($meta_records as $i => &$meta_record){
+        $stmt->bindParam(':meta', $meta_record, PDO::PARAM_INT);
+        $query = $stmt->execute();
+        if(!$query){
+          $this->Errors->set(502);
+          if(SYSTEM_STATUS == 'development'){
+            dbga($stmt->errorInfo());
+          }
+          return $this->Errors;
+        }
+      }
+      return true;
+    }
+
+    public function updateVideoReferences($entity, $record, $meta_records){
+      // set new references
+      $sql = 'INSERT INTO `' . $this->meta_table . '`(`entity`, `record`, `' . $this->meta . '`) VALUES (:entity, :record, :meta)';
+
+      $stmt = $this->database->prepare($sql);
+      $stmt->bindParam(':entity', $entity, PDO::PARAM_INT);
+      $stmt->bindParam(':record', $record, PDO::PARAM_INT);
+
+      foreach($meta_records as $i => &$meta_record){
+        $stmt->bindParam(':meta', $meta_record, PDO::PARAM_INT);
+        $query = $stmt->execute();
+        if(!$query){
+          $this->Errors->set(502);
+          if(SYSTEM_STATUS == 'development'){
+            dbga($stmt->errorInfo());
+          }
+          return $this->Errors;
+        }
+      }
+      return true;
+    }
+
 
 
 
@@ -493,6 +537,23 @@
           $response[$l->region_label][] = $l;
         }
         return $response;
+      }
+    }
+
+    public function getRepoReference($repo, $entity, $record){
+      $sql = 'SELECT * FROM '.$repo.' WHERE id'.$repo.' IN (SELECT '.$repo.' FROM meta_'.$repo.' WHERE entity = :entity AND record = :record)';
+      $stmt = $this->database->prepare($sql);
+      $stmt->bindParam(':entity', $entity, PDO::PARAM_INT);
+      $stmt->bindParam(':record', $record, PDO::PARAM_INT);
+      $query = $stmt->execute();
+      if(!$query){
+        $this->Errors->set(501);
+        if(SYSTEM_STATUS == 'development'){
+          dbga($stmt->errorInfo());
+        }
+        return $this->Errors;
+      } else {
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
       }
     }
 

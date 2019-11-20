@@ -13,12 +13,13 @@
               'jpg'   => 'image/jpeg',
               'png'   => 'image/png',
               'gif'   => 'image/gif',
-              'xls'   => 'application/vnd.ms-excel',
               'doc'   => 'application/msword',
               'docx'  => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+              'xls'   => 'application/vnd.ms-excel',
               'xlsx'  => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-              'pdf'   => 'application/pdf',
               'csv'   => 'text/csv',
+              'pdf'   => 'application/pdf',
+
           ),
           true
       )) {
@@ -181,6 +182,12 @@
       elseif($ext == 'png') {
           imagepng($crop, DIR_REPO .  'cropx' . $side . '_' . $name );
       }
+    }
+
+    public function getInfo($file){
+      $finfo = new finfo(FILEINFO_MIME_TYPE);
+      $info = $finfo->file($file);
+      return $info;
     }
 
   }
