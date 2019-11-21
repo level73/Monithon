@@ -261,10 +261,6 @@
                   $message  = '<h2>Benvenuto!</h2>E grazie di esserti registrato su Monithon, la piattaforma per il monitoraggio civico.<br />Per attivare il tuo account, clicca sul link qui sotto, o copialo ed incollalo nel tuo browser.<br /><br />';
                   $message .= '<a href="' . APPURL . '/user/activate/' . $userdata['recover'] . '">Attiva il tuo Account.</a>';
 
-                  echo $message;
-
-                  dbga($userdata);
-
                   // To send HTML mail, the Content-type header must be set
                   $headers[] = 'MIME-Version: 1.0';
                   $headers[] = 'Content-type: text/html; charset=iso-8859-1';
