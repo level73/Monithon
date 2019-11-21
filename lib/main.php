@@ -18,6 +18,7 @@ function errorReporting() {
 
 /** Autoload **/
 function mvc_core($className){
+
   if(file_exists(ROOT . DS . 'lib' . DS . strtolower($className).'.class.php')){
       require_once(ROOT . DS . 'lib' . DS . strtolower($className).'.class.php');
   }
@@ -28,8 +29,9 @@ function mvc_core($className){
       require_once(ROOT . DS . 'app' . DS . 'controller' . DS . strtolower($className).'.ctrl.php');
   }
   else {
-    if (DEBUG) { dbga(debug_backtrace()); }
-    echo 'Class <strong>'.ucfirst($className).'</strong> Not Found. <br /> Application Fail.';
+      if (DEBUG) { dbga(debug_backtrace()); }
+      echo 'Class <strong>'.ucfirst($className).'</strong> Not Found. <br /> Application Fail.';
+
   }
 }
 
@@ -85,7 +87,7 @@ function init(){
 
     // Create Instance
     // refer to lib/ctrl.class.php to see how the controller handles the business logic
-    try { 
+    try {
       $dispatch = new $controller($model, $route, $method);
 
       if (method_exists($controller, $method) == true) {

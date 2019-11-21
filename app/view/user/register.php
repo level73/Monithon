@@ -13,7 +13,7 @@
         </div>
         <div class="form-group">
           <label for="username">Nome Utente <span class="required">*</span></label>
-          <input type="text" class="form-control" placeholder="<?php t('Nome utente...'); ?>" required>
+          <input type="text" name="username" class="form-control" placeholder="<?php t('Nome utente...'); ?>" required>
         </div>
       </div>
       <div class="col-4">
