@@ -390,6 +390,19 @@
 
         public function recover(){ }
 
+        public function activate($code){
+          $this->set('title', 'Attivazione Account');
+          $activation = $this->User->activate($code);
+
+          if($activation == true){
+            $this->set('activation', $activation);
+          }
+          else {
+            $this->set('errors', $activation);
+          }
+
+        }
+
         public function reset(){ }
 
         /** Error page **/
