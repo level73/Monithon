@@ -276,18 +276,13 @@
                     $Errors->set(300);
                   }
                 }
-
-
-
               }
-
             }
-              $this->set('errors', $Errors);
+            $this->set('errors', $Errors);
           }
           else {
 
           }
-
         }
 
         public function edit(){

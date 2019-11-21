@@ -58,6 +58,63 @@
         <label for="bio">Bio</label>
         <textarea name="bio" rows="8" class="form-control"  placeholder="<?php t('Un piccolo paragrafo introduttivo...'); ?>"><?php echo $Profile->bio; ?></textarea>
       </div>
+
+    </div>
+
+    <?php if($Profile->role == 4){ ?>
+    <div class="row d-none" id="asoc">
+
+      <div class="col">
+        <div class="form-group">
+          <label for="istituto">Istituto</label>
+          <input type="text" class="form-control" placeholder="<?php t('Nome dell\'Istituto'); ?>" name="istituto" id="istituto">
+        </div>
+        <div class="form-group">
+          <label for="tipo_istituto">Tipo d'Istituto</label>
+          <input type="text" class="form-control" placeholder="<?php t('Tipo d \'istituto...'); ?>" name="tipo_istituto" id="tipo_istituto">
+        </div>
+        <div class="form-group">
+          <label for="provincia">Provincia dell'Istituto</label>
+          <select class="form-control pck" name="provincia" id="provincia" data-live-search="true">
+
+            <?php foreach($province as $label => $r){ ?>
+            <optgroup label="<?php echo $label; ?>">
+              <?php foreach($r as $p){ ?>
+              <option value="<?php echo $p->idprovincia; ?>" data-subtext="<?php echo $p->shorthand; ?>"><?php echo $p->provincia; ?></option>
+              <?php } ?>
+            </optgroup>
+            <?php } ?>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="comune">Comune dell'Istituto</label>
+          <input type="text" class="form-control" placeholder="<?php t('Comune dell\'Istituto...'); ?>" name="comune" id="comune">
+        </div>
+      </div>
+
+
+      <div class="col">
+
+        <div class="form-group">
+          <label for="remote_id">ID ASOC <span class="required">*</span></label>
+          <input type="text" class="form-control" placeholder="<?php t('ID della piattaforma ASOC'); ?>" name="remote_id" id="remote_id">
+        </div>
+        <div class="form-group">
+          <label for="link_blog">Link al Blog</label>
+          <input type="text" class="form-control" placeholder="<?php t('Link alla pagina del blog del team...'); ?>" name="link_blog" id="link_blog">
+        </div>
+        <div class="form-group">
+          <label for="link_elaborato">Link all'Elaborato</label>
+          <input type="text" class="form-control" placeholder="<?php t('Link alla pagina dell\'elaborato del team...'); ?>" name="link_elaborato" id="link_elaborato">
+        </div>
+      </div>
+
+
+    </div>
+  <?php } ?>
+
+
+    <div class="col">
       <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> <?php t('Salva'); ?></button>
     </div>
 
