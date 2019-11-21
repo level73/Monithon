@@ -63,7 +63,7 @@ class Session extends Model {
       if(array_key_exists(APPNAME, $_SESSION)){
         $session = $_SESSION[APPNAME][SESSIONKEY];
 
-        $sql = 'SELECT auth.idauth AS id, auth.username, auth.email FROM auth
+        $sql = 'SELECT auth.idauth AS id, auth.username, auth.email, auth.role FROM auth
                 INNER JOIN auth_session ON auth_session.auth = auth.idauth
                 WHERE auth_session.session = :session';
 

@@ -4,17 +4,15 @@
     <div class="col">
       <h1>
          <small class="text-muted">
-           <img src="/resources/90x90_<?php echo $Profile->avatar->file_path; ?>" alt="<?php echo $Profile->avatar->title; ?>" class="avatar img-responsive"> <?php echo $Profile->username; ?>
+           <img src="/resources/cropx90_<?php echo $Profile->avatar->file_path; ?>" alt="AVATAR" class="avatar img-responsive"> <?php echo $Profile->username; ?>
          </small><br />
         <?php echo $title; ?>
       </h1>
 
     </div>
   </div>
-  <form class="row" id="" method="post" action="/user/edit" enctype="multipart/form-data">
-    <?php //dbga($Profile); ?>
-
-
+  <form  id="" method="post" action="/user/edit" enctype="multipart/form-data">
+    <div class="row">
     <input type="hidden" name="id" value="<?php echo $user->id; ?>">
     <div class="col">
       <div class="form-group">
@@ -29,13 +27,8 @@
         <label for="secondary_email"><?php t('Email secondaria'); ?><span class="required">*</span></label>
         <input type="email" name="secondary_email" class="form-control" placeholder="<?php t('Email secondaria'); ?>" value="<?php echo $Profile->secondary_email; ?>">
       </div>
-
-
-
-
     </div>
     <div class="col">
-
       <div class="form-group">
         <label for="city">Città</label>
         <input type="text" name="city" id="city" class="form-control" placeholder="<?php t('La città in cui vivi...'); ?>" value="<?php echo $Profile->city; ?>" >
@@ -60,18 +53,21 @@
       </div>
 
     </div>
+  </div>
 
     <?php if($Profile->role == 4){ ?>
-    <div class="row d-none" id="asoc">
-
-      <div class="col">
+    <div class="row" id="asoc">
+      <div class="col-12">
+        <h2>PROFILO ASOC</h2>
+      </div>
+      <div class="col-6">
         <div class="form-group">
           <label for="istituto">Istituto</label>
-          <input type="text" class="form-control" placeholder="<?php t('Nome dell\'Istituto'); ?>" name="istituto" id="istituto">
+          <input type="text" class="form-control" placeholder="<?php t('Nome dell\'Istituto'); ?>" name="istituto" id="istituto" value="<?php echo $ASOC_Profile->istituto; ?>">
         </div>
         <div class="form-group">
           <label for="tipo_istituto">Tipo d'Istituto</label>
-          <input type="text" class="form-control" placeholder="<?php t('Tipo d \'istituto...'); ?>" name="tipo_istituto" id="tipo_istituto">
+          <input type="text" class="form-control" placeholder="<?php t('Tipo d \'istituto...'); ?>" name="tipo_istituto" id="tipo_istituto" value="<?php echo $ASOC_Profile->istituto; ?>">
         </div>
         <div class="form-group">
           <label for="provincia">Provincia dell'Istituto</label>
@@ -80,7 +76,7 @@
             <?php foreach($province as $label => $r){ ?>
             <optgroup label="<?php echo $label; ?>">
               <?php foreach($r as $p){ ?>
-              <option value="<?php echo $p->idprovincia; ?>" data-subtext="<?php echo $p->shorthand; ?>"><?php echo $p->provincia; ?></option>
+              <option value="<?php echo $p->idprovincia; ?>" data-subtext="<?php echo $p->shorthand; ?>" <?php echo ($p->idprovincia == $ASOC_Profile->provincia ? 'selected': ''); ?>><?php echo $p->provincia; ?></option>
               <?php } ?>
             </optgroup>
             <?php } ?>
@@ -88,24 +84,24 @@
         </div>
         <div class="form-group">
           <label for="comune">Comune dell'Istituto</label>
-          <input type="text" class="form-control" placeholder="<?php t('Comune dell\'Istituto...'); ?>" name="comune" id="comune">
+          <input type="text" class="form-control" placeholder="<?php t('Comune dell\'Istituto...'); ?>" name="comune" id="comune" value="<?php echo $ASOC_Profile->comune; ?>">
         </div>
       </div>
 
 
-      <div class="col">
+      <div class="col-6">
 
         <div class="form-group">
           <label for="remote_id">ID ASOC <span class="required">*</span></label>
-          <input type="text" class="form-control" placeholder="<?php t('ID della piattaforma ASOC'); ?>" name="remote_id" id="remote_id">
+          <input type="text" class="form-control" placeholder="<?php t('ID della piattaforma ASOC'); ?>" value="<?php echo $ASOC_Profile->remote_id; ?>" name="remote_id" id="remote_id">
         </div>
         <div class="form-group">
           <label for="link_blog">Link al Blog</label>
-          <input type="text" class="form-control" placeholder="<?php t('Link alla pagina del blog del team...'); ?>" name="link_blog" id="link_blog">
+          <input type="text" class="form-control" placeholder="<?php t('Link alla pagina del blog del team...'); ?>" value="<?php echo $ASOC_Profile->link_blog; ?>" name="link_blog" id="link_blog">
         </div>
         <div class="form-group">
           <label for="link_elaborato">Link all'Elaborato</label>
-          <input type="text" class="form-control" placeholder="<?php t('Link alla pagina dell\'elaborato del team...'); ?>" name="link_elaborato" id="link_elaborato">
+          <input type="text" class="form-control" placeholder="<?php t('Link alla pagina dell\'elaborato del team...'); ?>" value="<?php echo $ASOC_Profile->link_elaborato; ?>" name="link_elaborato" id="link_elaborato">
         </div>
       </div>
 
@@ -113,11 +109,11 @@
     </div>
   <?php } ?>
 
-
+  <div class="row">
     <div class="col">
       <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> <?php t('Salva'); ?></button>
     </div>
-
+</div>
   </form>
   <hr />
   <?php if( count($reports) > 0){ ?>

@@ -304,6 +304,12 @@
             $this->set('user', $this->user);
             $this->set('title', 'Modifica il tuo Profilo');
 
+            $Region = new Meta('region', true);
+            $Provincia = new Meta('provincia', true);
+
+            $this->set('regioni', $Region->lexiconList);
+            $this->set('province', $Provincia->listProvinceByRegion() );
+
             // Check for data in the post
             if( httpCheck('post', true) ){
               // clean up things
@@ -314,7 +320,48 @@
               unset($data['email']);
               unset($data['username']);
 
-              // get file out
+              // If role is > 3, then it is an ASOC profile
+              if($this->user->role > 3){
+                // set region
+                $region = null;
+                if(!empty($data['provincia'])){
+                  $p = $Provincia->findLexiconEntry('idprovincia', $data['provincia']);
+                  if($p){
+                    $region = $p->region;
+                  }
+                }
+
+                $asoc = array();
+
+                $asoc['remote_id']      = filter_var($data['remote_id'], FILTER_SANITIZE_NUMBER_INT);
+                $asoc['auth']           = $id;
+                $asoc['istituto']       = filter_var($data['istituto'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $asoc['tipo_istituto']  = filter_var($data['tipo_istituto'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $asoc['regione']        = $region;
+                $asoc['provincia']      = filter_var($data['provincia'], FILTER_SANITIZE_NUMBER_INT);
+                $asoc['comune']         = filter_var($data['comune'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $asoc['link_blog']      = filter_var($data['link_blog'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $asoc['link_elaborato'] = filter_var($data['link_elaborato'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+                unset($data['remote_id']);
+                unset($data['istituto']);
+                unset($data['tipo_istituto']);
+                unset($data['regione']);
+                unset($data['provincia']);
+                unset($data['comune']);
+                unset($data['link_blog']);
+                unset($data['link_elaborato']);
+
+                $ASOC = new Asoc;
+                $asocprofile = $ASOC->findBy(array('auth' => $id));
+                if($asocprofile){
+                  
+                  $ASOC->update($asocprofile[0]->idasoc, $asoc);
+                }
+                else {
+                  $ASOC->create($asoc);
+                }
+              }
 
               // Update profile
               $u = $this->User->update($id, $data);
@@ -340,6 +387,13 @@
             }
 
             $Profile = $this->User->fullProfile($this->user->id);
+
+            if($this->user->role > 3){
+              $ASOC_Profile = new Asoc();
+              $asoc_profile = $ASOC_Profile->findBy(array('auth' => $this->user->id));
+              $this->set('ASOC_Profile', $asoc_profile[0]);
+            }
+
             $Reports = $Report->findBy(array('created_by' => $this->user->id));
             $this->set('errors', $Errors);
             $this->set('Profile', $Profile);

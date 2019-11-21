@@ -18,7 +18,8 @@
         $user = $stmt->fetch(PDO::FETCH_OBJ);
         $Avatar = new Repo();
         $files = $Avatar->getFiles(T_USER, $id);
-        $avatar = array_pop($files);
+        $flipfiles = array_reverse($files);
+        $avatar = array_pop($flipfiles);
         $user->avatar = $avatar;
         return $user;
       }
