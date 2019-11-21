@@ -21,6 +21,7 @@
       2   => 'Utente modificato correttamente',
       3   => 'Password modificata con successo. Verrai reindirizzato <a href="/user/login">alla pagina di login</a> in 5 secondi.',
       4   => 'Profilo ASOC creato con successo',
+      5   => 'Registrazione effettuata! Riceverai una email al tuo indirizzo di registrazione con un link per attivare il tuo profilo. <strong>Controlla anche nella cartella <em>Spam<em>!</strong>',
       20  => 'Oggetto cancellato.',
       21  => 'Report salvato con successo.',
       91  => 'File caricati!',
@@ -29,7 +30,7 @@
 
 
       /** Warnings **/
-
+      300 => 'Abbiamo registrato le tue informazioni, ma qualcosa è andato storto con l\'invio della email di attivazione. Per favore, <a href="mailto:'.APPEMAIL.'">contatta la redazione</a>.',
       /** Errors **/
       500 => 'Impossibile connettersi al database',
       501 => 'Impossibile eseguire la query (parametri mancanti o tipo di parametro errato)',

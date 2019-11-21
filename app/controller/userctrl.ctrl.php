@@ -267,11 +267,14 @@
 
                   // Additional headers
                   $headers[] = 'From: ' . APPEMAIL;
-                  dbga($headers);
 
                   $send = mail($userdata['email'], 'Monithon - Attivazione Account', $message, implode("\r\n", $headers));
-                  var_dump($send);
-
+                  if($send){
+                    $Errors->set(5);
+                  }
+                  else {
+                    $Errors->set(300)
+                  }
                 }
 
 
