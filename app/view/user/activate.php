@@ -15,9 +15,9 @@
           <?php } else { ?>
             <h2>OOOOPS.</h2>
             <p>Qualcosa è andato storto. Per favore, controlla il link di attivazione.</p>
-          <? } ?>
+          <?php } ?>
 
-          
+
         </div>
     </section>
 
