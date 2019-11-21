@@ -58,7 +58,22 @@
       } else {
         return $stmt->fetchAll(PDO::FETCH_OBJ);
       }
+    }
 
+    public function activate($code){
+      $sql = 'UPDATE auth SET active = 2, recover = NULL WHERE recover = :code';
+      $stmt = $this->database->prepare($sql);
+      $stmt->bindParam(':code', $code);
+      $query = $stmt->execute();
+      if(!$query){
+        $this->Errors->set(501);
+        if(SYSTEM_STATUS == 'development'){
+          dbga($stmt->errorInfo());
+        }
+        return $this->Errors;
+      } else {
+        return true;
+      }
     }
 
  }

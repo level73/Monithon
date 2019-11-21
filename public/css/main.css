@@ -98,6 +98,25 @@ textarea {
     .status.status-7:before {
       content: "\f058"; }
 
+/** File Lists **/
+.files {
+  border: 1px solid #ff9f1c;
+  margin-bottom: 30px; }
+  .files h3 {
+    padding: 8px 10px; }
+  .files .file {
+    width: 25%;
+    display: inline-block;
+    padding: 8px 10px; }
+    .files .file a {
+      display: inline-block;
+      width: 100%;
+      text-align: center; }
+  .files .video {
+    width: 33.333%;
+    display: inline-block;
+    padding: 8px 10px; }
+
 #main-header {
   background: #2ec4b6; }
 

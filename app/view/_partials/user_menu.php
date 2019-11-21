@@ -3,7 +3,7 @@
     <i class="fal fa-user"></i>
   </a>
   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user-profile-dropdown">
-    <a class="dropdown-item" href="#"><?php t('I Miei Report'); ?></a>
+    <a class="dropdown-item" href="/user/edit#my-reports"><?php t('I Miei Report'); ?></a>
     <a class="dropdown-item" href="/user/edit"><?php t('Modifica Profilo'); ?></a>
     <div class="dropdown-divider"></div>
     <?php if(isset($user) && hasPermission($user, P_CREATE_USER)){  ?>

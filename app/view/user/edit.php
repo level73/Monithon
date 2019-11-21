@@ -58,7 +58,7 @@
         <label for="bio">Bio</label>
         <textarea name="bio" rows="8" class="form-control"  placeholder="<?php t('Un piccolo paragrafo introduttivo...'); ?>"><?php echo $Profile->bio; ?></textarea>
       </div>
-      <button type="submit" class="btn btn-primary"><i class="fal fa-save"></i> <?php t('Salva'); ?></button>
+      <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> <?php t('Salva'); ?></button>
     </div>
 
   </form>
@@ -74,8 +74,8 @@
             <th>Titolo</th>
             <th>Creato</th>
             <th>Ultima Modifica</th>
-            <th>Stato</th>
-            <th>Modifica</th>
+            <th class="text-center">Stato</th>
+            <th class="text-center">Modifica</th>
           </tr>
         </thead>
         <tbody>
@@ -84,8 +84,14 @@
             <td><?php echo $r->titolo; ?></td>
             <td><?php echo $r->created_at; ?></td>
             <td><?php echo $r->modified_at; ?></td>
-            <td><?php status($r->status); ?></td>
-            <td>Modifica</td>
+            <td class="text-center"><?php status($r->status); ?></td>
+            <td class="text-center">
+              <?php if($r->status == 1){ ?>
+              <a href="/report/edit/<?php echo $r->idreport_basic; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
+              <?php } else { ?>
+              <button type="button" disabled class="btn btn-default btn-sm"><i class="far fa-lock-alt"></i></button>
+              <?php } ?>
+            </td>
           </tr>
           <?php } ?>
         </tbody>

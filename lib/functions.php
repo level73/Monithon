@@ -86,6 +86,15 @@ function ckv($arr, $key){
     );
 }
 
+function ckv_object($obj, $property){
+  return (
+    is_object($obj) && isset($obj) && (
+      isset($obj->{$property})
+    ) ?
+    $obj->{$property} : null
+  );
+}
+
 /** Database functions **/
 function query_placeholders($params, $insert = false){
   $placeholders = array();
@@ -150,13 +159,21 @@ function hasPermission($user, $permission){
       return true;
     }
     else {
-      return false; 
+      return false;
     }
 }
 
 /** Check value for meta tables **/
 function filterForMeta($data, $field){
   return (isset($data[$field]) && !empty($data[$field]) ?  (is_array($data[$field]) ? filter_var_array($data[$field], FILTER_SANITIZE_NUMBER_INT) : filter_var($data[$field], FILTER_SANITIZE_NUMBER_INT) ): null);
+}
+
+/** Check file type and echo format **/
+function typeOfFile($mime){
+  if(in_array($mime, array( 'jpg' => 'image/jpeg', 'png' => 'image/png', 'gif' => 'image/gif'))){ return 'image'; }
+  elseif(in_array($mime, array('xls' => 'application/vnd.ms-excel', 'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'csv' => 'text/csv',))){ return 'spreadsheet'; }
+  elseif(in_array($mime, array( 'doc' => 'application/msword', 'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',))){ return 'document'; }
+  else{ return 'pdf'; }
 }
 
 /** Clean string - converts to flat chars, no accents or punctuation **/
@@ -241,7 +258,21 @@ function FileSizeConvert($bytes){
 
 /** Print Styles for status **/
 function status($status){
-  $s = '<div class="status status-' . $status . '"></div>';
+  switch($status){
+    case 1:
+      $string = 'BOZZA';
+      break;
+    case 3:
+      $string = 'IN ATTESA DI REVISIONE';
+      break;
+    case 5:
+      $string = 'IN REVISIONE';
+      break;
+    case 7:
+      $string = 'PUBBLICATO';
+      break;
+  }
+  $s = '<div class="status status-' . $status . '" data-toggle="tooltip" data-placement="top" title="' . $string . '"></div>';
   echo $s;
 }
 

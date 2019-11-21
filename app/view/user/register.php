@@ -4,7 +4,7 @@
       <h1><?php t('Registrati'); ?></h1>
     </div>
   </div>
-  <form action="/user/register" method="post" class="needs-validation" oninput="c_pwd.setCustomValidity(c_pwd.value != pwd.value ? 'Passwords do not match.' : '')">
+  <form action="/user/register" method="post" class="needs-validation" oninput="c_pwd.setCustomValidity(c_pwd.value != pwd.value ? 'Le Password non combaciano!' : '')">
     <div class="row justify-content-center" >
       <div class="col-4">
         <div class="form-group">
