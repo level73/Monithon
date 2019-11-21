@@ -273,7 +273,7 @@
                     $Errors->set(5);
                   }
                   else {
-                    $Errors->set(300)
+                    $Errors->set(300);
                   }
                 }
 
