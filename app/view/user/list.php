@@ -8,15 +8,20 @@
     <h1><?php t('Lista degli Utenti'); ?></h1>
   </div>
 </section>
-    <table  class="table table-striped dtable" style="width:100%">
+    <table
+      class="table table-striped"
+      data-toggle="table"
+      data-pagination="true"
+      data-search="true"
+      style="width:100%">
       <thead>
         <tr>
-          <th><?php t('Username'); ?></th>
-          <th><?php t('Email'); ?></th>
-          <th><?php t('Ruolo'); ?></th>
-          <th><?php t('Attivo?'); ?></th>
-          <th><?php t('Privacy'); ?></th>
-          <th><?php t('Ultimo Login'); ?></th>
+          <th data-sortable="true" data-field="username"><?php t('Username'); ?></th>
+          <th data-sortable="true" data-field="email"><?php t('Email'); ?></th>
+          <th data-sortable="true" data-field="role"><?php t('Ruolo'); ?></th>
+          <th data-sortable="true" data-field="active"><?php t('Attivo?'); ?></th>
+          <th data-sortable="true" data-field="privacy"><?php t('Privacy'); ?></th>
+          <th data-sortable="true" data-field="last_login"><?php t('Ultimo Login'); ?></th>
           <th></th>
           <th></th>
 

@@ -53,16 +53,12 @@ module.exports = function(grunt) {
 						dest: 'public/js/vendor/bootstrap-select.min.js'
 					},
           {
-						src: 'public/src/components/datatables.net/js/jquery.dataTables.min.js',
-						dest: 'public/js/vendor/jquery.dataTables.min.js'
+						src: 'public/src/components/bootstrap-table/dist/bootstrap-table.min.js',
+						dest: 'public/js/vendor/bootstrap-table.min.js'
 					},
           {
-            src: 'public/src/components/datatables.net-bs4/js/dataTables.bootstrap4.min.js',
-            dest: 'public/js/vendor/dataTables.bootstrap4.min.js'
-          },
-          {
-            src: 'public/src/components/datatables.net-bs4/css/dataTables.bootstrap4.min.css',
-            dest: 'public/css/vendor/dataTables.bootstrap4.min.css'
+            src: 'public/src/components/bootstrap-table/dist/bootstrap-table.min.css',
+            dest: 'public/css/vendor/bootstrap-table.min.css'
           },
         ]
 			}

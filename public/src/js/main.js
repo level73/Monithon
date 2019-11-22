@@ -1,13 +1,14 @@
 /** START UP THE APP **/
 
 var Monithon = {
+
   config: {
     lang: 'it'
   },
+
   init: function(){
     console.log('MONITHON V3.0');
     this.selects();
-    this.dtables();
     this.validateForms();
     this.bootstrapComponents();
     this.fileFieldDuplicator();
@@ -17,10 +18,6 @@ var Monithon = {
 
   selects: function(){
     $('.pck').selectpicker();
-  },
-
-  dtables: function(){
-    $('.dtable').DataTable();
   },
 
   validateForms: function(){
@@ -126,8 +123,6 @@ var Monithon = {
     });
   }
 };
-
-export default Monithon;
 
 $(document).ready(function(){
   Monithon.init();

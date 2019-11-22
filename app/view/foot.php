@@ -4,8 +4,7 @@
       <script src="/public/js/vendor/popper.min.js"></script>
       <script src="/public/js/vendor/bootstrap.min.js"></script>
       <script src="/public/js/vendor/bootstrap-select.min.js"></script>
-      <script src="/public/js/vendor/jquery.dataTables.min.js"></script>
-      <script src="/public/js/vendor/dataTables.bootstrap4.min.js"></script>
+      <script src="/public/js/vendor/bootstrap-table.min.js"></script>
       <script src="/public/js/main.min.js?v3.0"></script>
       <?php if( isset($street_map) && $street_map == true ){ ?>
       <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
