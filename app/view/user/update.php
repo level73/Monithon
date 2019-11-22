@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>
+         <small class="text-muted">
+           <img src="/resources/cropx90_<?php echo $Profile->avatar->file_path; ?>" alt="AVATAR" class="avatar img-responsive"> <?php echo $Profile->username; ?>
+         </small><br />
+        <?php echo $title; ?>
+      </h1>
+
+    </div>
+  </div>
+  <form  id="" method="post" action="/user/update/<?php echo $user->id; ?>" enctype="multipart/form-data">
+    <div class="row">
+      <input type="hidden" name="id" value="<?php echo $user->id; ?>">
+      <div class="col">
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" name="email" class="form-control" disabled placeholder="<?php t('Email principale'); ?>" value="<?php echo $Profile->email; ?>">
+        </div>
+        <div class="form-group">
+          <label for="username">Nome Utente <span class="required">*</span></label>
+          <input type="text" id="username" name="username" class="form-control" placeholder="<?php t('Nome utente...'); ?>" value="<?php echo $Profile->username; ?>" disabled>
+        </div>
+        <div class="form-group">
+          <label for="secondary_email"><?php t('Email secondaria'); ?><span class="required">*</span></label>
+          <input type="email" name="secondary_email" class="form-control" placeholder="<?php t('Email secondaria'); ?>" value="<?php echo $Profile->secondary_email; ?>">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="city">Città</label>
+          <input type="text" name="city" id="city" class="form-control" placeholder="<?php t('La città in cui vivi...'); ?>" value="<?php echo $Profile->city; ?>" >
+        </div>
+        <div class="form-group">
+          <label for="twitter"><?php t('Twitter'); ?></label>
+          <input type="text" name="twitter" class="form-control" placeholder="<?php t('Handle di Twitter...'); ?>" value="<?php echo $Profile->twitter; ?>">
+        </div>
+
+        <div class="form-group">
+          <label>Carica il tuo Avatar</label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile" name="avatar">
+            <label class="custom-file-label" for="customFile">Scegli Avatar...</label>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <textarea name="bio" rows="8" class="form-control"  placeholder="<?php t('Un piccolo paragrafo introduttivo...'); ?>"><?php echo $Profile->bio; ?></textarea>
+        </div>
+
+      </div>
+    </div>
+
+      <?php if($Profile->role > 3){ ?>
+      <div class="row" id="asoc">
+        <div class="col-12">
+          <hr />
+          <h2>PROFILO ASOC</h2>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="istituto">Istituto</label>
+            <input type="text" class="form-control" placeholder="<?php t('Nome dell\'Istituto'); ?>" name="istituto" id="istituto" value="<?php echo $ASOC_Profile->istituto; ?>">
+          </div>
+          <div class="form-group">
+            <label for="tipo_istituto">Tipo d'Istituto</label>
+            <input type="text" class="form-control" placeholder="<?php t('Tipo d \'istituto...'); ?>" name="tipo_istituto" id="tipo_istituto" value="<?php echo $ASOC_Profile->istituto; ?>">
+          </div>
+          <div class="form-group">
+            <label for="provincia">Provincia dell'Istituto</label>
+            <select class="form-control pck" name="provincia" id="provincia" data-live-search="true">
+
+              <?php foreach($province as $label => $r){ ?>
+              <optgroup label="<?php echo $label; ?>">
+                <?php foreach($r as $p){ ?>
+                <option value="<?php echo $p->idprovincia; ?>" data-subtext="<?php echo $p->shorthand; ?>" <?php echo ($p->idprovincia == $ASOC_Profile->provincia ? 'selected': ''); ?>><?php echo $p->provincia; ?></option>
+                <?php } ?>
+              </optgroup>
+              <?php } ?>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="comune">Comune dell'Istituto</label>
+            <input type="text" class="form-control" placeholder="<?php t('Comune dell\'Istituto...'); ?>" name="comune" id="comune" value="<?php echo $ASOC_Profile->comune; ?>">
+          </div>
+        </div>
+
+
+        <div class="col-6">
+
+          <div class="form-group">
+            <label for="remote_id">ID ASOC <span class="required">*</span></label>
+            <input type="text" class="form-control" placeholder="<?php t('ID della piattaforma ASOC'); ?>" value="<?php echo $ASOC_Profile->remote_id; ?>" name="remote_id" id="remote_id">
+          </div>
+          <div class="form-group">
+            <label for="link_blog">Link al Blog</label>
+            <input type="text" class="form-control" placeholder="<?php t('Link alla pagina del blog del team...'); ?>" value="<?php echo $ASOC_Profile->link_blog; ?>" name="link_blog" id="link_blog">
+          </div>
+          <div class="form-group">
+            <label for="link_elaborato">Link all'Elaborato</label>
+            <input type="text" class="form-control" placeholder="<?php t('Link alla pagina dell\'elaborato del team...'); ?>" value="<?php echo $ASOC_Profile->link_elaborato; ?>" name="link_elaborato" id="link_elaborato">
+          </div>
+        </div>
+
+
+      </div>
+    <?php } ?>
+
+    <div class="row">
+      <div class="col">
+        <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> <?php t('Salva'); ?></button>
+      </div>
+    </div>
+  </form>
+</div>

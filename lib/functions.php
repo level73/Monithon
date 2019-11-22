@@ -276,6 +276,16 @@ function status($status){
   echo $s;
 }
 
+function user_status($status){
+  if($status == 2){
+    $string = 'ATTIVO';
+  }
+  else {
+    $string = 'NON ATTIVO';
+  }
+  echo '<div class="user_status user_status-'.$status.'" data-toggle="tooltip" data-placement="top" title="' . $string . '"></div>';
+}
+
 /** Translator **/
 function t($string){
   echo $string;

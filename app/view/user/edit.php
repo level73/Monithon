@@ -55,7 +55,7 @@
     </div>
   </div>
 
-    <?php if($Profile->role == 4){ ?>
+    <?php if($Profile->role > 3 ){ ?>
     <div class="row" id="asoc">
       <div class="col-12">
         <h2>PROFILO ASOC</h2>
@@ -121,14 +121,18 @@
     <div class="col">
       <h1>I Miei Report</h1>
 
-      <table class="table table-hover table-sm">
+      <table class="table table-hover table-sm"
+        data-toggle="table"
+        data-pagination="true"
+        data-search="true"
+      >
         <thead class="thead-dark">
           <tr>
-            <th>Titolo</th>
-            <th>Creato</th>
-            <th>Ultima Modifica</th>
-            <th class="text-center">Stato</th>
-            <th class="text-center">Modifica</th>
+            <th data-sortable="true" data-field="titolo">Titolo</th>
+            <th data-sortable="true" data-field="created_at">Creato</th>
+            <th data-sortable="true" data-field="modified_at">Ultima Modifica</th>
+            <th data-sortable="true" data-field="status"class="text-center">Stato</th>
+            <th data-field="edit" class="text-center">Modifica</th>
           </tr>
         </thead>
         <tbody>

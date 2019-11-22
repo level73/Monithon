@@ -9,12 +9,12 @@
   </div>
 </section>
     <table
-      class="table table-striped"
+      class="table table-hover table-sm"
       data-toggle="table"
       data-pagination="true"
       data-search="true"
       style="width:100%">
-      <thead>
+      <thead class="thead-dark">
         <tr>
           <th data-sortable="true" data-field="username"><?php t('Username'); ?></th>
           <th data-sortable="true" data-field="email"><?php t('Email'); ?></th>
@@ -33,8 +33,8 @@
           <td><?php echo $u->username; ?></td>
           <td><?php echo $u->email; ?></td>
           <td><?php echo $u->role; ?></td>
-          <td><?php echo $u->active; ?></td>
-          <td><?php echo $u->privacy; ?></td>
+          <td><?php echo user_status($u->active); ?></td>
+          <td><?php echo ($u->privacy == 1 ? 'SI' : 'NO'); ?></td>
           <td><?php echo strftime('%d/%m/%Y %H:%M', $u->last_login); ?></td>
           <td><a href="/user/update/<?php echo $u->id; ?>"><i class="fal fa-edit"></i></a></td>
           <td><a href="/user/ban/<?php echo $u->id; ?>"><i class="fal fa-ban"></i></a></td>
