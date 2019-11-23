@@ -14,6 +14,7 @@ var Monithon = {
     this.fileFieldDuplicator();
     this.linkFieldDuplicator();
     this.videoFieldDuplicator();
+    this.checkEval();
   },
 
   selects: function(){
@@ -121,7 +122,18 @@ var Monithon = {
       $(this).before(duplicated);
 
     });
-  }
+  },
+
+  checkEval: function(){
+    $('.check-eval').change(function(e){
+      if($(this).val() < 4){
+        $('#cause_inefficacia_wrapper').removeClass('d-none');
+      }
+      else {
+        $('#cause_inefficacia_wrapper').addClass('d-none');
+      }
+    });
+  },
 };
 
 $(document).ready(function(){

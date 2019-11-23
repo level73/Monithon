@@ -38,9 +38,10 @@
             <label for="descrizione">Descrizione:</label>
             <textarea name="descrizione" id="descrizione" class="form-control"><?php echo ckv($data, 'descrizione'); ?></textarea>
           </div>
-
-
-
+          <div class="form-group">
+            <label for="parte_di_piano"><?php t('Il progetto fa parte di un piano di interventi più ampio? Se sì, qual è l’obiettivo complessivo di questo piano?'); ?></label>
+            <textarea name="parte_di_piano" id="parte_di_piano" class="form-control"><?php echo ckv($data, 'parte_di_piano'); ?></textarea>
+          </div>
 
           <!-- Mappa -->
           <div class="form-group">
