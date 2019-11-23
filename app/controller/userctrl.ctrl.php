@@ -98,10 +98,11 @@
                 else {
                   $Region = new Meta('region', true);
                   $Provincia = new Meta('provincia', true);
+                  $Roles = $UserModel->getRoles();
 
                   $this->set('regioni', $Region->lexiconList);
                   $this->set('province', $Provincia->listProvinceByRegion() );
-
+                  $this->set('roles', $Roles);
                   $this->set('permissions', $UserModel->getPermissions());
                   // Check for data in the post
                   if( httpCheck('post', true) ){
@@ -407,6 +408,7 @@
           $File       = new Meta('file_repository');
           $Errors     = new Errors();
           $Report     = new Report();
+          $UserModel  = new User();
 
           if(!$this->Auth->isLoggedIn()){
             header('Location: /user/login');
@@ -423,12 +425,14 @@
 
 
             $this->set('user', $this->user);
-            $this->set('title', 'Modifica il tuo Profilo');
+            $this->set('title', 'Modifica il Profilo');
 
             if(in_array(P_CREATE_USER, array_keys($Permissions)) && in_array(P_ASSIGN_PERMISSIONS, array_keys($Permissions))){
               $Region = new Meta('region', true);
               $Provincia = new Meta('provincia', true);
+              $Roles = $UserModel->getRoles();
 
+              $this->set('roles', $Roles);
               $this->set('regioni', $Region->lexiconList);
               $this->set('province', $Provincia->listProvinceByRegion() );
 
@@ -442,6 +446,7 @@
                 unset($data['email']);
                 unset($data['username']);
 
+                $data['active'] = $data['active'] == 2 ? 2 : 1;
                 // If role is > 3, then it is an ASOC profile
                 if($this->user->role > 3){
                   // set region
@@ -503,9 +508,10 @@
                   else {
                     $Errors->set(91);
                     $filelist = array($upload);
+                    $File->updateFileReferences(T_USER, $id, $filelist);
                   }
                 }
-                $File->updateFileReferences(T_USER, $id, $filelist);
+
               }
 
               $Profile = $this->User->fullProfile($id);
@@ -520,6 +526,9 @@
               $this->set('errors', $Errors);
               $this->set('Profile', $Profile);
               $this->set('reports', $Reports);
+            }
+            else {
+              header('Location: /user/ops');
             }
           }
         }
@@ -572,9 +581,15 @@
 
         /** Error page **/
         public function ops(){
+          $Auth = new Auth();
+          if(!$this->Auth->isLoggedIn()){
+            header('Location: /user/login');
+          }
+          else {
 
+            $this->logged = true;
+            $this->set('logged', $this->logged);
+            $this->set('title', 'Oooops!');
+          }
         }
-
-
-
     }

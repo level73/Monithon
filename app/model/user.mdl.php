@@ -77,4 +77,19 @@
       }
     }
 
+    public function getRoles(){
+      $sql = 'SELECT * FROM auth_role ORDER BY idrole ASC';
+      $stmt = $this->database->prepare($sql);
+      $query = $stmt->execute();
+      if(!$query){
+        $this->Errors->set(502);
+        if(SYSTEM_STATUS == 'development'){
+          dbga($stmt->errorInfo());
+        }
+        return $this->Errors;
+      } else {
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+      }
+    }
+
  }

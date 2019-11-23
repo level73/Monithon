@@ -286,6 +286,17 @@ function user_status($status){
   echo '<div class="user_status user_status-'.$status.'" data-toggle="tooltip" data-placement="top" title="' . $string . '"></div>';
 }
 
+function avatar($Profile){
+  if (isset($Profile->avatar->file_path) && file_exists(ROOT . DS . 'public' . DS . 'resources' . DS . 'cropx90_' . $Profile->avatar->file_path)){
+    echo '<img src="/resources/cropx90_' . $Profile->avatar->file_path . '" alt="AVATAR" class="avatar img-responsive">';
+  }
+  else {
+    echo '<img src="https://avatars.dicebear.com/v2/bottts/bob%20robot%20.svg?options[colors][]=yellow&options[colors][]=brown&options[textureChance]=0&options[mouthChance]=52&options[sidesChance]=13&options[topChange]=26" class="avatar img-responsive">';
+  }
+
+
+}
+
 /** Translator **/
 function t($string){
   echo $string;

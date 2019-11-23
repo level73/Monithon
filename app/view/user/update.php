@@ -3,16 +3,17 @@
     <div class="col">
       <h1>
          <small class="text-muted">
-           <img src="/resources/cropx90_<?php echo $Profile->avatar->file_path; ?>" alt="AVATAR" class="avatar img-responsive"> <?php echo $Profile->username; ?>
+           <?php avatar($Profile); ?> <?php echo $Profile->username; ?>
          </small><br />
         <?php echo $title; ?>
       </h1>
 
     </div>
   </div>
-  <form  id="" method="post" action="/user/update/<?php echo $user->id; ?>" enctype="multipart/form-data">
+
+  <form  id="" method="post" action="/user/update/<?php echo $Profile->idauth; ?>" enctype="multipart/form-data">
     <div class="row">
-      <input type="hidden" name="id" value="<?php echo $user->id; ?>">
+      <input type="hidden" name="id" value="<?php echo $Profile->idauth; ?>">
       <div class="col">
         <div class="form-group">
           <label for="email">Email <span class="required">*</span></label>
@@ -25,6 +26,14 @@
         <div class="form-group">
           <label for="secondary_email"><?php t('Email secondaria'); ?><span class="required">*</span></label>
           <input type="email" name="secondary_email" class="form-control" placeholder="<?php t('Email secondaria'); ?>" value="<?php echo $Profile->secondary_email; ?>">
+        </div>
+        <div class="form-group">
+          <label for="role">Ruolo <span class="required">*</span></label>
+          <select class="form-control pck" name="role" id="role">
+            <?php foreach($roles as $role){ ?>
+            <option value="<?php echo $role->idrole; ?>" <?php echo ($role->idrole == $Profile->role ? 'selected': ''); ?>><?php echo $role->role; ?></option>
+            <?php } ?>
+          </select>
         </div>
       </div>
       <div class="col">
@@ -44,7 +53,14 @@
             <label class="custom-file-label" for="customFile">Scegli Avatar...</label>
           </div>
         </div>
+        <div class="form-group">
+          <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" name="active" value="2" id="activate-switch" <?php echo ($Profile->active == 2 ? 'checked' : ''); ?>>
+            <label class="custom-control-label" for="activate-switch">Account Attivo</label>
+          </div>
+        </div>
       </div>
+
       <div class="col">
         <div class="form-group">
           <label for="bio">Bio</label>
@@ -52,6 +68,8 @@
         </div>
 
       </div>
+
+
     </div>
 
       <?php if($Profile->role > 3){ ?>

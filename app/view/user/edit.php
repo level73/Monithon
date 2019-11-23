@@ -1,10 +1,9 @@
 <div class="container">
-
   <div class="row">
     <div class="col">
       <h1>
          <small class="text-muted">
-           <img src="/resources/cropx90_<?php echo $Profile->avatar->file_path; ?>" alt="AVATAR" class="avatar img-responsive"> <?php echo $Profile->username; ?>
+           <?php avatar($Profile); ?> <?php echo $Profile->username; ?>
          </small><br />
         <?php echo $title; ?>
       </h1>
