@@ -77,6 +77,34 @@
           </div>
 
           <div class="form-group">
+            <label for="valutazione_risultati"><?php t('Se il progetto è concluso o sei stato comunque in grado di valutare alcuni dei suoi risultati qual è il tuo giudizio sull’efficacia del progetto che hai monitorato?'); ?></label>
+            <div class="custom-control custom-radio">
+              <input type="radio" id="valutazione_risultati_1" name="valutazione_risultati" class="check-eval custom-control-input" value="1"  <?php echo (isset($data['valutazione_risultati']) && $data['valutazione_risultati'] == 1 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="valutazione_risultati_1">Intervento dannoso - Era meglio non farlo perché ha provocato conseguenze negative </label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" id="valutazione_risultati_2" name="valutazione_risultati" class="check-eval custom-control-input" value="2" <?php echo (isset($data['valutazione_risultati']) && $data['valutazione_risultati'] ==  2 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="valutazione_risultati_2">Intervento inutile - Non ha cambiato la situazione, soldi sprecati</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" id="valutazione_risultati_3" name="valutazione_risultati" class="check-eval custom-control-input" value="3"  <?php echo (isset($data['valutazione_risultati']) && $data['valutazione_risultati'] ==  3 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="valutazione_risultati_3">Intervento utile ma presenta problemi - Ha avuto alcuni risultati positivi ed è tutto sommato utile, anche se presenta anche aspetti negativi</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" id="valutazione_risultati_4" name="valutazione_risultati" class="check-eval custom-control-input" value="4"  <?php echo (isset($data['valutazione_risultati']) && $data['valutazione_risultati'] ==  4 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="valutazione_risultati_4">Intervento molto utile ed efficace - Gli aspetti positivi prevalgono ed è giudicato complessivamente efficace dal punto di vista dell'utente finale </label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" id="valutazione_risultati_5" name="valutazione_risultati" class="check-eval custom-control-input" value="5"  <?php echo (isset($data['valutazione_risultati']) && $data['valutazione_risultati'] ==  5 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="valutazione_risultati_5">Non è stato possibile valutare l’efficacia dell’intervento - Es. il progetto non ha ancora prodotto risultati valutabili </label>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label for="punti_di_forza">Punti di forza (cosa ti è piaciuto del progetto monitorato?):</label>
             <textarea name="punti_di_forza" id="punti_di_forza" class="form-control"><?php echo ckv($data, 'punti_di_forza'); ?></textarea>
           </div>
@@ -85,6 +113,40 @@
           <div class="form-group">
             <label for="punti_deboli">Debolezze (difficoltà riscontrate nell'attuazione/realizzazione del progetto monitorato?):</label>
             <textarea name="punti_deboli" id="punti_deboli" class="form-control"><?php echo ckv($data, 'punti_deboli'); ?></textarea>
+          </div>
+
+
+          <div class="form-group d-none" id="cause_inefficacia_wrapper">
+            <label>Quali sono le cause dell’inefficacia del progetto che hai monitorato?</label>
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" value="1" id="problemi_amministrativi" name="problemi_amministrativi" <?php echo (isset($data['problemi_amministrativi']) && $data['problemi_amministrativi'] == 1 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="problemi_amministrativi">Realizzazione ha mostrato problemi di natura amministrativa</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" value="1" id="problemi_tecnici" name="problemi_tecnici" <?php echo (isset($data['problemi_tecnici']) && $data['problemi_tecnici'] == 1 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="problemi_tecnici">Realizzazione ha mostrato problemi di natura tecnica</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" value="1" id="risultato_insoddisfacente" name="risultato_insoddisfacente" <?php echo (isset($data['risultato_insoddisfacente']) && $data['risultato_insoddisfacente'] == 1 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="risultato_insoddisfacente">Il risultato del progetto non è soddisfacente</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" value="1" id="non_efficace" name="non_efficace" <?php echo (isset($data['non_efficace']) && $data['non_efficace'] == 1 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="non_efficace">Intervento complessivamente ben realizzato ma non rispondente ai bisogni degli utenti finali (non efficace)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" value="1" id="non_sufficiente" name="non_sufficiente" <?php echo (isset($data['non_sufficiente']) && $data['non_sufficiente'] == 1 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="non_sufficiente">Intervento utile ma non sufficiente per rispondere al fabbisogno (“ne serve di più”, es. più investimenti nello stesso progetto o in progetti simili)</label>
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <input class="custom-control-input" type="checkbox" value="1" id="necessita_interventi_extra" name="necessita_interventi_extra" <?php echo (isset($data['necessita_interventi_extra']) && $data['necessita_interventi_extra'] == 1 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="necessita_interventi_extra">Intervento di per sè utile ma sono necessari altri interventi complementari</label>
+            </div>
           </div>
 
 

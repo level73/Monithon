@@ -99,8 +99,8 @@
             </div>
 
             <div class="custom-control custom-radio">
-              <label class="custom-control-label" for="valutazione_risultati_3">Intervento utile ma presenta problemi - Ha avuto alcuni risultati positivi ed è tutto sommato utile, anche se presenta anche aspetti negativi</label>
               <input type="radio" id="valutazione_risultati_3" name="valutazione_risultati" class="check-eval custom-control-input" value="3"  <?php echo (isset($data->valutazione_risultati) && $data->valutazione_risultati ==  3 ? 'checked' : ''); ?>>
+              <label class="custom-control-label" for="valutazione_risultati_3">Intervento utile ma presenta problemi - Ha avuto alcuni risultati positivi ed è tutto sommato utile, anche se presenta anche aspetti negativi</label>
             </div>
 
             <div class="custom-control custom-radio">
