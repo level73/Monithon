@@ -137,6 +137,15 @@ textarea {
     display: inline-block;
     padding: 8px 10px; }
 
+#report-tablist {
+  margin-top: 25px;
+  margin-bottom: 30px; }
+  #report-tablist li a {
+    font-size: 1.2rem;
+    text-transform: uppercase; }
+    #report-tablist li a.active {
+      font-weight: bold; }
+
 #main-header {
   background: #2ec4b6; }
 
