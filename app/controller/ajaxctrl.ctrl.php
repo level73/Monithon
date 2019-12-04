@@ -23,4 +23,14 @@
       }
     }
 
+    public function sottotemi($code, $mode='json'){
+      $Sottotemi = new Meta('progetti_sottotemi_20190831', true, true);
+      $sottotema = $Sottotemi->findLexiconEntry('COD_LOCALE_PROGETTO', $code);
+      if($mode == 'json'){
+        echo json_encode($sottotema);
+      }
+
+
+    }
+
   }

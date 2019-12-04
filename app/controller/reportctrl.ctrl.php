@@ -1,7 +1,7 @@
 <?php
 
 /** Controller for Reports
-  * This sends out all data tot he views that are used to
+  * This sends out all data to the views that are used to
   * view the Reports
   **/
 

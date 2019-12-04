@@ -137,6 +137,15 @@ textarea {
     display: inline-block;
     padding: 8px 10px; }
 
+#report-tablist {
+  margin-top: 25px;
+  margin-bottom: 30px; }
+  #report-tablist li a {
+    font-size: 1.2rem;
+    text-transform: uppercase; }
+    #report-tablist li a.active {
+      font-weight: bold; }
+
 #main-header {
   background: #2ec4b6; }
 
@@ -167,6 +176,12 @@ textarea {
     color: #2ec4b6;
     font-style: italic;
     font-weight: 900; }
+  .guide .oc_expert {
+    display: block;
+    margin: 10px 0px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: right; }
 
 footer#main-footer {
   background: #011627;
