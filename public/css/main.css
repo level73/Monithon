@@ -29,6 +29,11 @@ a {
   a:hover {
     color: #e71d36; }
 
+.hiliter {
+  color: #ff9f1c;
+  font-weight: bold;
+  font-style: italic; }
+
 /** BUTTONS **/
 .btn {
   border-radius: 0;
@@ -202,5 +207,9 @@ body {
 
 .full-wrap {
   min-height: 100vh; }
+
+/** BOOTSTRAP OVERRIDES **/
+.nav-tabs .nav-link.active {
+  background-color: #fdfffc; }
 
 /*# sourceMappingURL=main.css.map */

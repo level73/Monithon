@@ -15,6 +15,11 @@
       echo $data;
     }
 
+    public function oc_soggetto($code){
+      $data = @file_get_contents('https://opencoesione.gov.it/it/api/soggetti/' . $code . '/?format=json');
+      echo $data;
+    }
+
     public function programma_operativo($code, $mode = 'json'){
       $PO = new Meta('programma_operativo', true);
       $po = $PO->findLexiconEntry('oc_codice_programma', $code);

@@ -80,6 +80,12 @@
         </div>
 
         <div class="tab-pane fade" id="step-2" role="tabpanel" aria-labelledby="step-2">
+
+
+          <div class="d-none" id="oc_api_content_s2">
+            <i class="fal fa-sync fa-spin"></i>
+          </div>
+
           <fieldset>
             <legend>Valutazione</legend>
             <div class="form-group">

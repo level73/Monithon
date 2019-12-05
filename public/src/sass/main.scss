@@ -16,3 +16,9 @@ body {
   min-height: 100vh;
 }
 .full-wrap { min-height: 100vh; }
+
+
+/** BOOTSTRAP OVERRIDES **/
+.nav-tabs .nav-link.active {
+  background-color: $seafoam;
+}
