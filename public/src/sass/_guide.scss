@@ -7,6 +7,10 @@
     margin-bottom: 25px;
     padding-bottom: 30px;
   }
+  h3 {
+    color: $lagoon;
+    font-weight: 900;
+  }
   .row-guide{
     margin-bottom: 10px;
     padding-bottom: 10px;
@@ -27,5 +31,8 @@
     font-style: italic;
     text-align: right;
   }
-  
+
+  .subject {
+    margin: 10px 0px 25px;
+  }
 }

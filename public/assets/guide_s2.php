@@ -42,17 +42,18 @@
 
 
     <div class="row row-guide">
-      <div class="col">
-        <button type="button" class="btn btn-primary subj-button" data-type="Attuatore" id="soggetti-attuatori">Scopri chi sono gli Attuatori</button>
+      <div class="col-6" id="attuatori">
+        <h3>Attuatori</h3>
+
       </div>
-      <div class="col">
-        <button type="button" class="btn btn-primary subj-button" data-type="Beneficiario" id="soggetti-beneficiari">Scopri chi sono i Beneficiari</button>
+      <div class="col-6" id="beneficiari">
+        <h3>Beneficiari</h3>
       </div>
-      <div class="col">
-        <button type="button" class="btn btn-primary subj-button" data-type="Programmatore" id="soggetti-programmatori">Scopri chi sono i Programmatori</button>
+      <div class="col-6" id="programmatori">
+        <h3>Programmatori</h3>
       </div>
-      <div class="col">
-        <button type="button" class="btn btn-primary subj-button" data-type="Realizzatore" id="soggetti-realizzatori">Scopri chi sono i Realizzatori</button>
+      <div class="col-6" id="realizzatori">
+        <h3>Realizzatori</h3>
       </div>
     </div>
 
@@ -192,5 +193,5 @@
       <div class="col-8" id="oc_guide_s2_6"></div>
     </div>
 
-  
+
 </section>

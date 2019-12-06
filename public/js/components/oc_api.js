@@ -411,59 +411,45 @@ var OpenCoesione = {
               var beneficiari = [];
               var realizzatori = [];
               for(i = 0; i < data.soggetti.length; i++){
-              var roles = data.soggetti[i].ruoli;
-              console.log(roles);
-              if($.inArray('Programmatore', roles) >= 0){
-                programmatori.push(data.soggetti[i]);
-
-                var label = soggetto.denominazione;
-                var text =  'E’ soggetto cui compete la decisione di finanziare il progetto. <br />' +
-                            'L’indirizzo è ' + soggetto.indirizzo;
-              }
-              else if($.inArray('Attuatore', roles) >= 0){
-                attuatori.push(data.soggetti[i]);
-              }
-
-              if($.inArray('Beneficiario', roles) >= 0){
-                beneficiari.push(data.soggetti[i]);
-              }
-
-              if($.inArray('Realizzatore', roles) >= 0){
-                realizzatori.push(data.soggetti[i]);
-              }
-
-              console.log(programmatori);
-              }
-              /*
-              for(i = 0; i < data.soggetti.length; i++){
 
                 var roles = data.soggetti[i].ruoli;
-                var soggetto;
-                var subjectCode = OC.getSubjectCode(data.soggetti[i].url);
+                console.log(data.soggetti[i]);
 
-                console.log(' --- ' + i + ' --- ');
-                console.log('Codice Soggetto -- ' + subjectCode);
+                if($.inArray('Programmatore', roles) >= 0){
+                  programmatori.push(data.soggetti[i]);
 
+                  var label = '<strong>' + data.soggetti[i].denominazione + '</strong><br />';
+                  var text =  'E’ soggetto cui compete la decisione di finanziare il progetto. <br />';
 
-                $.ajax({
-                  url: '/ajax/oc_soggetto/' + subjectCode,
-                  dataType: 'json',
-                  async: false,
-                  success: function(data) {
-                    soggetto = data;
-                  }
-                });
+                  if(data.soggetti[i].indirizzo){ text += 'L’indirizzo è ' + data.soggetti[i].indirizzo + ', ' + data.soggetti[i].cap; }
 
-                console.log(soggetto);
+                  $('#programmatori').append('<div class="subject">' + label + text + '</div>');
+                }
+                else if($.inArray('Attuatore', roles) >= 0){
+                  attuatori.push(data.soggetti[i]);
+                  var label = '<strong>' + data.soggetti[i].denominazione + '</strong><br />';
+                  var text =  'Il soggetto responsabile dell\'attuazione del progetto. Nel caso dei Fondi Strutturali 2007-2013 corrisponde al "beneficiario" L’attuatore può a sua volta avvalersi di altri soggetti nella realizzazione del progetto <br />';
+                  if(data.soggetti[i].indirizzo){ text += 'L’indirizzo è ' + data.soggetti[i].indirizzo + ', ' + data.soggetti[i].cap; }
+                  $('#attuatori').append('<div class="subject">' + label + text + '</div>');
+                }
 
+                if($.inArray('Beneficiario', roles) >= 0){
+                  beneficiari.push(data.soggetti[i]);
+                  var label = '<strong>' + data.soggetti[i].denominazione + '</strong><br />';
+                  var text =  'L’organismo pubblico o privato responsabile dell\'avvio e/o dell\'attuazione delle operazioni. Nel caso di progetti classificati come aiuti di Stato il beneficiario è il soggetto che riceve l\'aiuto.<br />';
+                  if(data.soggetti[i].indirizzo){ text += 'L’indirizzo è ' + data.soggetti[i].indirizzo + ', ' + data.soggetti[i].cap; }
+                  $('#beneficiari').append('<div class="subject">' + label + text + '</div>');
+                }
 
-
-
-
-
-
+                if($.inArray('Realizzatore', roles) >= 0){
+                  realizzatori.push(data.soggetti[i]);
+                  var label = '<strong>' + data.soggetti[i].denominazione + '</strong><br />';
+                  var text =  'Il soggetto che realizza effettivamente il progetto. Nel caso di opere e lavori pubblici coincide con la società titolare del contratto di appalto che esegue materialmente l\'opera. Analogamente per un progetto di acquisto di beni o servizi, il realizzatore è individuabile nella società titolare del contratto di appalto chiamata a fornire i beni o ad erogare il servizio.<br />';
+                  if(data.soggetti[i].indirizzo){ text += 'L’indirizzo è ' + data.soggetti[i].indirizzo + ', ' + data.soggetti[i].cap; }
+                  $('#realizzatori').append('<div class="subject">' + label + text + '</div>');
+                }
               }
-              */
+
 
 
 

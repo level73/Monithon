@@ -171,6 +171,9 @@ textarea {
   .guide h2 {
     margin-bottom: 25px;
     padding-bottom: 30px; }
+  .guide h3 {
+    color: #2ec4b6;
+    font-weight: 900; }
   .guide .row-guide {
     margin-bottom: 10px;
     padding-bottom: 10px;
@@ -187,6 +190,8 @@ textarea {
     font-weight: bold;
     font-style: italic;
     text-align: right; }
+  .guide .subject {
+    margin: 10px 0px 25px; }
 
 footer#main-footer {
   background: #011627;
