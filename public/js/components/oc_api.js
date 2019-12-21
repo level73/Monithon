@@ -20,7 +20,7 @@ var OpenCoesione = {
     var OC = this;
 
     $('#oc_api_code_lookup').click( function(e){
-        $('#oc_api_content_s1').removeClass('d-none');
+        $('#oc_api_content_s1, #oc_api_content_s2').removeClass('d-none');
         e.preventDefault();
         console.log(config);
 
@@ -36,7 +36,7 @@ var OpenCoesione = {
           console.log(data);
           if(data.code == '404'){
             alert('Non trovo il progetto! Controlla di aver copiato ed incollato la URL correttamente, e riprova.');
-            $('#oc_api_content_s1').addClass('d-none');
+            $('#oc_api_content_s1, #oc_api_content_s2').addClass('d-none');
           }
           else {
             // Load S1 Template
@@ -156,7 +156,8 @@ var OpenCoesione = {
               /** EOF BLOCK 6 STEP 1 **/
             });
 
-
+            // Load S2 Template
+            $('#oc_api_content_s2').load('/public/assets/guide_s2.php', function(){});
             /*
             // Make dates
             var data_inizio     = OC.dateFormatter(data.oc_data_inizio_progetto);
