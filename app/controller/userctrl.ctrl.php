@@ -53,7 +53,7 @@
                           $User = $Auth->getProfile();
 
                           if($User && $Auth->isLoggedIn()){
-                            header('Location: ' . $referrer);
+                            header('Location: /user/edit');
                           }
                         }
                         else {
