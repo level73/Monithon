@@ -58,10 +58,16 @@
         $this->set('street_map', true);
         $this->set('js', array('components/oc_api.js', 'components/leaflet_location_map.js'));
 
+        /** STATUS VAR -
+          * Used to check if report has been saved - in which case,
+          * redirect user to edit form od said report
+          * transferring updated Error class messages
+        **/
+        $status = 0;
         $data = null;
+
         if( httpCheck('post', true) ){
           $data = $_POST;
-          // $this->set('data', $data);
 
           $videos = $data['video-attachment'];
           $links = $data['link-attachment'];
@@ -74,12 +80,16 @@
           $report = $this->Report->create($data);
 
           if(is_numeric($report)){
-            $this->Errors->set(21);
+            $status = 1;
+
+            // $this->Errors->set(21);
+
+            $_SESSION[APPNAME]['message-log'][] = 21;
 
             // Upload Files
             if(!empty($_FILES)){
-              $files = rearrange_files($_FILES['file-attachment']);
 
+              $files = rearrange_files($_FILES['file-attachment']);
               $Files = new Meta('file_repository');
               $File = new Repo();
 
@@ -87,10 +97,14 @@
               $filelist = array();
 
               foreach($files as $i => $file){
-                if($file['error'] == 0){
+                if($file['error'] == 0 ){
                   $filelist[] = $File->upload($file, $fileInfo);
                 }
+                elseif($file['error'] == 4 ) {
+
+                }
                 else {
+                  $_SESSION[APPNAME]['message-log'][] = 650;
                   $this->Errors->set(650);
                 }
               }
@@ -98,7 +112,8 @@
               if(count($filelist) > 0) {
                 $f = $Files->updateFileReferences(T_REP_BASIC, $report, $filelist);
               }
-              if(!$f instanceof Errors){
+              if(!$f instanceof Errors && count($filelist) > 0){
+                $_SESSION[APPNAME]['message-log'][] = 91;
                 $this->Errors->set(91);
               }
             }
@@ -115,6 +130,7 @@
               }
               $f = $Links->updateReferences(T_REP_BASIC, $report, $linkList);
               if(!$f instanceof Errors){
+                $_SESSION[APPNAME]['message-log'][] = 92;
                 $this->Errors->set(92);
               }
             }
@@ -131,6 +147,7 @@
               }
               $f = $Videos->updateReferences(T_REP_BASIC, $report, $videoList);
               if(!$f instanceof Errors){
+                $_SESSION[APPNAME]['message-log'][] = 93;
                 $this->Errors->set(93);
               }
             }
@@ -139,6 +156,11 @@
             $this->Errors->set(551);
           }
         }
+
+        if($status == 1){
+          header('Location: /report/edit/' . $report . '?saved=success');
+        }
+
         $this->set('data', $data);
         $this->set('errors', $this->Errors);
       }
@@ -167,6 +189,11 @@
           $Errors = new Errors();
           $this->set('street_map', true);
           $this->set('js', array('components/oc_api.js', 'components/leaflet_location_map.js'));
+
+          $this->Errors->check();
+          if(!empty($this->Errors->errors)){
+            $this->set('errors', $this->Errors);
+          }
 
           if( httpCheck('post', true) ){
             $data = $_POST;
