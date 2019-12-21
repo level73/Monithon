@@ -90,6 +90,9 @@
           </div>
 
         <div class="tab-pane fade" id="step-2" role="tabpanel" aria-labelledby="step-2">
+          <div class="d-none" id="oc_api_content_s2">
+            <i class="fal fa-sync fa-spin"></i>
+          </div>
             <fieldset>
               <legend>Valutazione</legend>
               <div class="form-group">
@@ -362,7 +365,7 @@
           </div>
           <div class="tab-pane fade" id="step-3" role="tabpanel" aria-labelledby="step-3"><h3>Coming Soon</h3></div>
         </div>
-  
+
         <div class="form-group">
           <div class="custom-control custom-checkbox">
             <input class="custom-control-input" type="checkbox" value="<?php echo PENDING_REVIEW; ?>" id="status" name="status">

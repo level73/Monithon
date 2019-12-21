@@ -83,6 +83,7 @@
           <div class="d-none" id="oc_api_content_s2">
             <i class="fal fa-sync fa-spin"></i>
           </div>
+
           <fieldset>
             <legend>Valutazione</legend>
             <div class="form-group">

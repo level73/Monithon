@@ -15,7 +15,7 @@
     protected $pkey = null;
     public $lexiconList;
 
-    public function __construct($meta, $lexicon = null){
+    public function __construct($meta, $lexicon = null, $do_not_load_lexicon = null){
       $this->meta =  $meta;
       $this->meta_table = 'meta_' . $meta;
       $this->pkey = 'id' . $meta;
@@ -30,11 +30,9 @@
 
 
       }
-      if($lexicon){
+      if($lexicon && $do_not_load_lexicon == null){
         $this->lexiconList = $this->all();
       }
-
-
     }
 
     public function listing(){
@@ -70,9 +68,30 @@
     }
 
     public function findLexiconEntry($field, $value){
-      foreach($this->lexiconList as $i => $entry){
-        if($entry->$field == $value){
-          return $this->lexiconList[$i];
+      if($this->lexiconList){
+        foreach($this->lexiconList as $i => $entry){
+          if($entry->$field == $value){
+            return $this->lexiconList[$i];
+          }
+        }
+      } else {
+
+        $sql = 'SELECT * FROM ' . $this->lexicon . ' WHERE ' .$field.' = UPPER( :value ) OR ' . $field . ' = :value2';
+        $stmt = $this->database->prepare($sql);
+
+        $stmt->bindParam(':value', $value);
+        $stmt->bindParam(':value2', $value);
+        $query = $stmt->execute();
+        if(!$query){
+          $this->Errors->set(502);
+          if(SYSTEM_STATUS == 'development'){
+            dbga($stmt->errorInfo());
+          }
+          return $this->Errors;
+        }
+        else {
+          $r = $stmt->fetch(PDO::FETCH_OBJ);
+          return $r;
         }
       }
       return false;

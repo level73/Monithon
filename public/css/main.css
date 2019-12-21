@@ -29,6 +29,11 @@ a {
   a:hover {
     color: #e71d36; }
 
+.hiliter {
+  color: #ff9f1c;
+  font-weight: bold;
+  font-style: italic; }
+
 /** BUTTONS **/
 .btn {
   border-radius: 0;
@@ -166,6 +171,9 @@ textarea {
   .guide h2 {
     margin-bottom: 25px;
     padding-bottom: 30px; }
+  .guide h3 {
+    color: #2ec4b6;
+    font-weight: 900; }
   .guide .row-guide {
     margin-bottom: 10px;
     padding-bottom: 10px;
@@ -176,6 +184,14 @@ textarea {
     color: #2ec4b6;
     font-style: italic;
     font-weight: 900; }
+  .guide .oc_expert {
+    display: block;
+    margin: 10px 0px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: right; }
+  .guide .subject {
+    margin: 10px 0px 25px; }
 
 footer#main-footer {
   background: #011627;
@@ -196,5 +212,9 @@ body {
 
 .full-wrap {
   min-height: 100vh; }
+
+/** BOOTSTRAP OVERRIDES **/
+.nav-tabs .nav-link.active {
+  background-color: #fdfffc; }
 
 /*# sourceMappingURL=main.css.map */
