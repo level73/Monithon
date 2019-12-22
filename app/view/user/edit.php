@@ -62,20 +62,20 @@
       <div class="col-6">
         <div class="form-group">
           <label for="istituto">Istituto</label>
-          <input type="text" class="form-control" placeholder="<?php t('Nome dell\'Istituto'); ?>" name="istituto" id="istituto" value="<?php echo $ASOC_Profile->istituto; ?>">
+          <input type="text" class="form-control" placeholder="<?php t('Nome dell\'Istituto'); ?>" name="istituto" id="istituto" value="<?php echo ckv_object($ASOC_Profile, 'istituto'); ?>">
         </div>
         <div class="form-group">
           <label for="tipo_istituto">Tipo d'Istituto</label>
-          <input type="text" class="form-control" placeholder="<?php t('Tipo d \'istituto...'); ?>" name="tipo_istituto" id="tipo_istituto" value="<?php echo $ASOC_Profile->istituto; ?>">
+          <input type="text" class="form-control" placeholder="<?php t('Tipo d \'istituto...'); ?>" name="tipo_istituto" id="tipo_istituto" value="<?php echo ckv_object($ASOC_Profile,'tipo_istituto'); ?>">
         </div>
         <div class="form-group">
           <label for="provincia">Provincia dell'Istituto</label>
           <select class="form-control pck" name="provincia" id="provincia" data-live-search="true">
 
             <?php foreach($province as $label => $r){ ?>
-            <optgroup label="<?php echo $label; ?>">
+            <optgroup label="<?php echo $label; ?>">->
               <?php foreach($r as $p){ ?>
-              <option value="<?php echo $p->idprovincia; ?>" data-subtext="<?php echo $p->shorthand; ?>" <?php echo ($p->idprovincia == $ASOC_Profile->provincia ? 'selected': ''); ?>><?php echo $p->provincia; ?></option>
+              <option value="<?php echo $p->idprovincia; ?>" data-subtext="<?php echo $p->shorthand; ?>" <?php echo (isset($ASOC_Profile) && $p->idprovincia == $ASOC_Profile->provincia ? 'selected': ''); ?>><?php echo $p->provincia; ?></option>
               <?php } ?>
             </optgroup>
             <?php } ?>
@@ -83,7 +83,7 @@
         </div>
         <div class="form-group">
           <label for="comune">Comune dell'Istituto</label>
-          <input type="text" class="form-control" placeholder="<?php t('Comune dell\'Istituto...'); ?>" name="comune" id="comune" value="<?php echo $ASOC_Profile->comune; ?>">
+          <input type="text" class="form-control" placeholder="<?php t('Comune dell\'Istituto...'); ?>" name="comune" id="comune" value="<?php echo ckv_object($ASOC_Profile, 'comune'); ?>">
         </div>
       </div>
 
@@ -92,15 +92,15 @@
 
         <div class="form-group">
           <label for="remote_id">ID ASOC <span class="required">*</span></label>
-          <input type="text" class="form-control" placeholder="<?php t('ID della piattaforma ASOC'); ?>" value="<?php echo $ASOC_Profile->remote_id; ?>" name="remote_id" id="remote_id">
+          <input type="text" class="form-control" placeholder="<?php t('ID della piattaforma ASOC'); ?>" value="<?php echo ckv_object($ASOC_Profile, 'remote_id'); ?>" name="remote_id" id="remote_id">
         </div>
         <div class="form-group">
           <label for="link_blog">Link al Blog</label>
-          <input type="text" class="form-control" placeholder="<?php t('Link alla pagina del blog del team...'); ?>" value="<?php echo $ASOC_Profile->link_blog; ?>" name="link_blog" id="link_blog">
+          <input type="text" class="form-control" placeholder="<?php t('Link alla pagina del blog del team...'); ?>" value="<?php echo ckv_object($ASOC_Profile,'link_blog'); ?>" name="link_blog" id="link_blog">
         </div>
         <div class="form-group">
           <label for="link_elaborato">Link all'Elaborato</label>
-          <input type="text" class="form-control" placeholder="<?php t('Link alla pagina dell\'elaborato del team...'); ?>" value="<?php echo $ASOC_Profile->link_elaborato; ?>" name="link_elaborato" id="link_elaborato">
+          <input type="text" class="form-control" placeholder="<?php t('Link alla pagina dell\'elaborato del team...'); ?>" value="<?php echo ckv_object($ASOC_Profile, 'link_elaborato'); ?>" name="link_elaborato" id="link_elaborato">
         </div>
       </div>
 
