@@ -7,8 +7,8 @@
          </small><br />
         <?php echo $title; ?>
       </h1>
-
     </div>
+    
   </div>
   <form  id="" method="post" action="/user/edit" enctype="multipart/form-data">
     <div class="row">
