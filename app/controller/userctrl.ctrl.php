@@ -384,7 +384,9 @@
                   $filelist = array($upload);
                 }
               }
-              $File->updateFileReferences(T_USER, $id, $filelist);
+              if(!empty($filelist)){
+                $File->updateFileReferences(T_USER, $id, $filelist);
+              }
             }
 
             $Profile = $this->User->fullProfile($this->user->id);
