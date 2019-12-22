@@ -34,7 +34,12 @@
       </div>
       <div class="form-group">
         <label for="twitter"><?php t('Twitter'); ?></label>
-        <input type="text" name="twitter" class="form-control" placeholder="<?php t('Handle di Twitter...'); ?>" value="<?php echo $Profile->twitter; ?>">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">@</div>
+          </div>
+          <input type="text" name="twitter" class="form-control" placeholder="<?php t('Handle di Twitter...'); ?>" value="<?php echo $Profile->twitter; ?>">
+      </div>
       </div>
 
       <div class="form-group">
