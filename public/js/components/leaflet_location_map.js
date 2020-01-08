@@ -27,7 +27,8 @@ function addMarkerToMap(latlng){
 
 function searchGeocode(ev){
   ev.preventDefault();
-  var address = $('#indirizzo').val();
+  var address = $('#indirizzo').val() + ', ' + $('#cap').val();
+	console.log(address);
   $.getJSON( 'https://nominatim.openstreetmap.org/search?format=json&q=' + address, function(data){
 		console.log(data);
     if(data.length > 0){
