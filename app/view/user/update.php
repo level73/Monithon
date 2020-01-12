@@ -43,7 +43,12 @@
         </div>
         <div class="form-group">
           <label for="twitter"><?php t('Twitter'); ?></label>
-          <input type="text" name="twitter" class="form-control" placeholder="<?php t('Handle di Twitter...'); ?>" value="<?php echo $Profile->twitter; ?>">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">@</div>
+            </div>
+            <input type="text" name="twitter" class="form-control" placeholder="<?php t('Handle di Twitter...'); ?>" value="<?php echo $Profile->twitter; ?>">
+          </div>
         </div>
 
         <div class="form-group">
@@ -118,7 +123,7 @@
             <input type="text" class="form-control" placeholder="<?php t('Link alla pagina del blog del team...'); ?>" value="<?php echo $ASOC_Profile->link_blog; ?>" name="link_blog" id="link_blog">
           </div>
           <div class="form-group">
-            <label for="link_elaborato">Link all'Elaborato</label>
+            <label for="link_elaborato">Link all'Elaborato Creativo</label>
             <input type="text" class="form-control" placeholder="<?php t('Link alla pagina dell\'elaborato del team...'); ?>" value="<?php echo $ASOC_Profile->link_elaborato; ?>" name="link_elaborato" id="link_elaborato">
           </div>
         </div>

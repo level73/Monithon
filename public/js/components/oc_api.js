@@ -358,7 +358,6 @@ var OpenCoesione = {
             // Load S2 Template
             $('#oc_api_content_s2').load('/public/assets/guide_s2.php', function() {
 
-
               // P1
               if(data.oc_stato_progetto == 'In corso'){
                 var prj_status = 'ancora in corso';
@@ -423,7 +422,7 @@ var OpenCoesione = {
                 }
 
               }
-              console.log('S2 - Soggetti')
+
               // P3 - Roles
               var programmatori = [];
               var attuatori = [];
@@ -468,14 +467,6 @@ var OpenCoesione = {
                   $('#realizzatori').append('<div class="subject">' + label + text + '</div>');
                 }
               }
-
-
-
-
-
-
-
-              console.log('S2 - sottotemi');
               var sottotemi;
               $.ajax({
                 url: '/ajax/sottotemi/' + data.cod_locale_progetto,
@@ -485,6 +476,7 @@ var OpenCoesione = {
                   sottotemi = data;
                 }
               });
+<<<<<<< HEAD
               console.log(sottotemi);
 
               /** Beni Confiscati **/
@@ -521,6 +513,8 @@ var OpenCoesione = {
 "Scheda monitoraggio beni confiscati: <a href=\"https://docs.google.com/document/d/1WTy-6n3i9Dfb79_mBm7Sjuyhoch8x7jucZ2bcvWyO1k/edit#\" target=\"_blank\">report Castello di Ottaviano</a><br />Post: <a href=\"http://www.monithon.it/blog/2013/10/24/alle-pendici-del-magico-vesuvio/\" target=\"_blank\">Alle Pendici del Vesuvio</a>";
 
               }
+=======
+>>>>>>> 769f0a29e764240ff8bd19a0c74cdde9d7e2921b
 
               if(data.oc_cod_tema_sintetico == '07'){
                 //Theme: TRASPORTI
@@ -697,25 +691,22 @@ var OpenCoesione = {
                 var expert = '';
                 var body =  "";
                 var body2 =  "Se il tuo progetto riguarda il recupero o la valorizzazione del nostro patrimonio culturale e naturale, le seguenti domande potrebbero essere di ispirazione per formulare la traccia di intervista sul progetto che hai scelto di monitorare:<br />" +
-"<ul><li> Quali sono le principali caratteristiche del sito (museo, area archeologica, chiesa, area naturale protetta,  itinerario naturale, etc)? E' visitabile?</li>" +
- "<li>Quali sono i nuovi servizi disponibili per per i visitatori grazie al finanziamento ricevuto?</li>" +
-"<li> Esiste uno spazio (fisico e/o digitale) nel quale è possibile avere aggiornamenti sul progetto? (es. sito web o pannelli per aggiornare i visitatori)</li>" +
-"<li> Durante la realizzazione del progetto il sito ha dovuto interrompere le sue attività? Se sì, con quali conseguenze?</li>" +
-"<li> Se il progetto è ancora in fase di cantiere, come il cantiere incide sul percorso di visita e sulla fruibilità?</li>" +
-"<li> La comunicazione del progetto verso i visitatori è efficace? Quali canali sono utilizzati?</li>" +
-"<li> La visita è adatta anche a persone con disabilità? (rampe, ascensori, bagni adatti, testi in braille, disegni a rilievo, ecc.) </li>" +
-"<li> La visita è adatta anche a famiglie con bimbi piccoli? (percorsi per bambini, bagni con fasciatoi, spazi per lasciare il passeggino, servizio noleggio zaini per portare i bambini, ecc.)</li>" +
-"<li> La visita è adatta anche a persone straniere? (quali servizi vengono forniti in lingue diverse dall’italiano? Es. Sito internet; Guide; Audioguide; Cartellonistica e segnaletica nel museo; Pieghevoli informativi; Pubblicazioni</li>" +
-"<li> Il sito ha attivato modalità innovative per il dialogo con i visitatori? Es. social Media (specificare quali); Canale YouTube; Virtual tour; digital library; QR code; Applicazioni specifiche per smartphone e tablet (guide mobile, ecc.); altro (specificare)</li>" +
-"<li> Quali opportunità didattiche sono offerte dal museo? Come il progetto finanziato ha contribuito o potrebbe contribuire?</li></ul>" +
-
+                      "<ul><li> Quali sono le principali caratteristiche del sito (museo, area archeologica, chiesa, area naturale protetta,  itinerario naturale, etc)? E' visitabile?</li>" +
+                       "<li>Quali sono i nuovi servizi disponibili per per i visitatori grazie al finanziamento ricevuto?</li>" +
+                      "<li> Esiste uno spazio (fisico e/o digitale) nel quale è possibile avere aggiornamenti sul progetto? (es. sito web o pannelli per aggiornare i visitatori)</li>" +
+                      "<li> Durante la realizzazione del progetto il sito ha dovuto interrompere le sue attività? Se sì, con quali conseguenze?</li>" +
+                      "<li> Se il progetto è ancora in fase di cantiere, come il cantiere incide sul percorso di visita e sulla fruibilità?</li>" +
+                      "<li> La comunicazione del progetto verso i visitatori è efficace? Quali canali sono utilizzati?</li>" +
+                      "<li> La visita è adatta anche a persone con disabilità? (rampe, ascensori, bagni adatti, testi in braille, disegni a rilievo, ecc.) </li>" +
+                      "<li> La visita è adatta anche a famiglie con bimbi piccoli? (percorsi per bambini, bagni con fasciatoi, spazi per lasciare il passeggino, servizio noleggio zaini per portare i bambini, ecc.)</li>" +
+                      "<li> La visita è adatta anche a persone straniere? (quali servizi vengono forniti in lingue diverse dall’italiano? Es. Sito internet; Guide; Audioguide; Cartellonistica e segnaletica nel museo; Pieghevoli informativi; Pubblicazioni</li>" +
+                      "<li> Il sito ha attivato modalità innovative per il dialogo con i visitatori? Es. social Media (specificare quali); Canale YouTube; Virtual tour; digital library; QR code; Applicazioni specifiche per smartphone e tablet (guide mobile, ecc.); altro (specificare)</li>" +
+                      "<li> Quali opportunità didattiche sono offerte dal museo? Come il progetto finanziato ha contribuito o potrebbe contribuire?</li></ul>" +
                       "Se il progetto è  concluso e in funzione da tempo è possibile valutare se ha effettivamente raggunto i risultati prefissati. Ad esempio, potrebbe essere opportuno verificare:" +
-    "<ul><li>il numero dei visitatori è aumentato? se sì, quali  categorie in particolare (es. stranieri, giovani, famiglie, scuole, etc.);</li>" +
-    "<li>  la comunità locale (famiglie, scuole, ecc.) è stata direttamente coinvolta in iniziative  promosse dal museo /biblioteca / parco, ecc.?</li>" +
-    "<li>  quali sono gli effetti delle attività di comunicazione e promozionali realizzate rispetto ai target individuati?</li></ul>" +
-
-
-                  "Approfondisci questi suggerimenti in questo nostro blog post sviluppato dalla comunità Monithon Piemonte http://www.monithon.it/blog/2014/04/21/monithon-museo-egizio-di-torino-appunti-e-riflessioni-2/";
+                      "<ul><li>il numero dei visitatori è aumentato? se sì, quali  categorie in particolare (es. stranieri, giovani, famiglie, scuole, etc.);</li>" +
+                      "<li>  la comunità locale (famiglie, scuole, ecc.) è stata direttamente coinvolta in iniziative  promosse dal museo /biblioteca / parco, ecc.?</li>" +
+                      "<li>  quali sono gli effetti delle attività di comunicazione e promozionali realizzate rispetto ai target individuati?</li></ul>" +
+                      "Approfondisci questi suggerimenti in questo nostro blog post sviluppato dalla comunità Monithon Piemonte http://www.monithon.it/blog/2014/04/21/monithon-museo-egizio-di-torino-appunti-e-riflessioni-2/";
 
                   var example = '<a href="https://monithon.org/reports/1010" target="_blank">Restauro apparati decorativi della Casa della Venere in Conchiglia</a>,  '+
                   '<a href="https://monithon.org/reports/1524" target="_blank">Recupero del Mastio della Cittadella di Torino</a>,  '+
@@ -741,65 +732,63 @@ var OpenCoesione = {
                   "Telefono: +39 06852641<br /> " +
                   "PEC: <a href=\"mailto:protocollo@pec.agid.gov.it\">protocollo@pec.agid.gov.it</a><br /> " +
                   "<a href=\"mailto:stampa@agid.gov.it\">stampa@agid.gov.it</a><br /> " +
-
-                  "Se invece il progetto riguarta i servizi e iniziative digitali per le scuole, potresti contattare il Miur - Autorità di Gestione del PON Scuola -  per avere chiarimenti sulla tipologia e le finalità della tipologia di progetto (ad esempio laboratorio tecnologico o digitale, rete di connettività per la scuola, iniziativa di formazione sul digitale, ecc)";
+                  "Se invece il progetto riguarda i servizi e iniziative digitali per le scuole, potresti contattare il Miur - Autorità di Gestione del PON Scuola -  per avere chiarimenti sulla tipologia e le finalità della tipologia di progetto (ad esempio laboratorio tecnologico o digitale, rete di connettività per la scuola, iniziativa di formazione sul digitale, ecc)";
 
                   var body2 = "Se il tuo progetto riguarda i servizi digitali per la pubblica amministrazione, i cittadini e le imprese, le tue domande potrebbero essere: <br />" +
-"<ul><li>quali sono i destinatari del progetto (ad es. la pubblica amministrazione: regione, comuni della regione; cittadini; imprese); </li>" +
-"<li>che tipo di progetto si sta realizzando? (ad esempio: dotazione di hardware e software digitalizzare i processi interni dell'ente, gestione di dati e banche dati di interesse pubblico, piattaforme nazionali abilitanti per l'erogazione di servizi, servizi digital per il cittadini, servizi per le imprese, tecnologie per le città intelligenti, postazioni digitali a disposizione della cittadinanza ecc);</li>" +
-"<li> cosa cambia dopo la conclusione del progetto? (es. i processi interni all'ente pubblico sono semplificati e i tempi di risposta sono ridotti, il cittadino può fruire di un servizio on line invece di recarsi allo sportello, la città ha un sistema di sensoristica in grado di raccogliere dati per l'erogazione di servizi in tempo reale..ecc); </li>" +
-"<li> esiste uno spazio fisico e/o digitale dove avere informazioni sul progetto?; se è un servizio digitale già utilizzabile, con quali strumenti si può accedere?; </li>" +
-"<li> è stata pianificata un'iniziativa di informazione/formazione sul progetto? </li>" +
-"<li> Il progetto ha tenuto conto dell'impatto delle proprie attività sull'utente finale? Come misura tale impatto? - I dati di impatto sono resi pubblici?</li></ul>" +
+                              "<ul><li>quali sono i destinatari del progetto (ad es. la pubblica amministrazione: regione, comuni della regione; cittadini; imprese); </li>" +
+                              "<li>che tipo di progetto si sta realizzando? (ad esempio: dotazione di hardware e software digitalizzare i processi interni dell'ente, gestione di dati e banche dati di interesse pubblico, piattaforme nazionali abilitanti per l'erogazione di servizi, servizi digital per il cittadini, servizi per le imprese, tecnologie per le città intelligenti, postazioni digitali a disposizione della cittadinanza ecc);</li>" +
+                              "<li> cosa cambia dopo la conclusione del progetto? (es. i processi interni all'ente pubblico sono semplificati e i tempi di risposta sono ridotti, il cittadino può fruire di un servizio on line invece di recarsi allo sportello, la città ha un sistema di sensoristica in grado di raccogliere dati per l'erogazione di servizi in tempo reale..ecc); </li>" +
+                              "<li> esiste uno spazio fisico e/o digitale dove avere informazioni sul progetto?; se è un servizio digitale già utilizzabile, con quali strumenti si può accedere?; </li>" +
+                              "<li> è stata pianificata un'iniziativa di informazione/formazione sul progetto? </li>" +
+                              "<li> Il progetto ha tenuto conto dell'impatto delle proprie attività sull'utente finale? Come misura tale impatto? - I dati di impatto sono resi pubblici?</li></ul>" +
 
- "Se il progetto riguarda i servizi digitali per la scuola, <br />" +
-"<ul><li> che tipo di progetto si sta realizzando (ad esempio: laboratorio tecnologico, ambienti digitali per la didattica innovativa, reti di connettività..ecc); </li>" +
-"<li> quante sono le scuole interessate? </li>" +
-"<li> l'iniziativa copre il fabbisogno potenziale delle scuole che necessiterebbero interventi? in quale misura? </li>" +
-"<li>quali sono le criticità che possono emergere a valle dell'intervento (es. gestione delle tecnologie e dei laboratori attivati; sicurezza degli ambienti dove sono collocati i dispositivi tecnologici); </li>" +
-"<li>esistono valutazioni circa l'impatto delle tecnologie sulla didattica? </li>" +
-"<li>le scuole possono fornire feedback sull'efficacia degli interventi in relazione ai bisogni?</li></ul>" +
+                               "Se il progetto riguarda i servizi digitali per la scuola, <br />" +
+                              "<ul><li> che tipo di progetto si sta realizzando (ad esempio: laboratorio tecnologico, ambienti digitali per la didattica innovativa, reti di connettività..ecc); </li>" +
+                              "<li> quante sono le scuole interessate? </li>" +
+                              "<li> l'iniziativa copre il fabbisogno potenziale delle scuole che necessiterebbero interventi? in quale misura? </li>" +
+                              "<li>quali sono le criticità che possono emergere a valle dell'intervento (es. gestione delle tecnologie e dei laboratori attivati; sicurezza degli ambienti dove sono collocati i dispositivi tecnologici); </li>" +
+                              "<li>esistono valutazioni circa l'impatto delle tecnologie sulla didattica? </li>" +
+                              "<li>le scuole possono fornire feedback sull'efficacia degli interventi in relazione ai bisogni?</li></ul>" +
 
- "Se il tuo progetto riguarda settori specifici quali il turismo e la cultura, le tue domande potrebbero essere:  <br />" +
-"<ul><li>quali sono i destinatari del progetto?; </li>" +
-"<li>qual è l’obiettivo?; </li>" +
-"<li>cosa portano in più le nuove tecnologie e/o i servizi digitali introdotti dal progetto?</li>" +
+                               "Se il tuo progetto riguarda settori specifici quali il turismo e la cultura, le tue domande potrebbero essere:  <br />" +
+                              "<ul><li>quali sono i destinatari del progetto?; </li>" +
+                              "<li>qual è l’obiettivo?; </li>" +
+                              "<li>cosa portano in più le nuove tecnologie e/o i servizi digitali introdotti dal progetto?</li>" +
 
- "Se il tuo progetto riguarda settori specifici quali l’inclusione sociale, le tue domande potrebbero essere: <br />" +
-"<ul><li>quali sono i destinatari del progetto?; </li>" +
-"<li>qual è l’obiettivo?; </li>" +
-"<li> su quale dimensione del disagio sociale e/o del divario digitale si interviene? </li>" +
-"<li> l'iniziativa copre il fabbisogno potenziale dei soggetti che necessiterebbero interventi? </li>" +
-"<li> cosa portano in più le nuove tecnologie e/o i servizi digitali introdotti dal progetto?</li></ul>";
+                               "Se il tuo progetto riguarda settori specifici quali l’inclusione sociale, le tue domande potrebbero essere: <br />" +
+                              "<ul><li>quali sono i destinatari del progetto?; </li>" +
+                              "<li>qual è l’obiettivo?; </li>" +
+                              "<li> su quale dimensione del disagio sociale e/o del divario digitale si interviene? </li>" +
+                              "<li> l'iniziativa copre il fabbisogno potenziale dei soggetti che necessiterebbero interventi? </li>" +
+                              "<li> cosa portano in più le nuove tecnologie e/o i servizi digitali introdotti dal progetto?</li></ul>";
                 }
-
               }
               else if (data.oc_cod_tema_sintetico == '03'){
                 sottotema = '';
                 var expert = '';
                 var body =  "";
-var body2  = "";
-var example;
+                var body2  = "";
+                var example;
               }
               else if (data.oc_cod_tema_sintetico == '13'){
                 sottotema = '';
                 var expert = '';
                 var body =  "";
-var example;
+                var example;
               }
               else if (data.oc_cod_tema_sintetico == '04'){
                 sottotema = '';
                 var expert = '';
                 var body =  "";
-var body2  = "";
-var example;
+                var body2  = "";
+                var example;
               }
               else if (data.oc_cod_tema_sintetico == '12'){
                 sottotema = '';
                 var expert = '';
                 var body =  "";
-var body2  = "";
-var example = '<a href="https://monithon.org/reports/1401" target="_blank">Riqualificazione di piazza Savignano ad Aversa (Napoli)</a>';
+                var body2  = "";
+                var example = '<a href="https://monithon.org/reports/1401" target="_blank">Riqualificazione di piazza Savignano ad Aversa (Napoli)</a>';
               }
               else if (data.oc_cod_tema_sintetico == '10'){
                 sottotema = '';
@@ -811,9 +800,14 @@ var example = '<a href="https://monithon.org/reports/1401" target="_blank">Riqua
               $('#guide_s2 .hiliter.theme').text(data.oc_tema_sintetico);
               $('#guide_s2 .hiliter.subtheme').text(sottotema);
               $('#oc_guide_s2_4').html(body + expert);
+<<<<<<< HEAD
               $('#oc_guide_s2_5').html(body2 + expert + domande_confiscati);
               $('#oc_guide_s2_6').html(example + esempi_confiscati);
 
+=======
+              $('#oc_guide_s2_5').html(body2 + expert);
+              $('#oc_guide_s2_6').html(example);
+>>>>>>> 769f0a29e764240ff8bd19a0c74cdde9d7e2921b
 
             });
           }

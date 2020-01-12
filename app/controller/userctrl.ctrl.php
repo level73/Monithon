@@ -53,7 +53,7 @@
                           $User = $Auth->getProfile();
 
                           if($User && $Auth->isLoggedIn()){
-                            header('Location: ' . $referrer);
+                            header('Location: /user/edit');
                           }
                         }
                         else {
@@ -384,7 +384,9 @@
                   $filelist = array($upload);
                 }
               }
-              $File->updateFileReferences(T_USER, $id, $filelist);
+              if(!empty($filelist)){
+                $File->updateFileReferences(T_USER, $id, $filelist);
+              }
             }
 
             $Profile = $this->User->fullProfile($this->user->id);
@@ -392,7 +394,12 @@
             if($this->user->role > 3){
               $ASOC_Profile = new Asoc();
               $asoc_profile = $ASOC_Profile->findBy(array('auth' => $this->user->id));
-              $this->set('ASOC_Profile', $asoc_profile[0]);
+              if(!empty($asoc_profile)){
+                $this->set('ASOC_Profile', $asoc_profile[0]);
+              }
+              else {
+                $this->set('ASOC_Profile', null);
+              }
             }
 
             $Reports = $Report->findBy(array('created_by' => $this->user->id));

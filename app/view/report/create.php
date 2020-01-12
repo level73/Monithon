@@ -29,7 +29,7 @@
                   <label for="oc_api_code">URL del Progetto su OpenCoesione:</label>
                   <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Incolla qui l\'indirizzo (URL) della pagina di OpenCoesione dedicata al progetto che hai scelto di monitorare. Lo trovi nella barra degli indirizzi del tuo browser. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/">Che cos'è?</span>
                   <div class="input-group">
-                    <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="Codice univoco..." class="form-control" value="<?php echo ckv($data, 'id_open_coesione'); ?>">
+                    <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="URL Progetto su OpenCoesione.it ..." class="form-control" value="<?php echo ckv($data, 'id_open_coesione'); ?>">
                     <div class="input-group-append">
                       <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
                     </div>
@@ -64,6 +64,7 @@
                 <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Abbiamo bisogno delle coordinate di Latitudine e Longitudine del progetto monitorato! Inserendo l'indirizzo più vicino al luogo del monitoraggio e cliccando sul pulsante con la lente d'ingrandimento, la mappa vi si centerà e collocherà un marker in quel luogo. Se necessario, è possibile trascinare il marker sulla mappa per essere ancora più precisi nel posizionamento del marker (e quindi del tracciamento delle coordinate!).">Cosa devo fare qui?</span>
                 <div class="input-group">
                   <input type="text" name="indirizzo" id="indirizzo" placeholder="Indirizzo..." class="form-control" value="<?php echo ckv($data, 'indirizzo'); ?>">
+                  <input type="text" name="cap" id="cap" placeholder="CAP..." class="form-control"  value="<?php echo ckv($data, 'cap'); ?>">
                   <div class="input-group-append">
                     <button class="btn btn-primary" id="indirizzo_lookup" type="button"><i class="fal fa-search"></i></button>
                   </div>
@@ -80,8 +81,6 @@
         </div>
 
         <div class="tab-pane fade" id="step-2" role="tabpanel" aria-labelledby="step-2">
-
-
           <div class="d-none" id="oc_api_content_s2">
             <i class="fal fa-sync fa-spin"></i>
           </div>

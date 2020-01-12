@@ -75,6 +75,19 @@
       }
     }
 
+    /**
+      * Check if any errors have been logged.
+      * Set errors and clean up error log
+    **/
+    public function check(){
+      if(isset($_SESSION[APPNAME]['message-log']) && !empty($_SESSION[APPNAME]['message-log'])){
+        foreach($_SESSION[APPNAME]['message-log'] as $log){
+          self::set($log);
+        }
+        unset($_SESSION[APPNAME]['message-log']);
+      }
+    }
+
     public function set($code){
       $this->errors[$code] = $this->dictionary[$code];
     }
