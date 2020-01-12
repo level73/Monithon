@@ -334,6 +334,25 @@ var OpenCoesione = {
               $('#oc_guide_s1_6').html(Block6);
 
               /** EOF BLOCK 6 STEP 1 **/
+
+              /** Beni Confiscati **/
+              var beni_confiscati;
+              $.ajax({
+                url: '/ajax/beni_confiscati/' + data.cod_locale_progetto,
+                dataType: 'json',
+                async: false,
+                success: function(data) {
+                  beni_confiscati = data;
+                }
+              });
+
+              if(beni_confiscati.code == 200){
+                var body = "<br />N.B. Il Progetto rientra nell'elenco dei <strong>Beni Confiscati alle Mafie</strong>";
+                $('#oc_guide_s1_6').append(body);
+              }
+
+
+
             });
 
             // Load S2 Template
@@ -468,6 +487,40 @@ var OpenCoesione = {
               });
               console.log(sottotemi);
 
+              /** Beni Confiscati **/
+              var beni_confiscati;
+              $.ajax({
+                url: '/ajax/beni_confiscati/' + data.cod_locale_progetto,
+                dataType: 'json',
+                async: false,
+                success: function(data) {
+                  beni_confiscati = data;
+                }
+              });
+              console.log(beni_confiscati);
+              var domande_confiscati = '';
+              var esempi_confiscati = '';
+              if(beni_confiscati.code == 200){
+                domande_confiscati += "<br /><strong>Il progetto che hai scelto sembra essere dedicato a un bene confiscato alle mafie!</strong><br />" +
+"Potresti raccogliere ulteriori informazioni specifiche sul bene confiscato, come ad esempio:" +
+"<ul><li>Storia e descrizione del bene: quando è stato costruito? Quando è stato sequestrato, a chi e perchè?</li>" +
+"<li>Qual è il contesto territoriale in cui il bene si inserisce e le sue caratteristiche in termini economici, sociali, culturali?</li>" +
+"<li>Qual era lo stato del bene al momento del sequestro e della confisca?</li>" +
+"<li>Il bene ha già avuto in passato interventi di recupero e valorizzazione?</li>" +
+"<li>Chi gestisce il bene attualmente? Quando è stato consegnato in gestione?</li>" +
+"<li>Quali attività si svolgono?</li>" +
+"<li>Il soggetto gestore è in grado di gestirlo effiacemente?</li>" +
+"<li>Quanti utenti usufruiscono del bene annualmente?</li>" +
+"<li>La destinazione di uso del bene è coerente con l'attività effettivamente svolta?</li>" +
+"<li>Quali altri finanziamenti ha ricevuto o riceve il bene (es. per ristrutturazioni o in capo al soggetto gestore)?</li>" +
+"<li>Quali criticità emergono nella gestione del bene? Es. la gestione è economicamente sostenibile? Quale modello di business è implementato?</li>" +
+"<li>Quali soluzioni è possibile proporre per risolvere tali criticità?</li>" +
+"<li>Quale impatto sul territorio è possibile stimare sulla base delle informazioni raccolte? il recupero del bene confiscato è utile alla comunità territoriale?</li>" +
+"<li>Quali possibili ulteriori possibilità di valorizzazione è possibile consigliare?</li></ul>" +
+
+"Scheda monitoraggio beni confiscati: <a href=\"https://docs.google.com/document/d/1WTy-6n3i9Dfb79_mBm7Sjuyhoch8x7jucZ2bcvWyO1k/edit#\" target=\"_blank\">report Castello di Ottaviano</a><br />Post: <a href=\"http://www.monithon.it/blog/2013/10/24/alle-pendici-del-magico-vesuvio/\" target=\"_blank\">Alle Pendici del Vesuvio</a>";
+
+              }
 
               if(data.oc_cod_tema_sintetico == '07'){
                 //Theme: TRASPORTI
@@ -758,12 +811,8 @@ var example = '<a href="https://monithon.org/reports/1401" target="_blank">Riqua
               $('#guide_s2 .hiliter.theme').text(data.oc_tema_sintetico);
               $('#guide_s2 .hiliter.subtheme').text(sottotema);
               $('#oc_guide_s2_4').html(body + expert);
-              $('#oc_guide_s2_5').html(body2 + expert);
-              $('#oc_guide_s2_6').html(example);
-
-
-
-
+              $('#oc_guide_s2_5').html(body2 + expert + domande_confiscati);
+              $('#oc_guide_s2_6').html(example + esempi_confiscati);
 
 
             });

@@ -193,5 +193,12 @@
       <div class="col-8" id="oc_guide_s2_6"></div>
     </div>
 
+    <div class="row row-guide">
+      <div class="col">
+        BENI CONFISCATI ALLE MAFIE
+    </div>
+
+      <div class="col-8" id="oc_guide_s2_bc"></div>
+    </div>
 
 </section>

@@ -37,8 +37,17 @@
       if($mode == 'json'){
         echo json_encode($sottotema);
       }
+    }
 
-
+    public function beni_confiscati($code){
+      $BeniConfiscati = new Meta('beni_confiscati', true);
+      $bene = $BeniConfiscati->findLexiconEntry('COD_LOCALE_PROGETTO', $code);
+      if($bene){
+        echo json_encode(array('code' => 200, 'message' => 'bene confiscato', 'COD_LOCALE_PROGETTO' => $code));
+      }
+      else {
+        echo json_encode(array('code' => 404, 'message' => 'non trovato', 'COD_LOCALE_PROGETTO' => $code));
+      }
     }
 
   }
