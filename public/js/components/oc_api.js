@@ -476,7 +476,6 @@ var OpenCoesione = {
                   sottotemi = data;
                 }
               });
-<<<<<<< HEAD
               console.log(sottotemi);
 
               /** Beni Confiscati **/
@@ -513,8 +512,6 @@ var OpenCoesione = {
 "Scheda monitoraggio beni confiscati: <a href=\"https://docs.google.com/document/d/1WTy-6n3i9Dfb79_mBm7Sjuyhoch8x7jucZ2bcvWyO1k/edit#\" target=\"_blank\">report Castello di Ottaviano</a><br />Post: <a href=\"http://www.monithon.it/blog/2013/10/24/alle-pendici-del-magico-vesuvio/\" target=\"_blank\">Alle Pendici del Vesuvio</a>";
 
               }
-=======
->>>>>>> 769f0a29e764240ff8bd19a0c74cdde9d7e2921b
 
               if(data.oc_cod_tema_sintetico == '07'){
                 //Theme: TRASPORTI
@@ -706,7 +703,7 @@ var OpenCoesione = {
                       "<ul><li>il numero dei visitatori è aumentato? se sì, quali  categorie in particolare (es. stranieri, giovani, famiglie, scuole, etc.);</li>" +
                       "<li>  la comunità locale (famiglie, scuole, ecc.) è stata direttamente coinvolta in iniziative  promosse dal museo /biblioteca / parco, ecc.?</li>" +
                       "<li>  quali sono gli effetti delle attività di comunicazione e promozionali realizzate rispetto ai target individuati?</li></ul>" +
-                      "Approfondisci questi suggerimenti in questo nostro blog post sviluppato dalla comunità Monithon Piemonte http://www.monithon.it/blog/2014/04/21/monithon-museo-egizio-di-torino-appunti-e-riflessioni-2/";
+                      "Approfondisci questi suggerimenti in <a href=\"http://www.monithon.it/blog/2014/04/21/monithon-museo-egizio-di-torino-appunti-e-riflessioni-2/\" target=\"_blank\">questo nostro blog post</a> sviluppato dalla comunità Monithon Piemonte";
 
                   var example = '<a href="https://monithon.org/reports/1010" target="_blank">Restauro apparati decorativi della Casa della Venere in Conchiglia</a>,  '+
                   '<a href="https://monithon.org/reports/1524" target="_blank">Recupero del Mastio della Cittadella di Torino</a>,  '+
@@ -740,7 +737,7 @@ var OpenCoesione = {
                               "<li> cosa cambia dopo la conclusione del progetto? (es. i processi interni all'ente pubblico sono semplificati e i tempi di risposta sono ridotti, il cittadino può fruire di un servizio on line invece di recarsi allo sportello, la città ha un sistema di sensoristica in grado di raccogliere dati per l'erogazione di servizi in tempo reale..ecc); </li>" +
                               "<li> esiste uno spazio fisico e/o digitale dove avere informazioni sul progetto?; se è un servizio digitale già utilizzabile, con quali strumenti si può accedere?; </li>" +
                               "<li> è stata pianificata un'iniziativa di informazione/formazione sul progetto? </li>" +
-                              "<li> Il progetto ha tenuto conto dell'impatto delle proprie attività sull'utente finale? Come misura tale impatto? - I dati di impatto sono resi pubblici?</li></ul>" +
+                              "<li> Il progetto ha tenuto conto dell'impatto delle proprie attività sull'utente finale? Come misura tale impatto?</li><li>I dati di impatto sono resi pubblici?</li></ul>" +
 
                                "Se il progetto riguarda i servizi digitali per la scuola, <br />" +
                               "<ul><li> che tipo di progetto si sta realizzando (ad esempio: laboratorio tecnologico, ambienti digitali per la didattica innovativa, reti di connettività..ecc); </li>" +
@@ -800,14 +797,10 @@ var OpenCoesione = {
               $('#guide_s2 .hiliter.theme').text(data.oc_tema_sintetico);
               $('#guide_s2 .hiliter.subtheme').text(sottotema);
               $('#oc_guide_s2_4').html(body + expert);
-<<<<<<< HEAD
+
               $('#oc_guide_s2_5').html(body2 + expert + domande_confiscati);
               $('#oc_guide_s2_6').html(example + esempi_confiscati);
 
-=======
-              $('#oc_guide_s2_5').html(body2 + expert);
-              $('#oc_guide_s2_6').html(example);
->>>>>>> 769f0a29e764240ff8bd19a0c74cdde9d7e2921b
 
             });
           }
