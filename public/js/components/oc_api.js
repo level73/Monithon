@@ -164,7 +164,6 @@ var OpenCoesione = {
 
               if(data.oc_cod_tema_sintetico == '07'){
                 //Theme: TRASPORTI
-                var expert = '<span class="oc_expert">Gianpiero Di Muro</span>';
                 var body = "Come prima cosa, è importante farsi un'idea dei grandi obiettivi di livello europeo e nazionale su questo tema. <br />" +
                            "<a href=\"https://www.monithon.it/guida-al-monitoraggio-civico-tema-trasporti/\" target=\"_blank\">Consulta le linee nazionali di indirizzo strategico</a> dell'Accordo di Partenariato 2014-2020 sull'obiettivo dedicato ai trasporti.<br />" +
                            "Troverai un'analisi dei principali problemi che le politiche intendono affrontare, e i relativi obiettivi e azioni di carattere generale, a cui i diversi Programmi Operativi europei (e in particolare FESR e FSE) 2014-2020 contribuiscono a raggiungere.  Anche se il progetto che hai scelto è finanziato nella passata programmazione europea 2007-2013 o da fondi nazionali, è importante conoscere il quadro aggiornato degli obiettivi decisi in modo partecipato da tutte le amministrazioni italiane per l'utilizzo dei fondi europei nel 2014-2020. Ma attenzione, i testi di policy sono difficili da leggere e interpretare, se ne hai la possibilità chiedi aiuto a un esperto!<br />" +
@@ -176,7 +175,6 @@ var OpenCoesione = {
 
               }
               else if (data.oc_cod_tema_sintetico == '01') {
-                var expert = '<span class="oc_expert">Osvaldo La Rosa</span>';
                 var cod_spesa = sottotemi.OC_COD_CATEGORIA_SPESA;
 
                 var flags = ['056', '057', '058', '059', '060', '061'];
@@ -201,7 +199,6 @@ var OpenCoesione = {
               }
 
               else if(data.oc_cod_tema_sintetico == '05'){
-                  var expert = '<span class="oc_expert">Francesca De Lucia</span>';
                   if(
                     (
                       sottotemi.OC_COD_CATEGORIA_SPESA == "49" ||
@@ -246,27 +243,23 @@ var OpenCoesione = {
               }
 
               else if(data.oc_cod_tema_sintetico == '08'){
-                var expert = '';
                 var body =  "Come prima cosa, è importante farsi un'idea dei grandi obiettivi di livello europeo e nazionale su questo tema.<br />" +
                             "<a href=\"http://www.monithon.it/guida-al-monitoraggio-civico-tema-occupazione/\" target=\"_blank\">Consulta le linee nazionali di indirizzo strategico dell'Accordo di Partenariato 2014-2020</a> sull'obiettivo dedicato all'occupazione.<br />" +
                             "Troverai un'analisi dei principali problemi che le politiche intendono affrontare, e i relativi obiettivi e azioni di carattere generale, a cui i diversi Programmi Operativi europei (e in particolare FESR e FSE) 2014-2020 contribuiscono a raggiungere.  Anche se il progetto che hai scelto è finanziato nella passata programmazione europea 2007-2013 o da fondi nazionali, è importante conoscere il quadro aggiornato degli obiettivi decisi in modo partecipato da tutte le amministrazioni italiane per l'utilizzo dei fondi europei nel 2014-2020. Ma attenzione, i testi di policy sono difficili da leggere e interpretare, se ne hai la possibilità chiedi aiuto a un esperto!";
               }
 
               else if(data.oc_cod_tema_sintetico == '11'){
-                var expert = '';
                 var body =  "Come prima cosa, è importante farsi un'idea dei grandi obiettivi di livello europeo e nazionale su questo tema.<br />" +
                             "<a href=\"http://www.monithon.it/guida-al-monitoraggio-civico-tema-occupazione/\" target=\"_blank\">Consulta le linee nazionali di indirizzo strategico dell'Accordo di Partenariato 2014-2020</a> sull'obiettivo dedicato all'istruzione.<br />" +
                             "Troverai un'analisi dei principali problemi che le politiche intendono affrontare, e i relativi obiettivi e azioni di carattere generale, a cui i diversi Programmi Operativi europei (e in particolare FESR e FSE) 2014-2020 contribuiscono a raggiungere.  Anche se il progetto che hai scelto è finanziato nella passata programmazione europea 2007-2013 o da fondi nazionali, è importante conoscere il quadro aggiornato degli obiettivi decisi in modo partecipato da tutte le amministrazioni italiane per l'utilizzo dei fondi europei nel 2014-2020. Ma attenzione, i testi di policy sono difficili da leggere e interpretare, se ne hai la possibilità chiedi aiuto a un esperto!";
               }
 
               else if(data.oc_cod_tema_sintetico == '09'){
-                var expert = '<span class="oc_expert">Lorenzo Improta</span>';
                 var body =  "Come prima cosa, è importante farsi un'idea dei grandi obiettivi di livello europeo e nazionale su questo tema.<br />" +
                             "<a href=\"http://www.monithon.it/guida-al-monitoraggio-civico-tema-inclusione/\" target=\"_blank\">Consulta le linee nazionali di indirizzo strategico dell'Accordo di Partenariato 2014-2020</a> sull'obiettivo dedicato all'inclusione sociale.<br />" +
                             "Troverai un'analisi dei principali problemi che le politiche intendono affrontare, e i relativi obiettivi e azioni di carattere generale, a cui i diversi Programmi Operativi europei (e in particolare FESR e FSE) 2014-2020 contribuiscono a raggiungere.  Anche se il progetto che hai scelto è finanziato nella passata programmazione europea 2007-2013 o da fondi nazionali, è importante conoscere il quadro aggiornato degli obiettivi decisi in modo partecipato da tutte le amministrazioni italiane per l'utilizzo dei fondi europei nel 2014-2020. Ma attenzione, i testi di policy sono difficili da leggere e interpretare, se ne hai la possibilità chiedi aiuto a un esperto!";
               }
               else if(data.oc_cod_tema_sintetico == '06'){
-                var expert = '<span class="oc_expert">Rossella Almanza</span>';
                 var body =    "Come prima cosa, è importante farsi un'idea dei grandi obiettivi di livello europeo e nazionale su questo tema.<br />" +
                               "<a href=\"http://www.monithon.it/guida-al-monitoraggio-civico-tema-ambiente-rifiuti\" target=\"_blank\">Consulta le linee nazionali di indirizzo strategico dell'Accordo di Partenariato 2014-2020</a> sull'obiettivo dedicato alla tutela e valorizzazione del patrimonio ambientale, naturale e culturale. <br />" +
                               "Troverai un\'analisi dei principali problemi che le politiche intendono affrontare, e i relativi obiettivi e azioni di carattere generale, a cui i diversi Programmi Operativi europei (e in particolare FESR e FSE) 2014-2020 contribuiscono a raggiungere.  Anche se il progetto che hai scelto è finanziato nella passata programmazione europea 2007-2013 o da fondi nazionali, è importante conoscere il quadro aggiornato degli obiettivi decisi in modo partecipato da tutte le amministrazioni italiane per l'utilizzo dei fondi europei nel 2014-2020. Ma attenzione, i testi di policy sono difficili da leggere e interpretare, se ne hai la possibilità chiedi aiuto a un esperto!<br />" +
@@ -276,7 +269,6 @@ var OpenCoesione = {
                               "Altre informazione le potresti trovare sul sito dell'Ufficio di Statitstica della tua Regione.";
               }
               else if (data.oc_cod_tema_sintetico == '02'){
-                var expert = '<span class="oc_expert">Marta Pieroni</span>';
 
                 if( (sottotemi.OC_COD_CATEGORIA_SPESA == '10' || OC.subFinder(sottotemi.OC_COD_CATEGORIA_SPESA, ["045", "046", "047", "048"])) || sottotemi.OC_CODICE_PROGRAMMA == '2016MISEBULFSC1'){
                   var body = "Come prima cosa, è importante farsi un'idea dei grandi obiettivi di livello europeo e nazionale su questo tema.<br />" +
@@ -297,21 +289,18 @@ var OpenCoesione = {
 
               }
               else if (data.oc_cod_tema_sintetico == '03'){
-                var expert = '<span class="oc_expert"></span>';
                 var body =  "Come prima cosa, è importante farsi un'idea dei grandi obiettivi di livello europeo e nazionale su questo tema.<br />" +
                             "<a href=\"http://www.monithon.it/guida-al-monitoraggio-civico-tema-ad\" target=\"_blank\">Consulta le linee nazionali di indirizzo strategico dell'Accordo di Partenariato 2014-2020</a> sull'obiettivo dedicato all'agenda digitale (e in particolare alle infrastrutture digitali e ai servizi pubblici).<br />" +
                             "Troverai un'analisi dei principali problemi che le politiche intendono affrontare, e i relativi obiettivi e azioni di carattere generale, a cui i diversi Programmi Operativi europei (e in particolare FESR e FSE) 2014-2020 contribuiscono a raggiungere.  Anche se il progetto che hai scelto è finanziato nella passata programmazione europea 2007-2013 o da fondi nazionali, è importante conoscere il quadro aggiornato degli obiettivi decisi in modo partecipato da tutte le amministrazioni italiane per l'utilizzo dei fondi europei nel 2014-2020. Ma attenzione, i testi di policy sono difficili da leggere e interpretare, se ne hai la possibilità chiedi aiuto a un esperto!";
 
               }
               else if (data.oc_cod_tema_sintetico == '13'){
-                var expert = '<span class="oc_expert"></span>';
                 var body =  "Come prima cosa, è importante farsi un'idea dei grandi obiettivi di livello europeo e nazionale su questo tema.<br />" +
                 "<a href=\"http://www.monithon.it/guida-al-monitoraggio-civico-tema-capacita-istituzionale/\" target=\"_blank\">Consulta le linee nazionali di indirizzo strategico dell'Accordo di Partenariato 2014-2020</a> sull'obiettivo dedicato alla capacità istituzionale.<br />" +
                 "Troverai un'analisi dei principali problemi che le politiche intendono affrontare, e i relativi obiettivi e azioni di carattere generale, a cui i diversi Programmi Operativi europei (e in particolare FESR e FSE) 2014-2020 contribuiscono a raggiungere.  Anche se il progetto che hai scelto è finanziato nella passata programmazione europea 2007-2013 o da fondi nazionali, è importante conoscere il quadro aggiornato degli obiettivi decisi in modo partecipato da tutte le amministrazioni italiane per l'utilizzo dei fondi europei nel 2014-2020. Ma attenzione, i testi di policy sono difficili da leggere e interpretare, se ne hai la possibilità chiedi aiuto a un esperto!";
 
               }
               else if (data.oc_cod_tema_sintetico == '04'){
-                var expert = '<span class="oc_expert">Elena Donnari</span>';
                 var body =  "Come prima cosa, è importante farsi un'idea dei grandi obiettivi di livello europeo e nazionale su questo tema.<br />" +
                 "<a href=\"http://www.monithon.it/guida-al-monitoraggio-civico-tema-energia/\" target=\"_blank\">Consulta le linee nazionali di indirizzo strategico dell'Accordo di Partenariato 2014-2020 sull'obiettivo dedicato all'energia.</a><br />" +
                 "Troverai un'analisi dei principali problemi che le politiche intendono affrontare, e i relativi obiettivi e azioni di carattere generale, a cui i diversi Programmi Operativi europei (e in particolare FESR e FSE) 2014-2020 contribuiscono a raggiungere.  Anche se il progetto che hai scelto è finanziato nella passata programmazione europea 2007-2013 o da fondi nazionali, è importante conoscere il quadro aggiornato degli obiettivi decisi in modo partecipato da tutte le amministrazioni italiane per l'utilizzo dei fondi europei nel 2014-2020. Ma attenzione, i testi di policy sono difficili da leggere e interpretare, se ne hai la possibilità chiedi aiuto a un esperto!";
@@ -319,18 +308,14 @@ var OpenCoesione = {
               }
 
               else if (data.oc_cod_tema_sintetico == '12'){
-                var expert = '<span class="oc_expert">Giovanni Pineschi</span>';
                 var body =  "Guarda se esistono piani per lo sviluppo urbano nella tua città e consultali. Vedi ad esempio <a href=\"http://www.monithon.it/blog/2015/04/29/politiche-pubbliche-per-lo-sviluppo-territoriale-attraverso-la-valorizzazione-del-patrimonio-il-caso-di-pisa/\" target=\"_blank\">questa analisi</a> dei progetti inclusi nel Piano Integrato di Sviluppo Sostenibile di Pisa ";
 
               }
               else if (data.oc_cod_tema_sintetico == '10'){
-                var expert = '<span class="oc_expert"></span>';
-
                 var body =  "";
-
               }
 
-              Block6 += body + expert;
+              Block6 += body;
               $('#oc_guide_s1_6').html(Block6);
 
               /** EOF BLOCK 6 STEP 1 **/
