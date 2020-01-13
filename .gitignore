@@ -3,5 +3,6 @@ node_modules
 config/local.php
 public/src/components
 public/info.php
+scripts/root_user.php
 logs
 .idea
