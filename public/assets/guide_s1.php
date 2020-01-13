@@ -2,9 +2,12 @@
   <div class="row">
     <div class="col">
       <h2>
-        Step 1: Desk Analysis<br />
+        MoniTutor Step 1: Desk Analysis<br />
         <small>Cosa puoi fare prima della visita di Monitoraggio</small>
       </h2>
+      <p>Il primo passo del monitoraggio civico consiste nella ricerca di informazioni utili sul progetto che hai scelto di monitorare, a partire dalle fonti istituzionali, dalle informazioni che puoi trovare sui media, e dalle strategie o politiche più generali che riguardano il tema scelto.</p>
+      <p>Quando avrai finito, puoi iniziare a compilare le domande in fondo. Potrai sempre modificarle successivamente!</p>
+
     </div>
   </div>
 

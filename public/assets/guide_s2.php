@@ -2,10 +2,11 @@
   <div class="row">
     <div class="col">
       <h2>
-        Step 2: Fieldwork<br />
+        MoniTutor Step 2: Fieldwork<br />
         <small>Come puoi impostare la tua ricerca sul campo</small>
       </h2>
       <p>La ricerca sul campo è forse la fase più divertente del monitoraggio civico! E’ cruciale impostare bene il lavoro - sulla base dell’indagine documentale - per ricavare il meglio dai dati che sarà possibile raccogliere tramite le interviste e le visite sul posto. Per una ricerca efficace dovrete mettere in campo <a href="http://www.monithon.it/blog/2013/11/20/11-punti-per-definire-lidentikit-di-un-cittadino-monitorante" target="_blank">tutte e 11 le caratteristiche del perfetto monithoner</a>.</p>
+      <p>Quando hai finito, compila le domande più sotto!</p>
 
     </div>
 
@@ -42,17 +43,16 @@
 
 
     <div class="row row-guide">
-      <div class="col-6" id="attuatori">
-        <h3>Attuatori</h3>
-
-      </div>
-      <div class="col-6" id="beneficiari">
-        <h3>Beneficiari</h3>
-      </div>
-      <div class="col-6" id="programmatori">
+      <div class="col-6 d-none" id="programmatori">
         <h3>Programmatori</h3>
       </div>
-      <div class="col-6" id="realizzatori">
+      <div class="col-6 d-none" id="beneficiari">
+        <h3>Beneficiari</h3>
+      </div>
+      <div class="col-6 d-none" id="attuatori">
+        <h3>Attuatori</h3>
+      </div>
+      <div class="col-6 d-none" id="realizzatori">
         <h3>Realizzatori</h3>
       </div>
     </div>
@@ -84,13 +84,12 @@
       <div class="col-8" id="oc_guide_s2_4"></div>
     </div>
     <div class="row row-guide">
-      <div class="col">
+      <div class="col-12">
         <h3>Scegli le domande per ogni soggetto</h3>
-        Abbiamo preparato degli esempi che potrebbero esserti utili per poi identificare le domande specifiche per il progetto che hai scelto di monitorare. Dai un’occhiata alla nostra griglia di domande, scegli quelle più opportune e usale come base per personalizzarle sulla base dei dati che hai raccolto e alle caratteristiche dello specifico progetto…. o aggiungine di nuove!
+        <p>Abbiamo preparato degli esempi che potrebbero esserti utili per poi identificare le domande specifiche per il progetto che hai scelto di monitorare. Dai un’occhiata alla nostra griglia di domande, scegli quelle più opportune e usale come base per personalizzarle sulla base dei dati che hai raccolto e alle caratteristiche dello specifico progetto…. o aggiungine di nuove!</p>
       </div>
-    </div>
-    <div class="row row-guide">
-      <div class="col">
+
+      <div class="col-12">
         <table class="table table-bordered" cellspacing="0" cellpadding="0">
           <thead class="thead-dark">
             <tr>
@@ -186,6 +185,6 @@
       <div class="col-8" id="oc_guide_s2_6"></div>
     </div>
 
-  
+
 
 </section>

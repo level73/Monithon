@@ -345,7 +345,7 @@ var OpenCoesione = {
 
               // P1
               if(data.oc_stato_progetto == 'In corso'){
-                var prj_status = 'ancora in corso';
+                var prj_status = '<strong>ancora in corso</strong>';
                 var text =  'Valuta come sta andando di persona!<br />' +
                             'Fai foto e video mostrando il progresso nel tempo<br />' +
                             'Raccogli testimonianze sul suo avanzamento.<br />' +
@@ -359,7 +359,7 @@ var OpenCoesione = {
                             '- Cosa andrebbe fatto per renderlo più efficace?<br />';
               }
               else if(data.oc_stato_progetto == 'Concluso' || data.oc_stato_progetto == 'Liquidato'){
-                var prj_status = 'già concluso!';
+                var prj_status = '<strong>già concluso!</strong>';
                 var text =  'Verifica che lo sia veramente, e che tutto sia stato completato come pianificato.<br />' +
                             'Poi, puoi porti domande sui risultati e sul suo impatto dal punto di vista dell’utente finale, ad esempio:<br />' +
                             '- Ha risposto alle aspettative? E’ realmente efficace per gli utenti finali? <br />' +
@@ -420,20 +420,19 @@ var OpenCoesione = {
 
                 if($.inArray('Programmatore', roles) >= 0){
                   programmatori.push(data.soggetti[i]);
-
                   var label = '<strong>' + data.soggetti[i].denominazione + '</strong><br />';
                   var text =  'E’ soggetto cui compete la decisione di finanziare il progetto. <br />';
-
                   if(data.soggetti[i].indirizzo){ text += 'L’indirizzo è ' + data.soggetti[i].indirizzo + ', ' + data.soggetti[i].cap; }
-
-                  $('#programmatori').append('<div class="subject">' + label + text + '</div>');
+                  var copy = label + text;
+                  $('#programmatori').append('<div class="subject">' + copy + '</div>').removeClass('d-none');
                 }
                 else if($.inArray('Attuatore', roles) >= 0){
                   attuatori.push(data.soggetti[i]);
                   var label = '<strong>' + data.soggetti[i].denominazione + '</strong><br />';
                   var text =  'Il soggetto responsabile dell\'attuazione del progetto. Nel caso dei Fondi Strutturali 2007-2013 corrisponde al "beneficiario" L’attuatore può a sua volta avvalersi di altri soggetti nella realizzazione del progetto <br />';
                   if(data.soggetti[i].indirizzo){ text += 'L’indirizzo è ' + data.soggetti[i].indirizzo + ', ' + data.soggetti[i].cap; }
-                  $('#attuatori').append('<div class="subject">' + label + text + '</div>');
+                  var copy = label + text;
+                  $('#attuatori').append('<div class="subject">' + copy + '</div>').removeClass('d-none');
                 }
 
                 if($.inArray('Beneficiario', roles) >= 0){
@@ -441,7 +440,8 @@ var OpenCoesione = {
                   var label = '<strong>' + data.soggetti[i].denominazione + '</strong><br />';
                   var text =  'L’organismo pubblico o privato responsabile dell\'avvio e/o dell\'attuazione delle operazioni. Nel caso di progetti classificati come aiuti di Stato il beneficiario è il soggetto che riceve l\'aiuto.<br />';
                   if(data.soggetti[i].indirizzo){ text += 'L’indirizzo è ' + data.soggetti[i].indirizzo + ', ' + data.soggetti[i].cap; }
-                  $('#beneficiari').append('<div class="subject">' + label + text + '</div>');
+                  var copy = label + text;
+                  $('#beneficiari').append('<div class="subject">' + copy + '</div>').removeClass('d-none');
                 }
 
                 if($.inArray('Realizzatore', roles) >= 0){
@@ -449,7 +449,11 @@ var OpenCoesione = {
                   var label = '<strong>' + data.soggetti[i].denominazione + '</strong><br />';
                   var text =  'Il soggetto che realizza effettivamente il progetto. Nel caso di opere e lavori pubblici coincide con la società titolare del contratto di appalto che esegue materialmente l\'opera. Analogamente per un progetto di acquisto di beni o servizi, il realizzatore è individuabile nella società titolare del contratto di appalto chiamata a fornire i beni o ad erogare il servizio.<br />';
                   if(data.soggetti[i].indirizzo){ text += 'L’indirizzo è ' + data.soggetti[i].indirizzo + ', ' + data.soggetti[i].cap; }
-                  $('#realizzatori').append('<div class="subject">' + label + text + '</div>');
+                  var copy = label + text;
+                  $('#realizzatori').append('<div class="subject">' + copy + '</div>').removeClass('d-none');
+
+
+
                 }
               }
               var sottotemi;

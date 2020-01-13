@@ -23,13 +23,14 @@
         <div class="tab-pane fade show active" id="step-1" role="tabpanel" aria-labelledby="step-1">
           <fieldset>
               <legend>Informazioni di Base</legend>
-
+              <small>Inserisci la URL per fare apparire MoniTutor!</small>
+              <br /><br /><br />
               <!-- Codice OpenCoesione -->
               <div class="form-group">
                   <label for="oc_api_code">URL del Progetto su OpenCoesione:</label>
                   <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Incolla qui l\'indirizzo (URL) della pagina di OpenCoesione dedicata al progetto che hai scelto di monitorare. Lo trovi nella barra degli indirizzi del tuo browser. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/">Che cos'è?</span>
                   <div class="input-group">
-                    <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="URL Progetto su OpenCoesione.it ..." class="form-control" value="<?php echo ckv($data, 'id_open_coesione'); ?>">
+                    <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control" value="<?php echo ckv($data, 'id_open_coesione'); ?>">
                     <div class="input-group-append">
                       <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
                     </div>
