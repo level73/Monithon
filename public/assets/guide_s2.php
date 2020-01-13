@@ -65,14 +65,7 @@
         Seleziona gli articoli e ii siti web più importanti che hai trovato sul progetto scelto e prova a contattare gli autori!
       </div>
     </div>
-    <div class="row row-guide">
-      <div class="col guide-title">
-        Intervista i giornalisti, ricercatori ed esperti che si sono occupati del progetto
-      </div>
-      <div class="col-8" id="">
-        Seleziona gli articoli e ii siti web più importanti che hai trovato sul progetto scelto e prova a contattare gli autori!
-      </div>
-    </div>
+    
 
     <div class="row row-guide">
       <div class="col guide-title">
