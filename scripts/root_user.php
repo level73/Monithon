@@ -1,13 +1,5 @@
 <?php
 
-  /**
-    * This class calculates the Member Engagement Index parameters for each
-    * of the members of ILC. It then proceeds to save these values
-    * to a dedicated table on the membernet database (table name:
-    * registry_member_engagement_index). It can be called as a cronjob
-    * with no arguments to update the index periodically.
-    * */
-
   // Require all needed config files and classes
   require('../config/local.php');
   require('../config/system.php');
@@ -26,8 +18,8 @@
     public function setup(){
       $data = array();
 
-      $data['email'] = 'code@level73.it';
-      $data['password'] = password_hash('secret', PASSWORD_BCRYPT);
+      $data['email'] = '';
+      $data['password'] = password_hash('', PASSWORD_BCRYPT);
       $data['username'] = 'lvl73';
       $data['role'] = 1;
       $data['active'] = 2;
