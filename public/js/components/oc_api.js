@@ -65,7 +65,7 @@ var OpenCoesione = {
 
                 Block1 += 'Il tuo progetto è finanziato dal <strong><a href="' + po.url_oc + '" target="_blank">' + data.programmi[i].oc_descrizione_programma + '</a></strong><br />';
 
-                if(oc_cod_fonte == 'FS0713' || oc_cod_fonte == 'FS0713'){
+                if(oc_cod_fonte == 'FS0713' || oc_cod_fonte == 'FS1420'){
                   var descr_obiettivo_specifico = data.programmi[i].descr_obiettivo_specifico;
                   if(data.programmi[i].descr_obiettivo_specifico == '') {
                     descr_obiettivo_specifico = 'N.D.';
@@ -407,7 +407,7 @@ var OpenCoesione = {
                 if(oc_cod_fonte == 'FS0714' || oc_cod_fonte == 'FS1420'){
 
                   var adg_ref = po.nome_authority;
-                  var text =  'E’ il soggetto responsabile della gestione e dell\'attuazione del  programma operativo. Le sue principali responsabilità sono:<br />' +
+                  var text =  'E’ il soggetto responsabile della gestione e dell\'attuazione del programma operativo. Le sue principali responsabilità sono:<br />' +
                               '<ul><li>assicurare che le attività selezionate per il finanziamento corrispondano ai criteri del programma operativo</li>' +
                               '<li>verificare che i prodotti e i servizi cofinanziati siano erogati in modo efficiente secondo le norme dell\'UE e nazionali</li>' +
                               '<li>registrare e archiviare dati e informazioni sui finanziamenti</li>' +
@@ -478,6 +478,7 @@ var OpenCoesione = {
               });
               console.log(sottotemi);
 
+
               /** Beni Confiscati **/
               var beni_confiscati;
               $.ajax({
@@ -489,27 +490,28 @@ var OpenCoesione = {
                 }
               });
               console.log(beni_confiscati);
+
               var domande_confiscati = '';
               var esempi_confiscati = '';
               if(beni_confiscati.code == 200){
                 domande_confiscati += "<br /><strong>Il progetto che hai scelto sembra essere dedicato a un bene confiscato alle mafie!</strong><br />" +
-"Potresti raccogliere ulteriori informazioni specifiche sul bene confiscato, come ad esempio:" +
-"<ul><li>Storia e descrizione del bene: quando è stato costruito? Quando è stato sequestrato, a chi e perchè?</li>" +
-"<li>Qual è il contesto territoriale in cui il bene si inserisce e le sue caratteristiche in termini economici, sociali, culturali?</li>" +
-"<li>Qual era lo stato del bene al momento del sequestro e della confisca?</li>" +
-"<li>Il bene ha già avuto in passato interventi di recupero e valorizzazione?</li>" +
-"<li>Chi gestisce il bene attualmente? Quando è stato consegnato in gestione?</li>" +
-"<li>Quali attività si svolgono?</li>" +
-"<li>Il soggetto gestore è in grado di gestirlo effiacemente?</li>" +
-"<li>Quanti utenti usufruiscono del bene annualmente?</li>" +
-"<li>La destinazione di uso del bene è coerente con l'attività effettivamente svolta?</li>" +
-"<li>Quali altri finanziamenti ha ricevuto o riceve il bene (es. per ristrutturazioni o in capo al soggetto gestore)?</li>" +
-"<li>Quali criticità emergono nella gestione del bene? Es. la gestione è economicamente sostenibile? Quale modello di business è implementato?</li>" +
-"<li>Quali soluzioni è possibile proporre per risolvere tali criticità?</li>" +
-"<li>Quale impatto sul territorio è possibile stimare sulla base delle informazioni raccolte? il recupero del bene confiscato è utile alla comunità territoriale?</li>" +
-"<li>Quali possibili ulteriori possibilità di valorizzazione è possibile consigliare?</li></ul>" +
+                    "Potresti raccogliere ulteriori informazioni specifiche sul bene confiscato, come ad esempio:" +
+                    "<ul><li>Storia e descrizione del bene: quando è stato costruito? Quando è stato sequestrato, a chi e perchè?</li>" +
+                    "<li>Qual è il contesto territoriale in cui il bene si inserisce e le sue caratteristiche in termini economici, sociali, culturali?</li>" +
+                    "<li>Qual era lo stato del bene al momento del sequestro e della confisca?</li>" +
+                    "<li>Il bene ha già avuto in passato interventi di recupero e valorizzazione?</li>" +
+                    "<li>Chi gestisce il bene attualmente? Quando è stato consegnato in gestione?</li>" +
+                    "<li>Quali attività si svolgono?</li>" +
+                    "<li>Il soggetto gestore è in grado di gestirlo effiacemente?</li>" +
+                    "<li>Quanti utenti usufruiscono del bene annualmente?</li>" +
+                    "<li>La destinazione di uso del bene è coerente con l'attività effettivamente svolta?</li>" +
+                    "<li>Quali altri finanziamenti ha ricevuto o riceve il bene (es. per ristrutturazioni o in capo al soggetto gestore)?</li>" +
+                    "<li>Quali criticità emergono nella gestione del bene? Es. la gestione è economicamente sostenibile? Quale modello di business è implementato?</li>" +
+                    "<li>Quali soluzioni è possibile proporre per risolvere tali criticità?</li>" +
+                    "<li>Quale impatto sul territorio è possibile stimare sulla base delle informazioni raccolte? il recupero del bene confiscato è utile alla comunità territoriale?</li>" +
+                    "<li>Quali possibili ulteriori possibilità di valorizzazione è possibile consigliare?</li></ul>" +
 
-"Scheda monitoraggio beni confiscati: <a href=\"https://docs.google.com/document/d/1WTy-6n3i9Dfb79_mBm7Sjuyhoch8x7jucZ2bcvWyO1k/edit#\" target=\"_blank\">report Castello di Ottaviano</a><br />Post: <a href=\"http://www.monithon.it/blog/2013/10/24/alle-pendici-del-magico-vesuvio/\" target=\"_blank\">Alle Pendici del Vesuvio</a>";
+                    "Scheda monitoraggio beni confiscati: <a href=\"https://docs.google.com/document/d/1WTy-6n3i9Dfb79_mBm7Sjuyhoch8x7jucZ2bcvWyO1k/edit#\" target=\"_blank\">report Castello di Ottaviano</a><br />Post: <a href=\"http://www.monithon.it/blog/2013/10/24/alle-pendici-del-magico-vesuvio/\" target=\"_blank\">Alle Pendici del Vesuvio</a>";
 
               }
 
