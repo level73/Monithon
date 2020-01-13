@@ -65,7 +65,7 @@
         Seleziona gli articoli e ii siti web più importanti che hai trovato sul progetto scelto e prova a contattare gli autori!
       </div>
     </div>
-    
+
 
     <div class="row row-guide">
       <div class="col guide-title">
@@ -186,12 +186,6 @@
       <div class="col-8" id="oc_guide_s2_6"></div>
     </div>
 
-    <div class="row row-guide">
-      <div class="col">
-        BENI CONFISCATI ALLE MAFIE
-    </div>
-
-      <div class="col-8" id="oc_guide_s2_bc"></div>
-    </div>
+  
 
 </section>
