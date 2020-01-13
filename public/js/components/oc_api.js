@@ -63,20 +63,20 @@ var OpenCoesione = {
                 });
 
 
-                Block1 += 'Il tuo progetto è finanziato dal <strong><a href="' + po.url_oc + '" target="_blank">' + data.programmi[i].oc_descrizione_programma + '</a></strong><br />';
+                Block1 += 'Il tuo progetto è finanziato dal <strong><a href="' + po.url_oc + '" target="_blank">' + data.programmi[i].oc_descrizione_programma + '</a></strong>';
 
                 if(oc_cod_fonte == 'FS0713' || oc_cod_fonte == 'FS1420'){
                   var descr_obiettivo_specifico = data.programmi[i].descr_obiettivo_specifico;
                   if(data.programmi[i].descr_obiettivo_specifico == '') {
                     descr_obiettivo_specifico = 'N.D.';
                   }
-                  Block1 += 'Per rispondere a questo obiettivo specifico: <span class="guide-hilite">' + descr_obiettivo_specifico + '</span><br />';
+                  Block1 += ' per rispondere a questo obiettivo specifico: <span class="guide-hilite">' + descr_obiettivo_specifico + '</span>';
                 }
                 if(po.pdf_po){
-                  Block1 += '<a href="' + po.pdf_po + '" target="_blank">Scarica il testo del Programma</a> e cerca gli obiettivi all’interno del documento.<br />';
+                  Block1 += '<br /><a href="' + po.pdf_po + '" target="_blank">Scarica il testo del Programma</a> e cerca gli obiettivi all’interno del documento.';
                 }
                 if(po.url_ec){
-                  Block1 += 'Vedi la <a href="' + po.url_ec + '" target="_blank">sintesi del programma sul sito della Commissione Europea</a>.';
+                  Block1 += '<br />Vedi la <a href="' + po.url_ec + '" target="_blank">sintesi del programma sul sito della Commissione Europea</a>.';
                 }
 
                 if(oc_cod_fonte == 'FSC0713' || oc_cod_fonte == 'FSC1420' || oc_cod_fonte == 'PAC' || oc_cod_fonte == 'PAC1420'){
@@ -313,7 +313,7 @@ var OpenCoesione = {
               else if (data.oc_cod_tema_sintetico == '04'){
                 var expert = '<span class="oc_expert">Elena Donnari</span>';
                 var body =  "Come prima cosa, è importante farsi un'idea dei grandi obiettivi di livello europeo e nazionale su questo tema.<br />" +
-                "<a href=\"http://www.monithon.it/guida-al-monitoraggio-civico-tema-energia/\" target=\"_blank\">Consulta le linee nazionali di indirizzo strategico dell'Accordo di Partenariato 2014-2020 sull'obiettivo dedicato all'energia.<br />" +
+                "<a href=\"http://www.monithon.it/guida-al-monitoraggio-civico-tema-energia/\" target=\"_blank\">Consulta le linee nazionali di indirizzo strategico dell'Accordo di Partenariato 2014-2020 sull'obiettivo dedicato all'energia.</a><br />" +
                 "Troverai un'analisi dei principali problemi che le politiche intendono affrontare, e i relativi obiettivi e azioni di carattere generale, a cui i diversi Programmi Operativi europei (e in particolare FESR e FSE) 2014-2020 contribuiscono a raggiungere.  Anche se il progetto che hai scelto è finanziato nella passata programmazione europea 2007-2013 o da fondi nazionali, è importante conoscere il quadro aggiornato degli obiettivi decisi in modo partecipato da tutte le amministrazioni italiane per l'utilizzo dei fondi europei nel 2014-2020. Ma attenzione, i testi di policy sono difficili da leggere e interpretare, se ne hai la possibilità chiedi aiuto a un esperto!";
 
               }
