@@ -35,4 +35,12 @@
   .subject {
     margin: 10px 0px 25px;
   }
+
+  .prj_status {
+    color: $lagoon;
+    &.bolder {
+      font-weight: 900;
+    }
+  }
+  
 }

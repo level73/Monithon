@@ -14,7 +14,7 @@
 
   <div class="row row-guide">
     <div class="col guide-title">
-      Il Progetto sembra <span class="prj_status hiliter"></span>
+      Il Progetto sembra <span class="prj_status"></span>
     </div>
     <div class="col-8" id="oc_guide_s2_1"></div>
   </div>
@@ -44,16 +44,16 @@
 
     <div class="row row-guide">
       <div class="col-6 d-none" id="programmatori">
-        <h3>Programmatori</h3>
+        <h4>Programmatori</h4>
       </div>
       <div class="col-6 d-none" id="beneficiari">
-        <h3>Beneficiari</h3>
+        <h4>Beneficiari</h4>
       </div>
       <div class="col-6 d-none" id="attuatori">
-        <h3>Attuatori</h3>
+        <h4>Attuatori</h4>
       </div>
       <div class="col-6 d-none" id="realizzatori">
-        <h3>Realizzatori</h3>
+        <h4>Realizzatori</h4>
       </div>
     </div>
 

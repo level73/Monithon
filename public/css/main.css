@@ -195,6 +195,10 @@ textarea {
     text-align: right; }
   .guide .subject {
     margin: 10px 0px 25px; }
+  .guide .prj_status {
+    color: #2ec4b6; }
+    .guide .prj_status.bolder {
+      font-weight: 900; }
 
 footer#main-footer {
   background: #011627;
