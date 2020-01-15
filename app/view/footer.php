@@ -11,7 +11,7 @@
       <ul class="list-unstyled">
         <li><a href="#">Chi siamo</a></li>
         <li><a href="#">Termini & Condizioni</a></li>
-        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="/main/privacy">Privacy Policy</a></li>
         <li><a href="#">Credits</a></li>
       </ul>
     </div>

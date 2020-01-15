@@ -25,7 +25,7 @@ h4 {
 h5 { }
 h6 { }
 
-p {
+p, li {
   font-size: 1em;
   font-weight: 300;
   line-height: 160%;
@@ -43,4 +43,5 @@ a {
   font-weight: bold;
   font-style: italic;
 }
+
 table td { font-size: 0.75rem; }
