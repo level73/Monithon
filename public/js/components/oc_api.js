@@ -507,7 +507,7 @@ var OpenCoesione = {
               if(data.oc_cod_tema_sintetico == '07'){
                 //Theme: TRASPORTI
                 var sottotema = '';
-                var expert = '<span class="oc_expert">Gianpiero Di Muro</span>';
+                var expert = ;
                 var body = "";
 
                 var body2 = "Se il progetto che hai scelto di monitorare è concluso o comunque è possibile provare direttamente i nuovi servizi disponibili, queste sono domande che potreste farvi durante un \"test su strada\" e porvi (o porre!) le seguenti domande:<br />" +
@@ -534,7 +534,7 @@ var OpenCoesione = {
               }
               else if (data.oc_cod_tema_sintetico == '01') {
                 var sottotema = 'Infrastrutture per la ricerca e l\'innovazione';
-                var expert = '<span class="oc_expert">Osvaldo La Rosa</span>';
+                var expert = '';
                 var cod_spesa = sottotemi.OC_COD_CATEGORIA_SPESA;
                 var flags = ['056', '057', '058', '059', '060', '061'];
                 if(cod_spesa == '01' || cod_spesa == '02' || OC.subFinder(cod_spesa, flags)){
@@ -586,7 +586,7 @@ var OpenCoesione = {
 
               }
               else if(data.oc_cod_tema_sintetico == '05'){
-                  var expert = '<span class="oc_expert">Francesca De Lucia</span>';
+                  var expert = '';
                   if(
                     (
                       sottotemi.OC_COD_CATEGORIA_SPESA == "49" ||
@@ -703,7 +703,7 @@ var OpenCoesione = {
                   '<a href="https://monithon.org/reports/1354" target="_blank">Prevenzione agli incendi, la messa in sicurezza e i servizi a disposizione dei visitatori nella celebre riserva naturale siciliana dello “Zingaro”</a>';
               }
               else if (data.oc_cod_tema_sintetico == '02'){
-                var expert = '<span class="oc_expert">Marta Pieroni</span>';
+                var expert = '';
 
                 if( (sottotemi.OC_COD_CATEGORIA_SPESA == '10' || OC.subFinder(sottotemi.OC_COD_CATEGORIA_SPESA, ["045", "046", "047", "048"])) || sottotemi.OC_CODICE_PROGRAMMA == '2016MISEBULFSC1'){
                   sottotema = "Infrastrutture digitali";
@@ -787,9 +787,9 @@ var OpenCoesione = {
 
               $('#guide_s2 .hiliter.theme').text(data.oc_tema_sintetico);
               $('#guide_s2 .hiliter.subtheme').text(sottotema);
-              $('#oc_guide_s2_4').html(body + expert);
+              $('#oc_guide_s2_4').html(body);
 
-              $('#oc_guide_s2_5').html(body2 + expert + domande_confiscati);
+              $('#oc_guide_s2_5').html(body2 + domande_confiscati);
               $('#oc_guide_s2_6').html(example + esempi_confiscati);
 
 
