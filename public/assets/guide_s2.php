@@ -79,7 +79,7 @@
     <div class="row row-guide">
       <div class="col guide-title" id="oc_guide_s2_3">
         Ulteriori tipologie di soggetti da contattare dipendono dal tema più generale in cui, secondo OpenCoesione, è classificato il progetto che hai scelto. <br />
-        Ecco i nostri suggerimenti più specifici sul tema <span class="hiliter theme"></span> - <span class="hiliter subtheme"></span>
+        Ecco i nostri suggerimenti più specifici sul tema <span class="hiliter theme"></span>  <span class="hiliter subtheme"></span>
       </div>
       <div class="col-8" id="oc_guide_s2_4"></div>
     </div>
@@ -169,16 +169,16 @@
     </div>
 
     <div class="row row-guide">
-      <div class="col">
+      <div class="col guide-title">
         Ulteriori domande dipendono dal tema prevalente in cui, secondo OpenCoesione, è classificato il progetto da monitorare.
-        Ecco i nostri suggerimenti sul tema <span class="hiliter theme"></span> - <span class="hiliter subtheme"></span>
-    </div>
+        Ecco i nostri suggerimenti sul tema <span class="hiliter theme"></span>  <span class="hiliter subtheme"></span>
+      </div>
 
       <div class="col-8" id="oc_guide_s2_5"></div>
     </div>
 
     <div class="row row-guide">
-      <div class="col">
+      <div class="col guide-title">
         Ecco alcuni esempi di report già inviati sul tema <span class="hiliter theme"></span> - <span class="hiliter subtheme"></span>
     </div>
 
