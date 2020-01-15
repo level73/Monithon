@@ -2,7 +2,10 @@
 <footer class="container-fluid " id="main-footer">
 
   <div class="row">
-    <div class="col-2">Monithon 2016 - <?php echo strftime('%Y', time()); ?></div>
+    <div class="col-2">
+      Monithon 2016 - <?php echo strftime('%Y', time()); ?><br />
+      <a href="https://level73.it">WITH HELP FROM <img src="https://style.level73.it/assets/images/lvl73-badge.png" alt="LEVEL73" width="15"></a>
+    </div>
     <div class="col-3">
       <h4>A PROPOSITO</h4>
       <ul class="list-unstyled">
@@ -14,7 +17,7 @@
     </div>
     <div class="col-3"></div>
     <div class="col-3">
-      <a href="https://level73.it">MADE BY<br /><img src="https://style.level73.it/assets/images/lvl73-badge.png" alt="LEVEL73" width="35"></a>
+
     </div>
   </div>
 </footer>

@@ -42,10 +42,11 @@
 
   <div class="row row-guide">
     <div class="col guide-title">
-      Cerca dati e documenti utili sull’ambito tematico del progetto che hai scelto
+      Cerca dati e informazioni di contesto
     </div>
     <div class="col-8" id="oc_guide_s1_5">
-      È importante inquadrare il singolo progetto scelto nell’ambito del più ampio tema a cui il progetto si riferisce.<br />
+      E’ importante inquadrare il singolo progetto scelto nell’ambito di un contesto più ampio.<br />
+      Molti spunti per valutare il singolo progetto si possono ottenere dopo essersi fatti un’idea su quali sono i problemi e le opportunità di una città, di una regione o di un settore, e come le politiche pubbliche cercano di rispondere.<br />
       Molti spunti per valutare il singolo progetto si possono ottenere dopo essersi fatti un’idea su quali sono i problemi e le opportunità di ciascun ambito tematico, e come le politiche pubbliche cercano di rispondere.<br />
       Può essere utile consultare materiali sulle politiche messe in campo a livello nazionale e locale, o dare un’occhiata ad altri progetti simili sullo stesso tema.<br />
       <a href="http://www.monithon.it/blog/2013/11/24/come-organizzare-unoperazione-di-monitoraggio-civico-una-ricerca-sullilva-di-taranto/" target="_blank">In questo post</a>, ad esempio, abbiamo analizzato i progetti del tema “ambiente” vicino all’Ilva di Taranto.
@@ -55,7 +56,7 @@
 
   <div class="row row-guide">
     <div class="col guide-title">
-      Come approcciare la tua indagine? I consigli degli esperti tematici di Monithon
+      Segui i nostri link a siti web e documenti sul tema a cui appartiene il progetto
     </div>
     <div class="col-8" id="oc_guide_s1_6"></div>
   </div>

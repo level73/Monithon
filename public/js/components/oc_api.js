@@ -372,7 +372,7 @@ var OpenCoesione = {
                             'Se ancora non è avviato o è avviato da poco, potresti valutare la bontà della pianificazione: intervista i progettisti e i programmatori e chiedi che ti vengano mostrati i documenti di progettazione per poter verificare nel tempo i progressi. L’opera è realmente utile così come progettata?<br />' +
                             'Per esempio, dai un’occhiata a questa nostra <a href="http://www.monithon.it/blog/2014/02/22/monithon-2014-una-radiografia-completa-allanello-ferroviario-di-palermo/" target="_blank">analisi partecipativa sulla pianificazione di una grande infrastruttura di trasporto a Palermo.</a>';
               }
-              $('.prj_status').text(prj_status);
+              $('.prj_status').html(prj_status);
               $('#oc_guide_s2_1').html(text);
 
 
@@ -507,7 +507,7 @@ var OpenCoesione = {
               if(data.oc_cod_tema_sintetico == '07'){
                 //Theme: TRASPORTI
                 var sottotema = '';
-                var expert = ;
+                var expert = '';
                 var body = "";
 
                 var body2 = "Se il progetto che hai scelto di monitorare è concluso o comunque è possibile provare direttamente i nuovi servizi disponibili, queste sono domande che potreste farvi durante un \"test su strada\" e porvi (o porre!) le seguenti domande:<br />" +
