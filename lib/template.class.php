@@ -26,7 +26,7 @@
 
       extract($this->variables);
 
-      if( !in_array($this->_method, $this->exclude) && $this->_controller != 'ajax'  && $this->_controller != 'api' && $this->_method != 'export'  && $this->_method != 'jsonWorkAreas' ){
+      if( !in_array($this->_method, $this->exclude) && $this->_controller != 'ajax'  && $this->_controller != 'api' && $this->_method != 'export' ){
         /* Include Base Head @ view/head.php */
         include (ROOT . DS . 'app' . DS . 'view' . DS . 'head.php');
 
