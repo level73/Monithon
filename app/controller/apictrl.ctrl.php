@@ -32,7 +32,7 @@
                 break;
               case 3:
                 $status = 'In attesa di revisione';
-                break:
+                break;
               case 5:
                 $status = 'In revisione';
                 break;
