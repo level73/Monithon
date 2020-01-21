@@ -2,6 +2,20 @@
 
   class ApiCtrl extends Ctrl {
 
+    public function __construct($model, $controller, $action){
+      parent::__construct($model, $controller, $action);
+
+      $this->Errors = new Errors;
+      // get allowed origins
+    //  $origins = $this->Api->all();
+      // Produce headers for allowed origins
+
+    //  foreach($origins as $origin){
+    //    header('Access-Control-Allow-Origin: ' . $origin->registrar);
+    //  }
+      header('Content-type:application/json;charset=UTF-8');
+      mb_internal_encoding('UTF-8');
+    }
 
     public function getReport($report_id){
       if( httpCheck('get', true) ){
