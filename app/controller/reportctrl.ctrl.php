@@ -75,6 +75,7 @@
           unset($data['link-attachment']);
 
           $data = array_filter($data);
+          $data = recursiveStripTags($data);
 
           $data['created_by'] = $this->User->id;
           $report = $this->Report->create($data);
@@ -198,6 +199,7 @@
           if( httpCheck('post', true) ){
             $data = $_POST;
             // $this->set('data', $data);
+            $data = recursiveStripTags($data);
 
             $videos = $data['video-attachment'];
             $links = $data['link-attachment'];

@@ -79,7 +79,7 @@
     **/
     public function findBy($params){
       $sql = 'SELECT * FROM `' . $this->table . '` WHERE ';
-      $sql .= implode(query_placeholders($params), ' AND ');
+      $sql .= implode(' AND ', query_placeholders($params));
 
       $stmt = $this->database->prepare($sql);
 

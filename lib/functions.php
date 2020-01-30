@@ -256,6 +256,19 @@ function FileSizeConvert($bytes){
     return $result;
 }
 
+/** Recursive Strip Tags **/
+function recursiveStripTags($data) {
+  foreach ($data as $key => $value) {
+    if(is_array($value)) {
+      $data[$key] = recursiveStripTags($value);
+    }
+    else {
+      $data[$key] = strip_tags($value);
+    }
+  }
+  return $data;
+}
+
 /** Print Styles for status **/
 function status($status){
   switch($status){
