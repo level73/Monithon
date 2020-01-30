@@ -569,7 +569,71 @@
         }
 
 
-        public function recover(){ }
+        public function recover(){
+          $Errors = new Errors;
+
+          $this->set('title', 'Recupero Account');
+
+          if(strtoupper($_SERVER['REQUEST_METHOD']) == 'POST' && isset($_POST) && !empty($_POST)){
+            /** check for values **/
+            if(empty($_POST['email'])){
+              $Errors->set(600);
+            }
+            if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+              $Errors->set(601);
+            }
+
+
+            /** No errors until now, let's try and login **/
+            if(empty($Errors->errors)){
+
+              $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+              $user  = $this->User->findBy( array('email' => $email, 'active' => 2 ));
+
+
+
+              if($user){
+                // Generate recovery hash
+                $hash = bin2hex(openssl_random_pseudo_bytes(32));
+                // Add hash to database
+                $query = $this->User->update($user[0]->idauth, array('recover' => $hash));
+
+
+                $Subject = 'Monithon: Recupero Password';
+                $Email = $user[0]->email;
+                $Headers =  "MIME-Version: 1.0\r\n" .
+                            "Content-type: text/html; charset=utf-8\r\n" .
+                            "From: " . APPEMAIL . "\r\n" .
+                            "Reply-To: " . APPEMAIL . "\r\n" .
+                            "Return-Path: " . APPEMAIL . "\r\n";
+
+                $Message = "Ciao " . $user[0]->username . ", <br />
+                            Hai richeisto di recuperare la tua password per accedere a Monithon. <br />
+                            Se non hai effettuato tu la richiesta di recupero, ignora il messaggio. <br />
+                            Altrimenti clicca su questo link: <a href=\"" . APPURL . "/user/reset/" . $hash . "\">" . APPURL . "/user/reset/" . $hash . "</a>.
+                            Se il link non dovesse funzioanre, per favore copia ed incolla la URL nel tuo browser. <br /><br />
+                            ";
+
+                $sent = mail($Email, $Subject, $Message, $Headers);
+                if($sent){
+                  $Errors->set(0);
+                }
+                else {
+                  $Errors->set(580);
+                }
+
+              } else {
+                /** No user with that email **/
+                $Errors->set(607);
+              }
+            }
+            $this->set('errors', $Errors);
+          }
+
+
+
+
+        }
 
         public function activate($code){
           $this->set('title', 'Attivazione Account');
@@ -584,7 +648,66 @@
 
         }
 
-        public function reset(){ }
+        public function reset($hash){
+          // Setup Models
+          $UserModel = new User;
+          $Errors = new Errors;
+          $redir = false;
+
+          // Setup Page data
+          $this->set('title', 'Recupero Password');
+
+          // Look for the $hash
+          $User = $UserModel->findBy( array('recover' => $hash) );
+
+          if( !empty($User) ){
+            // if hash is found, ask for the new pwd
+            $this->set('uname', $User[0]->username);
+            $this->set('hash', $User[0]->recover);
+            $this->set('pwd_reset', true);
+          }
+          else {
+            // if the hash is not found, print an error
+            $this->set('pwd_reset', false);
+
+          }
+
+          if(strtoupper($_SERVER['REQUEST_METHOD']) === 'POST' && !empty($_POST)){
+            // if we have POST data, lets reset the passowrd of the hash
+            if(empty($_POST['hash'])){ $Errors->set(604); }
+            if(empty($_POST['pwd']) || empty($_POST['pwd_C'])){ $Errors->set(602); }
+            if($_POST['pwd'] !== $_POST['pwd_C']) { $Errors->set(609); }
+
+
+            if(empty($Errors->errors)){
+              // let's get the user by the hash
+              $User = $UserModel->findBy( array('recover' => filter_var($_POST['hash'], FILTER_SANITIZE_STRING)) );
+              // Encrypt the pwd
+              $data['password'] = password_hash( filter_var($_POST['pwd'], FILTER_SANITIZE_STRING), PASSWORD_BCRYPT);
+              // unset the hash
+              $data['recover'] = NULL;
+              // no errors, let's reset the password
+              if(!empty($User)) {
+                $update = $UserModel->update($User[0]->idauth, $data);
+                if($update){
+                  $Errors->set(3);
+                  $redir = true;
+                }
+                else {
+                  $Errors->set(611);
+                }
+              }
+            }
+
+            if(!empty($Errors->errors)){
+
+              $Errors->display();
+            }
+
+          }
+            $this->set('redir', $redir);
+        }
+
 
         /** Error page **/
         public function ops(){
