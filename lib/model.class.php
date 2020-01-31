@@ -102,18 +102,14 @@
     /** Update record **/
     public function update($id, $data){
       $sql = 'UPDATE ' . $this->table . ' SET ' . implode(', ', query_placeholders($data)) . ' WHERE ' . $this->pkey . ' = :id';
-      // echo $sql . "<br /><br />";
       $stmt = $this->database->prepare($sql);
       foreach($data as $field => $value ){
-      //  echo "Working on <strong>" . $field . "</strong> [" . $value . "]<br />";
         if( ( empty($value) || is_null($value) ) ){
           $data[$field] = null;
         }
-        // echo "transformed into - " . $data[$field] . "<br /><br />";
       }
 
       foreach($data as $field => &$value){
-        // echo "BINDING " . $field . " TO " . $value . "<br />";
         $stmt->bindParam(':' . $field, $value);
       }
       $stmt->bindParam(':id', $id, PDO::PARAM_INT);

@@ -334,7 +334,7 @@
 
                 $asoc = array();
 
-                $asoc['remote_id']      = is_numeric(filter_var($data['remote_id'], FILTER_SANITIZE_NUMBER_INT)) ? filter_var($data['remote_id'], FILTER_SANITIZE_NUMBER_INT) : null;
+                $asoc['remote_id']      = filter_var($data['remote_id'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);;
                 $asoc['auth']           = $id;
                 $asoc['istituto']       = filter_var($data['istituto'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $asoc['tipo_istituto']  = filter_var($data['tipo_istituto'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
