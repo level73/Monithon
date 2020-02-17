@@ -400,9 +400,13 @@
               else {
                 $this->set('ASOC_Profile', null);
               }
+              $Reports = $Report->findBy(array('created_by' => $this->user->id));
+            }
+            else {
+              $Reports = $Report->reviewableReports($this->user->id);
             }
 
-            $Reports = $Report->findBy(array('created_by' => $this->user->id));
+
             $this->set('errors', $Errors);
             $this->set('Profile', $Profile);
             $this->set('reports', $Reports);
@@ -477,15 +481,6 @@
                   $asoc['link_blog']      = filter_var($data['link_blog'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                   $asoc['link_elaborato'] = filter_var($data['link_elaborato'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                  unset($data['remote_id']);
-                  unset($data['istituto']);
-                  unset($data['tipo_istituto']);
-                  unset($data['regione']);
-                  unset($data['provincia']);
-                  unset($data['comune']);
-                  unset($data['link_blog']);
-                  unset($data['link_elaborato']);
-
                   $ASOC = new Asoc;
                   $asocprofile = $ASOC->findBy(array('auth' => $id));
                   if($asocprofile){
@@ -496,6 +491,17 @@
                     $ASOC->create($asoc);
                   }
                 }
+
+
+                unset($data['remote_id']);
+                unset($data['istituto']);
+                unset($data['tipo_istituto']);
+                unset($data['regione']);
+                unset($data['provincia']);
+                unset($data['comune']);
+                unset($data['link_blog']);
+                unset($data['link_elaborato']);
+
 
                 // Update profile
                 $u = $this->User->update($id, $data);
