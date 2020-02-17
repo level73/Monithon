@@ -155,11 +155,23 @@ function hellip($title, $length = 60){
 /** Check if user has permission **/
 function hasPermission($user, $permission){
     $permissions = array_keys($user->permissions);
-    if(in_array($permission, $permissions)){
-      return true;
+    if(is_array($permission)){
+      foreach($permission as $p){
+        if(in_array($p, $permissions)){
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
     }
     else {
-      return false;
+      if(in_array($permission, $permissions)){
+        return true;
+      }
+      else {
+        return false;
+      }
     }
 }
 

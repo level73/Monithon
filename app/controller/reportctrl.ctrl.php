@@ -34,13 +34,20 @@
         $this->set('logged', $logged);
       }
 
-      $this->set('title', 'Lista dei Report');
-      $Errors = new Errors();
 
     }
 
     /** View Report - public **/
-    public function view($id){ }
+    public function view($id){
+
+      $this->set('title', 'Report');
+      $Errors = new Errors();
+      $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+      $Report = $this->Report->getReport($id);
+      $this->set('report', $Report);
+
+
+    }
 
     /** New Report **/
     public function create(){
@@ -306,6 +313,60 @@
 
         } else {
           header('Location: /user/forbidden');
+        }
+      }
+    }
+
+    /** Review Reports
+      * Edit fields, add comments
+      * Save to draft/published
+      * Save who the reviewing user is
+      * Send email update to involved users
+    **/
+    public function review($id){
+      // Login check
+      if(!$this->Auth->isLoggedIn()){
+        header('Location: /user/login?r=1');
+      }
+      else {
+        // Check for ownership or permissions
+        if( hasPermission($this->User, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD)) || $this->User->id != $r->created_by){
+
+          $logged = true;
+          $this->set('logged', $logged);
+          $this->set('title', 'Revisione Report');
+          $this->set('street_map', true);
+          $this->set('js', array('components/oc_api.js', 'components/leaflet_location_map.js'));
+
+          $this->Errors->check();
+          if(!empty($this->Errors->errors)){
+            $this->set('errors', $this->Errors);
+          }
+
+
+
+          if( httpCheck('post', true) ){
+            // Sanitize data
+
+            // Save Report
+
+            // Save Comments
+
+            // Check status change
+
+            // Send Email
+          }
+
+          // Load Report
+          $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+          $report = $this->Report->find($id);
+          // Load Comments
+
+          // Load Attachments
+
+          // Send to template
+          $this->set('data', $report);
+
         }
       }
     }

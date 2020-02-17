@@ -3,12 +3,12 @@
     <div class="col">
 
       <h1>
-        Modifica il Report<br />
+        Revisiona il Report<br />
         <small><?php echo $data->titolo; ?></small>
       </h1>
 
 
-      <form class="" method="post" enctype="multipart/form-data" action="/report/edit/<?php echo $data->idreport_basic; ?>">
+      <form class="" method="post" enctype="multipart/form-data" action="/report/review/<?php echo $data->idreport_basic; ?>">
       <input type="hidden" name="id" value="<?php echo $data->idreport_basic; ?>">
 
       <ul class="nav nav-tabs nav-fill" id="report-tablist" role="tablist">

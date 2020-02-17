@@ -8,7 +8,7 @@
         <?php echo $title; ?>
       </h1>
     </div>
-    
+
   </div>
   <form  id="" method="post" action="/user/edit" enctype="multipart/form-data">
     <div class="row">
@@ -150,7 +150,16 @@
               <?php if($r->status == 1){ ?>
               <a href="/report/edit/<?php echo $r->idreport_basic; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
               <?php } else { ?>
-              <button type="button" disabled class="btn btn-default btn-sm"><i class="far fa-lock-alt"></i></button>
+                <?php
+                if( hasPermission($user, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD) ) || $r->reviewed_by == $user->id ){
+                ?>
+                <a href="/report/review/<?php echo $r->idreport_basic; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
+                <?php
+                }  else {
+                ?>
+                  <button type="button" disabled class="btn btn-default btn-sm"><i class="far fa-lock-alt"></i></button>
+                <?php } ?>
+
               <?php } ?>
             </td>
           </tr>
@@ -160,6 +169,7 @@
 
     </div>
   </section>
+
   <?php } ?>
 
 

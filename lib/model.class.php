@@ -103,6 +103,9 @@
     public function update($id, $data){
       $sql = 'UPDATE ' . $this->table . ' SET ' . implode(', ', query_placeholders($data)) . ' WHERE ' . $this->pkey . ' = :id';
       $stmt = $this->database->prepare($sql);
+      if(!$stmt){
+        dbga( $this->database->errorInfo() );
+      }
       foreach($data as $field => $value ){
         if( ( empty($value) || is_null($value) ) ){
           $data[$field] = null;
@@ -110,7 +113,10 @@
       }
 
       foreach($data as $field => &$value){
-        $stmt->bindParam(':' . $field, $value);
+        $binder = $stmt->bindParam(':' . $field, $value);
+        if(!$binder){
+           echo 'error binding params: ['.$field.'|'.$value.'] :: ' . $stmt->error;
+        }
       }
       $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
@@ -131,7 +137,6 @@
     public function create($data){
       $sql = 'INSERT INTO ' . $this->table . ' (`' . implode('`, `', array_keys($data)) . '`) VALUES (' . implode(', ', query_placeholders($data, true)) . ')';
       $stmt = $this->database->prepare($sql);
-
       foreach($data as $field => &$value){
         $stmt->bindParam(':' . $field, $value);
       }

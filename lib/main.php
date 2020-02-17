@@ -60,9 +60,10 @@ function init(){
 
   // Check for a method and (eventually) a querystring
   if (!empty($array_url)) {
-    $method = $array_url[0];
-    array_shift($array_url);
-    $queryString = $array_url;
+      $method = $array_url[0];
+      array_shift($array_url);
+      $queryString = $array_url;
+    
   }
   else {
     // Set default method
