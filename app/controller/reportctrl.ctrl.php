@@ -336,7 +336,7 @@
           $this->set('logged', $logged);
           $this->set('title', 'Revisione Report');
           $this->set('street_map', true);
-          $this->set('js', array('components/oc_api.js', 'components/leaflet_location_map.js'));
+          $this->set('js', array('components/oc_api.js', 'components/leaflet_location_map.js', 'section/review.js'));
 
           $this->Errors->check();
           if(!empty($this->Errors->errors)){

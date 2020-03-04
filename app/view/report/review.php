@@ -30,8 +30,7 @@
           <!-- Codice OpenCoesione -->
           <fieldset>
             <legend>Informazioni di Base</legend>
-            <small>Inserisci la URL per fare apparire MoniTutor!</small>
-            <br /><br /><br />
+
             <div class="form-group">
                 <label for="oc_api_code">URL del Progetto su OpenCoesione:</label>
                 <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Incolla qui l\'indirizzo (URL) della pagina di OpenCoesione dedicata al progetto che hai scelto di monitorare. Lo trovi nella barra degli indirizzi del tuo browser. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/">Che cos'è?</span>
@@ -40,10 +39,7 @@
                   <div class="input-group-append">
                     <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
                   </div>
-
-                </div>
-                <div class="d-none" id="oc_api_content_s1">
-                  <i class="fal fa-sync fa-spin"></i>
+                  <input type="hidden" name="api_data" id="oc_data" value="">
                 </div>
             </div>
 
@@ -52,7 +48,14 @@
 
               <div class="form-group">
                 <label for="titolo">Titolo:</label>
-                <input type="text" name="titolo" id="titolo" class="form-control" value="<?php echo ckv_object($data, 'titolo'); ?>">
+                <div class="input-group">
+                  <input type="text" name="titolo" id="titolo" class="form-control" value="<?php echo ckv_object($data, 'titolo'); ?>">
+                  <div class="input-group-append">
+                    <button class="btn btn-primary comment" data-field="titolo" id="comment[titolo]" type="button"><i class="fal fa-comment"></i></button>
+                  </div>
+                </div>
+
+                
               </div>
               <div class="form-group">
                 <label for="autore">Autore:</label>
