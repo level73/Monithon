@@ -40,7 +40,7 @@
                   <div class="input-group-append">
                     <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
                   </div>
-                  <input type="hidden" name="api_data" id="oc_data" value="">
+
                 </div>
                 <div class="d-none" id="oc_api_content_s1">
                   <i class="fal fa-sync fa-spin"></i>

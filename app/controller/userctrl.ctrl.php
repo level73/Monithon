@@ -294,6 +294,7 @@
           $Errors     = new Errors();
           $Report     = new Report();
 
+
           if(!$this->Auth->isLoggedIn()){
             header('Location: /user/login');
           }
@@ -302,6 +303,7 @@
             $this->set('logged', $this->logged);
 
             $this->user = $this->Auth->getProfile();
+          
             $this->set('user', $this->user);
             $this->set('title', 'Modifica il tuo Profilo');
 
