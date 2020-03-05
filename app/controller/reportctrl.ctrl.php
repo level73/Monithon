@@ -331,7 +331,7 @@
       else {
         // Check for ownership or permissions
         if( hasPermission($this->User, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD)) || $this->User->id != $r->created_by){
-
+          $Comments = new Comment();
           $logged = true;
           $this->set('logged', $logged);
           $this->set('title', 'Revisione Report');
@@ -346,12 +346,30 @@
 
 
           if( httpCheck('post', true) ){
-            // Sanitize data
+
+              // Sanitize data
+              $data = $_POST;
+              $data = recursiveStripTags($data);
+
+              $videos = $data['video-attachment'];
+              $links = $data['link-attachment'];
+              unset($data['video-attachment']);
+              unset($data['link-attachment']);
+              unset($data['id']);
+
+              $comments = $data['comment'];
+              unset($data['comment']);
 
             // Save Report
-
+              $update = $this->Report->update($id, $data);
+              if($update) {
+                  $record = $id;
+                  $this->Errors->set(21);
+              }
             // Save Comments
-
+            foreach($comments as $field => $comment){
+                $saved = $Comments->save($comment, $field, T_REP_BASIC, $id, $this->User->id);
+            }
             // Check status change
 
             // Send Email
@@ -361,7 +379,7 @@
           $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
           $report = $this->Report->find($id);
           // Load Comments
-
+          $this->set('comments', $Comments->findBy(array('entity' => T_REP_BASIC, 'record' => $id)));
           // Load Attachments
 
           // Send to template

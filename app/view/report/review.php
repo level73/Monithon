@@ -39,7 +39,6 @@
                   <div class="input-group-append">
                     <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
                   </div>
-                  <input type="hidden" name="api_data" id="oc_data" value="">
                 </div>
             </div>
 
@@ -54,23 +53,40 @@
                     <button class="btn btn-primary comment" data-field="titolo" id="comment[titolo]" type="button"><i class="fal fa-comment"></i></button>
                   </div>
                 </div>
-
-                
+                <?php showComment($comments, 'titolo'); ?>
               </div>
               <div class="form-group">
                 <label for="autore">Autore:</label>
-                <input type="text" name="autore" id="autore" class="form-control" value="<?php echo ckv_object($data, 'autore'); ?>">
+                  <div class="input-group">
+                    <input type="text" name="autore" id="autore" class="form-control" value="<?php echo ckv_object($data, 'autore'); ?>">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary comment" data-field="autore" id="comment[autore]" type="button"><i class="fal fa-comment"></i></button>
+                    </div>
+                  </div>
+                  <?php showComment($comments, 'autore'); ?>
               </div>
 
               <div class="form-group">
                 <label for="descrizione">Descrizione:</label>
-                <textarea name="descrizione" id="descrizione" class="form-control"><?php echo ckv_object($data, 'descrizione'); ?></textarea>
+                  <div class="input-group">
+                    <textarea name="descrizione" id="descrizione" class="form-control"><?php echo ckv_object($data, 'descrizione'); ?></textarea>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary comment" data-field="descrizione" id="comment[descrizione]" type="button"><i class="fal fa-comment"></i></button>
+                    </div>
+                  </div>
+                  <?php showComment($comments, 'descrizione'); ?>
               </div>
 
 
               <div class="form-group">
                 <label for="parte_di_piano"><?php t('Il progetto fa parte di un piano di interventi più ampio? Se sì, qual è l’obiettivo complessivo di questo piano?'); ?></label>
-                <textarea name="parte_di_piano" id="parte_di_piano" class="form-control"><?php echo ckv_object($data, 'parte_di_piano'); ?></textarea>
+                  <div class="input-group">
+                      <textarea name="parte_di_piano" id="parte_di_piano" class="form-control"><?php echo ckv_object($data, 'parte_di_piano'); ?></textarea>
+                      <div class="input-group-append">
+                          <button class="btn btn-primary comment" data-field="parte_di_piano" id="comment[parte_di_piano]" type="button"><i class="fal fa-comment"></i></button>
+                      </div>
+                  </div>
+                  <?php showComment($comments, 'parte_di_piano'); ?>
               </div>
 
 
@@ -373,14 +389,26 @@
           </div>
           <div class="tab-pane fade" id="step-3" role="tabpanel" aria-labelledby="step-3"><h3>Coming Soon</h3></div>
         </div>
+          <div class="">
+              <h3>IMPOSTA LO STATO DEL REPORT</h3>
 
-        <div class="form-group">
-          <div class="custom-control custom-checkbox">
-            <input class="custom-control-input" type="checkbox" value="<?php echo PENDING_REVIEW; ?>" id="status" name="status">
-            <label class="custom-control-label" for="status">Il Report è pronto per essere revisionato dalla Redazione, che lo pubblicherà se rispetterà i nostri <a href="#">Termini d'uso</a></label>
+              <div class="form-group">
+                  <div class="custom-control custom-radio">
+                      <input class="custom-control-input" type="radio" value="<?php echo DRAFT; ?>" id="status-1" name="status" <?php echo ($data->status == DRAFT ? 'checked' : ""); ?>>
+                      <label class="custom-control-label" for="status-1">Riporta il report in <strong>BOZZA</strong>, per permettere ai reporter di modificarlo</label>
+                  </div>
+
+                  <div class="custom-control custom-radio">
+                      <input class="custom-control-input" type="radio" value="<?php echo PENDING_REVIEW; ?>" id="status-3" name="status" <?php echo ($data->status == PENDING_REVIEW ? 'checked' : ""); ?>>
+                      <label class="custom-control-label" for="status-3">Riporta il report in <strong>ATTESA DI REVISIONE</strong></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input class="custom-control-input" type="radio" value="<?php echo PUBLISHED; ?>" id="status-7" name="status" <?php echo ($data->status == PUBLISHED ? 'checked' : ""); ?>>
+                      <label class="custom-control-label" for="status-7">Imposta il report come <strong>APPROVATO</strong></label>
+                  </div>
+              </div>
           </div>
 
-        </div>
         <div class="form-group">
           <button class="btn btn-primary btn-lg" type="submit" ><i class="fal fa-save"></i> Salva Report</button>
         </div>

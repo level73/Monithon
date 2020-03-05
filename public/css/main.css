@@ -169,6 +169,24 @@ textarea {
   margin-top: 0px;
   margin-bottom: 10px; }
 
+.commented-wrapper {
+  border: 1px solid #2ec4b6;
+  padding: 15px;
+  margin: 5px 0px 15px; }
+  .commented-wrapper .timestamp {
+    font-size: 12px;
+    display: inline-block;
+    float: left; }
+  .commented-wrapper .commented-delete {
+    display: inline-block;
+    padding-top: 0px;
+    float: right; }
+  .commented-wrapper .commented-text {
+    display: block;
+    clear: both;
+    padding: 4px 10px;
+    font-style: italic; }
+
 #main-header {
   background: #2ec4b6; }
 

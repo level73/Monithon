@@ -160,5 +160,25 @@ textarea { min-height: 6em; }
   background: transparentize($lagoon, 0.9);
   margin-top: 0px;
   margin-bottom: 10px;
+}
 
+.commented-wrapper {
+  border: 1px solid $lagoon;
+  padding: 15px;
+  margin: 5px 0px 15px;
+  .timestamp {
+    font-size: 12px;
+    display: inline-block;
+    float: left;
+  }
+  .commented-delete {
+    display: inline-block;
+    padding-top: 0px;
+    float: right;
+  }
+  .commented-text {
+    display: block; clear: both;
+    padding: 4px 10px;
+    font-style: italic;
+  }
 }

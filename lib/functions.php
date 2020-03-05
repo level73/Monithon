@@ -318,8 +318,18 @@ function avatar($Profile){
   else {
     echo '<img src="https://avatars.dicebear.com/v2/bottts/bob%20robot%20.svg?options[colors][]=yellow&options[colors][]=brown&options[textureChance]=0&options[mouthChance]=52&options[sidesChance]=13&options[topChange]=26" class="avatar img-responsive">';
   }
+}
 
-
+function showComment($comments, $field){
+    foreach($comments as $comment){
+        if($comment->field == $field){
+            echo '<div class="commented-wrapper">
+                    <span class="timestamp">' . strftime('%d/%m/%Y %H:%M', strtotime($comment->created_at)) . '</span>
+                    <button class="btn btn-sm btn-default commented-delete" type="button"><i class="far fa-times"></i></button>
+                    <div class="commented-text">' . $comment->comment . '</div>
+                  </div>';
+        }
+    }
 }
 
 /** Translator **/
