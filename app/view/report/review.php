@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-
+        <?php dbga($comments); ?>
       <h1>
         Revisiona il Report<br />
         <small><?php echo $data->titolo; ?></small>
@@ -118,20 +118,35 @@
             <i class="fal fa-sync fa-spin"></i>
           </div>
             <fieldset>
-              <legend>Valutazione</legend>
+              <legend>Valutazione </legend>
               <div class="form-group">
                 <label for="avanzamento">Stato di avanzamento del progetto monitorato sulla base delle informazioni raccolte:</label>
+                <div class="input-group">
                 <textarea name="avanzamento" id="avanzamento" class="form-control"><?php echo ckv_object($data, 'avanzamento'); ?></textarea>
+                  <div class="input-group-append">
+                      <button class="btn btn-primary comment" data-field="avanzamento" id="comment[avanzamento]" type="button"><i class="fal fa-comment"></i></button>
+                  </div>
+                </div>
+                <?php showComment($comments, 'avanzamento'); ?>
               </div>
 
 
               <div class="form-group">
                 <label for="risultato_progetto">Risultato del progetto monitorato (se il progetto è concluso, quali risultati ha avuto?):</label>
+                  <div class="input-group">
                 <textarea name="risultato_progetto" id="risultato_progetto" class="form-control"><?php echo ckv_object($data, 'risultato_progetto'); ?></textarea>
+                      <div class="input-group-append">
+                          <button class="btn btn-primary comment" data-field="risultato_progetto" id="comment[risultato_progetto]" type="button"><i class="fal fa-comment"></i></button>
+                      </div>
+                  </div>
+                  <?php showComment($comments, 'risultato_progetto'); ?>
               </div>
 
               <div class="form-group">
-                <label for="valutazione_risultati"><?php t('Se il progetto è concluso o sei stato comunque in grado di valutare alcuni dei suoi risultati qual è il tuo giudizio sull’efficacia del progetto che hai monitorato?'); ?></label>
+                <label for="valutazione_risultati">
+                    <?php t('Se il progetto è concluso o sei stato comunque in grado di valutare alcuni dei suoi risultati qual è il tuo giudizio sull’efficacia del progetto che hai monitorato?'); ?>
+                    <div><div class=""><button class="btn btn-primary comment" data-field="valutazione_risultati" id="comment[valutazione_risultati]" type="button"><i class="fal fa-comment"></i></button></div></div>
+                </label>
                 <div class="custom-control custom-radio">
                   <input type="radio" id="valutazione_risultati_1" name="valutazione_risultati" class="check-eval custom-control-input" value="1"  <?php echo (isset($data->valutazione_risultati) && $data->valutazione_risultati == 1 ? 'checked' : ''); ?>>
                   <label class="custom-control-label" for="valutazione_risultati_1">Intervento dannoso - Era meglio non farlo perché ha provocato conseguenze negative </label>
@@ -156,22 +171,38 @@
                   <input type="radio" id="valutazione_risultati_5" name="valutazione_risultati" class="check-eval custom-control-input" value="5"  <?php echo (isset($data->valutazione_risultati) && $data->valutazione_risultati ==  5 ? 'checked' : ''); ?>>
                   <label class="custom-control-label" for="valutazione_risultati_5">Non è stato possibile valutare l’efficacia dell’intervento - Es. il progetto non ha ancora prodotto risultati valutabili </label>
                 </div>
+                  <?php showComment($comments, 'valutazione_risultati'); ?>
               </div>
 
 
               <div class="form-group">
                 <label for="punti_di_forza">Punti di forza (cosa ti è piaciuto del progetto monitorato?):</label>
+                  <div class="input-group">
                 <textarea name="punti_di_forza" id="punti_di_forza" class="form-control"><?php echo ckv_object($data, 'punti_di_forza'); ?></textarea>
+                      <div class="input-group-append">
+                          <button class="btn btn-primary comment" data-field="punti_di_forza" id="comment[punti_di_forza]" type="button"><i class="fal fa-comment"></i></button>
+                      </div>
+                  </div>
+                  <?php showComment($comments, 'punti_di_forza'); ?>
               </div>
 
 
               <div class="form-group">
                 <label for="punti_deboli">Debolezze (difficoltà riscontrate nell'attuazione/realizzazione del progetto monitorato?):</label>
+                  <div class="input-group">
                 <textarea name="punti_deboli" id="punti_deboli" class="form-control"><?php echo ckv_object($data, 'punti_deboli'); ?></textarea>
+                  <div class="input-group-append">
+                      <button class="btn btn-primary comment" data-field="punti_deboli" id="comment[punti_deboli]" type="button"><i class="fal fa-comment"></i></button>
+                  </div>
+              </div>
+                <?php showComment($comments, 'punti_deboli'); ?>
               </div>
 
               <div class="form-group <?php echo ($data->valutazione_risultati > 3 ? 'd-none' : ''); ?>" id="cause_inefficacia_wrapper">
-                <label>Quali sono le cause dell’inefficacia del progetto che hai monitorato?</label>
+                <label>
+                    Quali sono le cause dell’inefficacia del progetto che hai monitorato?
+                    <div><div class=""><button class="btn btn-primary comment" data-field="cause_inefficacia" id="comment[cause_inefficacia]" type="button"><i class="fal fa-comment"></i></button></div></div>
+                </label>
                 <div class="custom-control custom-checkbox">
                   <input class="custom-control-input" type="checkbox" value="1" id="problemi_amministrativi" name="problemi_amministrativi" <?php echo (isset($data->problemi_amministrativi) && $data->problemi_amministrativi == 1 ? 'checked' : ''); ?>>
                   <label class="custom-control-label" for="problemi_amministrativi">Realizzazione ha mostrato problemi di natura amministrativa</label>
@@ -202,24 +233,40 @@
                   <label class="custom-control-label" for="necessita_interventi_extra">Intervento di per sè utile ma sono necessari altri interventi complementari</label>
                 </div>
 
-
+                  <?php showComment($comments, 'cause_inefficacia'); ?>
 
               </div>
 
               <div class="form-group">
                 <label for="rischi">Rischi futuri per il progetto monitorato:</label>
+                  <div class="input-group">
                 <textarea name="rischi" id="rischi" class="form-control"><?php echo ckv_object($data, 'rischi'); ?></textarea>
+                      <div class="input-group-append">
+                          <button class="btn btn-primary comment" data-field="rischi" id="comment[rischi]" type="button"><i class="fal fa-comment"></i></button>
+                      </div>
+                  </div>
+                  <?php showComment($comments, 'rischi'); ?>
               </div>
 
 
               <div class="form-group">
                 <label for="soluzioni_progetto">Soluzioni ed idee da proporre per il progetto monitorato:</label>
+                  <div class="input-group">
                 <textarea name="soluzioni_progetto" id="soluzioni_progetto" class="form-control"><?php echo ckv_object($data, 'soluzioni_progetto'); ?></textarea>
+                      <div class="input-group-append">
+                          <button class="btn btn-primary comment" data-field="soluzioni_progetto" id="comment[soluzioni_progetto]" type="button"><i class="fal fa-comment"></i></button>
+                      </div>
+                  </div>
+                  <?php showComment($comments, 'soluzioni_progetto'); ?>
               </div>
 
               <!-- Giudizio Sintetico -->
               <div class="form-group">
-                <label for="giudizio_sintetico">Giudizio Sintetico sul Progetto monitorato: </label>
+                <label for="giudizio_sintetico">
+                    Giudizio Sintetico sul Progetto monitorato:
+                    <div><div class=""><button class="btn btn-primary comment" data-field="giudizio_sintetico" id="comment[giudizio_sintetico]" type="button"><i class="fal fa-comment"></i></button></div></div>
+
+                </label>
                 <div class="custom-control custom-radio">
                   <input type="radio" id="giudizio_sintetico_1" name="giudizio_sintetico" class="custom-control-input" value="1"  <?php echo (isset($data->giudizio_sintetico) && $data->giudizio_sintetico == 'Appena iniziato' ? 'checked' : ''); ?>>
                   <label class="custom-control-label" for="giudizio_sintetico_1">Appena iniziato <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è iniziato da troppo poco tempo per poter esprimere un giudizio. Si sa che è stato avviato, anche se i risultati non sono ancora visibili e monitorabili."></i></label>
@@ -249,6 +296,7 @@
                   <input type="radio" id="giudizio_sintetico_6" name="giudizio_sintetico" class="custom-control-input" value="6"  <?php echo (isset($data->giudizio_sintetico) && $data->giudizio_sintetico ==  'Concluso e inefficace' ? 'checked' : ''); ?>>
                   <label class="custom-control-label" for="giudizio_sintetico_6">Concluso e inefficace <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è finito ma è ritenuto complessivamente inefficace (es. mancano altri interventi complementari, il progetto è concluso ma non è entrato in funzione, oppure non è funzionale, è obsoleto o comunque non rispondente ai bisogni dell'utenza)."></i></label>
                 </div>
+                  <?php showComment($comments, 'giudizio_sintetico'); ?>
               </div>
 
             </fieldset>
@@ -257,7 +305,10 @@
               <legend>Metodi di Indagine</legend>
               <!-- Raccolta Info -->
               <div class="form-group">
-                <label for="">Raccolta Informazioni</label>
+                <label for="">
+                    Raccolta Informazioni
+                    <div><div class=""><button class="btn btn-primary comment" data-field="raccolta_informazioni" id="comment[raccolta_informazioni]" type="button"><i class="fal fa-comment"></i></button></div></div>
+                </label>
                 <div class="custom-control custom-checkbox">
                   <input class="custom-control-input" type="checkbox" value="1" id="raccolta_info_web" name="raccolta_info_web" <?php echo (isset($data->raccolta_info_web) && $data->raccolta_info_web == 1 ? 'checked' : ''); ?>>
                   <label class="custom-control-label" for="raccolta_info_web">Raccolta di informazioni via web</label>
@@ -295,22 +346,42 @@
                   <input class="custom-control-input" type="checkbox" value="1" id="referenti_politici" name="referenti_politici" <?php echo (isset($data->referenti_politici) && $data->referenti_politici == 1 ? 'checked' : ''); ?>>
                   <label class="custom-control-label" for="referenti_politici">Intervista con i referenti politici</label>
                 </div>
+
+                  <?php showComment($comments, 'raccolta_informazioni'); ?>
               </div>
 
               <div class="form-group">
                 <label for="intervista_intervistati">Chi è stato intervistato? Che ruolo ha la persona nel progetto? (es. gestore, funzionario comunale, cittadino informato…):</label>
-                <textarea name="intervista_intervistati" id="intervista_intervistati" class="form-control"><?php echo ckv_object($data, 'intervista_intervistati'); ?></textarea>
+                  <div class="input-group">
+                  <textarea name="intervista_intervistati" id="intervista_intervistati" class="form-control"><?php echo ckv_object($data, 'intervista_intervistati'); ?></textarea>
+                      <div class="input-group-append">
+                          <button class="btn btn-primary comment" data-field="intervista_intervistati" id="comment[intervista_intervistati]" type="button"><i class="fal fa-comment"></i></button>
+                      </div>
+                  </div>
+                  <?php showComment($comments, 'intervista_intervistati'); ?>
                 <span class="form-text text-muted">Riportare i ruoli di tutte le persone intervistate</span>
               </div>
 
               <div class="form-group">
                 <label for="intervista_domande">Principali due domande poste agli intervistati (specificare quali):</label>
+                  <div class="input-group">
                 <textarea name="intervista_domande" id="intervista_domande" class="form-control"><?php echo ckv_object($data, 'intervista_domande'); ?></textarea>
+                  <div class="input-group-append">
+                      <button class="btn btn-primary comment" data-field="intervista_domande" id="comment[intervista_domande]" type="button"><i class="fal fa-comment"></i></button>
+                  </div>
+              </div>
+                <?php showComment($comments, 'intervista_domande'); ?>
               </div>
 
               <div class="form-group">
                 <label for="intervista_risposte">Principali due risposte degli intervistati:</label>
+                  <div class="input-group">
                 <textarea name="intervista_risposte" id="intervista_risposte" class="form-control"><?php echo ckv_object($data, 'intervista_risposte'); ?></textarea>
+                  <div class="input-group-append">
+                      <button class="btn btn-primary comment" data-field="intervista_risposte" id="comment[intervista_risposte]" type="button"><i class="fal fa-comment"></i></button>
+                  </div>
+              </div>
+          <?php showComment($comments, 'intervista_risposte'); ?>
               </div>
 
             </fieldset>
