@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-        <?php dbga($comments); ?>
+
       <h1>
         Revisiona il Report<br />
         <small><?php echo $data->titolo; ?></small>
@@ -462,7 +462,8 @@
         </div>
           <div class="">
               <h3>IMPOSTA LO STATO DEL REPORT</h3>
-
+              <input type="hidden" name="current_status" value="<?php echo $data->status; ?>">
+              <input type="hidden" name="created_by" value="<?php echo $data->created_by; ?>">
               <div class="form-group">
                   <div class="custom-control custom-radio">
                       <input class="custom-control-input" type="radio" value="<?php echo DRAFT; ?>" id="status-1" name="status" <?php echo ($data->status == DRAFT ? 'checked' : ""); ?>>
@@ -472,6 +473,10 @@
                   <div class="custom-control custom-radio">
                       <input class="custom-control-input" type="radio" value="<?php echo PENDING_REVIEW; ?>" id="status-3" name="status" <?php echo ($data->status == PENDING_REVIEW ? 'checked' : ""); ?>>
                       <label class="custom-control-label" for="status-3">Riporta il report in <strong>ATTESA DI REVISIONE</strong></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input class="custom-control-input" type="radio" value="<?php echo IN_REVIEW; ?>" id="status-5" name="status" <?php echo ($data->status == IN_REVIEW ? 'checked' : ""); ?>>
+                      <label class="custom-control-label" for="status-5">Mantieni il report <strong>IN REVISIONE</strong></label>
                   </div>
                   <div class="custom-control custom-radio">
                       <input class="custom-control-input" type="radio" value="<?php echo PUBLISHED; ?>" id="status-7" name="status" <?php echo ($data->status == PUBLISHED ? 'checked' : ""); ?>>
