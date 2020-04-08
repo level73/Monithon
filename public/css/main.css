@@ -1,64 +1,264 @@
-/*
-Error: Invalid CSS after "...Al-Monitor.jpeg": expected "{", was ""
-        on line 191 of public/src/sass/_components.scss
-        from line 3 of public/src/sass/main.scss
+/** Main Color Palette **/
+/** UI colors **/
+h1 {
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 2em; }
+  h1:first-of-type {
+    margin-top: 1em; }
 
-186:     font-style: italic;
-187:   }
-188: }
-189: 
-190: 
-191: https://globaldetentionproject.org:3000/api/gdpUploadFiles/sources/download/Turkey---Al-Monitor.jpeg
+h2 {
+  font-size: 1.5em;
+  font-weight: 900; }
 
-Backtrace:
-public/src/sass/_components.scss:191
-public/src/sass/main.scss:3
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1308:in `expected'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1238:in `expected'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:1233:in `tok!'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:688:in `block'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:681:in `ruleset'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:707:in `block_child'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:700:in `block_contents'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:137:in `stylesheet'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/scss/parser.rb:41:in `parse'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/engine.rb:414:in `_to_tree'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/engine.rb:321:in `to_tree'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:323:in `block in visit_import'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:88:in `block in with_import'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:88:in `with_import'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:322:in `visit_import'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `map'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:52:in `visit_children'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `block in visit'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:157:in `visit'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:10:in `visit'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:36:in `css_tree'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/engine.rb:307:in `render_with_sourcemap'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:387:in `run'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/exec/sass_scss.rb:63:in `process_result'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/exec/base.rb:50:in `parse'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/lib/sass/exec/base.rb:18:in `parse!'
-E:/server/Ruby26-x64/lib/ruby/gems/2.6.0/gems/sass-3.7.4/bin/sass:13:in `<top (required)>'
-E:/server/Ruby26-x64/bin/sass:23:in `load'
-E:/server/Ruby26-x64/bin/sass:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"...Al-Monitor.jpeg\": expected \"{\", was \"\"\A         on line 191 of public/src/sass/_components.scss\A         from line 3 of public/src/sass/main.scss\A \A 186:     font-style: italic;\A 187:   }\A 188: }\A 189: \A 190: \A 191: https://globaldetentionproject.org:3000/api/gdpUploadFiles/sources/download/Turkey---Al-Monitor.jpeg"; }
+h3 {
+  font-size: 1.2em;
+  font-weight: 400; }
+
+h4 {
+  font-size: 1.2em;
+  font-weight: 300; }
+
+p, li {
+  font-size: 1em;
+  font-weight: 300;
+  line-height: 160%; }
+
+a {
+  color: #e71d36; }
+  a:hover {
+    color: #e71d36; }
+
+.hiliter {
+  color: #ff9f1c;
+  font-weight: bold;
+  font-style: italic; }
+
+table td {
+  font-size: 0.75rem; }
+
+/** BUTTONS **/
+.btn {
+  border-radius: 0;
+  font-weight: 900;
+  text-transform: uppercase; }
+  .btn.btn-primary {
+    background: #2ec4b6;
+    border-color: #2ec4b6; }
+    .btn.btn-primary:hover, .btn.btn-primary:active {
+      background: #249b90;
+      border-color: #249b90;
+      border-bottom-color: #2ec4b6; }
+
+/** FORM ELEMENTS **/
+.form-control {
+  border-radius: 0; }
+
+.required {
+  color: #ff9f1c; }
+
+.help-text {
+  font-size: 0.8em;
+  color: #e71d36;
+  text-transform: uppercase;
+  cursor: pointer; }
+
+fieldset {
+  border-bottom: 1px solid #2ec4b6;
+  padding-bottom: 1.5em;
+  margin-bottom: 2.5em; }
+
+textarea {
+  min-height: 6em; }
+
+/** IMAGES **/
+.avatar {
+  max-width: 90px;
+  border-radius: 45px; }
+
+/** STATUS FLAGGER **/
+.status {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-family: "Font Awesome 5 Pro";
+  text-align: center;
+  font-size: 1em;
+  padding: 0.2em 0em; }
+  .status.status-1 {
+    background: #E2E2E2;
+    color: #afafaf; }
+    .status.status-1:before {
+      content: "\f5ae"; }
+  .status.status-3 {
+    background: #FFED00;
+    color: #998e00; }
+    .status.status-3:before {
+      content: "\f5ae"; }
+  .status.status-5 {
+    background: #FF9C2A;
+    color: #c36800; }
+    .status.status-5:before {
+      content: "\f591"; }
+  .status.status-7 {
+    background: #66CC00;
+    color: #336600; }
+    .status.status-7:before {
+      content: "\f058"; }
+
+/** STATUS FLAGGER **/
+.user_status {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-family: "Font Awesome 5 Pro";
+  text-align: center;
+  font-size: 1em;
+  padding: 0.2em 0em; }
+  .user_status.user_status-1 {
+    background: #E2E2E2;
+    color: #afafaf; }
+    .user_status.user_status-1:before {
+      content: "\f057"; }
+  .user_status.user_status-2 {
+    background: #66CC00;
+    color: #336600; }
+    .user_status.user_status-2:before {
+      content: "\f058"; }
+
+/** File Lists **/
+.files {
+  border: 1px solid #ff9f1c;
+  margin-bottom: 30px; }
+  .files h3 {
+    padding: 8px 10px; }
+  .files .file {
+    width: 25%;
+    display: inline-block;
+    padding: 8px 10px; }
+    .files .file a {
+      display: inline-block;
+      width: 100%;
+      text-align: center; }
+  .files .video {
+    width: 33.333%;
+    display: inline-block;
+    padding: 8px 10px; }
+
+#report-tablist {
+  margin-top: 25px;
+  margin-bottom: 30px; }
+  #report-tablist li a {
+    font-size: 1.2rem;
+    text-transform: uppercase; }
+    #report-tablist li a.active {
+      font-weight: bold; }
+
+/** Reviewer comments **/
+.comment-wrapper {
+  margin-top: 5px; }
+  .comment-wrapper label {
+    margin: 0px;
+    font-size: 12px;
+    color: #2ec4b6;
+    text-transform: uppercase; }
+
+.comment-field {
+  border: 1px dotted #2ec4b6;
+  background: rgba(46, 196, 182, 0.1);
+  margin-top: 0px;
+  margin-bottom: 10px; }
+
+.commented-wrapper {
+  border: 1px solid #e71d36;
+  background: white;
+  -webkit-box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.4);
+  padding: 15px;
+  margin: 5px 0px 15px; }
+  .commented-wrapper .timestamp {
+    font-size: 12px;
+    display: inline-block;
+    float: left; }
+  .commented-wrapper .commented-delete {
+    display: inline-block;
+    padding-top: 0px;
+    float: right; }
+  .commented-wrapper .commented-text {
+    display: block;
+    clear: both;
+    padding: 4px 10px;
+    font-style: italic; }
+
+#main-header {
+  background: #2ec4b6; }
+
+.login-options {
+  margin-top: 2em; }
+  .login-options a {
+    text-transform: uppercase;
+    font-size: 0.8em; }
+
+#location_map {
+  height: 600px; }
+
+.guide {
+  background: white;
+  padding: 20px;
+  margin: 25px auto;
+  border: 1px solid #2ec4b6; }
+  .guide h2 {
+    margin-bottom: 25px;
+    padding-bottom: 30px; }
+  .guide h3 {
+    color: #2ec4b6;
+    font-weight: 900; }
+  .guide .row-guide {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DDD; }
+  .guide .guide-title {
+    font-weight: 900; }
+  .guide .guide-hilite {
+    color: #2ec4b6;
+    font-style: italic;
+    font-weight: 900; }
+  .guide .oc_expert {
+    display: block;
+    margin: 10px 0px;
+    font-weight: bold;
+    font-style: italic;
+    text-align: right; }
+  .guide .subject {
+    margin: 10px 0px 25px; }
+  .guide .prj_status {
+    color: #2ec4b6; }
+    .guide .prj_status.bolder {
+      font-weight: 900; }
+
+footer#main-footer {
+  background: #011627;
+  color: #fdfffc;
+  font-size: 0.8em;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin-top: auto !important;
+  width: 100%;
+  height: 220px; }
+
+body {
+  background: #fdfffc;
+  color: #011627;
+  font-family: "Roboto", Helvetica, Sans-serif;
+  height: 100% !important;
+  min-height: 100vh; }
+
+.full-wrap {
+  min-height: 100vh; }
+
+/** BOOTSTRAP OVERRIDES **/
+.nav-tabs .nav-link.active {
+  background-color: #fdfffc; }
+
+/*# sourceMappingURL=main.css.map */
