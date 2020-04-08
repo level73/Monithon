@@ -40,7 +40,10 @@
     }
 
     public function reviewableReports($id_user){
-      $sql = 'SELECT * FROM `' . $this->table . '` WHERE status = 3 OR (status = 5 AND reviewed_by = :user_1) OR (created_by = :user_2) ORDER BY modified_at DESC';
+      $sql = '  SELECT * FROM `' . $this->table . '` 
+                INNER JOIN auth ON auth.idauth = created_by 
+                WHERE status = 3 OR (status = 5 AND reviewed_by = :user_1) OR (created_by = :user_2)                 
+                ORDER BY ' . $this->table . '.modified_at DESC';
       $stmt = $this->database->prepare($sql);
       $stmt->bindParam(':user_1', $id_user, PDO::PARAM_INT);
       $stmt->bindParam(':user_2', $id_user, PDO::PARAM_INT);
