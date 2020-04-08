@@ -123,7 +123,7 @@
   <?php if( count($reports) > 0){ ?>
   <section class="row" id="my-reports">
     <div class="col">
-        <?php dbga($reports); ?>
+
       <h1>I Miei Report</h1>
 
       <table class="table table-hover table-sm"
