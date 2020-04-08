@@ -194,7 +194,8 @@
           $this->set('logged', $logged);
 
           $this->set('title', 'Modifica Report');
-          $Errors = new Errors();
+          $Comments = new Comment();
+
           $this->set('street_map', true);
           $this->set('js', array('components/oc_api.js', 'components/leaflet_location_map.js'));
 
@@ -282,6 +283,10 @@
 
           // Load Report
           $report = $this->Report->find($id);
+
+          // Load Comments
+          $this->set('comments', $Comments->findBy(array('entity' => T_REP_BASIC, 'record' => $id)));
+
           // Get Files
           $Files = new Repo();
           $report->files = $Files->getFiles(T_REP_BASIC, $id, 2);
@@ -343,7 +348,7 @@
             $this->set('errors', $this->Errors);
           }
 
-
+          // If we have post data, set up comments and change content
           if( httpCheck('post', true) ){
 
               // Get Reviewer ID to update Report Entry
@@ -365,8 +370,10 @@
               unset($data['link-attachment']);
               unset($data['id']);
 
-              $comments = $data['comment'];
-              unset($data['comment']);
+              if(isset($data['comment'])){
+                  $comments = $data['comment'];
+                  unset($data['comment']);
+              }
 
             // Save Report
               $update = $this->Report->update($id, $data);
@@ -375,8 +382,10 @@
                   $this->Errors->set(21);
               }
             // Save Comments
-            foreach($comments as $field => $comment){
-                $saved = $Comments->save($comment, $field, T_REP_BASIC, $id, $this->User->id);
+            if(!empty($comments)){
+                foreach($comments as $field => $comment){
+                    $saved = $Comments->save($comment, $field, T_REP_BASIC, $id, $this->User->id);
+                }
             }
             // Check status change
             if($prev_status != $data['status']){
@@ -385,32 +394,39 @@
                 $reporter = $Reporter->fullProfile($creator);
 
                 if($data['status'] == PUBLISHED){
+                    $mailer = true;
                     $subject = "MONITHON - Report Approvato!";
-                    $message = '';
+                    $message = "Il Report <strong>" . $data['titolo'] . "</strong> è stato approvato, e presto potrai vederlo online! Grazie per aver partecipato al progetto di monitoraggio civico! <br /><br /> - La redazione di Monithon";
 
                 }
                 else if($data['status'] == DRAFT){
+                    $mailer = true;
                     $subject = "MONITHON - Richiesta modifiche al report!";
-                    $message = '';
+                    $message = "Durante la revisione da parte della Redazione di Monithon sono emersi alcuni particolari che necessitano il tuo intervento sul report <strong>" . $data['titolo'] . "</strong>!<br />" .
+                               "La Redazione di Monithon ha lasciato dei commenti chiarificatori sulla piattaforma, ti basterà accedervi e modificare il report per leggerli ed intervenire dove opportuno! <br />" .
+                               "<br /><br /> - La redazione di Monithon";
                 }
-                // Send Email
-                // To send HTML mail, the Content-type header must be set
-                $headers[] = 'MIME-Version: 1.0';
-                $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+                if($mailer){
+                    // Send Email
+                    // To send HTML mail, the Content-type header must be set
+                    $headers[] = 'MIME-Version: 1.0';
+                    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
 
-                // Additional headers
-                $headers[] = 'From: ' . APPEMAIL;
-                $send = mail($reporter->email, $subject, $message, $headers);
-                if($send){
-                    $Errors->set(5);
-                }
-                else {
-                    $Errors->set(300);
+                    // Additional headers
+                    $headers[] = 'From: ' . APPEMAIL;
+                    $send = mail($reporter->email, $subject, $message, implode("\r\n", $headers));
+                    if($send){
+                        $this->Errors->set(5);
+                    }
+                    else {
+                        $this->Errors->set(300);
+                    }
                 }
             }
 
 
           }
+
 
           // Load Report
           $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
@@ -418,33 +434,30 @@
           // Load Comments
           $this->set('comments', $Comments->findBy(array('entity' => T_REP_BASIC, 'record' => $id)));
           // Load Attachments
-            // Get Files
-            $Files = new Repo();
-            $report->files = $Files->getFiles(T_REP_BASIC, $id, 2);
-            foreach($report->files as $i => $file){
-                $report->files[$i]->info = $Files->getInfo(ROOT.DS.'public'.DS.'resources'.DS.$file->file_path);
-            }
+          // Get Files
+          $Files = new Repo();
+          $report->files = $Files->getFiles(T_REP_BASIC, $id, 2);
+          foreach($report->files as $i => $file){
+            $report->files[$i]->info = $Files->getInfo(ROOT.DS.'public'.DS.'resources'.DS.$file->file_path);
+          }
 
-            // Get Links
-            $LoadLinks = new Meta('link_repository');
-            $LoadLink = new Link();
-            $report->links = $LoadLinks->getRepoReference('link_repository', T_REP_BASIC, $id);
+          // Get Links
+          $LoadLinks = new Meta('link_repository');
+          $report->links = $LoadLinks->getRepoReference('link_repository', T_REP_BASIC, $id);
 
-            // Get Videos
-            $LoadVideos = new Meta('video_repository');
-            $LoadVideo  = new Video();
-            $Vids = $LoadVideos->getRepoReference('video_repository', T_REP_BASIC, $id);
-            foreach($Vids as $i => $v){
-                if(strpos($v->URL, 'youtube')){
-                    $v_pieces = explode('?v=', $v->URL);
-                    $v_id = array_pop($v_pieces);
-                    $Vids[$i]->embed = 'https://www.youtube.com/embed/' . $v_id;
-                }
+          // Get Videos
+          $LoadVideos = new Meta('video_repository');
+          $Vids = $LoadVideos->getRepoReference('video_repository', T_REP_BASIC, $id);
+          foreach($Vids as $i => $v){
+            if(strpos($v->URL, 'youtube')){
+                $v_pieces = explode('?v=', $v->URL);
+                $v_id = array_pop($v_pieces);
+                $Vids[$i]->embed = 'https://www.youtube.com/embed/' . $v_id;
             }
-            $report->videos = $Vids;
+          }
+          $report->videos = $Vids;
           // Send to template
           $this->set('data', $report);
-
         }
       }
     }
