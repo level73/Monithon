@@ -25,13 +25,17 @@
     }
 
     /** Report List **/
-    public function index(){
+    public function index($id = null){
       if(!$this->Auth->isLoggedIn()){
         $logged = false;
       }
       else {
         $logged = true;
         $this->set('logged', $logged);
+
+
+
+
       }
 
 
@@ -396,8 +400,9 @@
                 if($data['status'] == PUBLISHED){
                     $mailer = true;
                     $subject = "MONITHON - Report Approvato!";
-                    $message = "Il Report <strong>" . $data['titolo'] . "</strong> è stato approvato, e presto potrai vederlo online! Grazie per aver partecipato al progetto di monitoraggio civico! <br /><br /> - La redazione di Monithon";
-
+                    $message = "Il Report <strong>" . $data['titolo'] . "</strong> è stato approvato, e presto potrai vederlo online! Grazie per aver partecipato al progetto di monitoraggio civico! <br /> " .
+                                "Il Report sarà presto consultabile alla URL <a href=\"" . APPURL . "/report/view/" . $id . "\">" . APPURL . "/report/view/" . $id . "</a>" .
+                                "<br /><br /> - La redazione di Monithon";
                 }
                 else if($data['status'] == DRAFT){
                     $mailer = true;
