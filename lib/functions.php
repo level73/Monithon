@@ -36,7 +36,13 @@ function loadJS($js){
   }
 }
 
+function cssify($string){
+    return strtolower(str_replace(' ', '-', cleanString($string)));
+}
 
+function image($image){
+    return URL_REPO . $image->file_path;
+}
 /** UTF8 Encoding deep for API calls **/
 function utf8_encode_deep(&$input) {
 	if (is_string($input)) {
@@ -120,6 +126,16 @@ function displayDate($date){
   else {
     return null;
   }
+}
+
+/** Date Formatter for API dates
+  * OC API dates come in the YYYYMMDD format
+  * This function should be used to display these dates on the frontend
+ **/
+function ocDateFormatter($date){
+    $date = substr_replace($date, '-', 4, 0);
+    $date = substr_replace($date, '-', -2, 0);
+    return displayDate($date);
 }
 
 /** check for value in meta object, return selected/checked **/

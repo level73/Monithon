@@ -1,0 +1,87 @@
+#report-page {
+  h1 small { font-size: 14px; color: $mid; }
+  .report-main-image {
+    max-width: 320px;
+    height: auto;
+    display: inline-block;
+    float: right;
+    margin-left: 20px;
+    position: relative;
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+  }
+  .report-ev-hilite {
+    background: $scallop;
+    display: block;
+    margin: 4px 0px;
+    padding: 4px 6px;
+    font-weight: bold;
+  }
+  .report-body {
+    margin-top: 30px;
+    h2 { font-size: 16px; }
+  }
+  .report-solutions {
+    padding: 15px;
+    background: rgba($lagoon, 0.5);
+  }
+
+
+  aside {
+    font-size: 14px;
+    h4 {
+      margin-top: 15px;
+      background: $lagoon;
+      text-transform: uppercase;
+      color: $seafoam;
+      font-weight: 900;
+      padding: 4px 0px;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    .report-side-oc {
+    //  border: 1px solid $lite;
+    }
+    .report-side-title {
+      text-align: right;
+      background: $lite;
+      color: $seafoam;
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: bold;
+      display: block;
+      padding: 6px 6px;
+    }
+    .report-side-value {
+
+
+      display: block;
+
+      padding: 4px 6px;
+    }
+  }
+}
+.report-in-short.report-in-short-title{
+  display: block; padding: 4px;
+
+  color: $mid; font-weight: 900; font-size: 12px; text-transform: uppercase; text-align: center;
+}
+.giudizio-sintetico{
+  display: block; padding: 4px;
+  color: white; font-weight: 900; font-size: 12px; text-transform: uppercase; text-align: center;
+  &.appena-iniziato{ background: $gs_1; }
+  &.in-corso-e-procede-bene { background: $gs_2; }
+  &.procede-con-difficolta { background: $gs_3; }
+  &.bloccato {background: $gs_4; }
+  &.concluso-e-utile { background: $gs_5;}
+  &.concluso-e-inefficace { background: $gs_6;}
+}
+
+.report-side-detail {
+  display: block;
+  clear: both;
+  margin: 5px 0px;
+}
+

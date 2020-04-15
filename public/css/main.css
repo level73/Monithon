@@ -1,5 +1,7 @@
 /** Main Color Palette **/
 /** UI colors **/
+/** Neutral Stack **/
+/** Likert Scales **/
 h1 {
   text-transform: uppercase;
   font-weight: 900;
@@ -203,6 +205,9 @@ textarea {
 #location_map {
   height: 600px; }
 
+#report-map {
+  height: 380px; }
+
 .guide {
   background: white;
   padding: 20px;
@@ -236,6 +241,91 @@ textarea {
     color: #2ec4b6; }
     .guide .prj_status.bolder {
       font-weight: 900; }
+
+#report-page h1 small {
+  font-size: 14px;
+  color: #898989; }
+#report-page .report-main-image {
+  max-width: 320px;
+  height: auto;
+  display: inline-block;
+  float: right;
+  margin-left: 20px;
+  position: relative;
+  -webkit-box-shadow: 0 10px 6px -6px #777;
+  -moz-box-shadow: 0 10px 6px -6px #777;
+  box-shadow: 0 10px 6px -6px #777; }
+#report-page .report-ev-hilite {
+  background: #ff9f1c;
+  display: block;
+  margin: 4px 0px;
+  padding: 4px 6px;
+  font-weight: bold; }
+#report-page .report-body {
+  margin-top: 30px; }
+  #report-page .report-body h2 {
+    font-size: 16px; }
+#report-page .report-solutions {
+  padding: 15px;
+  background: rgba(46, 196, 182, 0.5); }
+#report-page aside {
+  font-size: 14px; }
+  #report-page aside h4 {
+    margin-top: 15px;
+    background: #2ec4b6;
+    text-transform: uppercase;
+    color: #fdfffc;
+    font-weight: 900;
+    padding: 4px 0px;
+    text-align: center;
+    font-size: 12px; }
+  #report-page aside .report-side-title {
+    text-align: right;
+    background: #ACACAC;
+    color: #fdfffc;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: bold;
+    display: block;
+    padding: 6px 6px; }
+  #report-page aside .report-side-value {
+    display: block;
+    padding: 4px 6px; }
+
+.report-in-short.report-in-short-title {
+  display: block;
+  padding: 4px;
+  color: #898989;
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center; }
+
+.giudizio-sintetico {
+  display: block;
+  padding: 4px;
+  color: white;
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center; }
+  .giudizio-sintetico.appena-iniziato {
+    background: #6bc2e6; }
+  .giudizio-sintetico.in-corso-e-procede-bene {
+    background: #6be6ca; }
+  .giudizio-sintetico.procede-con-difficolta {
+    background: #f3788e; }
+  .giudizio-sintetico.bloccato {
+    background: #d52d4b; }
+  .giudizio-sintetico.concluso-e-utile {
+    background: #68c59a; }
+  .giudizio-sintetico.concluso-e-inefficace {
+    background: #9a1946; }
+
+.report-side-detail {
+  display: block;
+  clear: both;
+  margin: 5px 0px; }
 
 footer#main-footer {
   background: #011627;
