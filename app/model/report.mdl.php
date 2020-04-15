@@ -7,36 +7,41 @@
 
     public function getReport($id){
       $Report = $this->find($id);
-      $Files = new Repo();
-      $Videos = new Video();
-      $Links = new Link();
+      if($Report){
+          $Files = new Repo();
+          $Videos = new Video();
+          $Links = new Link();
 
-      // Get Files
-      $Files = new Repo();
-      $Report->files = $Files->getFiles(T_REP_BASIC, $id, 2);
-      foreach($Report->files as $i => $file){
-        $Report->files[$i]->info = $Files->getInfo(ROOT.DS.'public'.DS.'resources'.DS.$file->file_path);
+          // Get Files
+          $Files = new Repo();
+          $Report->files = $Files->getFiles(T_REP_BASIC, $id, 2);
+          foreach($Report->files as $i => $file){
+            $Report->files[$i]->info = $Files->getInfo(ROOT.DS.'public'.DS.'resources'.DS.$file->file_path);
+          }
+
+          // Get Links
+          $LoadLinks = new Meta('link_repository');
+          $LoadLink = new Link();
+          $Report->links = $LoadLinks->getRepoReference('link_repository', T_REP_BASIC, $id);
+
+          // Get Videos
+          $LoadVideos = new Meta('video_repository');
+          $LoadVideo  = new Video();
+          $Vids = $LoadVideos->getRepoReference('video_repository', T_REP_BASIC, $id);
+          foreach($Vids as $i => $v){
+            if(strpos($v->URL, 'youtube')){
+              $v_pieces = explode('?v=', $v->URL);
+              $v_id = array_pop($v_pieces);
+              $Vids[$i]->embed = 'https://www.youtube.com/embed/' . $v_id;
+            }
+          }
+          $Report->videos = $Vids;
+
+          return $Report;
       }
-
-      // Get Links
-      $LoadLinks = new Meta('link_repository');
-      $LoadLink = new Link();
-      $Report->links = $LoadLinks->getRepoReference('link_repository', T_REP_BASIC, $id);
-
-      // Get Videos
-      $LoadVideos = new Meta('video_repository');
-      $LoadVideo  = new Video();
-      $Vids = $LoadVideos->getRepoReference('video_repository', T_REP_BASIC, $id);
-      foreach($Vids as $i => $v){
-        if(strpos($v->URL, 'youtube')){
-          $v_pieces = explode('?v=', $v->URL);
-          $v_id = array_pop($v_pieces);
-          $Vids[$i]->embed = 'https://www.youtube.com/embed/' . $v_id;
-        }
+      else {
+          return false;
       }
-      $Report->videos = $Vids;
-
-      return $Report;
     }
 
     public function reviewableReports($id_user){

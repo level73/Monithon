@@ -54,78 +54,85 @@
       $this->set('js', array('section/report.js'));
 
       $Report = $this->Report->getReport($id);
-      $this->set('report', $Report);
 
-      $oc = json_decode($Report->api_data);
-      $this->set('oc', $oc);
+      if(!$Report){
+          header('Location: /report/not_found');
+      } else if($Report->status != 7){
+        header('Location: /report/unpublished');
+      }
+      else {
+          $this->set('report', $Report);
 
-      $Author = $User->fullProfile(($Report->created_by));
-      $this->set('author', $Author);
+          $oc = json_decode($Report->api_data);
+          $this->set('oc', $oc);
 
-      $Soggetti = array();
-      foreach($oc->soggetti as $soggetto){
-          foreach($soggetto->ruoli as $ruolo){
-              $Soggetti[$ruolo][] = $soggetto;
+          $Author = $User->fullProfile(($Report->created_by));
+          $this->set('author', $Author);
+
+          $Soggetti = array();
+          foreach ($oc->soggetti as $soggetto) {
+              foreach ($soggetto->ruoli as $ruolo) {
+                  $Soggetti[$ruolo][] = $soggetto;
+              }
           }
-      }
-      $this->set('soggetti', $Soggetti);
+          $this->set('soggetti', $Soggetti);
 
-      $Efficacia = Array();
-      $Efficacia['Realizzazione ha mostrato problemi di natura amministrativa'] = $Report->problemi_amministrativi;
-      $Efficacia['Realizzazione ha mostrato problemi di natura tecnica'] = $Report->problemi_tecnici;
-      $Efficacia['Il risultato del progetto non è soddisfacente'] = $Report->risultato_insoddisfacente;
-      $Efficacia['Intervento complessivamente ben realizzato ma non rispondente ai bisogni degli utenti finali (non efficace)'] = $Report->non_efficace;
-      $Efficacia['Intervento utile ma non sufficiente per rispondere al fabbisogno (“ne serve di più”, es. più investimenti nello stesso progetto o in progetti simili)'] = $Report->non_sufficiente;
-      $Efficacia['Intervento di per sè utile ma sono necessari altri interventi complementari'] = $Report->necessita_interventi_extra;
-      $this->set('efficacia', $Efficacia);
+          $Efficacia = array();
+          $Efficacia['Realizzazione ha mostrato problemi di natura amministrativa'] = $Report->problemi_amministrativi;
+          $Efficacia['Realizzazione ha mostrato problemi di natura tecnica'] = $Report->problemi_tecnici;
+          $Efficacia['Il risultato del progetto non è soddisfacente'] = $Report->risultato_insoddisfacente;
+          $Efficacia['Intervento complessivamente ben realizzato ma non rispondente ai bisogni degli utenti finali (non efficace)'] = $Report->non_efficace;
+          $Efficacia['Intervento utile ma non sufficiente per rispondere al fabbisogno (“ne serve di più”, es. più investimenti nello stesso progetto o in progetti simili)'] = $Report->non_sufficiente;
+          $Efficacia['Intervento di per sè utile ma sono necessari altri interventi complementari'] = $Report->necessita_interventi_extra;
+          $this->set('efficacia', $Efficacia);
 
-      $Valutazione = '';
-      switch($Report->valutazione_risultati){
-          case 1:
-              $Valutazione = "Intervento dannoso - Era meglio non farlo perché ha provocato conseguenze negative";
-              break;
-          case 2:
-              $Valutazione = "Intervento inutile - Non ha cambiato la situazione, soldi sprecati";
-              break;
-          case 3:
-              $Valutazione = "Intervento utile ma presenta problemi - Ha avuto alcuni risultati positivi ed è tutto sommato utile, anche se presenta anche aspetti negativi";
-              break;
-          case 4:
-              $Valutazione = "Intervento molto utile ed efficace - Gli aspetti positivi prevalgono ed è giudicato complessivamente efficace dal punto di vista dell'utente finale";
-              break;
-          case 5:
-              $Valutazione = "Non è stato possibile valutare l’efficacia dell’intervento - Es. il progetto non ha ancora prodotto risultati valutabili";
-              break;
-      }
-      $this->set('valutazione', $Valutazione);
-
-      $Raccolta = array();
-      $Raccolta["Raccolta di informazioni via web"] = $Report->raccolta_info_web;
-      $Raccolta["Visita diretta documentata da foto e video"] = $Report->visita_diretta;
-      $Raccolta["Intervista con l'Autorità di Gestione del Programma"] = $Report->intervista_autorita_gestione;
-      $Raccolta["Intervista con i soggetti che hanno programmato l'intervento (soggetto programmatore)"] = $Report->intervista_soggetto_programmatore;
-      $Raccolta["Intervista con gli utenti/beneficiari dell'intervento"] = $Report->intervista_utenti_beneficiari;
-      $Raccolta["Intervista con altre tipologie di persone"] = $Report->intervista_altri_utenti;
-      $Raccolta["Intervista con i soggetti che hanno o stanno attuando l'intervento (attuatore o realizzatore)"] = $Report->raccolta_info_attuatore;
-      $Raccolta["Intervista con i referenti politici"] = $Report->referenti_politici;
-      $Raccolta = array_filter($Raccolta);
-      $this->set('raccolta', $Raccolta);
-
-      $Images = array();
-      $Resources = array();
-      if(!empty($Report->files)){
-          foreach($Report->files as $file){
-            $info = explode('/', $file->info);
-            if($info[0] == 'image'){
-                $Images[] = $file;
-            }
-            else {
-                $Resources[] = $file;
-            }
+          $Valutazione = '';
+          switch ($Report->valutazione_risultati) {
+              case 1:
+                  $Valutazione = "Intervento dannoso - Era meglio non farlo perché ha provocato conseguenze negative";
+                  break;
+              case 2:
+                  $Valutazione = "Intervento inutile - Non ha cambiato la situazione, soldi sprecati";
+                  break;
+              case 3:
+                  $Valutazione = "Intervento utile ma presenta problemi - Ha avuto alcuni risultati positivi ed è tutto sommato utile, anche se presenta anche aspetti negativi";
+                  break;
+              case 4:
+                  $Valutazione = "Intervento molto utile ed efficace - Gli aspetti positivi prevalgono ed è giudicato complessivamente efficace dal punto di vista dell'utente finale";
+                  break;
+              case 5:
+                  $Valutazione = "Non è stato possibile valutare l’efficacia dell’intervento - Es. il progetto non ha ancora prodotto risultati valutabili";
+                  break;
           }
+          $this->set('valutazione', $Valutazione);
+
+          $Raccolta = array();
+          $Raccolta["Raccolta di informazioni via web"] = $Report->raccolta_info_web;
+          $Raccolta["Visita diretta documentata da foto e video"] = $Report->visita_diretta;
+          $Raccolta["Intervista con l'Autorità di Gestione del Programma"] = $Report->intervista_autorita_gestione;
+          $Raccolta["Intervista con i soggetti che hanno programmato l'intervento (soggetto programmatore)"] = $Report->intervista_soggetto_programmatore;
+          $Raccolta["Intervista con gli utenti/beneficiari dell'intervento"] = $Report->intervista_utenti_beneficiari;
+          $Raccolta["Intervista con altre tipologie di persone"] = $Report->intervista_altri_utenti;
+          $Raccolta["Intervista con i soggetti che hanno o stanno attuando l'intervento (attuatore o realizzatore)"] = $Report->raccolta_info_attuatore;
+          $Raccolta["Intervista con i referenti politici"] = $Report->referenti_politici;
+          $Raccolta = array_filter($Raccolta);
+          $this->set('raccolta', $Raccolta);
+
+          $Images = array();
+          $Resources = array();
+          if (!empty($Report->files)) {
+              foreach ($Report->files as $file) {
+                  $info = explode('/', $file->info);
+                  if ($info[0] == 'image') {
+                      $Images[] = $file;
+                  } else {
+                      $Resources[] = $file;
+                  }
+              }
+          }
+          $this->set('images', $Images);
+          $this->set('resources', $Resources);
       }
-      $this->set('images', $Images);
-      $this->set('resources', $Resources);
     }
 
     /** New Report **/
@@ -474,9 +481,9 @@
 
                 if($data['status'] == PUBLISHED){
                     $mailer = true;
-                    $subject = "MONITHON - Report Approvato!";
-                    $message = "Il Report <strong>" . $data['titolo'] . "</strong> è stato approvato, e presto potrai vederlo online! Grazie per aver partecipato al progetto di monitoraggio civico! <br /> " .
-                                "Il Report sarà presto consultabile alla URL <a href=\"" . APPURL . "/report/view/" . $id . "\">" . APPURL . "/report/view/" . $id . "</a>" .
+                    $subject = "MONITHON - Report Approvato";
+                    $message = "Il Report <strong>" . $data['titolo'] . "</strong> è stato approvato, puoi vederlo online. Grazie per aver partecipato al progetto di monitoraggio civico. <br /> " .
+                                "Il Report è consultabile alla URL <a href=\"" . APPURL . "/report/view/" . $id . "\">" . APPURL . "/report/view/" . $id . "</a>" .
                                 "<br /><br /> - La redazione di Monithon";
                 }
                 else if($data['status'] == DRAFT){
@@ -541,6 +548,14 @@
         }
       }
     }
+
+    /** Routing managers */
+      public function unpublished(){
+          $this->set('title', 'Report non Pubblicato');
+      }
+      public function not_found(){
+          $this->set('title', 'Report Inesistente');
+      }
 
     /** Delete **/
     public function delete($id){ }

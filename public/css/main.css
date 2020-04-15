@@ -268,9 +268,9 @@ textarea {
 #report-page .report-solutions {
   padding: 15px;
   background: rgba(46, 196, 182, 0.5); }
-#report-page aside {
+#report-page aside, #report-page aside ul li {
   font-size: 14px; }
-  #report-page aside h4 {
+  #report-page aside h4, #report-page aside ul li h4 {
     margin-top: 15px;
     background: #2ec4b6;
     text-transform: uppercase;
@@ -279,7 +279,7 @@ textarea {
     padding: 4px 0px;
     text-align: center;
     font-size: 12px; }
-  #report-page aside h5 {
+  #report-page aside h5, #report-page aside ul li h5 {
     margin-top: 15px;
     text-transform: uppercase;
     color: #555555;
@@ -287,10 +287,12 @@ textarea {
     padding: 4px 0px;
     text-align: center;
     font-size: 12px; }
-  #report-page aside a.report-subject {
+  #report-page aside a.report-subject, #report-page aside ul li a.report-subject {
     display: block;
     text-align: center; }
-  #report-page aside .report-side-title {
+  #report-page aside ul li, #report-page aside ul li ul li {
+    font-weight: 400; }
+  #report-page aside .report-side-title, #report-page aside ul li .report-side-title {
     text-align: right;
     background: #ACACAC;
     color: #fdfffc;
@@ -299,7 +301,7 @@ textarea {
     font-weight: bold;
     display: block;
     padding: 6px 6px; }
-  #report-page aside .report-side-value {
+  #report-page aside .report-side-value, #report-page aside ul li .report-side-value {
     display: block;
     padding: 4px 6px; }
 

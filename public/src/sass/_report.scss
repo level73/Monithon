@@ -28,7 +28,7 @@
   }
 
 
-  aside {
+  aside, aside ul li {
     font-size: 14px;
     h4 {
       margin-top: 15px;
@@ -53,7 +53,7 @@
       display: block;
       text-align: center;
     }
-
+    ul li { font-weight: 400; }
     .report-side-oc {
     //  border: 1px solid $lite;
     }
@@ -68,10 +68,7 @@
       padding: 6px 6px;
     }
     .report-side-value {
-
-
       display: block;
-
       padding: 4px 6px;
     }
   }
@@ -82,14 +79,21 @@
   color: $mid; font-weight: 900; font-size: 12px; text-transform: uppercase; text-align: center;
 }
 .giudizio-sintetico{
-  display: block; padding: 4px;
-  color: white; font-weight: 900; font-size: 12px; text-transform: uppercase; text-align: center;
-  &.appena-iniziato{ background: $gs_1; }
+  display: block;
+  padding: 4px;
+  color: white;
+  font-weight: 900;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+
+  &.appena-iniziato         { background: $gs_1; }
   &.in-corso-e-procede-bene { background: $gs_2; }
-  &.procede-con-difficolta { background: $gs_3; }
-  &.bloccato {background: $gs_4; }
-  &.concluso-e-utile { background: $gs_5;}
-  &.concluso-e-inefficace { background: $gs_6;}
+  &.procede-con-difficolta  { background: $gs_3; }
+  &.bloccato                { background: $gs_4; }
+  &.concluso-e-utile        { background: $gs_5; }
+  &.concluso-e-inefficace   { background: $gs_6; }
+
 }
 
 .report-side-detail {
