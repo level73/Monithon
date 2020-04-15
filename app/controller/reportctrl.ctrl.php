@@ -46,6 +46,7 @@
 
       $this->set('title', 'Report');
       $Errors = new Errors();
+      $User = new User();
 
       $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 
@@ -54,7 +55,20 @@
 
       $Report = $this->Report->getReport($id);
       $this->set('report', $Report);
-      $this->set('oc', json_decode($Report->api_data));
+
+      $oc = json_decode($Report->api_data);
+      $this->set('oc', $oc);
+
+      $Author = $User->fullProfile(($Report->created_by));
+      $this->set('author', $Author);
+
+      $Soggetti = array();
+      foreach($oc->soggetti as $soggetto){
+          foreach($soggetto->ruoli as $ruolo){
+              $Soggetti[$ruolo][] = $soggetto;
+          }
+      }
+      $this->set('soggetti', $Soggetti);
 
       $Efficacia = Array();
       $Efficacia['Realizzazione ha mostrato problemi di natura amministrativa'] = $Report->problemi_amministrativi;

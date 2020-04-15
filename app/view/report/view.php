@@ -6,6 +6,26 @@
             <div id="report-map"></div>
             <span class="report-side-detail"><?php echo $report->indirizzo . ' (' . $report->cap . ')';?></span>
 
+            <h4>IN BREVE</h4>
+            <div class="row">
+                <div class="col"><span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php echo $report->giudizio_sintetico; ?></span></div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <ul class="report-in-short report-in-short-efficacia">
+                        <?php
+                        foreach($efficacia as $label => $value){
+                            if($value > 0){
+                                ?>
+                                <li><?php echo $label; ?></li>
+                                <?php
+                            }
+                        } ?>
+                    </ul>
+                </div>
+            </div>
+
+
             <div class="row report-side-oc">
                 <div class="col-5"><span class="report-side-title">Tema</span></div>
                 <div class="col"><span class="report-side-value"><?php echo $oc->cup_descr_sottosettore; ?></div>
@@ -48,24 +68,15 @@
                 Accedi alle informazioni aggiornate sul portale governativo OpenCoesione
             </a>
 
-            <h4>IN BREVE</h4>
-            <div class="row">
-                <div class="col"><span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php echo $report->giudizio_sintetico; ?></span></div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <ul class="report-in-short report-in-short-efficacia">
-                        <?php
-                        foreach($efficacia as $label => $value){
-                            if($value > 0){
-                        ?>
-                        <li><?php echo $label; ?></li>
-                        <?php
-                            }
-                        } ?>
-                    </ul>
-                </div>
-            </div>
+            <h4>Soggetti</h4>
+            <?php foreach($soggetti as $ruolo => $sg){ ?>
+                <h5><?php echo $ruolo; ?></h5>
+                <?php foreach($sg as $soggetto){ ?>
+                    <a href="<?php echo $soggetto->url; ?>" target="_blank" class="report-subject"><?php echo $soggetto->denominazione; ?></a>
+                <?php } ?>
+            <?php } ?>
+
+
             <h4>RISORSE</h4>
             <?php foreach($images as $image){ ?>
                 <div class="img">
@@ -87,7 +98,9 @@
                 <small><span class="title-label">PROGETTO: </span><?php echo $oc->oc_titolo_progetto; ?></small>
             </h1>
 
-            <span class="report-date">INVIATO IL <?php  echo strftime('%e/%m/%Y', strtotime($report->modified_at)); ?> | di <?php echo $report->autore; ?></span>
+            <span class="report-date">Inviato il <?php  echo strftime('%e/%m/%Y', strtotime($report->modified_at)); ?> | di <?php echo $report->autore; ?>
+                <?php if(!empty($author->twitter)) { ?> | <a href="https://twitter.com/<?php echo $author->twitter; ?>" target="_blank"><i class="fab fa-twitter"></i> @<?php echo $author->twitter; ?></a><?php } ?>
+            </span>
 
             <div class="report-body">
                 <h2>Descrizione</h2>

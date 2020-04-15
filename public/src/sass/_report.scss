@@ -40,6 +40,19 @@
       text-align: center;
       font-size: 12px;
     }
+    h5 {
+      margin-top: 15px;
+      text-transform: uppercase;
+      color: $dark;
+      font-weight: 900;
+      padding: 4px 0px;
+      text-align: center;
+      font-size: 12px;
+    }
+    a.report-subject {
+      display: block;
+      text-align: center;
+    }
 
     .report-side-oc {
     //  border: 1px solid $lite;
