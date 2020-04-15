@@ -29,7 +29,7 @@
 
             <div class="row report-side-oc">
                 <div class="col-5"><span class="report-side-title">Tema</span></div>
-                <div class="col"><span class="report-side-value"><?php echo $oc->cup_descr_sottosettore; ?></div>
+                <div class="col"><span class="report-side-value"><?php echo $oc->oc_tema_sintetico; ?></div>
             </div>
 
             <h4>Informazioni ufficiali al momento del monitoraggio</h4>
