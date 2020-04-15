@@ -123,6 +123,7 @@
   <?php if( count($reports) > 0){ ?>
   <section class="row" id="my-reports">
     <div class="col">
+
       <h1>I Miei Report</h1>
 
       <table class="table table-hover table-sm"
@@ -133,6 +134,9 @@
         <thead class="thead-dark">
           <tr>
             <th data-sortable="true" data-field="titolo">Titolo</th>
+            <?php if($Profile->role < 3){ ?>
+            <th data-sortable="true" data-field="team">Team</th>
+            <?php } ?>
             <th data-sortable="true" data-field="created_at">Creato</th>
             <th data-sortable="true" data-field="modified_at">Ultima Modifica</th>
             <th data-sortable="true" data-field="status"class="text-center">Stato</th>
@@ -143,6 +147,9 @@
           <?php foreach($reports as $r){ ?>
           <tr>
             <td><?php echo $r->titolo; ?></td>
+            <?php if($Profile->role < 3){ ?>
+            <td><a href="mailto:<?php echo $r->email; ?>"><?php echo $r->username; ?></a></td>
+            <?php } ?>
             <td><?php echo $r->created_at; ?></td>
             <td><?php echo $r->modified_at; ?></td>
             <td class="text-center"><?php status($r->status); ?></td>
