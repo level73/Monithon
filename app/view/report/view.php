@@ -85,9 +85,16 @@
                     <img src="<?php echo image($image); ?>" class="img-fluid">
                 </div>
             <?php } ?>
+            <?php if(!empty($report->links)){ ?>
+                <h5>Sorgenti & Links</h5>
+                <ul>
+                    <?php foreach($report->links as $l){ ?>
+                        <li><a href="<?php echo $l->URL; ?>" target="_blank"><?php echo $l->URL; ?></a></li>
+                    <?php } ?>
+                </ul>
+            <?php } ?>
             <?php
             foreach($report->videos as $video){
-                dbga($video);
             ?>
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="<?php echo $video->embed; ?>?rel=0" allowfullscreen></iframe>

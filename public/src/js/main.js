@@ -16,6 +16,7 @@ var Monithon = {
     this.videoFieldDuplicator();
     this.checkEval();
     this.delRepoElement();
+    this.tabSubNav();
   },
 
   selects: function(){
@@ -157,6 +158,13 @@ var Monithon = {
           }
         }
       );
+    });
+  },
+
+  tabSubNav: function(){
+    $('.tab-subnav').click(function(){
+      var target = $(this).data('step');
+      $(target).tab('show');
     });
   },
 

@@ -360,6 +360,9 @@ body {
 .full-wrap {
   min-height: 100vh; }
 
+main {
+  padding-bottom: 40px; }
+
 /** BOOTSTRAP OVERRIDES **/
 .nav-tabs .nav-link.active {
   background-color: #fdfffc; }
