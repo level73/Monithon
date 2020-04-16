@@ -50,4 +50,39 @@
       }
     }
 
+    public function delete_repo_ref($type, $id){
+        $Auth = new Auth;
+        if($Auth->isLoggedIn()) {
+            $User = $Auth->getProfile();
+            if (hasPermission($User, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD))) {
+                $Meta = new Meta($type);
+                $id = (int)$id;
+                if ($Meta->unsetRepo($type, $id)) {
+                    $d = $Meta->unsetRepoReference(T_REP_BASIC, $type, $id);
+                    if ($d) {
+                        $response = array(
+                            'code' => 200,
+                            'msg' => 'Elemento rimosso con successo.',
+
+                        );
+                    } else {
+                        $response = array(
+                            'code' => 500,
+                            'msg' => 'Impossibile rimuovere questo elemento.'
+                        );
+                    }
+                } else {
+                    $response = array(
+                        'code' => 500,
+                        'msg' => 'Impossibile rimuovere questo elemento.'
+                    );
+                }
+
+            } else {
+                $response = array('code' => 403, 'msg' => 'Non Autorizzato');
+            }
+            echo json_encode($response);
+        }
+    }
+
   }

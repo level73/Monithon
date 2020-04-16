@@ -403,6 +403,7 @@
               <div class="files">
                 <h3>Risorse Caricate</h3>
                 <?php foreach($data->files as $file){ ?>
+
                   <div class="file">
                     <?php if(typeOfFile($file->info) == 'image'){ ?>
                       <img src="/public/resources/<?php echo $file->file_path;?>" class="img-fluid">
@@ -413,7 +414,9 @@
                     <?php } elseif(typeOfFile($file->info) == 'pdf'){  ?>
                       <a href="/public/resources/<?php echo $file->file_path;?>" class="text-center align-middle"><i class="fal fa-file-pdf fa-8x"></i></a>
                   <?php } ?>
+                      <button class="btn btn-sm btn-block btn-danger ajx-delete-repo" type="button" data-type="file" data-id="<?php echo $file->idfile_repository; ?>"><i class="fal fa-times"></i> Rimuovi Risorsa</button>
                   </div>
+
 
                 <?php } ?>
               </div>
@@ -430,7 +433,7 @@
                 <h3>Link Caricati</h3>
                 <ul class="links">
                 <?php foreach($data->links as $l){ ?>
-                  <li><a href="<?php echo $l->URL; ?>"><?php echo $l->URL; ?></a></li>
+                  <li><a href="<?php echo $l->URL; ?>"><?php echo $l->URL; ?></a> <button class="btn btn-sm btn-danger ajx-delete-repo" type="button" data-type="link" data-id="<?php echo $l->idlink_repository; ?>"><i class="fal fa-times"></i></button></li>
                 <?php } ?>
                 </ul>
               </div>
@@ -450,6 +453,7 @@
                     <div class="embed-responsive embed-responsive-16by9">
                       <iframe class="embed-responsive-item" src="<?php echo $v->embed; ?>" allowfullscreen></iframe>
                     </div>
+                      <button class="btn btn-sm btn-block btn-danger ajx-delete-repo" type="button" data-type="video" data-id="<?php echo $v->idvideo_repository; ?>"><i class="fal fa-times"></i> Rimuovi Video</button>
                   </div>
                 <?php } ?>
                 </ul>

@@ -15,6 +15,7 @@ var Monithon = {
     this.linkFieldDuplicator();
     this.videoFieldDuplicator();
     this.checkEval();
+    this.delRepoElement();
   },
 
   selects: function(){
@@ -134,6 +135,31 @@ var Monithon = {
       }
     });
   },
+
+  delRepoElement: function(){
+    $('.ajx-delete-repo').click(function(e){
+      var repo = $(this).data('type');
+      var id = $(this).data('id');
+      var target = $(this);
+      $.getJSON('/ajax/delete_repo_ref/' + repo + '/' + id, {'type': repo, 'id': id}).done(
+        function(response){
+          if(response.code == 200){
+            var message = '<div class="alert alert-success" role="alert"><i class="fal fa-tick"></i> ' + response.msg + '</div>';
+          }
+          else {
+            var message = '<div class="alert alert-warning" role="alert"><i class="fal fa-times"></i> ' + response.msg + '</div>';
+          }
+          target.after(message);
+          if(response.code == 200){
+            setTimeout(function(){
+              target.parent().remove();
+            }, 3000);
+          }
+        }
+      );
+    });
+  },
+
 };
 
 $(document).ready(function(){

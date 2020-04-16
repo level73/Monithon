@@ -318,6 +318,51 @@
         return true;
       }
     }
+    public function unsetRepoReference($entity, $repo, $element){
+        $sql = 'DELETE FROM `' . $this->meta_table . '_repository` WHERE `entity` = :entity AND ' . $repo . '_repository = :record';
+
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(':entity', $entity, PDO::PARAM_INT);
+        $stmt->bindParam(':record', $element, PDO::PARAM_INT);
+        $query = $stmt->execute();
+        if(!$query){
+            $this->Errors->set(501);
+            if(SYSTEM_STATUS == 'development'){
+                dbga($stmt->errorInfo());
+            }
+            return $this->Errors;
+        } else {
+            return true;
+        }
+    }
+
+    public function unsetRepo($type, $id){
+        if($type == 'file'){
+            $File = new Repo();
+            $file = $File->find($id);
+            if($File->getInfo(DIR_REPO . $file->file_path)){
+                file_exists(DIR_REPO . '90x90_' . $file->file_path) ? unlink(DIR_REPO . '90x90_' . $file->file_path) : null;
+                file_exists(DIR_REPO . '180x180_' . $file->file_path) ?unlink(DIR_REPO . '180x180_' . $file->file_path) : null;
+                file_exists(DIR_REPO . '270x270_' . $file->file_path) ?unlink(DIR_REPO . '270x270_' . $file->file_path) : null;
+                file_exists(DIR_REPO . 'cropx90_' . $file->file_path) ?unlink(DIR_REPO . 'cropx90_' . $file->file_path) : null;
+                file_exists(DIR_REPO . 'cropx180_' . $file->file_path) ?unlink(DIR_REPO . 'cropx180_' . $file->file_path) : null;
+            }
+            unlink(DIR_REPO . $file->file_path);
+        }
+        $sql = 'DELETE FROM ' . $type . '_repository WHERE id' . $type . '_repository = :id';
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $query = $stmt->execute();
+        if(!$query){
+            $this->Errors->set(501);
+            if(SYSTEM_STATUS == 'development'){
+                dbga($stmt->errorInfo());
+            }
+            return $this->Errors;
+        } else {
+            return true;
+        }
+    }
 
 
     public function unsetOrganisationRoles($organisation){
