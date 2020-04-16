@@ -1,6 +1,6 @@
 <div class="container-fluid" id="report-page">
     <section class="row">
-        <aside class="col-3">
+        <aside class="col-3 col-sm-12 float-sm-left">
             <span class="invisible" id="lat"><?php echo $report->lat_; ?></span>
             <span class="invisible" id="lon"><?php echo $report->lon_; ?></span>
             <div id="report-map"></div>
@@ -85,10 +85,7 @@
                     <img src="<?php echo image($image); ?>" class="img-fluid">
                 </div>
             <?php } ?>
-            <?php
-            foreach($report->videos as $video){
-               // $url = prepareEmbed($video->embed);
-            ?>
+            <?php foreach($report->videos as $video){ ?>
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="<?php echo $video->embed; ?>?rel=0" allowfullscreen></iframe>
             </div>
@@ -96,7 +93,7 @@
 
         </aside>
 
-        <article class="col-8" id="report-view">
+        <article class="col-8 col-sm-12" id="report-view">
 
             <h1>
                 <span class="title-label"><small>REPORT DI MONITORAGGIO CIVICO</small><br /></span><?php echo $report->titolo; ?><br />
