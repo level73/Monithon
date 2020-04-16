@@ -307,7 +307,6 @@
             }
             if(!empty($_FILES)){
               $files = rearrange_files($_FILES['file-attachment']);
-
               $Files = new Meta('file_repository');
               $File = new Repo();
 
@@ -319,7 +318,9 @@
                   $filelist[] = $File->upload($file, $fileInfo);
                 }
                 else {
-                  $this->Errors->set(650);
+                    if(!empty($file['tmp_name'])){
+                    $this->Errors->set(650);
+                    }
                 }
               }
 
