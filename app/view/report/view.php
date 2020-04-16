@@ -87,7 +87,6 @@
             <?php } ?>
             <?php
             foreach($report->videos as $video){
-                dbga($video);
             ?>
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="<?php echo $video->embed; ?>?rel=0" allowfullscreen></iframe>

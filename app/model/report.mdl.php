@@ -29,11 +29,24 @@
           $LoadVideo  = new Video();
           $Vids = $LoadVideos->getRepoReference('video_repository', T_REP_BASIC, $id);
           foreach($Vids as $i => $v){
-            if(strpos($v->URL, 'youtube')){
-              $v_pieces = explode('?v=', $v->URL);
-              $v_id = array_pop($v_pieces);
-              $Vids[$i]->embed = 'https://www.youtube.com/embed/' . $v_id;
-            }
+              if(strpos($v->URL, 'youtube')){
+                  $v_pieces = explode('?v=', $v->URL);
+                  $v_id = array_pop($v_pieces);
+                  $Vids[$i]->embed = 'https://www.youtube.com/embed/' . $v_id;
+              }
+              else if(strpos($v->URL, 'youtu.be')){
+                  $v_pieces = explode('/', $v->URL);
+                  $v_id = array_pop($v_pieces);
+                  $Vids[$i]->embed = 'https://www.youtube.com/embed/' . $v_id;
+              }
+              else if(strpos($v->URL, 'vimeo')){
+                  $v_pieces = explode('/', $v->URL);
+                  $v_id = array_pop($v_pieces);
+                  $Vids[$i]->embed = 'https://player.vimeo.com/video/' . $v_id;
+              }
+              else {
+                  $Vids[$i]->embed = $v->URL;
+              }
           }
           $Report->videos = $Vids;
 
