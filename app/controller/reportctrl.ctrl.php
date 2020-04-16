@@ -541,6 +541,9 @@
                 $v_id = array_pop($v_pieces);
                 $Vids[$i]->embed = 'https://www.youtube.com/embed/' . $v_id;
             }
+            else {
+                $Vids[$i]->embed = $v->URL;
+            }
           }
           $report->videos = $Vids;
           // Send to template

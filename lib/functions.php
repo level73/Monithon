@@ -348,6 +348,26 @@ function showComment($comments, $field){
     }
 }
 
+
+/** Prepare Video URLs for Embedding **/
+function prepareEmbed($url){
+    // Check if Youtube or Vimeo
+    if(stristr($url, 'youtube.com/watch')){
+        //get ID
+        $split = str_split($url, strpos($url, 'v='));
+        echo $split;
+    }
+    else if(stristr('youtu.be')){
+
+    }
+    else if(stristr($url, 'vimeo')){
+
+    }
+    else {
+        return $url;
+    }
+}
+
 /** Translator **/
 function t($string){
   echo $string;
