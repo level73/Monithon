@@ -185,9 +185,14 @@
     }
 
     public function getInfo($file){
-      $finfo = new finfo(FILEINFO_MIME_TYPE);
-      $info = $finfo->file($file);
-      return $info;
+        if(file_exists($file)){
+          $finfo = new finfo(FILEINFO_MIME_TYPE);
+          $info = $finfo->file($file);
+          return $info;
+        }
+        else {
+            return false;
+        }
     }
 
   }

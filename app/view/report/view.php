@@ -110,7 +110,7 @@
 
             </h1>
 
-            <span class="report-date">Inviato il <?php  echo strftime('%e/%m/%Y', strtotime($report->modified_at)); ?> | di <?php echo $report->autore; ?>
+            <span class="report-date">Inviato il <?php  echo strftime('%e/%m/%Y', strtotime($report->modified_at)); ?> | di <?php echo $author->username; ?>
                 <?php if(!empty($author->twitter)) { ?> | <a href="https://twitter.com/<?php echo $author->twitter; ?>" target="_blank"><i class="fab fa-twitter"></i> @<?php echo $author->twitter; ?></a><?php } ?>
             </span>
 
