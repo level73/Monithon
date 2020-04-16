@@ -1,6 +1,6 @@
 <div class="container-fluid" id="report-page">
     <section class="row">
-        <aside class=" col-sm-12 float-sm-left col-3">
+        <aside class=" col-sm-12 float-sm-left col-md-3">
             <span class="invisible" id="lat"><?php echo $report->lat_; ?></span>
             <span class="invisible" id="lon"><?php echo $report->lon_; ?></span>
             <div id="report-map"></div>
@@ -93,7 +93,7 @@
 
         </aside>
 
-        <article class="col-sm-12 col-8" id="report-view">
+        <article class="col-sm-12 col-md-8" id="report-view">
 
             <h1>
                 <span class="title-label"><small>REPORT DI MONITORAGGIO CIVICO</small><br /></span><?php echo $report->titolo; ?><br />
