@@ -26,7 +26,7 @@
 
 
       <div class="tab-content" id="report-tab-content">
-        <div class="tab-pane active" id="step-1" role="tabpanel" aria-labelledby="step-1">
+        <div class="tab-pane  fade show  active" id="step-1" role="tabpanel" aria-labelledby="step-1">
           <!-- Codice OpenCoesione -->
           <fieldset>
             <legend>Informazioni di Base</legend>
@@ -96,10 +96,10 @@
               </div>
 
             </fieldset>
-            <!-- <button id="tab-2-nav" class="tab-subnav btn btn-primary btn-lg btn-block" data-step="#step-2" type="button">VAI ALLO STEP 2: VALUTAZIONE</button><br /><br /> -->
+            <button id="tab-2-nav" class="tab-subnav btn btn-primary btn-lg btn-block" data-step="#step-2" type="button">VAI ALLO STEP 2: VALUTAZIONE</button><br /><br />
           </div>
 
-        <div class="tab-pane" id="step-2" role="tabpanel" aria-labelledby="step-2">
+        <div class="tab-pane fade" id="step-2" role="tabpanel" aria-labelledby="step-2">
           <div class="d-none" id="oc_api_content_s2">
             <i class="fal fa-sync fa-spin"></i>
           </div>
@@ -394,7 +394,7 @@
 
             </fieldset>
           </div>
-          <div class="tab-pane" id="step-3" role="tabpanel" aria-labelledby="step-3"><h3>Coming Soon</h3></div>
+          <div class="tab-pane fade" id="step-3" role="tabpanel" aria-labelledby="step-3"><h3>Coming Soon</h3></div>
         </div>
 
         <div class="form-group">

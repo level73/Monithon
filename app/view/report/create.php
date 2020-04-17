@@ -80,6 +80,7 @@
               </div>
 
             </fieldset>
+            <button id="tab-2-nav" class="tab-subnav btn btn-primary btn-lg btn-block" data-step="#step-2" type="button">VAI ALLO STEP 2: VALUTAZIONE</button><br /><br />
         </div>
 
         <div class="tab-pane fade" id="step-2" role="tabpanel" aria-labelledby="step-2">

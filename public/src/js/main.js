@@ -164,7 +164,10 @@ var Monithon = {
   tabSubNav: function(){
     $('.tab-subnav').click(function(){
       var target = $(this).data('step');
-      $(target).tab('show');
+      $('.tab-pane, .nav-link').removeClass('active').removeClass('show');
+      $(target).addClass('active').addClass('show');
+      $(target +'-tab').addClass('active');
+      window.scrollTo(0, 0);
     });
   },
 
