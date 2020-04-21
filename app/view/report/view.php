@@ -38,10 +38,12 @@
                 <div class="col-5"><span class="report-side-title">Data inizio</span></div>
                 <div class="col"><span class="report-side-value"><?php echo ocDateFormatter($oc->oc_data_inizio_progetto); ?></div>
             </div>
+            <?php if(isset($oc->data_fine_progetto_prevista) && !empty($oc->data_fine_progetto_prevista) ){ ?>
             <div class="row report-side-oc">
                 <div class="col-5"><span class="report-side-title">Data fine</span></div>
                 <div class="col"><span class="report-side-value"><?php echo ocDateFormatter($oc->oc_data_fine_progetto_prevista); ?></div>
             </div>
+            <?php } ?>
             <div class="row report-side-oc">
                 <div class="col-5"><span class="report-side-title">Stato del progetto</span></div>
                 <div class="col"><span class="report-side-value"><?php echo strtoupper($oc->oc_stato_progetto); ?></div>
