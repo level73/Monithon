@@ -290,6 +290,9 @@ textarea {
   #report-page aside a.report-subject, #report-page aside ul li a.report-subject {
     display: block;
     text-align: center; }
+  #report-page aside ul#report-sources li a, #report-page aside ul li ul#report-sources li a {
+    overflow-wrap: break-word;
+    word-wrap: break-word; }
   #report-page aside ul li, #report-page aside ul li ul li {
     font-weight: 400; }
   #report-page aside .report-side-title, #report-page aside ul li .report-side-title {

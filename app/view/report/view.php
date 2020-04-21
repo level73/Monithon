@@ -89,7 +89,7 @@
             <?php } ?>
             <?php if(!empty($report->links)){ ?>
                 <h5>Sorgenti & Links</h5>
-                <ul>
+                <ul id="report-sources">
                     <?php foreach($report->links as $l){ ?>
                         <li><a href="<?php echo $l->URL; ?>" target="_blank"><?php echo $l->URL; ?></a></li>
                     <?php } ?>

@@ -53,6 +53,10 @@
       display: block;
       text-align: center;
     }
+    ul#report-sources li a {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
     ul li { font-weight: 400; }
     .report-side-oc {
     //  border: 1px solid $lite;
