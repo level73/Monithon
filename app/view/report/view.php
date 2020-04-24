@@ -99,7 +99,7 @@
             foreach($report->videos as $video){
             ?>
             <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="<?php echo $video->embed; ?>?rel=0" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="<?php echo $video->embed; ?>" allowfullscreen></iframe>
             </div>
             <?php } ?>
 

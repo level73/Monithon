@@ -32,17 +32,17 @@
               if(strpos($v->URL, 'youtube')){
                   $v_pieces = explode('?v=', $v->URL);
                   $v_id = array_pop($v_pieces);
-                  $Vids[$i]->embed = 'https://www.youtube.com/embed/' . $v_id;
+                  $Vids[$i]->embed = 'https://www.youtube.com/embed/' .trim($v_id);
               }
               else if(strpos($v->URL, 'youtu.be')){
                   $v_pieces = explode('/', $v->URL);
                   $v_id = array_pop($v_pieces);
-                  $Vids[$i]->embed = 'https://www.youtube.com/embed/' . $v_id;
+                  $Vids[$i]->embed = 'https://www.youtube.com/embed/' . trim($v_id);
               }
               else if(strpos($v->URL, 'vimeo')){
                   $v_pieces = explode('/', $v->URL);
                   $v_id = array_pop($v_pieces);
-                  $Vids[$i]->embed = 'https://player.vimeo.com/video/' . $v_id;
+                  $Vids[$i]->embed = 'https://player.vimeo.com/video/' . trim($v_id);
               }
               else {
                   $Vids[$i]->embed = $v->URL;
