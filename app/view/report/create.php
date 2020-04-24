@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col">
 
-      <h1>Nuovo Report</h1>
+      <h1>Nuovo Report
+          <a class="btn btn-primary float-right" target="_blank" href="https://www.monithon.it/blog/2020/04/24/come-inviare-il-report-di-monitoraggio-tutti-i-nostri-suggerimenti/"><i class="fas fa-info-square"></i> GUIDA ALLA COMPILAZIONE</a></h1>
 
       <form class="" method="post" enctype="multipart/form-data" action="/report/create">
 

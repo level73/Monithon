@@ -3,7 +3,7 @@
     <div class="col">
 
       <h1>
-        Modifica il Report<br />
+        Modifica il Report <a class="btn btn-primary float-right" target="_blank" href="https://www.monithon.it/blog/2020/04/24/come-inviare-il-report-di-monitoraggio-tutti-i-nostri-suggerimenti/"><i class="fas fa-info-square"></i> GUIDA ALLA COMPILAZIONE</a><br />
         <small><?php echo $data->titolo; ?></small>
       </h1>
 
