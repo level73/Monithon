@@ -287,9 +287,9 @@
 
           <fieldset>
             <legend>Link, Video, Allegati</legend>
-
+              <div class="alert alert-info" role="alert"><i class="fas fa-exclamation-triangle"></i> <strong>Il peso complessivo dei file che si vogliono caricare non deve eccedere gli 8mb per invio.</strong></div>
             <div class="form-group">
-              <label>Carica immagini, documenti, etc.</label>
+              <label>Carica immagini o documenti<br /><small><i class="fas fa-exclamation-triangle"></i> Sono ammessi solo immagini (jpg, gif, png) o file documentali (doc, docx, xls, xlsx, pdf)</small></label>
               <div class="custom-file file-grouper origin">
                 <input type="file" class="custom-file-input" id="file-attachment[0]" name="file-attachment[0]">
                 <label class="custom-file-label" for="file-attachment[0]">Scegli il file da caricare...</label>
