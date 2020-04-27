@@ -195,4 +195,29 @@
         }
     }
 
+    public function checkOwner($id, $repo, $user){
+        $sql = 'SELECT modified_by FROM ' . $repo . '_repository WHERE id' . $repo . '_repository = :id';
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $query = $stmt->execute();
+
+        if(!$query){
+            $this->Errors->set(502);
+            if(SYSTEM_STATUS == 'development'){
+                dbga($stmt->errorInfo());
+            }
+            return $this->Errors;
+        }
+        else {
+            $check = $stmt->fetch(PDO::FETCH_OBJ);
+
+            if($check->modified_by == $user->id){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
   }

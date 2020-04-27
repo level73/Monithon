@@ -54,7 +54,12 @@
         $Auth = new Auth;
         if($Auth->isLoggedIn()) {
             $User = $Auth->getProfile();
-            if (hasPermission($User, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD))) {
+            $Repo = new Repo;
+            if (
+                hasPermission($User, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD))
+                ||
+                $Repo->checkOwner($id, $type, $User)
+            ) {
                 $Meta = new Meta($type);
                 $id = (int)$id;
                 if ($Meta->unsetRepo($type, $id)) {
