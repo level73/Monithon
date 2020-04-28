@@ -95,6 +95,15 @@
                     <img src="<?php echo image($image); ?>" class="img-fluid">
                 </div>
             <?php } ?>
+            <?php if(!empty($resources)){ ?>
+                <ul>
+                    <?php foreach($resources as $i => $resource){ ?>
+
+                        <li><a href="<?php echo URL_REPO . $resource->file_path; ?>" target="_blank">Allegato [n. <?php echo $i+1; ?>]</a></li>
+                    <?php } ?>
+                </ul>
+
+            <?php } ?>
             <?php if(!empty($report->links)){ ?>
                 <h5>Sorgenti & Links</h5>
                 <ul id="report-sources">
