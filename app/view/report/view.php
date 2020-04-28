@@ -33,12 +33,13 @@
             </div>
 
             <h4>Informazioni ufficiali al momento del monitoraggio</h4>
-
+            <?php if(isset($oc->oc_data_inizio_progetto) && !empty($oc->oc_data_inizio_progetto) ){ ?>
             <div class="row report-side-oc">
                 <div class="col-5"><span class="report-side-title">Data inizio</span></div>
                 <div class="col"><span class="report-side-value"><?php echo ocDateFormatter($oc->oc_data_inizio_progetto); ?></div>
             </div>
-            <?php if(isset($oc->data_fine_progetto_prevista) && !empty($oc->data_fine_progetto_prevista) ){ ?>
+            <?php } ?>
+            <?php if(isset($oc->oc_data_fine_progetto_prevista) && !empty($oc->oc_data_fine_progetto_prevista) ){ ?>
             <div class="row report-side-oc">
                 <div class="col-5"><span class="report-side-title">Data fine</span></div>
                 <div class="col"><span class="report-side-value"><?php echo ocDateFormatter($oc->oc_data_fine_progetto_prevista); ?></div>
@@ -82,6 +83,13 @@
 
 
             <h4>RISORSE</h4>
+            <?php
+            foreach($report->videos as $video){
+                ?>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="<?php echo $video->embed; ?>" allowfullscreen></iframe>
+                </div>
+            <?php } ?>
             <?php foreach($images as $image){ ?>
                 <div class="img">
                     <img src="<?php echo image($image); ?>" class="img-fluid">
@@ -95,13 +103,7 @@
                     <?php } ?>
                 </ul>
             <?php } ?>
-            <?php
-            foreach($report->videos as $video){
-            ?>
-            <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="<?php echo $video->embed; ?>" allowfullscreen></iframe>
-            </div>
-            <?php } ?>
+
 
         </aside>
 
