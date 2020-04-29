@@ -150,7 +150,7 @@
                 <?php
                 echo ($r->status == 7) ? '<a href="/report/view/' . $r->idreport_basic . '">' . $r->titolo . '</a>' : $r->titolo;
                 ?>
-
+            </td>
             <?php if($Profile->role < 3){ ?>
             <td><a href="mailto:<?php echo $r->email; ?>"><?php echo $r->username; ?></a></td>
             <?php } ?>
