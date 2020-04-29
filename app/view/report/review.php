@@ -203,36 +203,41 @@
                     Quali sono le cause dell’inefficacia del progetto che hai monitorato?
                     <div><div class=""><button class="btn btn-primary comment" data-field="cause_inefficacia" id="comment[cause_inefficacia]" type="button"><i class="fal fa-comment"></i></button></div></div>
                 </label>
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="problemi_amministrativi" name="problemi_amministrativi" <?php echo (isset($data->problemi_amministrativi) && $data->problemi_amministrativi == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="problemi_amministrativi">Realizzazione ha mostrato problemi di natura amministrativa</label>
-                </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="0" id="problemi_amministrativi_null" name="problemi_amministrativi">
+                      <input class="custom-control-input" type="checkbox" value="1" id="problemi_amministrativi" name="problemi_amministrativi" <?php echo (isset($data->problemi_amministrativi) && $data->problemi_amministrativi == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="problemi_amministrativi">Realizzazione ha mostrato problemi di natura amministrativa</label>
+                  </div>
 
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="problemi_tecnici" name="problemi_tecnici" <?php echo (isset($data->problemi_tecnici) && $data->problemi_tecnici == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="problemi_tecnici">Realizzazione ha mostrato problemi di natura tecnica</label>
-                </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="0" id="problemi_tecnici_null" name="problemi_tecnici">
+                      <input class="custom-control-input" type="checkbox" value="1" id="problemi_tecnici" name="problemi_tecnici" <?php echo (isset($data->problemi_tecnici) && $data->problemi_tecnici == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="problemi_tecnici">Realizzazione ha mostrato problemi di natura tecnica</label>
+                  </div>
 
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="risultato_insoddisfacente" name="risultato_insoddisfacente" <?php echo (isset($data->risultato_insoddisfacente) && $data->risultato_insoddisfacente == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="risultato_insoddisfacente">Il risultato del progetto non è soddisfacente</label>
-                </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="0" id="risultato_insoddisfacente_null" name="risultato_insoddisfacente">
+                      <input class="custom-control-input" type="checkbox" value="1" id="risultato_insoddisfacente" name="risultato_insoddisfacente" <?php echo (isset($data->risultato_insoddisfacente) && $data->risultato_insoddisfacente == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="risultato_insoddisfacente">Il risultato del progetto non è soddisfacente</label>
+                  </div>
 
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="non_efficace" name="non_efficace" <?php echo (isset($data->non_efficace) && $data->non_efficace == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="non_efficace">Intervento complessivamente ben realizzato ma non rispondente ai bisogni degli utenti finali (non efficace)</label>
-                </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="0" id="non_efficace_null" name="non_efficace">
+                      <input class="custom-control-input" type="checkbox" value="1" id="non_efficace" name="non_efficace" <?php echo (isset($data->non_efficace) && $data->non_efficace == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="non_efficace">Intervento complessivamente ben realizzato ma non rispondente ai bisogni degli utenti finali (non efficace)</label>
+                  </div>
 
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="non_sufficiente" name="non_sufficiente" <?php echo (isset($data->non_sufficiente) && $data->non_sufficiente == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="non_sufficiente">Intervento utile ma non sufficiente per rispondere al fabbisogno (“ne serve di più”, es. più investimenti nello stesso progetto o in progetti simili)</label>
-                </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="0" id="non_sufficiente_null" name="non_sufficiente">
+                      <input class="custom-control-input" type="checkbox" value="1" id="non_sufficiente" name="non_sufficiente" <?php echo (isset($data->non_sufficiente) && $data->non_sufficiente == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="non_sufficiente">Intervento utile ma non sufficiente per rispondere al fabbisogno (“ne serve di più”, es. più investimenti nello stesso progetto o in progetti simili)</label>
+                  </div>
 
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="necessita_interventi_extra" name="necessita_interventi_extra" <?php echo (isset($data->necessita_interventi_extra) && $data->necessita_interventi_extra == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="necessita_interventi_extra">Intervento di per sè utile ma sono necessari altri interventi complementari</label>
-                </div>
-
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" value="0" id="necessita_interventi_extra_null" name="necessita_interventi_extra">
+                      <input class="custom-control-input" type="checkbox" value="1" id="necessita_interventi_extra" name="necessita_interventi_extra" <?php echo (isset($data->necessita_interventi_extra) && $data->necessita_interventi_extra == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="necessita_interventi_extra">Intervento di per sè utile ma sono necessari altri interventi complementari</label>
+                  </div>
                   <?php showComment($comments, 'cause_inefficacia'); ?>
 
               </div>
@@ -309,43 +314,46 @@
                     Raccolta Informazioni
                     <div><div class=""><button class="btn btn-primary comment" data-field="raccolta_informazioni" id="comment[raccolta_informazioni]" type="button"><i class="fal fa-comment"></i></button></div></div>
                 </label>
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="raccolta_info_web" name="raccolta_info_web" <?php echo (isset($data->raccolta_info_web) && $data->raccolta_info_web == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="raccolta_info_web">Raccolta di informazioni via web</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="visita_diretta" name="visita_diretta" <?php echo (isset($data->visita_diretta) && $data->visita_diretta == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="visita_diretta">Visita diretta documentata da foto e video</label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="intervista_autorita_gestione" name="intervista_autorita_gestione" <?php echo (isset($data->intervista_autorita_gestione) && $data->intervista_autorita_gestione == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="intervista_autorita_gestione">Intervista con l'Autorità di Gestione del Programma</label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="intervista_soggetto_programmatore" name="intervista_soggetto_programmatore" <?php echo (isset($data->intervista_soggetto_programmatore) && $data->intervista_soggetto_programmatore == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="intervista_soggetto_programmatore">Intervista con i soggetti che hanno programmato l'intervento (soggetto programmatore)</label>
-                </div>
-
-
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="intervista_utenti_beneficiari" name="intervista_utenti_beneficiari" <?php echo (isset($data->intervista_utenti_beneficiari) && $data->intervista_utenti_beneficiari == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="intervista_utenti_beneficiari">Intervista con gli utenti/beneficiari dell'intervento</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="intervista_altri_utenti" name="intervista_altri_utenti" <?php echo (isset($data->intervista_altri_utenti) && $data->intervista_altri_utenti == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="intervista_altri_utenti">Intervista con altre tipologie di persone</label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="raccolta_info_attuatore" name="raccolta_info_attuatore" <?php echo (isset($data->raccolta_info_attuatore) && $data->raccolta_info_attuatore == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="raccolta_info_attuatore">Intervista con i soggetti che hanno o stanno attuando l'intervento (attuatore o realizzatore)</label>
-                </div>
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="1" id="referenti_politici" name="referenti_politici" <?php echo (isset($data->referenti_politici) && $data->referenti_politici == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="referenti_politici">Intervista con i referenti politici</label>
-                </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="hidden" value="0" id="raccolta_info_web_null" name="raccolta_info_web">
+                      <input class="custom-control-input" type="checkbox" value="1" id="raccolta_info_web" name="raccolta_info_web" <?php echo (isset($data->raccolta_info_web) && $data->raccolta_info_web == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="raccolta_info_web">Raccolta di informazioni via web</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="hidden" value="0" id="visita_diretta_null" name="visita_diretta">
+                      <input class="custom-control-input" type="checkbox" value="1" id="visita_diretta" name="visita_diretta" <?php echo (isset($data->visita_diretta) && $data->visita_diretta == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="visita_diretta">Visita diretta documentata da foto e video</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="hidden" value="0" id="intervista_autorita_gestione_null" name="intervista_autorita_gestione">
+                      <input class="custom-control-input" type="checkbox" value="1" id="intervista_autorita_gestione" name="intervista_autorita_gestione" <?php echo (isset($data->intervista_autorita_gestione) && $data->intervista_autorita_gestione == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="intervista_autorita_gestione">Intervista con l'Autorità di Gestione del Programma</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="hidden" value="0" id="intervista_soggetto_programmatore_null" name="intervista_soggetto_programmatore">
+                      <input class="custom-control-input" type="checkbox" value="1" id="intervista_soggetto_programmatore" name="intervista_soggetto_programmatore" <?php echo (isset($data->intervista_soggetto_programmatore) && $data->intervista_soggetto_programmatore == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="intervista_soggetto_programmatore">Intervista con i soggetti che hanno programmato l'intervento (soggetto programmatore)</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="hidden" value="0" id="intervista_utenti_beneficiari_null" name="intervista_utenti_beneficiari">
+                      <input class="custom-control-input" type="checkbox" value="1" id="intervista_utenti_beneficiari" name="intervista_utenti_beneficiari" <?php echo (isset($data->intervista_utenti_beneficiari) && $data->intervista_utenti_beneficiari == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="intervista_utenti_beneficiari">Intervista con gli utenti/beneficiari dell'intervento</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="hidden" value="0" id="intervista_altri_utenti_null" name="intervista_altri_utenti">
+                      <input class="custom-control-input" type="checkbox" value="1" id="intervista_altri_utenti" name="intervista_altri_utenti" <?php echo (isset($data->intervista_altri_utenti) && $data->intervista_altri_utenti == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="intervista_altri_utenti">Intervista con altre tipologie di persone</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="hidden" value="0" id="raccolta_info_attuatore_null" name="raccolta_info_attuatore">
+                      <input class="custom-control-input" type="checkbox" value="1" id="raccolta_info_attuatore" name="raccolta_info_attuatore" <?php echo (isset($data->raccolta_info_attuatore) && $data->raccolta_info_attuatore == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="raccolta_info_attuatore">Intervista con i soggetti che hanno o stanno attuando l'intervento (attuatore o realizzatore)</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="hidden" value="0" id="referenti_politici_null" name="referenti_politici">
+                      <input class="custom-control-input" type="checkbox" value="1" id="referenti_politici" name="referenti_politici" <?php echo (isset($data->referenti_politici) && $data->referenti_politici == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="referenti_politici">Intervista con i referenti politici</label>
+                  </div>
 
                   <?php showComment($comments, 'raccolta_informazioni'); ?>
               </div>
