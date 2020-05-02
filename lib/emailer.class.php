@@ -1,23 +1,52 @@
 <?php
+    /** Set Namespaces **/
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\Exception;
 
-  /* Simple Email class to send out emails */
-  class Emailer {
+    /** Require Classes **/
+    /* Exception class. */
+    require ROOT . DS . 'lib' .DS . 'vendor' . DS . 'PHPMailer/src/Exception.php';
+    /* The main PHPMailer class. */
+    require ROOT . DS . 'lib' .DS . 'vendor' . DS . 'PHPMailer/src/PHPMailer.php';
+    /* SMTP class, needed if you want to use SMTP. */
+    require ROOT . DS . 'lib' .DS . 'vendor' . DS . 'PHPMailer/src/SMTP.php';
 
-    public $headers = array();
+    /* Simple Email class to send out emails */
+    class Emailer {
+        public $Email;
 
-    public function __construct(){
-      // To send HTML mail, the Content-type header must be set
-      $headers[] = 'MIME-Version: 1.0';
-      $headers[] = 'Content-type: text/html; charset=iso-8859-1';
-      // Additional headers
-      $headers[] = 'From: ' . APPNAME . ' <' . APPEMAIL . '>';
+        public function __construct(){
+            $this->Email = new PHPMailer(TRUE);
 
-      $this->headers = implode("\r\n", $headers);
+            $mail->isSMTP();
+            $this->Email->Host = 'smtp.gmail.com';
+            $this->Email->Port = 587;
+            $this->Email->SMTPAuth = true;
+            $this->Email->SMTPSecure = 'tls';
+            $this->Email->Username = APPEMAIL;
+            $this->Email->Password = APPEMAIL_PWD;
+
+            $this->Email->setFrom(APPEMAIL, APPEMAIL_NAME);
+        }
+
+        public function compose($recipient, $subject, $body){
+            $this->Email->addAddress($recipient);
+            $this->Email->Subject =  $subject;
+            $this->Email->Body = $body;
+        }
+
+        public function send($to, $subject, $message){
+            try {
+                $this->Email->send();
+            }
+            catch (Exception $e) {
+                /* PHPMailer exception. */
+                echo $e->errorMessage();
+            }
+            catch (\Exception $e) {
+                /* PHP exception (note the backslash to select the global namespace Exception class). */
+                echo $e->getMessage();
+            }
+        }
 
     }
-
-    public function send($to, $subject, $message){
-      return mail($to, APPNAME . ' | ' . $subject, $message, $this->headers);      
-    }
-
-  }

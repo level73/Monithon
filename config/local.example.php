@@ -7,11 +7,11 @@
 	define( 'SECRET',   strrev(md5(APPKEY)));
 
 	/** Database connection params **/
-  define('DBTYPE', 'mysql');
-  define('DBUSER', 'dbuser');
-  define('DBPASS', 'dbpassword');
-  define('DBNAME', 'dbname');
-  define('DBHOST', 'localhost');
+    define('DBTYPE', 'mysql');
+    define('DBUSER', 'dbuser');
+    define('DBPASS', 'dbpassword');
+    define('DBNAME', 'dbname');
+    define('DBHOST', 'localhost');
 
 	/** session keys **/
 	define('SESSIONKEY',  md5(APPKEY));
@@ -20,8 +20,10 @@
 
 	/** Application email account **/
 	define('APPEMAIL', 'the_app@email');
+    define('APPEMAIL_NAME', 'Email Name');
+    define('APPEMAIL_PWD', '');
 
-	/** Application base URL **/
+    /** Application base URL **/
 	define('APPURL', 'http://yourdomain.tld');
 
 	/** LANGUAGES **/
