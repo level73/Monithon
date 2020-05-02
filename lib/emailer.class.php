@@ -25,7 +25,7 @@
             $this->Email->SMTPSecure = 'tls';
             $this->Email->Username = APPEMAIL;
             $this->Email->Password = APPEMAIL_PWD;
-
+            $this->Email->isHTML(TRUE);
             $this->Email->setFrom(APPEMAIL, APPEMAIL_NAME);
         }
 
@@ -33,6 +33,7 @@
             $this->Email->addAddress($recipient);
             $this->Email->Subject =  $subject;
             $this->Email->Body = $body;
+            $this->Email->AltBody = strip_tags($body);
         }
 
         public function send($to, $subject, $message){
