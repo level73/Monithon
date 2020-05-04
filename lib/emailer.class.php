@@ -18,12 +18,12 @@
         public function __construct(){
             $this->Email = new PHPMailer(TRUE);
 
-            $mail->isSMTP();
+            $this->Email->isSMTP();
             $this->Email->Host = 'smtp.gmail.com';
             $this->Email->Port = 587;
             $this->Email->SMTPAuth = true;
             $this->Email->SMTPSecure = 'tls';
-            $this->Email->Username = APPEMAIL;
+            $this->Email->Username = APPEMAIL_USERNAME;
             $this->Email->Password = APPEMAIL_PWD;
             $this->Email->isHTML(TRUE);
             $this->Email->setFrom(APPEMAIL, APPEMAIL_NAME);
@@ -36,17 +36,18 @@
             $this->Email->AltBody = strip_tags($body);
         }
 
-        public function send($to, $subject, $message){
+        public function deliver(){
             try {
                 $this->Email->send();
+                return true;
             }
             catch (Exception $e) {
                 /* PHPMailer exception. */
-                echo $e->errorMessage();
+                return $e->errorMessage();
             }
             catch (\Exception $e) {
                 /* PHP exception (note the backslash to select the global namespace Exception class). */
-                echo $e->getMessage();
+                return $e->getMessage();
             }
         }
 

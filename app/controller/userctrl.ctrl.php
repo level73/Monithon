@@ -262,14 +262,10 @@
                   $message  = '<h2>Benvenuto!</h2>E grazie di esserti registrato su Monithon, la piattaforma per il monitoraggio civico.<br />Per attivare il tuo account, clicca sul link qui sotto, o copialo ed incollalo nel tuo browser.<br /><br />';
                   $message .= '<a href="' . APPURL . '/user/activate/' . $userdata['recover'] . '">Attiva il tuo Account.</a>';
 
-                  // To send HTML mail, the Content-type header must be set
-                  $headers[] = 'MIME-Version: 1.0';
-                  $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+                  $Emailer = new Emailer();
+                  $Emailer->compose($userdata['email'], 'Monithon - Attivazione Account', $message);
+                  $send = $Emailer->deliver();
 
-                  // Additional headers
-                  $headers[] = 'From: ' . APPEMAIL;
-
-                  $send = mail($userdata['email'], 'Monithon - Attivazione Account', $message, implode("\r\n", $headers));
                   if($send){
                     $Errors->set(5);
                   }
@@ -609,20 +605,16 @@
 
                 $Subject = 'Monithon: Recupero Password';
                 $Email = $user[0]->email;
-                $Headers =  "MIME-Version: 1.0\r\n" .
-                            "Content-type: text/html; charset=utf-8\r\n" .
-                            "From: " . APPEMAIL . "\r\n" .
-                            "Reply-To: " . APPEMAIL . "\r\n" .
-                            "Return-Path: " . APPEMAIL . "\r\n";
 
                 $Message = "Ciao " . $user[0]->username . ", <br />
-                            Hai richeisto di recuperare la tua password per accedere a Monithon. <br />
+                            Hai richiesto di recuperare la tua password per accedere a Monithon. <br />
                             Se non hai effettuato tu la richiesta di recupero, ignora il messaggio. <br />
                             Altrimenti clicca su questo link: <a href=\"" . APPURL . "/user/reset/" . $hash . "\">" . APPURL . "/user/reset/" . $hash . "</a>.
-                            Se il link non dovesse funzioanre, per favore copia ed incolla la URL nel tuo browser. <br /><br />
+                            Se il link non dovesse funzionare, per favore copia ed incolla la URL nel tuo browser. <br /><br />
                             ";
-
-                $sent = mail($Email, $Subject, $Message, $Headers);
+                $Emailer = new Emailer();
+                $Emailer->compose($Email, $Subject, $Message);
+                $sent = $Emailer->deliver();
                 if($sent){
                   $Errors->set(0);
                 }
@@ -637,10 +629,6 @@
             }
             $this->set('errors', $Errors);
           }
-
-
-
-
         }
 
         public function activate($code){

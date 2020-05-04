@@ -25,7 +25,7 @@
     }
 
     /** Report List **/
-    public function index($id = null){
+    public function index(){
       if(!$this->Auth->isLoggedIn()){
         $logged = false;
       }
@@ -33,6 +33,8 @@
         $logged = true;
         $this->set('logged', $logged);
 
+        // Get Report List
+        $this->set('reports', $this->Report->getReports());
 
 
 
@@ -153,7 +155,7 @@
 
         /** STATUS VAR -
           * Used to check if report has been saved - in which case,
-          * redirect user to edit form od said report
+          * redirect user to edit form of said report
           * transferring updated Error class messages
         **/
         $status = 0;
@@ -167,17 +169,23 @@
           unset($data['video-attachment']);
           unset($data['link-attachment']);
 
+          /** Check for OC API URL and Data **/
+          if(!empty($data['id_open_coesione']) && empty($data['api_data'])){
+              // force call to API
+          }
+
+
           $data = array_filter($data);
           $data = recursiveStripTags($data);
 
+
+
           $data['created_by'] = $this->User->id;
+          dbga($data);
           $report = $this->Report->create($data);
 
           if(is_numeric($report)){
             $status = 1;
-
-            // $this->Errors->set(21);
-
             $_SESSION[APPNAME]['message-log'][] = 21;
 
             // Upload Files
@@ -509,13 +517,10 @@
                 }
                 if($mailer){
                     // Send Email
-                    // To send HTML mail, the Content-type header must be set
-                    $headers[] = 'MIME-Version: 1.0';
-                    $headers[] = 'Content-type: text/html; charset=iso-8859-1';
+                    $Emailer = new Emailer();
+                    $Emailer->compose($reporter->email, $subject, $message);
+                    $send = $Emailer->deliver();
 
-                    // Additional headers
-                    $headers[] = 'From: ' . APPEMAIL;
-                    $send = mail($reporter->email, $subject, $message, implode("\r\n", $headers));
                     if($send){
                         $this->Errors->set(5);
                     }
