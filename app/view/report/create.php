@@ -54,6 +54,7 @@
 
               <div class="form-group">
                 <label for="descrizione">Descrizione:</label>
+                  <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Descrivere brevemente il progetto che avete scelto di monitorare in modo da attrarre l'attenzione del lettore del vostro report. Spiegate in poche frasi perché è importante monitorarlo, i suoi obiettivi e come intende raggiungerli">Cosa devo fare qui?</span>
                 <textarea name="descrizione" id="descrizione" class="form-control"><?php echo ckv($data, 'descrizione'); ?></textarea>
               </div>
               <div class="form-group">
