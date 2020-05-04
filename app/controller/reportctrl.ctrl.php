@@ -72,9 +72,11 @@
           $this->set('author', $Author);
 
           $Soggetti = array();
-          foreach ($oc->soggetti as $soggetto) {
-              foreach ($soggetto->ruoli as $ruolo) {
-                  $Soggetti[$ruolo][] = $soggetto;
+          if(isset($oc->soggetti)){
+              foreach ($oc->soggetti as $soggetto) {
+                  foreach ($soggetto->ruoli as $ruolo) {
+                      $Soggetti[$ruolo][] = $soggetto;
+                  }
               }
           }
           $this->set('soggetti', $Soggetti);

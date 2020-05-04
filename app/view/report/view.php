@@ -54,6 +54,7 @@
                 <div class="col"><span class="report-side-value"><?php echo $oc->finanz_totale_pubblico; ?> €</div>
             </div>
 
+            <?php if(isset($oc->programmi)){ ?>
             <div class="row programmi report-side-oc">
                 <div class="col-5"><span class="report-side-title">Progetto finanziato da</span></div>
                 <div class="col">
@@ -65,6 +66,7 @@
                 </div>
 
             </div>
+            <?php } ?>
             <div class="row report-side-oc">
                 <div class="col-5"><span class="report-side-title">Nel ciclo</span></div>
                 <div class="col"><span class="report-side-value"><?php echo $oc->oc_descr_ciclo; ?></div>
