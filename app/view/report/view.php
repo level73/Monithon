@@ -5,6 +5,7 @@
             <span class="invisible" id="lon"><?php echo $report->lon_; ?></span>
             <div id="report-map"></div>
             <span class="report-side-detail"><?php echo $report->indirizzo . ' (' . $report->cap . ')';?></span>
+
             <h4>Titolo del Progetto</h4>
             <?php echo $oc->oc_titolo_progetto; ?>
             <h4>IN BREVE</h4>
@@ -78,9 +79,19 @@
             <h4>Soggetti</h4>
             <?php foreach($soggetti as $ruolo => $sg){ ?>
                 <h5><?php echo $ruolo; ?></h5>
+                <?php if(count($sg) < 5) { ?>
                 <?php foreach($sg as $soggetto){ ?>
                     <a href="<?php echo str_replace('it/api/', '', $soggetto->url); ?>" target="_blank" class="report-subject"><?php echo $soggetto->denominazione; ?></a>
                 <?php } ?>
+                <?php } else { ?>
+                <?php for($i = 0; $i < 4; $i++){ ?>
+                <?php $soggetto = $sg[$i]; ?>
+                        <a href="<?php echo str_replace('it/api/', '', $soggetto->url); ?>" target="_blank" class="report-subject"><?php echo $soggetto->denominazione; ?></a>
+                <?php } ?>
+                    <small>Visualizzati 4 soggetti di <?php echo count($sg); ?></small>
+                    <a href="https://<?php echo str_replace('www.', '', $oc->oc_link); ?>" class="" target="_blank">Altri dettagli su OpenCoesione.gov.it</a>
+                    <?php } ?>
+
             <?php } ?>
 
 
