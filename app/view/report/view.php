@@ -84,13 +84,14 @@
                     <a href="<?php echo str_replace('it/api/', '', $soggetto->url); ?>" target="_blank" class="report-subject"><?php echo $soggetto->denominazione; ?></a>
                 <?php } ?>
                 <?php } else { ?>
+
                 <?php for($i = 0; $i < 4; $i++){ ?>
-                <?php $soggetto = $sg[$i]; ?>
+                    <?php $soggetto = $sg[$i]; ?>
                         <a href="<?php echo str_replace('it/api/', '', $soggetto->url); ?>" target="_blank" class="report-subject"><?php echo $soggetto->denominazione; ?></a>
-                <?php } ?>
-                    <small>Visualizzati 4 soggetti di <?php echo count($sg); ?></small>
-                    <a href="https://<?php echo str_replace('www.', '', $oc->oc_link); ?>" class="" target="_blank">Altri dettagli su OpenCoesione.gov.it</a>
                     <?php } ?>
+                    <small>Visualizzati 4 soggetti di <?php echo count($sg); ?></small><br />
+                    <a href="https://<?php echo str_replace('www.', '', $oc->oc_link); ?>" class="btn btn-sm btn-default" target="_blank">Altri dettagli su OpenCoesione.gov.it</a>
+                <?php } ?>
 
             <?php } ?>
 
