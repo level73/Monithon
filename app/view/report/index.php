@@ -26,9 +26,9 @@
 
                 <div class="col-3">
                     <?php if(isset($report->images) && !empty($report->images)){ ?>
-                    <img src="<?php echo image($report->images[0]); ?>" alt="<?php echo $report->titolo; ?> - immagine" class="img-fluid">
+                    <div class="img-holder" style="background: url('<?php echo image($report->images[0]); ?>');"></div>
                     <?php } ?>
-                    <div class="col"><span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php echo $report->giudizio_sintetico; ?></span></div>
+                    <span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php echo $report->giudizio_sintetico; ?></span>
                 </div>
 
             <div class="col-12">

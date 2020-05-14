@@ -357,6 +357,14 @@ textarea {
     border: 1px solid #e71d36;
     background: rgba(46, 196, 182, 0.03); }
 
+.img-holder {
+  display: block;
+  height: 220px;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: none; }
+
 footer#main-footer {
   background: #011627;
   color: #fdfffc;
