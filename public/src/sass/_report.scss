@@ -105,4 +105,19 @@
   clear: both;
   margin: 5px 0px;
 }
+/** Report List Page **/
+.report-list-entry {
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 15px;
+  margin: 15px 0px 25px;
+  -webkit-transition : all 500ms ease-out;
+  -moz-transition : all 500ms ease-out;
+  -o-transition : all 500ms ease-out;
+  transition : all 500ms ease-out;
+  &:hover {
+    border: 1px solid $snapper;
+    background: fade-out($lagoon, 0.97);
+  }
+}
 

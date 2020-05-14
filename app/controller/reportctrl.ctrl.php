@@ -10,6 +10,8 @@
     protected $User;
     public    $Errors;
 
+    public $pager = 10;
+
     public function __construct($model, $controller, $action){
       parent::__construct($model, $controller, $action);
       $this->Errors = new Errors;
@@ -28,8 +30,24 @@
     public function index(){
         // No need to check for logged in
         $this->set('title', 'I Report');
+        $report_count = $this->Report->counter(PUBLISHED);
+        $this->set('total_reports', $report_count);
+        // Check for pagination
+        $start = 0;
+        $end = $this->pager;
+
+        if(isset($_GET['p']) && !empty($_GET['p']) && is_numeric($_GET['p'])){
+            $p = filter_var($_GET['p'], FILTER_SANITIZE_NUMBER_INT);
+
+            $this->set('curr_page', $p);
+            $this->set('next_page', ($p < ceil($report_count / $this->pager)) ? $p + 1 : null);
+            $this->set('prev_page', ($p - 1 > 0 ) ? $p - 1 : null);
+
+            $p = $p - 1;
+            $start = ($p > 0 ? $p * $this->pager : $p);
+        }
         // Get Report List
-        $this->set('reports', $this->Report->getReports());
+        $this->set('reports', $this->Report->getReports($start, $end));
 
     }
 

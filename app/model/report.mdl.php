@@ -54,7 +54,7 @@
       }
     }
 
-    public function getReports(){
+    public function getReports($start = null, $limit = null){
         $sql = 'SELECT 
                     `' . $this->table . '`.`idreport_basic` AS id,
                     `' . $this->table . '`.`titolo`,
@@ -67,6 +67,9 @@
                  INNER JOIN `auth` ON `auth`.`idauth` = `' . $this->table . '`.`created_by` 
                  WHERE `' . $this->table . '`.`status` = 7
                  ORDER BY `' . $this->table . '`.`modified_at` DESC';
+        if(!is_null($start) && !is_null($limit)){
+            $sql .= ' LIMIT ' . $start . ', ' . $limit;
+        }
 
         $stmt = $this->database->prepare($sql);
         $query = $stmt->execute();
@@ -94,7 +97,25 @@
         }
         
     }
-    
+    public function counter($status = null){
+        $sql = 'SELECT COUNT(idreport_basic) AS counter FROM ' . $this->table;
+        if(!is_null($status)){
+            $sql .= ' WHERE status = ' . $status;
+        }
+        $stmt = $this->database->prepare($sql);
+        $query = $stmt->execute();
+        if(!$query){
+            $this->Errors->set(501);
+            if(SYSTEM_STATUS == 'development'){
+                dbga($stmt->errorInfo());
+            }
+            return $this->Errors;
+        } else {
+            $counter = $stmt->fetch(PDO::FETCH_OBJ);
+            return $counter->counter;
+        }
+    }
+
     public function reviewableReports($id_user){
       $sql = '  SELECT * FROM `' . $this->table . '` 
                 INNER JOIN auth ON auth.idauth = created_by 
