@@ -21,12 +21,14 @@
                 </div>
 
                 <div class="col-9">
-                    <p class="report-description"><?php echo hellip($report->descrizione, 250); ?></p>
+                    <p class="report-description"><?php echo hellip($report->descrizione, 700); ?></p>
                 </div>
 
                 <div class="col-3">
                     <?php if(isset($report->images) && !empty($report->images)){ ?>
                     <div class="img-holder" style="background-image: url('<?php echo image($report->images[0]); ?>');"></div>
+                    <?php } else { ?>
+                    <div class="img-holder"></div>
                     <?php } ?>
                     <span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php echo $report->giudizio_sintetico; ?></span>
                 </div>
