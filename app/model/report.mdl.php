@@ -8,9 +8,6 @@
     public function getReport($id){
       $Report = $this->find($id);
       if($Report){
-          $Files = new Repo();
-          $Videos = new Video();
-          $Links = new Link();
 
           // Get Files
           $Files = new Repo();
@@ -57,6 +54,47 @@
       }
     }
 
+    public function getReports(){
+        $sql = 'SELECT 
+                    `' . $this->table . '`.`idreport_basic` AS id,
+                    `' . $this->table . '`.`titolo`,
+                    `' . $this->table . '`.`descrizione`,
+                    `' . $this->table . '`.`giudizio_sintetico`,
+                    UNIX_TIMESTAMP(`' . $this->table . '`.`modified_at`) AS mod_date,
+                    `' . $this->table . '`.`autore`, 
+                    `auth`.`username`
+                 FROM  `' . $this->table . '` 
+                 INNER JOIN `auth` ON `auth`.`idauth` = `' . $this->table . '`.`created_by` 
+                 WHERE `' . $this->table . '`.`status` = 7
+                 ORDER BY `' . $this->table . '`.`modified_at` DESC';
+
+        $stmt = $this->database->prepare($sql);
+        $query = $stmt->execute();
+        if(!$query){
+            $this->Errors->set(501);
+            if(SYSTEM_STATUS == 'development'){
+                dbga($stmt->errorInfo());
+            }
+            return $this->Errors;
+        } else {
+            $list = $stmt->fetchAll(PDO::FETCH_OBJ);
+            $Files = new Repo();
+            foreach($list as $i => $report){
+                // Get Files
+                $list[$i]->files = $Files->getFiles(T_REP_BASIC, $report->id, 2);
+                foreach($list[$i]->files as $l => $file){
+                    $file->info = $Files->getInfo(ROOT.DS.'public'.DS.'resources'.DS.$file->file_path);
+                    $info = explode('/', $file->info);
+                    if ($info[0] == 'image') {
+                        $list[$i]->images[] = $file;
+                    }
+                }
+            }
+            return $list;
+        }
+        
+    }
+    
     public function reviewableReports($id_user){
       $sql = '  SELECT * FROM `' . $this->table . '` 
                 INNER JOIN auth ON auth.idauth = created_by 

@@ -26,20 +26,10 @@
 
     /** Report List **/
     public function index(){
-      if(!$this->Auth->isLoggedIn()){
-        $logged = false;
-      }
-      else {
-        $logged = true;
-        $this->set('logged', $logged);
-
+        // No need to check for logged in
+        $this->set('title', 'I Report');
         // Get Report List
         $this->set('reports', $this->Report->getReports());
-
-
-
-      }
-
 
     }
 
@@ -285,7 +275,6 @@
         // Check for ownership or permissions
         if( hasPermission($this->User, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD)) || $this->User->id == $r->created_by){
 
-
           $logged = true;
           $this->set('logged', $logged);
 
@@ -304,6 +293,23 @@
             $data = $_POST;
             // $this->set('data', $data);
             $data = recursiveStripTags($data);
+
+            // force call to rest api if api_data is empty
+            if(empty($data['api_data']) && !empty($data['id_open_coesione'])){
+                $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
+                $context = stream_context_create([
+                    "http" => [
+                        "header" => "Authorization: Basic $auth"
+                    ]
+                ]);
+
+                $response = @file_get_contents('https://opencoesione.gov.it/it/api/progetti/' . $code . '/?format=json', false, $context);
+                if(!$response){
+                    $r['message'] = 'Non trovato';
+                    $r['code'] = '404';
+                    $response = json_encode($r);
+                }
+            }
 
             $videos = $data['video-attachment'];
             $links = $data['link-attachment'];

@@ -11,7 +11,7 @@
     "url": "https://github.com/level73/Monithon.git"
   },
   "keywords": [
-    "membernet"
+    "monithon"
   ],
   "author": "level73",
   "license": "GPL 3.0",
@@ -24,3 +24,4 @@
     "grunt-contrib-watch": "^1.0.0"
   }
 }
+

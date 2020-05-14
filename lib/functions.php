@@ -40,8 +40,13 @@ function cssify($string){
     return strtolower(str_replace(' ', '-', cleanString($string)));
 }
 
-function image($image){
-    return URL_REPO . $image->file_path;
+function image($image, $size = null){
+    if(!is_null($size)){
+        return URL_REPO. $size . '_' . $image->file_path;
+    }
+    else {
+        return URL_REPO . $image->file_path;
+    }
 }
 /** UTF8 Encoding deep for API calls **/
 function utf8_encode_deep(&$input) {
