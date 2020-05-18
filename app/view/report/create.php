@@ -15,7 +15,7 @@
           <a class="nav-link" id="step-2-tab" data-toggle="tab" href="#step-2" role="tab" aria-controls="step-2" aria-selected="false">Step 2: Valutazione</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" id="step-3-tab" data-toggle="tab" href="#step-3" role="tab" aria-controls="step-3" aria-selected="false">Step 3: Risultati e Impatto</a>
+          <a class="nav-link" id="step-3-tab" data-toggle="tab" href="#step-3" role="tab" aria-controls="step-3" aria-selected="false">Step 3: Risultati e Impatto</a>
         </li>
       </ul>
 
@@ -322,7 +322,70 @@
 
 
 
-        <div class="tab-pane fade" id="step-3" role="tabpanel" aria-labelledby="step-3"><h3>Coming Soon</h3></div>
+        <div class="tab-pane fade" id="step-3" role="tabpanel" aria-labelledby="step-3">
+
+            <fieldset>
+                <legend>Le nuove connessioni che avete generato</legend>
+                <div class="form-group">
+                    <label for="nuove-connessioni">Come avete diffuso o state diffondendo i risultati del vostro monitoraggio civico?</label>
+
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="1" id="diffusione_twitter" name="diffusione_twitter" <?php echo (isset($data['diffusione_twitter']) && $data['diffusione_twitter'] == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="diffusione_twitter">Twitter</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="1" id="diffusione_facebook" name="diffusione_facebook" <?php echo (isset($data['diffusione_facebook']) && $data['diffusione_facebook'] == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="diffusione_facebook">Facebook</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="1" id="diffusione_instagram" name="diffusione_instagram" <?php echo (isset($data['diffusione_instagram']) && $data['diffusione_instagram'] == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="diffusione_instagram">Instagram</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="1" id="diffusione_eventi" name="diffusione_eventi" <?php echo (isset($data['diffusione_eventi']) && $data['diffusione_eventi'] == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="diffusione_eventi">Eventi territoriali organizzati dai team</label>
+                    </div>
+
+
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="1" id="diffusione_open_admin" name="diffusione_open_admin" <?php echo (isset($data['diffusione_open_admin']) && $data['diffusione_open_admin'] == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="diffusione_open_admin">Settimana dell'Amministrazione Aperta</label>
+                    </div>
+
+
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="1" id="diffusione_blog" name="diffusione_blog" <?php echo (isset($data['diffusione_blog']) && $data['diffusione_blog'] == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="diffusione_blog">Blog/Sito web del Team</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="1" id="diffusione_offline" name="diffusione_offline" <?php echo (isset($data['diffusione_offline']) && $data['diffusione_offline'] == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="diffusione_offline">Volantinaggio o altri metodi off-line (non via Internet)</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="1" id="diffusione_incontri" name="diffusione_incontri" <?php echo (isset($data['diffusione_incontri']) && $data['diffusione_incontri'] == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="diffusione_incontri">Richiesta di audizioni o incontri a porte chiuse</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="1" id="diffusione_interviste" name="diffusione_interviste" <?php echo (isset($data['diffusione_interviste']) && $data['diffusione_interviste'] == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="diffusione_interviste">Interviste ai media</label>
+                    </div>
+                    <div class="form-group">
+                        <label class="" for="diffusione_altro">Altro</label>
+                        <input class="form-control" type="text" id="diffusione_altro" name="diffusione_altro" value="<?php echo ckv($data, 'diffusione_altro'); ?>">
+
+                    </div>
+
+
+                </div>
+
+
+
+            </fieldset>
+        </div>
       </div>
 
 
