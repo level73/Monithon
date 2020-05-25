@@ -188,15 +188,23 @@
           $data = array_filter($data);
           $data = recursiveStripTags($data);
 
+          $connections = $data['connection'];
+          unset($data['connection']);
 
 
           $data['created_by'] = $this->User->id;
-          dbga($data);
           $report = $this->Report->create($data);
 
           if(is_numeric($report)){
             $status = 1;
             $_SESSION[APPNAME]['message-log'][] = 21;
+
+            // check for connection meta
+            $Connection = new Meta('connection');
+            foreach($connections as $c){
+                $Connection->updateConnections(T_REP_BASIC, $report, $c);
+            }
+
 
             // Upload Files
             if(!empty($_FILES)){
@@ -273,6 +281,9 @@
           header('Location: /report/edit/' . $report . '?saved=success');
         }
 
+        /** Connection Type Lexicon **/
+        $ConnectionType = new Meta('connection_type', true);
+        $this->set('connection_type', $ConnectionType->lexiconList);
         $this->set('data', $data);
         $this->set('errors', $this->Errors);
       }

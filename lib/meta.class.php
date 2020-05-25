@@ -298,9 +298,6 @@
       return true;
     }
 
-
-
-
     public function unsetReferences($entity, $record){
       $sql = 'DELETE FROM `' . $this->meta_table . '` WHERE `entity` = :entity AND record = :record';
 
@@ -364,7 +361,6 @@
         }
     }
 
-
     public function unsetOrganisationRoles($organisation){
       $sql = 'DELETE FROM `' . $this->meta_table . '` WHERE `organisation` = :org ';
 
@@ -401,6 +397,16 @@
       }
     }
 
+    /** Report Connections Meta Table */
+    public function updateConnections($entity, $report, $data){
+        $fields = array_keys($data);
+        $holders = query_placeholders($data, true);
+
+        $sql = 'INSERT INTO meta_connection(report, ' . implode(", ", $fields) . ') VALUES (:report, ' . implode(",", $holders) . ')';
+
+        echo $sql;
+
+    }
 
     /** fields to build the form in this format:
      *  type, name, class, label, options, value

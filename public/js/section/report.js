@@ -2,6 +2,7 @@ var MonithonReport = {
 
     init: function(){
         this.setReportMap();
+
     },
 
     // Set Map location and marker
@@ -24,6 +25,8 @@ var MonithonReport = {
 
         console.log(lat + ', ' + lon);
     },
+
+
 
 }
 

@@ -365,6 +365,11 @@ textarea {
   background-position: center center;
   background-repeat: no-repeat; }
 
+#subjects-table {
+  width: 100%; }
+  #subjects-table #connection-0 {
+    display: none; }
+
 footer#main-footer {
   background: #011627;
   color: #fdfffc;
