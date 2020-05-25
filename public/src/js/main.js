@@ -181,12 +181,13 @@ var Monithon = {
 
       // how many elements
       var counter = $('#subjects-table tbody tr').length;
+
       // new names and Ids
       var newAttr = {
         cSubject: 'connection[' + counter + '][subject]',
         cRole:    'connection[' + counter + '][role]',
         cOrg:     'connection[' + counter + '][organisation]',
-        cType:    'connection[' + counter + '][type]',
+        cType:    'connection[' + counter + '][connection_type]',
       }
 
       newLine.find('.c-subject').attr('name', newAttr.cSubject);

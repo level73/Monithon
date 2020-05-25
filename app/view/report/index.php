@@ -3,7 +3,8 @@
     <header class="row">
         <div class="col-12">
             <h1>I REPORT</h1>
-            <small>Abbiamo <strong><?php echo $total_reports; ?></strong> report su Monithon!</small>
+            <small>Pagina <?php echo $curr_page; ?> di <?php echo ceil($total_reports / 10); ?></small>
+            <?php /* <small>Abbiamo <strong><?php echo $total_reports; ?></strong> report su Monithon!</small> */ ?>
             <hr>
         </div>
     </header>
@@ -15,12 +16,13 @@
                 <div class="col-12">
                     <small><span class="report-date"><?php echo strftime('%d/%m/%Y', $report->mod_date);?></span> | <span class="report-author"><?php echo (!empty($report->autore) ? $report->autore : $report->username); ?></span></small>
 
-                    <h2>
-                        <a href="/report/view/<?php echo $report->id; ?>"><?php echo $report->titolo; ?></a>
-                    </h2>
+
                 </div>
 
                 <div class="col-9">
+                    <h2>
+                        <a href="/report/view/<?php echo $report->id; ?>"><?php echo $report->titolo; ?></a>
+                    </h2>
                     <p class="report-description"><?php echo hellip($report->descrizione, 700); ?></p>
                 </div>
 
@@ -28,7 +30,7 @@
                     <?php if(isset($report->images) && !empty($report->images)){ ?>
                     <div class="img-holder" style="background-image: url('<?php echo image($report->images[0]); ?>');"></div>
                     <?php } else { ?>
-                    <div class="img-holder"></div>
+                    <div class="img-holder img-placeholder"><i class="fal fa-image-polaroid fa-3x"></i></div>
                     <?php } ?>
                     <span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php echo $report->giudizio_sintetico; ?></span>
                 </div>

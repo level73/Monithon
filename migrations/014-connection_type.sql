@@ -30,6 +30,8 @@ ALTER TABLE `monithon`.`entity_report_basic`
     CHANGE COLUMN `non_sufficiente` `non_sufficiente` INT(11) NULL DEFAULT NULL AFTER `non_efficace`,
     CHANGE COLUMN `necessita_interventi_extra` `necessita_interventi_extra` INT(11) NULL DEFAULT NULL AFTER `non_sufficiente`;
 
+ALTER TABLE `monithon`.`entity_report_basic`
+    ADD COLUMN `admin_connection` TINYINT(4) NULL AFTER `media_other`;
 
 
 CREATE TABLE `monithon`.`lexicon_connection_type` (

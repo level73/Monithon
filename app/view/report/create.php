@@ -395,11 +395,11 @@
                         </thead>
                         <tbody>
                             <tr id="connection-0">
-                                <td><input type="text" name="connection[][subject]" placeholder="Soggetto..." class="form-control c-subject"></td>
-                                <td><input type="text" name="connection[][role]" placeholder="Ruolo..." class="form-control c-role"></td>
-                                <td><input type="text" name="connection[][organisation]" placeholder="Organizzazione..." class="form-control c-org"></td>
+                                <td><input type="text" name="connection[0][subject]" placeholder="Soggetto..." class="form-control c-subject"></td>
+                                <td><input type="text" name="connection[0][role]" placeholder="Ruolo..." class="form-control c-role"></td>
+                                <td><input type="text" name="connection[0][organisation]" placeholder="Organizzazione..." class="form-control c-org"></td>
                                 <td>
-                                    <select name="connection[][type]" id="connection[][type]" class="form-control c-type">
+                                    <select name="connection[0][connection_type]" id="connection[0][connection_type]" class="form-control c-type">
                                         <option></option>
                                         <?php foreach($connection_type as $c){ ?>
                                         <option value="<?php echo $c->idconnection_type; ?>"><?php echo $c->connection_type; ?></option>
@@ -412,7 +412,7 @@
                                 <td><input type="text" name="connection[1][role]" placeholder="Ruolo..." class="form-control"></td>
                                 <td><input type="text" name="connection[1][organisation]" placeholder="Organizzazione..." class="form-control"></td>
                                 <td>
-                                    <select name="connection[1][type]" id="connection[1][type]" class="form-control pck">
+                                    <select name="connection[1][connection_type]" id="connection[1][connection_type]" class="form-control pck">
                                         <option></option>
                                         <?php foreach($connection_type as $c){ ?>
                                         <option value="<?php echo $c->idconnection_type; ?>"><?php echo $c->connection_type; ?></option>
