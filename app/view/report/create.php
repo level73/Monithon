@@ -318,6 +318,7 @@
             </div>
 
           </fieldset>
+            <button id="tab-3-nav" class="tab-subnav btn btn-primary btn-lg btn-block" data-step="#step-3" type="button">VAI ALLO STEP 3: RISULTATI E IMPATTO</button><br /><br />
         </div>
 
 

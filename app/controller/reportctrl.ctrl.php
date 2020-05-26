@@ -208,7 +208,6 @@
             $Connection = new Meta('connection');
             $Connection->updateConnections(T_REP_BASIC, $report, $connections);
 
-
             // Upload Files
             if(!empty($_FILES)){
 
@@ -329,7 +328,6 @@
             $connections = $data['connection'];
             unset($data['connection']);
             unset($connections[0]);
-            dbga($connections);
 
               // force call to rest api if api_data is empty
             if(empty($data['api_data']) && !empty($data['id_open_coesione'])){
@@ -522,6 +520,10 @@
               $data = recursiveStripTags($data);
               $data['reviewed_by'] = $reviewer_id;
 
+              $connections = $data['connection'];
+              unset($data['connection']);
+              unset($connections[0]);
+
               $creator = $data['created_by'];
               $prev_status = $data['current_status'];
               unset($data['current_status']);
@@ -544,6 +546,10 @@
                   $record = $id;
                   $this->Errors->set(21);
               }
+              // check for connection meta
+              $Connection = new Meta('connection');
+              $Connection->updateConnections(T_REP_BASIC, $id, $connections);
+
             // Save Comments
             if(!empty($comments)){
                 foreach($comments as $field => $comment){
@@ -592,6 +598,13 @@
           // Load Report
           $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
           $report = $this->Report->find($id);
+
+          // Load Connections
+          $Connections = new Meta('connection');
+          $Ctypes = new Meta('connection_type', true);
+          $this->set('connection_type', $Ctypes->lexiconList);
+          $this->set('connections', $Connections->getConnections($id));
+
           // Load Comments
           $this->set('comments', $Comments->findBy(array('entity' => T_REP_BASIC, 'record' => $id)));
           // Load Attachments
@@ -631,6 +644,7 @@
           }
           $report->videos = $Vids;
           // Send to template
+
           $this->set('data', $report);
         }
       }
