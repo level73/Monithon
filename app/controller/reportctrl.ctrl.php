@@ -46,6 +46,11 @@
             $p = $p - 1;
             $start = ($p > 0 ? $p * $this->pager : $p);
         }
+        else {
+            $this->set('curr_page', 1);
+            $this->set('next_page', 2);
+            $this->set('prev_page', null);
+        }
         // Get Report List
         $this->set('reports', $this->Report->getReports($start, $end));
 
@@ -188,15 +193,20 @@
           $data = array_filter($data);
           $data = recursiveStripTags($data);
 
-
+          $connections = $data['connection'];
+          unset($data['connection']);
+          unset($connections[0]);
 
           $data['created_by'] = $this->User->id;
-          dbga($data);
           $report = $this->Report->create($data);
 
           if(is_numeric($report)){
             $status = 1;
             $_SESSION[APPNAME]['message-log'][] = 21;
+
+            // check for connection meta
+            $Connection = new Meta('connection');
+            $Connection->updateConnections(T_REP_BASIC, $report, $connections);
 
             // Upload Files
             if(!empty($_FILES)){
@@ -273,6 +283,9 @@
           header('Location: /report/edit/' . $report . '?saved=success');
         }
 
+        /** Connection Type Lexicon **/
+        $ConnectionType = new Meta('connection_type', true);
+        $this->set('connection_type', $ConnectionType->lexiconList);
         $this->set('data', $data);
         $this->set('errors', $this->Errors);
       }
@@ -312,7 +325,11 @@
             // $this->set('data', $data);
             $data = recursiveStripTags($data);
 
-            // force call to rest api if api_data is empty
+            $connections = $data['connection'];
+            unset($data['connection']);
+            unset($connections[0]);
+
+              // force call to rest api if api_data is empty
             if(empty($data['api_data']) && !empty($data['id_open_coesione'])){
                 $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
                 $context = stream_context_create([
@@ -335,6 +352,12 @@
             unset($data['link-attachment']);
             unset($data['id']);
             $update = $this->Report->update($id, $data);
+
+            // check for connection meta
+            $Connection = new Meta('connection');
+            $Connection->updateConnections(T_REP_BASIC, $id, $connections);
+
+
             if($update) {
               $record = $id;
               $this->Errors->set(21);
@@ -404,7 +427,11 @@
 
           // Load Report
           $report = $this->Report->find($id);
-
+          // Load Connections
+          $Connections = new Meta('connection');
+          $Ctypes = new Meta('connection_type', true);
+          $this->set('connection_type', $Ctypes->lexiconList);
+          $this->set('connections', $Connections->getConnections($id));
           // Load Comments
           $this->set('comments', $Comments->findBy(array('entity' => T_REP_BASIC, 'record' => $id)));
 
@@ -493,6 +520,10 @@
               $data = recursiveStripTags($data);
               $data['reviewed_by'] = $reviewer_id;
 
+              $connections = $data['connection'];
+              unset($data['connection']);
+              unset($connections[0]);
+
               $creator = $data['created_by'];
               $prev_status = $data['current_status'];
               unset($data['current_status']);
@@ -515,6 +546,10 @@
                   $record = $id;
                   $this->Errors->set(21);
               }
+              // check for connection meta
+              $Connection = new Meta('connection');
+              $Connection->updateConnections(T_REP_BASIC, $id, $connections);
+
             // Save Comments
             if(!empty($comments)){
                 foreach($comments as $field => $comment){
@@ -563,6 +598,13 @@
           // Load Report
           $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
           $report = $this->Report->find($id);
+
+          // Load Connections
+          $Connections = new Meta('connection');
+          $Ctypes = new Meta('connection_type', true);
+          $this->set('connection_type', $Ctypes->lexiconList);
+          $this->set('connections', $Connections->getConnections($id));
+
           // Load Comments
           $this->set('comments', $Comments->findBy(array('entity' => T_REP_BASIC, 'record' => $id)));
           // Load Attachments
@@ -602,6 +644,7 @@
           }
           $report->videos = $Vids;
           // Send to template
+
           $this->set('data', $report);
         }
       }

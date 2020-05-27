@@ -17,6 +17,7 @@ var Monithon = {
     this.checkEval();
     this.delRepoElement();
     this.tabSubNav();
+    this.subjectMultiply();
   },
 
   selects: function(){
@@ -170,6 +171,46 @@ var Monithon = {
       window.scrollTo(0, 0);
     });
   },
+
+  subjectMultiply: function(){
+    $('#subject-button-add').click(function(e){
+      e.preventDefault();
+      var newLine = $('#connection-0').clone();
+      $('#subjects-table > tbody').append(newLine);
+      newLine.removeAttr('id');
+
+      // how many elements
+      var counter = $('#subjects-table tbody tr').length;
+
+      // new names and Ids
+      var newAttr = {
+        cSubject: 'connection[' + counter + '][subject]',
+        cRole:    'connection[' + counter + '][role]',
+        cOrg:     'connection[' + counter + '][organisation]',
+        cType:    'connection[' + counter + '][connection_type]',
+      }
+
+      newLine.find('.c-subject').attr('name', newAttr.cSubject);
+      newLine.find('.c-role').attr('name', newAttr.cRole);
+      newLine.find('.c-org').attr('name', newAttr.cOrg);
+      newLine.find('.c-type').attr('name', newAttr.cType).attr('id', newAttr.cType);
+      console.log(newLine.find('#' + newAttr.cType)); //.selectpicker('refresh');
+
+      newLine.find('.c-type').selectpicker('refresh');
+      newLine.find('.c-type').change(function(e){
+        if($(this).val() == 6){
+          var other = '<input type="text" name="connection[' + counter + '][connection_type_other]" class="c-other form-control">';
+          $(this).after(other);
+        }
+        else {
+          if($(this).next('.c-other').length > 0){
+            $(this).next('.c-other').remove();
+          }
+        }
+      });
+
+    });
+  }
 
 };
 

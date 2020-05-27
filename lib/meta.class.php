@@ -298,9 +298,6 @@
       return true;
     }
 
-
-
-
     public function unsetReferences($entity, $record){
       $sql = 'DELETE FROM `' . $this->meta_table . '` WHERE `entity` = :entity AND record = :record';
 
@@ -364,7 +361,6 @@
         }
     }
 
-
     public function unsetOrganisationRoles($organisation){
       $sql = 'DELETE FROM `' . $this->meta_table . '` WHERE `organisation` = :org ';
 
@@ -401,6 +397,68 @@
       }
     }
 
+    /** Report Connections Meta Table */
+      public function getConnections($report){
+        $sql = 'SELECT * FROM meta_connection WHERE report = :report';
+        $stmt = $this->database->prepare($sql);
+
+          $stmt->bindParam(':report', $report, PDO::PARAM_INT);
+          $query = $stmt->execute();
+          if(!$query){
+              $this->Errors->set(501);
+              if(SYSTEM_STATUS == 'development'){
+                  dbga($stmt->errorInfo());
+              }
+              return $this->Errors;
+          } else {
+              return $stmt->fetchAll(PDO::FETCH_OBJ);
+          }
+      }
+
+      public function unsetConnections($report){
+          $sql = 'DELETE FROM `' . $this->meta_table . '` WHERE `report` = :report ';
+
+          $stmt = $this->database->prepare($sql);
+
+          $stmt->bindParam(':report', $report, PDO::PARAM_INT);
+          $query = $stmt->execute();
+          if(!$query){
+              $this->Errors->set(501);
+              if(SYSTEM_STATUS == 'development'){
+                  dbga($stmt->errorInfo());
+              }
+              return $this->Errors;
+          } else {
+              return true;
+          }
+      }
+
+      public function updateConnections($entity, $report, $data){
+
+        self::unsetConnections($report);
+        foreach($data as $i => $data){
+        $fields = array_keys($data);
+        $holders = query_placeholders($data, true);
+        $report = (integer)$report;
+
+        $sql = 'INSERT INTO meta_connection(report, ' . implode(", ", $fields) . ') VALUES (:report, ' . implode(",", $holders) . ')';
+
+        $stmt = $this->database->prepare($sql);
+
+        $stmt->bindParam(':report', $report, PDO::PARAM_INT);
+        foreach($data as $field => &$value){
+            $stmt->bindParam(':'.$field, $value);
+        }
+        $query = $stmt->execute();
+        if(!$query){
+            $this->Errors->set(501);
+            if(SYSTEM_STATUS == 'development'){
+                dbga($stmt->errorInfo());
+            }
+            return $this->Errors;
+        }
+      }
+    }
 
     /** fields to build the form in this format:
      *  type, name, class, label, options, value

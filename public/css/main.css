@@ -346,6 +346,7 @@ textarea {
 /** Report List Page **/
 .report-list-entry {
   border: 1px solid transparent;
+  border-bottom: 1px solid rgba(231, 29, 54, 0.5);
   background: transparent;
   padding: 15px;
   margin: 15px 0px 25px;
@@ -356,6 +357,8 @@ textarea {
   .report-list-entry:hover {
     border: 1px solid #e71d36;
     background: rgba(46, 196, 182, 0.03); }
+  .report-list-entry h2 {
+    text-transform: uppercase; }
 
 .img-holder {
   display: block;
@@ -364,6 +367,16 @@ textarea {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat; }
+  .img-holder.img-placeholder {
+    background-color: #ededed;
+    color: white;
+    padding: 40% 0;
+    text-align: center; }
+
+#subjects-table {
+  width: 100%; }
+  #subjects-table #connection-0 {
+    display: none; }
 
 footer#main-footer {
   background: #011627;

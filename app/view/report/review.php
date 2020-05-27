@@ -19,7 +19,7 @@
           <a class="nav-link" id="step-2-tab" data-toggle="tab" href="#step-2" role="tab" aria-controls="step-2" aria-selected="false">Step 2: Valutazione</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" id="step-3-tab" data-toggle="tab" href="#step-3" role="tab" aria-controls="step-3" aria-selected="false">Step 3: Risultati e Impatto</a>
+          <a class="nav-link" id="step-3-tab" data-toggle="tab" href="#step-3" role="tab" aria-controls="step-3" aria-selected="false">Step 3: Risultati e Impatto</a>
         </li>
       </ul>
 
@@ -384,7 +384,7 @@
               <div class="form-group">
                 <label for="intervista_risposte">Principali due risposte degli intervistati:</label>
                   <div class="input-group">
-                <textarea name="intervista_risposte" id="intervista_risposte" class="form-control"><?php echo ckv_object($data, 'intervista_risposte'); ?></textarea>
+                  <textarea name="intervista_risposte" id="intervista_risposte" class="form-control"><?php echo ckv_object($data, 'intervista_risposte'); ?></textarea>
                   <div class="input-group-append">
                       <button class="btn btn-primary comment" data-field="intervista_risposte" id="comment[intervista_risposte]" type="button"><i class="fal fa-comment"></i></button>
                   </div>
@@ -466,11 +466,261 @@
                 <?php } ?>
                 </ul>
               </div>
-
-
             </fieldset>
+            <button id="tab-3-nav" class="tab-subnav btn btn-primary btn-lg btn-block" data-step="#step-3" type="button">VAI ALLO STEP 3: RISULTATI E IMPATTO</button><br /><br />
+        </div>
+
+          <div class="tab-pane fade" id="step-3" role="tabpanel" aria-labelledby="step-3">
+              <fieldset>
+                  <legend>Le nuove connessioni che avete generato</legend>
+                  <div class="form-group">
+                      <label for="nuove-connessioni">
+                          Come avete diffuso o state diffondendo i risultati del vostro monitoraggio civico?
+                          <div><div class=""><button class="btn btn-primary comment" data-field="diffusione" id="comment[diffusione]" type="button"><i class="fal fa-comment"></i></button></div></div>
+                      </label>
+
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="diffusione_twitter_null" name="diffusione_twitter">
+                          <input class="custom-control-input" type="checkbox" value="1" id="diffusione_twitter" name="diffusione_twitter" <?php echo (isset($data->diffusione_twitter) && $data->diffusione_twitter == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="diffusione_twitter">Twitter</label>
+                      </div>
+
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="diffusione_facebook_null" name="diffusione_facebook">
+                          <input class="custom-control-input" type="checkbox" value="1" id="diffusione_facebook" name="diffusione_facebook" <?php echo (isset($data->diffusione_facebook) && $data->diffusione_facebook == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="diffusione_facebook">Facebook</label>
+                      </div>
+
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="diffusione_instagram_null" name="diffusione_instagram">
+                          <input class="custom-control-input" type="checkbox" value="1" id="diffusione_instagram" name="diffusione_instagram" <?php echo (isset($data->diffusione_instagram) && $data->diffusione_instagram == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="diffusione_instagram">Instagram</label>
+                      </div>
+
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="diffusione_eventi_null" name="diffusione_eventi">
+                          <input class="custom-control-input" type="checkbox" value="1" id="diffusione_eventi" name="diffusione_eventi" <?php echo (isset($data->diffusione_eventi) && $data->diffusione_eventi == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="diffusione_eventi">Eventi territoriali organizzati dai team</label>
+                      </div>
+
+
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="diffusione_open_admin_null" name="diffusione_open_admin">
+                          <input class="custom-control-input" type="checkbox" value="1" id="diffusione_open_admin" name="diffusione_open_admin" <?php echo (isset($data->diffusione_open_admin) && $data->diffusione_open_admin == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="diffusione_open_admin">Settimana dell'Amministrazione Aperta</label>
+                      </div>
+
+
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="diffusione_blog_null" name="diffusione_blog">
+                          <input class="custom-control-input" type="checkbox" value="1" id="diffusione_blog" name="diffusione_blog" <?php echo (isset($data->diffusione_blog) && $data->diffusione_blog == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="diffusione_blog">Blog/Sito web del Team</label>
+                      </div>
+
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="diffusione_offline_null" name="diffusione_offline">
+                          <input class="custom-control-input" type="checkbox" value="1" id="diffusione_offline" name="diffusione_offline" <?php echo (isset($data->diffusione_offline) && $data->diffusione_offline == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="diffusione_offline">Volantinaggio o altri metodi off-line (non via Internet)</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="diffusione_incontri_null" name="diffusione_incontri">
+                          <input class="custom-control-input" type="checkbox" value="1" id="diffusione_incontri" name="diffusione_incontri" <?php echo (isset($data->diffusione_incontri) && $data->diffusione_incontri == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="diffusione_incontri">Richiesta di audizioni o incontri a porte chiuse</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="diffusione_interviste_null" name="diffusione_interviste">
+                          <input class="custom-control-input" type="checkbox" value="1" id="diffusione_interviste" name="diffusione_interviste" <?php echo (isset($data->diffusione_interviste) && $data->diffusione_interviste == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="diffusione_interviste">Interviste ai media</label>
+                      </div>
+                      <div class="form-group">
+                          <label class="" for="diffusione_altro">Altro</label>
+                          <input class="form-control" type="text" id="diffusione_altro" name="diffusione_altro" value="<?php echo ckv_object($data, 'diffusione_altro'); ?>">
+
+                      </div>
+
+                      <?php showComment($comments, 'diffusione'); ?>
+
+                  </div>
+
+                  <div class="form-group">
+                      <label>Con quali soggetti avete creato delle connessioni per discutere dei risultati del vostro monitoraggio?</label>
+                      <div><div class=""><button class="btn btn-primary comment" data-field="soggetti-connessioni" id="comment[soggetti-connessioni]" type="button"><i class="fal fa-comment"></i></button></div></div>
+                      <table id="subjects-table">
+                          <thead>
+                          <tr>
+                              <th width="25%">SOGGETTO</th>
+                              <th width="25%">RUOLO</th>
+                              <th width="25%">ORGANIZZAZIONE</th>
+                              <th width="25%">TIPO DI CONNESSIONE</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr id="connection-0">
+                              <td><input type="text" name="connection[0][subject]" placeholder="Soggetto..." class="form-control c-subject"></td>
+                              <td><input type="text" name="connection[0][role]" placeholder="Ruolo..." class="form-control c-role"></td>
+                              <td><input type="text" name="connection[0][organisation]" placeholder="Organizzazione..." class="form-control c-org"></td>
+                              <td>
+                                  <select name="connection[0][connection_type]" id="connection[0][connection_type]" class="form-control c-type">
+                                      <option></option>
+                                      <?php foreach($connection_type as $c){ ?>
+                                          <option value="<?php echo $c->idconnection_type; ?>"><?php echo $c->connection_type; ?></option>
+                                      <?php } ?>
+                                  </select>
+                              </td>
+                          </tr>
+                          <?php foreach($connections as $i => $connection){ ?>
+                              <tr>
+                                  <td><input type="text" name="connection[<?php echo $i +1; ?>][subject]" value="<?php echo $connection->subject; ?>" placeholder="Soggetto..." class="form-control"></td>
+                                  <td><input type="text" name="connection[<?php echo $i +1; ?>][role]"  value="<?php echo $connection->role; ?>" placeholder="Ruolo..." class="form-control"></td>
+                                  <td><input type="text" name="connection[<?php echo $i +1; ?>][organisation]"  value="<?php echo $connection->organisation; ?>" placeholder="Organizzazione..." class="form-control"></td>
+                                  <td>
+                                      <?php if(!empty($connection->connection_type_other)){ ?>
+                                          <input type="text" name="connection[<?php echo $i +1; ?>][connection_type_other]" value="<?php echo $connection->connection_type_other; ?>" placeholder="Altro tipo di connessione..." class="form-control">
+                                      <?php } ?>
+                                      <select name="connection[<?php echo $i +1; ?>][connection_type]" id="connection[<?php echo $i +1; ?>][connection_type]" class="form-control pck">
+                                          <option></option>
+                                          <?php foreach($connection_type as $c){ ?>
+                                              <option value="<?php echo $c->idconnection_type; ?>" <?php if($connection->connection_type == $c->idconnection_type){ echo " selected"; } ?>><?php echo $c->connection_type; ?></option>
+                                          <?php } ?>
+                                      </select>
+                                  </td>
+                              </tr>
+                          <?php } ?>
+                          </tbody>
+
+                      </table>
+                      <button type="button" class="btn btn-primary" id="subject-button-add"><i class="fal fa-plus"></i> AGGIUNGI SOGGETTO</button>
+                      <?php showComment($comments, 'soggetti-connessioni'); ?>
+                  </div>
+
+                  <div class="form-group">
+                      <label>I media hanno parlato del vostro monitoraggio?</label>
+                      <div><div class=""><button class="btn btn-primary comment" data-field="media" id="comment[media]" type="button"><i class="fal fa-comment"></i></button></div></div>
+                      <div class="custom-control custom-radio">
+                          <input type="radio" id="media_connection_yes" name="media_connection" class="custom-control-input" value="1"  <?php echo (isset($data->media_connection) && $data->media_connection == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="media_connection_yes">Si</label>
+                      </div>
+                      <div class="custom-control custom-radio">
+                          <input type="radio" id="media_connection_no" name="media_connection" class="custom-control-input" value="0"  <?php echo (( isset($data->media_connection) && $data->media_connection == 0) || is_null($data->media_connection) ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="media_connection_no">No</label>
+                      </div>
+                      <?php showComment($comments, 'media'); ?>
+                  </div>
+
+
+                  <div class="form-group">
+                      <label>Se sì, I risultati del monitoraggio sono stati ripresi dai seguenti media:</label>
+                      <div><div class=""><button class="btn btn-primary comment" data-field="media-outlets" id="comment[media-outlets]" type="button"><i class="fal fa-comment"></i></button></div></div>
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="tv_locali_null" name="tv_locali">
+                          <input class="custom-control-input" type="checkbox" value="1" id="tv_locali" name="tv_locali" <?php echo (isset($data->tv_locali) && $data->tv_locali == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="tv_locali">TV Locali</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="tv_nazionali_null" name="tv_nazionali">
+                          <input class="custom-control-input" type="checkbox" value="1" id="tv_nazionali" name="tv_nazionali" <?php echo (isset($data->tv_nazionali) && $data->tv_nazionali == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="tv_nazionali">TV Nazionali</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="giornali_locali_null" name="giornali_locali">
+                          <input class="custom-control-input" type="checkbox" value="1" id="giornali_locali" name="giornali_locali" <?php echo (isset($data->giornali_locali) && $data->giornali_locali == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="giornali_locali">Giornali Locali</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="giornali_nazionali_null" name="giornali_nazionali">
+                          <input class="custom-control-input" type="checkbox" value="1" id="giornali_nazionali" name="giornali_nazionali" <?php echo (isset($data->giornali_nazionali) && $data->giornali_nazionali == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="giornali_nazionali">Giornali Nazionali</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="blog_online_null" name="blog_online">
+                          <input class="custom-control-input" type="checkbox" value="1" id="blog_online" name="blog_online" <?php echo (isset($data->blog_online) && $data->blog_online == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="blog_online">Blog o altre news outlet online</label>
+                      </div>
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="media_other_null" name="media_other">
+                          <input class="custom-control-input" type="checkbox" value="1" id="media_other" name="media_other" <?php echo (isset($data->media_other) && $data->media_other == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="media_other">Altro</label>
+                      </div>
+                      <?php showComment($comments, 'media-outlets'); ?>
+                  </div>
+
+                  <div class="form-group">
+                      <label>Avete avuto contatti con le Amministrazioni (es. il sindaco o dirigenti regionali) per presentare o discutere con loro i risultati del vostro monitoraggio?</label>
+                      <div><div class=""><button class="btn btn-primary comment" data-field="admin-connection" id="comment[admin-connection]" type="button"><i class="fal fa-comment"></i></button></div></div>
+                      <div class="custom-control custom-radio">
+                          <input type="radio" id="admin_connection_yes" name="admin_connection" class="custom-control-input" value="1"  <?php echo (isset($data->admin_connection) && $data->admin_connection == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="admin_connection_yes">Si</label>
+                      </div>
+                      <div class="custom-control custom-radio">
+                          <input type="radio" id="admin_connection_no" name="admin_connection" class="custom-control-input" value="0"  <?php echo (( isset($data->admin_connection) && $data->admin_connection == 0) || (is_null($data->admin_connection)) ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="admin_connection_no">No</label>
+                      </div>
+                      <?php showComment($comments, 'admin-connection'); ?>
+                  </div>
+
+                  <div class="form-group">
+                      <label>Le Pubbliche Amministrazioni hanno risposto alle vostre sollecitazioni o ai problemi che avete sollevato?</label>
+                      <div><div class=""><button class="btn btn-primary comment" data-field="admin-response" id="comment[admin-response]" type="button"><i class="fal fa-comment"></i></button></div></div>
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="admin_response_no_null" name="admin_response_no">
+                          <input class="custom-control-input" type="checkbox" value="1" id="admin_response_no" name="admin_response_no" <?php echo (isset($data->admin_response_no) && $data->admin_response_no == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="admin_response_no">Non ci hanno risposto</label>
+                      </div>
+
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="admin_response_some_null" name="admin_response_some">
+                          <input class="custom-control-input" type="checkbox" value="1" id="admin_response_some" name="admin_response_some" <?php echo (isset($data->admin_response_some) && $data->admin_response_some == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="admin_response_some">Alcune ci hanno risposto, altre no</label>
+                      </div>
+
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="admin_response_formal_null" name="admin_response_formal">
+                          <input class="custom-control-input" type="checkbox" value="1" id="admin_response_formal" name="admin_response_formal" <?php echo (isset($data->admin_response_formal) && $data->admin_response_formal == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="admin_response_formal">Ci hanno dato risposte formali o generiche</label>
+                      </div>
+
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="admin_response_promises_null" name="admin_response_promises">
+                          <input class="custom-control-input" type="checkbox" value="1" id="admin_response_promises" name="admin_response_promises" <?php echo (isset($data->admin_response_promises) && $data->admin_response_promises == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="admin_response_promises">Almeno una tra quelle contattate ci ha fatto promesse concrete</label>
+                      </div>
+
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="admin_response_unlocked_null" name="admin_response_unlocked">
+                          <input class="custom-control-input" type="checkbox" value="1" id="admin_response_unlocked" name="admin_response_unlocked" <?php echo (isset($data->admin_response_unlocked) && $data->admin_response_unlocked == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="admin_response_unlocked">Hanno messo in pratica i nostri suggerimenti e il progetto ora è "sbloccato" o più efficace</label>
+                      </div>
+
+                      <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="hidden" value="0" id="admin_response_flagged_null" name="admin_response_flagged">
+                          <input class="custom-control-input" type="checkbox" value="1" id="admin_response_flagged" name="admin_response_flagged" <?php echo (isset($data->admin_response_flagged) && $data->admin_response_flagged == 1 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="admin_response_flagged">Avevamo segnalato un problema che ora è stato risolto</label>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="" for="admin_altro">Altro</label>
+                          <input class="form-control" type="text" id="admin_altro" name="admin_altro" value="<?php echo ckv_object($data, 'admin_altro'); ?>">
+
+                      </div>
+                      <?php showComment($comments, 'admin-response'); ?>
+                  </div>
+
+                  <div class="form-group">
+
+                      <label for="impact_description">Descriveteci il vostro caso. Quali fatti o episodi concreti vi portano a pensare che il vostro monitoraggio civico abbia avuto (o non abbia avuto) impatto tra i soggetti che gestiscono o attuano i progetto che avete monitorato?</label>
+                      <div class="input-group">
+                          <textarea name="impact_description" id="impact_description" class="form-control"><?php echo ckv_object($data, 'impact_description'); ?></textarea>
+                          <div class="input-group-append">
+                              <button class="btn btn-primary comment" data-field="impact-description" id="comment[impact-description]" type="button"><i class="fal fa-comment"></i></button>
+                          </div>
+                      </div>
+                      <?php showComment($comments, 'impact-description'); ?>
+                  </div>
+              </fieldset>
           </div>
-          <div class="tab-pane fade" id="step-3" role="tabpanel" aria-labelledby="step-3"><h3>Coming Soon</h3></div>
+
+
+
         </div>
           <div class="">
               <h3>IMPOSTA LO STATO DEL REPORT</h3>
