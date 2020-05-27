@@ -579,7 +579,7 @@
                 }
                 if($mailer){
                     if($prev_status_tab_3 != $data['status_tab_3']){
-                        $message = 'In particolare, rivolgi l\'attenzione al terzo step, Impatto e Risultati.';
+                        $message .= 'In particolare, rivolgi l\'attenzione al terzo step, Impatto e Risultati.';
                     }
                     $message .= "<br /><br /> - La redazione di Monithon";
                     // Send Email
