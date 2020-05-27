@@ -526,7 +526,9 @@
 
               $creator = $data['created_by'];
               $prev_status = $data['current_status'];
+              $prev_status_tab_3 = $data['current_status_tab_3'];
               unset($data['current_status']);
+              unset($data['current_status_tab_3']);
               unset($data['created_by']);
 
               $videos = $data['video-attachment'];
@@ -557,26 +559,29 @@
                 }
             }
             // Check status change
-            if($prev_status != $data['status']){
+            if( ($prev_status != $data['status']) || ($prev_status_tab_3 != $data['status_tab_3'])){
                 //status has changed, check how and set up email for users
                 $Reporter = new User();
                 $reporter = $Reporter->fullProfile($creator);
 
-                if($data['status'] == PUBLISHED){
+                if($data['status'] == PUBLISHED || $data['status_tab_3'] == PUBLISHED){
                     $mailer = true;
                     $subject = "MONITHON - Report Approvato";
                     $message = "Il Report <strong>" . $data['titolo'] . "</strong> è stato approvato, puoi vederlo online. Grazie per aver partecipato al progetto di monitoraggio civico. <br /> " .
-                                "Il Report è consultabile alla URL <a href=\"" . APPURL . "/report/view/" . $id . "\">" . APPURL . "/report/view/" . $id . "</a>" .
-                                "<br /><br /> - La redazione di Monithon";
+                                "Il Report è consultabile alla URL <a href=\"" . APPURL . "/report/view/" . $id . "\">" . APPURL . "/report/view/" . $id . "</a>";
                 }
-                else if($data['status'] == DRAFT){
+                else if($data['status'] == DRAFT || $data['status_tab_3'] == DRAFT){
                     $mailer = true;
                     $subject = "MONITHON - Richiesta modifiche al report!";
                     $message = "Durante la revisione da parte della Redazione di Monithon sono emersi alcuni particolari che necessitano il tuo intervento sul report <strong>" . $data['titolo'] . "</strong>!<br />" .
-                               "La Redazione di Monithon ha lasciato dei commenti chiarificatori sulla piattaforma, ti basterà accedervi e modificare il report per leggerli ed intervenire dove opportuno! <br />" .
-                               "<br /><br /> - La redazione di Monithon";
+                               "La Redazione di Monithon ha lasciato dei commenti chiarificatori sulla piattaforma, ti basterà accedervi e modificare il report per leggerli ed intervenire dove opportuno! <br />";
+
                 }
                 if($mailer){
+                    if($prev_status_tab_3 != $data['status_tab_3']){
+                        $message = 'In particolare, rivolgi l\'attenzione al terzo step, Impatto e Risultati.';
+                    }
+                    $message .= "<br /><br /> - La redazione di Monithon";
                     // Send Email
                     $Emailer = new Emailer();
                     $Emailer->compose($reporter->email, $subject, $message);
@@ -590,8 +595,6 @@
                     }
                 }
             }
-
-
           }
 
 

@@ -140,6 +140,7 @@
             <th data-sortable="true" data-field="created_at">Creato</th>
             <th data-sortable="true" data-field="modified_at">Ultima Modifica</th>
             <th data-sortable="true" data-field="status"class="text-center">Stato</th>
+            <th data-sortable="true" data-field="status_tab_3"class="text-center">Stato (Step 3)</th>
             <th data-field="edit" class="text-center">Modifica</th>
           </tr>
         </thead>
@@ -157,8 +158,9 @@
             <td><?php echo $r->created_at; ?></td>
             <td><?php echo $r->modified_at; ?></td>
             <td class="text-center"><?php status($r->status); ?></td>
+            <td class="text-center"><?php status($r->status_tab_3); ?></td>
             <td class="text-center">
-              <?php if($r->status == 1){ ?>
+              <?php if($r->status == 1 || $r->status_tab_3 == 1){ ?>
               <a href="/report/edit/<?php echo $r->idreport_basic; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
               <?php } else { ?>
                 <?php

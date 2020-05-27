@@ -628,7 +628,10 @@
                     <textarea name="impact_description" id="impact_description" class="form-control"><?php echo ckv_object($data, 'impact_description'); ?></textarea>
                     <?php showComment($comments, 'impact-description'); ?>
                 </div>
-
+                <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" value="<?php echo PENDING_REVIEW; ?>" id="status_tab_3" name="status_tab_3">
+                    <label class="custom-control-label" for="status_tab_3">Questo step del report (Impatto & Risultati) è pronto per essere revisionato dalla Redazione, che lo pubblicherà se rispetterà i nostri <a href="#">Termini d'uso</a></label>
+                </div>
             </fieldset>
         </div>
       </div>
@@ -636,7 +639,7 @@
         <div class="form-group">
           <div class="custom-control custom-checkbox">
             <input class="custom-control-input" type="checkbox" value="<?php echo PENDING_REVIEW; ?>" id="status" name="status">
-              <label class="custom-control-label" for="status">Il Report è pronto (<strong>completo in step 1, step 2 e step 3</strong>) per essere revisionato dalla Redazione, che lo pubblicherà se rispetterà i nostri <a href="#">Termini d'uso</a></label>
+              <label class="custom-control-label" for="status">Il Report è pronto (<strong>completo in step 1 e step 2</strong>) per essere revisionato dalla Redazione, che lo pubblicherà se rispetterà i nostri <a href="#">Termini d'uso</a></label>
           </div>
 
         </div>

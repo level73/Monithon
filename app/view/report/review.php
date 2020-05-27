@@ -716,6 +716,31 @@
                       </div>
                       <?php showComment($comments, 'impact-description'); ?>
                   </div>
+
+                  <div class="">
+                      <h3>IMPOSTA LO STATO DELLO STEP 3</h3>
+                      <input type="hidden" name="current_status_tab_3" value="<?php echo $data->status_tab_3; ?>">
+                      <input type="hidden" name="created_by" value="<?php echo $data->created_by; ?>">
+                      <div class="form-group">
+                          <div class="custom-control custom-radio">
+                              <input class="custom-control-input" type="radio" value="<?php echo DRAFT; ?>" id="status-tab-3-1" name="status_tab_3" <?php echo ($data->status_tab_3 == DRAFT ? 'checked' : ""); ?>>
+                              <label class="custom-control-label" for="status-tab-3-1">Riporta lo step in <strong>BOZZA</strong>, per permettere ai reporter di modificarlo</label>
+                          </div>
+
+                          <div class="custom-control custom-radio">
+                              <input class="custom-control-input" type="radio" value="<?php echo PENDING_REVIEW; ?>" id="status-tab-3-3" name="status_tab_3" <?php echo ($data->status_tab_3 == PENDING_REVIEW ? 'checked' : ""); ?>>
+                              <label class="custom-control-label" for="status-tab-3-3">Riporta lo step in <strong>ATTESA DI REVISIONE</strong></label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                              <input class="custom-control-input" type="radio" value="<?php echo IN_REVIEW; ?>" id="status-tab-3-5" name="status_tab_3" <?php echo ($data->status_tab_3 == IN_REVIEW ? 'checked' : ""); ?>>
+                              <label class="custom-control-label" for="status-tab-3-5">Mantieni lo step <strong>IN REVISIONE</strong></label>
+                          </div>
+                          <div class="custom-control custom-radio">
+                              <input class="custom-control-input" type="radio" value="<?php echo PUBLISHED; ?>" id="status-tab-3-7" name="status_tab_3" <?php echo ($data->status_tab_3 == PUBLISHED ? 'checked' : ""); ?>>
+                              <label class="custom-control-label" for="status-tab-3-7">Imposta lo step come <strong>APPROVATO</strong></label>
+                          </div>
+                      </div>
+                  </div>
               </fieldset>
           </div>
 
