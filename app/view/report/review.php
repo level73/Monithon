@@ -544,6 +544,10 @@
 
                   <div class="form-group">
                       <label>Con quali soggetti avete creato delle connessioni per discutere dei risultati del vostro monitoraggio?</label>
+                      <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="RUOLO: Elencate i soggetti con cui avete avuto dei contatti per diffondere o discutere i risultati del vostro monitoraggio.
+Ad esempio: Sindaco, Presidente, Funzionario pubblico, giornalista, amministratore delegato di azienda, etc.
+
+ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabria, Il Corriere della Sera, Buitoni, etc.">Cosa devo fare qui?</span>
                       <div><div class=""><button class="btn btn-primary comment" data-field="soggetti-connessioni" id="comment[soggetti-connessioni]" type="button"><i class="fal fa-comment"></i></button></div></div>
                       <table id="subjects-table">
                           <thead>
