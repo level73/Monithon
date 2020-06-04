@@ -639,7 +639,7 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
             </fieldset>
         </div>
       </div>
-
+        <?php if($data->status !== 7){ ?>
         <div class="form-group">
           <div class="custom-control custom-checkbox">
             <input class="custom-control-input" type="checkbox" value="<?php echo PENDING_REVIEW; ?>" id="status" name="status">
@@ -647,6 +647,7 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
           </div>
 
         </div>
+        <?php } ?>
         <div class="form-group">
           <button class="btn btn-primary" type="submit" ><i class="fal fa-save"></i> Salva Report</button>
         </div>
