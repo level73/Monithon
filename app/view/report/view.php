@@ -5,9 +5,10 @@
             <span class="invisible" id="lon"><?php echo $report->lon_; ?></span>
             <div id="report-map"></div>
             <span class="report-side-detail"><?php echo $report->indirizzo . ' (' . $report->cap . ')';?></span>
-
+            <?php if(!empty($oc)){ ?>
             <h4>Titolo del Progetto</h4>
             <?php echo $oc->oc_titolo_progetto; ?>
+            <?php } ?>
             <h4>IN BREVE</h4>
             <div class="row">
                 <div class="col"><span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php echo $report->giudizio_sintetico; ?></span></div>
@@ -27,7 +28,7 @@
                 </div>
             </div>
 
-
+            <?php if(!empty($oc)){ ?>
             <div class="row report-side-oc">
                 <div class="col-5"><span class="report-side-title">Tema</span></div>
                 <div class="col"><span class="report-side-value"><?php echo $oc->oc_tema_sintetico; ?></div>
@@ -75,7 +76,10 @@
             <a href="https://<?php echo str_replace('www.', '', $oc->oc_link); ?>" class="" target="_blank">
                 Accedi alle informazioni aggiornate sul portale governativo OpenCoesione
             </a>
+            <?php } ?>
 
+
+            <?php if(!empty($soggetti)){ ?>
             <h4>Soggetti</h4>
             <?php foreach($soggetti as $ruolo => $sg){ ?>
                 <h5><?php echo $ruolo; ?></h5>
@@ -97,6 +101,7 @@
                     </p>
                 <?php } ?>
 
+            <?php } ?>
             <?php } ?>
 
 
