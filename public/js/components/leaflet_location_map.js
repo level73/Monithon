@@ -1,7 +1,7 @@
 
 var LocationMap = L.map('location_map').setView([42.088,12.564], 6);
 
-L.tileLayer('https://https://api.mapbox.com/styles/v1/{id}/tiles//{z}/{x}/{y}.png?access_token={accessToken}', {
+L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}.png?access_token={accessToken}', {
 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     tileSize: 512,
     maxZoom: 18,
