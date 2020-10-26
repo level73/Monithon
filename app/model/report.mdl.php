@@ -61,12 +61,13 @@
                     `' . $this->table . '`.`descrizione`,
                     `' . $this->table . '`.`giudizio_sintetico`,
                     UNIX_TIMESTAMP(`' . $this->table . '`.`modified_at`) AS mod_date,
+                    UNIX_TIMESTAMP(`' . $this->table . '`.`created_at`) AS create_date,
                     `' . $this->table . '`.`autore`, 
                     `auth`.`username`
                  FROM  `' . $this->table . '` 
                  INNER JOIN `auth` ON `auth`.`idauth` = `' . $this->table . '`.`created_by` 
                  WHERE `' . $this->table . '`.`status` = 7
-                 ORDER BY `' . $this->table . '`.`modified_at` DESC';
+                 ORDER BY `' . $this->table . '`.`created_at` DESC';
         if(!is_null($start) && !is_null($limit)){
             $sql .= ' LIMIT ' . $start . ', ' . $limit;
         }
