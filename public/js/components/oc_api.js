@@ -28,6 +28,20 @@ var OpenCoesione = {
         var oc_api_url = $('#oc_api_code').val().toLowerCase();
         var oc_api_code = OC.getProjectCode(oc_api_url);
 
+        // Check if project is already in the database
+        $.getJSON('/ajax/check_project', {'code' : oc_api_code}, function(data){
+          if(data.length > 0){
+            var previous_reports_intro = '<div class="previous-reports-holder"><h3>Questo progetto è già stato monitorato!</h3><p>Leggi qui sotto i precedenti report.</p>';
+            for(i = 0; i < data.length; i++){
+              previous_reports_intro = previous_reports_intro + data[i].creation_date + ' - <a href="/report/view/' + data[i].idreport_basic + '" target="_blank">' + data[i].titolo + '</a><br />'
+            }
+            previous_reports_intro = previous_reports_intro + '</div>';
+            $('.previous-reports-holder').remove();
+            $('#oc_api_content_s1').before(previous_reports_intro);
+
+          }
+        });
+
         // build the JSON API URL
         var oc_api_endpoint = config.api_url + oc_api_code + config.api_format;
         console.log(oc_api_endpoint);

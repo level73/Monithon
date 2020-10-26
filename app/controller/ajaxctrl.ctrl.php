@@ -22,6 +22,14 @@
       echo $data;
     }
 
+    public function check_project(){
+        $code = $_GET['code'];
+        $Report = new Report();
+        $reports = $Report->checkProject($code);
+        echo json_encode($reports);
+
+    }
+
 
     public function programma_operativo($code, $mode = 'json'){
       $PO = new Meta('programma_operativo', true);

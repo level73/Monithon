@@ -138,4 +138,33 @@
       }
     }
 
+
+    public function checkProject($url){
+        $str_code_1 = '%' . $url . '%';
+
+        $sql = 'SELECT 
+                    idreport_basic, 
+                    titolo, 
+                    UNIX_TIMESTAMP(created_at) AS creation_ts,
+                    DATE_FORMAT(created_at, "%d/%m/%Y") AS creation_date
+                FROM 
+                    entity_report_basic 
+                WHERE 
+                    id_open_coesione LIKE \''.$str_code_1.'\'
+                    AND 
+                    status = 7 
+                ORDER BY creation_ts DESC';
+
+        $stmt = $this->database->prepare($sql);
+        //$stmt->bindParam(':url_1', $str_code_1);
+
+        $query = $stmt->execute();
+        if(!$query){
+
+            return false;
+        } else {
+            $reports = $stmt->fetchAll(PDO::FETCH_OBJ);
+            return $reports;
+        }
+    }
   }
