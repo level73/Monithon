@@ -1,5 +1,5 @@
 <?php
-
+/*
 define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 define('DS', '/');
 
@@ -17,7 +17,7 @@ require(ROOT . DS . 'lib' . DS . 'session.class.php');
 require(ROOT . DS . 'app' . DS . 'model' . DS . 'user.mdl.php');
 require(ROOT . DS . 'app' . DS . 'model' . DS . 'asoc.mdl.php');
 require(ROOT . DS . 'app' . DS . 'model' . DS . 'report.mdl.php');
-
+*/
 ?>
 
 <!doctype html>
@@ -52,8 +52,9 @@ require(ROOT . DS . 'app' . DS . 'model' . DS . 'report.mdl.php');
 </head>
 <body>
 <div class="container">
+    <h1>Importer ran already. </h1>
 <?php
-
+/*
 // Main CSV File - load data and create handler
 $csv_file = 'dataset_monithon.csv';
 $csv_handle = fopen($csv_file, "r");
@@ -232,7 +233,7 @@ if($csv_handle){
 else {
     echo "could not read CSV file: " . $csv_file . " - exit.";
 }
-
+*/
 ?>
 </div>
 </body>
