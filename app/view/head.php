@@ -7,7 +7,7 @@
 
       <!-- Load Fonts -->
       <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,900" rel="stylesheet">
-      <script src="https://kit.fontawesome.com/faba35a8a9.js"></script>
+      <link rel="stylesheet" type="text/css" href="/public/font/fontawesome/css/all.css">
       <link rel="stylesheet" type="text/css" href="/public/css/vendor/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="/public/css/vendor/bootstrap-select.min.css">
       <link rel="stylesheet" type="text/css" href="/public/css/vendor/bootstrap-table.min.css">
