@@ -51,7 +51,8 @@ require(ROOT . DS . 'app' . DS . 'model' . DS . 'report.mdl.php');
 </head>
 <body>
     <div class="container">
-<?php
+        <h1>VIDEO IMPORTER RAN ALREADY</h1>
+<?php /*
 // Main CSV File - load data and create handler
 $csv_file = 'dataset_monithon_videos.csv';
 $csv_handle = fopen($csv_file, "r");
@@ -84,7 +85,7 @@ if($csv_handle){
 
     }
 }
-
+*/
 
 ?>
     </div>
