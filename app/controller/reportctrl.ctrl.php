@@ -10,7 +10,7 @@
     protected $User;
     public    $Errors;
 
-    public $pager = 10;
+    public $pager = 25;
 
     public function __construct($model, $controller, $action){
       parent::__construct($model, $controller, $action);
