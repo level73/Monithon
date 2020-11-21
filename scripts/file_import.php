@@ -51,9 +51,10 @@ require(ROOT . DS . 'app' . DS . 'model' . DS . 'report.mdl.php');
 </head>
 <body>
     <div class="container">
-
+        <h1>IMPORTER RAN ALREADY</h1>
 <?php
 // Main CSV File - load data and create handler
+/*
 $csv_file = 'dataset_files.csv';
 $csv_handle = fopen($csv_file, "r");
 
@@ -151,7 +152,7 @@ dbga($unfound);
 echo "<hr /><h1>" .count($unwanted)." File non rispettano i nostri criteri</h1>";
 dbga($unwanted);
 
-
+*/
 ?>
     </div>
 </body>
