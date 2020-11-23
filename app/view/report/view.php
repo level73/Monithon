@@ -86,14 +86,18 @@
                 <h5><?php echo $ruolo; ?></h5>
                 <?php if(count($sg) < 5) { ?>
                 <?php foreach($sg as $soggetto){ ?>
+                    <?php if(isset($soggetto->url)){ ?>
                     <a href="<?php echo str_replace('it/api/', '', $soggetto->url); ?>" target="_blank" class="report-subject"><?php echo $soggetto->denominazione; ?></a>
+                    <?php } else { echo $soggetto->denominazione; } ?>
                 <?php } ?>
                 <?php } else { ?>
 
                 <?php for($i = 0; $i < 4; $i++){ ?>
                     <?php $soggetto = $sg[$i]; ?>
-                        <a href="<?php echo str_replace('it/api/', '', $soggetto->url); ?>" target="_blank" class="report-subject"><?php echo $soggetto->denominazione; ?></a>
-                    <?php } ?>
+                        <?php if(isset($soggetto->url)){ ?>
+                            <a href="<?php echo str_replace('it/api/', '', $soggetto->url); ?>" target="_blank" class="report-subject"><?php echo $soggetto->denominazione; ?></a>
+                        <?php } else { echo $soggetto->denominazione; } ?>
+                        <?php } ?>
                     <p class="text-center">
                         <small>
                             Visualizzati 4 soggetti di <?php echo count($sg); ?><br />
