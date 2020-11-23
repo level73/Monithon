@@ -130,22 +130,22 @@
 
             <?php if(!empty($report->immagine_monitoraggio_daASOC)){ ?>
             <div class="img">
-                <img src="<?php echo $report->immagine_monitoraggio_daASOC; ?>" alt="Immagine Monitoraggio" class=img-fluid">
+                <img src="<?php echo $report->immagine_monitoraggio_daASOC; ?>" alt="Immagine Monitoraggio" class="img-fluid">
             </div>
             <?php } ?>
             <?php if(!empty($report->immagine_team1_daASOC)){ ?>
             <div class="img">
-                <img src="<?php echo $report->immagine_team1_daASOC; ?>" alt="Immagine Monitoraggio" class=img-fluid">
+                <img src="<?php echo $report->immagine_team1_daASOC; ?>" alt="Immagine Monitoraggio" class="img-fluid">
             </div>
             <?php } ?>
             <?php if(!empty($report->immagine_team2_daASOC)){ ?>
             <div class="img">
-                <img src="<?php echo $report->immagine_team2_daASOC; ?>" alt="Immagine Monitoraggio" class=img-fluid">
+                <img src="<?php echo $report->immagine_team2_daASOC; ?>" alt="Immagine Monitoraggio" class="img-fluid">
             </div>
             <?php } ?>
             <?php if(!empty($report->immagine_team3_daASOC)){ ?>
             <div class="img">
-                <img src="<?php echo $report->immagine_team3_daASOC; ?>" alt="Immagine Monitoraggio" class=img-fluid">
+                <img src="<?php echo $report->immagine_team3_daASOC; ?>" alt="Immagine Monitoraggio" class="img-fluid">
             </div>
             <?php } ?>
 
