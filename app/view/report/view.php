@@ -73,7 +73,8 @@
                 <div class="col-5"><span class="report-side-title">Nel ciclo</span></div>
                 <div class="col"><span class="report-side-value"><?php echo $oc->oc_descr_ciclo; ?></div>
             </div>
-            <a href="https://<?php echo str_replace('www.', '', $oc->oc_link); ?>" class="" target="_blank">
+            <?php $oc_link = (empty($oc->oc_link) || !isset($oc->oc_link) ?  str_replace('www.', '', $report->id_open_coesione) :  str_replace('www.', '', $oc->oc_link)); ?>
+            <a href="https://<?php echo $oc_link; ?>" class="" target="_blank">
                 Accedi alle informazioni aggiornate sul portale governativo OpenCoesione
             </a>
             <?php } ?>
