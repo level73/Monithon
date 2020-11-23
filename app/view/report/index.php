@@ -55,7 +55,7 @@
                     </a>
                 </li>
 
-                <?php for($i = 1; $i <= (ceil($total_reports / 10)); $i++){ ?>
+                <?php for($i = 1; $i <= (ceil($total_reports / 25)); $i++){ ?>
                 <li class="page-item <?php echo($i == $curr_page ? 'active' : ''); ?>"><a class="page-link" href="/report/index/?p=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                 <?php } ?>
                 <li class="page-item">
