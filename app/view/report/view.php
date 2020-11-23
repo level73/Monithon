@@ -127,6 +127,26 @@
                 </ul>
 
             <?php } ?>
+
+            <?php if(!empty($report->immagine_monitoraggio_daASOC)){ ?>
+                <img src="<?php echo $report->immagine_monitoraggio_daASOC; ?>" alt="Immagine Monitoraggio" class=img-fluid">
+            <?php } ?>
+            <?php if(!empty($report->immagine_team1_daASOC)){ ?>
+                <img src="<?php echo $report->immagine_team1_daASOC; ?>" alt="Immagine Monitoraggio" class=img-fluid">
+            <?php } ?>
+            <?php if(!empty($report->immagine_team2_daASOC)){ ?>
+                <img src="<?php echo $report->immagine_team2_daASOC; ?>" alt="Immagine Monitoraggio" class=img-fluid">
+            <?php } ?>
+            <?php if(!empty($report->immagine_team3_daASOC)){ ?>
+                <img src="<?php echo $report->immagine_team3_daASOC; ?>" alt="Immagine Monitoraggio" class=img-fluid">
+            <?php } ?>
+
+            <?php if(!empty($report->video_daASOC)){ ?>
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" src="<?php echo $report->video_daASOC; ?>" allowfullscreen></iframe>
+                </div>
+            <?php } ?>
+
             <?php if(!empty($report->links)){ ?>
                 <h5>Sorgenti & Links</h5>
                 <ul id="report-sources">
