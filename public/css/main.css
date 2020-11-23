@@ -58,13 +58,13 @@ table td {
   text-transform: uppercase;
 }
 .btn.btn-primary {
-  background: #347c66;
-  border-color: #347c66;
+  background: #409588;
+  border-color: #409588;
 }
 .btn.btn-primary:hover, .btn.btn-primary:active {
-  background: #255848;
-  border-color: #255848;
-  border-bottom-color: #347c66;
+  background: #317167;
+  border-color: #317167;
+  border-bottom-color: #409588;
 }
 
 /** FORM ELEMENTS **/
@@ -84,7 +84,7 @@ table td {
 }
 
 fieldset {
-  border-bottom: 1px solid #347c66;
+  border-bottom: 1px solid #409588;
   padding-bottom: 1.5em;
   margin-bottom: 2.5em;
 }
@@ -206,13 +206,13 @@ textarea {
 .comment-wrapper label {
   margin: 0px;
   font-size: 12px;
-  color: #347c66;
+  color: #409588;
   text-transform: uppercase;
 }
 
 .comment-field {
-  border: 1px dotted #347c66;
-  background: rgba(52, 124, 102, 0.1);
+  border: 1px dotted #409588;
+  background: rgba(64, 149, 136, 0.1);
   margin-top: 0px;
   margin-bottom: 10px;
 }
@@ -244,7 +244,7 @@ textarea {
 }
 
 #main-header {
-  background: #347c66;
+  background: #409588;
 }
 
 .login-options {
@@ -267,14 +267,14 @@ textarea {
   background: white;
   padding: 20px;
   margin: 25px auto;
-  border: 1px solid #347c66;
+  border: 1px solid #409588;
 }
 .guide h2 {
   margin-bottom: 25px;
   padding-bottom: 30px;
 }
 .guide h3 {
-  color: #347c66;
+  color: #409588;
   font-weight: 900;
 }
 .guide .row-guide {
@@ -286,7 +286,7 @@ textarea {
   font-weight: 900;
 }
 .guide .guide-hilite {
-  color: #347c66;
+  color: #409588;
   font-style: italic;
   font-weight: 900;
 }
@@ -301,7 +301,7 @@ textarea {
   margin: 10px 0px 25px;
 }
 .guide .prj_status {
-  color: #347c66;
+  color: #409588;
 }
 .guide .prj_status.bolder {
   font-weight: 900;
@@ -337,14 +337,14 @@ textarea {
 }
 #report-page .report-solutions {
   padding: 15px;
-  background: rgba(52, 124, 102, 0.5);
+  background: rgba(64, 149, 136, 0.5);
 }
 #report-page aside, #report-page aside ul li {
   font-size: 14px;
 }
 #report-page aside h4, #report-page aside ul li h4 {
   margin-top: 15px;
-  background: #347c66;
+  background: #409588;
   text-transform: uppercase;
   color: #fdfffc;
   font-weight: 900;
@@ -445,7 +445,7 @@ textarea {
 }
 .report-list-entry:hover {
   border: 1px solid #e71d36;
-  background: rgba(52, 124, 102, 0.03);
+  background: rgba(64, 149, 136, 0.03);
 }
 .report-list-entry h2 {
   text-transform: uppercase;
