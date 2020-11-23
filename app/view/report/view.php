@@ -88,7 +88,7 @@
                 <?php foreach($sg as $soggetto){ ?>
                     <?php if(isset($soggetto->url)){ ?>
                     <a href="<?php echo str_replace('it/api/', '', $soggetto->url); ?>" target="_blank" class="report-subject"><?php echo $soggetto->denominazione; ?></a>
-                    <?php } else { echo $soggetto->denominazione; } ?>
+                    <?php } else { echo "<a class=\"report-subject\">" . $soggetto->denominazione . "</a>"; } ?>
                 <?php } ?>
                 <?php } else { ?>
 
@@ -96,7 +96,7 @@
                     <?php $soggetto = $sg[$i]; ?>
                         <?php if(isset($soggetto->url)){ ?>
                             <a href="<?php echo str_replace('it/api/', '', $soggetto->url); ?>" target="_blank" class="report-subject"><?php echo $soggetto->denominazione; ?></a>
-                        <?php } else { echo $soggetto->denominazione; } ?>
+                        <?php } else { echo "<a class=\"report-subject\">" . $soggetto->denominazione . "</a>"; } ?>
                         <?php } ?>
                     <p class="text-center">
                         <small>
