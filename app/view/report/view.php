@@ -150,9 +150,7 @@
             <?php } ?>
 
             <?php if(!empty($report->video_daASOC)){ ?>
-                <div class="embed-responsive embed-responsive-16by9">
-                    <iframe class="embed-responsive-item" src="<?php echo $report->video_daASOC; ?>" allowfullscreen></iframe>
-                </div>
+            <a href="<?php echo $report->video_daASOC; ?>" target="_blank">Video per <strong>A Scuola di Open Coesione</strong></a>
             <?php } ?>
 
             <?php if(!empty($report->links)){ ?>
