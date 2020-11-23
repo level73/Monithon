@@ -14,7 +14,7 @@
     <div class="report-list-entry">
         <div class="row">
                 <div class="col-12">
-                    <small><span class="report-date"><?php echo strftime('%d/%m/%Y', $report->create_date);?></span> | <span class="report-author"><?php echo  $report->username; ?></span></small>
+                    <small><span class="report-date"><?php echo strftime('%d/%m/%Y', $report->create_date);?></span> | <span class="report-author"><?php echo  $report->autore; ?></span></small>
 
 
                 </div>
