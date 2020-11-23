@@ -97,7 +97,7 @@
                     <p class="text-center">
                         <small>
                             Visualizzati 4 soggetti di <?php echo count($sg); ?><br />
-                            <a href="https://<?php echo str_replace('www.', '', $oc->oc_link); ?>" class="" target="_blank">Altri dettagli su OpenCoesione.gov.it</a>
+                            <a href="https://<?php echo $oc_link; ?>" class="" target="_blank">Altri dettagli su OpenCoesione.gov.it</a>
                         </small>
                     </p>
                 <?php } ?>
