@@ -63,7 +63,8 @@
                     UNIX_TIMESTAMP(`' . $this->table . '`.`modified_at`) AS mod_date,
                     UNIX_TIMESTAMP(`' . $this->table . '`.`created_at`) AS create_date,
                     `' . $this->table . '`.`autore`, 
-                    `auth`.`username`
+                    `auth`.`username`,
+                    `auth`.`role`
                  FROM  `' . $this->table . '` 
                  INNER JOIN `auth` ON `auth`.`idauth` = `' . $this->table . '`.`created_by` 
                  WHERE `' . $this->table . '`.`status` = 7
