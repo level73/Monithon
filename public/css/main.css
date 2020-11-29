@@ -246,6 +246,9 @@ textarea {
 #main-header {
   background: #409588;
 }
+#main-header .nav-link {
+  color: white;
+}
 
 .login-options {
   margin-top: 2em;

@@ -60,6 +60,8 @@
                     `' . $this->table . '`.`titolo`,
                     `' . $this->table . '`.`descrizione`,
                     `' . $this->table . '`.`giudizio_sintetico`,
+                    `' . $this->table . '`.`lat_`,
+                    `' . $this->table . '`.`lon_`,
                     UNIX_TIMESTAMP(`' . $this->table . '`.`modified_at`) AS mod_date,
                     UNIX_TIMESTAMP(`' . $this->table . '`.`created_at`) AS create_date,
                     `' . $this->table . '`.`autore`, 

@@ -17,4 +17,13 @@
     </div>
 
   </div>
+    <hr / >
+    <section class="row">
+        <div class="col">
+            <h1>Mappa dei Report</h1>
+            <div id="report-map" style="height: 600px;"></div>
+
+
+        </div>
+    </section>
 </div>

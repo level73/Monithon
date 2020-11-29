@@ -98,4 +98,10 @@
         }
     }
 
+    public function map_reports(){
+        $Report = new Report();
+        $reports = $Report->getReports();
+        echo json_encode($reports);
+    }
+
   }
