@@ -17,6 +17,7 @@
     </div>
 
   </div>
+    <!--
     <hr / >
     <section class="row">
         <div class="col">
@@ -26,4 +27,5 @@
 
         </div>
     </section>
+    -->
 </div>
