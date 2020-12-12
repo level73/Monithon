@@ -160,20 +160,23 @@
             <td class="text-center"><?php status($r->status); ?></td>
             <td class="text-center"><?php status($r->status_tab_3); ?></td>
             <td class="text-center">
-              <?php if($r->status == 1 || $r->status_tab_3 == 1){ ?>
-              <a href="/report/edit/<?php echo $r->idreport_basic; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
-              <?php } else { ?>
-                <?php
-                if( hasPermission($user, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD) ) || $r->reviewed_by == $user->id ){
-                ?>
+            <?php
+            // CONDITION 1: (user has permission OR is reviewer) AND (report in pending review)
+            if( (hasPermission($user, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD) ) || $r->reviewed_by == $user->id) && ($r->status == 3 || $r->status_tab_3 == 3) ){
+            ?>
                 <a href="/report/review/<?php echo $r->idreport_basic; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
-                <?php
-                }  else {
-                ?>
-                  <button type="button" disabled class="btn btn-default btn-sm"><i class="far fa-lock-alt"></i></button>
-                <?php } ?>
+            <?php
 
+            } else {
+                
+              if($r->status == 1 || $r->status_tab_3 == 1){ ?>
+              <a href="/report/edit/<?php echo $r->idreport_basic; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
+              <?php
+              } else { ?>
+                 <button type="button" disabled class="btn btn-default btn-sm"><i class="far fa-lock-alt"></i></button>
               <?php } ?>
+
+            <?php } ?>
             </td>
           </tr>
           <?php } ?>

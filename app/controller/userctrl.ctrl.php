@@ -389,7 +389,8 @@
 
             $Profile = $this->User->fullProfile($this->user->id);
 
-            if($this->user->role > 3){
+            if($this->user->role >= 3){
+
               $ASOC_Profile = new Asoc();
               $asoc_profile = $ASOC_Profile->findBy(array('auth' => $this->user->id));
               if(!empty($asoc_profile)){
