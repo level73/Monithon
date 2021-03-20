@@ -174,7 +174,7 @@
     /** Method is used by API - leveraged by Monithon Map Wizard Map (Sheldon Studio) */
     public function getReportsByProject($project){
 
-        $sql = "SELECT idreport_basic, created_at FROM entity_report_basic WHERE status >= 2 AND oc_project_code = :project ORDER BY created_at DESC";
+        $sql = "SELECT idreport_basic, created_at FROM entity_report_basic WHERE status >= 7 AND oc_project_code = :project ORDER BY created_at DESC";
         $stmt = $this->database->prepare($sql);
         $stmt->bindParam(':project', $project, PDO::PARAM_STR);
         $query = $stmt->execute();
