@@ -193,6 +193,12 @@
           $data = array_filter($data);
           $data = recursiveStripTags($data);
 
+          if(!empty($data['api_data'])){
+              $json = json_decode($data['api_data']);
+              $oc_project_code = $json->cod_locale_progetto;
+              $data['oc_project_code'] = $oc_project_code;
+          }
+
           $connections = $data['connection'];
           unset($data['connection']);
           unset($connections[0]);
@@ -344,6 +350,12 @@
                     $r['code'] = '404';
                     $response = json_encode($r);
                 }
+            }
+
+            if(!empty($data['api_data'])){
+                $json = json_decode($data['api_data']);
+                $oc_project_code = $json->cod_locale_progetto;
+                $data['oc_project_code'] = $oc_project_code;
             }
 
             $videos = $data['video-attachment'];

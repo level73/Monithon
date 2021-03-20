@@ -67,7 +67,7 @@
               </div>
 
               <div class="form-group">
-                <label for="descrizione">Descrizione:</label>
+                <label for="descrizione">Descrizione del progetto monitorato:</label>
                   <div class="input-group">
                     <textarea name="descrizione" id="descrizione" class="form-control"><?php echo ckv_object($data, 'descrizione'); ?></textarea>
                     <div class="input-group-append">
