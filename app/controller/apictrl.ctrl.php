@@ -67,4 +67,48 @@
       echo json_encode($response);
 
     }
+
+    public function getReportsByProject($project){
+        if( httpCheck('get', true) ) {
+            $response = array();
+            if(!is_null($project)){
+                $Report = new Report();
+                $Reports = $Report->getReportsByProject($project);
+                if(!is_null($Report) && !empty($Reports)){
+                    $reports = array();
+                    foreach($Reports as $r){
+                        $reports[$r->idreport_basic] = $r->created_at;
+                    }
+
+                    $response = array(
+                        'code' => 200,
+                        'message' => 'Ok',
+                        'body' => $reports
+                    );
+                }
+                else {
+                    $response = array(
+                        'code' => 404,
+                        'message' => 'No Results'
+                    );
+                }
+
+            }
+            else {
+                $response = array(
+                    'code' => 1,
+                    'message' => 'Parametro non valido'
+                );
+            }
+        }
+        else {
+            $response = array(
+                'code' => 0,
+                'message' => 'Metodo non valido'
+            );
+        }
+
+        echo json_encode($response);
+
+    }
   }

@@ -170,4 +170,23 @@
             return $reports;
         }
     }
+
+    /** Method is used by API - leveraged by Monithon Map Wizard Map (Sheldon Studio) */
+    public function getReportsByProject($project){
+
+        $sql = "SELECT idreport_basic, created_at FROM entity_report_basic WHERE status >= 2 AND oc_project_code = :project ORDER BY created_at DESC";
+        $stmt = $this->database->prepare($sql);
+        $stmt->bindParam(':project', $project, PDO::PARAM_STR);
+        $query = $stmt->execute();
+        if(!$query){
+            $this->Errors->set(501);
+            if(SYSTEM_STATUS == 'development'){
+                dbga($stmt->errorInfo());
+            }
+            return $this->Errors;
+        } else {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+    }
+
   }
