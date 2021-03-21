@@ -113,7 +113,7 @@
     }
 
     public function projectReports(){
-        if( httpCheck('get', true) ) {
+        if( httpCheck('get') ) {
             $response = array();
 
             $Report = new Report();
