@@ -111,4 +111,41 @@
         echo json_encode($response);
 
     }
+
+    public function projectReports(){
+        if( httpCheck('get', true) ) {
+            $response = array();
+
+            $Report = new Report();
+            $Reports = $Report->projectReports();
+            if(!is_null($Report) && !empty($Reports)){
+                $reports = array();
+                foreach($Reports as $r){
+                    $reports[$r->oc_project_code] = $r->reports;
+                }
+
+                $response = array(
+                    'code' => 200,
+                    'message' => 'Ok',
+                    'body' => $reports
+                );
+            }
+            else {
+                $response = array(
+                    'code' => 404,
+                    'message' => 'No Results'
+                );
+            }
+
+
+        }
+        else {
+            $response = array(
+                'code' => 0,
+                'message' => 'Metodo non valido'
+            );
+        }
+
+        echo json_encode($response);
+    }
   }

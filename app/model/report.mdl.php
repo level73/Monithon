@@ -189,4 +189,25 @@
         }
     }
 
+    public function projectReports(){
+        $sql = "SELECT 
+                    GROUP_CONCAT(`entity_report_basic`.`idreport_basic`
+                        SEPARATOR ',') AS `reports`,
+                    `entity_report_basic`.`oc_project_code` AS `oc_project_code`
+                FROM
+                    `entity_report_basic`                    
+                GROUP BY `entity_report_basic`.`oc_project_code`";
+        $stmt = $this->database->prepare($sql);
+        $query = $stmt->execute();
+        if(!$query){
+            $this->Errors->set(501);
+            if(SYSTEM_STATUS == 'development'){
+                dbga($stmt->errorInfo());
+            }
+            return $this->Errors;
+        } else {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+    }
+
   }
