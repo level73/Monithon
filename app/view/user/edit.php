@@ -161,8 +161,8 @@
             <td class="text-center"><?php status($r->status_tab_3); ?></td>
             <td class="text-center">
             <?php
-            // CONDITION 1: (user has permission OR is reviewer) AND (report in pending review)
-            if( (hasPermission($user, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD) ) || $r->reviewed_by == $user->id) && ($r->status == 3 || $r->status_tab_3 == 3) ){
+            // CONDITION 1: (user is at least an editor OR user has permission OR is reviewer) AND (report in pending review)
+            if( ( $user->role <= 2 || hasPermission($user, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD) ) || $r->reviewed_by == $user->id) && ($r->status == 3 || $r->status_tab_3 == 3) ){
             ?>
                 <a href="/report/review/<?php echo $r->idreport_basic; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
             <?php
