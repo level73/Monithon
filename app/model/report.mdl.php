@@ -198,7 +198,7 @@
                 FROM
                     `entity_report_basic`    
                 WHERE 
-                    `entity_report_basic`.`status` >= 7 AND `entity_report_basic`.`status_tab_3` >= 7
+                    `entity_report_basic`.`status` >= 7
                 GROUP BY `entity_report_basic`.`oc_project_code`";
         $stmt = $this->database->prepare($sql);
         $query = $stmt->execute();
