@@ -191,11 +191,14 @@
 
     public function projectReports(){
         $sql = "SELECT 
-                    GROUP_CONCAT(`entity_report_basic`.`idreport_basic`
+                    GROUP_CONCAT(
+                        CONCAT(`entity_report_basic`.`idreport_basic`, ':::', `entity_report_basic`.`modified_at`) 
                         SEPARATOR ',') AS `reports`,
                     `entity_report_basic`.`oc_project_code` AS `oc_project_code`
                 FROM
-                    `entity_report_basic`                    
+                    `entity_report_basic`    
+                WHERE 
+                    `entity_report_basic`.`status` >= 7 AND `entity_report_basic`.`status_tab_3` >= 7
                 GROUP BY `entity_report_basic`.`oc_project_code`";
         $stmt = $this->database->prepare($sql);
         $query = $stmt->execute();
