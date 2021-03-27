@@ -196,7 +196,18 @@
     }
 
     public function checkOwner($id, $repo, $user){
-        $sql = 'SELECT modified_by FROM ' . $repo . '_repository WHERE id' . $repo . '_repository = :id';
+        if($repo == 'file'){
+            $sql = 'SELECT modified_by AS owner FROM ' . $repo . '_repository WHERE id' . $repo . '_repository = :id';
+        }
+        else {
+            $sql = 'SELECT created_by AS owner FROM ' . $repo . '_repository AS rr 
+                    INNER JOIN meta_' . $repo . '_repository AS mrr ON mrr.' . $repo . '_repository = rr.id'. $repo . '_repository    
+                    INNER JOIN entity_report_basic AS erb ON erb.idreport_basic = mrr.record 
+                    WHERE id' . $repo . '_repository = :id';
+        }
+
+      //  echo $sql;
+
         $stmt = $this->database->prepare($sql);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $query = $stmt->execute();
@@ -211,7 +222,7 @@
         else {
             $check = $stmt->fetch(PDO::FETCH_OBJ);
 
-            if($check->modified_by == $user->id){
+            if($check->owner == $user->id){
                 return true;
             }
             else {
