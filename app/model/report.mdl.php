@@ -121,10 +121,12 @@
     }
 
     public function reviewableReports($id_user){
-      $sql = '  SELECT * FROM `' . $this->table . '` 
+      $sql = '  SELECT idreport_basic, titolo, username, email, erb.created_at, erb.modified_at, status, status_tab_3 FROM `' . $this->table . '` AS erb 
                 INNER JOIN auth ON auth.idauth = created_by 
                 WHERE status = 3 OR status = 7 OR (status = 5 AND reviewed_by = :user_1) OR (created_by = :user_2)                 
-                ORDER BY ' . $this->table . '.modified_at DESC';
+                ORDER BY erb.modified_at DESC';
+
+
       $stmt = $this->database->prepare($sql);
       $stmt->bindParam(':user_1', $id_user, PDO::PARAM_INT);
       $stmt->bindParam(':user_2', $id_user, PDO::PARAM_INT);
