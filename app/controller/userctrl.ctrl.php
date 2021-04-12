@@ -246,7 +246,7 @@
                 $userdata['password']         = password_hash($data['pwd'], PASSWORD_BCRYPT);
                 $userdata['email']            = $data['email'];
                 $userdata['username']         = filter_var($data['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                $userdata['role']             = 4;
+                $userdata['role']             = DEFAULT_ROLE;
                 $userdata['active']           = 1;
                 $userdata['recover']          = strtoupper(bin2hex(random_bytes(12)));
 

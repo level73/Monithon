@@ -35,6 +35,11 @@ define('PUBLISHED', 7);
 define('T_USER',        1);
 define('T_REP_BASIC',   2);
 
+/** Default User Role - Change when ASOC starts
+ *  ASOC = Role 4
+ *  Reporter = Role 3
+ */
+define('DEFAULT_ROLE', 3);
 /** Routes **/
 $routes = array(
   0     => "/main",
