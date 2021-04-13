@@ -155,9 +155,19 @@
     /** New Report **/
     public function create(){
 
+      if(isset($_GET['pfurl']) && !empty($_GET['pfurl'])){
+        setcookie('pfurl', $_GET['pfurl'], strtotime('+1 day'), '/');
+        $this->set('pfurl', $_GET['pfurl']);
+      }
+
+      if(isset($_COOKIE['pfurl']) && !empty($_COOKIE['pfurl'])){
+          $this->set('pfurl', $_COOKIE['pfurl']);
+      }
+
       if(!$this->Auth->isLoggedIn()){
         header('Location: /user/login?r=1');
       }
+
       else {
 
         $logged = true;
@@ -186,7 +196,7 @@
 
           /** Check for OC API URL and Data **/
           if(!empty($data['id_open_coesione']) && empty($data['api_data'])){
-              // force call to API
+              // force call to API?
           }
 
 

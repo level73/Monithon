@@ -2,7 +2,12 @@
     <section class="row justify-content-center">
         <div class="col-6">
           <img src="/images/monithon-logo.png" alt="Monithon" class="mx-auto d-block login-logo" />
-          <h1>Login</h1>
+            <?php if(isset($pfurl) && !empty($pfurl)){ ?>
+                <h1>Grazie per aver deciso di eseguire un monitoraggio!</h1>
+                <p>Per proseguire, è necessario <a href="/user/register">creare un account</a>, oppure accedere alla piattaforma in caso tu ti sia già registrato. </p>
+
+            <?php } ?>
+            <h1>Login <a href="/user/register">O REGISTRATI</a></h1>
             <form class="" method="post" action="">
                 <?php if(isset($referrer)){ ?>
                 <input type="hidden" name="r" value="<?php echo $referrer; ?>">

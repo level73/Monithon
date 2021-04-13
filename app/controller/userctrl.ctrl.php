@@ -12,6 +12,11 @@
         protected $logged = false;
 
         public function login(){
+
+            if( isset($_COOKIE['pfurl']) && !empty($_COOKIE['pfurl']) ){
+                $this->set('pfurl', $_COOKIE['pfurl']);
+            }
+
             $this->set('title', 'Login');
             $Errors = new Errors();
 
@@ -53,7 +58,12 @@
                           $User = $Auth->getProfile();
 
                           if($User && $Auth->isLoggedIn()){
-                            header('Location: /user/edit');
+                              if(isset($_COOKIE['pfurl']) && !empty($_COOKIE['pfurl'])){
+                                  header('Location: /report/create');
+                              }
+                              else {
+                                  header('Location: /user/edit');
+                              }
                           }
                         }
                         else {

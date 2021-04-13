@@ -31,8 +31,12 @@
                   <label for="oc_api_code">URL del Progetto su OpenCoesione:</label>
                   <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Incolla qui l\'indirizzo (URL) della pagina di OpenCoesione dedicata al progetto che hai scelto di monitorare. Lo trovi nella barra degli indirizzi del tuo browser. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/">Che cos'è?</span>
                   <div class="input-group">
-                    <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control" value="<?php echo ckv($data, 'id_open_coesione'); ?>">
-                    <div class="input-group-append">
+                      <?php if(isset($pfurl)){ ?>
+                      <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control pfurl" value="<?php echo $pfurl; ?>">
+                      <?php } else { ?>
+                      <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control" value="<?php echo ckv($data, 'id_open_coesione'); ?>">
+                      <?php } ?>
+                      <div class="input-group-append">
                       <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
                     </div>
                     <input type="hidden" name="api_data" id="oc_data" value="">
