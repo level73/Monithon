@@ -254,6 +254,12 @@ var OpenCoesione = {
 
                   }
 
+                  else if(sottotemi.OC_COD_CATEGORIA_SPESA == "090"){
+                    var body = "Come prima cosa, è importante farsi un'idea dei grandi obiettivi di livello europeo e nazionale su questo tema.<br />" +
+                               "Consulta le linee nazionali di indirizzo strategico dell'Accordo di Partenariato 2014-2020 sull'obiettivo dedicato all'ambiente (clima e rischi climatici). <a href=\"http://www.monithon.it/guida-al-monitoraggio-civico-tema-ambiente-clima/\">http://www.monithon.it/guida-al-monitoraggio-civico-tema-ambiente-clima/</a><br />" +
+                               "Troverai un'analisi dei principali problemi che le politiche intendono affrontare, e i relativi obiettivi e azioni di carattere generale, a cui i diversi Programmi Operativi europei (e in particolare FESR e FSE) 2014-2020 contribuiscono a raggiungere.  Anche se il progetto che hai scelto è finanziato nella passata programmazione europea 2007-2013 o da fondi nazionali, è importante conoscere il quadro aggiornato degli obiettivi decisi in modo partecipato da tutte le amministrazioni italiane per l'utilizzo dei fondi europei nel 2014-2020. Ma attenzione, i testi di policy sono difficili da leggere e interpretare, se ne hai la possibilità chiedi aiuto a un esperto!<br />";
+                  }
+
               }
 
               else if(data.oc_cod_tema_sintetico == '08'){
@@ -618,11 +624,17 @@ var OpenCoesione = {
                   ) {
                     sottotema = 'Clima e rischi (dissesto idrogeologico + rischi)';
                     var body =  "";
-                    var body2 =  "";
-                    var example ='<a href="https://monithon.org/reports/1010" target="_blank">Adeguamento canale scolmatore di nord ovest</a>,  '+
-                    '<a href="https://monithon.org/reports/1061" target="_blank">Realizzazione di una nuova eliosuperfice per azioni di mitigazione dei rischi ambientali</a>,  '+
-                    '<a href="https://monithon.org/reports/1215" target="_blank">Piano di protezione civile del comune di Marcianise</a>, '+
-                    '<a href="https://monithon.org/reports/1640" target="_blank">Costruzione di un canalone di gronda che protegge la città di Palma di Montechiaro (AG) dalle acque piovane</a>';
+                    var body2 =  "<ul><li>Quale aspetto in particolare rende così elevato il rischio e necessita di intervento?</li>" +
+                        "<li>Può descrivere il piano degli interventi e le singole attività messe in campo?</li>" +
+                        "<li>Quali interventi non strutturali (es. l'allontanamento della popolazione interessata, esercitazioni per posti di comando operative e dimostrative) e strutturali (es. opere di ingegneria atte a eliminare la causa di rischio incombente: crolli di roccia, scivolamenti e alluvioni) sono stati attuati?</li>" +
+                        "<li>Come è stata fatta la messa in sicurezza e come si sono svolti i lavori? È stata l'unica idea presa in considerazione o si potevano effettuare altri lavori?</li>" +
+                        "<li>Se il progetto ha avuto ritardi, quali procedure hanno rallentato la realizzazione? Ci sono state anche motivazioni di carattere tecnico?</li></ul>";
+
+                    var example = "<a href=\"https://it.monithon.eu/report/view/430\" target=\"_blank\">Realizzazione di una nuova eliosuperfice per azioni di mitigazione dei rischi ambientali</a><br />" +
+                                  "<a href=\"https://it.monithon.eu/report/view/534\" target=\"_blank\">Piano di protezione civile del comune di Marcianise</a><br />" +
+                                  "<a href=\"https://it.monithon.eu/report/view/784\" target=\"_blank\">Costruzione di un canalone di gronda che protegge la città di Palma di Montechiaro (AG) dalle acque piovane</a><br />";
+
+
                   }
                   else if(
                     (
@@ -663,6 +675,16 @@ var OpenCoesione = {
                                   "Esempio per la raccolta differenziata: avete ricevuto kit per la raccolta differenziata? E' stata realizzata o potenziata l'isola ecologica?";
                     var example ='<a href="https://monithon.org/reports/1435" target="_blank">Adeguamento e ristrutturazione dei Centri Comunali di Raccolta a Martina Franca</a>,  '+
                     '<a href="https://monithon.org/reports/1648" target="_blank">Finanziamento dei piani comunali di raccolta differenziata a Napoli</a>';
+                  }
+                  else if(sottotemi.OC_COD_CATEGORIA_SPESA == "090"){
+                      sottotema = 'Piste ciclabili e percorsi pedonali';
+                      var body =""
+                      var body2 = "<ul><li>Quale è l'impatto previsto della realizzazione della pista ciclabile o del percorso pedonale sulla mobilità urbana? Quali sono stati gli impatti effettivi?</li>" +
+                                  "<li>Ci sono stati intoppi nella realizzazione dei lavori? Quali?</li>" +
+                                  "<li>La realizzazione dell'intervento ha cambiato le abitudini dei cittadini in tema di mobilità?</li></ul>";
+                      var example = "<a href=\"https://it.monithon.eu/report/view/915\" target=\"_blank\">Realizzazione Green Belt Ciclopista </a> <br />" +
+                                    "<a href=\"https://it.monithon.eu/report/view/920\" target=\"_blank\">Realizzazione di piste ciclabili di collegamento lungo il fiume Brenta con la provincia di Venezia e l'anello dei Colli Euganei e il fiume Bacchiglione </a>";
+
                   }
 
               }
