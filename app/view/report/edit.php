@@ -51,12 +51,12 @@
 
 
               <div class="form-group">
-                <label for="titolo">Titolo:</label>
+                <label for="titolo">Titolo del Report:</label>
                 <input type="text" name="titolo" id="titolo" class="form-control" value="<?php echo ckv_object($data, 'titolo'); ?>">
                   <?php showComment($comments, 'titolo'); ?>
               </div>
               <div class="form-group">
-                <label for="autore">Autore:</label>
+                <label for="autore">Autore del Report:</label>
                 <input type="text" name="autore" id="autore" class="form-control" value="<?php echo ckv_object($data, 'autore'); ?>">
                   <?php showComment($comments, 'autore'); ?>
               </div>
@@ -288,7 +288,7 @@
                 <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" type="hidden" value="0" id="intervista_utenti_beneficiari_null" name="intervista_utenti_beneficiari">
                   <input class="custom-control-input" type="checkbox" value="1" id="intervista_utenti_beneficiari" name="intervista_utenti_beneficiari" <?php echo (isset($data->intervista_utenti_beneficiari) && $data->intervista_utenti_beneficiari == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="intervista_utenti_beneficiari">Intervista con gli utenti/beneficiari dell'intervento</label>
+                  <label class="custom-control-label" for="intervista_utenti_beneficiari">Intervista con gli utenti/beneficiari finali dell'intervento</label>
 
                 </div>
                 <div class="custom-control custom-checkbox">
