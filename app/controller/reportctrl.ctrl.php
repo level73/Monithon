@@ -176,7 +176,7 @@
         $this->set('title', 'Nuovo Report');
         $Errors = new Errors();
         $this->set('street_map', true);
-        $this->set('js', array('components/oc_api.js', 'components/leaflet_location_map.js'));
+        $this->set('js', array('components/oc_api.js?v=140421', 'components/leaflet_location_map.js'));
 
         /** STATUS VAR -
           * Used to check if report has been saved - in which case,
@@ -329,7 +329,7 @@
           $Comments = new Comment();
 
           $this->set('street_map', true);
-          $this->set('js', array('components/oc_api.js', 'components/leaflet_location_map.js'));
+          $this->set('js', array('components/oc_api.js?v=140421', 'components/leaflet_location_map.js'));
 
           $this->Errors->check();
           if(!empty($this->Errors->errors)){
@@ -524,7 +524,7 @@
           $this->set('logged', $logged);
           $this->set('title', 'Revisione Report');
           $this->set('street_map', true);
-          $this->set('js', array('components/oc_api.js', 'components/leaflet_location_map.js', 'section/review.js'));
+          $this->set('js', array('components/oc_api.js?v=140421', 'components/leaflet_location_map.js', 'section/review.js'));
 
           $this->Errors->check();
           if(!empty($this->Errors->errors)){
