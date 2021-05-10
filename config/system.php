@@ -39,7 +39,7 @@ define('T_REP_BASIC',   2);
  *  ASOC = Role 4
  *  Reporter = Role 3
  */
-define('DEFAULT_ROLE', 3);
+define('DEFAULT_ROLE', 4);
 /** Routes **/
 $routes = array(
   0     => "/main",
