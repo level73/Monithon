@@ -26,8 +26,8 @@
         <div class="col">
             <br />
             <hr />
-            <p>La metodologia, gli strumenti e i dati prodotti da Monithon sono pubblicati con licenza aperta Creative Commons BY 4.0. &Egrave; possibile riutilizzarli liberamente citando Monithon come fonte e indicando eventuali modifiche effettuate.</p>
-            <img src="https://www.monithon.eu/wp-content/uploads/2021/04/CCBY.png" width="120">
+            <p>La metodologia, gli strumenti e i dati prodotti da Monithon sono pubblicati con licenza aperta <a href="https://creativecommons.org/licenses/by/4.0/deed.it" target="_blank">Creative Commons BY 4.0</a>. &Egrave; possibile riutilizzarli liberamente citando Monithon come fonte e indicando eventuali modifiche effettuate.</p>
+            <a href="https://creativecommons.org/licenses/by/4.0/deed.it" target="_blank"><img src="https://www.monithon.eu/wp-content/uploads/2021/04/CCBY.png" width="120"></a>
         </div>
     </div>
     <!--
