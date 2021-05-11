@@ -58,6 +58,8 @@ var OpenCoesione = {
 
             // Load S1 Template
             $('#oc_api_content_s1').load('/public/assets/guide_s1.php', function(){
+              /** Highlight Project Title **/
+              $('#oc_guide_project_title').text(data.oc_titolo_progetto);
 
               /** BOF BLOCK 1 OF STEP 1 **/
               var Block1 = '';

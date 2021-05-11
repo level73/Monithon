@@ -8,6 +8,11 @@
       <p>Il primo passo del monitoraggio civico consiste nella ricerca di informazioni utili sul progetto che hai scelto di monitorare, a partire dalle fonti istituzionali, dalle informazioni che puoi trovare sui media, e dalle strategie o politiche più generali che riguardano il tema scelto.</p>
       <p>Quando avrai finito, puoi iniziare a compilare le domande in fondo. Potrai sempre modificarle successivamente!</p>
 
+        <div class="title-highlight">
+            <small>Hai scelto il progetto</small>
+            <h1 id="oc_guide_project_title"></h1>
+        </div>
+
     </div>
   </div>
 
