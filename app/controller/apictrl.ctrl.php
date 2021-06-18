@@ -16,7 +16,7 @@
       header('Content-type:application/json;charset=UTF-8');
       mb_internal_encoding('UTF-8');
     }
-
+    // Used by report finder app
     public function reportList()
     {
         if (httpCheck('get', true)) {
@@ -75,6 +75,71 @@
         }
         echo json_encode($response);
     }
+
+    public function reportDetail($id){
+        if (httpCheck('get', true)) {
+            // Init Response Array
+            $response = array();
+            // Init Report Model
+            $Report = new Report;
+            if(is_numeric($id)){
+                $report = $Report->find($id);
+
+                // Format date
+                $dataIns = strftime('%Y%m%d', strtotime($report->created_at));
+
+                // Get OC Data
+                $ocData = json_decode($report->api_data);
+                //dbga($ocData);
+
+                $ocTemaSintetico = ( isset($ocData->oc_cod_tema_sintetico) && !empty($ocData->oc_cod_tema_sintetico) ? $ocData->oc_cod_tema_sintetico : -1);
+                $ocFinanzTotPubNetto = (isset($ocData->oc_finanz_tot_pub_netto) && !empty($ocData->oc_finanz_tot_pub_netto) ? (float)$ocData->oc_finanz_tot_pub_netto : 0);
+                $ocCodCiclo = (isset($ocData->oc_cod_ciclo) && !empty($ocData->oc_cod_ciclo) ? $ocData->oc_cod_ciclo : -1);
+                $ocProgrammiOperativi = -1;
+
+                if(isset($ocData->programmi) && is_array($ocData->programmi) && !empty($ocData->programmi)){
+                    $programmi = array();
+                    foreach($ocData->programmi as $programma){
+                        $programmi[] = $programma->codice_programma;
+                    }
+                    $ocProgrammiOperativi = implode(':::', $programmi);
+                }
+
+
+                $response[] = array(
+                    "uid"                       => $report->idreport_basic,
+                    "titolo"                    => $report->titolo,
+                    "dataInserimento"           => $dataIns,
+                    "codGiudizioSintetico"      => GS_to_int($report->giudizio_sintetico),
+                    "ocCodTemaSintetico"        => $ocTemaSintetico,
+                    "ocFinanzTotPubNetto"       => $ocFinanzTotPubNetto,
+                    "ocCodProgrammaOperativo"   => $ocProgrammiOperativi,
+                    "ocCodCicloProgrammazione"  => $ocCodCiclo,
+                    "sintesi"                   => $report->descrizione,
+                    "link"                      => APPURL . '/report/view/' . $report->idreport_basic
+                );
+
+
+
+
+            }
+            else {
+                $response = array(
+                    'code' => 0,
+                    'message' => 'Invalid parameter'
+                );
+            }
+
+        }
+        else {
+            $response = array(
+                    'code' => 0,
+                    'message' => 'Metodo non valido'
+                );
+        }
+        echo json_encode($response);
+    }
+
 
     public function getReport($report_id){
       if( httpCheck('get', true) ){
