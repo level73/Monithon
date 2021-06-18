@@ -290,7 +290,18 @@
                             );
                         }
                     }
+
+
                 }
+                $na_key = array_search(-1, array_column($response, 'ocCodTemaSintetico'));
+                if( $na_key === false ){
+                    $response[] = array(
+                        "ocCodProgrammaOperativo"   => -1,
+                        "descProgrammaOperativo"    => "Non disponibile",
+                    );
+                }
+
+                $response = array_values($response);
             }
         }
         else {
