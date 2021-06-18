@@ -119,9 +119,6 @@
                     "link"                      => APPURL . '/report/view/' . $report->idreport_basic
                 );
 
-
-
-
             }
             else {
                 $response = array(
@@ -140,6 +137,38 @@
         echo json_encode($response);
     }
 
+    public function reportProgramCycles(){
+        if (httpCheck('get', true)) {
+            // Init Response Array
+            $response = array();
+            // Init Report Model
+            $Report = new Report;
+
+            $List = $Report->getReportList();
+            if ($List) {
+                foreach ($List as $i => $report) {
+                    $ocData = json_decode($report->api_data);
+                    $ocCodCiclo = (isset($ocData->oc_cod_ciclo) && !empty($ocData->oc_cod_ciclo) ? (int)$ocData->oc_cod_ciclo : -1);
+                    $ocDescrCiclo = (isset($ocData->oc_descr_ciclo) && !empty($ocData->oc_descr_ciclo) ? substr($ocData->oc_descr_ciclo, -9) : 'non specificato');
+                    if(array_search($ocCodCiclo, array_column($response, 'ocCodCicloProgrammazione')) === false){
+                        $response[] = array(
+                            "ocCodCicloProgrammazione"  => $ocCodCiclo,
+                            "descCicloProgrammazione"   => $ocDescrCiclo,
+                            "isSelected"                => true,
+                            "isActive"                  => true
+                        );
+                    }
+                }
+            }
+        }
+        else {
+            $response = array(
+                'code' => 0,
+                'message' => 'Metodo non valido'
+            );
+        }
+        echo json_encode($response);
+    }
 
     public function getReport($report_id){
       if( httpCheck('get', true) ){
