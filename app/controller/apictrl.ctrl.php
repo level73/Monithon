@@ -199,11 +199,12 @@
             usort($response, function($a, $b){
                 return ($a["codGiudizioSintetico"] < $b["codGiudizioSintetico"]) ? -1 : 1;
             });
-            $response[] = array(
+           /* $na_key = array_search(7, array_column($response, 'codGiudizioSintetico'));
+            $response[$na_key] = array(
                 "codGiudizioSintetico"  => 7,
                 "descGiudizioSintetico" => "non specificato"
             );
-
+            */
         }
         else {
             $response = array(
