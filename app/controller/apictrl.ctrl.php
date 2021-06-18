@@ -171,6 +171,7 @@
                         $response[] = $notspec;
                     }
                 }
+                $response = array_values($response);
             }
         }
         else {
