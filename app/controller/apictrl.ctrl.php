@@ -296,7 +296,7 @@
                 $na_key = array_search(-1, array_column($response, 'ocCodProgrammaOperativo'));
                 if( $na_key === false ){
                     $response[] = array(
-                        "ocCodProgrammaOperativo"   => -1,
+                        "ocCodProgrammaOperativo"   => "-1",
                         "descProgrammaOperativo"    => "Non disponibile",
                     );
                 }
