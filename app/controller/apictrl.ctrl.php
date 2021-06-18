@@ -147,9 +147,11 @@
             $List = $Report->getReportList();
             if ($List) {
                 foreach ($List as $i => $report) {
+
                     $ocData = json_decode($report->api_data);
                     $ocCodCiclo = (isset($ocData->oc_cod_ciclo) && !empty($ocData->oc_cod_ciclo) ? (int)$ocData->oc_cod_ciclo : -1);
                     $ocDescrCiclo = (isset($ocData->oc_descr_ciclo) && !empty($ocData->oc_descr_ciclo) ? substr($ocData->oc_descr_ciclo, -9) : 'non specificato');
+
                     if(array_search($ocCodCiclo, array_column($response, 'ocCodCicloProgrammazione')) === false){
                         $response[] = array(
                             "ocCodCicloProgrammazione"  => $ocCodCiclo,
@@ -157,6 +159,16 @@
                             "isSelected"                => true,
                             "isActive"                  => true
                         );
+                    }
+
+                    usort($response, function($a, $b){
+                        return ($a["ocCodCicloProgrammazione"] < $b["ocCodCicloProgrammazione"]) ? -1 : 1;
+                    });
+
+                    if( array_search(-1, array_column($response, 'ocCodCicloProgrammazione')) === 0 ){
+                        $notspec = $response[0];
+                        unset($response[0]);
+                        $response[] = $notspec;
                     }
                 }
             }
@@ -169,6 +181,39 @@
         }
         echo json_encode($response);
     }
+    public function reportGS(){
+        if (httpCheck('get', true)) {
+            // Init Response Array
+            $response = array();
+            // Init Report Model
+            $Report = new Report;
+
+            $gs = $Report->getGS();
+            // dbga($gs);
+            foreach($gs as $g){
+                $response[] = array(
+                    "codGiudizioSintetico"  => GS_to_int($g->giudizio_sintetico),
+                    "descGiudizioSintetico" => strtolower($g->giudizio_sintetico)
+                );
+            }
+            usort($response, function($a, $b){
+                return ($a["codGiudizioSintetico"] < $b["codGiudizioSintetico"]) ? -1 : 1;
+            });
+            $response[] = array(
+                "codGiudizioSintetico"  => 7,
+                "descGiudizioSintetico" => "non specificato"
+            );
+
+        }
+        else {
+            $response = array(
+                'code' => 0,
+                'message' => 'Metodo non valido'
+            );
+        }
+        echo json_encode($response);
+    }
+
 
     public function getReport($report_id){
       if( httpCheck('get', true) ){

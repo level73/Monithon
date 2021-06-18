@@ -256,4 +256,22 @@
         }
     }
 
+    /* get only existing Giudizi Sintetici for Report Finder API */
+    public function getGS(){
+        $sql = 'SELECT DISTINCT(giudizio_sintetico) FROM ' . $this->table . ' WHERE status = 7';
+        $stmt = $this->database->prepare($sql);
+        $query = $stmt->execute();
+
+        if(!$query){
+            $this->Errors->set(501);
+            if(SYSTEM_STATUS == 'development'){
+                dbga($stmt->errorInfo());
+            }
+            return $this->Errors;
+        } else {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+
+    }
+
   }
