@@ -235,12 +235,18 @@
                     }
                 }
 
+                usort($response, function($a, $b){
+                    return ($a["ocCodTemaSintetico"] < $b["ocCodTemaSintetico"]) ? -1 : 1;
+                });
+
                 $na_key = array_search(-1, array_column($response, 'ocCodTemaSintetico'));
                 if( $na_key !== false ){
                     $notspec = $response[$na_key];
                     unset($response[$na_key]);
                     $response[] = $notspec;
                 }
+
+                $response = array_values($response);
             }
         }
         else {
