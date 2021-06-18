@@ -380,7 +380,7 @@ function GS_to_int($string){
         return array_search($string, $vals);
     }
     else {
-        return null;
+        return 7;
     }
 }
 
