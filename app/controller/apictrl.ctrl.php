@@ -106,7 +106,7 @@
                 }
 
 
-                $response[] = array(
+                $response = array(
                     "uid"                       => $report->idreport_basic,
                     "titolo"                    => $report->titolo,
                     "dataInserimento"           => $dataIns,
