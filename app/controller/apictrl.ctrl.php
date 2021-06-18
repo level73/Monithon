@@ -259,6 +259,48 @@
         echo json_encode($response);
     }
 
+    public function reportProgrammiOperativi(){
+        if (httpCheck('get', true)) {
+            // Init Response Array
+            $response = array();
+            // Init Report Model
+            $Report = new Report;
+            $List = $Report->getReportList();
+
+            if ($List) {
+                foreach ($List as $i => $report) {
+                    $ocData = json_decode($report->api_data);
+                    $ocProgrammiOperativi = -1;
+
+                    if(isset($ocData->programmi) && is_array($ocData->programmi) && !empty($ocData->programmi)){
+                        $programmi = array();
+                        $descProgramma = array();
+                        foreach($ocData->programmi as $programma){
+                            $programmi[] = $programma->codice_programma;
+                            $descProgramma[] = $programma->oc_descrizione_programma;
+                        }
+
+                        $ocProgrammiOperativi = implode(':::', $programmi);
+                        $ocDescProgrammiOperativi = implode(':::', $descProgramma);
+
+                        if (array_search($ocProgrammiOperativi, array_column($response, 'ocCodProgrammaOperativo')) === false) {
+                            $response[] = array(
+                                "ocCodProgrammaOperativo"   => $ocProgrammiOperativi,
+                                "descProgrammaOperativo"    => $ocDescProgrammiOperativi,
+                            );
+                        }
+                    }
+                }
+            }
+        }
+        else {
+              $response = array(
+                    'code' => 0,
+                    'message' => 'Metodo non valido'
+                );
+        }
+        echo json_encode($response);
+    }
 
     public function getReport($report_id){
       if( httpCheck('get', true) ){
