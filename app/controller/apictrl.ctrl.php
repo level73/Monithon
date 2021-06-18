@@ -214,6 +214,44 @@
         echo json_encode($response);
     }
 
+    public function reportTemi(){
+        if (httpCheck('get', true)) {
+            // Init Response Array
+            $response = array();
+            // Init Report Model
+            $Report = new Report;
+            $List = $Report->getReportList();
+            if ($List) {
+                foreach ($List as $i => $report) {
+                    $ocData = json_decode($report->api_data);
+                    $ocCodTema = (isset($ocData->oc_cod_tema_sintetico) && !empty($ocData->oc_cod_tema_sintetico) ? $ocData->oc_cod_tema_sintetico : -1);
+                    $ocDescrTema = (isset($ocData->oc_tema_sintetico) && !empty($ocData->oc_tema_sintetico) ? $ocData->oc_tema_sintetico : 'tema non disponibile');
+
+                    if (array_search($ocCodTema, array_column($response, 'ocCodTemaSintetico')) === false) {
+                        $response[] = array(
+                            "ocCodTemaSintetico" => $ocCodTema,
+                            "descTemaSintetico" => $ocDescrTema,
+                        );
+                    }
+                }
+
+                $na_key = array_search(-1, array_column($response, 'ocCodTemaSintetico'));
+                if( $na_key !== false ){
+                    $notspec = $response[$na_key];
+                    unset($response[$na_key]);
+                    $response[] = $notspec;
+                }
+            }
+        }
+        else {
+            $response = array(
+                'code' => 0,
+                'message' => 'Metodo non valido'
+            );
+        }
+        echo json_encode($response);
+    }
+
 
     public function getReport($report_id){
       if( httpCheck('get', true) ){
