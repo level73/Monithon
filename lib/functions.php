@@ -373,6 +373,17 @@ function prepareEmbed($url){
     }
 }
 
+// Convert Giudizio Sintetico to INT vals for
+function GS_to_int($string){
+    $vals = array('N.D.', 'Appena iniziato', 'In corso e procede bene', 'Procede con difficoltà', 'Bloccato', 'Concluso e utile', 'Concluso e inefficace');
+    if(in_array($string, $vals)){
+        return array_search($string, $vals);
+    }
+    else {
+        return null;
+    }
+}
+
 /** Translator **/
 function t($string){
   echo $string;

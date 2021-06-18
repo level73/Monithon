@@ -17,6 +17,65 @@
       mb_internal_encoding('UTF-8');
     }
 
+    public function reportList()
+    {
+        if (httpCheck('get', true)) {
+            // Init Response Array
+            $response = array();
+            // Init Report Model
+            $Report = new Report;
+
+            $List = $Report->getReportList();
+            if($List){
+
+                foreach($List as $i => $report){
+                    // Format date
+                    $dataIns = strftime('%Y%m%d', $report->uts_created_at);
+
+                    // Get OC Data
+                    $ocData = json_decode($report->api_data);
+                    //dbga($ocData);
+
+                    $ocTemaSintetico = ( isset($ocData->oc_cod_tema_sintetico) && !empty($ocData->oc_cod_tema_sintetico) ? $ocData->oc_cod_tema_sintetico : -1);
+                    $ocFinanzTotPubNetto = (isset($ocData->oc_finanz_tot_pub_netto) && !empty($ocData->oc_finanz_tot_pub_netto) ? (float)$ocData->oc_finanz_tot_pub_netto : null);
+                    $ocCodCiclo = (isset($ocData->oc_cod_ciclo) && !empty($ocData->oc_cod_ciclo) ? $ocData->oc_cod_ciclo : null);
+                    $ocProgrammiOperativi = null;
+
+                    if(isset($ocData->programmi) && is_array($ocData->programmi) && !empty($ocData->programmi)){
+                        $programmi = array();
+                        foreach($ocData->programmi as $programma){
+                            $programmi[] = $programma->codice_programma;
+                        }
+                        $ocProgrammiOperativi = implode(':::', $programmi);
+                    }
+
+
+                    $response[] = array(
+                        "uid"                       => $report->id,
+                        "titolo"                    => $report->titolo,
+                        "dataInserimento"           => $dataIns,
+                        "codGiudizioSintetico"      => GS_to_int($report->giudizio_sintetico),
+                        "ocCodTemaSintetico"        => $ocTemaSintetico,
+                        "ocFinanzTotPubNetto"       => $ocFinanzTotPubNetto,
+                        "ocCodProgrammaOperativo"   => $ocProgrammiOperativi,
+                        "ocCodCicloProgrammazione"  => $ocCodCiclo,
+                        "lat"                       => (float)$report->lat_,
+                        "long"                      => (float)$report->lon_
+                    );
+                }
+            }
+
+
+        }
+        else {
+            $response = array(
+                'code' => 0,
+                'message' => 'Metodo non valido'
+            );
+        }
+        echo json_encode($response);
+    }
+
     public function getReport($report_id){
       if( httpCheck('get', true) ){
         $response = array();

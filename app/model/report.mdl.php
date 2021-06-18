@@ -215,4 +215,45 @@
         }
     }
 
+    /** Report List built for API
+      * Data Model Mock:
+      *     "uid": 1,
+            "titolo": "EFFICIENTAMENTO ENERGETICO DEL NUOVO OSPEDALE DI PORDENONE",
+            "dataInserimento": 20150313,
+            "codGiudizioSintetico": 6,
+            "ocCodTemaSintetico": "04",
+            "ocFinanzTotPubNetto": 7583475,
+            "ocCodProgrammaOperativo": "2007EM002FA002",
+            "ocCodCicloProgrammazione": 1,
+            "lat": 45.9680876,
+            "long": 12.6528061
+     * */
+
+    public function getReportList(){
+        $sql = 'SELECT 
+                    `'. $this->table.'`.`idreport_basic` AS `id`,
+                    `'. $this->table.'`.`titolo`,
+                    UNIX_TIMESTAMP(`'. $this->table.'`.`created_at`) AS `uts_created_at`,
+                    `'. $this->table.'`.`giudizio_sintetico`,
+                    `'. $this->table.'`.`api_data`,
+                    `'. $this->table.'`.`lat_`,
+                    `'. $this->table.'`.`lon_`
+                 FROM `'. $this->table.'` 
+                 WHERE `' . $this->table . '`.`status` = 7
+                 ORDER BY `' . $this->table . '`.`created_at` DESC';
+
+        $stmt = $this->database->prepare($sql);
+        $query = $stmt->execute();
+
+        if(!$query){
+            $this->Errors->set(501);
+            if(SYSTEM_STATUS == 'development'){
+                dbga($stmt->errorInfo());
+            }
+            return $this->Errors;
+        } else {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+    }
+
   }
