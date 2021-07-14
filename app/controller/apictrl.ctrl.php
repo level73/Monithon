@@ -83,6 +83,11 @@
             $response = array();
             // Init Report Model
             $Report = new Report;
+
+            // Split Id
+            $instance = strtolower(substr($id, 0, 2));
+            $id = substr($id, 2);
+
             if(is_numeric($id)){
                 $report = $Report->find($id);
 
