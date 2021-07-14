@@ -51,12 +51,13 @@
 
 
                     $response[] = array(
-                        "uid"                       => $report->id,
+                        "uid"                       => ISO2 . $report->id,
                         "titolo"                    => $report->titolo,
                         "dataInserimento"           => $dataIns,
                         "codGiudizioSintetico"      => GS_to_int($report->giudizio_sintetico),
                         "ocCodTemaSintetico"        => $ocTemaSintetico,
                         "ocFinanzTotPubNetto"       => $ocFinanzTotPubNetto,
+                        "curr"                      => CURRENCY_STR,
                         "ocCodProgrammaOperativo"   => $ocProgrammiOperativi,
                         "ocCodCicloProgrammazione"  => $ocCodCiclo,
                         "lat"                       => (float)$report->lat_,
@@ -107,15 +108,16 @@
 
 
                 $response = array(
-                    "uid"                       => $report->idreport_basic,
+                    "uid"                       => ISO2 . $report->idreport_basic,
                     "titolo"                    => $report->titolo,
                     "dataInserimento"           => $dataIns,
                     "codGiudizioSintetico"      => GS_to_int($report->giudizio_sintetico),
                     "ocCodTemaSintetico"        => $ocTemaSintetico,
                     "ocFinanzTotPubNetto"       => $ocFinanzTotPubNetto,
+                    "curr"                      => CURRENCY_STR,
                     "ocCodProgrammaOperativo"   => $ocProgrammiOperativi,
                     "ocCodCicloProgrammazione"  => $ocCodCiclo,
-                    "sintesi"                   => $report->descrizione,
+                    "sintesi"                   => apiHellip($report->descrizione),
                     "link"                      => APPURL . '/report/view/' . $report->idreport_basic
                 );
 
@@ -216,7 +218,7 @@
         echo json_encode($response);
     }
 
-    public function reportTemi(){
+    public function reportThemes(){
         if (httpCheck('get', true)) {
             // Init Response Array
             $response = array();
@@ -260,7 +262,7 @@
         echo json_encode($response);
     }
 
-    public function reportProgrammiOperativi(){
+    public function reportOperativeProgrammes(){
         if (httpCheck('get', true)) {
             // Init Response Array
             $response = array();
@@ -313,6 +315,8 @@
         }
         echo json_encode($response);
     }
+
+
 
     public function getReport($report_id){
       if( httpCheck('get', true) ){

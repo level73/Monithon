@@ -25,6 +25,9 @@
 
     /** Application base URL **/
 	define('APPURL', 'http://yourdomain.tld');
+    define('ISO2', 'it');
+    // Currency ISO 4217 Code
+    define('CURRENCY_STR', 'EUR');
 
 	/** LANGUAGES **/
 	define('PRIMARY_LANG', 'it');

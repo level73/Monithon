@@ -388,3 +388,9 @@ function GS_to_int($string){
 function t($string){
   echo $string;
 }
+function apiHellip($text){
+    if(strlen($text) > 500){
+        $text = substr($text, 0, 494) . '...';
+    }
+    return $text;
+}
