@@ -45,6 +45,19 @@
                         $ocFinanzTotPubNetto = (isset($ocData->finanz_totale_pubblico) && !empty($ocData->finanz_totale_pubblico) ? (float)$ocData->finanz_totale_pubblico : 0);
                     }
                     $ocCodCiclo = (isset($ocData->oc_cod_ciclo) && !empty($ocData->oc_cod_ciclo) ? $ocData->oc_cod_ciclo : -1);
+                    if($ocCodCiclo == -1 && (isset($ocData->oc_descr_ciclo) && !empty($ocData->oc_descr_ciclo))){
+                        $cycle = substr($ocData->oc_descr_ciclo, -9);
+                        if($cycle == '2007-2013'){
+                            $ocCodCiclo = 1;
+                        }
+                        else if($cycle == '2014-2020'){
+                            $ocCodCiclo = 2;
+                        }
+                        else {
+                            $ocCodCiclo = -1;
+                        }
+                    }
+
                     $ocProgrammiOperativi = -1;
 
                     if(isset($ocData->programmi) && is_array($ocData->programmi) && !empty($ocData->programmi)){
