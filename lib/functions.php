@@ -394,3 +394,24 @@ function apiHellip($text){
     }
     return $text;
 }
+
+function themeToCode($theme){
+    $themes = array(
+        "Ricerca e innovazione" => "01",
+      "Agenda digitale" => "02",
+      "Competività imprese" => "03",
+      "Energia" => "04",
+      "Ambiente" => "05",
+      "Cultura e turismo"  => "06",
+        "Trasporti"  => "07",
+        "Occupazione"  => "08",
+        "Inclusione sociale"  => "09",
+        "Infanzia e anziani"  => "10",
+        "Istruzione"  => "11",
+        "Città e aree rurali"  => "12",
+        "Rafforzamento PA"  => "13",
+
+    );
+
+    return (array_key_exists($theme, $themes) ? $themes[$theme] : -1);
+}

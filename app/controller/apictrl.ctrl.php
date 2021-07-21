@@ -37,6 +37,9 @@
                     //dbga($ocData);
 
                     $ocTemaSintetico = ( isset($ocData->oc_cod_tema_sintetico) && !empty($ocData->oc_cod_tema_sintetico) ? $ocData->oc_cod_tema_sintetico : -1);
+                    if($ocTemaSintetico == -1 && (isset($ocData->oc_tema_sintetico) && !empty($ocData->oc_tema_sintetico))){
+                        $ocTemaSintetico = themeToCode($ocData->oc_tema_sintetico);
+                    }
                     $ocFinanzTotPubNetto = (isset($ocData->oc_finanz_tot_pub_netto) && !empty($ocData->oc_finanz_tot_pub_netto) ? (float)$ocData->oc_finanz_tot_pub_netto : 0);
                     if($ocFinanzTotPubNetto === 0){
                         $ocFinanzTotPubNetto = (isset($ocData->finanz_totale_pubblico) && !empty($ocData->finanz_totale_pubblico) ? (float)$ocData->finanz_totale_pubblico : 0);
