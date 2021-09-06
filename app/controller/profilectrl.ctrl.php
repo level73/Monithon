@@ -95,6 +95,6 @@ class ProfileCtrl extends Ctrl {
 
         $this->set('ratio', array('total' => $totalReports, 'profile' => $profileReports, 'ratio' => $ratioReports));
         $this->set('reports', $Reports);
-        $this->set('gs', $chartData);
+        // $this->set('gs', $chartData);
     }
 }
