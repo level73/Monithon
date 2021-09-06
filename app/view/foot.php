@@ -12,6 +12,9 @@
               crossorigin="">
       </script>
       <?php } ?>
+      <?php if(isset($charts) && !empty($charts)){ ?>
+          <script src="<?php echo $charts; ?>"></script>
+      <?php } ?>
       <?php loadJS($js); ?>
     </div>
   </body>

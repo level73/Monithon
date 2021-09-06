@@ -104,4 +104,11 @@
         echo json_encode($reports);
     }
 
+    public function profile_map_reports($profile){
+        $Report = new Report();
+        $reports = $Report->findBy(array('created_by' => $profile));
+        echo json_encode($reports);
+
+    }
+
   }

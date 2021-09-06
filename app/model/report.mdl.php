@@ -274,4 +274,22 @@
 
     }
 
+    /** STAT COUNTERS AND SUCH, USED ON PROFILE PAGES **/
+    public function reportCount(){
+        $sql = 'SELECT COUNT(*) AS counter FROM ' . $this->table . ' WHERE status = 7';
+        $stmt = $this->database->prepare($sql);
+        $query = $stmt->execute();
+
+        if(!$query){
+            $this->Errors->set(501);
+            if(SYSTEM_STATUS == 'development'){
+                dbga($stmt->errorInfo());
+            }
+            return $this->Errors;
+        } else {
+            $data = $stmt->fetch(PDO::FETCH_OBJ);
+            return $data->counter;
+        }
+    }
+
   }
