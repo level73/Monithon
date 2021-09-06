@@ -1,10 +1,10 @@
 <section class="container-fluid" id="profile-header">
     <div class="prf d-none"><?php echo $profile->idauth; ?></div>
     <div class="row  align-items-center">
-        <div class="col-2">
-            <?php avatar($profile, true); ?>
+        <div class="col-3 col-md-2">
+            <?php avatar($profile, true, true); ?>
         </div>
-        <div class="col-7">
+        <div class="col-9 col-md-7">
             <h2 id="team_name"><?php echo $profile->username; ?></h2>
             <div class="row" id="geoloc">
                 <div class="col-6">
@@ -17,7 +17,7 @@
                 <div class="col-6"><?php echo (!empty($profile->twitter) ? '<a href="https://twitter.com/'.$profile->twitter.'" title="Twitter Profile Link" target="_blank">'.$profile->twitter.'</a>' : ''); ?></div>
             </div>
         </div>
-        <div class="col-3 stat">
+        <div class="col-12 col-md-3 stat">
             <span class="stat-label">contribuisce con il</span>
             <span class="stat-number"><?php echo $ratio['ratio']; ?>%</span>
             <span class="stat-label">dei report</span>
@@ -37,7 +37,7 @@
 
 <section class="container-fluid" id="profile-body">
     <div class="row">
-        <div class="col-4">
+        <div class="col-12 col-md-4">
             <div class="content-wrapper">
                 <h2><?php t("CHI SIAMO"); ?></h2>
                 <p><?php echo $profile->bio; ?></p>
@@ -48,19 +48,19 @@
                 <div id="profile-map"></div>
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-12 col-md-8">
             <div class="content-wrapper">
                 <h2>I NOSTRI REPORT</h2>
                 <?php foreach($reports as $report){ ?>
                 <div class="report row">
-                    <div class="col-9">
+                    <div class="col-12 col-md-9">
                         <h3><a href="/report/view/<?php echo $report->idreport_basic; ?>"><?php echo $report->titolo; ?></a></h3>
                         <span class="d-none latlng">[<?php echo $report->lat_ .','.$report->lon_; ?>]</span>
                         <time datetime="<?php echo $report->created_at; ?>"><?php echo strftime('%d/%m/%Y', strtotime($report->created_at)); ?></time>
                         <p><?php echo apiHellip($report->descrizione); ?></p>
                         <a href="/report/view/<?php echo $report->idreport_basic; ?>" class="btn btn-sm btn-primary">LEGGI TUTTO</a>
                     </div>
-                    <div class="col-3">
+                    <div class="col-12 col-md-3">
                         <?php if(isset($report->images) && !empty($report->images)){ ?>
                             <div class="img-holder" style="background-image: url('<?php echo image($report->images[0]); ?>');"></div>
                         <?php } else { ?>
