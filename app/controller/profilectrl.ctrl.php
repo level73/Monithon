@@ -99,10 +99,10 @@ class ProfileCtrl extends Ctrl {
 
 
         // Set frontend variables
-        $this->set('title', 'Profile');
+        $this->set('title', $Profile->username);
         $this->set('street_map', true);
         // $this->set('charts', 'https://cdn.jsdelivr.net/npm/apexcharts');
-        $this->set('js', array('section/profile.js' ));
+        $this->set('js', array('section/profile.js?ts=070921' ));
         $this->set('profile', $Profile);
 
         $this->set('ratio', array('total' => $totalReports, 'profile' => $profileReports, 'ratio' => $ratioReports));

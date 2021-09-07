@@ -27,9 +27,9 @@ $.getJSON('/ajax/profile_map_reports/' + profile, { profile: profile }, function
     else {
         var lat = LatLngs[0];
         var lon = LatLngs[1];
-
         ProfileMap.setView(LatLngs[0], 10);
     }
+
 });
 
 

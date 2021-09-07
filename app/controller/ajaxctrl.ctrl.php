@@ -106,7 +106,7 @@
 
     public function profile_map_reports($profile){
         $Report = new Report();
-        $reports = $Report->findBy(array('created_by' => $profile));
+        $reports = $Report->findBy(array('created_by' => $profile, 'status' => 7));
         echo json_encode($reports);
 
     }
