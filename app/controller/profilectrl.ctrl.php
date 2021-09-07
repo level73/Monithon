@@ -56,7 +56,7 @@ class ProfileCtrl extends Ctrl {
 
 
         // Load Report Info
-        $Reports = $Report->findBy(array('created_by' => $id));
+        $Reports = $Report->findBy(array('created_by' => $id, 'status' => 7));
         $Files = new Repo();
         foreach($Reports as $i => $report){
             // Get Files
