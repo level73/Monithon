@@ -57,11 +57,19 @@ class ProfileCtrl extends Ctrl {
 
         // Load Report Info
         $Reports = $Report->findBy(array('created_by' => $id));
-      /*  $Images =
-        foreach($Reports as $i => $r){
-            $Reports[$i]->images
+        $Files = new Repo();
+        foreach($Reports as $i => $report){
+            // Get Files
+            $Reports[$i]->files = $Files->getFiles(T_REP_BASIC, $report->idreport_basic, 2);
+            foreach($Reports[$i]->files as $l => $file){
+                $file->info = $Files->getInfo(ROOT.DS.'public'.DS.'resources'.DS.$file->file_path);
+                $info = explode('/', $file->info);
+                if ($info[0] == 'image') {
+                    $Reports[$i]->images[] = $file;
+                }
+            }
         }
-*/
+
         // Calculate graph info
         $totalReports   = $Report->counter(7);
         $profileReports = count($Reports);
