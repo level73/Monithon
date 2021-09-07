@@ -99,7 +99,7 @@ textarea {
   border-radius: 45px;
 }
 .avatar.avatar-lg {
-  max-width: 180px;
+  max-width: 100% !important;
   border-radius: 0px;
   float: right;
 }
@@ -250,15 +250,17 @@ textarea {
 
 /** Profile Page **/
 #profile-header {
-  background: #ecffe3;
+  background: #53b5a6;
   padding-top: 25px;
   padding-bottom: 25px;
-  box-shadow: inset 0 8px 4px -4px #ACACAC;
+  color: #fdfffc;
+  box-shadow: inset 0 8px 4px -4px #555555;
 }
 #profile-header h2 {
   font-size: 3em;
   font-weight: 900;
   text-transform: uppercase;
+  color: #fdfffc;
 }
 
 #asoc-profile {
@@ -266,8 +268,18 @@ textarea {
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 12px;
-  text-align: center;
   box-shadow: inset 0 4px 2px -2px #898989;
+}
+#asoc-profile .asoc-badge {
+  display: inline-block;
+  margin: 5px auto;
+  padding: 0px 10px;
+}
+#asoc-profile .asoc-badge:first-of-type {
+  padding-left: 0px;
+}
+#asoc-profile .asoc-badge:not(:last-of-type) {
+  border-right: 1px solid #555555;
 }
 
 #profile-map {

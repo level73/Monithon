@@ -1,20 +1,20 @@
 <section class="container-fluid" id="profile-header">
     <div class="prf d-none"><?php echo $profile->idauth; ?></div>
     <div class="row  align-items-center">
-        <div class="col-3 col-md-2">
+        <div class="col-3 col-md-1">
             <?php avatar($profile, true, true); ?>
         </div>
         <div class="col-9 col-md-10">
             <h2 id="team_name"><?php echo $profile->username; ?></h2>
             <div class="row" id="geoloc">
-                <div class="col-6">
-                    <?php echo $profile->city; ?>
+                <div class="col-6 col-md-3 ">
+                    <?php echo ucfirst($profile->city); ?>
                     <?php if(isset($profile->ASOC)) { ?>
                         (<?php echo $profile->ASOC->provincia->shorthand; ?>) -
                         <?php echo $profile->ASOC->regione->region; ?>
                     <?php } ?>
                 </div>
-                <div class="col-6"><?php echo (!empty($profile->twitter) ? '<a href="https://twitter.com/'.$profile->twitter.'" title="Twitter Profile Link" target="_blank">'.$profile->twitter.'</a>' : ''); ?></div>
+                <div class="col-6 col-md-3"><?php echo (!empty($profile->twitter) ? '<a href="https://twitter.com/'.$profile->twitter.'" title="Twitter Profile Link" target="_blank">'.$profile->twitter.'</a>' : ''); ?></div>
             </div>
         </div>
         <?php /*
@@ -30,12 +30,12 @@
 <?php if(isset($profile->ASOC)){ ?>
     <section class="container-fluid" id="asoc-profile">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-md-11 offset-md-1">
 
                 <span class="asoc-badge"><i class="fal fa-badge-check"></i> PARTECIPANTE ASOC <em><?php echo strtoupper($profile->ASOC->istituto . ' (' . $profile->ASOC->tipo_istituto. ')'); ?></em></span>
-                <?php if(!empty($profile->ASOC->remote_id)): ?> | <span class="asoc-badge"><i class="fal fa-external-link"></i> <a href="https://www.ascuoladiopencoesione.it/it/team/<?php echo $profile->ASOC->remote_id; ?>" target="_blank">BLOG ASOC</a></span><?php endif; ?>
-                <?php if(!empty($profile->ASOC->link_blog)): ?> | <span class="asoc-badge"><i class="fal fa-external-link"></i> <a href="<?php echo $profile->ASOC->link_blog; ?>" target="_blank">BLOG</a></span><?php endif; ?>
-                <?php if(!empty($profile->ASOC->link_elaborato)): ?> | <span class="asoc-badge"><i class="fal fa-external-link"></i><a href="<?php echo $profile->ASOC->link_elaborato; ?>" target="_blank">ELABORATO FINALE</a></span><?php endif; ?>
+                <?php if(!empty($profile->ASOC->remote_id)): ?><span class="asoc-badge"><i class="fal fa-external-link"></i> <a href="https://www.ascuoladiopencoesione.it/it/team/<?php echo $profile->ASOC->remote_id; ?>" target="_blank">BLOG ASOC</a></span><?php endif; ?>
+                <?php if(!empty($profile->ASOC->link_blog)): ?><span class="asoc-badge"><i class="fal fa-external-link"></i> <a href="<?php echo $profile->ASOC->link_blog; ?>" target="_blank">BLOG</a></span><?php endif; ?>
+                <?php if(!empty($profile->ASOC->link_elaborato)): ?><span class="asoc-badge"><i class="fal fa-external-link"></i><a href="<?php echo $profile->ASOC->link_elaborato; ?>" target="_blank">ELABORATO FINALE</a></span><?php endif; ?>
             </div>
         </div>
     </section>

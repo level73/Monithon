@@ -41,7 +41,7 @@ textarea { min-height: 6em; }
   max-width: 90px;
   border-radius: 45px;
   &.avatar-lg {
-    max-width: 180px;
+    max-width: 100% !important;
     border-radius: 0px;
     float: right;
   }
@@ -194,19 +194,30 @@ textarea { min-height: 6em; }
 
 /** Profile Page **/
 #profile-header {
-  background: darken($seafoam, 5%);
+  background: lighten($lagoon, 10%);
   padding-top: 25px;
   padding-bottom: 25px;
-  h2 { font-size: 3em; font-weight: 900; text-transform: uppercase; }
-  box-shadow: inset 0 8px 4px -4px $lite;
+  color: $seafoam;
+  h2 { font-size: 3em; font-weight: 900; text-transform: uppercase; color: $seafoam; }
+  box-shadow: inset 0 8px 4px -4px $dark;
 }
 #asoc-profile {
   background: lighten($scallop, 15%);
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 12px;
-  text-align: center;
+ // text-align: center;
   box-shadow: inset 0 4px 2px -2px $mid;
+
+  .asoc-badge {
+    display: inline-block;
+    margin: 5px auto;
+    padding: 0px 10px;
+    &:first-of-type { padding-left: 0px; }
+    &:not(:last-of-type){
+      border-right: 1px solid $dark;
+    }
+  }
 }
 
 #profile-map { width: 100%; height: 450px; }
