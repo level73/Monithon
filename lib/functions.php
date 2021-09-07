@@ -340,7 +340,7 @@ function avatar($Profile, $large = false, $responsive = false, $avatar_class = '
         echo '<img src="/resources/cropx90_' . $Profile->avatar->file_path . '" alt="AVATAR" class="'.$avatar_class.' img-responsive ' . ($responsive == true ? 'img-fluid' : '') . '">';
     }
     else {
-        echo '<img src="https://avatars.dicebear.com/v2/bottts/bob%20robot%20.svg?options[colors][]=yellow&options[colors][]=brown&options[textureChance]=0&options[mouthChance]=52&options[sidesChance]=13&options[topChange]=26" class="'.$avatar_class.' img-responsive img-fluid">';
+        echo '<img src="https://avatars.dicebear.com/api/jdenticon/'.urlencode(strtolower(str_replace(' ', '_', $Profile->username))).'.svg?background=' . urlencode('#FFFFFF') . '" class="'.$avatar_class.' img-responsive img-fluid">';
     }
 }
 

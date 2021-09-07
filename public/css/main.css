@@ -266,8 +266,11 @@ textarea {
   position: relative;
 }
 #profile-header .prf-avatar {
+  top: -50px;
+  border-radius: 35px;
+  box-shadow: 0 3px 6px #555555;
+  max-width: 90%;
   position: absolute;
-  top: -46px;
 }
 
 #asoc-profile {
