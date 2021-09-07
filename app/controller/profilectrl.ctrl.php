@@ -57,7 +57,11 @@ class ProfileCtrl extends Ctrl {
 
         // Load Report Info
         $Reports = $Report->findBy(array('created_by' => $id));
-
+      /*  $Images =
+        foreach($Reports as $i => $r){
+            $Reports[$i]->images
+        }
+*/
         // Calculate graph info
         $totalReports   = $Report->counter(7);
         $profileReports = count($Reports);

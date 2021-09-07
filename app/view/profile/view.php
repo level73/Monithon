@@ -4,7 +4,7 @@
         <div class="col-3 col-md-2">
             <?php avatar($profile, true, true); ?>
         </div>
-        <div class="col-9 col-md-7">
+        <div class="col-9 col-md-10">
             <h2 id="team_name"><?php echo $profile->username; ?></h2>
             <div class="row" id="geoloc">
                 <div class="col-6">
@@ -17,12 +17,14 @@
                 <div class="col-6"><?php echo (!empty($profile->twitter) ? '<a href="https://twitter.com/'.$profile->twitter.'" title="Twitter Profile Link" target="_blank">'.$profile->twitter.'</a>' : ''); ?></div>
             </div>
         </div>
+        <?php /*
         <div class="col-12 col-md-3 stat">
             <span class="stat-label">contribuisce con il</span>
             <span class="stat-number"><?php echo $ratio['ratio']; ?>%</span>
             <span class="stat-label">dei report</span>
             <span class="stat-descr"><?php echo $ratio['profile']; ?> su <?php echo $ratio['total']; ?></span>
         </div>
+        */ ?>
     </div>
 </section>
 <?php if(isset($profile->ASOC)){ ?>
@@ -54,6 +56,7 @@
                 <?php foreach($reports as $report){ ?>
                 <div class="report row">
                     <div class="col-12 col-md-9">
+                        <?php dbga($report); ?>
                         <h3><a href="/report/view/<?php echo $report->idreport_basic; ?>"><?php echo $report->titolo; ?></a></h3>
                         <span class="d-none latlng">[<?php echo $report->lat_ .','.$report->lon_; ?>]</span>
                         <time datetime="<?php echo $report->created_at; ?>"><?php echo strftime('%d/%m/%Y', strtotime($report->created_at)); ?></time>
