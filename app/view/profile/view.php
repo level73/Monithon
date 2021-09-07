@@ -33,6 +33,7 @@
             <div class="col-12">
 
                 <span class="asoc-badge"><i class="fal fa-badge-check"></i> PARTECIPANTE ASOC <em><?php echo strtoupper($profile->ASOC->istituto . ' (' . $profile->ASOC->tipo_istituto. ')'); ?></em></span>
+                <?php if(!empty($profile->ASOC->remote_id)): ?> | <span class="asoc-badge"><i class="fal fa-external-link"></i> <a href="https://www.ascuoladiopencoesione.it/it/team/<?php echo $profile->ASOC->remote_id; ?>" target="_blank">BLOG ASOC</a></span><?php endif; ?>
                 <?php if(!empty($profile->ASOC->link_blog)): ?> | <span class="asoc-badge"><i class="fal fa-external-link"></i> <a href="<?php echo $profile->ASOC->link_blog; ?>" target="_blank">BLOG</a></span><?php endif; ?>
                 <?php if(!empty($profile->ASOC->link_elaborato)): ?> | <span class="asoc-badge"><i class="fal fa-external-link"></i><a href="<?php echo $profile->ASOC->link_elaborato; ?>" target="_blank">ELABORATO FINALE</a></span><?php endif; ?>
             </div>
