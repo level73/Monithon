@@ -262,6 +262,13 @@ textarea {
   text-transform: uppercase;
   color: #fdfffc;
 }
+#profile-header .prf-avatar-hld {
+  position: relative;
+}
+#profile-header .prf-avatar {
+  position: absolute;
+  top: -46px;
+}
 
 #asoc-profile {
   background: #ffbf69;

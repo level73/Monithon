@@ -1,20 +1,20 @@
 <section class="container-fluid" id="profile-header">
     <div class="prf d-none"><?php echo $profile->idauth; ?></div>
     <div class="row  align-items-center">
-        <div class="col-3 col-md-1">
-            <?php avatar($profile, true, true); ?>
+        <div class="col-3 col-md-1 prf-avatar-hld">
+            <?php avatar($profile, true, true, 'prf-avatar'); ?>
         </div>
         <div class="col-9 col-md-10">
             <h2 id="team_name"><?php echo $profile->username; ?></h2>
             <div class="row" id="geoloc">
-                <div class="col-6 col-md-3 ">
+                <div class="col-12 col-md-3 ">
                     <?php echo ucfirst($profile->city); ?>
                     <?php if(isset($profile->ASOC)) { ?>
                         (<?php echo $profile->ASOC->provincia->shorthand; ?>) -
                         <?php echo $profile->ASOC->regione->region; ?>
                     <?php } ?>
                 </div>
-                <div class="col-6 col-md-3"><?php echo (!empty($profile->twitter) ? '<a href="https://twitter.com/'.$profile->twitter.'" title="Twitter Profile Link" target="_blank">'.$profile->twitter.'</a>' : ''); ?></div>
+                <div class="col-12 col-md-3"><?php echo (!empty($profile->twitter) ? '<a href="https://twitter.com/'.$profile->twitter.'" title="Twitter Profile Link" target="_blank">'.$profile->twitter.'</a>' : ''); ?></div>
             </div>
         </div>
         <?php /*
