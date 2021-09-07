@@ -56,7 +56,6 @@
                 <?php foreach($reports as $report){ ?>
                 <div class="report row">
                     <div class="col-12 col-md-9">
-                        <?php dbga($report); ?>
                         <h3><a href="/report/view/<?php echo $report->idreport_basic; ?>"><?php echo $report->titolo; ?></a></h3>
                         <span class="d-none latlng">[<?php echo $report->lat_ .','.$report->lon_; ?>]</span>
                         <time datetime="<?php echo $report->created_at; ?>"><?php echo strftime('%d/%m/%Y', strtotime($report->created_at)); ?></time>
