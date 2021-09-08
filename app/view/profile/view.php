@@ -7,14 +7,14 @@
         <div class="col-9 col-md-10">
             <h2 id="team_name"><?php echo $profile->username; ?></h2>
             <div class="row" id="geoloc">
-                <div class="col-12 col-md-3 ">
+                <div class="col-12 col-md-2 "><i class="fa fa-map-marker-alt"></i>
                     <?php echo ucfirst($profile->city); ?>
                     <?php if(isset($profile->ASOC)) { ?>
                         (<?php echo $profile->ASOC->provincia->shorthand; ?>) -
                         <?php echo $profile->ASOC->regione->region; ?>
                     <?php } ?>
                 </div>
-                <div class="col-12 col-md-3"><?php echo (!empty($profile->twitter) ? '<a href="https://twitter.com/'.$profile->twitter.'" title="Twitter Profile Link" target="_blank">'.$profile->twitter.'</a>' : ''); ?></div>
+                <div class="col-12 col-md-2"><i class="fab fa-twitter"></i> <?php echo (!empty($profile->twitter) ? '<a href="https://twitter.com/'.$profile->twitter.'" title="Twitter Profile Link" target="_blank">'.$profile->twitter.'</a>' : ''); ?></div>
             </div>
         </div>
         <?php /*
@@ -35,7 +35,7 @@
                 <span class="asoc-badge"><i class="fal fa-badge-check"></i> PARTECIPANTE ASOC <em><?php echo strtoupper($profile->ASOC->istituto . ' (' . $profile->ASOC->tipo_istituto. ')'); ?></em></span>
                 <?php if(!empty($profile->ASOC->remote_id)): ?><span class="asoc-badge"><i class="fal fa-external-link"></i> <a href="https://www.ascuoladiopencoesione.it/it/team/<?php echo $profile->ASOC->remote_id; ?>" target="_blank">BLOG ASOC</a></span><?php endif; ?>
                 <?php if(!empty($profile->ASOC->link_blog)): ?><span class="asoc-badge"><i class="fal fa-external-link"></i> <a href="<?php echo $profile->ASOC->link_blog; ?>" target="_blank">BLOG</a></span><?php endif; ?>
-                <?php if(!empty($profile->ASOC->link_elaborato)): ?><span class="asoc-badge"><i class="fal fa-external-link"></i><a href="<?php echo $profile->ASOC->link_elaborato; ?>" target="_blank">ELABORATO FINALE</a></span><?php endif; ?>
+                <?php if(!empty($profile->ASOC->link_elaborato)): ?><span class="asoc-badge"><i class="fal fa-external-link"></i> <a href="<?php echo $profile->ASOC->link_elaborato; ?>" target="_blank">ELABORATO FINALE</a></span><?php endif; ?>
             </div>
         </div>
     </section>
@@ -45,18 +45,18 @@
     <div class="row">
         <div class="col-12 col-md-4">
             <div class="content-wrapper">
-                <h2><?php t("CHI SIAMO"); ?></h2>
+                <h2><i class="fad fa-users"  style="--fa-primary-color: DarkCyan; --fa-secondary-color: DarkCyan; --fa-secondary-opacity: 0.4;"></i> <?php t("CHI SIAMO"); ?></h2>
                 <p><?php echo $profile->bio; ?></p>
             </div>
 
             <div class="content-wrapper">
-                <h2><?php t("MAPPA DEI REPORT"); ?></h2>
+                <h2><i class="fad fa-map-marked-alt"  style="--fa-primary-color: DarkCyan; --fa-secondary-color: DarkCyan; --fa-secondary-opacity: 0.4;"></i> <?php t("MAPPA DEI REPORT"); ?></h2>
                 <div id="profile-map"></div>
             </div>
         </div>
         <div class="col-12 col-md-8">
             <div class="content-wrapper">
-                <h2>I NOSTRI REPORT</h2>
+                <h2><i class="fad fa-file-alt"  style="--fa-primary-color: DarkCyan; --fa-secondary-color: DarkCyan; --fa-secondary-opacity: 0.4;"></i> I NOSTRI REPORT</h2>
                 <?php foreach($reports as $report){ ?>
                 <div class="report row">
                     <div class="col-12 col-md-9">
@@ -64,7 +64,7 @@
                         <span class="d-none latlng">[<?php echo $report->lat_ .','.$report->lon_; ?>]</span>
                         <time datetime="<?php echo $report->created_at; ?>"><?php echo strftime('%d/%m/%Y', strtotime($report->created_at)); ?></time>
                         <p><?php echo apiHellip($report->descrizione); ?></p>
-                        <a href="/report/view/<?php echo $report->idreport_basic; ?>" class="btn btn-sm btn-primary">LEGGI TUTTO</a>
+                        <a href="/report/view/<?php echo $report->idreport_basic; ?>" class="btn btn-sm btn-primary read-more">LEGGI TUTTO <i class="fal fa-plus"></i></a>
                     </div>
                     <div class="col-12 col-md-3">
                         <?php if(isset($report->images) && !empty($report->images)){ ?>

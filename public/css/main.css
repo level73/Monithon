@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /** Main Color Palette **/
+/** Monithon Core **/
 /** Font Stack **/
 /** UI colors **/
 /** Neutral Stack **/
@@ -26,6 +27,14 @@ h3 {
 h4 {
   font-size: 1.2em;
   font-weight: 300;
+}
+
+h2 a, h3 a, h4 a, h5 a {
+  color: #409588;
+}
+h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
+  color: #65bdaf;
+  text-decoration: underline;
 }
 
 p, li {
@@ -260,7 +269,8 @@ textarea {
   font-size: 3em;
   font-weight: 900;
   text-transform: uppercase;
-  color: #fdfffc;
+  border-bottom: 1px dotted #fdfffc;
+  word-wrap: break-word;
 }
 #profile-header .prf-avatar-hld {
   position: relative;
@@ -272,9 +282,14 @@ textarea {
   max-width: 90%;
   position: absolute;
 }
+#profile-header #geoloc {
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  color: #fdfffc;
+}
 
 #asoc-profile {
-  background: #ffbf69;
+  background: #FFD966;
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 12px;
@@ -332,9 +347,13 @@ textarea {
 }
 #profile-body h2 {
   margin-bottom: 35px;
+  color: #555555;
 }
 #profile-body h2, #profile-body h3 {
   text-transform: uppercase;
+}
+#profile-body .read-more {
+  margin-bottom: 25px;
 }
 
 .content-wrapper {
