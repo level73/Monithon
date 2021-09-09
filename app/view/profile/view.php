@@ -14,7 +14,7 @@
                         <?php echo $profile->ASOC->regione->region; ?>
                     <?php } ?>
                 </div>
-                <div class="col-12 col-md-2"><i class="fab fa-twitter"></i> <?php echo (!empty($profile->twitter) ? '<a href="https://twitter.com/'.$profile->twitter.'" title="Twitter Profile Link" target="_blank">'.$profile->twitter.'</a>' : ''); ?></div>
+                <div class="col-12 col-md-2"><i class="fab fa-twitter"></i> <?php echo (!empty($profile->twitter) ? '<a class="twt" href="https://twitter.com/'.$profile->twitter.'" title="Twitter Profile Link" target="_blank">'.$profile->twitter.'</a>' : ''); ?></div>
             </div>
         </div>
         <?php /*
@@ -56,7 +56,7 @@
         </div>
         <div class="col-12 col-md-8">
             <div class="content-wrapper">
-                <h2><i class="fad fa-file-alt"  style="--fa-primary-color: DarkCyan; --fa-secondary-color: DarkCyan; --fa-secondary-opacity: 0.4;"></i> I NOSTRI REPORT</h2>
+                <h2><i class="fad fa-file-alt"  style="--fa-primary-color: DarkCyan; --fa-secondary-color: DarkCyan; --fa-secondary-opacity: 0.4;"></i>  <?php t("I NOSTRI REPORT"); ?></h2>
                 <?php foreach($reports as $report){ ?>
                 <div class="report row">
                     <div class="col-12 col-md-9">
@@ -64,7 +64,7 @@
                         <span class="d-none latlng">[<?php echo $report->lat_ .','.$report->lon_; ?>]</span>
                         <time datetime="<?php echo $report->created_at; ?>"><?php echo strftime('%d/%m/%Y', strtotime($report->created_at)); ?></time>
                         <p><?php echo apiHellip($report->descrizione); ?></p>
-                        <a href="/report/view/<?php echo $report->idreport_basic; ?>" class="btn btn-sm btn-primary read-more">LEGGI TUTTO <i class="fal fa-plus"></i></a>
+                        <a href="/report/view/<?php echo $report->idreport_basic; ?>" class="btn btn-sm btn-primary read-more"> <?php t("LEGGI TUTTO"); ?> <i class="fal fa-plus"></i></a>
                     </div>
                     <div class="col-12 col-md-3">
                         <?php if(isset($report->images) && !empty($report->images)){ ?>

@@ -282,6 +282,15 @@ textarea {
   max-width: 90%;
   position: absolute;
 }
+#profile-header a.twt {
+  color: #fdfffc;
+  text-decoration: underline;
+  text-decoration-color: #fdfffc;
+  text-decoration-style: dotted;
+}
+#profile-header a.twt:hover {
+  color: #caffb0;
+}
 #profile-header #geoloc {
   font-size: 0.9em;
   letter-spacing: 1px;

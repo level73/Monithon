@@ -10,11 +10,12 @@
     </header>
 
     <section class="reports">
+
     <?php foreach($reports as $report){ ?>
     <div class="report-list-entry">
         <div class="row">
                 <div class="col-12">
-                    <small><span class="report-date"><?php echo strftime('%d/%m/%Y', $report->create_date);?></span> | <span class="report-author"><?php echo $report->role==4 ? $report->username: $report->autore; //$author->username; ?></span></small>
+                    <small><span class="report-date"><?php echo strftime('%d/%m/%Y', $report->create_date);?></span> | <span class="report-author"><a href="/profile/view/<?php echo $report->profile; ?>"><?php echo $report->role==4 ? $report->username: $report->autore; //$author->username; ?></a></span></small>
 
 
                 </div>

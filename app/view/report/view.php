@@ -177,7 +177,7 @@
 
             </h1>
 
-            <span class="report-date">Inviato il <?php  echo strftime('%e/%m/%Y', strtotime($report->created_at)); ?> | di <?php echo $author->role==4 ? $author->username: $report->autore; //$author->username; ?>
+            <span class="report-date">Inviato il <?php  echo strftime('%e/%m/%Y', strtotime($report->created_at)); ?> | di <a href="/profile/view/<?php echo $author->idauth; ?>"><?php echo $author->role==4 ? $author->username: $report->autore; //$author->username; ?></a>
                 <?php if(!empty($author->twitter)) { ?> | <a href="https://twitter.com/<?php echo str_replace('@', '', $author->twitter); ?>" target="_blank"><i class="fab fa-twitter"></i> @<?php echo str_replace('@', '', $author->twitter); ?></a><?php } ?>
             </span>
 

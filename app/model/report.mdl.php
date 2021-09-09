@@ -66,6 +66,7 @@
                     UNIX_TIMESTAMP(`' . $this->table . '`.`created_at`) AS create_date,
                     `' . $this->table . '`.`autore`, 
                     `auth`.`username`,
+                    `auth`.`idauth` AS profile,
                     `auth`.`role`
                  FROM  `' . $this->table . '` 
                  INNER JOIN `auth` ON `auth`.`idauth` = `' . $this->table . '`.`created_by` 
