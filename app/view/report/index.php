@@ -15,12 +15,17 @@
     <div class="report-list-entry">
         <div class="row">
                 <div class="col-12">
-                    <small><span class="report-date"><?php echo strftime('%d/%m/%Y', $report->create_date);?></span> | <span class="report-author"><a href="/profile/view/<?php echo $report->profile; ?>"><?php echo $report->role==4 ? $report->username: $report->autore; //$author->username; ?></a></span></small>
+                    <small>
+                        <span class="report-date"><?php echo strftime('%d/%m/%Y', $report->create_date);?></span> |
+                        <span class="report-author"><a href="/profile/view/<?php echo $report->profile; ?>"><?php echo $report->role==4 ? $report->username: $report->autore; //$author->username; ?></a></span>
+
+                    </small>
                 </div>
                 <div class="col-9">
-                    <h2 <?php echo $report->ASOC_EXP==true ? 'class="asoc-exp-badge"' : ''; ?>>
+                    <h2>
                         <a href="/report/view/<?php echo $report->id; ?>"><?php echo $report->titolo; ?></a>
                     </h2>
+                    <?php AsocExp($report); ?>
                     <p class="report-description"><?php echo hellip($report->descrizione, 700); ?></p>
                 </div>
 

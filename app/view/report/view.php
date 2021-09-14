@@ -172,8 +172,8 @@
 
         <article class="col-sm-12 col-md-8" id="report-view">
 
-            <h1 <?php echo $report->ASOC_EXP==true ? 'class="asoc-exp-badge"' : ''; ?>>
-                <span class="title-label"><small>REPORT DI MONITORAGGIO CIVICO</small><br /></span><?php echo $report->titolo; ?><br />
+            <h1>
+                <span class="title-label"><small>REPORT DI MONITORAGGIO CIVICO</small> <?php AsocExp($report); ?><br /></span><?php echo $report->titolo; ?><br />
 
             </h1>
 

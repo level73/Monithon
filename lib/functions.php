@@ -387,6 +387,12 @@ function GS_to_int($string){
     }
 }
 
+// Check for ASOC Exp Badge
+function AsocExp($report){
+    echo $report->ASOC_EXP==true ? '<a href="https://www.ascuoladiopencoesione.it/it/asoc-experience-contest" target="_blank" class="asoc-exp-badge">ASOC Experience - Il Monitoraggio Continua!</a>' : '';
+}
+
+
 /** Translator **/
 function t($string){
   echo $string;

@@ -257,10 +257,10 @@ textarea {
   font-style: italic;
 }
 
-.asoc-exp-badge::after {
+.asoc-exp-badge {
   font-size: 12px;
-  display: block;
-  content: "ASOC EXPERIENCE";
+  display: inline-block;
+  content: "ASOC EXPERIENCE - Il Monitoraggio Continua!";
   background: #ff9f1c;
   color: #ffeacf;
   padding: 6px;
@@ -268,7 +268,11 @@ textarea {
   border-radius: 5px;
   clear: both;
 }
-
+.asoc-exp-badge:hover {
+  color: #ffeacf;
+  background: #ffb045;
+  text-decoration: none;
+}
 /** Profile Page **/
 #profile-header {
   background: #53b5a6;
@@ -364,7 +368,7 @@ textarea {
   margin-bottom: 15px;
   font-size: 12px;
   font-weight: 300;
-  display: block;
+  display: inline-block;
 }
 #profile-body h2 {
   margin-bottom: 35px;

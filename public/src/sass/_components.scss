@@ -193,17 +193,18 @@ textarea { min-height: 6em; }
 }
 
 .asoc-exp-badge {
-  &::after{
+
     font-size: 12px;
-    display: block;
-    content: 'ASOC EXPERIENCE';
+    display: inline-block;
+    content: 'ASOC EXPERIENCE - Il Monitoraggio Continua!';
     background: $scallop;
     color: lighten($scallop, 35%);
     padding: 6px;
     font-weight: 600;
     border-radius: 5px;
     clear: both;
-  }
+  &:hover{ color: lighten($scallop, 35%); background: lighten($scallop, 8%); text-decoration: none; }
+  &::after{ }
 }
 
 /** Profile Page **/
@@ -263,7 +264,7 @@ textarea { min-height: 6em; }
 .stat-descr{ text-transform: uppercase; font-size: 12px; font-style: italic; }
 
 #profile-body { margin-top: 40px;
-  time { font-family: $fontStack; margin-bottom: 15px; font-size: 12px; font-weight: 300; display: block; }
+  time { font-family: $fontStack; margin-bottom: 15px; font-size: 12px; font-weight: 300; display: inline-block; }
   h2 { margin-bottom: 35px; color: $dark; }
   h2, h3 { text-transform: uppercase; }
   .read-more { margin-bottom: 25px; }
