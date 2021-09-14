@@ -77,10 +77,12 @@
     /** Find by Params
       * params @array, keys are fields
     **/
-    public function findBy($params){
+    public function findBy($params, $orderBy = null){
       $sql = 'SELECT * FROM `' . $this->table . '` WHERE ';
       $sql .= implode(' AND ', query_placeholders($params));
-
+      if(!is_null($orderBy) && is_array($orderBy)){
+          $sql .= ' ORDER BY ' . $orderBy['field'] . ' ' . $orderBy['direction'];
+      }
       $stmt = $this->database->prepare($sql);
 
       foreach($params as $field => &$value){

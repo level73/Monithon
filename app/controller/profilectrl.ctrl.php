@@ -69,7 +69,7 @@ class ProfileCtrl extends Ctrl {
 
 
         // Load Report Info
-        $Reports = $Report->findBy(array('created_by' => $id, 'status' => 7));
+        $Reports = $Report->findBy(array('created_by' => $id, 'status' => 7), array('field' => 'created_at', 'direction' => 'DESC'));
         $Files = new Repo();
         foreach($Reports as $i => $report){
             // ASOC EXP

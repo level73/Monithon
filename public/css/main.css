@@ -258,11 +258,11 @@ textarea {
 }
 
 .asoc-exp-badge::after {
-  font-size: 8px;
+  font-size: 12px;
   display: block;
   content: "ASOC EXPERIENCE";
   background: #ff9f1c;
-  color: #ffd59c;
+  color: #ffeacf;
   padding: 6px;
   font-weight: 600;
   border-radius: 5px;
