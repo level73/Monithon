@@ -3,6 +3,17 @@
   class Report extends Model {
     protected $table  = 'entity_report_basic';
     protected $pkey   = 'idreport_basic';
+    protected $ASOC_Exp = Array(
+                                881,
+                                883,
+                                882,
+                                879,
+                                878,
+                                880,
+                                876,
+                                877,
+                                959,
+                            );
 
 
     public function getReport($id){
@@ -46,7 +57,8 @@
               }
           }
           $Report->videos = $Vids;
-
+          $Report->ASOC_EXP = false;
+          $Report->ASOC_EXP = in_array($id, $this->ASOC_Exp);
           return $Report;
       }
       else {
@@ -88,6 +100,8 @@
             $list = $stmt->fetchAll(PDO::FETCH_OBJ);
             $Files = new Repo();
             foreach($list as $i => $report){
+                // Check ASOC Exp
+                $list[$i]->ASOC_EXP = in_array($report->id, $this->ASOC_Exp);
                 // Get Files
                 $list[$i]->files = $Files->getFiles(T_REP_BASIC, $report->id, 2);
                 foreach($list[$i]->files as $l => $file){

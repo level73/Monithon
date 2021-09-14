@@ -5,6 +5,18 @@ class ProfileCtrl extends Ctrl {
     protected $User;
     public    $Errors;
 
+    protected $ASOC_Exp = Array(
+        881,
+        883,
+        882,
+        879,
+        878,
+        880,
+        876,
+        877,
+        959,
+    );
+
 
     public function __construct($model, $controller, $action){
         parent::__construct($model, $controller, $action);
@@ -36,6 +48,7 @@ class ProfileCtrl extends Ctrl {
         $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
 
 
+
         // Load Profile Info
         $Profile = $User->fullProfile($id);
         unset($Profile->password);
@@ -59,6 +72,9 @@ class ProfileCtrl extends Ctrl {
         $Reports = $Report->findBy(array('created_by' => $id, 'status' => 7));
         $Files = new Repo();
         foreach($Reports as $i => $report){
+            // ASOC EXP
+            $Reports[$i]->ASOC_EXP = false;
+            $Reports[$i]->ASOC_EXP = in_array($report->idreport_basic, $this->ASOC_Exp);
             // Get Files
             $Reports[$i]->files = $Files->getFiles(T_REP_BASIC, $report->idreport_basic, 2);
             foreach($Reports[$i]->files as $l => $file){

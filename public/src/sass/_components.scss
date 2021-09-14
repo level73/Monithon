@@ -192,6 +192,21 @@ textarea { min-height: 6em; }
   }
 }
 
+.asoc-exp-badge {
+  &::after{
+    font-size: 8px;
+    display: block;
+    content: 'ASOC EXPERIENCE';
+    background: $scallop;
+    color: lighten($scallop, 25%);
+    padding: 6px;
+    font-weight: 600;
+    border-radius: 5px;
+    clear: both;
+  }
+
+}
+
 /** Profile Page **/
 #profile-header {
   background: lighten($lagoon, 10%);

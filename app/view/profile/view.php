@@ -5,7 +5,10 @@
             <?php avatar($profile, true, true, 'prf-avatar'); ?>
         </div>
         <div class="col-9 col-md-10">
-            <h2 id="team_name"><?php echo $profile->username; ?></h2>
+            <h2 id="team_name">
+                <?php echo $profile->username; ?>
+
+            </h2>
             <div class="row" id="geoloc">
                 <div class="col-12 col-md-2 "><i class="fa fa-map-marker-alt"></i>
                     <?php echo ucfirst($profile->city); ?>
@@ -31,7 +34,6 @@
     <section class="container-fluid" id="asoc-profile">
         <div class="row">
             <div class="col-12 col-md-11 offset-md-1">
-
                 <span class="asoc-badge"><i class="fal fa-badge-check"></i> PARTECIPANTE ASOC <em><?php echo strtoupper($profile->ASOC->istituto . ' (' . $profile->ASOC->tipo_istituto. ')'); ?></em></span>
                 <?php if(!empty($profile->ASOC->remote_id)): ?><span class="asoc-badge"><i class="fal fa-external-link"></i> <a href="https://www.ascuoladiopencoesione.it/it/team/<?php echo $profile->ASOC->remote_id; ?>" target="_blank">BLOG ASOC</a></span><?php endif; ?>
                 <?php if(!empty($profile->ASOC->link_blog)): ?><span class="asoc-badge"><i class="fal fa-external-link"></i> <a href="<?php echo $profile->ASOC->link_blog; ?>" target="_blank">BLOG</a></span><?php endif; ?>
@@ -60,7 +62,7 @@
                 <?php foreach($reports as $report){ ?>
                 <div class="report row">
                     <div class="col-12 col-md-9">
-                        <h3><a href="/report/view/<?php echo $report->idreport_basic; ?>"><?php echo $report->titolo; ?></a></h3>
+                        <h3 <?php echo $report->ASOC_EXP==true ? 'class="asoc-exp-badge"' : ''; ?>><a href="/report/view/<?php echo $report->idreport_basic; ?>"><?php echo $report->titolo; ?></a></h3>
                         <span class="d-none latlng">[<?php echo $report->lat_ .','.$report->lon_; ?>]</span>
                         <time datetime="<?php echo $report->created_at; ?>"><?php echo strftime('%d/%m/%Y', strtotime($report->created_at)); ?></time>
                         <p><?php echo apiHellip($report->descrizione); ?></p>

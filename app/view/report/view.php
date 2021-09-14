@@ -172,13 +172,14 @@
 
         <article class="col-sm-12 col-md-8" id="report-view">
 
-            <h1>
+            <h1 <?php echo $report->ASOC_EXP==true ? 'class="asoc-exp-badge"' : ''; ?>>
                 <span class="title-label"><small>REPORT DI MONITORAGGIO CIVICO</small><br /></span><?php echo $report->titolo; ?><br />
 
             </h1>
 
             <span class="report-date">Inviato il <?php  echo strftime('%e/%m/%Y', strtotime($report->created_at)); ?> | di <a href="/profile/view/<?php echo $author->idauth; ?>"><?php echo $author->role==4 ? $author->username: $report->autore; //$author->username; ?></a>
                 <?php if(!empty($author->twitter)) { ?> | <a href="https://twitter.com/<?php echo str_replace('@', '', $author->twitter); ?>" target="_blank"><i class="fab fa-twitter"></i> @<?php echo str_replace('@', '', $author->twitter); ?></a><?php } ?>
+
             </span>
 
             <div class="report-body">
