@@ -160,7 +160,7 @@
         $this->set('pfurl', $_GET['pfurl']);
       }
 
-      if(isset($_COOKIE['pfurl']) && !empty($_COOKIE['pfurl'])){
+      elseif(isset($_COOKIE['pfurl']) && !empty($_COOKIE['pfurl'])){
           $this->set('pfurl', $_COOKIE['pfurl']);
       }
 
