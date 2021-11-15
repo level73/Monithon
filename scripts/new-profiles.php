@@ -68,30 +68,27 @@ function random_str(
 <div class="container">
     <h1>NEW PROFILES - DRY RUN</h1>
     <?php
-/*
+
     // Main CSV File - load data and create handler
-    $csv_file = 'new-profiles.csv';
+    $csv_file = 'new-profiles-multi.csv';
     $csv_handle = fopen($csv_file, "r");
 
     if($csv_handle){
         $UserModel = new User;
         $RegSession = new Session;
-        $ReportModel = new Report;
+
 
         $row = 0;
         $keys = array();
         echo "<h2>Starting - Row 0</h2><br />";
         while(($data = fgetcsv($csv_handle, 0, ",")) !== FALSE){
-            if($row == 0){
-                echo "skipping first row (labels)... <br />";
-            }
-            else {
+
                 // Setting up changes
-                $report_id = $data[0];
+
 
                 $userdata['password']         = password_hash(random_str(12), PASSWORD_BCRYPT);
-                $userdata['email']            = $data[2];
-                $userdata['username']         = filter_var($data[1], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $userdata['email']            = $data[1];
+                $userdata['username']         = filter_var($data[0], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $userdata['role']             = 3;
                 $userdata['active']           = 1;
 
@@ -109,27 +106,13 @@ function random_str(
                     }
                 }
 
-                // Update report
-                $new = array(
-                        'created_by'    => $idUser,
-                        'autore'        => $userdata['username']
-                );
-                $report_update = $ReportModel->update($report_id, array('created_by' => $idUser));
-                if($report_update){
-                    echo "<p> Report updated</p>";
-                    echo "<pre>"; print_r($new); echo "</pre>";
-                }
-                else {
-                    die("ERROR REPORT NOT UPDATED");
-                }
-            }
+
             $row++;
         }
     }
     else {
         echo "could not read CSV file: " . $csv_file . " - exit.";
     }
-*/
     ?>
 </div>
 </body>
