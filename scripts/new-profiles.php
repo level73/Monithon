@@ -68,7 +68,7 @@ function random_str(
 <div class="container">
     <h1>NEW PROFILES - DRY RUN</h1>
     <?php
-
+/*
     // Main CSV File - load data and create handler
     $csv_file = 'new-profiles.csv';
     $csv_handle = fopen($csv_file, "r");
@@ -129,7 +129,7 @@ function random_str(
     else {
         echo "could not read CSV file: " . $csv_file . " - exit.";
     }
-
+*/
     ?>
 </div>
 </body>
