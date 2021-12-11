@@ -269,7 +269,10 @@
                   $RegSession->createSession($idUser);
 
                   // Send activation email
-                  $message  = '<h2>Benvenuto!</h2>E grazie di esserti registrato su Monithon, la piattaforma per il monitoraggio civico.<br />Per attivare il tuo account, clicca sul link qui sotto, o copialo ed incollalo nel tuo browser.<br /><br />';
+                  $message = '<h2>Benvenuto!</h2> Grazie per esserti registrato su Monithon, la piattaforma per il monitoraggio civico dei fondi pubblici.<br />Per attivare il tuo account, clicca sul link qui sotto, o copia e incolla il link nel tuo browser.<br /><br />';
+
+
+                  // $message  = '<h2>Benvenuto!</h2>E grazie di esserti registrato su Monithon, la piattaforma per il monitoraggio civico.<br />Per attivare il tuo account, clicca sul link qui sotto, o copialo ed incollalo nel tuo browser.<br /><br />';
                   $message .= '<a href="' . APPURL . '/user/activate/' . $userdata['recover'] . '">Attiva il tuo Account.</a>';
 
                   $Emailer = new Emailer();

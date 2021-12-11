@@ -196,7 +196,29 @@
 
           /** Check for OC API URL and Data **/
           if(!empty($data['id_open_coesione']) && empty($data['api_data'])){
-              // force call to API?
+
+              $code_url = explode('/', rtrim($data['id_open_coesione']));
+              $code = end($code_url);
+
+              dbga($code);
+
+              $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
+              $context = stream_context_create([
+                  "http" => [
+                      "header" => "Authorization: Basic $auth"
+                  ]
+              ]);
+
+
+              $oc_api_data = @file_get_contents('https://opencoesione.gov.it/it/api/progetti/' . $code . '/?format=json', false, $context);
+              if(!$oc_api_data){
+                  $r['message'] = 'Non trovato';
+                  $r['code'] = '404';
+              //    $data = json_encode($r);
+              }
+              else {
+                  $data['api_data'] = $oc_api_data;
+              }
           }
 
 
@@ -589,8 +611,9 @@
                 if($data['status'] == PUBLISHED || $data['status_tab_3'] == PUBLISHED){
                     $mailer = true;
                     $subject = "MONITHON - Report Approvato";
-                    $message = "Il Report <strong>" . $data['titolo'] . "</strong> è stato approvato, puoi vederlo online. Grazie per aver partecipato al progetto di monitoraggio civico. <br /> " .
-                                "Il Report è consultabile alla URL <a href=\"" . APPURL . "/report/view/" . $id . "\">" . APPURL . "/report/view/" . $id . "</a>";
+
+                    $message = "Il Report <strong>" . $data['titolo'] . "</strong> è stato approvato, congratulazioni!<br />Puoi vedere il report pubblicato al seguente link: <a href=\"" . APPURL . "/report/view/" . $id . "\">" . APPURL . "/report/view/" . $id . "</a><br />Grazie per aver partecipato!<br /><br />La Redazione di Monithon";
+
                 }
                 else if($data['status'] == DRAFT || $data['status_tab_3'] == DRAFT){
                     $mailer = true;
