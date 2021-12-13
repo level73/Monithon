@@ -58,7 +58,15 @@
 
     /** View Report - public **/
     public function view($id){
+        $Report = $this->Report->getReport($id);
+        if($Report->report_lang != 'it'){
+            $path = ROOT . DS . 'lang' . DS . $Report->report_lang . '.php';
 
+        }
+        else {
+            $path = ROOT . DS . 'lang' . DS . 'default.php';
+        }
+        require($path);
       $this->set('title', 'Report');
       $Errors = new Errors();
       $User = new User();
@@ -68,7 +76,6 @@
       $this->set('street_map', true);
       $this->set('js', array('section/report.js'));
 
-      $Report = $this->Report->getReport($id);
 
       if(!$Report){
           header('Location: /report/not_found');

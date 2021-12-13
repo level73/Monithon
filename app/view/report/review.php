@@ -774,6 +774,17 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
                       <label class="custom-control-label" for="status-7">Imposta il report come <strong>APPROVATO</strong></label>
                   </div>
               </div>
+              <h3>LINGUA DEL REPORT</h3>
+              <div class="form-group">
+                  <div class="custom-control custom-radio">
+                      <input class="custom-control-input" type="radio" value="it" id="report_lang_it" name="report_lang" <?php echo ($data->report_lang == 'it' ? 'checked' : ""); ?>>
+                      <label class="custom-control-label" for="report_lang_it">Italiano</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input class="custom-control-input" type="radio" value="en" id="report_lang_en" name="report_lang" <?php echo ($data->report_lang == 'en' ? 'checked' : ""); ?>>
+                      <label class="custom-control-label" for="report_lang_en">Inglese</label>
+                  </div>
+              </div>
           </div>
 
         <div class="form-group">
