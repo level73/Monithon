@@ -393,7 +393,7 @@ function AsocExp($report){
 }
 
 
-function t($string){}
+function t($string){ echo $string; }
 
 
 
