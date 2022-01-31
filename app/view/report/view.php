@@ -6,12 +6,12 @@
             <div id="report-map"></div>
             <span class="report-side-detail"><?php echo $report->indirizzo . ' (' . $report->cap . ')';?></span>
             <?php if(!empty($oc)){ ?>
-            <h4>Titolo del Progetto</h4>
+            <h4><?php t_report('Titolo del Progetto'); ?></h4>
             <?php echo $oc->oc_titolo_progetto; ?>
             <?php } ?>
-            <h4>IN BREVE</h4>
+            <h4><?php t_report('IN BREVE'); ?></h4>
             <div class="row">
-                <div class="col"><span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php echo $report->giudizio_sintetico; ?></span></div>
+                <div class="col"><span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php t_report($report->giudizio_sintetico); ?></span></div>
             </div>
             <div class="row">
                 <div class="col-12">
@@ -20,7 +20,7 @@
                         foreach($efficacia as $label => $value){
                             if($value > 0){
                                 ?>
-                                <li><?php echo $label; ?></li>
+                                <li><?php t_report($label); ?></li>
                                 <?php
                             }
                         } ?>
@@ -30,35 +30,35 @@
 
             <?php if(!empty($oc)){ ?>
             <div class="row report-side-oc">
-                <div class="col-5"><span class="report-side-title">Tema</span></div>
+                <div class="col-5"><span class="report-side-title"><?php t_report('Tema'); ?></span></div>
                 <div class="col"><span class="report-side-value"><?php echo $oc->oc_tema_sintetico; ?></div>
             </div>
 
-            <h4>Informazioni ufficiali al momento del monitoraggio</h4>
+            <h4><?php t_report('Informazioni ufficiali al momento del monitoraggio'); ?></h4>
             <?php if(isset($oc->oc_data_inizio_progetto) && !empty($oc->oc_data_inizio_progetto) ){ ?>
             <div class="row report-side-oc">
-                <div class="col-5"><span class="report-side-title">Data inizio</span></div>
+                <div class="col-5"><span class="report-side-title"><?php t_report('Data inizio'); ?></span></div>
                 <div class="col"><span class="report-side-value"><?php echo ocDateFormatter($oc->oc_data_inizio_progetto); ?></div>
             </div>
             <?php } ?>
             <?php if(isset($oc->oc_data_fine_progetto_prevista) && !empty($oc->oc_data_fine_progetto_prevista) ){ ?>
             <div class="row report-side-oc">
-                <div class="col-5"><span class="report-side-title">Data fine</span></div>
+                <div class="col-5"><span class="report-side-title"><?php t_report('Data fine'); ?></span></div>
                 <div class="col"><span class="report-side-value"><?php echo ocDateFormatter($oc->oc_data_fine_progetto_prevista); ?></div>
             </div>
             <?php } ?>
             <div class="row report-side-oc">
-                <div class="col-5"><span class="report-side-title">Stato del progetto</span></div>
+                <div class="col-5"><span class="report-side-title"><?php t_report('Stato del progetto'); ?></span></div>
                 <div class="col"><span class="report-side-value"><?php echo strtoupper($oc->oc_stato_progetto); ?></div>
             </div>
             <div class="row report-side-oc">
-                <div class="col-5"><span class="report-side-title">Costo totale</span></div>
+                <div class="col-5"><span class="report-side-title"><?php t_report('Costo totale'); ?></span></div>
                 <div class="col"><span class="report-side-value"><?php echo $oc->finanz_totale_pubblico; ?> €</div>
             </div>
 
             <?php if(isset($oc->programmi)){ ?>
             <div class="row programmi report-side-oc">
-                <div class="col-5"><span class="report-side-title">Progetto finanziato da</span></div>
+                <div class="col-5"><span class="report-side-title"><?php t_report('Progetto finanziato da'); ?></span></div>
                 <div class="col">
                     <span class="report-side-value">
                     <?php foreach($oc->programmi as $p){
@@ -70,20 +70,20 @@
             </div>
             <?php } ?>
             <div class="row report-side-oc">
-                <div class="col-5"><span class="report-side-title">Nel ciclo</span></div>
+                <div class="col-5"><span class="report-side-title"><?php t_report('Nel ciclo'); ?></span></div>
                 <div class="col"><span class="report-side-value"><?php echo $oc->oc_descr_ciclo; ?></div>
             </div>
             <?php $oc_link = (empty($oc->oc_link) || !isset($oc->oc_link) ?  str_replace('www.', '', $report->id_open_coesione) :  str_replace('www.', '', $oc->oc_link)); ?>
             <a href="https://<?php echo $oc_link; ?>" class="" target="_blank">
-                Accedi alle informazioni aggiornate sul portale governativo OpenCoesione
+                <?php t_report('Accedi alle informazioni aggiornate sul portale governativo OpenCoesione'); ?>
             </a>
             <?php } ?>
 
 
             <?php if(!empty($soggetti)){ ?>
-            <h4>Soggetti</h4>
+            <h4><?php t_report('Soggetti'); ?></h4>
             <?php foreach($soggetti as $ruolo => $sg){ ?>
-                <h5><?php echo $ruolo; ?></h5>
+                <h5><?php t_report($ruolo); ?></h5>
                 <?php if(count($sg) < 5) { ?>
                 <?php foreach($sg as $soggetto){ ?>
                     <?php if(isset($soggetto->url)){ ?>
@@ -110,7 +110,7 @@
             <?php } ?>
 
 
-            <h4>RISORSE</h4>
+            <h4><?php t_report('RISORSE'); ?></h4>
             <?php
             foreach($report->videos as $video){
                 ?>
@@ -159,7 +159,7 @@
             <?php } ?>
 
             <?php if(!empty($report->links)){ ?>
-                <h5>Sorgenti & Links</h5>
+                <h5><?php t_report('Sorgenti & Links'); ?></h5>
                 <ul id="report-sources">
                     <?php foreach($report->links as $l){ ?>
                         <li><a href="<?php echo $l->URL; ?>" target="_blank"><?php echo $l->URL; ?></a></li>
@@ -173,17 +173,17 @@
         <article class="col-sm-12 col-md-8" id="report-view">
 
             <h1>
-                <span class="title-label"><small>REPORT DI MONITORAGGIO CIVICO</small> <?php AsocExp($report); ?><br /></span><?php echo $report->titolo; ?><br />
+                <span class="title-label"><small><?php t_report('REPORT DI MONITORAGGIO CIVICO'); ?></small> <?php AsocExp($report); ?><br /></span><?php echo $report->titolo; ?><br />
 
             </h1>
 
-            <span class="report-date">Inviato il <?php  echo strftime('%e/%m/%Y', strtotime($report->created_at)); ?> | di <a href="/profile/view/<?php echo $author->idauth; ?>"><?php echo $author->role==4 ? $author->username: $report->autore; //$author->username; ?></a>
+            <span class="report-date"><?php t_report('Inviato il'); ?> <?php  echo strftime('%e/%m/%Y', strtotime($report->created_at)); ?> | <?php t_report('di'); ?> <a href="/profile/view/<?php echo $author->idauth; ?>"><?php echo $author->role==4 ? $author->username: $report->autore; //$author->username; ?></a>
                 <?php if(!empty($author->twitter)) { ?> | <a href="https://twitter.com/<?php echo str_replace('@', '', $author->twitter); ?>" target="_blank"><i class="fab fa-twitter"></i> @<?php echo str_replace('@', '', $author->twitter); ?></a><?php } ?>
 
             </span>
 
             <div class="report-body">
-                <h2>Descrizione <span class="float-right"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span></h2>
+                <h2><?php t_report('Descrizione'); ?> <span class="float-right"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span></h2>
                 <p>
                     <img class="report-main-image" src="<?php echo image($images[0]); ?>" alt="">
                     <?php echo nl2br($report->descrizione); ?>
@@ -191,43 +191,43 @@
 
                 <p><?php echo nl2br($report->parte_di_piano); ?></p>
 
-                <h2>Avanzamento</h2>
+                <h2><?php t_report('Avanzamento'); ?></h2>
                 <p><?php echo nl2br($report->avanzamento); ?></p>
-                <h2>Risultati</h2>
-                <span class="report-ev-hilite"><?php echo $valutazione; ?></span>
+                <h2><?php t_report('Risultati'); ?></h2>
+                <span class="report-ev-hilite"><?php t_report($valutazione); ?></span>
                 <p><?php echo nl2br($report->risultato_progetto); ?></p>
                 <div class="row">
                     <div class="col">
-                        <h2>Punti di debolezza</h2>
+                        <h2><?php t_report('Punti di debolezza'); ?></h2>
                         <p><?php echo nl2br($report->punti_deboli); ?></p>
                     </div>
                     <div class="col">
-                        <h2>Punti di forza</h2>
+                        <h2><?php t_report('Punti di forza'); ?></h2>
                         <p><?php echo nl2br($report->punti_di_forza); ?></p>
                     </div>
                 </div>
 
-                 <h2>Rischi</h2>
+                 <h2><?php t_report('Rischi'); ?></h2>
                  <p><?php echo nl2br($report->rischi); ?></p>
 
                 <div class="report-solutions">
-                    <h2>Soluzioni e Idee</h2>
+                    <h2><?php t_report("Soluzioni e Idee"); ?></h2>
                     <p><?php echo nl2br($report->soluzioni_progetto); ?></p>
                 </div>
 
-                <h1>L'INDAGINE</h1>
-                <h2>Come sono state raccolte le informazioni?</h2>
+                <h1><?php t_report("L'INDAGINE"); ?></h1>
+                <h2><?php t_report('Come sono state raccolte le informazioni?'); ?></h2>
                 <ul>
                     <?php foreach($raccolta as $label => $v){ ?>
-                        <li><?php echo $label; ?></li>
+                        <li><?php t_report( $label ); ?></li>
                     <?php } ?>
                 </ul>
                 <p><?php echo nl2br($report->intervista_intervistati); ?></p>
 
-                <h2>Domande principali</h2>
+                <h2><?php t_report('Domande principali'); ?></h2>
                 <p><?php echo nl2br($report->intervista_domande); ?></p>
 
-                <h2>Risposte principali</h2>
+                <h2><?php t_report('Risposte principali'); ?></h2>
                 <p><?php echo nl2br($report->intervista_risposte); ?></p>
 
             </div>
