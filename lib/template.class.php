@@ -8,7 +8,7 @@
     protected $Auth;
 
     /** array to exclude certain routes (like csv exports or AJAX urls) **/
-    private $exclude = array();
+    private $exclude = array('export_reports');
 
     public function __construct($controller, $method) {
       $this->_controller = $controller;
@@ -26,7 +26,7 @@
 
       extract($this->variables);
 
-      if( !in_array($this->_method, $this->exclude) && $this->_controller != 'ajax'  && $this->_controller != 'api' && $this->_method != 'export' ){
+      if( !in_array($this->_method, $this->exclude) && $this->_controller != 'ajax'  && $this->_controller != 'api' && $this->_method != 'export'   ){
         /* Include Base Head @ view/head.php */
         include (ROOT . DS . 'app' . DS . 'view' . DS . 'head.php');
 
