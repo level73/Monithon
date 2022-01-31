@@ -11,6 +11,10 @@
     <a  class="dropdown-item" href="/user/list"><?php t('Lista Utenti'); ?></a>
     <div class="dropdown-divider"></div>
     <?php } ?>
+    <?php if(isset($user) && hasPermission($user, P_APPROVE_REPORT)){ ?>
+        <a  class="dropdown-item" href="/backend"><?php t('Data Backend'); ?></a>
+        <div class="dropdown-divider"></div>
+    <?php } ?>
     <a href="/user/logout" class="dropdown-item"><i class="fal fa-sign-out"></i> <?php t('Logout'); ?></a>
   </div>
 </div>

@@ -8,7 +8,11 @@
     protected $Auth;
 
     /** array to exclude certain routes (like csv exports or AJAX urls) **/
-    private $exclude = array('export_reports');
+    private $exclude = array(
+                        'export_reports',
+                        'explore_json',
+                        'export_subjects'
+                        );
 
     public function __construct($controller, $method) {
       $this->_controller = $controller;
