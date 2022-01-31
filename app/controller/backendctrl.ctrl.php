@@ -148,6 +148,7 @@ class BackendCtrl extends Ctrl
             $reports[0][] = 'oc_TitoloProgetto';
             $reports[0][] = 'oc_SintesiProgetto';
             $reports[0][] = 'oc_DataInizioProgetto';
+            $reports[0][] = 'oc_programmi_operativi';
             $reports[0][] = 'oc_FinanzTotPubNetto';
             $reports[0][] = 'oc_CodTemaSintetico';
             $reports[0][] = 'oc_codStatoProgetto';
@@ -161,6 +162,20 @@ class BackendCtrl extends Ctrl
                     $report->oc_TitoloProgetto = $data->oc_titolo_progetto ?? '';
                     $report->oc_SintesiProgetto = $data->oc_sintesi_progetto ?? '';
                     $report->oc_DataInizioProgetto = $data->oc_data_inizio_progetto ?? '';
+
+                    $report->oc_programmi_operativi = '';
+                    if( isset($data->programmi) && !empty($data->programmi)) {
+                        $progList = array();
+                        foreach ($data->programmi as $programma) {
+                            $progList[] = $programma->oc_descrizione_programma;
+                        }
+                        $report->oc_programmi_operativi = implode('::', $progList);
+                    }
+                    elseif(isset($data->oc_descrizione_programma) && !empty($data->oc_descrizione_programma)){
+                        $report->oc_programmi_operativi = $data->oc_descrizione_programma;
+                    }
+
+
                     $report->oc_FinanzTotPubNetto = isset( $data->oc_finanz_tot_pub_netto ) ? $data->oc_finanz_tot_pub_netto : (isset($data->finanz_totale_pubblico) ? $data->finanz_totale_pubblico : '' );
                     //$report->oc_CodCategoriaSpesa = $data->oc_cod_categoria_spesa;
                     $report->oc_CodTemaSintetico = $data->oc_cod_tema_sintetico ?? '';
