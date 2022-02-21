@@ -550,8 +550,8 @@ var OpenCoesione = {
                             "<li>I dati raccolti sono utilizzati dall'amministrazione? In modo intensivo /regolare oppure saltuario? Vengono utilizzati anche per pianificazione in tema di mobilità o di sviluppo urbano?</li>" +
                             "<li>I dati sulla mobilità (es. spostamento in tempo reale dei mezzi di trasporto pubblico) sono rilasciati pubblicamente con licenze aperte per favoire lo sviluppo di app indipendenti?</li></ul>";
                 var example = '<a href="http://www.monithon.it/blog/2014/02/22/monithon-2014-una-radiografia-completa-allanello-ferroviario-di-palermo/" target="_blank">Una “radiografia” completa all’Anello Ferroviario di Palermo</a>,  ' +
-                              '<a href="https://monithon.org/reports/1458" target="_blank">Adeguamento normativo, riassetto funzionale e distributivo aerostazione passeggeri- aeroporto Sant\'Anna, Crotone </a>, ' +
-                              '<a href="https://monithon.org/reports/1711" target="_blank">Finanziamento del ramo nord della tangenziale di Campobasso </a>';
+                              '<a href="https://it.monithon.eu/report/view/717" target="_blank">Adeguamento normativo, riassetto funzionale e distributivo aerostazione passeggeri- aeroporto Sant\'Anna, Crotone </a>, ' +
+                              '<a href="https://it.monithon.eu/report/view/834" target="_blank">Finanziamento del ramo nord della tangenziale di Campobasso </a>';
 
               }
               else if (data.oc_cod_tema_sintetico == '01') {
@@ -572,7 +572,7 @@ var OpenCoesione = {
                               "<li>rafforzare la collaborazione con imprese che esprimono una domanda di innovazione nell'ambito di operatività dell'infrastruttura?</li>" +
                               "<li>migliorare lo stato dell'occupazione all'interno dell'infrastruttura (conslidando i rapporti di lavoro di addetti precari o consentendo l'impiego di nuovi lavoratori)?</li>" +
                               "<li>migliorare il posizionamento scientifico dell'infrastrutture nel contesto di riferimento, a livello nazionale e/o europeo?</li></ul>" ;
-                  var example = '<a href="https://monithon.org/reports/1201" target="_blank">PLASS - platform for agrofood science and safety</a>,  <a href="https://monithon.org/reports/1199" target="_blank">Realizzazione di un centro per le biotecnologie e la ricerca biomedica a Palermo</a>';
+                  var example = '<a href="https://it.monithon.eu/report/view/525" target="_blank">PLASS - platform for agrofood science and safety</a>,  <a href="https://it.monithon.eu/report/view/524" target="_blank">Realizzazione di un centro per le biotecnologie e la ricerca biomedica a Palermo</a>';
                 }
                 else if (cod_spesa == '03' || cod_spesa == '04' || cod_spesa == '06'  || cod_spesa == '07' || cod_spesa == '09' || OC.subFinder(cod_spesa, ["001", "002", "004", "062", "063", "064"])){
                   var body =  "Alla fine del tuo lavoro di ricerca documentale, potresti contattare l'Airi – Associazione Italiana per la Ricerca Industriale per acquisire il punto di vista di esperti tecnici sulla valenza dell'investimento. Potrebbero fornirti consigli utili rispetto al metodo che puoi utilizzare per valutare una tipologia complessa di finanziamenti come quelli alla ricerca e all'innovazione.<br />" +
@@ -600,9 +600,9 @@ var OpenCoesione = {
                                 "Infine, un effetto indotto del progetto finanziato riguarda le sue conseguenze di medio-lungo termine sul vostro territorio, ad esempio:<br />" +
                                 "<ul><li>il finanziamento ha permesso di migliorare lo stato dell'occupazione nell'impresa (conslidando i rapporti di lavoro di addetti precari o consentendo l'impiego di nuovi lavoratori)? Quanti nuovi posti di lavoro sono stati creati? Di che tipo? (es. full-time / part-time, tempo indeterminato / determinato, etc.)</li>" +
                                 "<li>il progetto finanziato ha migiorato il posizionamento industriale/commerciale dell'impresa nel contesto produttivo di riferimento? Come? Con quali effetti sul fatturato e sul valore aggiunto dell'azienda?";
-                  var example = '<a href="https://monithon.org/reports/1448" target="_blank">Realizzazione di una piattaforma di social computing</a>, ' +
-                                '<a href="https://monithon.org/reports/1722" target="_blank">Digitalizzazione della rete di alta frequenza di un\'azienda lombarda</a>, '+
-                                '<a href="https://monithon.org/reports/1687" target="_blank">La macchina ad energia solare</a>';
+                  var example = '<a href="https://it.monithon.eu/report/view/709" target="_blank">Realizzazione di una piattaforma di social computing</a>, ' +
+                                '<a href="https://it.monithon.eu/report/view/843" target="_blank">Digitalizzazione della rete di alta frequenza di un\'azienda lombarda</a>, '+
+                                '<a href="https://it.monithon.eu/report/view/817" target="_blank">La macchina ad energia solare</a>';
 
                 }
 
@@ -659,9 +659,9 @@ var OpenCoesione = {
                                 "Sede operativa (Sogesid S.p.A.) di Roma: 06-42082264<br />" +
                                 "Ufficio locale (Sogesid S.p.A.) di Palermo: 091-6787111<br />";
                     var body2 =  "";
-                    var example ='<a href="https://monithon.org/reports/1161" target="_blank">Interventi di manutenzione sull’impianto di depurazione sito in località Pantani e stazioni di sollevamento nel comune di Paola</a>,  '+
-                    '<a href="https://monithon.org/reports/1457" target="_blank">Realizzazione di opere di adduzione dalla Diga sul Lordo a Siderno</a>,  '+
-                    '<a href="https://monithon.org/reports/1454"" target="_blank">Potenziamento ed adeguamento dell\'impianto di depurazione di Acqua dei Corsari</a>';
+                    var example ='<a href="https://it.monithon.eu/report/view/502" target="_blank">Interventi di manutenzione sull’impianto di depurazione sito in località Pantani e stazioni di sollevamento nel comune di Paola</a>,  '+
+                    '<a href="https://it.monithon.eu/report/view/716" target="_blank">Realizzazione di opere di adduzione dalla Diga sul Lordo a Siderno</a>,  '+
+                    '<a href="https://it.monithon.eu/report/view/714"" target="_blank">Potenziamento ed adeguamento dell\'impianto di depurazione di Acqua dei Corsari</a>';
                   }
                   else if(
                      (sottotemi.OC_COD_CATEGORIA_SPESA == "44" || OC.subFinder(sottotemi.OC_COD_CATEGORIA_SPESA, ["017", "118"]))
@@ -675,8 +675,8 @@ var OpenCoesione = {
                     var body =  "";
                     var body2 =  "Quanta raccolta differenziata si faceva prima e quanta se ne fa ora grazie al progetto finanziato?<br />" +
                                   "Esempio per la raccolta differenziata: avete ricevuto kit per la raccolta differenziata? E' stata realizzata o potenziata l'isola ecologica?";
-                    var example ='<a href="https://monithon.org/reports/1435" target="_blank">Adeguamento e ristrutturazione dei Centri Comunali di Raccolta a Martina Franca</a>,  '+
-                    '<a href="https://monithon.org/reports/1648" target="_blank">Finanziamento dei piani comunali di raccolta differenziata a Napoli</a>';
+                    var example ='<a href="https://it.monithon.eu/report/view/698" target="_blank">Adeguamento e ristrutturazione dei Centri Comunali di Raccolta a Martina Franca</a>,  '+
+                    '<a href="https://it.monithon.eu/report/view/790" target="_blank">Finanziamento dei piani comunali di raccolta differenziata a Napoli</a>';
                   }
                   else if(sottotemi.OC_COD_CATEGORIA_SPESA == "090"){
                       sottotema = 'Piste ciclabili e percorsi pedonali';
@@ -702,15 +702,15 @@ var OpenCoesione = {
                 var expert = '';
                 var body =  "";
                   var body2 =  "";
-                  var example='<a href="https://monithon.org/reports/1656" target="_blank">Lavori di manutenzione straordinaria della Scuola Media "Dante Alighieri" di Pantelleria</a>'
+                  var example='<a href="https://it.monithon.eu/report/view/795" target="_blank">Lavori di manutenzione straordinaria della Scuola Media "Dante Alighieri" di Pantelleria</a>'
               }
               else if(data.oc_cod_tema_sintetico == '09'){
                 sottotema = '';
                 var expert = '';
                 var body =  "";
                 var body2 =  "";
-                var example = '<a href="https://monithon.org/reports/1077" target="_blank">Cura ut Valeas- Centro di aggregazione giovanile</a>,  '+
-                '<a href="https://monithon.org/reports/1361" target="_blank">CEDA Centro di Educazione e Documentazione Ambientale "Pio La Torre" ed Isola Ecologica</a>  ';
+                var example = '<a href="https://it.monithon.eu/report/view/455" target="_blank">Cura ut Valeas- Centro di aggregazione giovanile</a>,  '+
+                '<a href="https://it.monithon.eu/report/view/645" target="_blank">CEDA Centro di Educazione e Documentazione Ambientale "Pio La Torre" ed Isola Ecologica</a>  ';
               }
               else if(data.oc_cod_tema_sintetico == '06'){
                 sottotema = '';
@@ -734,11 +734,11 @@ var OpenCoesione = {
                       "<li>  quali sono gli effetti delle attività di comunicazione e promozionali realizzate rispetto ai target individuati?</li></ul>" +
                       "Approfondisci questi suggerimenti in <a href=\"http://www.monithon.it/blog/2014/04/21/monithon-museo-egizio-di-torino-appunti-e-riflessioni-2/\" target=\"_blank\">questo nostro blog post</a> sviluppato dalla comunità Monithon Piemonte";
 
-                  var example = '<a href="https://monithon.org/reports/1010" target="_blank">Restauro apparati decorativi della Casa della Venere in Conchiglia</a>,  '+
+                  var example = '<a href="https://it.monithon.eu/report/view/400" target="_blank">Restauro apparati decorativi della Casa della Venere in Conchiglia</a>,  '+
                   '<a href="https://monithon.org/reports/1524" target="_blank">Recupero del Mastio della Cittadella di Torino</a>,  '+
-                  '<a href="https://monithon.org/reports/1271" target="_blank">Restauro del Teatro Apollo di Lecce</a>,  '+
-                  '<a href="https://monithon.org/reports/1271" target="_blank">Restauro e consolidamento di edifici appartenenti al complesso architettonico dell\'Antico Convento dei Cappuccini di Grottaglie</a>,  '+
-                  '<a href="https://monithon.org/reports/1354" target="_blank">Prevenzione agli incendi, la messa in sicurezza e i servizi a disposizione dei visitatori nella celebre riserva naturale siciliana dello “Zingaro”</a>';
+                  '<a href="https://it.monithon.eu/report/view/583" target="_blank">Restauro del Teatro Apollo di Lecce</a>,  '+
+                  '<a href="https://it.monithon.eu/report/view/756" target="_blank">Restauro e consolidamento di edifici appartenenti al complesso architettonico dell\'Antico Convento dei Cappuccini di Grottaglie</a>,  '+
+                  '<a href="https://it.monithon.eu/report/view/639" target="_blank">Prevenzione agli incendi, la messa in sicurezza e i servizi a disposizione dei visitatori nella celebre riserva naturale siciliana dello “Zingaro”</a>';
               }
               else if (data.oc_cod_tema_sintetico == '02'){
                 var expert = '';
@@ -814,7 +814,7 @@ var OpenCoesione = {
                 var expert = '';
                 var body =  "";
                 var body2  = "";
-                var example = '<a href="https://monithon.org/reports/1401" target="_blank">Riqualificazione di piazza Savignano ad Aversa (Napoli)</a>';
+                var example = '<a href="https://it.monithon.eu/report/view/671" target="_blank">Riqualificazione di piazza Savignano ad Aversa (Napoli)</a>';
               }
               else if (data.oc_cod_tema_sintetico == '10'){
                 sottotema = '';
