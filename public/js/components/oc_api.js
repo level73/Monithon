@@ -735,7 +735,6 @@ var OpenCoesione = {
                       "Approfondisci questi suggerimenti in <a href=\"http://www.monithon.it/blog/2014/04/21/monithon-museo-egizio-di-torino-appunti-e-riflessioni-2/\" target=\"_blank\">questo nostro blog post</a> sviluppato dalla comunità Monithon Piemonte";
 
                   var example = '<a href="https://it.monithon.eu/report/view/400" target="_blank">Restauro apparati decorativi della Casa della Venere in Conchiglia</a>,  '+
-                  '<a href="https://monithon.org/reports/1524" target="_blank">Recupero del Mastio della Cittadella di Torino</a>,  '+
                   '<a href="https://it.monithon.eu/report/view/583" target="_blank">Restauro del Teatro Apollo di Lecce</a>,  '+
                   '<a href="https://it.monithon.eu/report/view/756" target="_blank">Restauro e consolidamento di edifici appartenenti al complesso architettonico dell\'Antico Convento dei Cappuccini di Grottaglie</a>,  '+
                   '<a href="https://it.monithon.eu/report/view/639" target="_blank">Prevenzione agli incendi, la messa in sicurezza e i servizi a disposizione dei visitatori nella celebre riserva naturale siciliana dello “Zingaro”</a>';
