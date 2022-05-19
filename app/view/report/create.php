@@ -273,9 +273,11 @@
             </div>
 
             <div class="form-group">
-              <label for="intervista_intervistati">Chi è stato intervistato? Che ruolo ha la persona nel progetto? (es. gestore, funzionario comunale, cittadino informato…):</label>
+              <label for="intervista_intervistati">Chi è stato intervistato? Che ruolo ha la persona nel progetto? </label>
+                <span class="form-text text-info">Riportare i ruoli di tutte le persone intervistate</span>
               <textarea name="intervista_intervistati" id="intervista_intervistati" class="form-control"><?php echo ckv($data, 'intervista_intervistati'); ?></textarea>
-              <span class="form-text text-muted">Riportare i ruoli di tutte le persone intervistate</span>
+                <span class="form-text text-muted">(es. gestore, funzionario comunale, cittadino informato…)</span>
+
             </div>
 
             <div class="form-group">
@@ -433,6 +435,18 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
 
                     </table>
                     <button type="button" class="btn btn-primary" id="subject-button-add"><i class="fal fa-plus"></i> AGGIUNGI SOGGETTO</button>
+
+                </div>
+
+                <div class="form-group" id="connection-relationships">
+                    <table id="connection-relationships-table">
+                        <thead>
+                            <tr>
+                                <th><!-- blank for matrix structure --></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
 
                 </div>
 

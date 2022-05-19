@@ -176,6 +176,9 @@ var OpenCoesione = {
                   sottotemi = data;
                 }
               });
+              console.log("COD LOCALE PER SOTTOTEMI " + data.cod_locale_progetto);
+              console.log('I Sottotemi');
+              console.log(sottotemi);
 
 
               if(data.oc_cod_tema_sintetico == '07'){
@@ -487,7 +490,7 @@ var OpenCoesione = {
                   sottotemi = data;
                 }
               });
-              console.log(sottotemi);
+
 
 
               /** Beni Confiscati **/

@@ -2,7 +2,7 @@
 
   class Ajaxctrl extends Ctrl {
 
-
+    protected $Auth;
 
     public function oc_api($code){
       $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
@@ -111,4 +111,28 @@
 
     }
 
+    public function change_comment_status(){
+        $this->Auth = new Auth();
+        if(httpCheck('POST') && $this->Auth->isLoggedIn()) {
+
+            $Comment = new Comment();
+
+            $data = $_POST;
+
+            $id = filter_var( $data['id'], FILTER_SANITIZE_NUMBER_INT);
+            $status = filter_var( $data['status'], FILTER_SANITIZE_NUMBER_INT);
+
+            $r = $Comment->update($id, array('status' => $status));
+            $response = array();
+            if($r){
+                $response['code'] = 200;
+                $response['message'] = 'Status del commento cambiato';
+            }
+            else {
+                $response['code'] = 500;
+                $response['message'] = 'Impossibile cambiare status al commento con ID ' . $id;
+            }
+            echo json_encode($response);
+        }
+    }
   }

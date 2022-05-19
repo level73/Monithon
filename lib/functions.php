@@ -347,10 +347,16 @@ function avatar($Profile, $large = false, $responsive = false, $avatar_class = '
 function showComment($comments, $field){
     foreach($comments as $comment){
         if($comment->field == $field){
-            echo '<div class="commented-wrapper">
-                    <span class="timestamp">' . strftime('%d/%m/%Y %H:%M', strtotime($comment->created_at)) . '</span>
-                    <button class="btn btn-sm btn-default commented-delete" type="button"><i class="far fa-times"></i></button>
-                    <div class="commented-text">' . $comment->comment . '</div>
+            echo '<div class="commented-wrapper ' . ($comment->status == 3 ? 'status-solved' : 'status-pending') . '">';
+            echo   '<span class="timestamp">' . strftime('%d/%m/%Y %H:%M', strtotime($comment->created_at)) . '</span>';
+            if($comment->status == 3){
+                   echo '<span class="badge badge-success float-right">risolto</span>';
+            }
+            else {
+                echo '<button class="btn btn-sm btn-default commented-delete" type="button" data-comment="' . $comment->idcomment . '"><i class="far fa-times"></i></button>';
+            }
+
+            echo    '<div class="commented-text">' . $comment->comment . '</div>
                   </div>';
         }
     }

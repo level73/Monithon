@@ -56,7 +56,8 @@
       609 => 'Le password non coincidono',
       610 => 'Questa email è già in uso',
       611 => 'Impossibile reinizializzare la password',
-      612 => 'problemi durante il salvataggio dei dati del team Asoc',
+      612 => 'Problemi durante il salvataggio dei dati del team Asoc',
+      613 => 'Problemi durante il salvataggio dei dati del Profilo Universitario',
 
 
       650 => 'Errore nel caricamento del file. File non salvato.',

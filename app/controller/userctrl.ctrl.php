@@ -171,7 +171,7 @@
                         $Errors->set(1);
 
                         // Set other data, as in ASOC profiles
-                        if($userdata['role'] > 3){
+                        if($userdata['role'] > 3 && $userdata['role'] < 11){
                           $region = null;
                           if(!empty($data['provincia'])){
                             $p = $Provincia->findLexiconEntry('idprovincia', $data['provincia']);
@@ -201,6 +201,37 @@
                             $Errors->set(612);
                           }
                         }
+                        elseif($userdata['role'] == 11){
+                            if(!empty($data['provincia'])){
+                                $p = $Provincia->findLexiconEntry('idprovincia', $data['provincia']);
+                                if($p){
+                                    $region = $p->region;
+                                }
+                            }
+                            $uni = array();
+                            $uni['auth']              = $idUser;
+                            $uni['university']        = filter_var($data['university'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                            $uni['degree']            = filter_var($data['degree'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                            $uni['class']             = filter_var($data['class'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                            $uni['provincia']         = filter_var($data['provincia'], FILTER_SANITIZE_NUMBER_INT);
+                            $uni['comune']            = filter_var($data['comune'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+
+                            unset($data['university']);
+                            unset($data['degree']);
+                            unset($data['class']);
+                            unset($data['provincia']);
+                            unset($data['comune']);
+
+                            $University = new University;
+                            $iduni = $University->create($uni);
+                            if($iduni){
+                                $Errors->set(5);
+                            }
+                            else {
+                                $Errors->set(612);
+                            }
+                        }
                       }
                     }
                     $this->set('errors', $Errors);
@@ -221,6 +252,7 @@
             if( httpCheck('post', true) ){
               $data = array();
               $data = filter_var_array($_POST);
+
 
               // Check if email is in use already
               $email_check = $UserModel->findBy( array('email' => $data['email']) );
@@ -256,13 +288,14 @@
                 $userdata['password']         = password_hash($data['pwd'], PASSWORD_BCRYPT);
                 $userdata['email']            = $data['email'];
                 $userdata['username']         = filter_var($data['username'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-                $userdata['role']             = DEFAULT_ROLE;
+                $userdata['role']             = $data['role'] ?? DEFAULT_ROLE;
                 $userdata['active']           = 1;
                 $userdata['recover']          = strtoupper(bin2hex(random_bytes(12)));
 
 
                 // Create User
                 $idUser = $UserModel->create($userdata);
+
                 if($idUser){
                   // create session
                   $RegSession = new Session;
@@ -291,7 +324,7 @@
             $this->set('errors', $Errors);
           }
           else {
-
+            header('Location: /user/edit');
           }
         }
 
@@ -333,7 +366,7 @@
               unset($data['username']);
 
               // If role is > 3, then it is an ASOC profile
-              if($this->user->role > 3){
+              if($this->user->role > 3 && $this->user->role < 11){
                 // set region
                 $region = null;
                 if(!empty($data['provincia'])){
@@ -374,7 +407,41 @@
                   $ASOC->create($asoc);
                 }
               }
+              // Otherwise it could be a UNI
+              elseif($this->user->role == 11){
+                  if(!empty($data['provincia'])){
+                      $p = $Provincia->findLexiconEntry('idprovincia', $data['provincia']);
+                      if($p){
+                          $region = $p->region;
+                      }
+                  }
 
+                  $uni = array();
+
+
+                  $uni['auth']              = $id;
+                  $uni['university']        = filter_var($data['university'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                  $uni['degree']            = filter_var($data['degree'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                  $uni['class']             = filter_var($data['class'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                  $uni['provincia']         = filter_var($data['provincia'], FILTER_SANITIZE_NUMBER_INT);
+                  $uni['comune']            = filter_var($data['comune'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+
+                  unset($data['university']);
+                  unset($data['degree']);
+                  unset($data['class']);
+                  unset($data['provincia']);
+                  unset($data['comune']);
+
+                  $University = new University;
+                  $uniprofile = $University->findBy(array('auth' => $id));
+                  if($uniprofile){
+                      $University->update($uniprofile[0]->iduniveristy, $uni);
+                  }
+                  else {
+                      $University->create($uni);
+                  }
+              }
               // Update profile
               $u = $this->User->update($id, $data);
               if($u) {
@@ -403,7 +470,7 @@
             $Profile = $this->User->fullProfile($this->user->id);
 
             if($this->user->role >= 3){
-              if($this->user->role > 3){
+              if($this->user->role > 3 && $this->user->role < 11){
                   $ASOC_Profile = new Asoc();
                   $asoc_profile = $ASOC_Profile->findBy(array('auth' => $this->user->id));
                   if(!empty($asoc_profile)){
@@ -411,6 +478,16 @@
                   }
                   else {
                     $this->set('ASOC_Profile', null);
+                  }
+              }
+              elseif($this->user->role == 11){
+                  $Uni_Profile = new University();
+                  $uni_profile = $Uni_Profile->findBy(array('auth' => $this->user->id));
+                  if(!empty($uni_profile)){
+                      $this->set('UNI_Profile', $uni_profile[0]);
+                  }
+                  else {
+                      $this->set('UNI_Profile', null);
                   }
               }
               $Reports = $Report->findBy(array('created_by' => $this->user->id));
@@ -472,7 +549,7 @@
 
                 $data['active'] = $data['active'] == 2 ? 2 : 1;
                 // If role is > 3, then it is an ASOC profile
-                if($this->user->role > 3){
+                if($this->user->role > 3 && $this->user->role < 11 ){
                   // set region
                   $region = null;
                   if(!empty($data['provincia'])){
@@ -497,24 +574,51 @@
                   $ASOC = new Asoc;
                   $asocprofile = $ASOC->findBy(array('auth' => $id));
                   if($asocprofile){
-
                     $ASOC->update($asocprofile[0]->idasoc, $asoc);
                   }
                   else {
                     $ASOC->create($asoc);
                   }
+                    unset($data['remote_id']);
+                    unset($data['istituto']);
+                    unset($data['tipo_istituto']);
+                    unset($data['regione']);
+                    unset($data['provincia']);
+                    unset($data['comune']);
+                    unset($data['link_blog']);
+                    unset($data['link_elaborato']);
                 }
+                elseif($this->user->role == 11){
+                    if(!empty($data['provincia'])){
+                        $p = $Provincia->findLexiconEntry('idprovincia', $data['provincia']);
+                        if($p){
+                            $region = $p->region;
+                        }
+                    }
+                    $uni = array();
 
+                    $uni['auth']              = $id;
+                    $uni['university']        = filter_var($data['university'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    $uni['degree']            = filter_var($data['degree'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    $uni['class']             = filter_var($data['class'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                    $uni['provincia']         = filter_var($data['provincia'], FILTER_SANITIZE_NUMBER_INT);
+                    $uni['comune']            = filter_var($data['comune'], FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-                unset($data['remote_id']);
-                unset($data['istituto']);
-                unset($data['tipo_istituto']);
-                unset($data['regione']);
-                unset($data['provincia']);
-                unset($data['comune']);
-                unset($data['link_blog']);
-                unset($data['link_elaborato']);
+                    unset($data['university']);
+                    unset($data['degree']);
+                    unset($data['class']);
+                    unset($data['provincia']);
+                    unset($data['comune']);
 
+                    $University = new University;
+                    $uniprofile = $University->findBy(array('auth' => $id));
+                    if($uniprofile){
+                        $University->update($uniprofile[0]->iduniveristy, $uni);
+                    }
+                    else {
+                        $University->create($uni);
+                    }
+                }
 
                 // Update profile
                 $u = $this->User->update($id, $data);
@@ -542,10 +646,15 @@
 
               $Profile = $this->User->fullProfile($id);
 
-              if($Profile->role > 3){
+              if($Profile->role > 3 && $Profile->role < 11){
                 $ASOC_Profile = new Asoc();
                 $asoc_profile = $ASOC_Profile->findBy(array('auth' => $id));
                 $this->set('ASOC_Profile', $asoc_profile[0]);
+              }
+              elseif($Profile->role == 11){
+                  $UNI_Profile = new University();
+                  $uni_profile = $UNI_Profile->findBy(array('auth' => $id));
+                  $this->set('UNI_Profile', $uni_profile[0]);
               }
 
               $Reports = $Report->findBy(array('created_by' => $id));

@@ -1,6 +1,19 @@
 <div class="container-fluid" id="report-page">
+
     <section class="row">
-        <aside class=" col-sm-12 float-sm-left col-md-3">
+
+            <header class="col-md-8 offset-md-3">
+                <h1>
+                    <span class="title-label"><small><?php t_report('REPORT DI MONITORAGGIO CIVICO'); ?></small> <?php AsocExp($report); ?><br /></span><?php echo $report->titolo; ?><br />
+
+                </h1>
+                <span class="report-date"><?php t_report('Inviato il'); ?> <?php  echo strftime('%e/%m/%Y', strtotime($report->created_at)); ?> | <?php t_report('di'); ?> <a href="/profile/view/<?php echo $author->idauth; ?>"><?php echo $author->role==4 ? $author->username: $report->autore; //$author->username; ?></a>
+                <?php if(!empty($author->twitter)) { ?> | <a href="https://twitter.com/<?php echo str_replace('@', '', $author->twitter); ?>" target="_blank"><i class="fab fa-twitter"></i> @<?php echo str_replace('@', '', $author->twitter); ?></a><?php } ?>
+
+            </span>
+            </header>
+
+        <aside class=" col-sm-12 float-sm-left float-xs-left col-md-3">
             <span class="invisible" id="lat"><?php echo $report->lat_; ?></span>
             <span class="invisible" id="lon"><?php echo $report->lon_; ?></span>
             <div id="report-map"></div>
@@ -9,7 +22,7 @@
             <h4><?php t_report('Titolo del Progetto'); ?></h4>
             <?php echo $oc->oc_titolo_progetto; ?>
             <?php } ?>
-            <h4><?php t_report('IN BREVE'); ?></h4>
+            <h4><?php t_report('GIUDIZIO SINTETICO'); ?></h4>
             <div class="row">
                 <div class="col"><span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php t_report($report->giudizio_sintetico); ?></span></div>
             </div>
@@ -27,14 +40,38 @@
                     </ul>
                 </div>
             </div>
+            <?php if($report->status_tab_3 == PUBLISHED){ ?>
+            <h4><?php t_report('IMPATTO'); ?></h4>
 
+            <?php if($report->media_connection > 0){ ?>
+            <div class="row report-impact">
+                <div class="col text-center"><h5>Report Ripreso dai Media</h5></div>
+            </div>
+            <?php } ?>
+            <?php if($report->admin_connection > 0){ ?>
+                <div class="row report-impact">
+                    <div class="col-5"><span class="report-side-title">Contatti con le Amministrazioni</span></div>
+                    <div class="col">
+                    <?php
+                        echo ($report->admin_response_no == 1 ? 'Nessuna risposta<br />' : '');
+                        echo ($report->admin_response_formal == 1 ? 'Risposte generiche<br />' : '');
+                        echo ($report->admin_response_some == 1 ? 'Risposta parziale<br />' : '');
+                        echo ($report->admin_response_promises == 1 ? 'Promesse concrete<br />' : '');
+                        echo ($report->admin_response_unlocked == 1 ? 'Progetto più efficace<br />' : '');
+                        echo ($report->admin_response_flagged == 1 ? 'Problema risolto<br />' : '');
+                    ?>
+                    </div>
+                </div>
+            <?php } ?>
+            <?php } ?>
             <?php if(!empty($oc)){ ?>
+
+
+            <h4><?php t_report('Informazioni ufficiali al momento del monitoraggio'); ?></h4>
             <div class="row report-side-oc">
                 <div class="col-5"><span class="report-side-title"><?php t_report('Tema'); ?></span></div>
                 <div class="col"><span class="report-side-value"><?php echo $oc->oc_tema_sintetico; ?></div>
             </div>
-
-            <h4><?php t_report('Informazioni ufficiali al momento del monitoraggio'); ?></h4>
             <?php if(isset($oc->oc_data_inizio_progetto) && !empty($oc->oc_data_inizio_progetto) ){ ?>
             <div class="row report-side-oc">
                 <div class="col-5"><span class="report-side-title"><?php t_report('Data inizio'); ?></span></div>
@@ -110,7 +147,7 @@
             <?php } ?>
 
 
-            <h4><?php t_report('RISORSE'); ?></h4>
+            <h4><?php t_report('MATERIALI'); ?></h4>
             <?php
             foreach($report->videos as $video){
                 ?>
@@ -170,68 +207,149 @@
 
         </aside>
 
-        <article class="col-sm-12 col-md-8" id="report-view">
+        <section class="col-sm-12 col-md-8" id="report-view">
 
-            <h1>
-                <span class="title-label"><small><?php t_report('REPORT DI MONITORAGGIO CIVICO'); ?></small> <?php AsocExp($report); ?><br /></span><?php echo $report->titolo; ?><br />
 
-            </h1>
 
-            <span class="report-date"><?php t_report('Inviato il'); ?> <?php  echo strftime('%e/%m/%Y', strtotime($report->created_at)); ?> | <?php t_report('di'); ?> <a href="/profile/view/<?php echo $author->idauth; ?>"><?php echo $author->role==4 ? $author->username: $report->autore; //$author->username; ?></a>
-                <?php if(!empty($author->twitter)) { ?> | <a href="https://twitter.com/<?php echo str_replace('@', '', $author->twitter); ?>" target="_blank"><i class="fab fa-twitter"></i> @<?php echo str_replace('@', '', $author->twitter); ?></a><?php } ?>
 
-            </span>
 
             <div class="report-body">
-                <h2><?php t_report('Descrizione'); ?> <span class="float-right"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span></h2>
-                <p>
-                    <img class="report-main-image" src="<?php echo image($images[0]); ?>" alt="">
-                    <?php echo nl2br($report->descrizione); ?>
-                </p>
 
-                <p><?php echo nl2br($report->parte_di_piano); ?></p>
+                <div class="report-section">
+                        <h1><?php t_report('Cosa abbiamo scoperto'); ?></h1>
+                        <h2><?php t_report('Descrizione'); ?> <span class="float-right"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span></h2>
+                        <p>
+                            <img class="report-main-image" src="<?php echo image($images[0]); ?>" alt="">
+                            <?php echo nl2br($report->descrizione); ?>
+                        </p>
 
-                <h2><?php t_report('Avanzamento'); ?></h2>
-                <p><?php echo nl2br($report->avanzamento); ?></p>
-                <h2><?php t_report('Risultati'); ?></h2>
-                <span class="report-ev-hilite"><?php t_report($valutazione); ?></span>
-                <p><?php echo nl2br($report->risultato_progetto); ?></p>
-                <div class="row">
-                    <div class="col">
-                        <h2><?php t_report('Punti di debolezza'); ?></h2>
-                        <p><?php echo nl2br($report->punti_deboli); ?></p>
-                    </div>
-                    <div class="col">
-                        <h2><?php t_report('Punti di forza'); ?></h2>
-                        <p><?php echo nl2br($report->punti_di_forza); ?></p>
-                    </div>
+                        <p><?php echo nl2br($report->parte_di_piano); ?></p>
+
+                        <h2><?php t_report('Avanzamento'); ?></h2>
+                        <p><?php echo nl2br($report->avanzamento); ?></p>
+                        <h2><?php t_report('Risultati'); ?></h2>
+                        <span class="report-ev-hilite"><?php t_report($valutazione); ?></span>
+                        <p><?php echo nl2br($report->risultato_progetto); ?></p>
+                        <div class="row">
+                            <div class="col">
+                                <h2><?php t_report('Punti di debolezza'); ?></h2>
+                                <p><?php echo nl2br($report->punti_deboli); ?></p>
+                            </div>
+                            <div class="col">
+                                <h2><?php t_report('Punti di forza'); ?></h2>
+                                <p><?php echo nl2br($report->punti_di_forza); ?></p>
+                            </div>
+                        </div>
+
+                         <h2><?php t_report('Rischi'); ?></h2>
+                         <p><?php echo nl2br($report->rischi); ?></p>
+
+                        <div class="report-solutions">
+                            <h2><?php t_report("Soluzioni e Idee"); ?></h2>
+                            <p><?php echo nl2br($report->soluzioni_progetto); ?></p>
+                        </div>
                 </div>
+                <div class="report-section">
+                        <h1><?php t_report('Risultati / impatto del monitoraggio'); ?></h1>
+                    <div class="row">
+                        <div class="col">
+                            <h2><?php t_report('Come avete diffuso o state diffondendo i risultati del vostro monitoraggio civico?'); ?></h2>
+                            <ul>
+                                <?php
+                                echo $report->diffusione_twitter > 0 ? '<li>Twitter</li>' : '';
+                                echo $report->diffusione_facebook > 0 ? '<li>Facebook</li>' : '';
+                                echo $report->diffusione_instagram > 0 ? '<li>Instagram</li>' : '';
+                                echo $report->diffusione_eventi > 0 ? '<li>Eventi territoriali organizzati dai team</li>' : '';
+                                echo $report->diffusione_open_admin > 0 ? '<li>Settimana dell\'Amministrazione Aperta</li>' : '';
+                                echo $report->diffusione_blog > 0 ? '<li>Blog/Sito web del Team</li>' : '';
+                                echo $report->diffusione_offline > 0 ? '<li>Volantinaggio o altri metodi off-line (non via Internet)</li>' : '';
+                                echo $report->diffusione_incontri > 0 ? '<li>Richiesta di audizioni o incontri a porte chiuse</li>' : '';
+                                echo $report->diffusione_interviste > 0 ? '<li>Interviste ai media</li>' : '';
+                                echo $report->diffusione_altro > 0 ? '<li>'.$report->diffusione_altro.'</li>' : '';
+                                ?>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <h2><?php t_report('Soggetti con cui sono state create connessioni'); ?></h2>
+                            <ul>
+                                <?php
+                                if(!empty($connections)){
+                                    foreach($connections as $c){
+                                        ?>
+                                        <li><?php echo $c->role.', ' . $c->organisation; ?></li>
+                                        <?php
+                                    }
+                                }
+                                ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h2><?php t_report(' I risultati del monitoraggio sono stati ripresi dai seguenti media'); ?></h2>
+                            <ul>
+                                <?php
+                                echo $report->tv_locali  > 0 ? '<li>TV Locali</li>' : '';
+                                echo $report->tv_nazionali  > 0 ? '<li>TV Nazionali</li>' : '';
+                                echo $report->giornali_locali  > 0 ? '<li>Giornali Locali</li>' : '';
+                                echo $report->giornali_nazionali  > 0 ? '<li>Giornali Nazionali</li>' : '';
+                                echo $report->blog_online  > 0 ? '<li>Blog o altre news outlet online</li>' : '';
+                                echo $report->media_other > 0 ? '<li>Altro</li>' : '';
+                                ?>
+                            </ul>
+                        </div>
+                        <div class="col">
+                            <h2><?php t_report('Le Pubbliche Amministrazioni hanno risposto alle vostre sollecitazioni o ai problemi che avete sollevato?'); ?></h2>
+                            <?php
+                            if($report->admin_connection < 1){ ?>
+                                <p><?php t_report('Non le abbiamo contattate'); ?></p>
+                            <?php } else { ?>
+                                <ul>
+                                    <?php
+                                    echo $report->admin_response_no   > 0 ? '<li>Non ci hanno risposto</li>' : '';
+                                    echo $report->admin_response_formal   > 0 ? '<li>Alcune ci hanno risposto, altre no</li>' : '';
+                                    echo $report->admin_response_some   > 0 ? '<li>Ci hanno dato risposte formali o generiche</li>' : '';
+                                    echo $report->admin_response_promises  > 0 ? '<li>Almeno una tra quelle contattate ci ha fatto promesse concrete</li>' : '';
+                                    echo $report->admin_response_unlocked   > 0 ? '<li>Hanno messo in pratica i nostri suggerimenti e il progetto ora è "sbloccato" o più efficace</li>' : '';
+                                    echo $report->admin_response_flagged   > 0 ? '<li>Avevamo segnalato un problema che ora è stato risolto</li>' : '';
+                                    echo $report->admin_altro  > 0 ? '<li>' . $report->admin_altro . '</li>' : '';
+                                    ?>
+                                </ul>
+                            <?php } ?>
+                        </div>
+                    </div>
 
-                 <h2><?php t_report('Rischi'); ?></h2>
-                 <p><?php echo nl2br($report->rischi); ?></p>
 
-                <div class="report-solutions">
-                    <h2><?php t_report("Soluzioni e Idee"); ?></h2>
-                    <p><?php echo nl2br($report->soluzioni_progetto); ?></p>
+
+
+                        <?php if(!empty($report->impact_description)){ ?>
+                        <div class="report-solutions">
+                            <h2><?php t_report('Descrizione del caso'); ?></h2>
+                            <p><?php echo nl2br( $report->impact_description); ?>
+                        </div>
+                         <?php } ?>
+                        </div>
+
+
+                <div class="report-section">
+                        <h1><?php t_report("Metodo di indagine"); ?></h1>
+                        <h2><?php t_report('Come sono state raccolte le informazioni?'); ?></h2>
+                        <ul>
+                            <?php foreach($raccolta as $label => $v){ ?>
+                                <li><?php t_report( $label ); ?></li>
+                            <?php } ?>
+                        </ul>
+                        <p><?php echo nl2br($report->intervista_intervistati); ?></p>
+
+                        <h2><?php t_report('Domande principali'); ?></h2>
+                        <p><?php echo nl2br($report->intervista_domande); ?></p>
+
+                        <h2><?php t_report('Risposte principali'); ?></h2>
+                        <p><?php echo nl2br($report->intervista_risposte); ?></p>
+
+
                 </div>
-
-                <h1><?php t_report("L'INDAGINE"); ?></h1>
-                <h2><?php t_report('Come sono state raccolte le informazioni?'); ?></h2>
-                <ul>
-                    <?php foreach($raccolta as $label => $v){ ?>
-                        <li><?php t_report( $label ); ?></li>
-                    <?php } ?>
-                </ul>
-                <p><?php echo nl2br($report->intervista_intervistati); ?></p>
-
-                <h2><?php t_report('Domande principali'); ?></h2>
-                <p><?php echo nl2br($report->intervista_domande); ?></p>
-
-                <h2><?php t_report('Risposte principali'); ?></h2>
-                <p><?php echo nl2br($report->intervista_risposte); ?></p>
-
             </div>
-
         </article>
     </section>
 </div>

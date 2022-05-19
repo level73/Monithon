@@ -5,6 +5,26 @@
     </div>
   </div>
   <form action="/user/register" method="post" class="needs-validation" oninput="c_pwd.setCustomValidity(c_pwd.value != pwd.value ? 'Le Password non combaciano!' : '')">
+      <div class="row justify-content-center">
+          <div class="col-8">
+              <div class="form-group">
+                  <label>In che qualità vuoi registrarti su Monithon?</label>
+                   <br />
+                  <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="utype-1" value="10" name="role" class="custom-control-input">
+                      <label class="custom-control-label" for="utype-1">Partecipante ASOC</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="utype-2" value="11" name="role" class="custom-control-input">
+                      <label class="custom-control-label" for="utype-2">Studente Universitario</label>
+                  </div>
+                  <div class="custom-control custom-radio custom-control-inline">
+                      <input type="radio" id="utype-3" value="3" name="role" class="custom-control-input">
+                      <label class="custom-control-label" for="utype-3">Società Civile</label>
+                  </div>
+              </div>
+          </div>
+      </div>
     <div class="row justify-content-center" >
       <div class="col-4">
         <div class="form-group">

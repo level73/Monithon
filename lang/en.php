@@ -228,7 +228,9 @@ Example: Mayor, Chairman, Public officer, journalist, company CEO etc. Organisat
         "come sono state raccolte le informazioni?" => "How was the information collected?",
         "domande principali" => "main questions",
         "risposte principali" => "main answers",
-        "di" => "by"
+        "di" => "by",
+        "giudizio sintetico" => "synthetic assessment",
+        "materiali" => "uploads & links"
 
         );
 

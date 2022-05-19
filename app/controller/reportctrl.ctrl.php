@@ -142,6 +142,10 @@
           $Raccolta = array_filter($Raccolta);
           $this->set('raccolta', $Raccolta);
 
+          $Connessioni = new Meta('connection');
+          $connessioni = $Connessioni->getConnections($id);
+          $this->set('connections', $connessioni);
+
           $Images = array();
           $Resources = array();
           if (!empty($Report->files)) {
@@ -184,6 +188,7 @@
         $Errors = new Errors();
         $this->set('street_map', true);
         $this->set('js', array('components/oc_api.js?v=140421', 'components/leaflet_location_map.js'));
+        //, 'components/connection-mapper.js?v=001'
 
         /** STATUS VAR -
           * Used to check if report has been saved - in which case,
@@ -615,12 +620,20 @@
                 $Reporter = new User();
                 $reporter = $Reporter->fullProfile($creator);
 
-                if($data['status'] == PUBLISHED || $data['status_tab_3'] == PUBLISHED){
+                if($data['status'] == PUBLISHED ){
                     $mailer = true;
                     $subject = "MONITHON - Report Approvato";
 
-                    $message = "Il Report <strong>" . $data['titolo'] . "</strong> è stato approvato, congratulazioni!<br />Puoi vedere il report pubblicato al seguente link: <a href=\"" . APPURL . "/report/view/" . $id . "\">" . APPURL . "/report/view/" . $id . "</a><br />Grazie per aver partecipato!<br /><br />La Redazione di Monithon";
+                    $message = "Il Report <strong>" . $data['titolo'] . "</strong> è stato approvato, congratulazioni!<br />Puoi vedere il report pubblicato al seguente link: <a href=\"" . APPURL . "/report/view/" . $id . "\">" . APPURL . "/report/view/" . $id . "</a><br />Controlla la pagina dedicata al tuo team e aggiorna bio e social se necessario: <a href=\"/profile/view/" . $creator . "\">Controlla il tuo profilo</a><br />Grazie per aver partecipato!<br /><br />La Redazione di Monithon";
 
+                }
+                else if($data['status_tab_3'] == PUBLISHED){
+                    $mailer = true;
+                    $subject = "MONITHON - Step 3 del Report Approvato";
+
+                    $message = "Il terzo step del tuo report è stato approvato, congratulazioni!<br />
+                                Pubblicheremo queste ulteriori informazioni in analisi aggregate o casi studio.<br /><br />                                
+                                La redazione di Monithon";
                 }
                 else if($data['status'] == DRAFT || $data['status_tab_3'] == DRAFT){
                     $mailer = true;

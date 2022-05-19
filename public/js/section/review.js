@@ -2,6 +2,7 @@ var MonithonReview = {
 
   init: function() {
     this.addCommentField();
+    this.resolveComment();
   },
 
   addCommentField: function(){
@@ -17,7 +18,57 @@ var MonithonReview = {
       $(this).parent().parent().parent().append(htmlComment);
      }
     });
+  },
+
+  resolveComment: function(){
+    $('.commented-delete').click(function(e){
+        var wrapper = $(this).parent();
+        var btn = $(this);
+        var comment = $(this).data('comment');
+        //var state = MonithonReview.changeCommentStatus(comment, 3);
+
+        $.ajax({
+            type: "POST",
+            url: '/ajax/change_comment_status',
+            data: {'id': comment, 'status': 3},
+            cache: false,
+            dataType: 'json',
+            success: function(data){
+                if(data.code === 200){
+                    wrapper.addClass('status-solved').removeClass('status-pending');
+                    btn.before(
+                        '<span class="badge badge-success float-right">risolto</span>'
+                    );
+                    btn.hide();
+                }
+                else {
+                    //return false;
+                }
+            }
+        });
+
+    });
+  },
+
+  changeCommentStatus: function(comment, status){
+    $.ajax({
+        type: "POST",
+        url: '/ajax/change_comment_status',
+        data: {'id': comment, 'status': status},
+        cache: false,
+        dataType: 'json',
+        success: function(ret){
+            console.log(ret);
+            if(ret.code === 200){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    });
   }
+
 }
 
 MonithonReview.init();

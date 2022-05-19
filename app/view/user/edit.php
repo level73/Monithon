@@ -58,8 +58,48 @@
 
     </div>
   </div>
+    <?php if($Profile->role == 11){ ?>
+    <div class="row" id="university">
+        <div class="col-12">
+            <h2>PROFILO ISTITUTO UNIVERSITARIO</h2>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="istituto">Nome Università</label>
+                <input type="text" class="form-control" placeholder="<?php t('Nome dell\'Università'); ?>" name="university" id="university" value="<?php echo ckv_object($UNI_Profile, 'university'); ?>">
+            </div>
+            <div class="form-group">
+                <label for="tipo_istituto">Corso di Laurea/Master/Dottorato</label>
+                <input type="text" class="form-control" placeholder="<?php t('Corso di laurea...'); ?>" name="degree" id="degree" value="<?php echo ckv_object($UNI_Profile,'degree'); ?>">
+            </div>
+            <div class="form-group">
+                <label for="tipo_istituto">Nome del Corso/Insegnamento/Laboratorio</label>
+                <input type="text" class="form-control" placeholder="<?php t('Nome del corso...'); ?>" name="class" id="class" value="<?php echo ckv_object($UNI_Profile,'class'); ?>">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="provincia">Provincia dell'Università</label>
+                <select class="form-control pck" name="provincia" id="provincia" data-live-search="true">
 
-    <?php if($Profile->role > 3 ){ ?>
+                    <?php foreach($province as $label => $r){ ?>
+                        <optgroup label="<?php echo $label; ?>">->
+                            <?php foreach($r as $p){ ?>
+                                <option value="<?php echo $p->idprovincia; ?>" data-subtext="<?php echo $p->shorthand; ?>" <?php echo (isset($ASOC_Profile) && $p->idprovincia == $UNI_Profile->provincia ? 'selected': ''); ?>><?php echo $p->provincia; ?></option>
+                            <?php } ?>
+                        </optgroup>
+                    <?php } ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="comune">Comune dell'Universtà</label>
+                <input type="text" class="form-control" placeholder="<?php t('Comune dell\'Istituto...'); ?>" name="comune" id="comune" value="<?php echo ckv_object($UNI_Profile, 'comune'); ?>">
+            </div>
+        </div>
+
+    </div>
+    <?php } ?>
+    <?php if($Profile->role > 3 && $Profile->role < 11 ){ ?>
     <div class="row" id="asoc">
       <div class="col-12">
         <h2>PROFILO ASOC</h2>
@@ -100,13 +140,15 @@
           <input type="text" class="form-control" placeholder="<?php t('ID della piattaforma ASOC'); ?>" value="<?php echo ckv_object($ASOC_Profile, 'remote_id'); ?>" name="remote_id" id="remote_id">
         </div>
         <div class="form-group">
-          <label for="link_blog">Link al Blog</label>
+          <label for="link_blog">Link alla pagina del team sul sito di ASOC</label>
           <input type="text" class="form-control" placeholder="<?php t('Link alla pagina del blog del team...'); ?>" value="<?php echo ckv_object($ASOC_Profile,'link_blog'); ?>" name="link_blog" id="link_blog">
         </div>
+        <?php /*
         <div class="form-group">
           <label for="link_elaborato">Link all'Elaborato Creativo</label>
           <input type="text" class="form-control" placeholder="<?php t('Link alla pagina dell\'elaborato del team...'); ?>" value="<?php echo ckv_object($ASOC_Profile, 'link_elaborato'); ?>" name="link_elaborato" id="link_elaborato">
         </div>
+        */ ?>
       </div>
 
 

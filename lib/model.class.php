@@ -142,7 +142,7 @@
       foreach($data as $field => &$value){
         $stmt->bindParam(':' . $field, $value);
       }
-
+     //   echo $sql . "<br />";
       $query = $stmt->execute();
 
       if(!$query){

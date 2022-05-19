@@ -20,7 +20,33 @@
   }
   .report-body {
     margin-top: 30px;
+    h1 {
+      font-size: 1.8em;
+      padding-bottom: 20px;
+      color: $lagoon;
+      display: flex;
+      align-items: flex-start;
+      text-align: left;
+
+      &:after {
+        content: '';
+        flex-grow: 1;
+        height: 1px;
+        background: $lagoon;
+        min-width: 20px;
+        margin: auto;
+      }
+
+      &:after {
+        margin-left: 20px;
+      }
+    }
     h2 { font-size: 16px; }
+  }
+  .report-section {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    //border-bottom: 1px solid $lagoon;
   }
   .report-solutions {
     padding: 15px;
