@@ -248,6 +248,16 @@ Example: Mayor, Chairman, Public officer, journalist, company CEO etc. Organisat
 
          "cosa abbiamo scoperto" => "what we found out",
 
+        "nessuna riposta" => "no answer",
+        "risposta parziale" => "partial answer",
+         "risposte generiche" => "generic answer",
+        "promesse concrete" => "concrete promises",
+        "progetto più efficace" => "project more effective",
+        "problema risolto" => "problem fixed"
+
+
+
+
         );
 
     $tr = array_filter($tr);
