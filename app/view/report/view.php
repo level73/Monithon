@@ -45,20 +45,20 @@
 
             <?php if($report->media_connection > 0){ ?>
             <div class="row report-impact">
-                <div class="col text-center"><h5>Report Ripreso dai Media</h5></div>
+                <div class="col text-center"><h5><?php t_report('Report Ripreso dai Media'); ?></h5></div>
             </div>
             <?php } ?>
             <?php if($report->admin_connection > 0){ ?>
                 <div class="row report-impact">
-                    <div class="col-5"><span class="report-side-title">Contatti con le Amministrazioni</span></div>
+                    <div class="col-5"><span class="report-side-title"><?php t_report('Contatti con le Amministrazioni'); ?></span></div>
                     <div class="col">
                     <?php
-                        echo ($report->admin_response_no == 1 ? 'Nessuna risposta<br />' : '');
-                        echo ($report->admin_response_formal == 1 ? 'Risposte generiche<br />' : '');
-                        echo ($report->admin_response_some == 1 ? 'Risposta parziale<br />' : '');
-                        echo ($report->admin_response_promises == 1 ? 'Promesse concrete<br />' : '');
-                        echo ($report->admin_response_unlocked == 1 ? 'Progetto più efficace<br />' : '');
-                        echo ($report->admin_response_flagged == 1 ? 'Problema risolto<br />' : '');
+                        echo ($report->admin_response_no == 1 ? t_report('Nessuna risposta', false) . '<br />' : '');
+                        echo ($report->admin_response_formal == 1 ? t_report('Risposte generiche', false) . '<br />' : '');
+                        echo ($report->admin_response_some == 1 ? t_report('Risposta parziale', false) . '<br />' : '');
+                        echo ($report->admin_response_promises == 1 ? t_report('Promesse concrete', false) . '<br />' : '');
+                        echo ($report->admin_response_unlocked == 1 ? t_report('Progetto più efficace', false) . '<br />' : '');
+                        echo ($report->admin_response_flagged == 1 ? t_report('Problema risolto', false) . '<br />' : '');
                     ?>
                     </div>
                 </div>
@@ -259,12 +259,12 @@
                                 echo $report->diffusione_twitter > 0 ? '<li>Twitter</li>' : '';
                                 echo $report->diffusione_facebook > 0 ? '<li>Facebook</li>' : '';
                                 echo $report->diffusione_instagram > 0 ? '<li>Instagram</li>' : '';
-                                echo $report->diffusione_eventi > 0 ? '<li>Eventi territoriali organizzati dai team</li>' : '';
-                                echo $report->diffusione_open_admin > 0 ? '<li>Settimana dell\'Amministrazione Aperta</li>' : '';
-                                echo $report->diffusione_blog > 0 ? '<li>Blog/Sito web del Team</li>' : '';
-                                echo $report->diffusione_offline > 0 ? '<li>Volantinaggio o altri metodi off-line (non via Internet)</li>' : '';
-                                echo $report->diffusione_incontri > 0 ? '<li>Richiesta di audizioni o incontri a porte chiuse</li>' : '';
-                                echo $report->diffusione_interviste > 0 ? '<li>Interviste ai media</li>' : '';
+                                echo $report->diffusione_eventi > 0 ? '<li>' . t_report('Eventi territoriali organizzati dai team', false) . '</li>' : '';
+                                echo $report->diffusione_open_admin > 0 ? '<li>' . t_report('Settimana dell\'Amministrazione Aperta', false) . '</li>' : '';
+                                echo $report->diffusione_blog > 0 ? '<li>' . t_report('Blog/Sito web del Team', false) . '</li>' : '';
+                                echo $report->diffusione_offline > 0 ? '<li>' . t_report('Volantinaggio o altri metodi off-line (non via Internet)', false) . '</li>' : '';
+                                echo $report->diffusione_incontri > 0 ? '<li>' . t_report('Richiesta di audizioni o incontri a porte chiuse', false) . '</li>' : '';
+                                echo $report->diffusione_interviste > 0 ? '<li>' . t_report('Interviste ai media', false) . '</li>' : '';
                                 echo $report->diffusione_altro > 0 ? '<li>'.$report->diffusione_altro.'</li>' : '';
                                 ?>
                             </ul>
@@ -289,12 +289,12 @@
                             <h2><?php t_report(' I risultati del monitoraggio sono stati ripresi dai seguenti media'); ?></h2>
                             <ul>
                                 <?php
-                                echo $report->tv_locali  > 0 ? '<li>TV Locali</li>' : '';
-                                echo $report->tv_nazionali  > 0 ? '<li>TV Nazionali</li>' : '';
-                                echo $report->giornali_locali  > 0 ? '<li>Giornali Locali</li>' : '';
-                                echo $report->giornali_nazionali  > 0 ? '<li>Giornali Nazionali</li>' : '';
-                                echo $report->blog_online  > 0 ? '<li>Blog o altre news outlet online</li>' : '';
-                                echo $report->media_other > 0 ? '<li>Altro</li>' : '';
+                                echo $report->tv_locali  > 0 ? '<li>' . t_report('TV Locali', false) . '</li>' : '';
+                                echo $report->tv_nazionali  > 0 ? '<li>' . t_report('TV Nazionali', false) . '</li>' : '';
+                                echo $report->giornali_locali  > 0 ? '<li>' . t_report('Giornali Locali', false) . '</li>' : '';
+                                echo $report->giornali_nazionali  > 0 ? '<li>' . t_report('Giornali Nazionali', false) . '</li>' : '';
+                                echo $report->blog_online  > 0 ? '<li>' . t_report('Blog o altre news outlet online', false) . '</li>' : '';
+                                echo $report->media_other > 0 ? '<li>' . t_report('Altro', false) . '</li>' : '';
                                 ?>
                             </ul>
                         </div>
@@ -306,12 +306,12 @@
                             <?php } else { ?>
                                 <ul>
                                     <?php
-                                    echo $report->admin_response_no   > 0 ? '<li>Non ci hanno risposto</li>' : '';
-                                    echo $report->admin_response_formal   > 0 ? '<li>Alcune ci hanno risposto, altre no</li>' : '';
-                                    echo $report->admin_response_some   > 0 ? '<li>Ci hanno dato risposte formali o generiche</li>' : '';
-                                    echo $report->admin_response_promises  > 0 ? '<li>Almeno una tra quelle contattate ci ha fatto promesse concrete</li>' : '';
-                                    echo $report->admin_response_unlocked   > 0 ? '<li>Hanno messo in pratica i nostri suggerimenti e il progetto ora è "sbloccato" o più efficace</li>' : '';
-                                    echo $report->admin_response_flagged   > 0 ? '<li>Avevamo segnalato un problema che ora è stato risolto</li>' : '';
+                                    echo $report->admin_response_no   > 0 ? '<li>' . t_report('Non ci hanno risposto', false) . '</li>' : '';
+                                    echo $report->admin_response_formal   > 0 ? '<li>' . t_report('Alcune ci hanno risposto, altre no', false) . '</li>' : '';
+                                    echo $report->admin_response_some   > 0 ? '<li>' . t_report('Ci hanno dato risposte formali o generiche', false) . '</li>' : '';
+                                    echo $report->admin_response_promises  > 0 ? '<li>' . t_report('Almeno una tra quelle contattate ci ha fatto promesse concrete', false) . '</li>' : '';
+                                    echo $report->admin_response_unlocked   > 0 ? '<li>' . t_report('Hanno messo in pratica i nostri suggerimenti e il progetto ora è "sbloccato" o più efficace', false) . '</li>' : '';
+                                    echo $report->admin_response_flagged   > 0 ? '<li>' . t_report('Avevamo segnalato un problema che ora è stato risolto', false) . '</li>' : '';
                                     echo $report->admin_altro  > 0 ? '<li>' . $report->admin_altro . '</li>' : '';
                                     ?>
                                 </ul>
