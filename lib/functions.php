@@ -430,3 +430,15 @@ function themeToCode($theme){
 
     return (array_key_exists($theme, $themes) ? $themes[$theme] : -1);
 }
+
+function reportListItems($report, $list){
+    $list_entry = array();
+    foreach($list as $prop => $txt){
+        if($report->{$prop} > 0){
+            $label = t_report($txt, false);
+            $list_entry[] = '<li>' . $label . '</li>';
+        }
+    }
+
+    echo implode('', $list_entry);
+}

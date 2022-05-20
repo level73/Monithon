@@ -259,13 +259,15 @@
                                 echo $report->diffusione_twitter > 0 ? '<li>Twitter</li>' : '';
                                 echo $report->diffusione_facebook > 0 ? '<li>Facebook</li>' : '';
                                 echo $report->diffusione_instagram > 0 ? '<li>Instagram</li>' : '';
-                                echo $report->diffusione_eventi > 0 ? '<li>' . t_report('Eventi territoriali organizzati dai team', false) . '</li>' : '';
-                                echo $report->diffusione_open_admin > 0 ? '<li>' . t_report('Settimana dell\'Amministrazione Aperta', false) . '</li>' : '';
-                                echo $report->diffusione_blog > 0 ? '<li>' . t_report('Blog/Sito web del Team', false) . '</li>' : '';
-                                echo $report->diffusione_offline > 0 ? '<li>' . t_report('Volantinaggio o altri metodi off-line (non via Internet)', false) . '</li>' : '';
-                                echo $report->diffusione_incontri > 0 ? '<li>' . t_report('Richiesta di audizioni o incontri a porte chiuse', false) . '</li>' : '';
-                                echo $report->diffusione_interviste > 0 ? '<li>' . t_report('Interviste ai media', false) . '</li>' : '';
-                                echo $report->diffusione_altro > 0 ? '<li>'.$report->diffusione_altro.'</li>' : '';
+
+
+                               echo  ($report->diffusione_eventi > 0 ?  '<li>' . t_report('Eventi territoriali organizzati dai team', false) : '' ) . '</li>';
+                               echo  ($report->diffusione_open_admin > 0 ? '<li>' . t_report('Settimana dell\'Amministrazione Aperta', false)  : '') . '</li>';
+                               echo  ($report->diffusione_blog > 0 ? '<li>' . t_report('Blog/Sito web del Team', false) : '') . '</li>';
+                               echo  ($report->diffusione_offline > 0 ? '<li>' . t_report('Volantinaggio o altri metodi off-line (non via Internet)', false)  : '').  '</li>';
+                               echo  ($report->diffusione_incontri > 0 ? '<li>' . t_report('Richiesta di audizioni o incontri a porte chiuse', false)  : '') . '</li>';
+                               echo  ($report->diffusione_interviste > 0 ? '<li>' . t_report('Interviste ai media', false)  : '') . '</li>';
+                               echo  ($report->diffusione_altro > 0 ? '<li>' . $report->diffusione_altro : '') . '</li>';
                                 ?>
                             </ul>
                         </div>

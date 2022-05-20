@@ -246,7 +246,7 @@ Example: Mayor, Chairman, Public officer, journalist, company CEO etc. Organisat
 
          "metodo di indagine" => "investigation method",
 
-        "cosa abbiamo scoperto" => "what we found out",
+         "cosa abbiamo scoperto" => "what we found out",
 
         );
 
@@ -264,10 +264,12 @@ Example: Mayor, Chairman, Public officer, journalist, company CEO etc. Organisat
         $r = $string;
     }
 
-    if($print==true){
+    if($print === true){
+
         echo ucfirst($r);
     }
     else {
+
         return ucfirst($r);
     }
 }
