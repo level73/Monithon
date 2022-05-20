@@ -286,7 +286,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <h2><?php t_report(' I risultati del monitoraggio sono stati ripresi dai seguenti media'); ?></h2>
+                            <h2><?php t_report('I risultati del monitoraggio sono stati ripresi dai seguenti media'); ?></h2>
                             <ul>
                                 <?php
                                 echo $report->tv_locali  > 0 ? '<li>' . t_report('TV Locali', false) . '</li>' : '';
