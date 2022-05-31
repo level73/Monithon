@@ -39,7 +39,7 @@ class BackendCtrl extends Ctrl
         }
     }
     public function export_subjects(){
-        if( hasPermission( $this->User, array(P_APPROVE_REPORT) ) ) {
+        if( $this->Auth->isLoggedIn() && hasPermission( $this->User, array(P_APPROVE_REPORT) ) ) {
             $time = time();
 
             $AllReports = $this->Backend->reports();
@@ -134,10 +134,13 @@ class BackendCtrl extends Ctrl
             echo $csv_contents;
 
         }
+        else {
+            header('Location: /user/login');
+        }
 
     }
     public function export_reports(){
-        if( hasPermission( $this->User, array(P_APPROVE_REPORT) ) ){
+        if( $this->Auth->isLoggedIn() && hasPermission( $this->User, array(P_APPROVE_REPORT) ) ){
             $time = time();
 
             $AllReports = $this->Backend->reports();
@@ -208,6 +211,9 @@ class BackendCtrl extends Ctrl
 
 
 
+        }
+        else {
+            header('Location: /user/login');
         }
     }
 }
