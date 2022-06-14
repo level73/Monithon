@@ -249,11 +249,13 @@
                             <p><?php echo nl2br($report->soluzioni_progetto); ?></p>
                         </div>
                 </div>
+
+                <?php if($report->status_tab_3 == PUBLISHED ){ ?>
                 <div class="report-section">
-                        <h1><?php t_report('Risultati / impatto del monitoraggio'); ?></h1>
+                        <h1><?php t_report('Risultati e impatto del monitoraggio'); ?></h1>
                     <div class="row">
                         <div class="col">
-                            <h2><?php t_report('Come avete diffuso o state diffondendo i risultati del vostro monitoraggio civico?'); ?></h2>
+                            <h2><?php t_report('Diffusione dei risultati'); ?></h2>
                             <ul>
                                 <?php
                                 echo $report->diffusione_twitter > 0 ? '<li>Twitter</li>' : '';
@@ -272,7 +274,7 @@
                             </ul>
                         </div>
                         <div class="col">
-                            <h2><?php t_report('Soggetti con cui sono state create connessioni'); ?></h2>
+                            <h2><?php t_report('connessioni'); ?></h2>
                             <ul>
                                 <?php
                                 if(!empty($connections)){
@@ -288,7 +290,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <h2><?php t_report('I risultati del monitoraggio sono stati ripresi dai seguenti media'); ?></h2>
+                            <h2><?php t_report('contatti con i media'); ?></h2>
                             <ul>
                                 <?php
                                 echo $report->tv_locali  > 0 ? '<li>' . t_report('TV Locali', false) . '</li>' : '';
@@ -301,19 +303,19 @@
                             </ul>
                         </div>
                         <div class="col">
-                            <h2><?php t_report('Le Pubbliche Amministrazioni hanno risposto alle vostre sollecitazioni o ai problemi che avete sollevato?'); ?></h2>
+                            <h2><?php t_report('Contatti con le Pubbliche Amministrazioni'); ?></h2>
                             <?php
                             if($report->admin_connection < 1){ ?>
                                 <p><?php t_report('Non le abbiamo contattate'); ?></p>
                             <?php } else { ?>
                                 <ul>
                                     <?php
-                                    echo $report->admin_response_no   > 0 ? '<li>' . t_report('Non ci hanno risposto', false) . '</li>' : '';
-                                    echo $report->admin_response_formal   > 0 ? '<li>' . t_report('Alcune ci hanno risposto, altre no', false) . '</li>' : '';
-                                    echo $report->admin_response_some   > 0 ? '<li>' . t_report('Ci hanno dato risposte formali o generiche', false) . '</li>' : '';
-                                    echo $report->admin_response_promises  > 0 ? '<li>' . t_report('Almeno una tra quelle contattate ci ha fatto promesse concrete', false) . '</li>' : '';
-                                    echo $report->admin_response_unlocked   > 0 ? '<li>' . t_report('Hanno messo in pratica i nostri suggerimenti e il progetto ora è "sbloccato" o più efficace', false) . '</li>' : '';
-                                    echo $report->admin_response_flagged   > 0 ? '<li>' . t_report('Avevamo segnalato un problema che ora è stato risolto', false) . '</li>' : '';
+                                    echo($report->admin_response_no == 1 ? '<li>' .t_report('Nessuna risposta', false) . '</li>' : '');
+                                    echo($report->admin_response_formal == 1 ? '<li>' .  t_report('Risposte generiche', false) . '</li>' : '');
+                                    echo($report->admin_response_some == 1 ? '<li>' .  t_report('Risposta parziale', false) . '</li>' : '');
+                                    echo($report->admin_response_promises == 1 ? '<li>' .  t_report('Promesse concrete', false) . '</li>' : '');
+                                    echo($report->admin_response_unlocked == 1 ? '<li>' .  t_report('Progetto più efficace', false) . '</li>' : '');
+                                    echo($report->admin_response_flagged == 1 ? '<li>' .  t_report('Problema risolto', false) . '</li>' : '');
                                     echo $report->admin_altro  > 0 ? '<li>' . $report->admin_altro . '</li>' : '';
                                     ?>
                                 </ul>
@@ -331,7 +333,7 @@
                         </div>
                          <?php } ?>
                         </div>
-
+                <?php } ?>
 
                 <div class="report-section">
                         <h1><?php t_report("Metodo di indagine"); ?></h1>

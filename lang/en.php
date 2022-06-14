@@ -238,14 +238,15 @@ Example: Mayor, Chairman, Public officer, journalist, company CEO etc. Organisat
         "contatti con le amministrazioni" => "contacts with public administration",
         "non le abbiamo contattate" => "we did not reach out to public administration",
 
-        "risultati / impatto del monitoraggio" => "Results / Impact of the monitoring",
+        "risultati e impatto del monitoraggio" => "Results and Impact of the monitoring",
        // "come avete diffuso o state diffondendo i risultati del vostro monitoraggio civico?" => "How have you spread or are spreading the results of your civic monitoring?",
-        "soggetti con cui sono state create connessioni" => "subjects with whom connections have been made",
+        "diffusione dei risultati" => "dissemination of results",
+        "connessioni" => "connections",
         "i risultati del monitoraggio sono stati ripresi dai seguenti media" => "the results of the monitoring were taken up by the following media",
         "descrizione del caso" => "description of the case",
-
+        "contatti con i media" => "contacts with media outlets",
          "metodo di indagine" => "investigation method",
-
+        "contatti con le pubbliche amministrazioni" => "contacts with public administration",
          "cosa abbiamo scoperto" => "what we found out",
 
         "nessuna riposta" => "no answer",
