@@ -441,6 +441,21 @@
                   else {
                       $University->create($uni);
                   }
+              } else {
+                  // This is a basic user, unset all uneeded data entries
+                  unset($data['university']);
+                  unset($data['degree']);
+                  unset($data['class']);
+                  unset($data['provincia']);
+                  unset($data['comune']);
+                  unset($data['remote_id']);
+                  unset($data['istituto']);
+                  unset($data['tipo_istituto']);
+                  unset($data['regione']);
+                  unset($data['provincia']);
+                  unset($data['comune']);
+                  unset($data['link_blog']);
+                  unset($data['link_elaborato']);
               }
               // Update profile
               $u = $this->User->update($id, $data);
@@ -547,7 +562,7 @@
                 unset($data['email']);
                 unset($data['username']);
 
-                $data['active'] = $data['active'] == 2 ? 2 : 1;
+                //$data['active'] = $this->user->active == 2 ? 2 : 1;
                 // If role is > 3, then it is an ASOC profile
                 if($this->user->role > 3 && $this->user->role < 11 ){
                   // set region
@@ -618,6 +633,21 @@
                     else {
                         $University->create($uni);
                     }
+                } else {
+                    // This is a basic user, unset all uneeded data entries
+                    unset($data['university']);
+                    unset($data['degree']);
+                    unset($data['class']);
+                    unset($data['provincia']);
+                    unset($data['comune']);
+                    unset($data['remote_id']);
+                    unset($data['istituto']);
+                    unset($data['tipo_istituto']);
+                    unset($data['regione']);
+                    unset($data['provincia']);
+                    unset($data['comune']);
+                    unset($data['link_blog']);
+                    unset($data['link_elaborato']);
                 }
 
                 // Update profile
@@ -647,14 +677,27 @@
               $Profile = $this->User->fullProfile($id);
 
               if($Profile->role > 3 && $Profile->role < 11){
-                $ASOC_Profile = new Asoc();
-                $asoc_profile = $ASOC_Profile->findBy(array('auth' => $id));
-                $this->set('ASOC_Profile', $asoc_profile[0]);
+                  $ASOC_Profile = new Asoc();
+                  $asoc_profile = $ASOC_Profile->findBy(array('auth' => $id));
+                  if(count($asoc_profile) == 0){
+                      $asoc_profile = null;
+                  }
+                  else {
+                      $asoc_profile = $asoc_profile[0];
+                  }
+                  $this->set('ASOC_Profile', $asoc_profile);
               }
               elseif($Profile->role == 11){
                   $UNI_Profile = new University();
                   $uni_profile = $UNI_Profile->findBy(array('auth' => $id));
-                  $this->set('UNI_Profile', $uni_profile[0]);
+                  if(count($uni_profile) == 0){
+                      $uni_profile = null;
+                  }
+                  else {
+                      $uni_profile = $uni_profile[0];
+                  }
+
+                  $this->set('UNI_Profile', $uni_profile);
               }
 
               $Reports = $Report->findBy(array('created_by' => $id));

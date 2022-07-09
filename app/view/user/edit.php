@@ -92,7 +92,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="comune">Comune dell'Universtà</label>
+                <label for="comune">Comune dell'Università</label>
                 <input type="text" class="form-control" placeholder="<?php t('Comune dell\'Istituto...'); ?>" name="comune" id="comune" value="<?php echo ckv_object($UNI_Profile, 'comune'); ?>">
             </div>
         </div>
