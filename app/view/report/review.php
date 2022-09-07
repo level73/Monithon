@@ -146,6 +146,7 @@
                         <input type="radio" id="gender_objectives_no" name="gender_objectives" class="trigger-desc check-eval custom-control-input"  data-group="go" value="3" <?php echo (isset($data->gender_objectives) && $data->gender_objectives ==  3 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="gender_objectives_no">No</label>
                     </div>
+                    <?php showComment($comments, 'gender_objectives'); ?>
                 </div>
 
                 <div class="form-group">
@@ -162,6 +163,7 @@
                         <input type="radio" id="gender_language_no" name="gender_language" class="custom-control-input" value="2" <?php echo (isset($data->gender_language) && $data->gender_language ==  2 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="gender_language_no">No</label>
                     </div>
+                    <?php showComment($comments, 'gender_language'); ?>
                 </div>
 
                 <div class="form-group">
@@ -183,6 +185,7 @@
                         <input type="radio" id="gender_finance_no" name="gender_finance" class="trigger-desc custom-control-input"  data-group="gf"  value="2" <?php echo (isset($data->gender_finance) && $data->gender_finance ==  2 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="gender_finance_no">No</label>
                     </div>
+                    <?php showComment($comments, 'gender_finance'); ?>
                 </div>
 
                 <div class="form-group">
@@ -204,6 +207,7 @@
                         <input type="radio" id="gender_indicators_no" name="gender_indicators" class="trigger-desc custom-control-input"  data-group="gi"  value="2" <?php echo (isset($data->gender_indicators) && $data->gender_indicators ==  2 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="gender_indicators_no">No</label>
                     </div>
+                    <?php showComment($comments, 'gender_indicators'); ?>
                 </div>
 
             </fieldset>
