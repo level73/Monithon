@@ -212,7 +212,7 @@
               $code_url = explode('/', rtrim($data['id_open_coesione']));
               $code = end($code_url);
 
-              dbga($code);
+
 
               $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
               $context = stream_context_create([

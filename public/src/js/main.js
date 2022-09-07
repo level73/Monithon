@@ -18,6 +18,7 @@ var Monithon = {
     this.delRepoElement();
     this.tabSubNav();
     this.subjectMultiply();
+    this.triggerDescriptions();
   },
 
   selects: function(){
@@ -135,6 +136,26 @@ var Monithon = {
       else {
         $('#cause_inefficacia_wrapper').addClass('d-none');
       }
+    });
+  },
+
+  triggerDescriptions: function(){
+    $('.trigger-desc').change(function(){
+      var group = $(this).data('group');
+      var els = $('div').find("[data-group='" + group + "']");
+      els.each(function(){
+        if($(this).parent().next().hasClass('trigger-desc-wrapper')){
+          var elid = $(this).parent().next().attr('id');
+          console.log('adding d-none to el ID: ' + elid);
+          $(this).parent().next().addClass('d-none');
+        }
+      });
+      //console.log($(elements).parent().next('.trigger-desc-wrapper')) ; //.addClass('d-none');
+      var target= $(this).data('target');
+      if($(this).is(':checked')){
+        $(target).removeClass('d-none');
+      }
+
     });
   },
 

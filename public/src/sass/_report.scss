@@ -170,3 +170,15 @@
     display: none;
   }
 }
+
+/** Gender Equality Box **/
+.gender-equality-box {
+
+  padding: 20px;
+  border: 1px solid $scallop;
+
+  h3 {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}

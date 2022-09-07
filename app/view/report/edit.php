@@ -97,6 +97,106 @@
               </div>
 
             </fieldset>
+
+
+            <fieldset class="gender-equality-box">
+                <h3>Parità di Genere</h3>
+
+                <div class="form-group">
+                    <label for="gender-objectives">
+                        Gli obiettivi del progetto includono esplicitamente la parità di genere?
+                    </label>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_objectives_yes_direct" name="gender_objectives" class="trigger-desc check-eval custom-control-input" data-group="go" data-target="#goydd" value="1" <?php echo (isset($data->gender_objectives) && $data->gender_objectives ==  1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_objectives_yes_direct">Si, diretti</label>
+                    </div>
+                    <div class="form-group <?php echo ($data->gender_objectives == 1 ? '' : 'd-none'); ?>  trigger-desc-wrapper" id="goydd">
+                        <label>Aggiungi una descrizione</label>
+                        <textarea id="gender_objectives_yes_direct_desc" name="gender_objectives_yes_direct_desc"  class="form-control"><?php echo ckv_object($data, 'gender_objectives_yes_direct_desc'); ?></textarea>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_objectives_yes_indirect" name="gender_objectives" class="trigger-desc check-eval custom-control-input" data-group="go" data-target="#goyid" value="2" <?php echo (isset($data->gender_objectives) && $data->gender_objectives ==  2 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_objectives_yes_indirect">Si, indiretti</label>
+                    </div>
+                    <div class="form-group <?php echo ($data->gender_objectives == 2 ? '' : 'd-none'); ?> trigger-desc-wrapper" id="goyid">
+                        <label>Aggiungi una descrizione</label>
+                        <textarea id="gender_objectives_yes_indirect_desc" name="gender_objectives_yes_indirect_desc"  class="form-control"><?php echo ckv_object($data, 'gender_objectives_yes_indirect_desc'); ?></textarea>
+                    </div>
+
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_objectives_no" name="gender_objectives" class="trigger-desc check-eval custom-control-input"  data-group="go" value="3" <?php echo (isset($data->gender_objectives) && $data->gender_objectives ==  3 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_objectives_no">No</label>
+                    </div>
+
+                    <?php showComment($comments, 'gender_objectives'); ?>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Il linguaggio utilizzato nei documenti progettuali è sensibile al genere (es. sono utilizzate parole come donne, bambine, anziane, studentesse, lavoratrici, etc.)?
+                    </label>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_language_yes" name="gender_language" class="custom-control-input" value="1" <?php echo (isset($data->gender_language) && $data->gender_language ==  1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_language_yes">Si</label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_language_no" name="gender_language" class="custom-control-input" value="2" <?php echo (isset($data->gender_language) && $data->gender_language ==  2 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_language_no">No</label>
+                    </div>
+                    <?php showComment($comments, 'gender_language'); ?>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Il progetto stanzia risorse finanziarie esplicitamente destinate ad azioni che promuovono la parità di genere?
+                    </label>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_finance_yes" name="gender_finance" class="trigger-desc custom-control-input" data-group="gf" data-target="#gfy" value="1" <?php echo (isset($data->gender_finance) && $data->gender_finance ==  1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_finance_yes">Si</label>
+                    </div>
+
+                    <div class="form-group <?php echo ($data->gender_finance != 1 ? 'd-none' : ''); ?> trigger-desc-wrapper" id="gfy">
+                        <label>In che percentuale rispetto al budget totale?</label>
+                        <input id="gender_finance_desc" name="gender_finance_desc"  class="form-control" value="<?php echo ckv_object($data, 'gender_finance_desc'); ?>" />
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_finance_no" name="gender_finance" class="trigger-desc custom-control-input"  data-group="gf"  value="2" <?php echo (isset($data->gender_finance) && $data->gender_finance ==  2 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_finance_no">No</label>
+                    </div>
+
+                    <?php showComment($comments, 'gender_finance'); ?>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Sono utilizzati esplicitamente indicatori per monitorare e valutare l’impatto del progetto in termini di promozione della parità di genere?
+                    </label>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_indicators_yes" name="gender_indicators" class="trigger-desc custom-control-input" data-group="gi" data-target="#giy" value="1" <?php echo (isset($data->gender_indicators) && $data->gender_indicators ==  1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_indicators_yes">Si</label>
+                    </div>
+
+                    <div class="form-group trigger-desc-wrapper <?php echo ($data->gender_indicators != 1 ? 'd-none' : ''); ?>" id="giy">
+                        <label>Quali indicatori?</label>
+                        <input id="gender_indicators_desc" name="gender_indicators_desc"  class="form-control" value="<?php echo ckv_object($data, 'gender_indicators_desc'); ?>" />
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_indicators_no" name="gender_indicators" class="trigger-desc custom-control-input"  data-group="gi"  value="2" <?php echo (isset($data->gender_indicators) && $data->gender_indicators ==  2 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_indicators_no">No</label>
+                    </div>
+                    <?php showComment($comments, 'gender_indicators'); ?>
+                </div>
+
+            </fieldset>
+
+
+
           <button id="tab-2-nav" class="tab-subnav btn btn-primary btn-lg btn-block" data-step="#step-2" type="button">VAI ALLO STEP 2: VALUTAZIONE</button><br /><br />
         </div>
 
@@ -247,7 +347,7 @@
                   <input type="radio" id="giudizio_sintetico_6" name="giudizio_sintetico" class="custom-control-input" value="6"  <?php echo (isset($data->giudizio_sintetico) && $data->giudizio_sintetico ==  'Concluso e inefficace' ? 'checked' : ''); ?>>
                   <label class="custom-control-label" for="giudizio_sintetico_6">Concluso e inefficace <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è finito ma è ritenuto complessivamente inefficace (es. mancano altri interventi complementari, il progetto è concluso ma non è entrato in funzione, oppure non è funzionale, è obsoleto o comunque non rispondente ai bisogni dell'utenza)."></i></label>
                 </div>
-                  <?php showComment($comments, 'giudizio_sintetico'); ?>
+                <?php showComment($comments, 'giudizio_sintetico'); ?>
 
               </div>
 
