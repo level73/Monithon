@@ -535,9 +535,13 @@ textarea {
     display: none; }
 
 /** Gender Equality Box **/
+#gender-equality-button {
+  margin-bottom: 20px; }
+
 .gender-equality-box {
   padding: 20px;
-  border: 1px solid #ff9f1c; }
+  border: 1px solid #409588;
+  margin-bottom: 20px; }
   .gender-equality-box h3 {
     font-weight: bold;
     text-transform: uppercase; }

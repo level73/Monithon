@@ -18,6 +18,7 @@ var Monithon = {
     this.delRepoElement();
     this.tabSubNav();
     this.subjectMultiply();
+    this.showhide();
     this.triggerDescriptions();
   },
 
@@ -155,7 +156,25 @@ var Monithon = {
       if($(this).is(':checked')){
         $(target).removeClass('d-none');
       }
+    });
+  },
 
+  showhide: function(){
+    $('.showhide').click(function(){
+      var target = $(this).data('target');
+
+      if($(target).hasClass('d-none')){
+        $(target).removeClass('d-none');
+        $(this).text(
+            $(this).text().replace('compila', 'nascondi')
+        );
+      }
+      else{
+        $(target).addClass('d-none');
+        $(this).text(
+            $(this).text().replace('nascondi', 'compila')
+        );
+      }
     });
   },
 

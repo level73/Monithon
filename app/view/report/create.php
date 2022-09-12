@@ -85,7 +85,8 @@
                 </div>
               </div>
           </fieldset>
-              <fieldset class="gender-equality-box">
+            <button class="btn btn-primary showhide" type="button" id="gender-equality-button" data-target=".gender-equality-box">compila la sezione sulla parità di genere</button>
+              <fieldset class="gender-equality-box d-none">
                   <h3>Parità di Genere</h3>
 
                   <div class="form-group">
@@ -93,7 +94,7 @@
 
                       <div class="custom-control custom-radio">
                           <input type="radio" id="gender_objectives_yes_direct" name="gender_objectives" class="trigger-desc check-eval custom-control-input" data-group="go" data-target="#goydd" value="1" <?php echo (isset($data['gender_objectives']) && $data['gender_objectives'] ==  1 ? 'checked' : ''); ?>>
-                          <label class="custom-control-label" for="gender_objectives_yes_direct">Si, diretti</label>
+                          <label class="custom-control-label" for="gender_objectives_yes_direct">Si, diretti: pianificati con l’obiettivo esplicito di intervenire a favore delle donne (es. il progetto ha tra i suoi obiettivi il contrasto alla violenza di genere, la protezione e il sostegno alle vittime di violenza, l’aumento della partecipazione delle donne al mercato del lavoro,  il contrasto alla povertà femminile...)</label>
                       </div>
                       <div class="form-group d-none trigger-desc-wrapper" id="goydd">
                           <label>Aggiungi una descrizione</label>
@@ -102,7 +103,7 @@
 
                       <div class="custom-control custom-radio">
                           <input type="radio" id="gender_objectives_yes_indirect" name="gender_objectives" class="trigger-desc check-eval custom-control-input" data-group="go" data-target="#goyid" value="2" <?php echo (isset($data['gender_objectives']) && $data['gender_objectives'] ==  2 ? 'checked' : ''); ?>>
-                          <label class="custom-control-label" for="gender_objectives_yes_indirect">Si, indiretti</label>
+                          <label class="custom-control-label" for="gender_objectives_yes_indirect">Si, indiretti: potrebbero avere un impatto, anche indiretto, sulla riduzione delle disuguaglianze a sfavore delle donne (es. il progetto prevede rafforzamento servizi mense / asili, rafforzamento trasporto pubblico locale…)</label>
                       </div>
                       <div class="form-group d-none trigger-desc-wrapper" id="goyid">
                         <label>Aggiungi una descrizione</label>
