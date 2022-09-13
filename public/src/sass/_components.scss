@@ -12,6 +12,17 @@
       border-bottom-color: $lagoon;
     }
   }
+
+  &.btn-outline-primary {
+    color: $lagoon;
+    border-color: $lagoon;
+    &:hover, &:active {
+      color: #fff;
+      background-color: $lagoon;
+      border-color: $lagoon;
+    }
+  }
+
 }
 
 /** FORM ELEMENTS **/

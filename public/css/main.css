@@ -59,6 +59,13 @@ table td {
       background: #317167;
       border-color: #317167;
       border-bottom-color: #409588; }
+  .btn.btn-outline-primary {
+    color: #409588;
+    border-color: #409588; }
+    .btn.btn-outline-primary:hover, .btn.btn-outline-primary:active {
+      color: #fff;
+      background-color: #409588;
+      border-color: #409588; }
 
 /** FORM ELEMENTS **/
 .form-control {

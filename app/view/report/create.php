@@ -85,7 +85,7 @@
                 </div>
               </div>
           </fieldset>
-            <button class="btn btn-primary showhide" type="button" id="gender-equality-button" data-target=".gender-equality-box">compila la sezione sulla parità di genere</button>
+            <button class="btn btn-outline-primary btn-lg showhide" type="button" id="gender-equality-button" data-target=".gender-equality-box">compila la sezione sulla parità di genere</button>
               <fieldset class="gender-equality-box d-none">
                   <h3>Parità di Genere</h3>
 
