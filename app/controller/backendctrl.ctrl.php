@@ -216,4 +216,28 @@ class BackendCtrl extends Ctrl
             header('Location: /user/login');
         }
     }
+
+    public function genderdata(){
+        $time = time();
+
+        $AllReports = $this->Backend->reports();
+        $reports = array();
+        $reports[] = array_keys((array)($AllReports[0]));
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="report_export_' . $time . '.csv";');
+
+        $fp = fopen('php://output', 'w+');
+
+        foreach($reports as $report){
+            fputcsv($fp, $report, ',', '"');
+        }
+
+        // Fetch the contents of our CSV
+        $csv_contents = stream_get_contents($fp);
+        // Close our pointer and free up memory and /tmp space
+        fclose($fp);
+
+        // Handle/Output your final sanitised CSV contents
+        echo $csv_contents;
+    }
 }

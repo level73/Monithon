@@ -86,7 +86,16 @@ class Backend extends Model
                     a.username,
                     a.city,
                     a.bio,
-                    ea.`remote_id`,ea.`istituto`,ea.`tipo_istituto`,ea.`comune`,ea.`link_blog`,ea.`link_elaborato`,ea.provincia, ea.shorthand, ea.region 
+                    ar.role, 
+                    ea.`remote_id`,
+                    ea.`istituto`,
+                    ea.`tipo_istituto`,
+                    ea.`comune`,
+                    ea.`link_blog`,
+                    ea.`link_elaborato`,
+                    ea.provincia, 
+                    ea.shorthand, 
+                    ea.region 
                 FROM entity_report_basic AS erb  
                     LEFT JOIN auth AS a ON a.idauth = erb.created_by 
                     LEFT JOIN (
@@ -97,6 +106,7 @@ class Backend extends Model
                         LEFT JOIN lexicon_provincia AS lp ON lp.idprovincia = ea1.provincia 
                         WHERE auth != 349
                     ) AS ea ON ea.auth = a.idauth  
+                    INNER JOIN auth_role AS ar ON ar.idrole = a.role 
                 WHERE erb.status >= 7
                 ORDER BY idreport_basic ASC';
         $stmt = $this->database->prepare($sql);
