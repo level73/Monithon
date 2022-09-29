@@ -24,12 +24,13 @@
         <div class="tab-pane fade show active" id="step-1" role="tabpanel" aria-labelledby="step-1">
           <fieldset>
               <legend>Informazioni di Base</legend>
-              <small>Inserisci la URL per fare apparire MoniTutor!</small>
+              <small class="form-text text-muted">Inserisci la URL per fare apparire MoniTutor</small>
+              <div class="alert alert-danger alert-dismissible"><strong>Attenzione:</strong> Non accedere da più dispositivi contemporaneamente!</div>
               <br /><br /><br />
               <!-- Codice OpenCoesione -->
               <div class="form-group">
-                  <label for="oc_api_code">URL del Progetto su OpenCoesione:</label>
-                  <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Incolla qui l\'indirizzo (URL) della pagina di OpenCoesione dedicata al progetto che hai scelto di monitorare. Lo trovi nella barra degli indirizzi del tuo browser. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/">Che cos'è?</span>
+                  <label for="oc_api_code">URL del progetto monitorato su OpenCoesione/OpenPNRR/Altro:</label>
+                  <!-- <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Incolla qui l\'indirizzo (URL) della pagina di OpenCoesione dedicata al progetto che hai scelto di monitorare. Lo trovi nella barra degli indirizzi del tuo browser. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/">Che cos'è?</span> -->
                   <div class="input-group">
                       <?php if(isset($pfurl)){ ?>
                       <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control pfurl" value="<?php echo $pfurl; ?>">
@@ -41,14 +42,16 @@
                     </div>
                     <input type="hidden" name="api_data" id="oc_data" value="">
                   </div>
+                  <small class="form-text text-muted">Incolla qui l'indirizzo (URL) della pagina di OpenCoesione/OpenCUP/Altro dedicata al singolo progetto che hai scelto di monitorare. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/</small>
                   <div class="d-none" id="oc_api_content_s1">
                     <i class="fal fa-sync fa-spin"></i>
                   </div>
+
               </div>
 
 
               <div class="form-group">
-                <label for="titolo">Titolo del Report:</label>
+                <label for="titolo">Titolo del progetto monitorato:</label>
                 <input type="text" name="titolo" id="titolo" class="form-control" value="<?php echo ckv($data, 'titolo'); ?>">
               </div>
               <div class="form-group">
@@ -56,6 +59,7 @@
                 <input type="text" name="autore" id="autore" class="form-control" value="<?php echo ckv($data, 'autore'); ?>">
               </div>
 
+              <?php /*
               <div class="form-group">
                 <label for="descrizione">Descrizione del progetto monitorato:</label>
                   <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Descrivere brevemente il progetto che avete scelto di monitorare in modo da attrarre l'attenzione del lettore del vostro report. Spiegate in poche frasi perché è importante monitorarlo, i suoi obiettivi e come intende raggiungerli">Cosa devo fare qui?</span>
@@ -65,11 +69,43 @@
                 <label for="parte_di_piano"><?php t('Il progetto fa parte di un piano di interventi più ampio? Se sì, qual è l’obiettivo complessivo di questo piano?'); ?></label>
                 <textarea name="parte_di_piano" id="parte_di_piano" class="form-control"><?php echo ckv($data, 'parte_di_piano'); ?></textarea>
               </div>
+              */ ?>
+
+              <div class="form-group">
+                  <label for="obiettivi">Obiettivi del progetto monitorato:</label>
+                  <textarea name="obiettivi" id="obiettivi" class="form-control"><?php echo ckv($data, 'obiettivi'); ?></textarea>
+                  <small class="form-text text-muted">Descrivi brevemente il progetto monitorato. Perché è importante? Quali sono i suoi obiettivi principali? Vedi qui i nostri <a href="https://www.monithon.eu/blog/2021/07/01/come-inviare-il-report-di-monitoraggio-tutti-i-nostri-suggerimenti/" target="_blank">consigli per la scrittura</a>.</small>
+              </div>
+
+              <div class="form-group">
+                  <label for="attivita">Attività previste dal progetto monitorato :</label>
+                  <textarea name="attivita" id="attivita" class="form-control"><?php echo ckv($data, 'attivita'); ?></textarea>
+                  <small class="form-text text-muted">Quali sono le specifiche attività previste e quali tempi sono previsti?</small>
+              </div>
+
+              <div class="form-group">
+                  <label for="origine">Origine del progetto monitorato:</label>
+                  <textarea name="origine" id="origine" class="form-control"><?php echo ckv($data, 'origine'); ?></textarea>
+                  <small class="form-text text-muted">Quali decisioni pubbliche e procedure amministrative hanno dato origine al progetto (es. quale bando pubblico)? Quali soggetti sono stati coinvolti nelle decisioni e in che modo (es. organizzazione evento ad hoc, consultazione pubblica online)? Alcune tipologie di persone rimangono escluse?</small>
+              </div>
+
+              <div class="form-group">
+                  <label for="soggetti_beneficiari">Soggetti beneficiari del progetto monitorato:</label>
+                  <textarea name="soggetti_beneficiari" id="soggetti_beneficiari" class="form-control"><?php echo ckv($data, 'soggetti_beneficiari'); ?></textarea>
+                  <small class="form-text text-muted">Quali soggetti possono trarre un vantaggio dagli esiti del progetto o subirne le conseguenze? Es. cittadinanza in generale, utenti di un servizio, gruppi di persone (donne, giovani, migranti). Alcune tipologie di persone rimangono escluse?</small>
+              </div>
+
+              <div class="form-group">
+                  <label for="contesto">Il contesto in cui opera il progetto monitorato:</label>
+                  <textarea name="contesto" id="contesto" class="form-control"><?php echo ckv($data, 'contesto'); ?></textarea>
+                  <small class="form-text text-muted">Descrivi brevemente i bisogni del territorio in cui agisce il progetto e che giustificano il suo finanziamento. Menziona eventuali altri progetti simili o complementari, citando, se presenti, piani o strategie pubbliche locali di cui il progetto fa parte (es. Piano Urbano della Mobilità Sostenibile, Strategia per le Aree Interne, etc.)</small>
+              </div>
 
               <!-- Mappa -->
               <div class="form-group">
-                <label for="indirizzo">Luogo di riferimento del progetto: </label>
-                <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Abbiamo bisogno delle coordinate di Latitudine e Longitudine del progetto monitorato! Inserendo l'indirizzo più vicino al luogo del monitoraggio e cliccando sul pulsante con la lente d'ingrandimento, la mappa vi si centerà e collocherà un marker in quel luogo. Se necessario, è possibile trascinare il marker sulla mappa per essere ancora più precisi nel posizionamento del marker (e quindi del tracciamento delle coordinate!).">Cosa devo fare qui?</span>
+                <label for="indirizzo">Luogo di riferimento del progetto monitorato:</label>
+                  <small class="form-text text-muted">Ingrandisci la mappa per trovare con precisione il luogo in cui si svolge il progetto. Clicca sulla mappa per posizionare il marker (freccetta) e spostalo se necessario.</small>
+                  <br />
                 <div class="input-group">
                   <input type="text" name="indirizzo" id="indirizzo" placeholder="Indirizzo..." class="form-control" value="<?php echo ckv($data, 'indirizzo'); ?>">
                   <input type="text" name="cap" id="cap" placeholder="CAP..." class="form-control"  value="<?php echo ckv($data, 'cap'); ?>">

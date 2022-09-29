@@ -30,23 +30,26 @@
           <!-- Codice OpenCoesione -->
           <fieldset>
             <legend>Informazioni di Base</legend>
-
+              <small class="form-text text-muted">Inserisci la URL per fare apparire MoniTutor</small>
+              <div class="alert alert-danger alert-dismissible"><strong>Attenzione:</strong> Non accedere da più dispositivi contemporaneamente!</div>
+              <br /><br /><br />
             <div class="form-group">
-                <label for="oc_api_code">URL del Progetto su OpenCoesione:</label>
-                <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Incolla qui l\'indirizzo (URL) della pagina di OpenCoesione dedicata al progetto che hai scelto di monitorare. Lo trovi nella barra degli indirizzi del tuo browser. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/">Che cos'è?</span>
+                <label for="oc_api_code">URL del progetto monitorato su OpenCoesione/OpenPNRR/Altro:</label>
                 <div class="input-group">
                   <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="URL del progetto..." class="form-control" value="<?php echo ckv_object($data, 'id_open_coesione'); ?>">
                   <div class="input-group-append">
                     <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
                   </div>
                 </div>
+                <small class="form-text text-muted">Incolla qui l'indirizzo (URL) della pagina di OpenCoesione/OpenCUP/Altro dedicata al singolo progetto che hai scelto di monitorare. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/</small>
+
             </div>
 
 
 
 
               <div class="form-group">
-                <label for="titolo">Titolo:</label>
+                <label for="titolo">Titolo del progetto monitorato:</label>
                 <div class="input-group">
                   <input type="text" name="titolo" id="titolo" class="form-control" value="<?php echo ckv_object($data, 'titolo'); ?>">
                   <div class="input-group-append">
@@ -66,6 +69,9 @@
                   <?php showComment($comments, 'autore'); ?>
               </div>
 
+
+
+              <?php /*
               <div class="form-group">
                 <label for="descrizione">Descrizione del progetto monitorato:</label>
                   <div class="input-group">
@@ -88,13 +94,82 @@
                   </div>
                   <?php showComment($comments, 'parte_di_piano'); ?>
               </div>
+            */ ?>
+
+              <div class="form-group">
+                  <label for="obiettivi">Obiettivi del progetto monitorato:</label>
+                  <div class="input-group">
+                    <textarea name="obiettivi" id="obiettivi" class="form-control"><?php echo ckv_object($data, 'obiettivi'); ?></textarea>
+                      <div class="input-group-append">
+                          <button class="btn btn-primary comment" data-field="obiettivi" id="comment[obiettivi]" type="button"><i class="fal fa-comment"></i></button>
+                      </div>
+                  </div>
+                  <small class="form-text text-muted">Descrivi brevemente il progetto monitorato. Perché è importante? Quali sono i suoi obiettivi principali? Vedi qui i nostri <a href="https://www.monithon.eu/blog/2021/07/01/come-inviare-il-report-di-monitoraggio-tutti-i-nostri-suggerimenti/" target="_blank">consigli per la scrittura</a>.</small>
+                      <?php showComment($comments, 'obiettivi'); ?>
+              </div>
+
+              <div class="form-group">
+
+                  <label for="attivita">Attività previste dal progetto monitorato :</label>
+                  <div class="input-group">
+                  <textarea name="attivita" id="attivita" class="form-control"><?php echo ckv_object($data, 'attivita'); ?></textarea>
+
+                  <div class="input-group-append">
+                      <button class="btn btn-primary comment" data-field="attivita" id="comment[attivita]" type="button"><i class="fal fa-comment"></i></button>
+                  </div>
+              </div>
+                  <small class="form-text text-muted">Quali sono le specifiche attività previste e quali tempi sono previsti?</small>
+                  <?php showComment($comments, 'attivita'); ?>
+              </div>
+
+              <div class="form-group">
+                  <label for="origine">Origine del progetto monitorato:</label>
+                  <div class="input-group">
+                  <textarea name="origine" id="origine" class="form-control"><?php echo ckv_object($data, 'origine'); ?></textarea>
+
+                  <div class="input-group-append">
+                      <button class="btn btn-primary comment" data-field="origine" id="comment[origine]" type="button"><i class="fal fa-comment"></i></button>
+                  </div>
+              </div>
+                  <small class="form-text text-muted">Quali decisioni pubbliche e procedure amministrative hanno dato origine al progetto (es. quale bando pubblico)? Quali soggetti sono stati coinvolti nelle decisioni e in che modo (es. organizzazione evento ad hoc, consultazione pubblica online)? Alcune tipologie di persone rimangono escluse?</small>
+                  <?php showComment($comments, 'origine'); ?>
+              </div>
+
+              <div class="form-group">
+                  <label for="soggetti_beneficiari">Soggetti beneficiari del progetto monitorato:</label>
+                  <div class="input-group">
+                  <textarea name="soggetti_beneficiari" id="soggetti_beneficiari" class="form-control"><?php echo ckv_object($data, 'soggetti_beneficiari'); ?></textarea>
+                      <div class="input-group-append">
+                          <button class="btn btn-primary comment" data-field="soggetti_beneficiari" id="comment[soggetti_beneficiari]" type="button"><i class="fal fa-comment"></i></button>
+                      </div>
+                  </div>
+                  <small class="form-text text-muted">Quali soggetti possono trarre un vantaggio dagli esiti del progetto o subirne le conseguenze? Es. cittadinanza in generale, utenti di un servizio, gruppi di persone (donne, giovani, migranti). Alcune tipologie di persone rimangono escluse?</small>
+
+                  <?php showComment($comments, 'soggetti_beneficiari'); ?>
+              </div>
+
+              <div class="form-group">
+                  <label for="contesto">Il contesto in cui opera il progetto monitorato:</label>
+                  <div class="input-group">
+                  <textarea name="contesto" id="contesto" class="form-control"><?php echo ckv_object($data, 'contesto'); ?></textarea>
+                      <div class="input-group-append">
+                          <button class="btn btn-primary comment" data-field="contesto" id="comment[contesto]" type="button"><i class="fal fa-comment"></i></button>
+                      </div>
+                  </div>
+                  <small class="form-text text-muted">Descrivi brevemente i bisogni del territorio in cui agisce il progetto e che giustificano il suo finanziamento. Menziona eventuali altri progetti simili o complementari, citando, se presenti, piani o strategie pubbliche locali di cui il progetto fa parte (es. Piano Urbano della Mobilità Sostenibile, Strategia per le Aree Interne, etc.)</small>
+
+                  <?php showComment($comments, 'contesto'); ?>
+              </div>
+
+
 
 
 
               <!-- Mappa -->
               <div class="form-group">
-                <label for="indirizzo">Luogo di riferimento del progetto: </label>
-                <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Abbiamo bisogno delle coordinate di Latitudine e Longitudine del progetto monitorato! Inserendo l'indirizzo più vicino al luogo del monitoraggio e cliccando sul pulsante con la lente d'ingrandimento, la mappa vi si centerà e collocherà un marker in quel luogo. Se necessario, è possibile trascinare il marker sulla mappa per essere ancora più precisi nel posizionamento del marker (e quindi del tracciamento delle coordinate!).">Cosa devo fare qui?</span>
+                <label for="indirizzo">Luogo di riferimento del progetto monitorato: </label>
+                  <small class="form-text text-muted">Ingrandisci la mappa per trovare con precisione il luogo in cui si svolge il progetto. Clicca sulla mappa per posizionare il marker (freccetta) e spostalo se necessario.</small>
+                  <br />
                 <div class="input-group">
                   <input type="text" name="indirizzo" id="indirizzo" placeholder="Indirizzo..." class="form-control" value="<?php echo ckv_object($data, 'indirizzo'); ?>">
                   <input type="text" name="cap" id="cap" placeholder="CAP..." class="form-control"  value="<?php echo ckv_object($data, 'cap'); ?>">
