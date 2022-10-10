@@ -139,7 +139,25 @@
               </div>
 
             </fieldset>
+            <fieldset>
+                <div class="alert alert-primary">
+                    <h3 class="alert-heading">Parità di Genere</h3>
+                    <hr />
+                    <p>Nel progetto si parla di <strong>parità di genere</strong>?</p>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="is_gender_topic_yes" name="is_gender_topic" class="check-eval custom-control-input gender_equality_trigger" data-target=".gender-equality-box" value="1" <?php echo (isset($data['is_gender_topic']) && $data['is_gender_topic'] ==  1 ? 'checked' : ''); ?>>
+                            <label class="custom-control-label" for="is_gender_topic_yes">SI</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="is_gender_topic_no" name="is_gender_topic" class="check-eval custom-control-input gender_equality_trigger" data-target=".gender-equality-box" value="0" <?php echo (isset($data['is_gender_topic']) && $data['is_gender_topic'] ==  0 ? 'checked' : ''); ?>>
+                            <label class="custom-control-label" for="is_gender_topic_no">NO</label>
+                        </div>
+                    </div>
+                </div>
 
+
+            </fieldset>
 
             <fieldset class="gender-equality-box">
                 <h3>Parità di Genere</h3>

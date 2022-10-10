@@ -20,6 +20,7 @@ var Monithon = {
     this.subjectMultiply();
     this.showhide();
     this.triggerDescriptions();
+    this.radioDisplayTrigger('.gender_equality_trigger');
   },
 
   selects: function(){
@@ -177,6 +178,27 @@ var Monithon = {
       }
     });
   },
+
+  radioDisplayTrigger: function(triggerClass){
+    console.log('HI');
+
+/*    $(triggerClass).each(function(){
+      var target = $(this).data('target');
+      if($(this).is(':checked') && $(this).val() == 1){
+        $(target).removeClass('d-none');
+      }
+    }); */
+
+    $(triggerClass).change(function(){
+      console.log('HI');
+      var target = $(this).data('target');
+      $(target).addClass('d-none');
+      if($(this).is(':checked') && $(this).val() == 1){
+        $(target).removeClass('d-none');
+      }
+    });
+  },
+
 
   delRepoElement: function(){
     $('.ajx-delete-repo').click(function(e){
