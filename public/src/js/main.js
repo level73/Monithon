@@ -21,6 +21,11 @@ var Monithon = {
     this.showhide();
     this.triggerDescriptions();
     this.radioDisplayTrigger('.gender_equality_trigger');
+    this.giudizioSintetico();
+    this.triggerProblems();
+    this.extraQuestionario();
+
+
   },
 
   selects: function(){
@@ -180,17 +185,7 @@ var Monithon = {
   },
 
   radioDisplayTrigger: function(triggerClass){
-    console.log('HI');
-
-/*    $(triggerClass).each(function(){
-      var target = $(this).data('target');
-      if($(this).is(':checked') && $(this).val() == 1){
-        $(target).removeClass('d-none');
-      }
-    }); */
-
     $(triggerClass).change(function(){
-      console.log('HI');
       var target = $(this).data('target');
       $(target).addClass('d-none');
       if($(this).is(':checked') && $(this).val() == 1){
@@ -272,8 +267,80 @@ var Monithon = {
       });
 
     });
-  }
+  },
 
+  giudizioSintetico: function(){
+    // Get Cur Status of Stato di Avanzamento
+
+    var labels_opt_1 = {
+      'giudizio_sintetico_1': "Potenzialmente efficace <small>Il progetto sembra utile e complessivamente ben progettato, anche se potenziali rischi possono essere individuati</small>",
+      'giudizio_sintetico_2': "Potenzialmente efficace ma con rischi sostanziali <small>Il progetto sembra utile, anche se ci sono debolezze o rischi importanti che ne possono pregiudicare l’efficacia</small>",
+      'giudizio_sintetico_3': "Inutile o dannoso <small>Non andava finanziato: non serve o può avere conseguenze negative, oppure la progettazione è largamente insufficiente per raggiungere gli obiettivi</small>",
+      'giudizio_sintetico_4': "Non è stato possibile valutare <small>Le informazioni disponibili non sono sufficienti; i soggetti coinvolti non ci hanno risposto</small>"
+    };
+    var labels_opt_2 = {
+      'giudizio_sintetico_1': "Potenzialmente efficace <small>Il progetto sembra utile e il suo sviluppo incoraggiante, anche se potenziali rischi possono essere individuati</small>",
+      'giudizio_sintetico_2': "Potenzialmente efficace ma con problemi <small>Il progetto sembra complessivamente utile ma ci sono debolezze o rischi importanti che ne possono pregiudicare l’efficacia, non legati a ritardi o problemi realizzativi</small>",
+      'giudizio_sintetico_3': "Intervento inutile o dannoso <small>Non andava finanziato: non serve o può avere conseguenze negative, oppure la realizzazione presenta problemi che rendono impossibile raggiungere gli obiettivi</small>",
+      'giudizio_sintetico_4': "Non è stato possibile valutare <small>Le informazioni disponibili non sono sufficienti; i soggetti coinvolti non ci hanno risposto</small>"
+    };
+    var labels_opt_3 = {
+      'giudizio_sintetico_1': "Intervento efficace <small>Gli aspetti positivi prevalgono ed è giudicato complessivamente efficace dal punto di vista dell'utente finale</small>",
+      'giudizio_sintetico_2': "Intervento utile ma presenta problemi <small>Ha avuto alcuni risultati positivi ed è tutto sommato utile, anche se presenta aspetti negativi significativi</small>",
+      'giudizio_sintetico_3': "Intervento inefficace o dannoso <small>Era meglio non finanziarlo perché non ha provocato alcun effetto o ha provocato effetti negativi</small>",
+      'giudizio_sintetico_4': "Non è stato possibile valutare <small>Es. il progetto non ha ancora prodotto risultati valutabili</small>"
+    };
+
+    $('input[name="stato_di_avanzamento"]').on('change', function(){
+      var sda = $('input[name="stato_di_avanzamento"]:checked').val();
+      if (sda < 3){
+        var labels = labels_opt_1;
+      }
+      else if(sda > 2 && sda < 6){
+        var labels = labels_opt_2;
+      }
+      else {
+        var labels = labels_opt_3;
+      }
+      $('.gsl').each(function(){
+        var theForProp = $(this).attr('for');
+        var theLabel = labels[theForProp];
+        $(this).html(theLabel);
+      });
+    });
+  },
+
+  triggerProblems: function(){
+    var triggerFlag = false;
+    var Problems = $('#problems_found');
+    $('.checkforproblems').each(function(){
+      if($(this).is(':checked')){
+        triggerFlag = true;
+      }
+    });
+
+    if(triggerFlag === true){
+      Problems.removeClass('d-none');
+    }
+    else {
+      Problems.addClass('d-none');
+    }
+
+    $('input[name="gs"], input[name="stato_di_avanzamento"]').change( function(){
+      Monithon.triggerProblems();
+    });
+  },
+
+  extraQuestionario: function(){
+    $('input#questionario_altri, input#questionario_utenti').change(function(){
+      if($('input#questionario_altri').is(':checked') || $('input#questionario_utenti').is(':checked') ){
+        $('.qe_w').removeClass(('d-none'));
+      }
+      else {
+        $('.qe_w').addClass(('d-none'));
+      }
+    });
+  }
 };
 
 $(document).ready(function(){

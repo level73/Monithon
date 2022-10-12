@@ -327,6 +327,23 @@ textarea {
     text-transform: uppercase;
     font-weight: 900; }
 
+#connection-relationships-table td, #connection-relationships-table th {
+  max-width: 10%; }
+#connection-relationships-table th {
+  text-align: left;
+  font-weight: normal;
+  font-size: 14px; }
+#connection-relationships-table .connection-rel-namecell {
+  vertical-align: center;
+  min-width: 120px; }
+
+/** Form Overrides **/
+.form-group {
+  margin-bottom: 2.2rem;
+  margin-top: 1rem; }
+  .form-group > label {
+    font-weight: 600; }
+
 #main-header {
   background: #409588; }
   #main-header .nav-link {

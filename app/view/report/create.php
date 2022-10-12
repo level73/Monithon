@@ -30,6 +30,8 @@
               <!-- Codice OpenCoesione -->
               <div class="form-group">
                   <label for="oc_api_code">URL del progetto monitorato su OpenCoesione/OpenPNRR/Altro:</label>
+                  <small class="form-text text-muted">Incolla qui l'indirizzo (URL) della pagina di OpenCoesione/OpenCUP/Altro dedicata al singolo progetto che hai scelto di monitorare. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/</small>
+
                   <!-- <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Incolla qui l\'indirizzo (URL) della pagina di OpenCoesione dedicata al progetto che hai scelto di monitorare. Lo trovi nella barra degli indirizzi del tuo browser. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/">Che cos'è?</span> -->
                   <div class="input-group">
                       <?php if(isset($pfurl)){ ?>
@@ -42,7 +44,6 @@
                     </div>
                     <input type="hidden" name="api_data" id="oc_data" value="">
                   </div>
-                  <small class="form-text text-muted">Incolla qui l'indirizzo (URL) della pagina di OpenCoesione/OpenCUP/Altro dedicata al singolo progetto che hai scelto di monitorare. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/</small>
                   <div class="d-none" id="oc_api_content_s1">
                     <i class="fal fa-sync fa-spin"></i>
                   </div>
@@ -73,32 +74,38 @@
 
               <div class="form-group">
                   <label for="obiettivi">Obiettivi del progetto monitorato:</label>
-                  <textarea name="obiettivi" id="obiettivi" class="form-control"><?php echo ckv($data, 'obiettivi'); ?></textarea>
                   <small class="form-text text-muted">Descrivi brevemente il progetto monitorato. Perché è importante? Quali sono i suoi obiettivi principali? Vedi qui i nostri <a href="https://www.monithon.eu/blog/2021/07/01/come-inviare-il-report-di-monitoraggio-tutti-i-nostri-suggerimenti/" target="_blank">consigli per la scrittura</a>.</small>
+                  <textarea name="obiettivi" id="obiettivi" class="form-control"><?php echo ckv($data, 'obiettivi'); ?></textarea>
+
               </div>
 
               <div class="form-group">
                   <label for="attivita">Attività previste dal progetto monitorato :</label>
-                  <textarea name="attivita" id="attivita" class="form-control"><?php echo ckv($data, 'attivita'); ?></textarea>
                   <small class="form-text text-muted">Quali sono le specifiche attività previste e quali tempi sono previsti?</small>
+                  <textarea name="attivita" id="attivita" class="form-control"><?php echo ckv($data, 'attivita'); ?></textarea>
+
               </div>
 
               <div class="form-group">
                   <label for="origine">Origine del progetto monitorato:</label>
-                  <textarea name="origine" id="origine" class="form-control"><?php echo ckv($data, 'origine'); ?></textarea>
                   <small class="form-text text-muted">Quali decisioni pubbliche e procedure amministrative hanno dato origine al progetto (es. quale bando pubblico)? Quali soggetti sono stati coinvolti nelle decisioni e in che modo (es. organizzazione evento ad hoc, consultazione pubblica online)? Alcune tipologie di persone rimangono escluse?</small>
+                  <textarea name="origine" id="origine" class="form-control"><?php echo ckv($data, 'origine'); ?></textarea>
+
               </div>
 
               <div class="form-group">
                   <label for="soggetti_beneficiari">Soggetti beneficiari del progetto monitorato:</label>
-                  <textarea name="soggetti_beneficiari" id="soggetti_beneficiari" class="form-control"><?php echo ckv($data, 'soggetti_beneficiari'); ?></textarea>
                   <small class="form-text text-muted">Quali soggetti possono trarre un vantaggio dagli esiti del progetto o subirne le conseguenze? Es. cittadinanza in generale, utenti di un servizio, gruppi di persone (donne, giovani, migranti). Alcune tipologie di persone rimangono escluse?</small>
+                  <textarea name="soggetti_beneficiari" id="soggetti_beneficiari" class="form-control"><?php echo ckv($data, 'soggetti_beneficiari'); ?></textarea>
+
               </div>
 
               <div class="form-group">
                   <label for="contesto">Il contesto in cui opera il progetto monitorato:</label>
-                  <textarea name="contesto" id="contesto" class="form-control"><?php echo ckv($data, 'contesto'); ?></textarea>
+
                   <small class="form-text text-muted">Descrivi brevemente i bisogni del territorio in cui agisce il progetto e che giustificano il suo finanziamento. Menziona eventuali altri progetti simili o complementari, citando, se presenti, piani o strategie pubbliche locali di cui il progetto fa parte (es. Piano Urbano della Mobilità Sostenibile, Strategia per le Aree Interne, etc.)</small>
+                  <textarea name="contesto" id="contesto" class="form-control"><?php echo ckv($data, 'contesto'); ?></textarea>
+
               </div>
 
               <!-- Mappa -->
@@ -122,10 +129,10 @@
               </div>
           </fieldset>
             <fieldset>
-                <div class="alert alert-primary">
+                <div class="alert alert-success">
                     <h3 class="alert-heading">Parità di Genere</h3>
                     <hr />
-                    <p>Nel progetto si parla di <strong>parità di genere</strong>?</p>
+                    <p>Nel progetto è coinvolta direttamente o indirettamente la parità di genere?</p>
                     <div class="form-group">
                         <div class="custom-control custom-radio">
                             <input type="radio" id="is_gender_topic_yes" name="is_gender_topic" class="check-eval custom-control-input gender_equality_trigger" data-target=".gender-equality-box" value="1" <?php echo (isset($data['is_gender_topic']) && $data['is_gender_topic'] ==  1 ? 'checked' : ''); ?>>
@@ -234,17 +241,144 @@
 
           <fieldset>
             <legend>Valutazione</legend>
+
+
+              <div class="form-group">
+                  <label>Stato di avanzamento del progetto monitorato:</label>
+                  <small class="form-text text-muted">Indipendentemente dalle tempistiche dichiarate, qual è il reale avanzamento del progetto monitorato?</small>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sda_1" name="stato_di_avanzamento" class="check-eval custom-control-input" value="1"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sda_1">Appena avviato <small>Il progetto è stato appena selezionato o è nelle fasi preliminari di realizzazione (es. progettazione preliminare)</small></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sda_2" name="stato_di_avanzamento" class="check-eval custom-control-input checkforproblems" value="2"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 2 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sda_2">Mai partito <small>Il progetto è stato selezionato da almeno un anno ma non è mai stato avviato e risulta quindi bloccato all’avvio</small></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sda_3" name="stato_di_avanzamento" class="check-eval custom-control-input" value="3"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 3 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sda_3">In corso senza particolari intoppi <small>Il progetto è in corso di realizzazione (es. il cantiere è aperto) e segue le tappe prefissate; i ritardi sono limitati</small></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sda_4" name="stato_di_avanzamento" class="check-eval custom-control-input checkforproblems" value="4"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 4 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sda_4">In corso con problemi di realizzazione <small>Il progetto è in corso di realizzazione ma presenta problemi sostanziali (amministrativi, tecnici, etc.) oppure ritardi significativi</small></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sda_5" name="stato_di_avanzamento" class="check-eval custom-control-input checkforproblems" value="5"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 5 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sda_5">Bloccato <small>Il progetto è fermo da almeno un anno per problemi in fase di realizzazione</small></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sda_6" name="stato_di_avanzamento" class="check-eval custom-control-input" value="6"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 6 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sda_6">Concluso <small>Tutte le attività sono state completate</small></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sda_7" name="stato_di_avanzamento" class="check-eval custom-control-input" value="7"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 7 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sda_7">Non è stato possibile verificare l’avanzamento <small>Le informazioni disponibili non sono sufficienti</small></label>
+                  </div>
+
+
+              </div>
+
+              <div class="form-group d-none" id="sda_infrastrutturale">
+                  <input type="hidden" name="cup_descr_natura" id="cup_descr_natura" value="">
+                  <label>Stato di avanzamento del progetto infrastrutturale:</label>
+
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sdai_1" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="1"  <?php echo (isset($data['stato_di_avanzamento_infrastrutturale']) && $data['stato_di_avanzamento_infrastrutturale'] == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sdai_1">Non avviato</label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sdai_2" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="2"  <?php echo (isset($data['stato_di_avanzamento_infrastrutturale']) && $data['stato_di_avanzamento_infrastrutturale'] == 2 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sdai_2">In avvio di progettazione <small>Studio di fattibilità</small></label>
+                  </div>
+
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sdai_3" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="3"  <?php echo (isset($data['stato_di_avanzamento_infrastrutturale']) && $data['stato_di_avanzamento_infrastrutturale'] == 3 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sdai_3">In corso di progettazione <small>Progettazione esecutiva</small></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sdai_4" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="4"  <?php echo (isset($data['stato_di_avanzamento_infrastrutturale']) && $data['stato_di_avanzamento_infrastrutturale'] == 4 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sdai_4">In affidamento <small>Affidamento gara in corso</small></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sdai_5" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="5"  <?php echo (isset($data['stato_di_avanzamento_infrastrutturale']) && $data['stato_di_avanzamento_infrastrutturale'] == 5 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sdai_5">In esecuzione <small>Lavori iniziati</small></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="sdai_6" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="6"  <?php echo (isset($data['stato_di_avanzamento_infrastrutturale']) && $data['stato_di_avanzamento_infrastrutturale'] == 6 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="sdai_6">Eseguito <small>Conclusa la fase di esecuzione</small></label>
+                  </div>
+              </div>
+
             <div class="form-group">
-              <label for="avanzamento">Stato di avanzamento del progetto monitorato sulla base delle informazioni raccolte:</label>
+              <label for="avanzamento">Descrizione dello stato di avanzamento del progetto monitorato:</label>
+                <small clasS="form-text text-muted">Descrivi lo stato del progetto sulla base delle informazioni raccolte, specificando la fonte delle informazioni (es. quali documenti, quali interviste, visita di monitoraggio).</small>
               <textarea name="avanzamento" id="avanzamento" class="form-control"><?php echo ckv($data, 'avanzamento'); ?></textarea>
             </div>
 
 
+              <!-- Giudizio Sintetico -->
+              <div class="form-group">
+                  <label for="gs">Giudizio sintetico sul progetto monitorato: </label>
+                  <small class="form-text form-muted">Sulla base delle risposte precedenti, come giudichi l’efficacia del progetto monitorato?</small>
+
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="giudizio_sintetico_1" name="gs" class="custom-control-input" value="1"  <?php echo (isset($data['gs']) && $data['gs'] == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label gsl" for="giudizio_sintetico_1"></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="giudizio_sintetico_2" name="gs" class="custom-control-input checkforproblems" value="2"  <?php echo (isset($data['gs']) && $data['gs'] == 2 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label gsl" for="giudizio_sintetico_2"></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="giudizio_sintetico_3" name="gs" class="custom-control-input checkforproblems" value="3"  <?php echo (isset($data['gs']) && $data['gs'] == 3 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label gsl" for="giudizio_sintetico_3"></label>
+                  </div>
+                  <div class="custom-control custom-radio">
+                      <input type="radio" id="giudizio_sintetico_4" name="gs" class="custom-control-input" value="4"  <?php echo (isset($data['gs']) && $data['gs'] == 4 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label gsl" for="giudizio_sintetico_4"></label>
+                  </div>
+
+              </div>
+
+              <!-- EOF Giudizio Sintetico -->
+
             <div class="form-group">
-              <label for="risultato_progetto">Risultato del progetto monitorato (se il progetto è concluso, quali risultati ha avuto?):</label>
+              <label for="risultato_progetto">Risultato del progetto monitorato:</label>
+                <small class="text-muted form-text">Descrivi più in dettaglio i risultati ottenuti del progetto. Concentrati in particolare sull’utilità ed efficacia dei risultati, dal tuo punto di vista. Se il progetto è ancora in corso, prova a descrivere, se possibile, i suoi risultati parziali. Cita sempre le fonti delle tue affermazioni (es. documenti, visita di monitoragggio, interviste, etc.)</small>
               <textarea name="risultato_progetto" id="risultato_progetto" class="form-control"><?php echo ckv($data, 'risultato_progetto'); ?></textarea>
             </div>
 
+
+              <div class="form-group" id="problems_found">
+                  <label for="valutazione_risultati"><?php t('Quali sono i problemi che hai rilevato?'); ?></label>
+                  <div class="custom-control custom-checkbox">
+                      <input type="checkbox" id="problema_rilevato_1" name="problema_rilevato_1" class="check-eval custom-control-input" value="1"  <?php echo (isset($data['problema_rilevato_1']) && $data['problema_rilevato_1'] == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="problema_rilevato_1">Realizzazione ha mostrato problemi di natura amministrativa</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input type="checkbox" id="problema_rilevato_2" name="problema_rilevato_2" class="check-eval custom-control-input" value="1"  <?php echo (isset($data['problema_rilevato_2']) && $data['problema_rilevato_2'] == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="problema_rilevato_2">Realizzazione ha mostrato problemi di natura tecnica</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input type="checkbox" id="problema_rilevato_3" name="problema_rilevato_3" class="check-eval custom-control-input" value="1"  <?php echo (isset($data['problema_rilevato_3']) && $data['problema_rilevato_3'] == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="problema_rilevato_3">Il risultato del progetto non è soddisfacente</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input type="checkbox" id="problema_rilevato_4" name="problema_rilevato_4" class="check-eval custom-control-input" value="1"  <?php echo (isset($data['problema_rilevato_4']) && $data['problema_rilevato_4'] == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="problema_rilevato_4">Intervento complessivamente ben realizzato ma non rispondente ai bisogni degli utenti finali (non efficace)</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input type="checkbox" id="problema_rilevato_5" name="problema_rilevato_5" class="check-eval custom-control-input" value="1"  <?php echo (isset($data['problema_rilevato_5']) && $data['problema_rilevato_5'] == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="problema_rilevato_5">Intervento utile ma non sufficiente per rispondere al fabbisogno (“ne serve di più”, es. più investimenti nello stesso progetto o in progetti simili)</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input type="checkbox" id="problema_rilevato_6" name="problema_rilevato_6" class="check-eval custom-control-input" value="1"  <?php echo (isset($data['problema_rilevato_6']) && $data['problema_rilevato_6'] == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="problema_rilevato_6">Intervento di per sé utile ma sono necessari altri interventi complementari</label>
+                  </div>
+              </div>
+
+            <?php /** REMOVED
+                    11/10/2022 - Big Overhaul of Stuff
             <div class="form-group">
               <label for="valutazione_risultati"><?php t('Se il progetto è concluso o sei stato comunque in grado di valutare alcuni dei suoi risultati qual è il tuo giudizio sull’efficacia del progetto che hai monitorato?'); ?></label>
               <div class="custom-control custom-radio">
@@ -272,15 +406,19 @@
                 <label class="custom-control-label" for="valutazione_risultati_5">Non è stato possibile valutare l’efficacia dell’intervento - Es. il progetto non ha ancora prodotto risultati valutabili </label>
               </div>
             </div>
-
+*/ ?>
             <div class="form-group">
-              <label for="punti_di_forza">Punti di forza (cosa ti è piaciuto del progetto monitorato?):</label>
+              <label for="punti_di_forza">Punti di forza del progetto monitorato:</label>
+                <small class="text-muted form-text">Cosa ti è piaciuto della progettazione/attuazione/realizzazione del progetto che hai monitorato? Quali aspetti puoi valutare come positivi?</small>
               <textarea name="punti_di_forza" id="punti_di_forza" class="form-control"><?php echo ckv($data, 'punti_di_forza'); ?></textarea>
             </div>
 
 
             <div class="form-group">
-              <label for="punti_deboli">Debolezze (difficoltà riscontrate nell'attuazione/realizzazione del progetto monitorato?):</label>
+              <label for="punti_deboli">Punti di debolezza del progetto monitorato:</label>
+                <small class="text-muted form-text">Cosa non ti è piaciuto della progettazione/attuazione/realizzazione del progetto monitorato? Quali aspetti puoi valutare come negativi?<br />
+                    NB: Occorre specificare gli aspetti negativi del progetto monitorato, non della ricerca di monitoraggio civico. Se hai avuto problemi a fare le interviste o a trovare informazioni, puoi utilizzare le domande della sessione successiva “Metodi di indagine”.
+                </small>
               <textarea name="punti_deboli" id="punti_deboli" class="form-control"><?php echo ckv($data, 'punti_deboli'); ?></textarea>
             </div>
 
@@ -321,48 +459,18 @@
 
             <div class="form-group">
               <label for="rischi">Rischi futuri per il progetto monitorato:</label>
+                <small class="form-text text-muted">Cosa potrebbe mettere in pericolo l’efficacia del progetto monitorato? Quali aspetti potrebbero rivelarsi problematici, dato il contesto in cui il progetto opera?</small>
               <textarea name="rischi" id="rischi" class="form-control"><?php echo ckv($data, 'rischi'); ?></textarea>
             </div>
 
 
             <div class="form-group">
               <label for="soluzioni_progetto">Soluzioni ed idee da proporre per il progetto monitorato:</label>
+                <small class="text-muted form-text">Quali azioni o condizioni potrebbero aumentare l’efficacia del progetto monitorato, inclusi eventuali progetti/opere/servizi/interventi di varia natura complementari che sarebbe necessario implementare per un adeguato perseguimento degli obiettivi finali del progetto? Questi suggerimenti sono importanti per comunicare ai decisori pubblici come il progetto può essere reso più efficace.</small>
               <textarea name="soluzioni_progetto" id="soluzioni_progetto" class="form-control"><?php echo ckv($data, 'soluzioni_progetto'); ?></textarea>
             </div>
 
-            <!-- Giudizio Sintetico -->
-            <div class="form-group">
-              <label for="giudizio_sintetico">Giudizio Sintetico sul Progetto monitorato: </label>
-              <div class="custom-control custom-radio">
-                <input type="radio" id="giudizio_sintetico_1" name="giudizio_sintetico" class="custom-control-input" value="1"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 1 ? 'checked' : ''); ?>>
-                <label class="custom-control-label" for="giudizio_sintetico_1">Appena iniziato <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è iniziato da troppo poco tempo per poter esprimere un giudizio. Si sa che è stato avviato, anche se i risultati non sono ancora visibili e monitorabili."></i></label>
-              </div>
 
-              <div class="custom-control custom-radio">
-                <input type="radio" id="giudizio_sintetico_2" name="giudizio_sintetico" class="custom-control-input" value="2" <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 2 ? 'checked' : ''); ?>>
-                <label class="custom-control-label" for="giudizio_sintetico_2">In corso e procede bene <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è avviato e, tutto sommato, i risultati parziali sembrano positivi. Tutte (o almeno la maggior parte) delle attività avviate sembrano procedere nella direzione pianificata."></i></label>
-              </div>
-
-              <div class="custom-control custom-radio">
-                <input type="radio" id="giudizio_sintetico_3" name="giudizio_sintetico" class="custom-control-input" value="3"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 3 ? 'checked' : ''); ?>>
-                <label class="custom-control-label" for="giudizio_sintetico_3">Procede con difficoltà <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è stato avviato, ma ci sono problemi rilevanti nella sua attuazione (es. ritardi significativi, alcune attività ferme o alcune differenze significative rispetto a quanto preventivato)."></i></label>
-              </div>
-
-              <div class="custom-control custom-radio">
-                <input type="radio" id="giudizio_sintetico_4" name="giudizio_sintetico" class="custom-control-input" value="4"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 4 ? 'checked' : ''); ?>>
-                <label class="custom-control-label" for="giudizio_sintetico_4">Bloccato <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato non procede. Può essere bloccato all'inizio (mai avviato) o in una fase successiva."></i></label>
-              </div>
-
-              <div class="custom-control custom-radio">
-                <input type="radio" id="giudizio_sintetico_5" name="giudizio_sintetico" class="custom-control-input" value="5"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 5 ? 'checked' : ''); ?>>
-                <label class="custom-control-label" for="giudizio_sintetico_5">Concluso e utile <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è finito ed è ritenuto complessivamente efficace dal punto di vista dell'utilizzatore finale."></i></label>
-              </div>
-
-              <div class="custom-control custom-radio">
-                <input type="radio" id="giudizio_sintetico_6" name="giudizio_sintetico" class="custom-control-input" value="6"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 6 ? 'checked' : ''); ?>>
-                <label class="custom-control-label" for="giudizio_sintetico_6">Concluso e inefficace <i class="fal fa-info-circle"  data-toggle="tooltip" data-placement="top" title="Il progetto monitorato è finito ma è ritenuto complessivamente inefficace (es. mancano altri interventi complementari, il progetto è concluso ma non è entrato in funzione, oppure non è funzionale, è obsoleto o comunque non rispondente ai bisogni dell'utenza)."></i></label>
-              </div>
-            </div>
 
           </fieldset>
 
@@ -373,7 +481,7 @@
               <label for="">Raccolta Informazioni</label>
               <div class="custom-control custom-checkbox">
                 <input class="custom-control-input" type="checkbox" value="1" id="raccolta_info_web" name="raccolta_info_web" <?php echo (isset($data['raccolta_info_web']) && $data['raccolta_info_web'] == 1 ? 'checked' : ''); ?>>
-                <label class="custom-control-label" for="raccolta_info_web">Raccolta di informazioni via web</label>
+                <label class="custom-control-label" for="raccolta_info_web">Raccolta di informazioni via web o altre fonti</label>
               </div>
               <div class="custom-control custom-checkbox">
                 <input class="custom-control-input" type="checkbox" value="1" id="visita_diretta" name="visita_diretta" <?php echo (isset($data['visita_diretta']) && $data['visita_diretta'] == 1 ? 'checked' : ''); ?>>
@@ -408,31 +516,60 @@
                 <input class="custom-control-input" type="checkbox" value="1" id="referenti_politici" name="referenti_politici" <?php echo (isset($data['referenti_politici']) && $data['referenti_politici'] == 1 ? 'checked' : ''); ?>>
                 <label class="custom-control-label" for="referenti_politici">Intervista con i referenti politici</label>
               </div>
+
+                <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" value="1" id="referenti_politici" name="referenti_politici" <?php echo (isset($data['referenti_politici']) && $data['referenti_politici'] == 1 ? 'checked' : ''); ?>>
+                    <label class="custom-control-label" for="referenti_politici">Intervista con i referenti politici</label>
+                </div>
+
+                <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" value="1" id="questionario_utenti" name="questionario_utenti" <?php echo (isset($data['questionario_utenti']) && $data['questionario_utenti'] == 1 ? 'checked' : ''); ?>>
+                    <label class="custom-control-label" for="questionario_utenti">Questionario inviato a utenti/beneficiari finali dell'intervento</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" value="1" id="questionario_altri" name="questionario_altri" <?php echo (isset($data['questionario_altri']) && $data['questionario_altri'] == 1 ? 'checked' : ''); ?>>
+                    <label class="custom-control-label" for="questionario_altri">Questionario inviato a altre tipologie di persone</label>
+                </div>
             </div>
 
             <div class="form-group">
-              <label for="intervista_intervistati">Chi è stato intervistato? Che ruolo ha la persona nel progetto? </label>
-                <span class="form-text text-info">Riportare i ruoli di tutte le persone intervistate</span>
+              <label for="intervista_intervistati">Chi sono e che ruolo hanno nel progetto le persone che hai contattato e/o intervistato? A quale organizzazione appartengono? </label>
+                <small class="form-text text-muted">Riporta i ruoli di tutte le persone contattate e/o intervistate. Se le interviste non sono andate a buon fine, raccontaci perché. Specifica anche il ruolo e l’organizzazione di appartenenza delle persone che avete provato a intervistare ma che non hanno risposto, e quando.
+</small>
               <textarea name="intervista_intervistati" id="intervista_intervistati" class="form-control"><?php echo ckv($data, 'intervista_intervistati'); ?></textarea>
                 <span class="form-text text-muted">(es. gestore, funzionario comunale, cittadino informato…)</span>
 
             </div>
 
             <div class="form-group">
-              <label for="intervista_domande">Principali due domande poste agli intervistati (specificare quali):</label>
+              <label for="intervista_domande">Principali due domande poste agli intervistati:</label>
+                <small class="form-text text-muted">Specifica, tra parentesi dopo ogni domanda, a chi è stata rivolta (ruolo e organizzazione di appartenenza). Se hai fatto una sbobinatura integrale dell’intervista, allegala come PDF nella successiva sezione “Link, Video, Allegati”.</small>
               <textarea name="intervista_domande" id="intervista_domande" class="form-control"><?php echo ckv($data, 'intervista_domande'); ?></textarea>
             </div>
 
             <div class="form-group">
               <label for="intervista_risposte">Principali due risposte degli intervistati:</label>
+                <small class="form-text text-muted">Riporta le risposte integrali o, se troppo lunghe, una loro sintesi dettagliata (es. le riposte “Sì” o “No” non sono sufficienti).</small>
               <textarea name="intervista_risposte" id="intervista_risposte" class="form-control"><?php echo ckv($data, 'intervista_risposte'); ?></textarea>
             </div>
+
+              <div class="form-group qe_w d-none" >
+                  <label for="questionario_extra">Se hai somministrato un questionario, quali tipologie di persone sono state coinvolte e quale è stato il tasso di risposta?</label>
+                  <small class="form-text text-muted">Specifica a chi hai mandato il questionario (es. utenti di un servizio, beneficiari finali di un investimento), quanti questionari hai inviato e quante risposte hai ottenuto.</small>
+                  <textarea name="questionario_extra" id="questionario_extra" class="form-control"><?php echo ckv($data, 'questionario_extra'); ?></textarea>
+              </div>
+
 
           </fieldset>
 
           <fieldset>
             <legend>Link, Video, Allegati</legend>
               <div class="alert alert-info" role="alert"><i class="fas fa-exclamation-triangle"></i> <strong>Il peso complessivo dei file che si vogliono caricare non deve eccedere gli 8mb per invio.</strong></div>
+              <p class="form-text">Aggiungi almeno un’immagine per la copertina del report. Inserisci le foto che hai fatto durante la visita di monitoraggio o durante le interviste, o qualunque altra immagine che documenti il tuo monitoraggio civico.</p>
+              <p class="form-text">Se hai somministrato un questionario, carica, in formato PDF, i principali risultati dell’indagine che hai realizzato, con il dettaglio delle risposte ottenute e un tuo commento.</p>
+              <p class="form-text">Se hai fatto interviste, inserisci, in formato PDF, una sintesi più estesa delle domande e delle risposte.</p>
+              <p class="form-text">Attenzione: Il peso complessivo dei file che si vogliono caricare non deve eccedere gli 8mb ogni volta in cui si salva.</p>
+
             <div class="form-group">
               <label>Carica immagini o documenti<br /><small><i class="fas fa-exclamation-triangle"></i> Sono ammessi solo immagini (jpg, gif, png) o file documentali (doc, docx, xls, xlsx, pdf)</small></label>
               <div class="custom-file file-grouper origin">
@@ -445,6 +582,7 @@
 
             <div class="form-group">
               <label>Aggiungi link alla documentazione ed alle fonti</label>
+                <small class="form-text text-muted">Inserisci il link agli articoli, ai siti web o ai documenti che hai consultato.</small>
               <div class="link-grouper origin">
                 <input type="text" class="form-control" id="link-attachment[0]" name="link-attachment[0]" placeholder="Inserisci URL della fonte...">
               </div>
@@ -453,7 +591,8 @@
             </div>
 
             <div class="form-group">
-              <label>Aggiungi link a Video (youtube, vimeo)</label>
+              <label>Aggiungi link a Video (YouTube o Vimeo)</label>
+                <small class="form-text text-muted">Carica i video della visita o delle interviste su YouTube o Vimeo e inserisci qui il link al video pubblicato. Non inserire link a video su Facebook, Instagram o altro: non saranno visualizzati.</small>
               <div class="video-grouper origin">
                 <input type="text" class="form-control" id="video-attachment[0]" name="video-attachment[0]" placeholder="Inserisci URL del video...">
               </div>
@@ -470,9 +609,9 @@
         <div class="tab-pane fade" id="step-3" role="tabpanel" aria-labelledby="step-3">
 
             <fieldset>
-                <legend>Le nuove connessioni che avete generato</legend>
+                <legend>Le nuove connessioni che hai generato</legend>
                 <div class="form-group">
-                    <label for="nuove-connessioni">Come avete diffuso o state diffondendo i risultati del vostro monitoraggio civico?</label>
+                    <label for="nuove-connessioni">Come hai diffuso o stai diffondendo i risultati del vostro monitoraggio civico?</label>
 
                     <div class="custom-control custom-checkbox">
                         <input class="custom-control-input" type="checkbox" value="1" id="diffusione_twitter" name="diffusione_twitter" <?php echo (isset($data['diffusione_twitter']) && $data['diffusione_twitter'] == 1 ? 'checked' : ''); ?>>
@@ -528,11 +667,15 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Con quali soggetti avete creato delle connessioni per discutere dei risultati del vostro monitoraggio?</label>
-                    <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="RUOLO: Elencate i soggetti con cui avete avuto dei contatti per diffondere o discutere i risultati del vostro monitoraggio.
-Ad esempio: Sindaco, Presidente, Funzionario pubblico, giornalista, amministratore delegato di azienda, etc.
+                    <label>Con quali soggetti hai creato delle connessioni per discutere dei risultati del vostro monitoraggio?</label>
+                    <small class="text-muted form-text">
+                        <strong>RUOLO:</strong> Elenca i soggetti con cui hai avuto dei contatti per diffondere o discutere i risultati del tuo monitoraggio.
+                        Ad esempio: Sindaco, Presidente, Funzionario pubblico, giornalista, amministratore delegato di azienda, etc.<br /><br />
 
-ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabria, Il Corriere della Sera, Buitoni, etc.">Cosa devo fare qui?</span>
+                        <strong>ORGANIZZAZIONE:</strong> Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabria, Il Corriere della Sera, Buitoni, etc.
+
+                    </small>
+
                     <table id="subjects-table">
                         <thead>
                             <tr>
@@ -557,7 +700,7 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
                                 </td>
                             </tr>
                             <tr>
-                                <td><input type="text" name="connection[1][subject]" placeholder="Soggetto..." class="form-control"></td>
+                                <td><input type="text" name="connection[1][subject]" placeholder="Soggetto..." class="form-control c-subject"></td>
                                 <td><input type="text" name="connection[1][role]" placeholder="Ruolo..." class="form-control"></td>
                                 <td><input type="text" name="connection[1][organisation]" placeholder="Organizzazione..." class="form-control"></td>
                                 <td>
@@ -577,19 +720,151 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
                 </div>
 
                 <div class="form-group" id="connection-relationships">
-                    <table id="connection-relationships-table">
+                    <button type="button" class="btn btn-secondary btn-sm" id="aggiorna-soggetti">Aggiorna la Matrice delle Connessioni con i Soggetti inseriti</button>
+                    <table id="connection-relationships-table" class="table table-condensed table-borderless table-sm table-hover ">
                         <thead>
                             <tr>
-                                <th><!-- blank for matrix structure --></th>
+                                <th></th>
+                                <th id="c2"></th>
+                                <th id="c3"></th>
+                                <th id="c4"></th>
+                                <th id="c5"></th>
+                                <th id="c6"></th>
+                                <th id="c7"></th>
+                                <th id="c8"></th>
+                                <th id="c9"></th>
+                                <th id="c10"></th>
+
                             </tr>
                         </thead>
-                        <tbody></tbody>
+                        <tbody>
+                            <tr>
+                                <td id="r1" class="connection-rel-namecell"></td>
+                                <td><input type="hidden" id="crt_r1_c2_names" class="crt-name" data-row="1" data-col="2" name="crt[r1_c2][names]"><div class="form-check"><input name="crt[r1_c2][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r1_c3_names" class="crt-name" data-row="1" data-col="3" name="crt[r1_c3][names]"><div class="form-check"><input name="crt[r1_c3][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r1_c4_names" class="crt-name" data-row="1" data-col="4" name="crt[r1_c4][names]"><div class="form-check"><input name="crt[r1_c4][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r1_c5_names" class="crt-name" data-row="1" data-col="5" name="crt[r1_c5][names]"><div class="form-check"><input name="crt[r1_c5][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r1_c6_names" class="crt-name" data-row="1" data-col="6" name="crt[r1_c6][names]"><div class="form-check"><input name="crt[r1_c6][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r1_c7_names" class="crt-name" data-row="1" data-col="7" name="crt[r1_c7][names]"><div class="form-check"><input name="crt[r1_c7][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r1_c8_names" class="crt-name" data-row="1" data-col="8" name="crt[r1_c8][names]"><div class="form-check"><input name="crt[r1_c8][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r1_c9_names" class="crt-name" data-row="1" data-col="9" name="crt[r1_c9][names]"><div class="form-check"><input name="crt[r1_c9][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r1_c10_names" class="crt-name" data-row="1" data-col="10" name="crt[r1_c10][names]"><div class="form-check"><input name="crt[r1_c10][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+
+                            </tr>
+                            <tr>
+                                <td id="r2" class="connection-rel-namecell"></td>
+                                <td></td>
+                                <td><input type="hidden" id="crt_r2_c3_names" class="crt-name" data-row="2" data-col="3" name="crt[r2_c3][names]"><div class="form-check"><input name="crt[r2_c3][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r2_c4_names" class="crt-name" data-row="2" data-col="4" name="crt[r2_c4][names]"><div class="form-check"><input name="crt[r2_c4][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r2_c5_names" class="crt-name" data-row="2" data-col="5" name="crt[r2_c5][names]"><div class="form-check"><input name="crt[r2_c5][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r2_c6_names" class="crt-name" data-row="2" data-col="6" name="crt[r2_c6][names]"><div class="form-check"><input name="crt[r2_c6][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r2_c7_names" class="crt-name" data-row="2" data-col="7" name="crt[r2_c7][names]"><div class="form-check"><input name="crt[r2_c7][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r2_c8_names" class="crt-name" data-row="2" data-col="8" name="crt[r2_c8][names]"><div class="form-check"><input name="crt[r2_c8][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r2_c9_names" class="crt-name" data-row="2" data-col="9" name="crt[r2_c9][names]"><div class="form-check"><input name="crt[r2_c9][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r2_c10_names" class="crt-name" data-row="2" data-col="10" name="crt[r2_c10][names]"><div class="form-check"><input name="crt[r2_c10][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+
+
+                            </tr>
+                            <tr>
+                                <td id="r3" class="connection-rel-namecell"></td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="hidden" id="crt_r3_c4_names" class="crt-name" data-row="3" data-col="4" name="crt[r3_c4][names]"><div class="form-check"><input name="crt[r3_c4][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r3_c5_names" class="crt-name" data-row="3" data-col="5" name="crt[r3_c5][names]"><div class="form-check"><input name="crt[r3_c5][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r3_c6_names" class="crt-name" data-row="3" data-col="6" name="crt[r3_c6][names]"><div class="form-check"><input name="crt[r3_c6][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r3_c7_names" class="crt-name" data-row="3" data-col="7" name="crt[r3_c7][names]"><div class="form-check"><input name="crt[r3_c7][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r3_c7_names" class="crt-name" data-row="3" data-col="8" name="crt[r3_c8][names]"><div class="form-check"><input name="crt[r3_c8][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r3_c9_names" class="crt-name" data-row="3" data-col="9" name="crt[r3_c9][names]"><div class="form-check"><input name="crt[r3_c9][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r3_c10_names" class="crt-name" data-row="3" data-col="10" name="crt[r3_c10][names]"><div class="form-check"><input name="crt[r3_c10][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+
+
+                            </tr>
+                            <tr>
+                                <td id="r4" class="connection-rel-namecell"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="hidden" id="crt_r4_c5_names" class="crt-name" data-row="4" data-col="5" name="crt[r4_c5][names]"><div class="form-check"><input name="crt[r4_c5][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r4_c6_names" class="crt-name" data-row="4" data-col="6" name="crt[r4_c6][names]"><div class="form-check"><input name="crt[r4_c6][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r4_c7_names" class="crt-name" data-row="4" data-col="7" name="crt[r4_c7][names]"><div class="form-check"><input name="crt[r4_c7][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r4_c8_names" class="crt-name" data-row="4" data-col="8" name="crt[r4_c8][names]"><div class="form-check"><input name="crt[r4_c8][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r4_c9_names" class="crt-name" data-row="4" data-col="9" name="crt[r4_c9][names]"><div class="form-check"><input name="crt[r4_c9][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r4_c10_names" class="crt-name" data-row="4" data-col="10" name="crt[r4_c10][names]"><div class="form-check"><input name="crt[r4_c10][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+
+
+                            </tr>
+                            <tr>
+                                <td id="r5" class="connection-rel-namecell"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="hidden" id="crt_r5_c6_names" class="crt-name" data-row="5" data-col="6" name="crt[r5_c6][names]"><div class="form-check"><input name="crt[r5_c6][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r5_c7_names" class="crt-name" data-row="5" data-col="7" name="crt[r5_c7][names]"><div class="form-check"><input name="crt[r5_c7][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r5_c8_names" class="crt-name" data-row="5" data-col="8" name="crt[r5_c8][names]"><div class="form-check"><input name="crt[r5_c8][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r5_c9_names" class="crt-name" data-row="5" data-col="9" name="crt[r5_c9][names]"><div class="form-check"><input name="crt[r5_c9][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r5_c10_names" class="crt-name" data-row="5" data-col="10" name="crt[r5_c10][names]"><div class="form-check"><input name="crt[r5_c10][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+
+                            </tr>
+                            <tr>
+                                <td id="r6" class="connection-rel-namecell"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="hidden" id="crt_r6_c7_names" class="crt-name" data-row="6" data-col="7" name="crt[r6_c7][names]"><div class="form-check"><input name="crt[r6_c7][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r6_c8_names" class="crt-name" data-row="6" data-col="8" name="crt[r6_c8][names]"><div class="form-check"><input name="crt[r6_c8][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r6_c9_names" class="crt-name" data-row="6" data-col="9" name="crt[r6_c9][names]"><div class="form-check"><input name="crt[r6_c9][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r6_c10_names" class="crt-name" data-row="6" data-col="10" name="crt[r6_c10][names]"><div class="form-check"><input name="crt[r6_c10][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+
+                            </tr>
+                            <tr>
+                                <td id="r7" class="connection-rel-namecell"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="hidden" id="crt_r7_c8_names" class="crt-name" data-row="7" data-col="8" name="crt[r7_c8][names]"><div class="form-check"><input name="crt[r7_c8][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r7_c9_names" class="crt-name" data-row="7" data-col="9" name="crt[r7_c9][names]"><div class="form-check"><input name="crt[r7_c9][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r7_c10_names" class="crt-name" data-row="7" data-col="10" name="crt[r7_c10][names]"><div class="form-check"><input name="crt[r7_c10][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+
+                            </tr>
+                            <tr>
+                                <td id="r8" class="connection-rel-namecell"></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="hidden" id="crt_r8_c9_names" class="crt-name" data-row="8" data-col="9" name="crt[r8_c9][names]"><div class="form-check"><input name="crt[r8_c9][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                                <td><input type="hidden" id="crt_r8_c10_names" class="crt-name" data-row="8" data-col="10" name="crt[r8_c10][names]"><div class="form-check"><input name="crt[r8_c10][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                            </tr>
+                            <tr>
+                                <td id="r9" class="connection-rel-namecell"></td>
+
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><input type="hidden" id="crt_r9_c10_names" class="crt-name" data-row="9" data-col="10" name="crt[r9_c10][names]"><div class="form-check"><input name="crt[r9_c10][value]" type="checkbox" value="1" class="form-check-input position-static"></div></td>
+                            </tr>
+
+                        </tbody>
                     </table>
 
                 </div>
 
                 <div class="form-group">
-                    <label>I media hanno parlato del vostro monitoraggio?</label>
+                    <label>I media hanno parlato del tuo monitoraggio?</label>
                     <div class="custom-control custom-radio">
                         <input type="radio" id="media_connection_yes" name="media_connection" class="custom-control-input" value="1"  <?php echo (isset($data['media_connection']) && $data['media_connection'] == 1 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="media_connection_yes">Si</label>
@@ -602,7 +877,7 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
 
 
                 <div class="form-group">
-                    <label>Se sì, I risultati del monitoraggio sono stati ripresi dai seguenti media:</label>
+                    <label>Se sì, i risultati del monitoraggio sono stati ripresi dai seguenti media:</label>
                     <div class="custom-control custom-checkbox">
                         <input class="custom-control-input" type="checkbox" value="1" id="tv_locali" name="tv_locali" <?php echo (isset($data['tv_locali']) && $data['tv_locali'] == 1 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="tv_locali">TV Locali</label>
@@ -630,7 +905,8 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
                 </div>
 
                 <div class="form-group">
-                    <label>Avete avuto contatti con le Amministrazioni (es. il sindaco o dirigenti regionali) per presentare o discutere con loro i risultati del vostro monitoraggio?</label>
+                    <label>Dopo aver svolto la ricerca di monitoraggio, hai provato a contattare le Amministrazioni responsabili per presentare o discutere con loro i risultati del tuo monitoraggio?                    </label>
+                    <small class="form-text text-muted">Non sono da considerare le interviste allo scopo solamente di raccogliere informazioni sul progetto.</small>
                     <div class="custom-control custom-radio">
                         <input type="radio" id="admin_connection_yes" name="admin_connection" class="custom-control-input" value="1"  <?php echo (isset($data['admin_connection']) && $data['admin_connection'] == 1 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="admin_connection_yes">Si</label>
@@ -642,7 +918,8 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
                 </div>
 
                 <div class="form-group">
-                    <label>Le Pubbliche Amministrazioni hanno risposto alle vostre sollecitazioni o ai problemi che avete sollevato?</label>
+                    <label>In che modo le Pubbliche Amministrazioni hanno risposto alle tue sollecitazioni o ai problemi che hai sollevato?                    </label>
+                    <small class="form-text text-muted">Non sono da considerare le interviste allo scopo solamente di raccogliere informazioni sul progetto.</small>
                     <div class="custom-control custom-checkbox">
                         <input class="custom-control-input" type="checkbox" value="1" id="admin_response_no" name="admin_response_no" <?php echo (isset($data['admin_response_no']) && $data['admin_response_no'] == 1 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="admin_response_no">Non ci hanno risposto</label>
@@ -650,7 +927,7 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
 
                     <div class="custom-control custom-checkbox">
                         <input class="custom-control-input" type="checkbox" value="1" id="admin_response_some" name="admin_response_some" <?php echo (isset($data['admin_response_some']) && $data['admin_response_some'] == 1 ? 'checked' : ''); ?>>
-                        <label class="custom-control-label" for="admin_response_some">Alcune ci hanno risposto, altre no</label>
+                        <label class="custom-control-label" for="admin_response_some">Abbiamo ottenuto solo risposte parziali</label>
                     </div>
 
                     <div class="custom-control custom-checkbox">
@@ -681,12 +958,10 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
                 </div>
 
                 <div class="form-group">
-                    <label for="impact_description">Descriveteci il vostro caso. Quali fatti o episodi concreti vi portano a pensare che il vostro monitoraggio civico abbia avuto (o non abbia avuto) impatto tra i soggetti che gestiscono o attuano i progetto che avete monitorato?</label>
+                    <label for="impact_description">Descrivici il tuo caso. Quali fatti o episodi concreti ti portano a pensare che il tuo monitoraggio civico abbia avuto (o non abbia avuto) impatto tra i soggetti che gestiscono o attuano il progetto che hai monitorato?</label>
                     <textarea name="impact_description" id="impact_description" class="form-control"><?php echo ckv($data, 'impact_description'); ?></textarea>
-
-
-
                 </div>
+
                 <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" type="checkbox" value="<?php echo PENDING_REVIEW; ?>" id="status_tab_3" name="status_tab_3">
                     <label class="custom-control-label" for="status_tab_3">Questo step del report (Impatto & Risultati) è pronto per essere revisionato dalla Redazione</label>
@@ -704,7 +979,8 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
         <div class="form-group">
           <div class="custom-control custom-checkbox">
             <input class="custom-control-input" type="checkbox" value="<?php echo PENDING_REVIEW; ?>" id="status" name="status">
-            <label class="custom-control-label" for="status">Il Report è pronto (<strong>completo in step 1 e step 2</strong>) per essere revisionato dalla Redazione</label>
+            <label class="custom-control-label" for="status">Il tuo report è pronto (completo in step 1 e step 2)? Puoi inviarlo alla nostra redazione!  Salva il report, clicca sulla spunta, aspetta alcuni giorni e controlla l’email che hai usato per registrarti: riceverai i nostri commenti e le istruzioni per effettuare eventuali correzioni.
+            </label>
           </div>
 
         </div>

@@ -56,6 +56,16 @@ var OpenCoesione = {
             // Inject data into hidden field
             $('#oc_data').val(JSON.stringify(data));
 
+
+            // Inject cup_descr_natura to check for vis on SDA INFR (10/10/2022)
+            $('#cup_descr_natura').val(data.cup_descr_natura);
+            if(data.cup_descr_natura == 'REALIZZAZIONE DI LAVORI PUBBLICI (OPERE ED IMPIANTISTICA)'){
+              $('#sda_infrastrutturale').removeClass('d-none');
+            }
+            else {
+              $('#sda_infrastrutturale').addClass('d-none');
+            }
+
             // Load S1 Template
             $('#oc_api_content_s1').load('/public/assets/guide_s1.php', function(){
               /** Highlight Project Title **/

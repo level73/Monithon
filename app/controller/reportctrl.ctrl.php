@@ -187,7 +187,7 @@
         $this->set('title', 'Nuovo Report');
         $Errors = new Errors();
         $this->set('street_map', true);
-        $this->set('js', array('components/oc_api.js?v=140421', 'components/leaflet_location_map.js'));
+        $this->set('js', array('components/oc_api.js?v=140421', 'components/leaflet_location_map.js', 'components/connection-mapper.js?v=002'));
         //, 'components/connection-mapper.js?v=001'
 
         /** STATUS VAR -
@@ -201,10 +201,15 @@
         if( httpCheck('post', true) ){
           $data = $_POST;
 
+          $crt = $data['crt'];
+
           $videos = $data['video-attachment'];
           $links = $data['link-attachment'];
           unset($data['video-attachment']);
           unset($data['link-attachment']);
+          unset($data['crt']);
+
+
 
           /** Check for OC API URL and Data **/
           if(!empty($data['id_open_coesione']) && empty($data['api_data'])){
@@ -257,6 +262,20 @@
             // check for connection meta
             $Connection = new Meta('connection');
             $Connection->updateConnections(T_REP_BASIC, $report, $connections);
+
+              // Work out the connection relationship matrix
+              $cnmap = array();
+              $ConnectionMap = new Meta('connection_relationship');
+              foreach($crt as $field => $cn){
+                  if(isset($cn['value']) && $cn['value'] == 1){
+                      $val = array('names' => $cn['names'], 'connection'=> 'yes');
+                      $cnmap[$field] = json_encode($val);
+                  }
+              }
+              $ConnectionMap->updateConnectionMap($report, $cnmap);
+
+
+
 
             // Upload Files
             if(!empty($_FILES)){

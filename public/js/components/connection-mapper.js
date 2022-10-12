@@ -6,35 +6,45 @@ let ConnMapper = {
         dataCell: '<td><div class="" id=""><input name="" id="" type="number" class="form-control"></div></td>'
     },
     init: function(){
-        this.subjectAdded();
+        this.subjectChanged();
     },
 
-    getSubjects: function(){ },
-    addCells: function(){ },
 
-    subjectAdded: function(){
-
-        $('#subject-button-add').click(function(){
-            let SubRowsCount = $('#subjects-table tbody tr').length - 1;
-            // If subjects are more than 1
-            if(SubRowsCount >= 1){
-
-                console.log(SubRowsCount);
-                    // Add THEAD cell
-                    let HeaderCell = $(ConnMapper.config.headCell).text(SubRowsCount);
-                    $(ConnMapper.config.tableHead).append(HeaderCell);
-                //Add TD element to relevant row
-                $(ConnMapper.config.tableBody).append('<tr id="connmapper-row-' + SubRowsCount + '"><td class="counter-holder">' + ( parseInt(SubRowsCount) + 1 ) + '</td></tr>');
-                for(i=0; i < SubRowsCount; i++){
-                    $('tr#connmapper-row-' + SubRowsCount).append(ConnMapper.config.dataCell);
-                }
-            }
-        });
-
-    },
-
+    // Get name and position of subject name
     subjectChanged: function(){
+        $('#aggiorna-soggetti').click(function(e){
+            var soggetti = $('.c-subject');
 
+            var subjectsCap = soggetti.length - 1;
+            soggetti.each(function(i, el){
+                if(i > 0){
+                    var subjectIndex = i;
+                    var subjectName = $(this).val();
+                    //var strName = subjectIndex + '. ' + subjectName;
+                    var strName =  subjectName;
+                    if(subjectIndex === 1 ){
+                        $('#r1').text(strName);
+                    }
+                    if( (subjectIndex > 1 && subjectIndex < 10) && subjectIndex !== subjectsCap ){
+                        $('#r' + subjectIndex + ', #c' + subjectIndex).text(strName);
+                    }
+                    if(subjectIndex === 10 || subjectIndex === subjectsCap ){
+                        $('#c' + subjectIndex).text(strName);
+                    }
+                }
+            });
+
+            $('.crt-name').each(function(i){
+                var row = $(this).data('row');
+                var col = $(this).data('col');
+
+                var name_row = $('#r' + row).text();
+                var name_col = $('#c' + col).text();
+                $('#crt_r' + row + '_c' + col + '_names').val(name_row + ' ::: ' + name_col);
+            });
+
+
+        });
     }
 }
 ConnMapper.init();

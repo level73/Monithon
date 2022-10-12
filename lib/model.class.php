@@ -138,12 +138,10 @@
     /** Create record **/
     public function create($data){
       $sql = 'INSERT INTO ' . $this->table . ' (`' . implode('`, `', array_keys($data)) . '`) VALUES (' . implode(', ', query_placeholders($data, true)) . ')';
-
-
+        echo $sql;
       $stmt = $this->database->prepare($sql);
 
       foreach($data as $field => &$value){
-          echo $field . "<br />";
         $stmt->bindParam(':' . $field, $value);
       }
 

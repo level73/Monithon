@@ -293,3 +293,22 @@ textarea { min-height: 6em; }
   }
   h3 { text-transform: uppercase; font-weight: 900; }
 }
+
+#connection-relationships-table {
+  td, th { max-width: 10%; }
+  th { text-align: left; font-weight: normal; font-size: 14px; }
+  .connection-rel-namecell {
+    vertical-align: center;
+    min-width: 120px;
+  }
+}
+
+/** Form Overrides **/
+.form-group {
+  margin-bottom: 2.2rem;
+  margin-top: 1rem;
+
+  &>label {
+    font-weight: 600;
+  }
+}
