@@ -14,9 +14,9 @@
         <li class="nav-item">
           <a class="nav-link" id="step-2-tab" data-toggle="tab" href="#step-2" role="tab" aria-controls="step-2" aria-selected="false">Step 2: Valutazione</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
           <a class="nav-link" id="step-3-tab" data-toggle="tab" href="#step-3" role="tab" aria-controls="step-3" aria-selected="false">Step 3: Risultati e Impatto</a>
-        </li>
+        </li> -->
       </ul>
 
 
@@ -601,11 +601,11 @@
             </div>
 
           </fieldset>
-            <button id="tab-3-nav" class="tab-subnav btn btn-primary btn-lg btn-block" data-step="#step-3" type="button">VAI ALLO STEP 3: RISULTATI E IMPATTO</button><br /><br />
+           <!--  <button id="tab-3-nav" class="tab-subnav btn btn-primary btn-lg btn-block" data-step="#step-3" type="button">VAI ALLO STEP 3: RISULTATI E IMPATTO</button><br /><br /> -->
         </div>
 
 
-
+<?php /* step 3 - hidden on create
         <div class="tab-pane fade" id="step-3" role="tabpanel" aria-labelledby="step-3">
 
             <fieldset>
@@ -969,6 +969,8 @@
 
             </fieldset>
         </div>
+    */ ?>
+
       </div>
 
 
