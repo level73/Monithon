@@ -177,6 +177,10 @@
                           <input type="radio" id="gender_objectives_no" name="gender_objectives" class="trigger-desc check-eval custom-control-input"  data-group="go" value="3" <?php echo (isset($data['gender_objectives']) && $data['gender_objectives'] ==  3 ? 'checked' : ''); ?>>
                           <label class="custom-control-label" for="gender_objectives_no">No</label>
                       </div>
+                      <div class="custom-control custom-radio">
+                          <input type="radio" id="gender_objectives_unknow" name="gender_objectives" class="trigger-desc check-eval custom-control-input"  data-group="go" value="4" <?php echo (isset($data['gender_objectives']) && $data['gender_objectives'] ==  4 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="gender_objectives_unknow">Non saprei</label>
+                      </div>
                   </div>
 
                   <div class="form-group">
@@ -189,6 +193,10 @@
                       <div class="custom-control custom-radio">
                           <input type="radio" id="gender_language_no" name="gender_language" class="custom-control-input" value="2" <?php echo (isset($data['gender_language']) && $data['gender_language'] ==  2 ? 'checked' : ''); ?>>
                           <label class="custom-control-label" for="gender_language_no">No</label>
+                      </div>
+                      <div class="custom-control custom-radio">
+                          <input type="radio" id="gender_language_nok" name="gender_language" class="custom-control-input" value="3" <?php echo (isset($data['gender_language']) && $data['gender_language'] ==  3 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="gender_language_nok">Non saprei</label>
                       </div>
                   </div>
 
@@ -208,6 +216,10 @@
                           <input type="radio" id="gender_finance_no" name="gender_finance" class="trigger-desc custom-control-input"  data-group="gf"  value="2" <?php echo (isset($data['gender_finance']) && $data['gender_finance'] ==  2 ? 'checked' : ''); ?>>
                           <label class="custom-control-label" for="gender_finance_no">No</label>
                       </div>
+                      <div class="custom-control custom-radio">
+                          <input type="radio" id="gender_finance_nok" name="gender_finance" class="trigger-desc custom-control-input"  data-group="gf"  value="2" <?php echo (isset($data['gender_finance']) && $data['gender_finance'] ==  3 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="gender_finance_nok">Non saprei</label>
+                      </div>
                   </div>
 
                   <div class="form-group">
@@ -225,6 +237,10 @@
                       <div class="custom-control custom-radio">
                           <input type="radio" id="gender_indicators_no" name="gender_indicators" class="trigger-desc custom-control-input"  data-group="gi"  value="2" <?php echo (isset($data['gender_indicators']) && $data['gender_indicators'] ==  2 ? 'checked' : ''); ?>>
                           <label class="custom-control-label" for="gender_indicators_no">No</label>
+                      </div>
+                      <div class="custom-control custom-radio">
+                          <input type="radio" id="gender_indicators_nok" name="gender_indicators" class="trigger-desc custom-control-input"  data-group="gi"  value="3" <?php echo (isset($data['gender_indicators']) && $data['gender_indicators'] ==  3 ? 'checked' : ''); ?>>
+                          <label class="custom-control-label" for="gender_indicators_nok">Non saprei</label>
                       </div>
                   </div>
 
