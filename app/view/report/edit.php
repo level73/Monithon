@@ -32,9 +32,8 @@
           <fieldset>
             <legend>Informazioni di Base</legend>
 
-              <br /><br /><br />
             <div class="form-group">
-                <label for="oc_api_code">URL del progetto monitorato su OpenCoesione/OpenPNRR/Altro:</label>
+                <label for="oc_api_code">URL del progetto monitorato su OpenCoesione:</label>
 
                 <div class="input-group">
                   <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="URL del progetto..." class="form-control" value="<?php echo ckv_object($data, 'id_open_coesione'); ?>">
@@ -43,7 +42,7 @@
                   </div>
                   <input type="hidden" name="api_data" id="oc_data" value="">
                 </div>
-                <small class="form-text text-muted">Incolla qui l'indirizzo (URL) della pagina di OpenCoesione/OpenCUP/Altro dedicata al singolo progetto che hai scelto di monitorare. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/</small>
+                <small class="form-text text-muted">Incolla qui l'indirizzo (URL) della pagina di OpenCoesione dedicata al singolo progetto che hai scelto di monitorare. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/</small>
                 <div class="d-none" id="oc_api_content_s1">
                   <i class="fal fa-sync fa-spin"></i>
                 </div>
@@ -292,19 +291,19 @@
                         <label class="custom-control-label" for="sda_1">Appena avviato <small>Il progetto è stato appena selezionato o è nelle fasi preliminari di realizzazione (es. progettazione preliminare)</small></label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="sda_2" name="stato_di_avanzamento" class="check-eval custom-control-input checkforproblems" value="2"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 2 ? 'checked' : ''); ?>>
+                        <input type="radio" id="sda_2" name="stato_di_avanzamento" class="check-eval custom-control-input " value="2"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 2 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="sda_2">Mai partito <small>Il progetto è stato selezionato da almeno un anno ma non è mai stato avviato e risulta quindi bloccato all’avvio</small></label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="sda_3" name="stato_di_avanzamento" class="check-eval custom-control-input" value="3"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 3 ? 'checked' : ''); ?>>
+                        <input type="radio" id="sda_3" name="stato_di_avanzamento" class=" check-eval custom-control-input" value="3"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 3 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="sda_3">In corso senza particolari intoppi <small>Il progetto è in corso di realizzazione (es. il cantiere è aperto) e segue le tappe prefissate; i ritardi sono limitati</small></label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="sda_4" name="stato_di_avanzamento" class="check-eval custom-control-input checkforproblems" value="4"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 4 ? 'checked' : ''); ?>>
+                        <input type="radio" id="sda_4" name="stato_di_avanzamento" class="check-eval custom-control-input" value="4"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 4 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="sda_4">In corso con problemi di realizzazione <small>Il progetto è in corso di realizzazione ma presenta problemi sostanziali (amministrativi, tecnici, etc.) oppure ritardi significativi</small></label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="sda_5" name="stato_di_avanzamento" class="check-eval custom-control-input checkforproblems" value="5"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 5 ? 'checked' : ''); ?>>
+                        <input type="radio" id="sda_5" name="stato_di_avanzamento" class="check-eval custom-control-input" value="5"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 5 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="sda_5">Bloccato <small>Il progetto è fermo da almeno un anno per problemi in fase di realizzazione</small></label>
                     </div>
                     <div class="custom-control custom-radio">
@@ -361,23 +360,23 @@
 
                 <!-- Giudizio Sintetico -->
                 <div class="form-group">
-                    <label for="gs">Giudizio sintetico sul progetto monitorato: </label>
-                    <small class="form-text form-muted">Sulla base delle risposte precedenti, come giudichi l’efficacia del progetto monitorato?</small>
+                    <label for="gs">Giudizio di efficacia (anche potenziale) sul progetto monitorato: </label>
+                    <small class="form-text form-muted">Come giudichi l’efficacia del progetto monitorato?</small>
 
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="giudizio_sintetico_1" name="gs" class="custom-control-input" value="1"  <?php echo (isset($data->gs) && $data->gs == 1 ? 'checked' : ''); ?>>
+                        <input type="radio" id="giudizio_sintetico_1" name="gs" class="check-eval custom-control-input" value="1"  <?php echo (isset($data->gs) && $data->gs == 1 ? 'checked' : ''); ?>>
                         <label class="custom-control-label gsl" for="giudizio_sintetico_1"></label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="giudizio_sintetico_2" name="gs" class="custom-control-input checkforproblems" value="2"  <?php echo (isset($data->gs) && $data->gs == 2 ? 'checked' : ''); ?>>
+                        <input type="radio" id="giudizio_sintetico_2" name="gs" class="custom-control-input check-eval" value="2"  <?php echo (isset($data->gs) && $data->gs == 2 ? 'checked' : ''); ?>>
                         <label class="custom-control-label gsl" for="giudizio_sintetico_2"></label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="giudizio_sintetico_3" name="gs" class="custom-control-input checkforproblems" value="3"  <?php echo (isset($data->gs) && $data->gs == 3 ? 'checked' : ''); ?>>
+                        <input type="radio" id="giudizio_sintetico_3" name="gs" class="custom-control-input check-eval" value="3"  <?php echo (isset($data->gs) && $data->gs == 3 ? 'checked' : ''); ?>>
                         <label class="custom-control-label gsl" for="giudizio_sintetico_3"></label>
                     </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="giudizio_sintetico_4" name="gs" class="custom-control-input" value="4"  <?php echo (isset($data->gs) && $data->gs == 4 ? 'checked' : ''); ?>>
+                        <input type="radio" id="giudizio_sintetico_4" name="gs" class="check-eval custom-control-input" value="4"  <?php echo (isset($data->gs) && $data->gs == 4 ? 'checked' : ''); ?>>
                         <label class="custom-control-label gsl" for="giudizio_sintetico_4"></label>
                     </div>
                     <?php showComment($comments, 'gs'); ?>
@@ -392,6 +391,47 @@
                   <?php showComment($comments, 'risultato_progetto'); ?>
               </div>
 
+                <div class="form-group <?php echo ($data->valutazione_risultati > 3 ? 'd-none' : ''); ?>" id="cause_inefficacia_wrapper">
+                    <label>Quali sono le cause dell’inefficacia del progetto che hai monitorato?</label>
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="0" id="problemi_amministrativi_null" name="problemi_amministrativi">
+                        <input class="custom-control-input" type="checkbox" value="1" id="problemi_amministrativi" name="problemi_amministrativi" <?php echo (isset($data->problemi_amministrativi) && $data->problemi_amministrativi == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="problemi_amministrativi">Realizzazione ha mostrato problemi di natura amministrativa</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="0" id="problemi_tecnici_null" name="problemi_tecnici">
+                        <input class="custom-control-input" type="checkbox" value="1" id="problemi_tecnici" name="problemi_tecnici" <?php echo (isset($data->problemi_tecnici) && $data->problemi_tecnici == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="problemi_tecnici">Realizzazione ha mostrato problemi di natura tecnica</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="0" id="risultato_insoddisfacente_null" name="risultato_insoddisfacente">
+                        <input class="custom-control-input" type="checkbox" value="1" id="risultato_insoddisfacente" name="risultato_insoddisfacente" <?php echo (isset($data->risultato_insoddisfacente) && $data->risultato_insoddisfacente == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="risultato_insoddisfacente">Il risultato del progetto non è soddisfacente</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="0" id="non_efficace_null" name="non_efficace">
+                        <input class="custom-control-input" type="checkbox" value="1" id="non_efficace" name="non_efficace" <?php echo (isset($data->non_efficace) && $data->non_efficace == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="non_efficace">Intervento complessivamente ben realizzato ma non rispondente ai bisogni degli utenti finali (non efficace)</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="0" id="non_sufficiente_null" name="non_sufficiente">
+                        <input class="custom-control-input" type="checkbox" value="1" id="non_sufficiente" name="non_sufficiente" <?php echo (isset($data->non_sufficiente) && $data->non_sufficiente == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="non_sufficiente">Intervento utile ma non sufficiente per rispondere al fabbisogno (“ne serve di più”, es. più investimenti nello stesso progetto o in progetti simili)</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input class="custom-control-input" type="checkbox" value="0" id="necessita_interventi_extra_null" name="necessita_interventi_extra">
+                        <input class="custom-control-input" type="checkbox" value="1" id="necessita_interventi_extra" name="necessita_interventi_extra" <?php echo (isset($data->necessita_interventi_extra) && $data->necessita_interventi_extra == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="necessita_interventi_extra">Intervento di per sè utile ma sono necessari altri interventi complementari</label>
+                    </div>
+                    <?php showComment($comments, 'cause_inefficacia'); ?>
+                </div>
+
+              <?php /*
                 <div class="form-group" id="problems_found">
                     <label for="valutazione_risultati"><?php t('Quali sono i problemi che hai rilevato?'); ?></label>
                     <div class="custom-control custom-checkbox">
@@ -420,7 +460,7 @@
                     </div>
                     <?php showComment($comments, 'problemi_rilevati'); ?>
                 </div>
-
+*/ ?>
 
 <?php /*
               <div class="form-group">
@@ -470,45 +510,7 @@
                   <?php showComment($comments, 'punti_deboli'); ?>
               </div>
 
-              <div class="form-group <?php echo ($data->valutazione_risultati > 3 ? 'd-none' : ''); ?>" id="cause_inefficacia_wrapper">
-                <label>Quali sono le cause dell’inefficacia del progetto che hai monitorato?</label>
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="0" id="problemi_amministrativi_null" name="problemi_amministrativi">
-                  <input class="custom-control-input" type="checkbox" value="1" id="problemi_amministrativi" name="problemi_amministrativi" <?php echo (isset($data->problemi_amministrativi) && $data->problemi_amministrativi == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="problemi_amministrativi">Realizzazione ha mostrato problemi di natura amministrativa</label>
-                </div>
 
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="0" id="problemi_tecnici_null" name="problemi_tecnici">
-                  <input class="custom-control-input" type="checkbox" value="1" id="problemi_tecnici" name="problemi_tecnici" <?php echo (isset($data->problemi_tecnici) && $data->problemi_tecnici == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="problemi_tecnici">Realizzazione ha mostrato problemi di natura tecnica</label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="0" id="risultato_insoddisfacente_null" name="risultato_insoddisfacente">
-                  <input class="custom-control-input" type="checkbox" value="1" id="risultato_insoddisfacente" name="risultato_insoddisfacente" <?php echo (isset($data->risultato_insoddisfacente) && $data->risultato_insoddisfacente == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="risultato_insoddisfacente">Il risultato del progetto non è soddisfacente</label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="0" id="non_efficace_null" name="non_efficace">
-                  <input class="custom-control-input" type="checkbox" value="1" id="non_efficace" name="non_efficace" <?php echo (isset($data->non_efficace) && $data->non_efficace == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="non_efficace">Intervento complessivamente ben realizzato ma non rispondente ai bisogni degli utenti finali (non efficace)</label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="0" id="non_sufficiente_null" name="non_sufficiente">
-                  <input class="custom-control-input" type="checkbox" value="1" id="non_sufficiente" name="non_sufficiente" <?php echo (isset($data->non_sufficiente) && $data->non_sufficiente == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="non_sufficiente">Intervento utile ma non sufficiente per rispondere al fabbisogno (“ne serve di più”, es. più investimenti nello stesso progetto o in progetti simili)</label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" value="0" id="necessita_interventi_extra_null" name="necessita_interventi_extra">
-                  <input class="custom-control-input" type="checkbox" value="1" id="necessita_interventi_extra" name="necessita_interventi_extra" <?php echo (isset($data->necessita_interventi_extra) && $data->necessita_interventi_extra == 1 ? 'checked' : ''); ?>>
-                  <label class="custom-control-label" for="necessita_interventi_extra">Intervento di per sè utile ma sono necessari altri interventi complementari</label>
-                </div>
-                <?php showComment($comments, 'cause_inefficacia'); ?>
-              </div>
 
               <div class="form-group">
                 <label for="rischi">Rischi futuri per il progetto monitorato:</label>
@@ -638,7 +640,7 @@
                   <label for="intervista_intervistati">Chi sono e che ruolo hanno nel progetto le persone che hai contattato e/o intervistato? A quale organizzazione appartengono? </label>
                   <small class="form-text text-muted">Riporta i ruoli di tutte le persone contattate e/o intervistate. Se le interviste non sono andate a buon fine, raccontaci perché. Specifica anche il ruolo e l’organizzazione di appartenenza delle persone che avete provato a intervistare ma che non hanno risposto, e quando.</small>
                 <textarea name="intervista_intervistati" id="intervista_intervistati" class="form-control"><?php echo ckv_object($data, 'intervista_intervistati'); ?></textarea>
-                  <span class="form-text text-muted">(es. gestore, funzionario comunale, cittadino informato…)</span>
+
                   <?php showComment($comments, 'intervista_intervistati'); ?>
               </div>
 
@@ -983,9 +985,10 @@ ORGANIZZAZIONE: Ad esempio: Città di Roma, Provincia di Chieti, Regione Calabri
       </div>
         <?php if($data->status !== 7){ ?>
         <div class="form-group">
+          <div class="alert alert-primary">Il tuo report è pronto <strong>(completo in step 1 e step 2)</strong>? Puoi inviarlo alla nostra Redazione!  Clicca sulla spunta, salva il report, aspetta alcuni giorni e controlla <strong>l’email che hai usato per registrarti</strong>: riceverai i nostri commenti e le istruzioni per effettuare eventuali correzioni.</div>
           <div class="custom-control custom-checkbox">
             <input class="custom-control-input" type="checkbox" value="<?php echo PENDING_REVIEW; ?>" id="status" name="status">
-              <label class="custom-control-label" for="status">Il Report è pronto (<strong>completo in step 1 e step 2</strong>) per essere revisionato dalla Redazione</label>
+            <label class="custom-control-label" for="status">Si, il mio report è pronto e voglio inviarlo alla Redazione!</label>
           </div>
 
         </div>

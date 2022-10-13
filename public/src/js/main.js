@@ -22,7 +22,7 @@ var Monithon = {
     this.triggerDescriptions();
     this.radioDisplayTrigger('.gender_equality_trigger');
     this.giudizioSintetico();
-    this.triggerProblems();
+   // this.triggerProblems();
     this.extraQuestionario();
 
 
@@ -136,8 +136,16 @@ var Monithon = {
   },
 
   checkEval: function(){
+
+
     $('.check-eval').change(function(e){
-      if($(this).val() < 4){
+      if(
+          $('input#sda_2').is(':checked') ||
+          $('input#sda_4').is(':checked') ||
+          $('input#sda_5').is(':checked') ||
+          $('input#giudizio_sintetico_2').is(':checked') ||
+          $('input#giudizio_sintetico_3').is(':checked')
+      ){
         $('#cause_inefficacia_wrapper').removeClass('d-none');
       }
       else {
@@ -298,7 +306,6 @@ var Monithon = {
   },
 
   setGS: function(){
-    console.log('setting up GS labels');
     var labels_opt_1 = {
       'giudizio_sintetico_1': "Potenzialmente efficace <small>Il progetto sembra utile e complessivamente ben progettato, anche se potenziali rischi possono essere individuati</small>",
       'giudizio_sintetico_2': "Potenzialmente efficace ma con rischi sostanziali <small>Il progetto sembra utile, anche se ci sono debolezze o rischi importanti che ne possono pregiudicare l’efficacia</small>",
