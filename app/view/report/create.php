@@ -22,10 +22,11 @@
 
       <div class="tab-content" id="report-tab-content">
         <div class="tab-pane fade show active" id="step-1" role="tabpanel" aria-labelledby="step-1">
+          <div class="alert alert-danger alert-dismissible"><strong>Attenzione:</strong> Non accedere da più dispositivi contemporaneamente!</div>
           <fieldset>
               <legend>Informazioni di Base</legend>
-              <small class="form-text text-muted">Inserisci la URL per fare apparire MoniTutor</small>
-              <div class="alert alert-danger alert-dismissible"><strong>Attenzione:</strong> Non accedere da più dispositivi contemporaneamente!</div>
+
+
               <br /><br /><br />
               <!-- Codice OpenCoesione -->
               <div class="form-group">
@@ -159,7 +160,7 @@
                           <label class="custom-control-label" for="gender_objectives_yes_direct">Si, diretti: pianificati con l’obiettivo esplicito di intervenire a favore delle donne (es. il progetto ha tra i suoi obiettivi il contrasto alla violenza di genere, la protezione e il sostegno alle vittime di violenza, l’aumento della partecipazione delle donne al mercato del lavoro,  il contrasto alla povertà femminile...)</label>
                       </div>
                       <div class="form-group d-none trigger-desc-wrapper" id="goydd">
-                          <label>Aggiungi una descrizione</label>
+                          <label>Puoi indicarci questi obiettivi e descriverli brevemente?</label>
                           <textarea id="gender_objectives_yes_direct_desc" name="gender_objectives_yes_direct_desc"  class="form-control"><?php echo ckv($data, 'gender_objectives_yes_direct_desc'); ?></textarea>
                       </div>
 
@@ -168,7 +169,7 @@
                           <label class="custom-control-label" for="gender_objectives_yes_indirect">Si, indiretti: potrebbero avere un impatto, anche indiretto, sulla riduzione delle disuguaglianze a sfavore delle donne (es. il progetto prevede rafforzamento servizi mense / asili, rafforzamento trasporto pubblico locale…)</label>
                       </div>
                       <div class="form-group d-none trigger-desc-wrapper" id="goyid">
-                        <label>Aggiungi una descrizione</label>
+                        <label>Puoi indicarci questi obiettivi e descriverli brevemente?</label>
                         <textarea id="gender_objectives_yes_indirect_desc" name="gender_objectives_yes_indirect_desc"  class="form-control"><?php echo ckv($data, 'gender_objectives_yes_indirect_desc'); ?></textarea>
                       </div>
 
@@ -184,18 +185,21 @@
                   </div>
 
                   <div class="form-group">
-                      <label>Il linguaggio utilizzato nei documenti progettuali è sensibile al genere (es. sono utilizzate parole come donne, bambine, anziane, studentesse, lavoratrici, etc.)? </label>
+                      <label>Nel progetto i partecipanti (a volte chiamati beneficiari) sono distinti per genere (donne, uomini, altri), utilizzando - per esempio -parole come donne, bambine, anziane, studentesse, lavoratrici, etc.</label>
                       <div class="custom-control custom-radio">
-                          <input type="radio" id="gender_language_yes" name="gender_language" class="custom-control-input" value="1" <?php echo (isset($data['gender_language']) && $data['gender_language'] ==  1 ? 'checked' : ''); ?>>
+                          <input type="radio" id="gender_language_yes" name="gender_language" class="trigger-desc custom-control-input" data-group="gl" data-target="#glid" value="1" <?php echo (isset($data['gender_language']) && $data['gender_language'] ==  1 ? 'checked' : ''); ?>>
                           <label class="custom-control-label" for="gender_language_yes">Si</label>
                       </div>
-
+                      <div class="form-group d-none trigger-desc-wrapper" id="glid">
+                          <label>Puoi indicarci quali termini sono stati utilizzati?</label>
+                          <textarea id="gender_language_desc" name="gender_language_desc"  class="form-control"><?php echo ckv($data, 'gender_language_desc'); ?></textarea>
+                      </div>
                       <div class="custom-control custom-radio">
-                          <input type="radio" id="gender_language_no" name="gender_language" class="custom-control-input" value="2" <?php echo (isset($data['gender_language']) && $data['gender_language'] ==  2 ? 'checked' : ''); ?>>
+                          <input type="radio" id="gender_language_no" name="gender_language" class="trigger-desc custom-control-input"  data-group="gl" value="2" <?php echo (isset($data['gender_language']) && $data['gender_language'] ==  2 ? 'checked' : ''); ?>>
                           <label class="custom-control-label" for="gender_language_no">No</label>
                       </div>
                       <div class="custom-control custom-radio">
-                          <input type="radio" id="gender_language_nok" name="gender_language" class="custom-control-input" value="3" <?php echo (isset($data['gender_language']) && $data['gender_language'] ==  3 ? 'checked' : ''); ?>>
+                          <input type="radio" id="gender_language_nok" name="gender_language" class="trigger-desc custom-control-input" data-group="gl" value="3" <?php echo (isset($data['gender_language']) && $data['gender_language'] ==  3 ? 'checked' : ''); ?>>
                           <label class="custom-control-label" for="gender_language_nok">Non saprei</label>
                       </div>
                   </div>
@@ -230,7 +234,7 @@
                       </div>
 
                       <div class="form-group d-none trigger-desc-wrapper" id="giy">
-                          <label>Quali indicatori?</label>
+                          <label>Quali indicatori sono stati menzionati?</label>
                           <input id="gender_indicators_desc" name="gender_indicators_desc"  class="form-control" value="<?php echo ckv($data, 'gender_indicators_desc'); ?>" />
                       </div>
 

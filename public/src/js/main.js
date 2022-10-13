@@ -272,6 +272,33 @@ var Monithon = {
   giudizioSintetico: function(){
     // Get Cur Status of Stato di Avanzamento
 
+
+
+    Monithon.setGS();
+
+
+    $('input[name="stato_di_avanzamento"]').on('change', function(){
+      Monithon.setGS();
+      /*var sda = $('input[name="stato_di_avanzamento"]:checked').val();
+      if (sda < 3){
+        var labels = labels_opt_1;
+      }
+      else if(sda > 2 && sda < 6){
+        var labels = labels_opt_2;
+      }
+      else {
+        var labels = labels_opt_3;
+      }
+      $('.gsl').each(function(){
+        var theForProp = $(this).attr('for');
+        var theLabel = labels[theForProp];
+        $(this).html(theLabel);
+      });*/
+    });
+  },
+
+  setGS: function(){
+    console.log('setting up GS labels');
     var labels_opt_1 = {
       'giudizio_sintetico_1': "Potenzialmente efficace <small>Il progetto sembra utile e complessivamente ben progettato, anche se potenziali rischi possono essere individuati</small>",
       'giudizio_sintetico_2': "Potenzialmente efficace ma con rischi sostanziali <small>Il progetto sembra utile, anche se ci sono debolezze o rischi importanti che ne possono pregiudicare l’efficacia</small>",
@@ -291,22 +318,20 @@ var Monithon = {
       'giudizio_sintetico_4': "Non è stato possibile valutare <small>Es. il progetto non ha ancora prodotto risultati valutabili</small>"
     };
 
-    $('input[name="stato_di_avanzamento"]').on('change', function(){
-      var sda = $('input[name="stato_di_avanzamento"]:checked').val();
-      if (sda < 3){
-        var labels = labels_opt_1;
-      }
-      else if(sda > 2 && sda < 6){
-        var labels = labels_opt_2;
-      }
-      else {
-        var labels = labels_opt_3;
-      }
-      $('.gsl').each(function(){
-        var theForProp = $(this).attr('for');
-        var theLabel = labels[theForProp];
-        $(this).html(theLabel);
-      });
+    var sda = $('input[name="stato_di_avanzamento"]:checked').val();
+    if (sda < 3){
+      var labels = labels_opt_1;
+    }
+    else if(sda > 2 && sda < 6){
+      var labels = labels_opt_2;
+    }
+    else {
+      var labels = labels_opt_3;
+    }
+    $('.gsl').each(function(){
+      var theForProp = $(this).attr('for');
+      var theLabel = labels[theForProp];
+      $(this).html(theLabel);
     });
   },
 
@@ -332,14 +357,18 @@ var Monithon = {
   },
 
   extraQuestionario: function(){
+    Monithon.showExtraQ();
     $('input#questionario_altri, input#questionario_utenti').change(function(){
-      if($('input#questionario_altri').is(':checked') || $('input#questionario_utenti').is(':checked') ){
-        $('.qe_w').removeClass(('d-none'));
-      }
-      else {
-        $('.qe_w').addClass(('d-none'));
-      }
+      Monithon.showExtraQ();
     });
+  },
+  showExtraQ: function(){
+    if($('input#questionario_altri').is(':checked') || $('input#questionario_utenti').is(':checked') ){
+      $('.qe_w').removeClass(('d-none'));
+    }
+    else {
+      $('.qe_w').addClass(('d-none'));
+    }
   }
 };
 

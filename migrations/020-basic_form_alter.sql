@@ -38,6 +38,8 @@ alter table entity_report_basic
     add questionario_altri tinyint default 0 null after questionario_utenti;
 alter table entity_report_basic
     add cup_descr_natura text default null after stato_di_avanzamento;
+alter table entity_report_basic
+    add questionario_extra text default null after questionario_altri;
 
 
 CREATE TABLE `meta_connection_relationship` (

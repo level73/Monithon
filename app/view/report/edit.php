@@ -19,7 +19,7 @@
           <a class="nav-link" id="step-2-tab" data-toggle="tab" href="#step-2" role="tab" aria-controls="step-2" aria-selected="false">Step 2: Valutazione</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="step-3-tab" data-toggle="tab" href="#step-3" role="tab" aria-controls="step-3" aria-selected="false">Step 3: Risultati e Impatto</a>
+          <a class="nav-link <?php echo ($data->status != PUBLISHED ? 'disabled' : ''); ?>" id="step-3-tab" data-toggle="tab" href="#step-3" role="tab" aria-controls="step-3" aria-selected="false">Step 3: Risultati e Impatto</a>
         </li>
       </ul>
 
@@ -27,11 +27,11 @@
 
       <div class="tab-content" id="report-tab-content">
         <div class="tab-pane  fade show  active" id="step-1" role="tabpanel" aria-labelledby="step-1">
+            <div class="alert alert-danger alert-dismissible"><strong>Attenzione:</strong> Non accedere da più dispositivi contemporaneamente!</div>
           <!-- Codice OpenCoesione -->
           <fieldset>
             <legend>Informazioni di Base</legend>
-              <small class="form-text text-muted">Inserisci la URL per fare apparire MoniTutor</small>
-              <div class="alert alert-danger alert-dismissible"><strong>Attenzione:</strong> Non accedere da più dispositivi contemporaneamente!</div>
+
               <br /><br /><br />
             <div class="form-group">
                 <label for="oc_api_code">URL del progetto monitorato su OpenCoesione/OpenPNRR/Altro:</label>
@@ -172,7 +172,7 @@
                         <label class="custom-control-label" for="gender_objectives_yes_direct">Si, diretti: pianificati con l’obiettivo esplicito di intervenire a favore delle donne (es. il progetto ha tra i suoi obiettivi il contrasto alla violenza di genere, la protezione e il sostegno alle vittime di violenza, l’aumento della partecipazione delle donne al mercato del lavoro,  il contrasto alla povertà femminile...)</label>
                     </div>
                     <div class="form-group <?php echo ($data->gender_objectives == 1 ? '' : 'd-none'); ?>  trigger-desc-wrapper" id="goydd">
-                        <label>Aggiungi una descrizione</label>
+                        <label>Puoi indicarci questi obiettivi e descriverli brevemente?</label>
                         <textarea id="gender_objectives_yes_direct_desc" name="gender_objectives_yes_direct_desc"  class="form-control"><?php echo ckv_object($data, 'gender_objectives_yes_direct_desc'); ?></textarea>
                     </div>
 
@@ -181,7 +181,7 @@
                         <label class="custom-control-label" for="gender_objectives_yes_indirect">Si, indiretti: potrebbero avere un impatto, anche indiretto, sulla riduzione delle disuguaglianze a sfavore delle donne (es. il progetto prevede rafforzamento servizi mense / asili, rafforzamento trasporto pubblico locale…)</label>
                     </div>
                     <div class="form-group <?php echo ($data->gender_objectives == 2 ? '' : 'd-none'); ?> trigger-desc-wrapper" id="goyid">
-                        <label>Aggiungi una descrizione</label>
+                        <label>Puoi indicarci questi obiettivi e descriverli brevemente?</label>
                         <textarea id="gender_objectives_yes_indirect_desc" name="gender_objectives_yes_indirect_desc"  class="form-control"><?php echo ckv_object($data, 'gender_objectives_yes_indirect_desc'); ?></textarea>
                     </div>
 
@@ -190,22 +190,33 @@
                         <input type="radio" id="gender_objectives_no" name="gender_objectives" class="trigger-desc check-eval custom-control-input"  data-group="go" value="3" <?php echo (isset($data->gender_objectives) && $data->gender_objectives ==  3 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="gender_objectives_no">No</label>
                     </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_objectives_unknow" name="gender_objectives" class="trigger-desc check-eval custom-control-input"  data-group="go" value="4" <?php echo (isset($data->gender_objectives) && $data->gender_objectives ==  4 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_objectives_unknow">Non saprei</label>
+                    </div>
 
                     <?php showComment($comments, 'gender_objectives'); ?>
                 </div>
 
                 <div class="form-group">
                     <label>
-                        Il linguaggio utilizzato nei documenti progettuali è sensibile al genere (es. sono utilizzate parole come donne, bambine, anziane, studentesse, lavoratrici, etc.)?
+                        Nel progetto i partecipanti (a volte chiamati beneficiari) sono distinti per genere (donne, uomini, altri), utilizzando - per esempio -parole come donne, bambine, anziane, studentesse, lavoratrici, etc.
                     </label>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="gender_language_yes" name="gender_language" class="custom-control-input" value="1" <?php echo (isset($data->gender_language) && $data->gender_language ==  1 ? 'checked' : ''); ?>>
+                        <input type="radio" id="gender_language_yes" name="gender_language" class="trigger-desc custom-control-input" data-group="gl" data-target="#glid" value="1" <?php echo (isset($data->gender_language) && $data->gender_language ==  1 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="gender_language_yes">Si</label>
                     </div>
-
+                    <div class="form-group d-none trigger-desc-wrapper" id="glid">
+                        <label>Puoi indicarci quali termini sono stati utilizzati?</label>
+                        <textarea id="gender_language_desc" name="gender_language_desc"  class="form-control"><?php echo ckv_object($data, 'gender_language_desc'); ?></textarea>
+                    </div>
                     <div class="custom-control custom-radio">
-                        <input type="radio" id="gender_language_no" name="gender_language" class="custom-control-input" value="2" <?php echo (isset($data->gender_language) && $data->gender_language ==  2 ? 'checked' : ''); ?>>
+                        <input type="radio" id="gender_language_no" name="gender_language" class="trigger-desc custom-control-input" data-group="gl" value="2" <?php echo (isset($data->gender_language) && $data->gender_language ==  2 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="gender_language_no">No</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_language_nok" name="gender_language" class="trigger-desc custom-control-input" data-group="gl" value="3" <?php echo (isset($data->gender_language) && $data->gender_language ==  3 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_language_nok">Non saprei</label>
                     </div>
                     <?php showComment($comments, 'gender_language'); ?>
                 </div>
@@ -228,7 +239,10 @@
                         <input type="radio" id="gender_finance_no" name="gender_finance" class="trigger-desc custom-control-input"  data-group="gf"  value="2" <?php echo (isset($data->gender_finance) && $data->gender_finance ==  2 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="gender_finance_no">No</label>
                     </div>
-
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_finance_nok" name="gender_finance" class="trigger-desc custom-control-input"  data-group="gf"  value="2" <?php echo (isset($data->gender_finance) && $data->gender_finance ==  3 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_finance_nok">Non saprei</label>
+                    </div>
                     <?php showComment($comments, 'gender_finance'); ?>
                 </div>
 
@@ -250,6 +264,10 @@
                         <input type="radio" id="gender_indicators_no" name="gender_indicators" class="trigger-desc custom-control-input"  data-group="gi"  value="2" <?php echo (isset($data->gender_indicators) && $data->gender_indicators ==  2 ? 'checked' : ''); ?>>
                         <label class="custom-control-label" for="gender_indicators_no">No</label>
                     </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="gender_indicators_nok" name="gender_indicators" class="trigger-desc custom-control-input"  data-group="gi"  value="3" <?php echo (isset($data->gender_indicators) && $data->gender_indicators ==  3 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="gender_indicators_nok">Non saprei</label>
+                    </div>
                     <?php showComment($comments, 'gender_indicators'); ?>
                 </div>
 
@@ -266,19 +284,145 @@
           </div>
             <fieldset>
               <legend>Valutazione</legend>
-              <div class="form-group">
-                <label for="avanzamento">Stato di avanzamento del progetto monitorato sulla base delle informazioni raccolte:</label>
-                <textarea name="avanzamento" id="avanzamento" class="form-control"><?php echo ckv_object($data, 'avanzamento'); ?></textarea>
+                <div class="form-group">
+                    <label>Stato di avanzamento del progetto monitorato:</label>
+                    <small class="form-text text-muted">Indipendentemente dalle tempistiche dichiarate, qual è il reale avanzamento del progetto monitorato?</small>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sda_1" name="stato_di_avanzamento" class="check-eval custom-control-input" value="1"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sda_1">Appena avviato <small>Il progetto è stato appena selezionato o è nelle fasi preliminari di realizzazione (es. progettazione preliminare)</small></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sda_2" name="stato_di_avanzamento" class="check-eval custom-control-input checkforproblems" value="2"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 2 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sda_2">Mai partito <small>Il progetto è stato selezionato da almeno un anno ma non è mai stato avviato e risulta quindi bloccato all’avvio</small></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sda_3" name="stato_di_avanzamento" class="check-eval custom-control-input" value="3"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 3 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sda_3">In corso senza particolari intoppi <small>Il progetto è in corso di realizzazione (es. il cantiere è aperto) e segue le tappe prefissate; i ritardi sono limitati</small></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sda_4" name="stato_di_avanzamento" class="check-eval custom-control-input checkforproblems" value="4"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 4 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sda_4">In corso con problemi di realizzazione <small>Il progetto è in corso di realizzazione ma presenta problemi sostanziali (amministrativi, tecnici, etc.) oppure ritardi significativi</small></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sda_5" name="stato_di_avanzamento" class="check-eval custom-control-input checkforproblems" value="5"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 5 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sda_5">Bloccato <small>Il progetto è fermo da almeno un anno per problemi in fase di realizzazione</small></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sda_6" name="stato_di_avanzamento" class="check-eval custom-control-input" value="6"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 6 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sda_6">Concluso <small>Tutte le attività sono state completate</small></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sda_7" name="stato_di_avanzamento" class="check-eval custom-control-input" value="7"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 7 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sda_7">Non è stato possibile verificare l’avanzamento <small>Le informazioni disponibili non sono sufficienti</small></label>
+                    </div>
+
+                    <?php showComment($comments, 'stato_di_avanzamento'); ?>
+                </div>
+
+                <div class="form-group <?php echo ($data->cup_descr_natura == 'REALIZZAZIONE DI LAVORI PUBBLICI (OPERE ED IMPIANTISTICA)' ? '' : 'd-none'); ?>" id="sda_infrastrutturale">
+                    <input type="hidden" name="cup_descr_natura" id="cup_descr_natura" value="<?php echo $data->cup_descr_natura; ?>">
+                    <label>Stato di avanzamento del progetto infrastrutturale:</label>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sdai_1" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="1"  <?php echo (isset($data->stato_di_avanzamento_infrastrutturale) && $data->stato_di_avanzamento_infrastrutturale == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sdai_1">Non avviato</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sdai_2" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="2"  <?php echo (isset($data->stato_di_avanzamento_infrastrutturale) && $data->stato_di_avanzamento_infrastrutturale == 2 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sdai_2">In avvio di progettazione <small>Studio di fattibilità</small></label>
+                    </div>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sdai_3" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="3"  <?php echo (isset($data->stato_di_avanzamento_infrastrutturale) && $data->stato_di_avanzamento_infrastrutturale == 3 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sdai_3">In corso di progettazione <small>Progettazione esecutiva</small></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sdai_4" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="4"  <?php echo (isset($data->stato_di_avanzamento_infrastrutturale) && $data->stato_di_avanzamento_infrastrutturale == 4 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sdai_4">In affidamento <small>Affidamento gara in corso</small></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sdai_5" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="5"  <?php echo (isset($data->stato_di_avanzamento_infrastrutturale) && $data->stato_di_avanzamento_infrastrutturale == 5 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sdai_5">In esecuzione <small>Lavori iniziati</small></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="sdai_6" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="6"  <?php echo (isset($data->stato_di_avanzamento_infrastrutturale) && $data->stato_di_avanzamento_infrastrutturale == 6 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="sdai_6">Eseguito <small>Conclusa la fase di esecuzione</small></label>
+                    </div>
+                    <?php showComment($comments, 'stato_di_avanzamento_infrastrutturale'); ?>
+                </div>
+
+
+                <div class="form-group">
+                  <label for="avanzamento">Descrizione dello stato di avanzamento del progetto monitorato:</label>
+                  <small clasS="form-text text-muted">Descrivi lo stato del progetto sulla base delle informazioni raccolte, specificando la fonte delle informazioni (es. quali documenti, quali interviste, visita di monitoraggio).</small>
+                  <textarea name="avanzamento" id="avanzamento" class="form-control"><?php echo ckv_object($data, 'avanzamento'); ?></textarea>
                   <?php showComment($comments, 'avanzamento'); ?>
               </div>
 
+                <!-- Giudizio Sintetico -->
+                <div class="form-group">
+                    <label for="gs">Giudizio sintetico sul progetto monitorato: </label>
+                    <small class="form-text form-muted">Sulla base delle risposte precedenti, come giudichi l’efficacia del progetto monitorato?</small>
+
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="giudizio_sintetico_1" name="gs" class="custom-control-input" value="1"  <?php echo (isset($data->gs) && $data->gs == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label gsl" for="giudizio_sintetico_1"></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="giudizio_sintetico_2" name="gs" class="custom-control-input checkforproblems" value="2"  <?php echo (isset($data->gs) && $data->gs == 2 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label gsl" for="giudizio_sintetico_2"></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="giudizio_sintetico_3" name="gs" class="custom-control-input checkforproblems" value="3"  <?php echo (isset($data->gs) && $data->gs == 3 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label gsl" for="giudizio_sintetico_3"></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="giudizio_sintetico_4" name="gs" class="custom-control-input" value="4"  <?php echo (isset($data->gs) && $data->gs == 4 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label gsl" for="giudizio_sintetico_4"></label>
+                    </div>
+                    <?php showComment($comments, 'gs'); ?>
+                </div>
+
+                <!-- EOF Giudizio Sintetico -->
 
               <div class="form-group">
                 <label for="risultato_progetto">Risultato del progetto monitorato (se il progetto è concluso, quali risultati ha avuto?):</label>
+                  <small class="text-muted form-text">Descrivi più in dettaglio i risultati ottenuti del progetto. Concentrati in particolare sull’utilità ed efficacia dei risultati, dal tuo punto di vista. Se il progetto è ancora in corso, prova a descrivere, se possibile, i suoi risultati parziali. Cita sempre le fonti delle tue affermazioni (es. documenti, visita di monitoragggio, interviste, etc.)</small>
                 <textarea name="risultato_progetto" id="risultato_progetto" class="form-control"><?php echo ckv_object($data, 'risultato_progetto'); ?></textarea>
                   <?php showComment($comments, 'risultato_progetto'); ?>
               </div>
 
+                <div class="form-group" id="problems_found">
+                    <label for="valutazione_risultati"><?php t('Quali sono i problemi che hai rilevato?'); ?></label>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" id="problema_rilevato_1" name="problema_rilevato_1" class="check-eval custom-control-input" value="1"  <?php echo (isset($data->problema_rilevato_1) && $data->problema_rilevato_1 == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="problema_rilevato_1">Realizzazione ha mostrato problemi di natura amministrativa</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" id="problema_rilevato_2" name="problema_rilevato_2" class="check-eval custom-control-input" value="1"  <?php echo (isset($data->problema_rilevato_2) && $data->problema_rilevato_2 == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="problema_rilevato_2">Realizzazione ha mostrato problemi di natura tecnica</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" id="problema_rilevato_3" name="problema_rilevato_3" class="check-eval custom-control-input" value="1"  <?php echo (isset($data->problema_rilevato_3) && $data->problema_rilevato_3 == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="problema_rilevato_3">Il risultato del progetto non è soddisfacente</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" id="problema_rilevato_4" name="problema_rilevato_4" class="check-eval custom-control-input" value="1"  <?php echo (isset($data->problema_rilevato_4) && $data->problema_rilevato_4 == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="problema_rilevato_4">Intervento complessivamente ben realizzato ma non rispondente ai bisogni degli utenti finali (non efficace)</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" id="problema_rilevato_5" name="problema_rilevato_5" class="check-eval custom-control-input" value="1"  <?php echo (isset($data->problema_rilevato_5) && $data->problema_rilevato_5 == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="problema_rilevato_5">Intervento utile ma non sufficiente per rispondere al fabbisogno (“ne serve di più”, es. più investimenti nello stesso progetto o in progetti simili)</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" id="problema_rilevato_6" name="problema_rilevato_6" class="check-eval custom-control-input" value="1"  <?php echo (isset($data->problema_rilevato_6) && $data->problema_rilevato_6 == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="problema_rilevato_6">Intervento di per sé utile ma sono necessari altri interventi complementari</label>
+                    </div>
+                    <?php showComment($comments, 'problemi_rilevati'); ?>
+                </div>
+
+
+<?php /*
               <div class="form-group">
                 <label for="valutazione_risultati"><?php t('Se il progetto è concluso o sei stato comunque in grado di valutare alcuni dei suoi risultati qual è il tuo giudizio sull’efficacia del progetto che hai monitorato?'); ?></label>
                 <div class="custom-control custom-radio">
@@ -307,17 +451,21 @@
                 </div>
                   <?php showComment($comments, 'valutazione_risultati'); ?>
               </div>
-
+*/ ?>
 
               <div class="form-group">
-                <label for="punti_di_forza">Punti di forza (cosa ti è piaciuto del progetto monitorato?):</label>
+                <label for="punti_di_forza">Punti di forza del progetto monitorato:</label>
+                  <small class="text-muted form-text">Cosa ti è piaciuto della progettazione/attuazione/realizzazione del progetto che hai monitorato? Quali aspetti puoi valutare come positivi?</small>
                 <textarea name="punti_di_forza" id="punti_di_forza" class="form-control"><?php echo ckv_object($data, 'punti_di_forza'); ?></textarea>
                   <?php showComment($comments, 'punti_di_forza'); ?>
               </div>
 
 
               <div class="form-group">
-                <label for="punti_deboli">Debolezze (difficoltà riscontrate nell'attuazione/realizzazione del progetto monitorato?):</label>
+                <label for="punti_deboli">Punti di debolezza del progetto monitorato:</label>
+                  <small class="text-muted form-text">Cosa non ti è piaciuto della progettazione/attuazione/realizzazione del progetto monitorato? Quali aspetti puoi valutare come negativi?<br />
+                      NB: Occorre specificare gli aspetti negativi del progetto monitorato, non della ricerca di monitoraggio civico. Se hai avuto problemi a fare le interviste o a trovare informazioni, puoi utilizzare le domande della sessione successiva “Metodi di indagine”.
+                  </small>
                 <textarea name="punti_deboli" id="punti_deboli" class="form-control"><?php echo ckv_object($data, 'punti_deboli'); ?></textarea>
                   <?php showComment($comments, 'punti_deboli'); ?>
               </div>
@@ -364,6 +512,7 @@
 
               <div class="form-group">
                 <label for="rischi">Rischi futuri per il progetto monitorato:</label>
+                  <small class="form-text text-muted">Cosa potrebbe mettere in pericolo l’efficacia del progetto monitorato? Quali aspetti potrebbero rivelarsi problematici, dato il contesto in cui il progetto opera?</small>
                 <textarea name="rischi" id="rischi" class="form-control"><?php echo ckv_object($data, 'rischi'); ?></textarea>
                   <?php showComment($comments, 'rischi'); ?>
               </div>
@@ -371,10 +520,11 @@
 
               <div class="form-group">
                 <label for="soluzioni_progetto">Soluzioni ed idee da proporre per il progetto monitorato:</label>
+                  <small class="text-muted form-text">Quali azioni o condizioni potrebbero aumentare l’efficacia del progetto monitorato, inclusi eventuali progetti/opere/servizi/interventi di varia natura complementari che sarebbe necessario implementare per un adeguato perseguimento degli obiettivi finali del progetto? Questi suggerimenti sono importanti per comunicare ai decisori pubblici come il progetto può essere reso più efficace.</small>
                 <textarea name="soluzioni_progetto" id="soluzioni_progetto" class="form-control"><?php echo ckv_object($data, 'soluzioni_progetto'); ?></textarea>
                   <?php showComment($comments, 'soluzioni_progetto'); ?>
               </div>
-
+<?php /*
               <!-- Giudizio Sintetico -->
               <div class="form-group">
                 <label for="giudizio_sintetico">Giudizio Sintetico sul Progetto monitorato: </label>
@@ -410,7 +560,7 @@
                 <?php showComment($comments, 'giudizio_sintetico'); ?>
 
               </div>
-
+*/ ?>
             </fieldset>
             <fieldset>
               <legend>Metodi di Indagine</legend>
@@ -470,33 +620,61 @@
                   <label class="custom-control-label" for="referenti_politici">Intervista con i referenti politici</label>
 
                 </div>
+
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="hidden" value="0" id="questionario_utenti_null" name="questionario_utenti">
+                      <input class="custom-control-input" type="checkbox" value="1" id="questionario_utenti" name="questionario_utenti" <?php echo (isset($data->questionario_utenti) && $data->questionario_utenti == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="questionario_utenti">Questionario inviato a utenti/beneficiari finali dell'intervento</label>
+                  </div>
+                  <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="hidden" value="0" id="questionario_altri_null" name="questionario_altri">
+                      <input class="custom-control-input" type="checkbox" value="1" id="questionario_altri" name="questionario_altri" <?php echo (isset($data->questionario_altri) && $data->questionario_altri == 1 ? 'checked' : ''); ?>>
+                      <label class="custom-control-label" for="questionario_altri">Questionario inviato a altre tipologie di persone</label>
+                  </div>
                   <?php showComment($comments, 'raccolta_informazioni'); ?>
               </div>
 
               <div class="form-group">
-                <label for="intervista_intervistati">Chi è stato intervistato? Che ruolo ha la persona nel progetto? (es. gestore, funzionario comunale, cittadino informato…):</label>
+                  <label for="intervista_intervistati">Chi sono e che ruolo hanno nel progetto le persone che hai contattato e/o intervistato? A quale organizzazione appartengono? </label>
+                  <small class="form-text text-muted">Riporta i ruoli di tutte le persone contattate e/o intervistate. Se le interviste non sono andate a buon fine, raccontaci perché. Specifica anche il ruolo e l’organizzazione di appartenenza delle persone che avete provato a intervistare ma che non hanno risposto, e quando.</small>
                 <textarea name="intervista_intervistati" id="intervista_intervistati" class="form-control"><?php echo ckv_object($data, 'intervista_intervistati'); ?></textarea>
-                <span class="form-text text-muted">Riportare i ruoli di tutte le persone intervistate</span>
+                  <span class="form-text text-muted">(es. gestore, funzionario comunale, cittadino informato…)</span>
                   <?php showComment($comments, 'intervista_intervistati'); ?>
               </div>
 
               <div class="form-group">
-                <label for="intervista_domande">Principali due domande poste agli intervistati (specificare quali):</label>
+                  <label for="intervista_domande">Principali due domande poste agli intervistati:</label>
+                  <small class="form-text text-muted">Specifica, tra parentesi dopo ogni domanda, a chi è stata rivolta (ruolo e organizzazione di appartenenza). Se hai fatto una sbobinatura integrale dell’intervista, allegala come PDF nella successiva sezione “Link, Video, Allegati”.</small>
                 <textarea name="intervista_domande" id="intervista_domande" class="form-control"><?php echo ckv_object($data, 'intervista_domande'); ?></textarea>
                   <?php showComment($comments, 'intervista_domande'); ?>
               </div>
 
               <div class="form-group">
-                <label for="intervista_risposte">Principali due risposte degli intervistati:</label>
+                  <label for="intervista_risposte">Principali due risposte degli intervistati:</label>
+                  <small class="form-text text-muted">Riporta le risposte integrali o, se troppo lunghe, una loro sintesi dettagliata (es. le riposte “Sì” o “No” non sono sufficienti).</small>
                 <textarea name="intervista_risposte" id="intervista_risposte" class="form-control"><?php echo ckv_object($data, 'intervista_risposte'); ?></textarea>
                   <?php showComment($comments, 'intervista_risposte'); ?>
               </div>
 
+                <div class="form-group qe_w d-none" >
+                    <label for="questionario_extra">Se hai somministrato un questionario, quali tipologie di persone sono state coinvolte e quale è stato il tasso di risposta?</label>
+                    <small class="form-text text-muted">Specifica a chi hai mandato il questionario (es. utenti di un servizio, beneficiari finali di un investimento), quanti questionari hai inviato e quante risposte hai ottenuto.</small>
+                    <textarea name="questionario_extra" id="questionario_extra" class="form-control"><?php echo ckv_object($data, 'questionario_extra'); ?></textarea>
+                    <?php showComment($comments, 'questionario_extra'); ?>
+                </div>
+
             </fieldset>
             <fieldset>
               <legend>Link, Video, Allegati</legend>
-              <div class="alert alert-info" role="alert"><i class="fas fa-exclamation-triangle"></i> <strong>Il peso complessivo dei file che si vogliono caricare non deve eccedere gli 8mb per invio.</strong></div>
-              <div class="form-group">
+                <div class="alert alert-info" role="alert"><i class="fas fa-exclamation-triangle"></i> <strong>Il peso complessivo dei file che si vogliono caricare non deve eccedere gli 8mb per invio.</strong></div>
+
+                <p class="form-text">Aggiungi almeno un’immagine per la copertina del report. Inserisci le foto che hai fatto durante la visita di monitoraggio o durante le interviste, o qualunque altra immagine che documenti il tuo monitoraggio civico.</p>
+                <p class="form-text">Se hai somministrato un questionario, carica, in formato PDF, i principali risultati dell’indagine che hai realizzato, con il dettaglio delle risposte ottenute e un tuo commento.</p>
+                <p class="form-text">Se hai fatto interviste, inserisci, in formato PDF, una sintesi più estesa delle domande e delle risposte.</p>
+                <p class="form-text">Attenzione: Il peso complessivo dei file che si vogliono caricare non deve eccedere gli 8mb ogni volta in cui si salva.</p>
+
+
+                <div class="form-group">
               <label>Carica immagini o documenti<br /><small><i class="fas fa-exclamation-triangle"></i> Sono ammessi solo immagini (jpg, gif, png) o file documentali (doc, docx, xls, xlsx, pdf)</small></label>
               <div class="custom-file file-grouper origin">
                 <input type="file" class="custom-file-input" id="file-attachment[0]" name="file-attachment[0]">
@@ -525,7 +703,8 @@
               </div>
 
               <div class="form-group">
-                <label>Aggiungi link alla documentazione ed alle fonti</label>
+                  <label>Aggiungi link alla documentazione ed alle fonti</label>
+                  <small class="form-text text-muted">Inserisci il link agli articoli, ai siti web o ai documenti che hai consultato.</small>
 
                 <div class="link-grouper origin">
                   <input type="text" class="form-control" id="link-attachment[0]" name="link-attachment[0]" placeholder="Inserisci URL della fonte...">
@@ -543,8 +722,9 @@
               </div>
 
               <div class="form-group">
-                <label>Aggiungi link a Video (youtube, vimeo)</label>
-                <div class="video-grouper origin">
+                  <label>Aggiungi link a Video (YouTube o Vimeo)</label>
+                  <small class="form-text text-muted">Carica i video della visita o delle interviste su YouTube o Vimeo e inserisci qui il link al video pubblicato. Non inserire link a video su Facebook, Instagram o altro: non saranno visualizzati.</small>
+                  <div class="video-grouper origin">
                   <input type="text" class="form-control" id="video-attachment[0]" name="video-attachment[0]" placeholder="Inserisci URL del video...">
                 </div>
 
@@ -565,7 +745,9 @@
 
 
             </fieldset>
-            <button id="tab-3-nav" class="tab-subnav btn btn-primary btn-lg btn-block" data-step="#step-3" type="button">VAI ALLO STEP 3: RISULTATI E IMPATTO</button><br /><br />
+            <?php if($data->status == PUBLISHED): ?>
+            <button id="tab-3-nav" class="tab-subnav btn btn-primary btn-lg btn-block" data-step="#step-3" type="button" <?php echo $data->status != PUBLISHED ? 'disabled' : ''; ?>>VAI ALLO STEP 3: RISULTATI E IMPATTO</button><br /><br />
+            <?php endif; ?>
         </div>
 
         <div class="tab-pane fade" id="step-3" role="tabpanel" aria-labelledby="step-3">
