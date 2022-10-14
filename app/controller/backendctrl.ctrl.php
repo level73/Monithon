@@ -220,9 +220,20 @@ class BackendCtrl extends Ctrl
     public function genderdata(){
         $time = time();
 
-        $AllReports = $this->Backend->reports();
+        $AllReports = $this->Backend->GenderEqualityReports();
         $reports = array();
         $reports[] = array_keys((array)($AllReports[0]));
+
+        foreach ($AllReports as $report){
+            $report->parita_di_genere = ($report->parita_di_genere == 1 ? 'SI' : 'NO');
+            $report->gender_objectives = cycleAnswers($report->gender_objectives);
+            $report->gender_language = cycleAnswers($report->gender_language);
+            $report->gender_finance = cycleAnswers($report->gender_finance);
+            $report->gender_indicators = cycleAnswers($report->gender_indicators);
+
+            $reports[] = $report;
+        }
+
         header('Content-Type: text/csv');
         header('Content-Disposition: attachment; filename="report_export_' . $time . '.csv";');
 
@@ -239,5 +250,6 @@ class BackendCtrl extends Ctrl
 
         // Handle/Output your final sanitised CSV contents
         echo $csv_contents;
+
     }
 }

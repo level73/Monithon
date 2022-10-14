@@ -442,3 +442,19 @@ function reportListItems($report, $list){
 
     echo implode('', $list_entry);
 }
+
+function cycleAnswers($field){
+    switch($field){
+        case 1:
+            return 'SI';
+            break;
+        case 2:
+            return 'NO';
+            break;
+        case 3:
+            return 'NON SAPREI';
+            break;
+        default:
+            return 'N.D.';
+    }
+}

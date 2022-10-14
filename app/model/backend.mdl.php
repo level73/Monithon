@@ -118,4 +118,46 @@ class Backend extends Model
             return false;
         }
     }
+
+    public function GenderEqualityReports(){
+        $sql = '
+            SELECT 
+                `entity_report_basic`.`idreport_basic` AS `id`,
+                `entity_report_basic`.`titolo`,
+                `entity_report_basic`.`autore`,
+                `entity_report_basic`.`id_open_coesione` AS `URL_Progetto`,
+                `entity_report_basic`.`api_data`,
+                `entity_report_basic`.`indirizzo`,
+                `entity_report_basic`.`cap`,
+                `entity_report_basic`.`lat_`,
+                `entity_report_basic`.`lon_`,
+                `entity_report_basic`.`descrizione`,
+                `entity_report_basic`.`obiettivi`,
+                `entity_report_basic`.`attivita`,
+                `entity_report_basic`.`origine`,
+                `entity_report_basic`.`soggetti_beneficiari`,
+                `entity_report_basic`.`contesto`,
+                `entity_report_basic`.`is_gender_topic` AS `parita_di_genere`,
+                `entity_report_basic`.`gender_objectives`,
+                `entity_report_basic`.`gender_objectives_yes_direct_desc`,
+                `entity_report_basic`.`gender_objectives_yes_indirect_desc`,
+                `entity_report_basic`.`gender_language`,
+                `entity_report_basic`.`gender_language_desc`,
+                `entity_report_basic`.`gender_finance`,
+                `entity_report_basic`.`gender_finance_desc`,
+                `entity_report_basic`.`gender_indicators`,
+                `entity_report_basic`.`gender_indicators_desc`,
+                DATE_FORMAT(`entity_report_basic`.`created_at`, "%d/%c/%Y") AS data_creazione,
+                DATE_FORMAT(`entity_report_basic`.`modified_at`, "%d/%c/%Y") AS data_ultima_modifica
+            FROM `entity_report_basic` 
+            WHERE status >=7';
+        $stmt = $this->database->prepare($sql);
+        $query = $stmt->execute();
+        if($query){
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+        else {
+            return false;
+        }
+    }
 }
