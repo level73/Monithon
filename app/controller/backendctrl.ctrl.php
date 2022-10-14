@@ -231,7 +231,7 @@ class BackendCtrl extends Ctrl
             $report->gender_finance = cycleAnswers($report->gender_finance);
             $report->gender_indicators = cycleAnswers($report->gender_indicators);
 
-            $reports[] = $report;
+            $reports[] = (array)$report;
         }
 
         header('Content-Type: text/csv');

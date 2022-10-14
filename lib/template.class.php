@@ -11,7 +11,8 @@
     private $exclude = array(
                         'export_reports',
                         'explore_json',
-                        'export_subjects'
+                        'export_subjects',
+                        'genderdata'
                         );
 
     public function __construct($controller, $method) {
