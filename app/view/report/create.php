@@ -536,11 +536,6 @@
               </div>
 
                 <div class="custom-control custom-checkbox">
-                    <input class="custom-control-input" type="checkbox" value="1" id="referenti_politici" name="referenti_politici" <?php echo (isset($data['referenti_politici']) && $data['referenti_politici'] == 1 ? 'checked' : ''); ?>>
-                    <label class="custom-control-label" for="referenti_politici">Intervista con i referenti politici</label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" type="checkbox" value="1" id="questionario_utenti" name="questionario_utenti" <?php echo (isset($data['questionario_utenti']) && $data['questionario_utenti'] == 1 ? 'checked' : ''); ?>>
                     <label class="custom-control-label" for="questionario_utenti">Questionario inviato a utenti/beneficiari finali dell'intervento</label>
                 </div>
