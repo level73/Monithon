@@ -126,7 +126,6 @@ class Backend extends Model
                 `entity_report_basic`.`titolo`,
                 `entity_report_basic`.`autore`,
                 `entity_report_basic`.`id_open_coesione` AS `URL_Progetto`,
-                `entity_report_basic`.`api_data`,
                 `entity_report_basic`.`indirizzo`,
                 `entity_report_basic`.`cap`,
                 `entity_report_basic`.`lat_`,
