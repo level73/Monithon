@@ -378,6 +378,12 @@ textarea {
       font-size: 0.6em;
       font-weight: normal; }
 
+.main-box-wrap {
+  margin-top: 104px;
+  border: 1px solid #409588;
+  padding: 25px;
+  background: rgba(253, 255, 252, 0.6); }
+
 #main-header {
   background: #409588; }
   #main-header .nav-link {

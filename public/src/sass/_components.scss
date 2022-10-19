@@ -362,3 +362,9 @@ textarea { min-height: 6em; }
     }
   }
 }
+.main-box-wrap {
+  margin-top: 104px;
+  border: 1px solid $lagoon;
+  padding: 25px;
+  background: fade-out($seafoam, 0.4);
+}

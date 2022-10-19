@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
+        <div clasS="main-box-wrap">
       <h1>MONITHON v3.0</h1>
       <h2>Benvenuto!</h2>
 
@@ -20,7 +21,7 @@
       </div>
     <?php }?>
     </div>
-
+    </div>
   </div>
     <div class="row">
         <div class="col">
