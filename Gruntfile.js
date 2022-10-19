@@ -60,6 +60,10 @@ module.exports = function(grunt) {
                 src: 'public/src/components/bootstrap-table/dist/bootstrap-table.min.css',
                 dest: 'public/css/vendor/bootstrap-table.min.css'
             },
+              {
+                  src: 'public/src/components/animate-css/animate.min.css',
+                  dest: 'public/css/vendor/animate.min.css'
+              },
           ]
 		}
 	  },

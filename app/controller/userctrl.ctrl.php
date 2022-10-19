@@ -15,9 +15,43 @@
 
             if( isset($_COOKIE['pfurl']) && !empty($_COOKIE['pfurl']) ){
                 $this->set('pfurl', $_COOKIE['pfurl']);
+
+                // Get data to display above the Login form
+
+
+                    $code_url = explode('/', rtrim($_COOKIE['pfurl']));
+                    $code = end($code_url);
+
+
+
+                    $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
+                    $context = stream_context_create([
+                        "http" => [
+                            "header" => "Authorization: Basic $auth"
+                        ]
+                    ]);
+
+
+                    $oc_api_data = @file_get_contents('https://opencoesione.gov.it/it/api/progetti/' . $code . '/?format=json', false, $context);
+                    if(!$oc_api_data){
+                        $r['message'] = 'Non trovato';
+                        $r['code'] = '404';
+                        $r['data'] = null;
+
+                    }
+                    else {
+                        $r['message'] = 'Progetto trovato';
+                        $r['code'] = '200';
+                        $r['data'] = json_decode($oc_api_data);
+                    }
+
+                    $this->set('project', $r);
+
+
             }
 
             $this->set('title', 'Login');
+            $this->set('css', 'vendor/animate.min.css');
             $Errors = new Errors();
 
             if(isset($_GET['r']) && !empty($_GET['r']) && is_numeric($_GET['r'])){

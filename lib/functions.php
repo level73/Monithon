@@ -14,11 +14,11 @@ function loadCSS($css){
   if(!empty($css)){
     if(is_array($css)){
       foreach($css as $i => $file){
-        echo "<link href=\"/public/css/" . $file . "\" rel=\"stylesheet\" />\n";
+        echo "<link href=\"/public/css/" . $file . "\" rel=\"stylesheet\" type=\"text/css\" />\n";
       }
     }
     else {
-      echo "<link href=\"/public/css/" . $file . "\" rel=\"stylesheet\" />\n";
+      echo "<link href=\"/public/css/" . $css . "\" rel=\"stylesheet\" type=\"text/css\" />\n";
     }
   }
 }

@@ -312,3 +312,53 @@ textarea { min-height: 6em; }
     font-weight: 600;
   }
 }
+
+/** Login Project Info Box */
+#login_prj {
+  .login_prj_inner{
+    margin-top: 104px;
+    border: 1px solid $lagoon;
+    padding: 25px;
+    background: fade-out($seafoam, 0.4);
+    h3 {
+      font-weight: bold;
+      margin-bottom: 1.5em;
+      small {
+        color: $dark;
+        font-size: 0.6em;
+        text-transform: uppercase;
+      }
+    }
+    .login_prj_territories {
+
+    }
+    .login_prj_dates {
+      color: $dark;
+      font-size: 0.8em;
+      text-transform: uppercase;
+      display: block;
+      border-bottom: 1px solid $lite;
+      padding: 0px 0px 15px;
+      margin-bottom: 15px;
+    }
+    .login_prj_finance {
+
+    }
+    .login_prj_labval {
+      display: inline-block;
+      padding: 8px;
+      &.login_prj_data {
+        background-color: $mid;
+        color: white;
+        font-weight: bold;
+      }
+    }
+    .login_prj_buttons{
+      margin: 20px 0px;
+      .btn.btn-primary {
+        font-size: 0.6em;
+        font-weight: normal;
+      }
+    }
+  }
+}
