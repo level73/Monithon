@@ -1,6 +1,6 @@
 <div class="container">
     <section class="row justify-content-center">
-        <div class="col-6 mt-5 mb-5 animate__animated animate__fadeInLeft animate__slow">
+        <div class="col-12 col-md-6 mt-5 mb-5 animate__animated animate__fadeInLeft animate__slow">
           <img src="/images/monithon-logo.png" alt="Monithon" class="mx-auto d-block login-logo" />
             <?php if(isset($pfurl) && !empty($pfurl)){ ?>
                 <h1>Grazie per aver deciso di eseguire un monitoraggio!</h1>
@@ -32,7 +32,7 @@
         if(isset($pfurl) && !empty($pfurl)){
             if(isset($project) && $project['code'] == 200){
         ?>
-        <div class="col-6 mt-5 animate__animated animate__fadeInRight" id="login_prj">
+        <div class="col-12 col-md-6  mt-5 animate__animated animate__fadeInRight" id="login_prj">
             <div class="login_prj_inner">
                 <p class="text-muted">sembra tu voglia monitorare questo progetto:</p>
 
