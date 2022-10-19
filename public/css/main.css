@@ -620,7 +620,7 @@ body {
   font-family: "Roboto", Helvetica, Sans-serif;
   height: 100% !important;
   min-height: 100vh; }
-  body.user.login {
+  body.user.login, body.main.index {
     background: url("/public/images/login-bg-image.jpg") no-repeat center center;
     background-size: cover;
     background-attachment: fixed; }
