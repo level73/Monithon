@@ -3,6 +3,7 @@
   class Report extends Model {
     protected $table  = 'entity_report_basic';
     protected $pkey   = 'idreport_basic';
+
     protected $ASOC_Exp = Array(
                                 881,
                                 883,

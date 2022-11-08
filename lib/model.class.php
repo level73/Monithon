@@ -4,7 +4,6 @@
 
     protected $database;
     protected $table;
-    protected $hasOrg;
     protected $dates = true;
     protected $pkey;
     public $Errors;

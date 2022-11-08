@@ -16,9 +16,6 @@
       }
 
       $this->set('logged', $logged);
-
-
-
     }
 
     public function privacy(){

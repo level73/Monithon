@@ -39,6 +39,8 @@ function mvc_core($className){
 spl_autoload_register('mvc_core');
 
 
+
+
 /** Launch Application
 **/
 function init(){
@@ -49,8 +51,6 @@ function init(){
   global $url;
 
   $exclude = array('js', 'css');
-
-
 
   $array_url = explode('/', $url);
 

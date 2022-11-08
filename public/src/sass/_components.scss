@@ -314,12 +314,16 @@ textarea { min-height: 6em; }
 }
 
 /** Login Project Info Box */
+.login-inner {
+  margin-top: 104px;
+}
 #login_prj {
   .login_prj_inner{
     margin-top: 104px;
     border: 1px solid $lagoon;
     padding: 25px;
     background: fade-out($seafoam, 0.4);
+    box-shadow: rgba(12,12,12,0.75) 0px 2px 5px;
     h3 {
       font-weight: bold;
       margin-bottom: 1.5em;

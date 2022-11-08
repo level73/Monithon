@@ -1,12 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col">
-        <div clasS="main-box-wrap">
+        <ul clasS="main-box-wrap">
             <h1 class="mt-0">Benvenuto!</h1>
             <p>Questa è la piattaforma di lavoro di Monithon per la creazione e l’invio dei report di monitoraggio civico.</p>
-            <p>Vai su “<a href="/report/create">Nuovo Report</a>” per creare un report di monitoraggio. Per attivare la guida MoniTutor, incolla la URL della pagina del progetto che hai scelto su OpenCoesione nel primo campo.<p>
-            <p>Per leggere i report già pubblicati, vai su “<a href="/report">Report</a>”.<p>
-              <?php if(!$logged){ ?>
+
+            <p>Per creare un report ti devi registrare - ci basta una tua mail. Ti guideremo passo dopo passo sulle cose da fare. Ricorda che:</p>
+            <ul>
+                <li>Tutti i nostri strumenti sono gratuiti</li>
+                <li>Non ti disturberemo in alcun modo con mail non necessarie alla pubblicazione del report</li>
+                <li>Per effettuare il monitoraggio devi essere un soggetto non direttamente coinvolto nel progetto da monitorare</li>
+            </ul>
+<hr />
+            <p>Se sei già registrato, clicca su <a href="/user/login" >ACCEDI</a>.</p>
+
+            <?php if(!$logged){ ?>
               <div class="row">
                 <div class="col"><a href="/user/register" class="btn btn-primary btn-block">REGISTRATI</a></div>
                 <div class="col"><a href="/user/login" class="btn btn-primary btn-block">ACCEDI</a></div>
@@ -18,9 +26,9 @@
                 </div>
               </div>
             <?php }?>
+
+        </div>
     </div>
-    </div>
-  </div>
     <div class="row">
         <div class="col">
             <br />
