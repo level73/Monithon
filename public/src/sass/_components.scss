@@ -319,7 +319,7 @@ textarea { min-height: 6em; }
 }
 #login_prj {
   .login_prj_inner{
-    margin-top: 104px;
+    //margin-top: 104px;
     border: 1px solid $lagoon;
     padding: 25px;
     background: fade-out($seafoam, 0.4);
@@ -334,7 +334,7 @@ textarea { min-height: 6em; }
       }
     }
     .login_prj_territories {
-
+      font-size: 0.8em; text-transform: uppercase;
     }
     .login_prj_dates {
       color: $dark;
