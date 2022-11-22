@@ -349,6 +349,9 @@ textarea {
     font-weight: 600; }
 
 /** Login Project Info Box */
+body.user.login ul li, body.user.login p {
+  font-weight: 400; }
+
 .login-inner {
   margin-top: 104px; }
 

@@ -313,7 +313,15 @@ textarea { min-height: 6em; }
   }
 }
 
+
 /** Login Project Info Box */
+body.user.login {
+  ul li, p {
+    font-weight: 400;
+  }
+
+}
+
 .login-inner {
   margin-top: 104px;
 }
