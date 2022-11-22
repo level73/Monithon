@@ -349,7 +349,7 @@ textarea {
     font-weight: 600; }
 
 /** Login Project Info Box */
-body.user.login ul li, body.user.login p {
+body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index p {
   font-weight: 400; }
 
 .login-inner {
