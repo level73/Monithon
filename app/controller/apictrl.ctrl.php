@@ -520,7 +520,7 @@
                     // Format report URL
                     $report_url = APPURL . '/report/view/' . $report->id_report_monithon;
 
-                    if($report->role > 3 && $report->role < 11){
+                    if( ($report->role > 3 && $report->role < 11) || $report->role == 3 && !is_null($report->asoc_team_id) ){
                         $creator_role = 'ASOC';
                     }
                     elseif($report->role == 11){
