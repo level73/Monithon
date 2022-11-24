@@ -102,7 +102,7 @@
 
               <div class="form-group">
                   <label for="origine">Origine del progetto monitorato:</label>
-                  <small class="form-text text-muted">Quali decisioni pubbliche e procedure amministrative hanno dato origine al progetto (es. quale bando pubblico)? Quali soggetti sono stati coinvolti nelle decisioni e in che modo (es. organizzazione evento ad hoc, consultazione pubblica online)? Alcune tipologie di persone rimangono escluse?</small>
+                  <small class="form-text text-muted">Quali decisioni pubbliche e procedure amministrative hanno dato origine al progetto (es. quale atto amministrativo? quale bando pubblico)? Quali soggetti sono stati coinvolti nella definizione a monte del progetto e in che modo (es. organizzazione eventi di presentazione, momenti di consultazione pubblica, incontri di coprogettazione, ecc.)? Alcune tipologie di persone impattate dal progetto sono rimaste escluse dalla sua definizione?</small>
                   <textarea name="origine" id="origine" class="form-control"><?php echo ckv_object($data, 'origine'); ?></textarea>
 
                   <?php showComment($comments, 'origine'); ?>

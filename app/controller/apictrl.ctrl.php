@@ -538,8 +538,8 @@
                     $response['body'][$i]['data_report_monithon'] = $report->data_report_monithon;
                     $response['body'][$i]['giudizio_di_efficacia'] = $report->giudizio_di_efficacia;
                     $response['body'][$i]['stato_di_avanzamento_al_monitoraggio'] = $report->stato_di_avanzamento_al_monitoraggio;
-                    $response['body'][$i]['tipo_utente_creatore'] = $creator_role;
-                    $response['body'][$i]['asoc_team_id'] = $report->asoc_team_id;
+                   // $response['body'][$i]['tipo_utente_creatore'] = $creator_role;
+                   // $response['body'][$i]['asoc_team_id'] = $report->asoc_team_id;
 
                 }
             }
