@@ -515,6 +515,7 @@
             if($reports){
                 $response['code'] = 200;
                 $response['message'] = 'Ok';
+                $response['count'] = count($reports);
                 $response['body'] = array();
                 foreach($reports as $i => $report){
                     // Format report URL
@@ -546,9 +547,6 @@
                 $response['code'] = 500;
                 $response['message'] = 'Errore nel fetch della risorsa';
             }
-
-
-
         }
         else {
             $response['code'] = 400;
