@@ -483,8 +483,6 @@
                     'message' => 'No Results'
                 );
             }
-
-
         }
         else {
             $response = array(
@@ -495,4 +493,69 @@
 
         echo json_encode($response);
     }
+
+    /** OC API
+      * Codice Locale Progetto (oc_project_code)
+        URL CLP Opencoesione
+        URL Report
+        ID Report
+        Tipo Utenza (ASOC, ASOC EXP, Uni, Civil Society)
+        Team ID ASOC (se presente aggiungere)
+        Data monitoraggio (YYYYMMDD) (created_at)
+        Giudizio Sintetico (codice numerico)
+        Stato Avanzamento (codice numerico)
+     */
+
+    public function oc_report_list(){
+        if( httpCheck('get') ) {
+            $response = array();
+
+            $Report = new Report();
+            $reports = $Report->ocProjectReports();
+            if($reports){
+                $response['code'] = 200;
+                $response['message'] = 'Ok';
+                $response['body'] = array();
+                foreach($reports as $i => $report){
+                    // Format report URL
+                    $report_url = APPURL . '/report/view/' . $report->id_report_monithon;
+
+                    if($report->role > 3 && $report->role < 11){
+                        $creator_role = 'ASOC';
+                    }
+                    elseif($report->role == 11){
+                        $creator_role = 'Studente Universitario';
+                    }
+                    else {
+                        $creator_role = 'Società Civile';
+                    }
+
+                    $response['body'][$i]['codice_locale_progetto'] = $report->codice_locale_progetto;
+                    $response['body'][$i]['url_opencoesione'] = $report->url_opencoesione;
+                    $response['body'][$i]['id_report_monithon'] = $report->id_report_monithon;
+                    $response['body'][$i]['url_monithon'] = $report_url;
+                    $response['body'][$i]['data_report_monithon'] = $report->data_report_monithon;
+                    $response['body'][$i]['giudizio_di_efficacia'] = $report->giudizio_di_efficacia;
+                    $response['body'][$i]['stato_di_avanzamento_al_monitoraggio'] = $report->stato_di_avanzamento_al_monitoraggio;
+                    $response['body'][$i]['tipo_utente_creatore'] = $creator_role;
+                    $response['body'][$i]['asoc_team_id'] = $report->asoc_team_id;
+
+                }
+            }
+            else {
+                $response['code'] = 500;
+                $response['message'] = 'Errore nel fetch della risorsa';
+            }
+
+
+
+        }
+        else {
+            $response['code'] = 400;
+            $response['message'] = 'Non autorizzato';
+        }
+
+        echo json_encode($response);
+    }
+
   }

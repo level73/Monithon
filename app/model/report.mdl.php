@@ -308,4 +308,46 @@
         }
     }
 
+
+    /** OC API Queries
+    Codice Locale Progetto (oc_project_code)
+    URL CLP Opencoesione
+    URL Report
+    ID Report
+    Tipo Utenza (ASOC, ASOC EXP, Uni, Civil Society)
+    Team ID ASOC (se presente aggiungere)
+    Data monitoraggio (YYYYMMDD) (created_at)
+    Giudizio Sintetico (codice numerico)
+    Stato Avanzamento (codice numerico)
+     */
+    public function ocProjectReports(){
+        $sql = 'SELECT 
+                    idreport_basic AS id_report_monithon, 
+                    oc_project_code AS codice_locale_progetto,
+                    id_open_coesione AS url_opencoesione,
+                    DATE_FORMAT(created_at, "%Y%m%d") AS data_report_monithon,
+                    gs AS giudizio_di_efficacia,
+                    stato_di_avanzamento AS stato_di_avanzamento_al_monitoraggio,
+                    created_by AS author, 
+                    a.role,
+                    ea.remote_id AS asoc_team_id
+                FROM entity_report_basic AS erb
+                INNER JOIN (SELECT idauth, role FROM auth) AS a ON a.idauth = erb.created_by
+                LEFT JOIN (SELECT auth, remote_id FROM entity_asoc WHERE auth != 349) AS ea ON ea.auth = erb.created_by
+                WHERE 
+                    status >= 7 AND
+                    erb.oc_project_code IS NOT NULL                      
+                ORDER BY id_report_monithon';
+        $stmt = $this->database->prepare($sql);
+        $query = $stmt->execute();
+        if(!$query){
+            $this->Errors->set(501);
+            if(SYSTEM_STATUS == 'development'){
+                dbga($stmt->errorInfo());
+            }
+            return false;
+        } else {
+            return $stmt->fetchAll(PDO::FETCH_OBJ);
+        }
+    }
   }
