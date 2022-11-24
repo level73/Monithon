@@ -532,7 +532,7 @@
                     }
 
                     $response['body'][$i]['codice_locale_progetto'] = $report->codice_locale_progetto;
-                    $response['body'][$i]['url_opencoesione'] = $report->url_opencoesione;
+                    $response['body'][$i]['url_opencoesione'] = (strpos($report->url_opencoesione, 'http') === 0 ? $report->url_opencoesione : 'https://' . $report->url_opencoesione);
                     $response['body'][$i]['id_report_monithon'] = $report->id_report_monithon;
                     $response['body'][$i]['url_monithon'] = $report_url;
                     $response['body'][$i]['data_report_monithon'] = $report->data_report_monithon;
