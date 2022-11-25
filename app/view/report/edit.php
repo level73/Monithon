@@ -644,7 +644,35 @@
                   <?php showComment($comments, 'raccolta_informazioni'); ?>
               </div>
 
-              <div class="form-group">
+
+                <div class="form-group">
+                    <label>Facilità di accesso alle informazioni pubbliche</label>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="faip_1" name="facilita_accesso_informazioni" class=" custom-control-input" value="1"  <?php echo (isset($data->facilita_accesso_informazioni) && $data->facilita_accesso_informazioni == 1 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="faip_1">Facile <small>(es. ho trovato tutte le informazioni di cui avevo bisogno sui siti ufficiali delle amministrazioni; le amministrazioni contattate mi hanno risposto rapidamente e sono state disponibili a farsi intervistare)</small></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="faip_2" name="facilita_accesso_informazioni" class=" custom-control-input" value="2"  <?php echo (isset($data->facilita_accesso_informazioni) && $data->facilita_accesso_informazioni == 2 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="faip_2">Con qualche difficiltà <small>(es. ho trovato alcune delle informazioni di cui avevo bisogno sui siti ufficiali delle amministrazioni, ma ho dovuto richiedere alcune informazioni o documenti ai soggetti coinvolti; non tutte le amministrazioni contattate mi hanno risposto rapidamente o non hanno risposto)</small></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="faip_3" name="facilita_accesso_informazioni" class=" custom-control-input" value="3"  <?php echo (isset($data->facilita_accesso_informazioni) && $data->facilita_accesso_informazioni == 3 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="faip_3">Difficoltoso <small>(es. ho trovato poche informazioni sui siti ufficiali delle amministrazioni; ho dovuto richiedere alle amministrazioni i documenti progettuali che mi servivano; è stato difficoltoso mettersi in contatto con le amministrazioni e avere disponibilità per interviste)</small></label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="faip_4" name="facilita_accesso_informazioni" class=" custom-control-input" value="4"  <?php echo (isset($data->facilita_accesso_informazioni) && $data->facilita_accesso_informazioni == 4 ? 'checked' : ''); ?>>
+                        <label class="custom-control-label" for="faip_4">Impossibile <small>(es. non ho trovato nessun documento disponibile in rete, le amministrazioni contattate non hanno risposto alle mie richieste, non sono riuscito a intervistare nessuno)</small></label>
+                    </div>
+
+                    <?php showComment($comments, 'facilita_accesso_informazioni'); ?>
+                </div>
+
+
+
+
+
+
+                <div class="form-group">
                   <label for="intervista_intervistati">Chi sono e che ruolo hanno nel progetto le persone che hai contattato e/o intervistato? A quale organizzazione appartengono? </label>
                   <small class="form-text text-muted">Riporta i ruoli di tutte le persone contattate e/o intervistate. Se le interviste non sono andate a buon fine, raccontaci perché. Specifica anche il ruolo e l’organizzazione di appartenenza delle persone che avete provato a intervistare ma che non hanno risposto, e quando.</small>
                 <textarea name="intervista_intervistati" id="intervista_intervistati" class="form-control"><?php echo ckv_object($data, 'intervista_intervistati'); ?></textarea>

@@ -505,18 +505,14 @@
                 <input class="custom-control-input" type="checkbox" value="1" id="visita_diretta" name="visita_diretta" <?php echo (isset($data['visita_diretta']) && $data['visita_diretta'] == 1 ? 'checked' : ''); ?>>
                 <label class="custom-control-label" for="visita_diretta">Visita diretta documentata da foto e video</label>
               </div>
-
               <div class="custom-control custom-checkbox">
                 <input class="custom-control-input" type="checkbox" value="1" id="intervista_autorita_gestione" name="intervista_autorita_gestione" <?php echo (isset($data['intervista_autorita_gestione']) && $data['intervista_autorita_gestione'] == 1 ? 'checked' : ''); ?>>
                 <label class="custom-control-label" for="intervista_autorita_gestione">Intervista con l'Autorità di Gestione del Programma</label>
               </div>
-
               <div class="custom-control custom-checkbox">
                 <input class="custom-control-input" type="checkbox" value="1" id="intervista_soggetto_programmatore" name="intervista_soggetto_programmatore" <?php echo (isset($data['intervista_soggetto_programmatore']) && $data['intervista_soggetto_programmatore'] == 1 ? 'checked' : ''); ?>>
                 <label class="custom-control-label" for="intervista_soggetto_programmatore">Intervista con i soggetti che hanno programmato l'intervento (soggetto programmatore)</label>
               </div>
-
-
               <div class="custom-control custom-checkbox">
                 <input class="custom-control-input" type="checkbox" value="1" id="intervista_utenti_beneficiari" name="intervista_utenti_beneficiari" <?php echo (isset($data['intervista_utenti_beneficiari']) && $data['intervista_utenti_beneficiari'] == 1 ? 'checked' : ''); ?>>
                 <label class="custom-control-label" for="intervista_utenti_beneficiari">Intervista con gli utenti/beneficiari finali dell'intervento</label>
@@ -525,7 +521,6 @@
                 <input class="custom-control-input" type="checkbox" value="1" id="intervista_altri_utenti" name="intervista_altri_utenti" <?php echo (isset($data['intervista_altri_utenti']) && $data['intervista_altri_utenti'] == 1 ? 'checked' : ''); ?>>
                 <label class="custom-control-label" for="intervista_altri_utenti">Intervista con altre tipologie di persone</label>
               </div>
-
               <div class="custom-control custom-checkbox">
                 <input class="custom-control-input" type="checkbox" value="1" id="raccolta_info_attuatore" name="raccolta_info_attuatore" <?php echo (isset($data['raccolta_info_attuatore']) && $data['raccolta_info_attuatore'] == 1 ? 'checked' : ''); ?>>
                 <label class="custom-control-label" for="raccolta_info_attuatore">Intervista con i soggetti che hanno o stanno attuando l'intervento (attuatore o realizzatore)</label>
@@ -542,6 +537,26 @@
                 <div class="custom-control custom-checkbox">
                     <input class="custom-control-input" type="checkbox" value="1" id="questionario_altri" name="questionario_altri" <?php echo (isset($data['questionario_altri']) && $data['questionario_altri'] == 1 ? 'checked' : ''); ?>>
                     <label class="custom-control-label" for="questionario_altri">Questionario inviato a altre tipologie di persone</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Facilità di accesso alle informazioni pubbliche</label>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="faip_1" name="facilita_accesso_informazioni" class=" custom-control-input" value="1"  <?php echo (isset($data['facilita_accesso_informazioni']) && $data['facilita_accesso_informazioni'] == 1 ? 'checked' : ''); ?>>
+                    <label class="custom-control-label" for="faip_1">Facile <small>(es. ho trovato tutte le informazioni di cui avevo bisogno sui siti ufficiali delle amministrazioni; le amministrazioni contattate mi hanno risposto rapidamente e sono state disponibili a farsi intervistare)</small></label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="faip_2" name="facilita_accesso_informazioni" class=" custom-control-input" value="2"  <?php echo (isset($data['facilita_accesso_informazioni']) && $data['facilita_accesso_informazioni'] == 2 ? 'checked' : ''); ?>>
+                    <label class="custom-control-label" for="faip_2">Con qualche difficiltà <small>(es. ho trovato alcune delle informazioni di cui avevo bisogno sui siti ufficiali delle amministrazioni, ma ho dovuto richiedere alcune informazioni o documenti ai soggetti coinvolti; non tutte le amministrazioni contattate mi hanno risposto rapidamente o non hanno risposto)</small></label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="faip_3" name="facilita_accesso_informazioni" class=" custom-control-input" value="3"  <?php echo (isset($data['facilita_accesso_informazioni']) && $data['facilita_accesso_informazioni'] == 3 ? 'checked' : ''); ?>>
+                    <label class="custom-control-label" for="faip_3">Difficoltoso <small>(es. ho trovato poche informazioni sui siti ufficiali delle amministrazioni; ho dovuto richiedere alle amministrazioni i documenti progettuali che mi servivano; è stato difficoltoso mettersi in contatto con le amministrazioni e avere disponibilità per interviste)</small></label>
+                </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" id="faip_4" name="facilita_accesso_informazioni" class=" custom-control-input" value="4"  <?php echo (isset($data['facilita_accesso_informazioni']) && $data['facilita_accesso_informazioni'] == 4 ? 'checked' : ''); ?>>
+                    <label class="custom-control-label" for="faip_4">Impossibile <small>(es. non ho trovato nessun documento disponibile in rete, le amministrazioni contattate non hanno risposto alle mie richieste, non sono riuscito a intervistare nessuno)</small></label>
                 </div>
             </div>
 
