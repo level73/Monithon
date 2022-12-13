@@ -8,7 +8,7 @@
             </h1>
         </div>
 
-        <div class="col-12 col-md-4 col-md-offset-2 mt-5 mb-5 animate__animated animate__fadeInLeft">
+        <div class="col-12 col-md-4 col-md-offset-2 mt-5 mb-5 animate__animated animate__fadeInLeft login-box">
 
             <p><strong>Monithon</strong> è un’iniziativa indipendente e nonprofit che ha l’obiettivo di <strong>monitorare l’efficacia dei fondi pubblici</strong>.</p>
             <p>Già tante associazioni e studenti lo stanno facendo in tutta Italia. <a href="https://reports.monithon.eu/">Leggi i report di monitoraggio civico</a> pubblicati sui progetti finanziati con soldi pubblici. <a href="mailto: redazione@monithon.eu">Scrivici</a> se vuoi essere coinvolto.</p>
@@ -59,7 +59,7 @@
         </div>
 
 
-        <div class="col-12 col-md-4 mt-5 mb-5 animate__animated animate__fadeInRight">
+        <div class="col-12 col-md-4 mt-5 mb-5 animate__animated animate__fadeInRight login-box">
             <div class="">
                 <p>Per creare un report ti devi registrare qui - ci basta una tua mail. Ti guideremo passo dopo passo sulle cose da fare. Ricorda:</p>
                 <ul>

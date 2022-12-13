@@ -2,8 +2,8 @@ h1 {
   text-transform: uppercase;
   font-weight: 900;
   font-size: 2em;
-  //font-family: $IBM;
-  font-family: $fontStack;
+  font-family: $IBM;
+  //font-family: $fontStack;
   &:first-of-type {
     margin-top: 1em;
   }
@@ -12,19 +12,19 @@ h1 {
 h2 {
   font-size: 1.5em;
   font-weight: 900;
-  font-family: $fontStack;
+  font-family: $IBM;
 }
 
 h3 {
   font-size: 1.2em;
   font-weight: 400;
-  font-family: $fontStack;
+  font-family: $IBM;
 }
 
 h4 {
   font-size: 1.2em;
   font-weight: 300;
-  font-family: $fontStack;
+  font-family: $IBM;
 }
 
 h5 { }

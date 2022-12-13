@@ -147,7 +147,7 @@
 
             </fieldset>
             <fieldset>
-                <div class="alert alert-success">
+                <div class="alert alert-innerbox">
                     <h3 class="alert-heading">Parità di Genere</h3>
                     <hr />
                     <p>Nel progetto si parla di <strong>parità di genere</strong>?</p>
@@ -171,12 +171,12 @@
 
                 <div class="form-group">
                     <label for="gender-objectives">
-                        Gli obiettivi del progetto includono esplicitamente la parità di genere?
+                        Nel progetto è coinvolta direttamente o indirettamente la parità di genere?
                     </label>
 
                     <div class="custom-control custom-radio">
                         <input type="radio" id="gender_objectives_yes_direct" name="gender_objectives" class="trigger-desc check-eval custom-control-input" data-group="go" data-target="#goydd" value="1" <?php echo (isset($data->gender_objectives) && $data->gender_objectives ==  1 ? 'checked' : ''); ?>>
-                        <label class="custom-control-label" for="gender_objectives_yes_direct">Si, diretti: pianificati con l’obiettivo esplicito di intervenire a favore delle donne (es. il progetto ha tra i suoi obiettivi il contrasto alla violenza di genere, la protezione e il sostegno alle vittime di violenza, l’aumento della partecipazione delle donne al mercato del lavoro,  il contrasto alla povertà femminile...)</label>
+                        <label class="custom-control-label" for="gender_objectives_yes_direct">Si, impatto di genere <em>diretto</em> (ad es. progetti che hanno le donne esplicitamente come destinatarie)</label>
                     </div>
                     <div class="form-group <?php echo ($data->gender_objectives == 1 ? '' : 'd-none'); ?>  trigger-desc-wrapper" id="goydd">
                         <label>Puoi indicarci questi obiettivi e descriverli brevemente?</label>
@@ -185,7 +185,7 @@
 
                     <div class="custom-control custom-radio">
                         <input type="radio" id="gender_objectives_yes_indirect" name="gender_objectives" class="trigger-desc check-eval custom-control-input" data-group="go" data-target="#goyid" value="2" <?php echo (isset($data->gender_objectives) && $data->gender_objectives ==  2 ? 'checked' : ''); ?>>
-                        <label class="custom-control-label" for="gender_objectives_yes_indirect">Si, indiretti: potrebbero avere un impatto, anche indiretto, sulla riduzione delle disuguaglianze a sfavore delle donne (es. il progetto prevede rafforzamento servizi mense / asili, rafforzamento trasporto pubblico locale…)</label>
+                        <label class="custom-control-label" for="gender_objectives_yes_indirect">Si, impatto di genere <em>indiretto</em> (ad es. le spese relative a interventi di sostegno verso persone anziane, non autosufficienti, con disabilità o minori ecc., la cui cura è largamente sostenuta dalle donne)</label>
                     </div>
                     <div class="form-group <?php echo ($data->gender_objectives == 2 ? '' : 'd-none'); ?> trigger-desc-wrapper" id="goyid">
                         <label>Puoi indicarci questi obiettivi e descriverli brevemente?</label>
@@ -207,7 +207,7 @@
 
                 <div class="form-group">
                     <label>
-                        Nel progetto i partecipanti (a volte chiamati beneficiari) sono distinti per genere (donne, uomini, altri), utilizzando - per esempio -parole come donne, bambine, anziane, studentesse, lavoratrici, etc.
+                        Nel progetto i partecipanti (a volte chiamati beneficiari) sono distinti per genere (donne, uomini, altri), utilizzando - per esempio - parole come donne, bambine, anziane, studentesse, lavoratrici, etc.
                     </label>
                     <div class="custom-control custom-radio">
                         <input type="radio" id="gender_language_yes" name="gender_language" class="trigger-desc custom-control-input" data-group="gl" data-target="#glid" value="1" <?php echo (isset($data->gender_language) && $data->gender_language ==  1 ? 'checked' : ''); ?>>
@@ -255,7 +255,7 @@
 
                 <div class="form-group">
                     <label>
-                        Sono utilizzati esplicitamente indicatori per monitorare e valutare l’impatto del progetto in termini di promozione della parità di genere?
+                        Sono stati indicati esplicitamente indicatori (es. numero di operatrici formate o percentuale di aumento delle studentesse iscritte a corsi STEM) per monitorare e valutare l’impatto del progetto in termini di promozione della parità di genere?
                     </label>
                     <div class="custom-control custom-radio">
                         <input type="radio" id="gender_indicators_yes" name="gender_indicators" class="trigger-desc custom-control-input" data-group="gi" data-target="#giy" value="1" <?php echo (isset($data->gender_indicators) && $data->gender_indicators ==  1 ? 'checked' : ''); ?>>

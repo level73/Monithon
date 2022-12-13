@@ -8,29 +8,29 @@ h1 {
   text-transform: uppercase;
   font-weight: 900;
   font-size: 2em;
-  font-family: "Roboto", Helvetica, Sans-serif; }
+  font-family: "IBM Plex Mono", monospace; }
   h1:first-of-type {
     margin-top: 1em; }
 
 h2 {
   font-size: 1.5em;
   font-weight: 900;
-  font-family: "Roboto", Helvetica, Sans-serif; }
+  font-family: "IBM Plex Mono", monospace; }
 
 h3 {
   font-size: 1.2em;
   font-weight: 400;
-  font-family: "Roboto", Helvetica, Sans-serif; }
+  font-family: "IBM Plex Mono", monospace; }
 
 h4 {
   font-size: 1.2em;
   font-weight: 300;
-  font-family: "Roboto", Helvetica, Sans-serif; }
+  font-family: "IBM Plex Mono", monospace; }
 
 h2 a, h3 a, h4 a, h5 a {
-  color: #409588; }
+  color: #90afbc; }
   h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover {
-    color: #65bdaf;
+    color: #c0d1d9;
     text-decoration: underline; }
 
 p, li {
@@ -39,9 +39,9 @@ p, li {
   line-height: 160%; }
 
 a {
-  color: #e71d36; }
+  color: #ed5e54; }
   a:hover {
-    color: #e71d36; }
+    color: #ed5e54; }
 
 .hiliter {
   color: #ff9f1c;
@@ -57,19 +57,19 @@ table td {
   font-weight: 900;
   text-transform: uppercase; }
   .btn.btn-primary {
-    background: #409588;
-    border-color: #409588; }
+    background: #90afbc;
+    border-color: #90afbc; }
     .btn.btn-primary:hover, .btn.btn-primary:active {
-      background: #317167;
-      border-color: #317167;
-      border-bottom-color: #409588; }
+      background: #7098a9;
+      border-color: #7098a9;
+      border-bottom-color: #90afbc; }
   .btn.btn-outline-primary {
-    color: #409588;
-    border-color: #409588; }
+    color: #90afbc;
+    border-color: #90afbc; }
     .btn.btn-outline-primary:hover, .btn.btn-outline-primary:active {
       color: #fff;
-      background-color: #409588;
-      border-color: #409588; }
+      background-color: #90afbc;
+      border-color: #90afbc; }
 
 /** FORM ELEMENTS **/
 .form-control {
@@ -80,12 +80,12 @@ table td {
 
 .help-text {
   font-size: 0.8em;
-  color: #e71d36;
+  color: #ed5e54;
   text-transform: uppercase;
   cursor: pointer; }
 
 fieldset {
-  border-bottom: 1px solid #409588;
+  border-bottom: 1px solid #90afbc;
   padding-bottom: 1.5em;
   margin-bottom: 2.5em; }
 
@@ -185,17 +185,17 @@ textarea {
   .comment-wrapper label {
     margin: 0px;
     font-size: 12px;
-    color: #409588;
+    color: #90afbc;
     text-transform: uppercase; }
 
 .comment-field {
-  border: 1px dotted #409588;
-  background: rgba(64, 149, 136, 0.1);
+  border: 1px dotted #90afbc;
+  background: rgba(144, 175, 188, 0.1);
   margin-top: 0px;
   margin-bottom: 10px; }
 
 .commented-wrapper {
-  border: 1px solid #e71d36;
+  border: 1px solid #ed5e54;
   background: white;
   -webkit-box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.4);
   -moz-box-shadow: 0px 5px 10px 3px rgba(0, 0, 0, 0.4);
@@ -203,7 +203,7 @@ textarea {
   padding: 15px;
   margin: 5px 0px 15px; }
   .commented-wrapper.status-solved {
-    border: 1px solid #409588;
+    border: 1px solid #90afbc;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none; }
@@ -238,7 +238,7 @@ textarea {
 
 /** Profile Page **/
 #profile-header {
-  background: #53b5a6;
+  background: #b0c6cf;
   padding-top: 25px;
   padding-bottom: 25px;
   color: #fdfffc;
@@ -352,11 +352,14 @@ textarea {
 body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index p {
   font-weight: 400; }
 
+body.user.login {
+  overflow-x: hidden; }
+
 .login-inner {
   margin-top: 104px; }
 
 #login_prj .login_prj_inner {
-  border: 1px solid #409588;
+  border: 1px solid #90afbc;
   padding: 25px;
   background: rgba(253, 255, 252, 0.6);
   box-shadow: rgba(12, 12, 12, 0.75) 0px 2px 5px; }
@@ -391,14 +394,24 @@ body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index
       font-size: 0.6em;
       font-weight: normal; }
 
+.login-box {
+  background: rgba(253, 255, 252, 0.6);
+  padding: 1.5em; }
+
 .main-box-wrap {
   margin-top: 104px;
-  border: 1px solid #409588;
+  border: 1px solid #90afbc;
   padding: 25px;
   background: rgba(253, 255, 252, 0.6); }
 
+.alert-innerbox {
+  color: #436370;
+  background-color: #e0e8ec;
+  border-color: #90afbc;
+  border-radius: 0px; }
+
 #main-header {
-  background: #409588; }
+  background: #90afbc; }
   #main-header .nav-link {
     color: white; }
 
@@ -418,9 +431,9 @@ body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index
   background: white;
   padding: 20px;
   margin: 25px auto;
-  border: 1px solid #409588; }
+  border: 1px solid #90afbc; }
   .guide .title-highlight {
-    background: #409588;
+    background: #90afbc;
     color: white !important;
     padding: 10px 15px;
     margin: 25px 0px;
@@ -431,7 +444,7 @@ body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index
     margin-bottom: 25px;
     padding-bottom: 30px; }
   .guide h3 {
-    color: #409588;
+    color: #90afbc;
     font-weight: 900; }
   .guide .row-guide {
     margin-bottom: 10px;
@@ -440,7 +453,7 @@ body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index
   .guide .guide-title {
     font-weight: 900; }
   .guide .guide-hilite {
-    color: #409588;
+    color: #90afbc;
     font-style: italic;
     font-weight: 900; }
   .guide .oc_expert {
@@ -452,7 +465,7 @@ body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index
   .guide .subject {
     margin: 10px 0px 25px; }
   .guide .prj_status {
-    color: #409588; }
+    color: #90afbc; }
     .guide .prj_status.bolder {
       font-weight: 900; }
 
@@ -480,7 +493,7 @@ body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index
   #report-page .report-body h1 {
     font-size: 1.8em;
     padding-bottom: 20px;
-    color: #409588;
+    color: #90afbc;
     display: flex;
     align-items: flex-start;
     text-align: left; }
@@ -488,24 +501,25 @@ body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index
       content: '';
       flex-grow: 1;
       height: 1px;
-      background: #409588;
+      background: #90afbc;
       min-width: 20px;
       margin: auto; }
     #report-page .report-body h1:after {
       margin-left: 20px; }
   #report-page .report-body h2 {
-    font-size: 16px; }
+    font-size: 16px;
+    text-transform: uppercase; }
 #report-page .report-section {
   margin-bottom: 30px;
   padding-bottom: 30px; }
 #report-page .report-solutions {
   padding: 15px;
-  background: rgba(64, 149, 136, 0.5); }
+  background: rgba(144, 175, 188, 0.5); }
 #report-page aside, #report-page aside ul li {
   font-size: 14px; }
   #report-page aside h4, #report-page aside ul li h4 {
     margin-top: 15px;
-    background: #409588;
+    background: #90afbc;
     text-transform: uppercase;
     color: #fdfffc;
     font-weight: 900;
@@ -579,7 +593,7 @@ body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index
 /** Report List Page **/
 .report-list-entry {
   border: 1px solid transparent;
-  border-bottom: 1px solid rgba(231, 29, 54, 0.5);
+  border-bottom: 1px solid rgba(237, 94, 84, 0.5);
   background: transparent;
   padding: 15px;
   margin: 15px 0px 25px;
@@ -588,8 +602,8 @@ body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index
   -o-transition: all 500ms ease-out;
   transition: all 500ms ease-out; }
   .report-list-entry:hover {
-    border: 1px solid #e71d36;
-    background: rgba(64, 149, 136, 0.03); }
+    border: 1px solid #ed5e54;
+    background: rgba(144, 175, 188, 0.03); }
   .report-list-entry h2 {
     text-transform: uppercase; }
 
@@ -617,7 +631,7 @@ body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index
 
 .gender-equality-box {
   padding: 20px;
-  border: 1px solid #409588;
+  border: 1px solid #90afbc;
   margin-bottom: 20px; }
   .gender-equality-box h3 {
     font-weight: bold;

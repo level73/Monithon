@@ -321,6 +321,9 @@ body.user.login, body.main.index {
   }
 
 }
+body.user.login {
+  overflow-x: hidden;
+}
 
 .login-inner {
   margin-top: 104px;
@@ -374,9 +377,20 @@ body.user.login, body.main.index {
     }
   }
 }
+.login-box {
+  background: fade-out($seafoam, 0.4);
+  padding: 1.5em;
+}
 .main-box-wrap {
   margin-top: 104px;
   border: 1px solid $lagoon;
   padding: 25px;
   background: fade-out($seafoam, 0.4);
+}
+
+.alert-innerbox {
+  color: darken($lagoon, 30%);
+  background-color: lighten($lagoon, 25%);
+  border-color: $lagoon;
+  border-radius: 0px;
 }
