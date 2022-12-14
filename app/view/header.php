@@ -1,7 +1,7 @@
 <header class="container-fluid" id="main-header">
   <nav class="navbar navbar-expand-lg">
-    <a class="navbar-brand" href="https://www.monithon.eu">
-      <img src="/images/monithon-logo-2022.png" class="img-responsive" alt="Monithon Logo" title="Monithon" />
+    <a class="navbar-brand" href="https://www.monithon.eu" style="max-width: 120px;">
+      <img src="/images/monithon-logo-2022.png" class="img-fluid" alt="Monithon Logo" title="Monithon" />
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"><i class="fal fa-bars"></i></span>
