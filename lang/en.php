@@ -254,8 +254,50 @@ Example: Mayor, Chairman, Public officer, journalist, company CEO etc. Organisat
          "risposte generiche" => "generic answer",
         "promesse concrete" => "concrete promises",
         "progetto più efficace" => "project more effective",
-        "problema risolto" => "problem fixed"
+        "problema risolto" => "problem fixed",
 
+
+
+        "appena avviato" => "Just started",
+"mai partito" => "Never started",
+"in corso senza particolari intoppi" => "In progress without particular hitches",
+"in corso con problemi di realizzazione" => "In progress with problems of realization",
+
+"concluso" => "Concluded",
+"non è stato possibile verificare l’avanzamento" => "It was not possible to verify the progress",
+"giudizio di efficacia" => "Effectiveness evaluation",
+"stato di avanzamento" => "Progress",
+"stato di avanzamento infrastrutturale" => "Infrastructure advancement status",
+"potenzialmente efficace" => "Potentially effective",
+"il progetto sembra utile e complessivamente ben progettato, anche se potenziali rischi possono essere individuati" => "The project seems useful and overall well designed, even if potential risks can be identified",
+"potenzialmente efficace ma con rischi sostanziali" => "Potentially effective but with substantial risks",
+"il progetto sembra utile, anche se ci sono debolezze o rischi importanti che ne possono pregiudicare l’efficacia" => "The project seems useful, even if there are important weaknesses or risks that can affect its effectiveness",
+"inutile o dannoso" => "Useless or harmful",
+"non andava finanziato: non serve o può avere conseguenze negative, oppure la progettazione è largamente insufficiente per raggiungere gli obiettivi" => "It should've not been financed: it is not needed or may have negative consequences, or the design is largely insufficient to achieve the objectives",
+"non è stato possibile valutare" => "It was not possible to evaluate",
+"le informazioni disponibili non sono sufficienti; i soggetti coinvolti non ci hanno risposto" => "The information available is not enough; The subjects involved did not answer us",
+
+"il progetto sembra utile e il suo sviluppo incoraggiante, anche se potenziali rischi possono essere individuati" => "The project seems useful and its encouraging development, even if potential risks can be identified",
+"potenzialmente efficace ma con problemi" => "Potentially effective but with problems",
+"il progetto sembra complessivamente utile ma ci sono debolezze o rischi importanti che ne possono pregiudicare l’efficacia, non legati a ritardi o problemi realizzativi" => "The project seems overall useful but there are important weaknesses or risks that can affect its effectiveness, not linked to delays or realization problems",
+"intervento inutile o dannoso" => "Useless or harmful intervention",
+"non andava finanziato: non serve o può avere conseguenze negative, oppure la realizzazione presenta problemi che rendono impossibile raggiungere gli obiettivi" => "It should've not been financed: it is not needed or may have negative consequences, or the realization presents problems that make it impossible to achieve the objectives",
+
+
+"intervento efficace" => "Effective intervention",
+"gli aspetti positivi prevalgono ed è giudicato complessivamente efficace dal punto di vista dell'utente finale" => "The positive aspects prevail and is judged overall effective from the point of view of the final user",
+"intervento utile ma presenta problemi" => "Useful intervention but presents problems",
+"ha avuto alcuni risultati positivi ed è tutto sommato utile, anche se presenta aspetti negativi significativi" => "Has had some positive results and is all in all useful, even if it presents significant negative aspects",
+"intervento inefficace o dannoso" => "Ineffective or harmful intervention",
+"era meglio non finanziarlo perché non ha provocato alcun effetto o ha provocato effetti negativi" => "It was better not to finance it because it did not cause any effect or caused negative effects",
+
+"es. il progetto non ha ancora prodotto risultati valutabili" => "Eg. The project has not yet produced evaluable results",
+"non avviato" => "Not started",
+"in avvio di progettazione - studio di fattibilità" => "At the start of design - Feasibility study",
+"in corso di progettazione - progettazione esecutiva" => "In the course of design - Executive design",
+"in affidamento - affidamento gara in corso" => "In foster care - Race entrustment in progress",
+"in esecuzione - lavori iniziati" => "Running - Work started",
+"eseguito - conclusa la fase di esecuzione" => "Executed - after the execution phase",
 
 
 
