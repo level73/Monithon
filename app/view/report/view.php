@@ -26,8 +26,8 @@
 
             <div class="row">
                 <div class="col">
-                    <span class=" giudizio-sintetico <?php echo 'gde_'.$report->gs; ?>"><?php t_report(generateGDELabel($report->gs, $report->stato_di_avanzamento, 'main')); ?></span>
-                    <span class="gde_sub_label  <?php echo 'gde_sub_'.$report->gs; ?>"><?php t_report(generateGDELabel($report->gs, $report->stato_di_avanzamento, 'sub')); ?></span>
+                    <span class=" giudizio-sintetico <?php echo 'gde_'.$report->gs; ?>"><?php t_report(generateGDELabel($report->gs, $report->stato_di_avanzamento, 'main', false)); ?></span>
+                    <span class="gde_sub_label  <?php echo 'gde_sub_'.$report->gs; ?>"><?php t_report(generateGDELabel($report->gs, $report->stato_di_avanzamento, 'sub',false)); ?></span>
                 </div>
             </div>
             <div class="row">

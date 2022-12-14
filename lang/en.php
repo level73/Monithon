@@ -262,7 +262,7 @@ Example: Mayor, Chairman, Public officer, journalist, company CEO etc. Organisat
 "mai partito" => "Never started",
 "in corso senza particolari intoppi" => "In progress without particular hitches",
 "in corso con problemi di realizzazione" => "In progress with problems of realization",
-
+        "stato di avanzamento al monitoraggio" => "Progress at the time of monitoring",
 "concluso" => "Concluded",
 "non è stato possibile verificare l’avanzamento" => "It was not possible to verify the progress",
 "giudizio di efficacia" => "Effectiveness evaluation",
@@ -282,8 +282,6 @@ Example: Mayor, Chairman, Public officer, journalist, company CEO etc. Organisat
 "il progetto sembra complessivamente utile ma ci sono debolezze o rischi importanti che ne possono pregiudicare l’efficacia, non legati a ritardi o problemi realizzativi" => "The project seems overall useful but there are important weaknesses or risks that can affect its effectiveness, not linked to delays or realization problems",
 "intervento inutile o dannoso" => "Useless or harmful intervention",
 "non andava finanziato: non serve o può avere conseguenze negative, oppure la realizzazione presenta problemi che rendono impossibile raggiungere gli obiettivi" => "It should've not been financed: it is not needed or may have negative consequences, or the realization presents problems that make it impossible to achieve the objectives",
-
-
 "intervento efficace" => "Effective intervention",
 "gli aspetti positivi prevalgono ed è giudicato complessivamente efficace dal punto di vista dell'utente finale" => "The positive aspects prevail and is judged overall effective from the point of view of the final user",
 "intervento utile ma presenta problemi" => "Useful intervention but presents problems",

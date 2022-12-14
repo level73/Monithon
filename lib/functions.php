@@ -459,7 +459,7 @@ function cycleAnswers($field){
     }
 }
 
-function generateGDELabel($gde, $sda, $type){
+function generateGDELabel($gde, $sda, $type, $print = true){
     if($sda < 3){
         $labels = GDE_LABELS['labels_opt_1'];
     } elseif($sda < 6){
@@ -469,7 +469,11 @@ function generateGDELabel($gde, $sda, $type){
         $labels = GDE_LABELS['labels_opt_3'];
     }
 
+    if($print){
     echo $labels[$gde][$type];
-
+    }
+    else {
+        return $labels[$gde][$type];
+    }
 
 }
