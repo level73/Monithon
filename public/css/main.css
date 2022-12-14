@@ -356,6 +356,9 @@ body.user.login ul li, body.user.login p, body.main.index ul li, body.main.index
 body.user.login {
   overflow-x: hidden; }
 
+.login-logo {
+  max-height: 80px; }
+
 .login-inner {
   margin-top: 104px; }
 

@@ -3,7 +3,7 @@
 
         <div class="col-12 col-md-12">
             <h1 class="text-center">
-            <img src="/images/monithon-logo-2022.png" alt="Monithon" class=" login-logo" />
+                <img src="/images/monithon-logo-2022.png" alt="Monithon" class="login-logo" />
             Benvenuto su Monithon
             </h1>
         </div>
