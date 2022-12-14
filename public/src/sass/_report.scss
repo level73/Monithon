@@ -116,6 +116,13 @@
   font-size: 12px;
   text-transform: uppercase;
   text-align: center;
+  /** New Giudizio di Efficacia **/
+  &.gde_1 { background: $gde_1; }
+  &.gde_2 { background: $gde_2; }
+  &.gde_3 { background: $gde_3; }
+  &.gde_4 { background: $gde_4; }
+
+
 
   &.appena-iniziato         { background: $gs_1; }
   &.in-corso-e-procede-bene { background: $gs_2; }
@@ -124,6 +131,49 @@
   &.concluso-e-utile        { background: $gs_5; }
   &.concluso-e-inefficace   { background: $gs_6; }
 
+}
+.gde_sub_label {
+  display: block;
+  padding: 4px;
+  color: black;
+  font-weight: 400;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  &.gde_sub_1 { background: fade-out($gde_1, $fadeoutAmount); }
+  &.gde_sub_2 { background: fade-out($gde_2, $fadeoutAmount); }
+  &.gde_sub_3 { background: fade-out($gde_3, $fadeoutAmount); }
+  &.gde_sub_4 { background: fade-out($gde_4, $fadeoutAmount); }
+}
+.sda_title {
+  display: block;
+  padding: 4px;
+  color: black;
+  font-weight: 400;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 1em;
+  ~ .sda_label {
+    display: block;
+    padding: 4px;
+    color: black;
+    font-weight: 900;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+
+  }
+  ~ .sda_label_infr {
+    display: block;
+    padding: 4px;
+    color: $dark;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+
+  }
 }
 
 .report-side-detail {

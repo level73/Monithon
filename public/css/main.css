@@ -4,6 +4,7 @@
 /** UI colors **/
 /** Neutral Stack **/
 /** Likert Scales **/
+/** New Giudizio di Efficacia **/
 h1 {
   text-transform: uppercase;
   font-weight: 900;
@@ -571,7 +572,16 @@ body.user.login {
   font-weight: 900;
   font-size: 12px;
   text-transform: uppercase;
-  text-align: center; }
+  text-align: center;
+  /** New Giudizio di Efficacia **/ }
+  .giudizio-sintetico.gde_1 {
+    background: #37A52C; }
+  .giudizio-sintetico.gde_2 {
+    background: #DBA507; }
+  .giudizio-sintetico.gde_3 {
+    background: #A52C2C; }
+  .giudizio-sintetico.gde_4 {
+    background: #626D73; }
   .giudizio-sintetico.appena-iniziato {
     background: #6bc2e6; }
   .giudizio-sintetico.in-corso-e-procede-bene {
@@ -584,6 +594,49 @@ body.user.login {
     background: #68c59a; }
   .giudizio-sintetico.concluso-e-inefficace {
     background: #9a1946; }
+
+.gde_sub_label {
+  display: block;
+  padding: 4px;
+  color: black;
+  font-weight: 400;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-align: center; }
+  .gde_sub_label.gde_sub_1 {
+    background: rgba(55, 165, 44, 0.4); }
+  .gde_sub_label.gde_sub_2 {
+    background: rgba(219, 165, 7, 0.4); }
+  .gde_sub_label.gde_sub_3 {
+    background: rgba(165, 44, 44, 0.4); }
+  .gde_sub_label.gde_sub_4 {
+    background: rgba(98, 109, 115, 0.4); }
+
+.sda_title {
+  display: block;
+  padding: 4px;
+  color: black;
+  font-weight: 400;
+  font-size: 10px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 1em; }
+  .sda_title ~ .sda_label {
+    display: block;
+    padding: 4px;
+    color: black;
+    font-weight: 900;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center; }
+  .sda_title ~ .sda_label_infr {
+    display: block;
+    padding: 4px;
+    color: #555555;
+    font-weight: 700;
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center; }
 
 .report-side-detail {
   display: block;

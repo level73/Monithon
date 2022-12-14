@@ -35,7 +35,8 @@
                     <?php } else { ?>
                     <div class="img-holder img-placeholder"><i class="fal fa-image-polaroid fa-3x"></i></div>
                     <?php } ?>
-                    <span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php echo $report->giudizio_sintetico; ?></span>
+                    <span class=" giudizio-sintetico <?php echo 'gde_'.$report->gs; ?>"><?php generateGDELabel($report->gs, $report->stato_di_avanzamento, 'main'); ?></span>
+                    <?php /* <span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php echo $report->giudizio_sintetico; ?></span> */ ?>
                 </div>
 
             <div class="col-12">

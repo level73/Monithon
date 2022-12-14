@@ -73,6 +73,8 @@
                     `' . $this->table . '`.`titolo`,
                     `' . $this->table . '`.`descrizione`,
                     `' . $this->table . '`.`giudizio_sintetico`,
+                    `' . $this->table . '`.`gs`,
+                    `' . $this->table . '`.`stato_di_avanzamento`,
                     `' . $this->table . '`.`lat_`,
                     `' . $this->table . '`.`lon_`,
                     UNIX_TIMESTAMP(`' . $this->table . '`.`modified_at`) AS mod_date,

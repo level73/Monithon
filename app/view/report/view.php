@@ -22,10 +22,26 @@
             <h4><?php t_report('Titolo del Progetto'); ?></h4>
             <?php echo $oc->oc_titolo_progetto; ?>
             <?php } ?>
-            <h4><?php t_report('GIUDIZIO SINTETICO'); ?></h4>
+            <h4><?php t_report('GIUDIZIO DI EFFICACIA'); ?></h4>
+
             <div class="row">
-                <div class="col"><span class=" giudizio-sintetico <?php echo cssify($report->giudizio_sintetico); ?>"><?php t_report($report->giudizio_sintetico); ?></span></div>
+                <div class="col">
+                    <span class=" giudizio-sintetico <?php echo 'gde_'.$report->gs; ?>"><?php t_report(generateGDELabel($report->gs, $report->stato_di_avanzamento, 'main')); ?></span>
+                    <span class="gde_sub_label  <?php echo 'gde_sub_'.$report->gs; ?>"><?php t_report(generateGDELabel($report->gs, $report->stato_di_avanzamento, 'sub')); ?></span>
+                </div>
             </div>
+            <div class="row">
+                <div class="col">
+
+                    <span class="sda_title"><?php t_report('Stato di Avanzamento al Monitoraggio'); ?></span>
+                    <?php if(!empty($report->stato_di_avanzamento_infrastrutturale)){ ?>
+                        <span class="sda_label_infr"><?php t_report(SDAI_LABELS[$report->stato_di_avanzamento_infrastrutturale]); ?></span>
+                    <?php } ?>
+                    <span class="sda_label"><?php t_report(SDA_LABELS[$report->stato_di_avanzamento]); ?></span>
+                </div>
+
+            </div>
+            <?php /*
             <div class="row">
                 <div class="col-12">
                     <ul class="report-in-short report-in-short-efficacia">
@@ -40,6 +56,7 @@
                     </ul>
                 </div>
             </div>
+ */ ?>
             <?php if($report->status_tab_3 == PUBLISHED){ ?>
             <h4><?php t_report('IMPATTO'); ?></h4>
 

@@ -458,3 +458,18 @@ function cycleAnswers($field){
             return 'N.D.';
     }
 }
+
+function generateGDELabel($gde, $sda, $type){
+    if($sda < 3){
+        $labels = GDE_LABELS['labels_opt_1'];
+    } elseif($sda < 6){
+        $labels = GDE_LABELS['labels_opt_2'];
+    }
+    else{
+        $labels = GDE_LABELS['labels_opt_3'];
+    }
+
+    echo $labels[$gde][$type];
+
+
+}
