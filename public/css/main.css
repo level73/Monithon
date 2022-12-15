@@ -417,7 +417,8 @@ body.user.login {
 #main-header {
   background: #90afbc; }
   #main-header .nav-link {
-    color: white; }
+    color: white;
+    font-weight: 400; }
 
 .login-options {
   margin-top: 2em; }
