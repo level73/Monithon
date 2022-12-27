@@ -9,15 +9,26 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="/main">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/report">I Report</a>
-        </li>
+          <li class="nav-item">
+              <a class="nav-link" href="https://projectfinder.monithon.eu" target="_blank">Cerca un progetto</a>
+          </li>
+
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="reportDD" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  I Report
+              </a>
+              <div class="dropdown-menu" aria-labelledby="reportDD">
+                  <a class="dropdown-item" href="/report">Lista</a>
+                  <a class="dropdown-item" href="https://reports.monithon.eu" target="_blank">Mappa</a>
+              </div>
+          </li>
+
         <?php if(isset($logged) && $logged == true){ ?>
           <li class="nav-item">
-            <a class="nav-link" href="/report/create">Nuovo Report</a>
+            <a class="nav-link" href="/report/create">Crea Report</a>
           </li>
         <?php } ?>
       </ul>
