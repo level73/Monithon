@@ -414,6 +414,12 @@ body.user.login {
   border-color: #90afbc;
   border-radius: 0px; }
 
+.latest-reports {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: #e0e8ec;
+  border-color: #90afbc; }
+
 #main-header {
   background: #90afbc; }
   #main-header .nav-link {

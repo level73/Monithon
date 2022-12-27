@@ -394,3 +394,10 @@ body.user.login {
   border-color: $lagoon;
   border-radius: 0px;
 }
+
+.latest-reports {
+  margin-top: 20px; margin-bottom: 20px;
+  background-color: lighten($lagoon, 25%);
+  border-color: $lagoon;
+
+}

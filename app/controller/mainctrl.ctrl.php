@@ -16,6 +16,11 @@
       }
 
       $this->set('logged', $logged);
+
+      // Get latest 5 reports
+        $Reports = new Report();
+        $this->set('reports', $Reports->getReports(0, 4));
+
     }
 
     public function privacy(){

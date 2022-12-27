@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-        <ul clasS="main-box-wrap">
+        <div clasS="main-box-wrap">
             <h1 class="mt-0">Benvenuto!</h1>
             <p>Questa è la piattaforma di lavoro di Monithon per la creazione e l’invio dei report di monitoraggio civico.</p>
 
@@ -11,7 +11,7 @@
                 <li>Non ti disturberemo in alcun modo con mail non necessarie alla pubblicazione del report</li>
                 <li>Per effettuare il monitoraggio devi essere un soggetto non direttamente coinvolto nel progetto da monitorare</li>
             </ul>
-<hr />
+            <hr />
             <p>Se sei già registrato, clicca su <a href="/user/login" >ACCEDI</a>.</p>
 
             <?php if(!$logged){ ?>
@@ -29,6 +29,24 @@
 
         </div>
     </div>
+  </div>
+    <div class="main-box-wrap">
+        <div class="row">
+
+            <div class="col-12"><h2>Ultimi Report</h2></div>
+            <?php foreach($reports as $report){ ?>
+            <div class="col-3">
+                <small>
+                    <span class="report-date"><?php echo strftime('%d/%m/%Y', $report->create_date);?></span>
+                </small>
+                <h3><?php echo $report->titolo; ?></h3>
+                <span class=" giudizio-sintetico <?php echo 'gde_'.$report->gs; ?>"><?php generateGDELabel($report->gs, $report->stato_di_avanzamento, 'main'); ?></span>
+                <a class="btn btn-primary btn-block btn-sm mt-2" href="/report/view/<?php echo $report->id; ?>">LEGGI IL REPORT</a>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col">
             <br />
