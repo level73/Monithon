@@ -27,6 +27,7 @@
 
       <div class="tab-content" id="report-tab-content">
         <div class="tab-pane  fade show  active" id="step-1" role="tabpanel" aria-labelledby="step-1">
+            <p>Raccogli tutti i documenti rilevanti sul progetto che hai deciso di monitorare, e descrivi sinteticamente il progetto.</p>
             <div class="alert alert-danger alert-dismissible"><strong>Attenzione:</strong> Non accedere da più dispositivi contemporaneamente!</div>
           <!-- Codice OpenCoesione -->
           <fieldset>
@@ -286,6 +287,7 @@
         </div>
 
         <div class="tab-pane fade" id="step-2" role="tabpanel" aria-labelledby="step-2">
+            <p>Raccogli ulteriori informazioni sul progetto che hai deciso di monitorare, e descrivi sinteticamente i risultati delle tue ricerche.</p>
           <div class="d-none" id="oc_api_content_s2">
             <i class="fal fa-sync fa-spin"></i>
           </div>
@@ -789,6 +791,7 @@
         </div>
 
         <div class="tab-pane fade" id="step-3" role="tabpanel" aria-labelledby="step-3">
+            <p>Facci sapere che impatto ha avuto il tuo monitoraggio.</p>
             <fieldset>
                 <legend>Le nuove connessioni che avete generato</legend>
                 <div class="form-group">

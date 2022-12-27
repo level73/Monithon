@@ -31,6 +31,8 @@ define('PENDING_REVIEW', 3);
 define('IN_REVIEW', 5);
 define('PUBLISHED', 7);
 
+define('ONLY_STEP_ONE', 1);
+
 /** Entities **/
 define('T_USER',        1);
 define('T_REP_BASIC',   2);

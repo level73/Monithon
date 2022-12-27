@@ -226,11 +226,22 @@
 
         <section class="col-sm-12 col-md-8" id="report-view">
 
-
-
-
-
             <div class="report-body">
+
+                <?php if($report->step_1_only == ONLY_STEP_ONE){ ?>
+                    <h1><?php t_report('Cosa abbiamo scoperto'); ?></h1>
+                    <h2><?php t_report('Obiettivi del progetto'); ?> <span class="float-right"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span></h2>
+                    <p> <?php echo nl2br($report->obiettivi); ?></p>
+                    <h2><?php t_report('Attività previste'); ?></h2>
+                    <p> <?php echo nl2br($report->attivita); ?></p>
+                    <h2><?php t_report('Origine del progetto'); ?></h2>
+                    <p> <?php echo nl2br($report->origine); ?></p>
+                    <h2><?php t_report('Soggetti Beneficiari'); ?></h2>
+                    <p> <?php echo nl2br($report->soggetti_beneficiari); ?></p>
+                    <h2><?php t_report('Contesto'); ?></h2>
+                    <p> <?php echo nl2br($report->contesto); ?></p>
+
+                <?php } else { ?>
 
                 <div class="report-section">
                         <h1><?php t_report('Cosa abbiamo scoperto'); ?></h1>
@@ -370,8 +381,9 @@
 
 
                 </div>
+
             </div>
-        </article>
+            <?php } ?>
     </section>
 </div>
 

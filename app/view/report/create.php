@@ -2,6 +2,18 @@
   <div class="row">
     <div class="col">
 
+
+
+
+        <?php include('_partial/welcome_modal.php'); ?>
+
+
+
+
+
+
+
+
       <h1>Nuovo Report
           <a class="btn btn-primary float-right" target="_blank" href="https://www.monithon.it/blog/2020/04/24/come-inviare-il-report-di-monitoraggio-tutti-i-nostri-suggerimenti/"><i class="fas fa-info-square"></i> GUIDA ALLA COMPILAZIONE</a></h1>
 
@@ -23,6 +35,7 @@
       <div class="tab-content" id="report-tab-content">
         <div class="tab-pane fade show active" id="step-1" role="tabpanel" aria-labelledby="step-1">
           <div class="alert alert-danger alert-dismissible"><strong>Attenzione:</strong> Non accedere da più dispositivi contemporaneamente!</div>
+            <p>Raccogli tutti i documenti rilevanti sul progetto che hai deciso di monitorare, e descrivi sinteticamente il progetto.</p>
           <fieldset>
               <legend>Informazioni di Base</legend>
 
@@ -253,6 +266,7 @@
         </div>
 
         <div class="tab-pane fade" id="step-2" role="tabpanel" aria-labelledby="step-2">
+            <p>Raccogli ulteriori informazioni sul progetto che hai deciso di monitorare, e descrivi sinteticamente i risultati delle tue ricerche.</p>
           <div class="d-none" id="oc_api_content_s2">
             <i class="fal fa-sync fa-spin"></i>
           </div>

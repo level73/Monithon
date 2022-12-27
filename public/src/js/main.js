@@ -56,6 +56,8 @@ var Monithon = {
       var file = $(this).val().replace("C:\\fakepath\\", "");
       $(this).next('.custom-file-label').text(file);
     });
+    // TODO: Add control?
+    $('#welcomeModal').modal('show');
   },
 
   fileFieldDuplicator: function(){
