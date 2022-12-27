@@ -9,7 +9,7 @@
       <div class="col-4 col-md-2">
           <h4>MONITHON</h4>
           <ul class="list-unstyled">
-              <li><a href="/">Home</a></li>
+              <li><a href="/">Area di Lavoro</a></li>
               <li><a href="https://projectfinder.monithon.eu">Project Finder</a></li>
               <li><a href="/report">Report (Lista)</a></li>
               <li><a href="https://reports.monithon.eu">Report (Mappa)</a></li>
@@ -21,8 +21,7 @@
     <div class="col-4 col-md-2">
       <h4>A PROPOSITO</h4>
       <ul class="list-unstyled">
-        <li><a href="#">Chi siamo</a></li>
-        <li><a href="#">Termini & Condizioni</a></li>
+        <li><a href="https://www.monithon.eu/about-ITA/" target="_blank">Chi siamo</a></li>
         <li><a href="/main/privacy">Privacy Policy</a></li>
         <li><a href="#">Credits</a></li>
       </ul>

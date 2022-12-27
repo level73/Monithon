@@ -22,6 +22,8 @@
             <h4><?php t_report('Titolo del Progetto'); ?></h4>
             <?php echo $oc->oc_titolo_progetto; ?>
             <?php } ?>
+
+            <?php if($report->step_1_only == 0){ ?>
             <h4><?php t_report('GIUDIZIO DI EFFICACIA'); ?></h4>
 
             <div class="row">
@@ -41,6 +43,7 @@
                 </div>
 
             </div>
+            <?php } ?>
             <?php /*
             <div class="row">
                 <div class="col-12">
@@ -230,17 +233,37 @@
 
                 <?php if($report->step_1_only == ONLY_STEP_ONE){ ?>
                     <h1><?php t_report('Cosa abbiamo scoperto'); ?></h1>
+                    <?php if(!empty($report->obiettivi)){ ?>
                     <h2><?php t_report('Obiettivi del progetto'); ?> <span class="float-right"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span></h2>
                     <p> <?php echo nl2br($report->obiettivi); ?></p>
+                    <?php } ?>
+                    <?php if(!empty($report->attivita)){ ?>
                     <h2><?php t_report('Attività previste'); ?></h2>
                     <p> <?php echo nl2br($report->attivita); ?></p>
+                    <?php } ?>
+                <?php if(!empty($report->origine)){ ?>
                     <h2><?php t_report('Origine del progetto'); ?></h2>
                     <p> <?php echo nl2br($report->origine); ?></p>
+                <?php } ?>
+                <?php if(!empty($report->soggetti_beneficiari)){ ?>
                     <h2><?php t_report('Soggetti Beneficiari'); ?></h2>
                     <p> <?php echo nl2br($report->soggetti_beneficiari); ?></p>
+                <?php } ?>
+                <?php if(!empty($report->contesto)){ ?>
                     <h2><?php t_report('Contesto'); ?></h2>
                     <p> <?php echo nl2br($report->contesto); ?></p>
+                <?php } ?>
+<?php /*
+                    <?php if($report->is_gender_topic == 1){ ?>
+                    <h1><?php t_report('Parità di genere'); ?></h1>
+                    <small><?php t_report('Nel progetto è coinvolta direttamente o indirettamente la parità di genere'); ?></small>
 
+
+
+
+                    <?php } ?>
+
+*/ ?>
                 <?php } else { ?>
 
                 <div class="report-section">
@@ -289,8 +312,6 @@
                                 echo $report->diffusione_twitter > 0 ? '<li>Twitter</li>' : '';
                                 echo $report->diffusione_facebook > 0 ? '<li>Facebook</li>' : '';
                                 echo $report->diffusione_instagram > 0 ? '<li>Instagram</li>' : '';
-
-
                                echo  ($report->diffusione_eventi > 0 ?  '<li>' . t_report('Eventi territoriali organizzati dai team', false) : '' ) . '</li>';
                                echo  ($report->diffusione_open_admin > 0 ? '<li>' . t_report('Settimana dell\'Amministrazione Aperta', false)  : '') . '</li>';
                                echo  ($report->diffusione_blog > 0 ? '<li>' . t_report('Blog/Sito web del Team', false) : '') . '</li>';
