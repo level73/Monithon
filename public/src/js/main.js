@@ -289,42 +289,28 @@ var Monithon = {
 
     $('input[name="stato_di_avanzamento"]').on('change', function(){
       Monithon.setGS();
-      /*var sda = $('input[name="stato_di_avanzamento"]:checked').val();
-      if (sda < 3){
-        var labels = labels_opt_1;
-      }
-      else if(sda > 2 && sda < 6){
-        var labels = labels_opt_2;
-      }
-      else {
-        var labels = labels_opt_3;
-      }
-      $('.gsl').each(function(){
-        var theForProp = $(this).attr('for');
-        var theLabel = labels[theForProp];
-        $(this).html(theLabel);
-      });*/
     });
   },
 
   setGS: function(){
+
     var labels_opt_1 = {
       'giudizio_sintetico_1': "Potenzialmente efficace <small>Il progetto sembra utile e complessivamente ben progettato, anche se potenziali rischi possono essere individuati</small>",
       'giudizio_sintetico_2': "Potenzialmente efficace ma con rischi sostanziali <small>Il progetto sembra utile, anche se ci sono debolezze o rischi importanti che ne possono pregiudicare l’efficacia</small>",
       'giudizio_sintetico_3': "Inutile o dannoso <small>Non andava finanziato: non serve o può avere conseguenze negative, oppure la progettazione è largamente insufficiente per raggiungere gli obiettivi</small>",
-      'giudizio_sintetico_4': "Non è stato possibile valutare <small>Le informazioni disponibili non sono sufficienti; i soggetti coinvolti non ci hanno risposto</small>"
+      'giudizio_sintetico_4': "Efficacia non valutabile <small>&Egrave; ancora troppo presto per valutare l'efficacia; Le informazioni disponibili non sono sufficienti; i soggetti coinvolti non ci hanno risposto</small>"
     };
     var labels_opt_2 = {
       'giudizio_sintetico_1': "Potenzialmente efficace <small>Il progetto sembra utile e il suo sviluppo incoraggiante, anche se potenziali rischi possono essere individuati</small>",
       'giudizio_sintetico_2': "Potenzialmente efficace ma con problemi <small>Il progetto sembra complessivamente utile ma ci sono debolezze o rischi importanti che ne possono pregiudicare l’efficacia, non legati a ritardi o problemi realizzativi</small>",
       'giudizio_sintetico_3': "Intervento inutile o dannoso <small>Non andava finanziato: non serve o può avere conseguenze negative, oppure la realizzazione presenta problemi che rendono impossibile raggiungere gli obiettivi</small>",
-      'giudizio_sintetico_4': "Non è stato possibile valutare <small>Le informazioni disponibili non sono sufficienti; i soggetti coinvolti non ci hanno risposto</small>"
+      'giudizio_sintetico_4': "Efficacia non valutabile <small>&Egrave; ancora troppo presto per valutare l'efficacia; Le informazioni disponibili non sono sufficienti; i soggetti coinvolti non ci hanno risposto</small>"
     };
     var labels_opt_3 = {
       'giudizio_sintetico_1': "Intervento efficace <small>Gli aspetti positivi prevalgono ed è giudicato complessivamente efficace dal punto di vista dell'utente finale</small>",
       'giudizio_sintetico_2': "Intervento utile ma presenta problemi <small>Ha avuto alcuni risultati positivi ed è tutto sommato utile, anche se presenta aspetti negativi significativi</small>",
       'giudizio_sintetico_3': "Intervento inefficace o dannoso <small>Era meglio non finanziarlo perché non ha provocato alcun effetto o ha provocato effetti negativi</small>",
-      'giudizio_sintetico_4': "Non è stato possibile valutare <small>Es. il progetto non ha ancora prodotto risultati valutabili</small>"
+      'giudizio_sintetico_4': "Efficacia non valutabile <small>Es. il progetto non ha ancora prodotto risultati valutabili</small>"
     };
 
     var sda = $('input[name="stato_di_avanzamento"]:checked').val();
