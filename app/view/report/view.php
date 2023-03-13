@@ -268,6 +268,10 @@
                 <?php } else { ?>
 
                 <div class="report-section">
+                    <?php if(!empty($report->descrizione)): ?>
+                        <h1><?php t_report('Descrizione'); ?></h1>
+                        <p><?php echo nl2br($report->descrizione); ?></p>
+                    <?php endif; ?>
 
                     <h1><?php t_report('Cosa abbiamo scoperto'); ?></h1>
                     <?php if(!empty($report->obiettivi)){ ?>

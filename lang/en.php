@@ -298,6 +298,15 @@ Example: Mayor, Chairman, Public officer, journalist, company CEO etc. Organisat
 "eseguito - conclusa la fase di esecuzione" => "Executed - after the execution phase",
 
 
+        // New step 1
+
+        "obiettivi del progetto" => "Project objectives",
+        "attività previste" => "foreseen activities",
+        "origine del progetto" => "project origin",
+        "soggetti beneficiari" => "Beneficiaries",
+        "contesto" => "Context",
+
+
 
         );
 
