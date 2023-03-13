@@ -231,7 +231,7 @@
 
             <div class="report-body">
 
-                <?php if($report->step_1_only == ONLY_STEP_ONE){ ?>
+                <?php if($report->step_1_only == ONLY_STEP_ONE || $report->status == PUBLISHED){ ?>
                     <h1><?php t_report('Cosa abbiamo scoperto'); ?></h1>
                     <?php if(!empty($report->obiettivi)){ ?>
                     <h2><?php t_report('Obiettivi del progetto'); ?> <span class="float-right"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span></h2>
