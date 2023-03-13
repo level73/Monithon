@@ -268,7 +268,7 @@
                 <?php } else { ?>
 
                 <div class="report-section">
-                        <h1><?php t_report('Cosa abbiamo scoperto'); ?></h1>
+
                     <h1><?php t_report('Cosa abbiamo scoperto'); ?></h1>
                     <?php if(!empty($report->obiettivi)){ ?>
                         <h2><?php t_report('Obiettivi del progetto'); ?> <span class="float-right"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span></h2>
