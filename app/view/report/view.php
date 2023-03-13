@@ -301,7 +301,9 @@
                         <h2><?php t_report('Avanzamento'); ?></h2>
                         <p><?php echo nl2br($report->avanzamento); ?></p>
                         <h2><?php t_report('Risultati'); ?></h2>
+                    <?php if(!empty($valutazione)) : ?>
                         <span class="report-ev-hilite"><?php t_report($valutazione); ?></span>
+                    <?php endif; ?>
                         <p><?php echo nl2br($report->risultato_progetto); ?></p>
                         <div class="row">
                             <div class="col">
