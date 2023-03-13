@@ -140,6 +140,7 @@
             <?php if(!empty($soggetti)){ ?>
             <h4><?php t_report('Soggetti'); ?></h4>
             <?php foreach($soggetti as $ruolo => $sg){ ?>
+                        <?php echo $ruolo; ?>
                 <h5><?php t_report($ruolo); ?></h5>
                 <?php if(count($sg) < 5) { ?>
                 <?php foreach($sg as $soggetto){ ?>
