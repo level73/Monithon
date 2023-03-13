@@ -231,7 +231,7 @@
 
             <div class="report-body">
 
-                <?php if($report->step_1_only == ONLY_STEP_ONE || $report->status == PUBLISHED){ ?>
+                <?php if($report->step_1_only == ONLY_STEP_ONE ){ ?>
                     <h1><?php t_report('Cosa abbiamo scoperto'); ?></h1>
                     <?php if(!empty($report->obiettivi)){ ?>
                     <h2><?php t_report('Obiettivi del progetto'); ?> <span class="float-right"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span></h2>
@@ -262,19 +262,37 @@
 
 
                     <?php } ?>
-
+<img class="report-main-image" src="<?php echo image($images[0]); ?>" alt="">
+                            <?php echo nl2br($report->descrizione); ?>
 */ ?>
                 <?php } else { ?>
 
                 <div class="report-section">
                         <h1><?php t_report('Cosa abbiamo scoperto'); ?></h1>
-                        <h2><?php t_report('Descrizione'); ?> <span class="float-right"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span></h2>
+                    <h1><?php t_report('Cosa abbiamo scoperto'); ?></h1>
+                    <?php if(!empty($report->obiettivi)){ ?>
+                        <h2><?php t_report('Obiettivi del progetto'); ?> <span class="float-right"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span></h2>
                         <p>
                             <img class="report-main-image" src="<?php echo image($images[0]); ?>" alt="">
-                            <?php echo nl2br($report->descrizione); ?>
+                            <?php echo nl2br($report->obiettivi); ?>
                         </p>
-
-                        <p><?php echo nl2br($report->parte_di_piano); ?></p>
+                    <?php } ?>
+                    <?php if(!empty($report->attivita)){ ?>
+                        <h2><?php t_report('Attività previste'); ?></h2>
+                        <p> <?php echo nl2br($report->attivita); ?></p>
+                    <?php } ?>
+                    <?php if(!empty($report->origine)){ ?>
+                        <h2><?php t_report('Origine del progetto'); ?></h2>
+                        <p> <?php echo nl2br($report->origine); ?></p>
+                    <?php } ?>
+                    <?php if(!empty($report->soggetti_beneficiari)){ ?>
+                        <h2><?php t_report('Soggetti Beneficiari'); ?></h2>
+                        <p> <?php echo nl2br($report->soggetti_beneficiari); ?></p>
+                    <?php } ?>
+                    <?php if(!empty($report->contesto)){ ?>
+                        <h2><?php t_report('Contesto'); ?></h2>
+                        <p> <?php echo nl2br($report->contesto); ?></p>
+                    <?php } ?>
 
                         <h2><?php t_report('Avanzamento'); ?></h2>
                         <p><?php echo nl2br($report->avanzamento); ?></p>
