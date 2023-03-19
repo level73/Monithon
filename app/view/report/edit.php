@@ -110,7 +110,7 @@
               </div>
 
               <div class="form-group">
-                  <label for="soggetti_beneficiari">Soggetti beneficiari del progetto monitorato:</label>
+                  <label for="soggetti_beneficiari">Beneficiari finali del progetto monitorato:</label>
                   <small class="form-text text-muted">Quali soggetti possono trarre un vantaggio dagli esiti del progetto o subirne le conseguenze? Es. cittadinanza in generale, utenti di un servizio, gruppi di persone (donne, giovani, migranti). Alcune tipologie di persone rimangono escluse?</small>
                   <textarea name="soggetti_beneficiari" id="soggetti_beneficiari" class="form-control"><?php echo ckv_object($data, 'soggetti_beneficiari'); ?></textarea>
 
@@ -330,7 +330,7 @@
 
                 <div class="form-group <?php echo ($data->cup_descr_natura == 'REALIZZAZIONE DI LAVORI PUBBLICI (OPERE ED IMPIANTISTICA)' ? '' : 'd-none'); ?>" id="sda_infrastrutturale">
                     <input type="hidden" name="cup_descr_natura" id="cup_descr_natura" value="<?php echo $data->cup_descr_natura; ?>">
-                    <label>Stato di avanzamento del progetto infrastrutturale:</label>
+                    <label>Stato di avanzamento del progetto lavori:</label>
 
                     <div class="custom-control custom-radio">
                         <input type="radio" id="sdai_1" name="stato_di_avanzamento_infrastrutturale" class="check-eval custom-control-input" value="1"  <?php echo (isset($data->stato_di_avanzamento_infrastrutturale) && $data->stato_di_avanzamento_infrastrutturale == 1 ? 'checked' : ''); ?>>
@@ -401,8 +401,8 @@
                   <?php showComment($comments, 'risultato_progetto'); ?>
               </div>
 
-                <div class="form-group <?php echo ($data->valutazione_risultati > 3 ? 'd-none' : ''); ?>" id="cause_inefficacia_wrapper">
-                    <label>Quali sono le cause dell’inefficacia del progetto che hai monitorato?</label>
+                <div class="form-group <?php echo ($data->gs == 1 ? 'd-none' : ''); ?>" id="cause_inefficacia_wrapper">
+                    <label>Quali sono i problemi che hai rilevato?</label>
                     <div class="custom-control custom-checkbox">
                         <input class="custom-control-input" type="checkbox" value="0" id="problemi_amministrativi_null" name="problemi_amministrativi">
                         <input class="custom-control-input" type="checkbox" value="1" id="problemi_amministrativi" name="problemi_amministrativi" <?php echo (isset($data->problemi_amministrativi) && $data->problemi_amministrativi == 1 ? 'checked' : ''); ?>>
@@ -783,7 +783,7 @@
                 </ul>
               </div>
 
-
+                <?php showComment($comments, 'attachments'); ?>
             </fieldset>
             <?php if($data->status == PUBLISHED): ?>
             <button id="tab-3-nav" class="tab-subnav btn btn-primary btn-lg btn-block" data-step="#step-3" type="button" <?php echo $data->status != PUBLISHED ? 'disabled' : ''; ?>>VAI ALLO STEP 3: RISULTATI E IMPATTO</button><br /><br />

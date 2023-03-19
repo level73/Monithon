@@ -106,7 +106,7 @@
               </div>
 
               <div class="form-group">
-                  <label for="soggetti_beneficiari">Soggetti beneficiari del progetto monitorato:</label>
+                  <label for="soggetti_beneficiari">Beneficiari finali del progetto monitorato:</label>
                   <small class="form-text text-muted">Quali soggetti possono trarre un vantaggio dagli esiti del progetto o subirne le conseguenze? Es. cittadinanza in generale, utenti di un servizio, gruppi di persone (donne, giovani, migranti). Alcune tipologie di persone rimangono escluse?</small>
                   <textarea name="soggetti_beneficiari" id="soggetti_beneficiari" class="form-control"><?php echo ckv($data, 'soggetti_beneficiari'); ?></textarea>
 
@@ -312,7 +312,7 @@
 
               <div class="form-group d-none" id="sda_infrastrutturale">
                   <input type="hidden" name="cup_descr_natura" id="cup_descr_natura" value="">
-                  <label>Stato di avanzamento del progetto infrastrutturale:</label>
+                  <label>Stato di avanzamento del progetto lavori:</label>
 
                   <div class="custom-control custom-radio">
                       <input type="radio" id="sdai_1" name="stato_di_avanzamento_infrastrutturale" class=" custom-control-input" value="1"  <?php echo (isset($data['stato_di_avanzamento_infrastrutturale']) && $data['stato_di_avanzamento_infrastrutturale'] == 1 ? 'checked' : ''); ?>>
@@ -644,7 +644,7 @@
         </div>
 
 
-<?php /* step 3 - hidden on create
+<?php  // step 3 - hidden on create ?>
         <div class="tab-pane fade" id="step-3" role="tabpanel" aria-labelledby="step-3">
 
             <fieldset>
@@ -757,7 +757,7 @@
                     <button type="button" class="btn btn-primary" id="subject-button-add"><i class="fal fa-plus"></i> AGGIUNGI SOGGETTO</button>
 
                 </div>
-
+                <?php /*
                 <div class="form-group" id="connection-relationships">
                     <button type="button" class="btn btn-secondary btn-sm" id="aggiorna-soggetti">Aggiorna la Matrice delle Connessioni con i Soggetti inseriti</button>
                     <table id="connection-relationships-table" class="table table-condensed table-borderless table-sm table-hover ">
@@ -901,6 +901,7 @@
                     </table>
 
                 </div>
+  */ ?>
 
                 <div class="form-group">
                     <label>I media hanno parlato del tuo monitoraggio?</label>
@@ -1008,7 +1009,9 @@
 
             </fieldset>
         </div>
-    */ ?>
+
+          <!-- EOF Step 3 -->
+
 
       </div>
 
