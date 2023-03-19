@@ -312,7 +312,7 @@
 
               <div class="form-group d-none" id="sda_infrastrutturale">
                   <input type="hidden" name="cup_descr_natura" id="cup_descr_natura" value="">
-                  <label>Stato di avanzamento del progetto lavori:</label>
+                  <label>Stato avanzamento lavori:</label>
 
                   <div class="custom-control custom-radio">
                       <input type="radio" id="sdai_1" name="stato_di_avanzamento_infrastrutturale" class=" custom-control-input" value="1"  <?php echo (isset($data['stato_di_avanzamento_infrastrutturale']) && $data['stato_di_avanzamento_infrastrutturale'] == 1 ? 'checked' : ''); ?>>

@@ -337,7 +337,7 @@
 
                 <div class="form-group <?php echo ($data->cup_descr_natura == 'REALIZZAZIONE DI LAVORI PUBBLICI (OPERE ED IMPIANTISTICA)' ? '' : 'd-none'); ?>" id="sda_infrastrutturale">
                     <input type="hidden" name="cup_descr_natura" id="cup_descr_natura" value="<?php echo $data->cup_descr_natura; ?>">
-                    <label>Stato di avanzamento del progetto lavori:</label>
+                    <label>Stato avanzamento lavori:</label>
                     <div class="input-group-append">
                         <button class="btn btn-primary comment" data-field="stato_di_avanzamento_infrastrutturale" id="comment[stato_di_avanzamento_infrastrutturale]" type="button"><i class="fal fa-comment"></i></button>
                     </div>
