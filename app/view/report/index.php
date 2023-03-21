@@ -26,7 +26,11 @@
                         <a href="/report/view/<?php echo $report->id; ?>"><?php echo $report->titolo; ?></a>
                     </h2>
                     <?php AsocExp($report); ?>
+                    <?php if(!empty($report->descrizione)): ?>
                     <p class="report-description"><?php echo hellip($report->descrizione, 700); ?></p>
+                    <?php else : ?>
+                    <p class="report-description"><?php echo hellip($report->obiettivi, 700); ?></p>
+                    <?php endif; ?>
                 </div>
 
                 <div class="col-3">
