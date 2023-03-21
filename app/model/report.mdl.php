@@ -72,6 +72,7 @@
                     `' . $this->table . '`.`idreport_basic` AS id,
                     `' . $this->table . '`.`titolo`,
                     `' . $this->table . '`.`descrizione`,
+                    `' . $this->table . '`.`obiettivi`,
                     `' . $this->table . '`.`giudizio_sintetico`,
                     `' . $this->table . '`.`gs`,
                     `' . $this->table . '`.`stato_di_avanzamento`,
