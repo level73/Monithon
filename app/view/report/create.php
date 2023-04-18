@@ -41,14 +41,24 @@
 
               <!-- Codice OpenCoesione -->
               <div class="form-group">
-                  <label for="oc_api_code">URL del progetto monitorato su OpenCoesione:</label>
+                  <label for="oc_api_code">URL del progetto monitorato:</label>
                   <small class="form-text text-muted">Per generare la MoniTutor, incolla qui l'indirizzo (URL) della pagina di OpenCoesione dedicata al singolo progetto che hai scelto di monitorare. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/</small>
-                    <small class="form-text text-muted">Se il progetto che vuoi monitorare non è su OpenCoesione, inserisci il link della pagina di progetto (se disponibile). Ad esempio, OpenCUP. N.B. Questo non genererà la MoniTutor.</small>
+                  <small class="form-text text-muted">Se il progetto che vuoi monitorare non è su OpenCoesione, inserisci il link della pagina di progetto (se disponibile). Ad esempio, OpenCUP. <br /><strong>N.B.</strong> Questo non genererà la MoniTutor.</small>
                   <!-- <span class="float-right help-text" data-toggle="tooltip" data-placement="top" title="Incolla qui l\'indirizzo (URL) della pagina di OpenCoesione dedicata al progetto che hai scelto di monitorare. Lo trovi nella barra degli indirizzi del tuo browser. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/">Che cos'è?</span> -->
                   <div class="input-group">
-                      <?php if(isset($pfurl)){ ?>
+                      <?php
+                      if(isset($pfurl)){
+                          if(isset($ref) && $ref == 's24'){
+                      ?>
+                              <input type="text" name="id_open_coesione" id="opencup" placeholder="URL del progetto scelto..." class="form-control pfurl" value="https://opencup.gov.it/portale/progetto/-/cup/<?php echo $pfurl; ?>">
+                      <?php
+                          } else {
+                          ?>
                       <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control pfurl" value="<?php echo $pfurl; ?>">
-                      <?php } else { ?>
+                      <?php
+                          }
+                      } else {
+                          ?>
                       <input type="text" name="id_open_coesione" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control" value="<?php echo ckv($data, 'id_open_coesione'); ?>">
                       <?php } ?>
                       <div class="input-group-append">

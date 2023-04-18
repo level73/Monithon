@@ -10,7 +10,8 @@ var OpenCoesione = {
   init: function(){
     console.log(this.config.api_url);
     this.getProject();
-    if($('#oc_api_code').val() != ''){
+    if($('#oc_api_code').val() != '' && $('#oc_api_code').val() !== undefined){
+      console.log($('#oc_api_code').val());
         $('#oc_api_code_lookup').trigger('click');
     }
   },
