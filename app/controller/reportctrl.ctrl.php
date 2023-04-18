@@ -169,10 +169,18 @@
       if(isset($_GET['pfurl']) && !empty($_GET['pfurl'])){
         setcookie('pfurl', $_GET['pfurl'], strtotime('+1 day'), '/');
         $this->set('pfurl', $_GET['pfurl']);
+        if(isset($_GET['ref']) && !empty($_GET['ref']) && $_GET['ref'] == 's24'){
+            setcookie('ref', $_GET['ref'], strtotime('+1 day'), '/');
+            $this->set('ref', $_GET['ref']);
+        }
+
       }
 
       elseif(isset($_COOKIE['pfurl']) && !empty($_COOKIE['pfurl'])){
           $this->set('pfurl', $_COOKIE['pfurl']);
+          if(isset($_COOKIE['ref']) && !empty($_COOKIE['ref'])){
+              $this->set('ref', $_COOKIE['ref']);
+          }
       }
 
       if(!$this->Auth->isLoggedIn()){
@@ -180,10 +188,8 @@
       }
 
       else {
-
         $logged = true;
         $this->set('logged', $logged);
-
         $this->set('title', 'Nuovo Report');
         $Errors = new Errors();
         $this->set('street_map', true);

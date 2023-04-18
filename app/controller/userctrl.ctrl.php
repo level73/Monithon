@@ -15,15 +15,40 @@
 
             if( isset($_COOKIE['pfurl']) && !empty($_COOKIE['pfurl']) ){
                 $this->set('pfurl', $_COOKIE['pfurl']);
+                $code = $_COOKIE['pfurl'];
 
-                // Get data to display above the Login form
+                if(isset($_COOKIE['ref']) && $_COOKIE['ref'] == 's24'){
+                    $this->set('ref', $_COOKIE['ref']);
+
+                    //Get DATA from Monithon API
+                    $data = @file_get_contents('https://api.monithon.eu/api/s24_mapdata/' . $code . '/?format=json', false);
+                    if(!$data){
+                        $r['message'] = 'Non trovato';
+                        $r['code'] = '404';
+                        $r['type'] = 's24';
+                        $r['data'] = null;
+
+                    }
+                    else {
+                        $temp = json_decode($data);
+                        $temp = (array)$temp[0];
+
+                        $new = (object)array_combine( array_map('strtolower', array_keys($temp)), $temp);
+
+                        $r['message'] = 'Progetto trovato';
+                        $r['code'] = '200';
+                        $r['type'] = 's24';
+                        $r['data'] = $new;
+                    }
+
+                    $this->set('project', $r);
 
 
+                }
+                else {
+                    // Get data to display above the Login form from OC
                     $code_url = explode('/', rtrim($_COOKIE['pfurl']));
                     $code = end($code_url);
-
-
-
                     $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
                     $context = stream_context_create([
                         "http" => [
@@ -36,16 +61,21 @@
                     if(!$oc_api_data){
                         $r['message'] = 'Non trovato';
                         $r['code'] = '404';
+                        $r['type'] = 'oc';
                         $r['data'] = null;
 
                     }
                     else {
                         $r['message'] = 'Progetto trovato';
                         $r['code'] = '200';
+                        $r['type'] = 'oc';
                         $r['data'] = json_decode($oc_api_data);
                     }
 
                     $this->set('project', $r);
+                }
+
+
 
 
             }

@@ -45,7 +45,7 @@
               	auth.idauth as id, auth.username, auth.email, auth_role.role, auth.active, auth.privacy, UNIX_TIMESTAMP(auth_session.modified_at) AS last_login
               FROM auth
               	INNER JOIN auth_role ON auth_role.idrole = auth.role
-                INNER JOIN auth_session ON auth_session.auth = auth.idauth
+                LEFT JOIN auth_session ON auth_session.auth = auth.idauth
               ORDER BY last_login DESC';
 
       $stmt = $this->database->prepare($sql);

@@ -21,21 +21,16 @@
                 <div class="login_prj_inner">
                     <p class="text-muted">sembra tu voglia monitorare questo progetto:</p>
 
+
+
+
                     <h3>
-                        <small><?php echo $project['data']->oc_tema_sintetico . ' - ' . $project['data']->cup_descr_tipologia; ?></small><br />
-                        <a href="<?php echo $pfurl; ?>" target="_blank"><?php echo $project['data']->oc_titolo_progetto; ?></a>
+                        <small><?php echo $project['data']->oc_tema_sintetico . ' - ' . ($project['type'] == 's24' ? $project['data']->oc_descrizione_programma : $project['data']->cup_descr_tipologia); ?></small><br />
+                        <a href="<?php echo ($project['type'] == 's24' ? $project['data']->oc_link : $pfurl); ?>" target="_blank"><?php echo $project['data']->oc_titolo_progetto; ?></a>
                     </h3>
-                <?php /*    <span class="login_prj_territories">
-                <?php
-                $territori = array();
-                foreach($project['data']->territori as $territorio){
-                    $territori[] = $territorio->denominazione;
-                }
-                echo implode(' | ', $territori);
-                ?>
-                </span> */ ?>
+
                     <span class="login_prj_dates">
-                    <?php echo ocDateFormatter($project['data']->oc_data_inizio_progetto) . ' - ' . ocDateFormatter($project['data']->oc_data_fine_progetto_prevista); ?>
+                    <?php echo ocDateFormatter($project['data']->oc_data_inizio_progetto) . ( $project['type'] == 's24' ? '' : ' - ' . ocDateFormatter($project['data']->oc_data_fine_progetto_prevista)); ?>
                     <?php echo ' (' . $project['data']->oc_stato_progetto . ')'; ?>
                 </span>
                     <div class="login_prj_finance">
