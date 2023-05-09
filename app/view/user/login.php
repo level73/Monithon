@@ -30,15 +30,15 @@
                     </h3>
 
                     <span class="login_prj_dates">
-                    <?php echo ocDateFormatter($project['data']->oc_data_inizio_progetto) . ( $project['type'] == 's24' ? '' : ' - ' . ocDateFormatter($project['data']->oc_data_fine_progetto_prevista)); ?>
+                    <?php echo (!empty($project['data']->oc_data_inizio_progetto) ? ocDateFormatter($project['data']->oc_data_inizio_progetto) . ( $project['type'] == 's24' ? '' : ' - ' . ocDateFormatter($project['data']->oc_data_fine_progetto_prevista)) : ''); ?>
                     <?php echo ' (' . $project['data']->oc_stato_progetto . ')'; ?>
                 </span>
                     <div class="login_prj_finance">
 
                     <span class="login_prj_data login_prj_labval">
-                    <?php echo number_format((float)$project['data']->oc_finanz_tot_pub_netto, 2, ',', '.'); ?> &euro;
+                    <?php echo (!empty($project['data']->oc_finanz_tot_pub_netto) ? number_format((float)$project['data']->oc_finanz_tot_pub_netto, 2, ',', '.') . ' &euro;' : ''); ?>
                     </span>
-                        <span class="login_prj_labval login_prg_label">
+                    <span class="login_prj_labval login_prg_label">
                     Finanziamento Pubblico Netto
                     </span>
                     </div>
