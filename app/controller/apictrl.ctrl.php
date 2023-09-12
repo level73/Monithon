@@ -74,6 +74,8 @@
                         "titolo"                    => $report->titolo,
                         "dataInserimento"           => $dataIns,
                         "codGiudizioSintetico"      => GS_to_int($report->giudizio_sintetico),
+                        "codGiudizioDiEfficacia"    => $report->gs,
+                        "codStatoDiAvanzamento"     => $report->stato_di_avanzamento,
                         "ocCodTemaSintetico"        => $ocTemaSintetico,
                         "ocFinanzTotPubNetto"       => $ocFinanzTotPubNetto,
                         "curr"                      => CURRENCY_STR,
@@ -232,8 +234,8 @@
     }
     public function reportGS(){
         if (httpCheck('get', true)) {
-            // Init Response Array
-            $response = array();
+                // Init Response Array
+                $response = array();
             // Init Report Model
             $Report = new Report;
 
@@ -260,6 +262,38 @@
                 'code' => 0,
                 'message' => 'Metodo non valido'
             );
+        }
+        echo json_encode($response);
+    }
+
+    // use by report finder - new GdE entries
+    public function reportGdE(){
+        if (httpCheck('get', true)) {
+            // Init Response Array
+            $response = array(
+                1 => "Efficace",
+                2 => "Utile con problemi",
+                3 => "Inutile o dannoso",
+                4 => "Non valutabile"
+            );
+
+        }
+        echo json_encode($response);
+    }
+
+    public function reportSdA(){
+        if (httpCheck('get', true)) {
+            // Init Response Array
+            $response = array(
+                1 => "Appena avviato",
+                2 => "Mai partito",
+                3 => "In corso senza particolari intoppi",
+                4 => "In corso con problemi",
+                5 => "Bloccato",
+                6 => "Concluso",
+                7 => "Impossibile verificare"
+            );
+
         }
         echo json_encode($response);
     }

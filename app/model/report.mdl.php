@@ -254,6 +254,8 @@
                     `'. $this->table.'`.`titolo`,
                     UNIX_TIMESTAMP(`'. $this->table.'`.`created_at`) AS `uts_created_at`,
                     `'. $this->table.'`.`giudizio_sintetico`,
+                    `'. $this->table.'`.`gs`,
+                    `'. $this->table.'`.`stato_di_avanzamento`,
                     `'. $this->table.'`.`api_data`,
                     `'. $this->table.'`.`lat_`,
                     `'. $this->table.'`.`lon_`
