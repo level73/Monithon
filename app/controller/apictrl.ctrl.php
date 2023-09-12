@@ -274,10 +274,10 @@
         if (httpCheck('get', true)) {
             // Init Response Array
             $response = array(
-                1 => "Efficace",
-                2 => "Utile con problemi",
-                3 => "Inutile o dannoso",
-                4 => "Non valutabile"
+                array( "codGiudizioSintetico" => 1 ),
+                array( "codGiudizioSintetico" => 2 ),
+                array( "codGiudizioSintetico" => 3 ),
+                array( "codGiudizioSintetico" => 4 ),
             );
 
         }
