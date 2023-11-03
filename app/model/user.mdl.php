@@ -3,7 +3,7 @@
     protected $table = 'auth';
 
     public function fullProfile($id){
-      $sql = 'SELECT * FROM auth WHERE idauth = :id';
+      $sql = 'SELECT * FROM auth WHERE idauth = :id AND active = 2';
 
       $stmt = $this->database->prepare($sql);
       $stmt->bindParam(':id', $id, PDO::PARAM_INT);
