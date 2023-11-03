@@ -602,10 +602,11 @@
             $this->user = $this->Auth->getProfile();
             $Permissions = $this->Auth->getPermissions($this->user->id);
 
-
-
             $this->set('user', $this->user);
             $this->set('title', 'Modifica il Profilo');
+
+            $Profile = $this->User->fullProfile($id);
+
 
             if(in_array(P_CREATE_USER, array_keys($Permissions)) && in_array(P_ASSIGN_PERMISSIONS, array_keys($Permissions))){
               $Region = new Meta('region', true);
@@ -622,13 +623,15 @@
                 $data   = $_POST;
                 $id     = $data['id'];
 
+
+
                 unset($data['id']);
                 unset($data['email']);
                 unset($data['username']);
 
                 //$data['active'] = $this->user->active == 2 ? 2 : 1;
                 // If role is > 3, then it is an ASOC profile
-                if($this->user->role > 3 && $this->user->role < 11 ){
+                if($Profile->role > 3 && $Profile->role < 11 ){
                   // set region
                   $region = null;
                   if(!empty($data['provincia'])){
@@ -667,7 +670,7 @@
                     unset($data['link_blog']);
                     unset($data['link_elaborato']);
                 }
-                elseif($this->user->role == 11){
+                elseif($Profile->role == 11){
                     if(!empty($data['provincia'])){
                         $p = $Provincia->findLexiconEntry('idprovincia', $data['provincia']);
                         if($p){
@@ -691,8 +694,10 @@
 
                     $University = new University;
                     $uniprofile = $University->findBy(array('auth' => $id));
+                    $idUni = $uniprofile[0]->iduniversity;
+
                     if($uniprofile){
-                        $University->update($uniprofile[0]->iduniveristy, $uni);
+                        $University->update($idUni, $uni);
                     }
                     else {
                         $University->create($uni);
