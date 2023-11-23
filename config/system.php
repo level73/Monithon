@@ -86,6 +86,4 @@ const SDAI_LABELS = array(
     4 => "In affidamento - Affidamento gara in corso",
     5 => "In esecuzione - Lavori iniziati",
     6 => "Eseguito - Conclusa la fase di esecuzione",
-
-
 );

@@ -470,7 +470,8 @@ function generateGDELabel($gde, $sda, $type, $print = true){
     }
 
     if($print){
-    echo $labels[$gde][$type];
+        echo $labels[$gde][$type];
+        return null;
     }
     else {
         return $labels[$gde][$type];

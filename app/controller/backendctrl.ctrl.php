@@ -185,7 +185,15 @@ class BackendCtrl extends Ctrl
                     $report->oc_codStatoProgetto = $data->oc_stato_progetto ?? '';
                     $report->oc_totPagamenti = $data->tot_pagamenti ?? '';
                     $report->ciclo_di_programmazione = $data->oc_descr_ciclo ?? '';
+
+
                 }
+
+                // Add labels for GdE and SDA
+                $report->gs = generateGDELabel($report->gs, $report->stato_di_avanzamento, 'main', false);
+                $report->stato_di_avanzamento = SDA_LABELS[$report->stato_di_avanzamento];
+                $report->stato_di_avanzamento_infrastrutturale = SDAI_LABELS[$report->stato_di_avanzamento_infrastrutturale];
+
                 unset($report->api_data);
                 $reports[] = (array)$report;
 
@@ -197,9 +205,7 @@ class BackendCtrl extends Ctrl
             $fp = fopen('php://output', 'w+');
 
             foreach($reports as $report){
-                //var_dump($report); die();
                 fputcsv($fp, $report, ',', '"');
-
             }
 
             $csv_contents = stream_get_contents($fp); // Fetch the contents of our CSV
