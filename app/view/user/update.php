@@ -69,8 +69,12 @@
       <div class="col">
         <div class="form-group">
           <label for="bio">Bio</label>
-          <textarea name="bio" rows="8" class="form-control"  placeholder="<?php t('Un piccolo paragrafo introduttivo...'); ?>"><?php echo $Profile->bio; ?></textarea>
+          <textarea name="bio" style="height: 144px" class="form-control"  placeholder="<?php t('Un piccolo paragrafo introduttivo...'); ?>"><?php echo $Profile->bio; ?></textarea>
         </div>
+          <div class="form-group">
+              <label for="url">URL</label>
+              <input type="text" name="url" class="form-control" placeholder="<?php t('Indirizzo del tuo sito internet...'); ?>" value="<?php echo $Profile->url; ?>">
+          </div>
 
       </div>
 

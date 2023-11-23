@@ -17,7 +17,15 @@
                         <?php echo $profile->ASOC->regione->region; ?>
                     <?php } ?>
                 </div>
-                <div class="col-12 col-md-2"><i class="fab fa-twitter"></i> <?php echo (!empty($profile->twitter) ? '<a class="twt" href="https://twitter.com/'.$profile->twitter.'" title="Twitter Profile Link" target="_blank">'.$profile->twitter.'</a>' : ''); ?></div>
+                <div class="col-12 col-md-2">
+                    <?php echo (!empty($profile->twitter) ? '<i class="fab fa-twitter"></i> <a class="twt" href="https://twitter.com/'.$profile->twitter.'" title="Twitter Profile Link" target="_blank">'.$profile->twitter.'</a>' : ''); ?>
+
+                </div>
+                <div class="col-12 col-md-2">
+                    <?php if(!empty($profile->url)): ?>
+                        <i class="fal fa-globe"></i> <a class="twt" href="<?php echo $profile->url; ?>" target="_blank"><?php echo $profile->url; ?></a>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
         <?php /*
