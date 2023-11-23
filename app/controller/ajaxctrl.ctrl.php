@@ -3,6 +3,7 @@
   class Ajaxctrl extends Ctrl {
 
     protected $Auth;
+    protected $tbl_sottotemi = 'progetti_sottotemi_20230831';
 
     public function oc_api($code){
       $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
@@ -40,7 +41,7 @@
     }
 
     public function sottotemi($code, $mode='json'){
-      $Sottotemi = new Meta('progetti_sottotemi_20190831', true, true);
+      $Sottotemi = new Meta($this->tbl_sottotemi, true, true);
       $sottotema = $Sottotemi->findLexiconEntry('COD_LOCALE_PROGETTO', $code);
       if($mode == 'json'){
         echo json_encode($sottotema);
