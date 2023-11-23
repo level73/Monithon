@@ -87,6 +87,7 @@ class Backend extends Model
                     `erb`.`immagine_team1_daASOC`,
                     `erb`.`immagine_team2_daASOC`,
                     `erb`.`immagine_team3_daASOC`,
+                    a.idauth,
                     a.username,
                     a.city,
                     a.bio,

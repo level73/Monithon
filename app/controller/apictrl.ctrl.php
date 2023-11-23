@@ -155,7 +155,8 @@
                     }
                     $ocProgrammiOperativi = implode(':::', $programmi);
                 }
-
+                // check if obiettivi is not empty, check fr descrizione in that case
+                $desc = (!empty($report->obiettivi) ? $report->obiettivi : $report->descrizione);
                 $response = array(
                     "uid"                       => ISO2 . $report->idreport_basic,
                     "titolo"                    => $report->titolo,
@@ -168,7 +169,7 @@
                     "curr"                      => CURRENCY_STR,
                     "ocCodProgrammaOperativo"   => $ocProgrammiOperativi,
                     "ocCodCicloProgrammazione"  => $ocCodCiclo,
-                    "sintesi"                   => apiHellip($report->descrizione),
+                    "sintesi"                   => apiHellip($desc),
                     "link"                      => APPURL . '/report/view/' . $report->idreport_basic
                 );
 
