@@ -246,7 +246,7 @@ Example: Mayor, Chairman, Public officer, journalist, company CEO etc. Organisat
         "descrizione del caso" => "description of the case",
         "contatti con i media" => "contacts with media outlets",
          "metodo di indagine" => "investigation method",
-        "contatti con le pubbliche amministrazioni" => "contacts with public administration",
+        "contatti con le pubbliche amministrazioni per discutere i risultati del Monitoraggio" => "contacts with public administration to discuss the monitoring results",
          "cosa abbiamo scoperto" => "what we found out",
 
         "nessuna riposta" => "no answer",

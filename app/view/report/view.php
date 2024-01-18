@@ -324,6 +324,22 @@
                             <h2><?php t_report("Soluzioni e Idee"); ?></h2>
                             <p><?php echo nl2br($report->soluzioni_progetto); ?></p>
                         </div>
+
+                    <?php
+                    /** CHECK FOR GENDER EQUALITY INFO BOXES */
+                    if($report->is_gender_topic > 0):
+                    ?>
+                    <div class="report-gender-box">
+                        <h3><?php t_report("Parità di Genere"); ?></h3>
+                        
+
+
+                    </div>
+
+
+                    <?php
+                    endif;
+                    ?>
                 </div>
 
                 <?php if($report->status_tab_3 == PUBLISHED ){ ?>
@@ -377,7 +393,7 @@
                             </ul>
                         </div>
                         <div class="col">
-                            <h2><?php t_report('Contatti con le Pubbliche Amministrazioni'); ?></h2>
+                            <h2><?php t_report('Contatti con le Pubbliche Amministrazioni per discutere i risultati del Monitoraggio'); ?></h2>
                             <?php
                             if($report->admin_connection < 1){ ?>
                                 <p><?php t_report('Non le abbiamo contattate'); ?></p>
