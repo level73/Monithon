@@ -430,7 +430,7 @@
               unset($data['username']);
 
               // If role is > 3, then it is an ASOC profile
-              if($this->user->role > 3 && $this->user->role < 11){
+              if( ($this->user->role > 3 && $this->user->role < 11) || $this->user->role == 13){
                 // set region
                 $region = null;
                 if(!empty($data['provincia'])){
@@ -549,7 +549,7 @@
             $Profile = $this->User->fullProfile($this->user->id);
 
             if($this->user->role >= 3){
-              if($this->user->role > 3 && $this->user->role < 11){
+              if( ($this->user->role > 3 && $this->user->role < 11) || $this->user->role == 13) {
                   $ASOC_Profile = new Asoc();
                   $asoc_profile = $ASOC_Profile->findBy(array('auth' => $this->user->id));
                   if(!empty($asoc_profile)){

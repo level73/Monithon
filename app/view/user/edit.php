@@ -105,7 +105,7 @@
 
     </div>
     <?php } ?>
-    <?php if($Profile->role > 3 && $Profile->role < 11 ){ ?>
+    <?php if( ($Profile->role > 3 && $Profile->role < 11) || $Profile->role == 13){ ?>
     <div class="row" id="asoc">
       <div class="col-12">
         <h2>PROFILO ASOC</h2>
