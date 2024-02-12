@@ -1,11 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Nuovo Report
+            <h1>Modifica Report
                 <a class="btn btn-primary float-right" target="_blank" href="https://www.monithon.it/blog/2020/04/24/come-inviare-il-report-di-monitoraggio-tutti-i-nostri-suggerimenti/"><i class="fas fa-info-square"></i> GUIDA ALLA COMPILAZIONE</a>
             </h1>
 
-            <form class="" method="post" enctype="multipart/form-data" action="/lite/create">
+            <form class="  edit-lite-report" method="post" enctype="multipart/form-data" action="/lite/edit/<?php echo $data->idreport_lite; ?>">
+                <input type="hidden" name="id" value="<?php echo $data->idreport_lite; ?>">
+
                 <fieldset>
                     <legend>DATI SUL PROGETTO</legend>
 
@@ -27,7 +29,7 @@
                                 }
                             } else {
                                 ?>
-                                <input type="text" name="project_url" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control" value="<?php echo ckv($data, 'project_url'); ?>">
+                                <input type="text" name="project_url" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control" value="<?php echo ckv_object($data, 'project_url'); ?>">
                             <?php } ?>
                             <div class="input-group-append">
                                 <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
@@ -49,7 +51,8 @@
                     <legend>Il Titolo del Progetto</legend>
                     <div class="form-group">
                         <label for="titolo">Titolo del progetto:</label>
-                        <input type="text" name="titolo" class="form-control" id="titolo"><?php echo ckv($data, 'titolo'); ?></input>
+                        <input type="text" name="titolo" class="form-control" id="titolo" value="<?php echo ckv_object($data, 'titolo'); ?>">
+                        <?php showComment($comments, 'titolo'); ?>
                     </div>
                 </fieldset>
                 <fieldset>
@@ -61,8 +64,8 @@
                         <small class="form-text text-muted">Ingrandisci la mappa per trovare con precisione il luogo in cui si svolge il progetto. Clicca sulla mappa per posizionare il marker (freccetta) e spostalo se necessario.</small>
                         <br />
                         <div class="input-group">
-                            <input type="text" name="indirizzo" id="indirizzo" placeholder="Indirizzo..." class="form-control" value="<?php echo ckv($data, 'indirizzo'); ?>">
-                            <input type="text" name="cap" id="cap" placeholder="CAP..." class="form-control"  value="<?php echo ckv($data, 'cap'); ?>">
+                            <input type="text" name="indirizzo" id="indirizzo" placeholder="Indirizzo..." class="form-control" value="<?php echo ckv_object($data, 'indirizzo'); ?>">
+                            <input type="text" name="cap" id="cap" placeholder="CAP..." class="form-control"  value="<?php echo ckv_object($data, 'cap'); ?>">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" id="indirizzo_lookup" type="button"><i class="fal fa-search"></i></button>
                             </div>
@@ -70,8 +73,8 @@
 
                         <div id="location_map"></div>
                         <div class="input-group">
-                            <input name="lat_" id="lat" class="form-control" readonly placeholder="Latitudine..." value="<?php echo ckv($data, 'lat_'); ?>">
-                            <input name="lon_" id="lon" class="form-control" readonly placeholder="Longitudine..." value="<?php echo ckv($data, 'lon_'); ?>">
+                            <input name="lat_" id="lat" class="form-control" readonly placeholder="Latitudine..." value="<?php echo ckv_object($data, 'lat_'); ?>">
+                            <input name="lon_" id="lon" class="form-control" readonly placeholder="Longitudine..." value="<?php echo ckv_object($data, 'lon_'); ?>">
                         </div>
                     </div>
                     <!-- Fine Mappa -->
@@ -82,42 +85,43 @@
                     <legend>Le Tue Osservazioni</legend>
                     <div class="form-group">
                         <label for="obiettivi_del_progetto">Obiettivi del progetto monitorato:</label>
-                        <textarea name="obiettivi_del_progetto" class="form-control" rows="8" id="q1"><?php echo ckv($data, 'obiettivi_del_progetto'); ?></textarea>
+                        <textarea name="obiettivi_del_progetto" class="form-control" rows="8" id="obiettivi_del_progetto"><?php echo ckv_object($data, 'obiettivi_del_progetto'); ?></textarea>
+                        <?php showComment($comments, 'obiettivi_del_progetto'); ?>
                     </div>
 
                     <div class="form-group">
                         <label>Stato di avanzamento del progetto monitorato:</label>
                         <small class="form-text text-muted">Indipendentemente dalle tempistiche dichiarate, qual è il reale avanzamento del progetto monitorato?</small>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="sda_1" name="stato_di_avanzamento" class=" custom-control-input" value="1"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 1 ? 'checked' : ''); ?>>
+                            <input type="radio" id="sda_1" name="stato_di_avanzamento" class=" custom-control-input" value="1"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 1 ? 'checked' : ''); ?>>
                             <label class="custom-control-label" for="sda_1">Appena avviato <small>Il progetto è stato appena selezionato o è nelle fasi preliminari di realizzazione (es. progettazione preliminare)</small></label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="sda_2" name="stato_di_avanzamento" class="check-eval custom-control-input " value="2"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 2 ? 'checked' : ''); ?>>
+                            <input type="radio" id="sda_2" name="stato_di_avanzamento" class="check-eval custom-control-input " value="2"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 2 ? 'checked' : ''); ?>>
                             <label class="custom-control-label" for="sda_2">Mai partito <small>Il progetto è stato selezionato da almeno un anno ma non è mai stato avviato e risulta quindi bloccato all’avvio</small></label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="sda_3" name="stato_di_avanzamento" class=" custom-control-input" value="3"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 3 ? 'checked' : ''); ?>>
+                            <input type="radio" id="sda_3" name="stato_di_avanzamento" class=" custom-control-input" value="3"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 3 ? 'checked' : ''); ?>>
                             <label class="custom-control-label" for="sda_3">In corso senza particolari intoppi <small>Il progetto è in corso di realizzazione (es. il cantiere è aperto) e segue le tappe prefissate; i ritardi sono limitati</small></label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="sda_4" name="stato_di_avanzamento" class="check-eval custom-control-input " value="4"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 4 ? 'checked' : ''); ?>>
+                            <input type="radio" id="sda_4" name="stato_di_avanzamento" class="check-eval custom-control-input " value="4"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 4 ? 'checked' : ''); ?>>
                             <label class="custom-control-label" for="sda_4">In corso con problemi di realizzazione <small>Il progetto è in corso di realizzazione ma presenta problemi sostanziali (amministrativi, tecnici, etc.) oppure ritardi significativi</small></label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="sda_5" name="stato_di_avanzamento" class="check-eval custom-control-input " value="5"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 5 ? 'checked' : ''); ?>>
+                            <input type="radio" id="sda_5" name="stato_di_avanzamento" class="check-eval custom-control-input " value="5"  <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 5 ? 'checked' : ''); ?>>
                             <label class="custom-control-label" for="sda_5">Bloccato <small>Il progetto è fermo da almeno un anno per problemi in fase di realizzazione</small></label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="sda_6" name="stato_di_avanzamento" class=" custom-control-input" value="6"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 6 ? 'checked' : ''); ?>>
+                            <input type="radio" id="sda_6" name="stato_di_avanzamento" class=" custom-control-input" value="6" <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 6 ? 'checked' : ''); ?>>
                             <label class="custom-control-label" for="sda_6">Concluso <small>Tutte le attività sono state completate</small></label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="sda_7" name="stato_di_avanzamento" class=" custom-control-input" value="7"  <?php echo (isset($data['stato_di_avanzamento']) && $data['stato_di_avanzamento'] == 7 ? 'checked' : ''); ?>>
+                            <input type="radio" id="sda_7" name="stato_di_avanzamento" class=" custom-control-input" value="7" <?php echo (isset($data->stato_di_avanzamento) && $data->stato_di_avanzamento == 7 ? 'checked' : ''); ?>>
                             <label class="custom-control-label" for="sda_7">Non è stato possibile verificare l’avanzamento <small>Le informazioni disponibili non sono sufficienti</small></label>
                         </div>
 
-
+                        <?php showComment($comments, 'stato_di_avanzamento'); ?>
                     </div>
 
 
@@ -127,44 +131,48 @@
                         <small class="form-text form-muted">Come giudichi l’efficacia del progetto monitorato?</small>
 
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="giudizio_sintetico_1" name="giudizio_sintetico" class="custom-control-input" value="1"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 1 ? 'checked' : ''); ?>>
+                            <input type="radio" id="giudizio_sintetico_1" name="giudizio_sintetico" class="custom-control-input" value="1"  <?php echo (isset($data->giudizio_sintetico) && $data->giudizio_sintetico == 1 ? 'checked' : ''); ?>>
                             <label class="custom-control-label gsl" for="giudizio_sintetico_1"></label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="giudizio_sintetico_2" name="giudizio_sintetico" class="custom-control-input check-eval" value="2"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 2 ? 'checked' : ''); ?>>
+                            <input type="radio" id="giudizio_sintetico_2" name="giudizio_sintetico" class="custom-control-input check-eval" value="2" <?php echo (isset($data->giudizio_sintetico) && $data->giudizio_sintetico == 2 ? 'checked' : ''); ?>>
                             <label class="custom-control-label gsl" for="giudizio_sintetico_2"></label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="giudizio_sintetico_3" name="giudizio_sintetico" class="custom-control-input check-eval" value="3"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 3 ? 'checked' : ''); ?>>
+                            <input type="radio" id="giudizio_sintetico_3" name="giudizio_sintetico" class="custom-control-input check-eval" value="3" <?php echo (isset($data->giudizio_sintetico) && $data->giudizio_sintetico == 3 ? 'checked' : ''); ?>>
                             <label class="custom-control-label gsl" for="giudizio_sintetico_3"></label>
                         </div>
                         <div class="custom-control custom-radio">
-                            <input type="radio" id="giudizio_sintetico_4" name="giudizio_sintetico" class="custom-control-input" value="4"  <?php echo (isset($data['giudizio_sintetico']) && $data['giudizio_sintetico'] == 4 ? 'checked' : ''); ?>>
+                            <input type="radio" id="giudizio_sintetico_4" name="giudizio_sintetico" class="custom-control-input" value="4" <?php echo (isset($data->giudizio_sintetico) && $data->giudizio_sintetico == 4 ? 'checked' : ''); ?>>
                             <label class="custom-control-label gsl" for="giudizio_sintetico_4"></label>
                         </div>
-
+                        <?php showComment($comments, 'giudizio_sintetico'); ?>
                     </div>
 
                     <!-- EOF Giudizio Sintetico -->
 
                     <div class="form-group">
                         <label for="giudizio">Giudizio:</label>
-                        <textarea name="giudizio" class="form-control" rows="8" id="giudizio"><?php echo ckv($data, 'giudizio'); ?></textarea>
+                        <textarea name="giudizio" class="form-control" rows="8" id="giudizio"><?php echo ckv_object($data, 'giudizio'); ?></textarea>
+                        <?php showComment($comments, 'giudizio'); ?>
                     </div>
 
                     <div class="form-group">
                         <label for="punti_di_forza">Punti di forza del progetto monitorato:</label>
-                        <textarea name="punti_di_forza" class="form-control" rows="8" id="punti_di_forza"><?php echo ckv($data, 'punti_di_forza'); ?></textarea>
+                        <textarea name="punti_di_forza" class="form-control" rows="8" id="punti_di_forza"><?php echo ckv_object($data, 'punti_di_forza'); ?></textarea>
+                        <?php showComment($comments, 'punti_di_forza'); ?>
                     </div>
 
                     <div class="form-group">
                         <label for="punti_di_debolezza">Punti di debolezza del progetto monitorato:</label>
-                        <textarea name="punti_di_debolezza" class="form-control" rows="8" id="punti_di_debolezza"><?php echo ckv($data, 'punti_di_debolezza'); ?></textarea>
+                        <textarea name="punti_di_debolezza" class="form-control" rows="8" id="punti_di_debolezza"><?php echo ckv_object($data, 'punti_di_debolezza'); ?></textarea>
+                        <?php showComment($comments, 'punti_di_debolezza'); ?>
                     </div>
 
                     <div class="form-group">
                         <label for="suggerimenti">Soluzioni e idee da proporre per il progetto monitorato:</label>
-                        <textarea name="suggerimenti" class="form-control" rows="8" id="suggerimenti"><?php echo ckv($data, 'suggerimenti'); ?></textarea>
+                        <textarea name="suggerimenti" class="form-control" rows="8" id="suggerimenti"><?php echo ckv_object($data, 'suggerimenti'); ?></textarea>
+                        <?php showComment($comments, 'suggerimenti'); ?>
                     </div>
                 </fieldset>
 
@@ -185,6 +193,25 @@
 
                         <button type="button" class="btn btn-secondary btn-sm file-duplicator" data-duplicate=".file-grouper"><i class="fal fa-plus"></i> Aggiungi altri allegati</button>
                     </div>
+                    <div class="files">
+                        <h3>Risorse Caricate</h3>
+                        <?php foreach($data->files as $file){ ?>
+                            <div class="file">
+                                <?php if(typeOfFile($file->info) == 'image'){ ?>
+                                    <img src="/public/resources/<?php echo $file->file_path;?>" class="img-fluid">
+                                <?php } elseif(typeOfFile($file->info) == 'spreadsheet'){  ?>
+                                    <a href="/public/resources/<?php echo $file->file_path;?>" class="text-center align-middle"><i class="fal fa-file-spreadsheet fa-8x"></i></a>
+                                <?php } elseif(typeOfFile($file->info) == 'document'){  ?>
+                                    <a href="/public/resources/<?php echo $file->file_path;?>" class="text-center align-middle"><i class="fal fa-file-word fa-8x"></i></a>
+                                <?php } elseif(typeOfFile($file->info) == 'pdf'){  ?>
+                                    <a href="/public/resources/<?php echo $file->file_path;?>" class="text-center align-middle"><i class="fal fa-file-pdf fa-8x"></i></a>
+                                <?php } ?>
+                                <button class="btn btn-sm btn-block btn-danger ajx-delete-repo" type="button" data-type="file" data-id="<?php echo $file->idfile_repository; ?>"><i class="fal fa-trash-alt"></i> Rimuovi Risorsa</button>
+                            </div>
+
+                        <?php } ?>
+                    </div>
+
 
                     <div class="form-group">
                         <label>Aggiungi link alla documentazione ed alle fonti</label>
@@ -194,6 +221,14 @@
                         </div>
 
                         <button type="button" class="btn btn-secondary btn-sm link-duplicator" data-duplicate=".link-grouper"><i class="fal fa-plus"></i> Aggiungi altri link alle fonti</button>
+                    </div>
+                    <div class="files">
+                        <h3>Link Caricati</h3>
+                        <ul class="links">
+                            <?php foreach($data->links as $l){ ?>
+                                <li><a href="<?php echo $l->URL; ?>"><?php echo $l->URL; ?></a> <button class="btn btn-sm btn-danger ajx-delete-repo" type="button" data-type="link" data-id="<?php echo $l->idlink_repository; ?>"><i class="fal fa-trash-alt"></i></button></li>
+                            <?php } ?>
+                        </ul>
                     </div>
 
                     <div class="form-group">
@@ -205,7 +240,19 @@
 
                         <button type="button" class="btn btn-secondary btn-sm video-duplicator" data-duplicate=".video-grouper"><i class="fal fa-plus"></i> Aggiungi altri link a video</button>
                     </div>
-
+                    <div class="files">
+                        <h3>Video Caricati</h3>
+                        <?php foreach($data->videos as $v){ ?>
+                            <div class="video">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="<?php echo $v->embed; ?>" allowfullscreen></iframe>
+                                </div>
+                                <button class="btn btn-sm btn-block btn-danger ajx-delete-repo" type="button" data-type="video" data-id="<?php echo $v->idvideo_repository; ?>"><i class="fal fa-trash-alt"></i> Rimuovi Video</button>
+                            </div>
+                        <?php } ?>
+                        </ul>
+                    </div>
+                    <?php showComment($comments, 'attachments'); ?>
                 </fieldset>
 
                 <div class="form-group">

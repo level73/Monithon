@@ -1,18 +1,19 @@
 <?php
 /** Set Debug Mode **/
-define('DEBUG', true);
+const DEBUG = true;
 /** System status - influences error reporting **/
-define('SYSTEM_STATUS', 'development');
+const SYSTEM_STATUS = 'development';
 
 /** Define Entities **/
 
 /** Set default controller and route **/
-define('DEFAULT_CONTROLLER', 'main');
-define('DEFAULT_METHOD', 'index');
+const DEFAULT_CONTROLLER = 'main';
+const DEFAULT_METHOD = 'index';
 
 /** Paths **/
-define('DIR_REPO', $_SERVER['DOCUMENT_ROOT'] . '/public/resources/' );
-define('URL_REPO', '/public/resources/');
+
+define( 'DIR_REPO',  $_SERVER['DOCUMENT_ROOT'] . '/public/resources/');
+const URL_REPO = '/public/resources/';
 
 /** Permissions **/
 define('P_CREATE_USER', 1);
@@ -34,14 +35,15 @@ define('PUBLISHED', 7);
 define('ONLY_STEP_ONE', 1);
 
 /** Entities **/
-define('T_USER',        1);
-define('T_REP_BASIC',   2);
+const  T_USER = 1;
+const T_REP_BASIC = 2;
+const T_REP_LITE = 3;
 
 /** Default User Role - Change when ASOC starts
  *  ASOC = Role 4
  *  Reporter = Role 3
  */
-define('DEFAULT_ROLE', 3);
+const DEFAULT_ROLE = 3;
 /** Routes **/
 $routes = array(
   0     => "/main",

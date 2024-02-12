@@ -27,3 +27,10 @@ create index entity_report_lite_project_code_index
 
 create index entity_report_lite_stato_di_avanzamento_index
     on entity_report_lite (stato_di_avanzamento);
+
+alter table entity_report_lite
+    add reviewed_by int null;
+
+alter table entity_report_lite
+    add constraint entity_report_lite_reviewd_by_auth_fk
+        foreign key (reviewed_by) references auth (idauth);

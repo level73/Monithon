@@ -7,7 +7,7 @@ function errorReporting() {
   if (SYSTEM_STATUS == 'development') {
     // Enable server error reporting
     ini_set('display_errors', 'On');
-    error_reporting(E_ALL);
+    error_reporting(E_ALL & ~E_DEPRECATED);
   }
   elseif (SYSTEM_STATUS == 'production') {
     // Hide server error reporting
