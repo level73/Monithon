@@ -399,6 +399,7 @@
           $File       = new Meta('file_repository');
           $Errors     = new Errors();
           $Report     = new Report();
+          $Lite       = new Lite();
 
 
           if(!$this->Auth->isLoggedIn()){
@@ -570,15 +571,18 @@
                   }
               }
               $Reports = $Report->findBy(array('created_by' => $this->user->id));
+              $Lites = $Lite->findBy(array('created_by' => $this->user->id));
             }
             else {
               $Reports = $Report->reviewableReports($this->user->id);
+              $Lites = $Lite->reviewableReports($this->user->id);
             }
 
 
             $this->set('errors', $Errors);
             $this->set('Profile', $Profile);
             $this->set('reports', $Reports);
+            $this->set('lite', $Lites);
           }
         }
 
@@ -588,6 +592,7 @@
           $File       = new Meta('file_repository');
           $Errors     = new Errors();
           $Report     = new Report();
+          $Lite = new Lite();
           $UserModel  = new User();
 
           if(!$this->Auth->isLoggedIn()){
@@ -770,9 +775,11 @@
               }
 
               $Reports = $Report->findBy(array('created_by' => $id));
+                $Lites = $Lite->findBy(array('created_by' => $id));
               $this->set('errors', $Errors);
               $this->set('Profile', $Profile);
               $this->set('reports', $Reports);
+                $this->set('lites', $Lites);
             }
             else {
               header('Location: /user/ops');

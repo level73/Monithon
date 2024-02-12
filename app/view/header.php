@@ -1,4 +1,5 @@
 <header class="container-fluid" id="main-header">
+
   <nav class="navbar navbar-expand-lg">
     <a class="navbar-brand" href="https://www.monithon.eu" style="max-width: 80px;">
       <img src="/images/monithon-logo-2022.png" class="img-fluid" alt="Monithon Logo" title="Monithon" />
@@ -27,9 +28,28 @@
           </li>
 
         <?php if(isset($logged) && $logged == true){ ?>
-          <li class="nav-item">
-            <a class="nav-link" href="/report/create">Crea Report</a>
-          </li>
+        <?php
+            // Check if ASOC Medie || Reporter
+            if($user->role == 13):
+        ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/lite/create">Crea Report</a>
+                </li>
+        <?php
+            else:
+        ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/report/create">Crea Report</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/lite/create">Crea Report (Light)</a>
+                </li>
+            <?php
+
+            endif;
+        ?>
+
+
         <?php } ?>
       </ul>
       <!-- <form class="form-inline my-2 my-lg-0">
