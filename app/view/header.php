@@ -36,6 +36,13 @@
                     <a class="nav-link" href="/lite/create">Crea Report</a>
                 </li>
         <?php
+            // User is ASOC
+            elseif($user->role > 3 && $user->role < 11):
+        ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="/report/create">Crea Report</a>
+                </li>
+        <?php
             else:
         ?>
                 <li class="nav-item">
