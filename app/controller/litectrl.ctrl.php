@@ -54,7 +54,7 @@ class LiteCtrl extends Ctrl
             $this->set('title', 'Nuovo Report');
             $this->set('street_map', true);
             $Errors = new Errors();
-            $this->set('js', array('components/lite_report.js?v=0.1', 'components/leaflet_location_map.js'));
+            $this->set('js', array('components/lite_report.js?v=0.2', 'components/leaflet_location_map.js'));
 
             /** STATUS VAR -
              * Used to check if report has been saved - in which case,
@@ -66,6 +66,9 @@ class LiteCtrl extends Ctrl
 
             if( httpCheck('post', true) ){
                 $data = $_POST;
+                if(isset($_COOKIE['ref'])){
+                    $data['referrer'] = $_COOKIE['ref'];
+                }
 
                 $videos = $data['video-attachment'];
                 $links = $data['link-attachment'];
@@ -76,6 +79,7 @@ class LiteCtrl extends Ctrl
                 if(!empty($data['project_url']) && empty($data['api_data'])){
 
                     $code_url = explode('/', rtrim($data['project_url']));
+                    dbga($code_url);
                     $code = end($code_url);
 
                     $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
@@ -218,7 +222,7 @@ class LiteCtrl extends Ctrl
                 $Comments = new Comment();
 
                 $this->set('street_map', true);
-                $this->set('js', array('components/lite_report.js?v=0.1', 'components/leaflet_location_map.js'));
+                $this->set('js', array('components/lite_report.js?v=0.2', 'components/leaflet_location_map.js'));
 
                 $this->Errors->check();
                 if (!empty($this->Errors->errors)) {
@@ -386,7 +390,7 @@ class LiteCtrl extends Ctrl
                 $this->set('logged', $logged);
                 $this->set('title', 'Revisione Report');
                 $this->set('street_map', true);
-                $this->set('js', array('components/lite_report.js?v=0.1', 'components/leaflet_location_map.js', 'section/review.js'));
+                $this->set('js', array('components/lite_report.js?v=0.2', 'components/leaflet_location_map.js', 'section/review.js'));
 
                 $this->Errors->check();
                 if (!empty($this->Errors->errors)) {

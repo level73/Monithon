@@ -18,19 +18,24 @@
                         <div class="input-group">
                             <?php
                             if(isset($pfurl)){
-                                if(isset($ref) && $ref == 's24'){
+                                if( ( isset($ref) && $ref == 's24' )  ||  ckv_object($data, 'referrer') == "s24" ){
                                     ?>
-                                    <input type="text" name="project_url" id="opencup" placeholder="URL del progetto scelto..." class="form-control pfurl" value="https://opencup.gov.it/portale/progetto/-/cup/<?php echo $pfurl; ?>">
+                                    <input type="text" name="project_url" id="opencup" placeholder="URL del progetto scelto..." class="form-control pfurl apicall" value="https://opencup.gov.it/portale/progetto/-/cup/<?php echo $pfurl; ?>">
                                     <?php
                                 } else {
                                     ?>
-                                    <input type="text" name="project_url" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control pfurl" value="<?php echo $pfurl; ?>">
+                                    <input type="text" name="project_url" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control pfurl apicall" value="<?php echo $pfurl; ?>">
                                     <?php
                                 }
                             } else {
-                                ?>
-                                <input type="text" name="project_url" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control" value="<?php echo ckv_object($data, 'project_url'); ?>">
-                            <?php } ?>
+
+                                if( $data->referrer == "s24" ):
+                            ?>
+                                    <input type="text" name="project_url" id="opencup" placeholder="URL del progetto scelto..." class="form-control pfurl apicall" value="<?php echo ckv_object($data, 'project_url'); ?>">
+                            <?php else: ?>
+
+                                <input type="text" name="project_url" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control apicall" value="<?php echo ckv_object($data, 'project_url'); ?>">
+                            <?php endif; } ?>
                             <div class="input-group-append">
                                 <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
                             </div>
@@ -54,6 +59,15 @@
                         <input type="text" name="titolo" class="form-control" id="titolo" value="<?php echo ckv_object($data, 'titolo'); ?>">
                         <?php showComment($comments, 'titolo'); ?>
                     </div>
+
+                    <?php if($user->role !== 13): ?>
+                        <div class="form-group">
+                            <label for="referrer_motivazione">Come sei venuto a conoscenza del progetto e perché ti interessa?</label>
+                            <textarea name="referrer_motivazione" class="form-control" rows="8" id="referrer_motivazione"><?php echo ckv_object($data, 'referrer_motivazione'); ?></textarea>
+                        </div>
+                    <?php endif; ?>
+
+
                 </fieldset>
                 <fieldset>
                     <legend>La Posizione del Progetto</legend>
@@ -83,11 +97,13 @@
 
                 <fieldset>
                     <legend>Le Tue Osservazioni</legend>
+                    <?php if($user->role == 13 || $user->role == 1 || $user->role == 2 ): ?>
                     <div class="form-group">
                         <label for="obiettivi_del_progetto">Obiettivi del progetto monitorato:</label>
                         <textarea name="obiettivi_del_progetto" class="form-control" rows="8" id="obiettivi_del_progetto"><?php echo ckv_object($data, 'obiettivi_del_progetto'); ?></textarea>
                         <?php showComment($comments, 'obiettivi_del_progetto'); ?>
                     </div>
+                    <?php endif; ?>
 
                     <div class="form-group">
                         <label>Stato di avanzamento del progetto monitorato:</label>
@@ -157,23 +173,25 @@
                         <?php showComment($comments, 'giudizio'); ?>
                     </div>
 
+                    <?php if($user->role == 13 || $user->role == 1 || $user->role == 2 ): ?>
                     <div class="form-group">
                         <label for="punti_di_forza">Punti di forza del progetto monitorato:</label>
                         <textarea name="punti_di_forza" class="form-control" rows="8" id="punti_di_forza"><?php echo ckv_object($data, 'punti_di_forza'); ?></textarea>
                         <?php showComment($comments, 'punti_di_forza'); ?>
                     </div>
-
                     <div class="form-group">
                         <label for="punti_di_debolezza">Punti di debolezza del progetto monitorato:</label>
                         <textarea name="punti_di_debolezza" class="form-control" rows="8" id="punti_di_debolezza"><?php echo ckv_object($data, 'punti_di_debolezza'); ?></textarea>
                         <?php showComment($comments, 'punti_di_debolezza'); ?>
                     </div>
+                    <?php endif; ?>
 
                     <div class="form-group">
                         <label for="suggerimenti">Soluzioni e idee da proporre per il progetto monitorato:</label>
                         <textarea name="suggerimenti" class="form-control" rows="8" id="suggerimenti"><?php echo ckv_object($data, 'suggerimenti'); ?></textarea>
                         <?php showComment($comments, 'suggerimenti'); ?>
                     </div>
+
                 </fieldset>
 
                 <fieldset>

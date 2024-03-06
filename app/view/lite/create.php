@@ -18,16 +18,16 @@
                             if(isset($pfurl)){
                                 if(isset($ref) && $ref == 's24'){
                                     ?>
-                                    <input type="text" name="project_url" id="opencup" placeholder="URL del progetto scelto..." class="form-control pfurl" value="https://opencup.gov.it/portale/progetto/-/cup/<?php echo $pfurl; ?>">
+                                    <input type="text" name="project_url" id="opencup" placeholder="URL del progetto scelto..." class="form-control pfurl apicall" value="https://opencup.gov.it/portale/progetto/-/cup/<?php echo $pfurl; ?>">
                                     <?php
                                 } else {
                                     ?>
-                                    <input type="text" name="project_url" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control pfurl" value="<?php echo $pfurl; ?>">
+                                    <input type="text" name="project_url" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control pfurl apicall" value="<?php echo $pfurl; ?>">
                                     <?php
                                 }
                             } else {
                                 ?>
-                                <input type="text" name="project_url" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control" value="<?php echo ckv($data, 'project_url'); ?>">
+                                <input type="text" name="project_url" id="oc_api_code" placeholder="URL del progetto scelto..." class="form-control apicall" value="<?php echo ckv($data, 'project_url'); ?>">
                             <?php } ?>
                             <div class="input-group-append">
                                 <button class="btn btn-primary" id="oc_api_code_lookup" type="button"><i class="fal fa-search"></i></button>
@@ -51,6 +51,12 @@
                         <label for="titolo">Titolo del progetto:</label>
                         <input type="text" name="titolo" class="form-control" id="titolo"><?php echo ckv($data, 'titolo'); ?></input>
                     </div>
+                    <?php if($user->role !== 13): ?>
+                        <div class="form-group">
+                            <label for="referrer_motivazione">Come sei venuto a conoscenza del progetto e perché ti interessa?</label>
+                            <textarea name="referrer_motivazione" class="form-control" rows="8" id="referrer_motivazione"><?php echo ckv($data, 'referrer_motivazione'); ?></textarea>
+                        </div>
+                    <?php endif; ?>
                 </fieldset>
                 <fieldset>
                     <legend>La Posizione del Progetto</legend>
@@ -80,11 +86,12 @@
 
                 <fieldset>
                     <legend>Le Tue Osservazioni</legend>
+                    <?php if($user->role == 13): ?>
                     <div class="form-group">
                         <label for="obiettivi_del_progetto">Obiettivi del progetto monitorato:</label>
                         <textarea name="obiettivi_del_progetto" class="form-control" rows="8" id="q1"><?php echo ckv($data, 'obiettivi_del_progetto'); ?></textarea>
                     </div>
-
+                    <?php endif; ?>
                     <div class="form-group">
                         <label>Stato di avanzamento del progetto monitorato:</label>
                         <small class="form-text text-muted">Indipendentemente dalle tempistiche dichiarate, qual è il reale avanzamento del progetto monitorato?</small>
@@ -151,7 +158,7 @@
                         <label for="giudizio">Giudizio:</label>
                         <textarea name="giudizio" class="form-control" rows="8" id="giudizio"><?php echo ckv($data, 'giudizio'); ?></textarea>
                     </div>
-
+                    <?php if($user->role == 13): ?>
                     <div class="form-group">
                         <label for="punti_di_forza">Punti di forza del progetto monitorato:</label>
                         <textarea name="punti_di_forza" class="form-control" rows="8" id="punti_di_forza"><?php echo ckv($data, 'punti_di_forza'); ?></textarea>
@@ -161,7 +168,7 @@
                         <label for="punti_di_debolezza">Punti di debolezza del progetto monitorato:</label>
                         <textarea name="punti_di_debolezza" class="form-control" rows="8" id="punti_di_debolezza"><?php echo ckv($data, 'punti_di_debolezza'); ?></textarea>
                     </div>
-
+                    <?php endif; ?>
                     <div class="form-group">
                         <label for="suggerimenti">Soluzioni e idee da proporre per il progetto monitorato:</label>
                         <textarea name="suggerimenti" class="form-control" rows="8" id="suggerimenti"><?php echo ckv($data, 'suggerimenti'); ?></textarea>

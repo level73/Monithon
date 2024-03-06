@@ -3,7 +3,9 @@ var LiteReport = {
         version: 0.1,
         api_url: 'https://opencoesione.gov.it/it/api/progetti/',
         api_format: '/?format=json',
-        lang: 'it' // TODO: Change to dynamically set param from Monithon.config
+        lang: 'it',
+
+        opencup_api_url: '/api/openCUP/'
     },
 
     init: function(){
@@ -21,42 +23,79 @@ var LiteReport = {
             $('#oc_api_content').removeClass('d-none');
             e.preventDefault();
 
-            // Get the Code
-            var oc_api_url = $('#oc_api_code').val().toLowerCase();
-            var oc_api_code = LiteReport.getProjectCode(oc_api_url);
 
-            // build the JSON API URL
-            var oc_api_endpoint = LiteReport.config.api_url + oc_api_code + LiteReport.config.api_format;
-            console.log(oc_api_endpoint);
+            if( $('.apicall').attr('id') == 'opencup'){
+                var opencup = $('#opencup').val();
+                var cup = LiteReport.getProjectCode(opencup);
 
-            $.getJSON('/ajax/oc_api/' + oc_api_code, {'code': oc_api_code}, function(data) {
-                console.log(data);
-                if (data.code == '404') {
-                    alert('Non trovo il progetto! Controlla di aver copiato ed incollato la URL correttamente, e riprova.');
-                    // $('#oc_api_content_s1, #oc_api_content_s2').addClass('d-none');
-                } else {
+                // build the JSON API URL
+                var api_endpoint = LiteReport.config.opencup_api_url + cup;
+                console.log(api_endpoint);
+
+
+                $.getJSON(api_endpoint, {'code': cup}, function(data) {
+                    console.log(data);
                     // Inject data into hidden field
                     $('#oc-api-spinner').addClass('d-none');
-                    $('#api_data').val(JSON.stringify(data));
-                    $('#project_code').val(oc_api_code);
+                    $('#api_data').val(JSON.stringify(data.results[0]));
+                    $('#project_code').val(cup);
 
-                    $('#oc_api_project_title').html(data.oc_titolo_progetto);
+                    $('#oc_api_project_title').html(data.results[0].DESCRIZIONE_CUP);
                     if(!$('form').hasClass('edit-lite-report')){
-                        $('input#titolo').val(data.oc_titolo_progetto);
+                        $('input#titolo').val(data.results[0].DESCRIZIONE_CUP);
                     }
-                    $('#oc_api_project_synth').html(data.oc_sintesi_progetto);
+                    $('#oc_api_project_synth').html(data.results[0].DESC_CUP);
 
-                    $('ul#oc_api_project_beneficiaries li').remove();
+                    /*$('ul#oc_api_project_beneficiaries li').remove();
                     let Beneficiaries = LiteReport.getBeneficiaries(data);
                     Beneficiaries.forEach(soggetto => {
                         let url = soggetto.url.split('/');
                         let el = '<li><a href="https://opencoesione.gov.it/it/dati/soggetti/' + url[6] + '" target="_blank">' + soggetto.denominazione + '</a></li>';
                         $('ul#oc_api_project_beneficiaries').append(el);
 
-                    });
+                    });*/
+                });
 
-                }
-            });
+            }
+            else {
+
+                // Get the Code
+                var oc_api_url = $('#oc_api_code').val().toLowerCase();
+                var oc_api_code = LiteReport.getProjectCode(oc_api_url);
+
+                // build the JSON API URL
+                var oc_api_endpoint = LiteReport.config.api_url + oc_api_code + LiteReport.config.api_format;
+                console.log(oc_api_endpoint);
+
+                $.getJSON('/ajax/oc_api/' + oc_api_code, {'code': oc_api_code}, function(data) {
+                    console.log(data);
+                    if (data.code == '404') {
+                        alert('Non trovo il progetto! Controlla di aver copiato ed incollato la URL correttamente, e riprova.');
+                        // $('#oc_api_content_s1, #oc_api_content_s2').addClass('d-none');
+                    } else {
+                        // Inject data into hidden field
+                        $('#oc-api-spinner').addClass('d-none');
+                        $('#api_data').val(JSON.stringify(data));
+                        $('#project_code').val(oc_api_code);
+
+                        $('#oc_api_project_title').html(data.oc_titolo_progetto);
+                        if(!$('form').hasClass('edit-lite-report')){
+                            $('input#titolo').val(data.oc_titolo_progetto);
+                        }
+                        $('#oc_api_project_synth').html(data.oc_sintesi_progetto);
+
+                        $('ul#oc_api_project_beneficiaries li').remove();
+                        let Beneficiaries = LiteReport.getBeneficiaries(data);
+                        Beneficiaries.forEach(soggetto => {
+                            let url = soggetto.url.split('/');
+                            let el = '<li><a href="https://opencoesione.gov.it/it/dati/soggetti/' + url[6] + '" target="_blank">' + soggetto.denominazione + '</a></li>';
+                            $('ul#oc_api_project_beneficiaries').append(el);
+
+                        });
+
+                    }
+                });
+            }
         });
     },
 

@@ -123,7 +123,13 @@
 
                           if($User && $Auth->isLoggedIn()){
                               if(isset($_COOKIE['pfurl']) && !empty($_COOKIE['pfurl'])){
-                                  header('Location: /report/create');
+
+                                  if(isset($_COOKIE['ref']) && $_COOKIE['ref'] == 's24'){
+                                      header('Location: /lite/create');
+                                  }
+                                  else {
+                                    header('Location: /report/create');
+                                  }
                               }
                               else {
                                   header('Location: /user/edit');

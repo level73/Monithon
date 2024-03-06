@@ -572,7 +572,7 @@
                 </div>
                 <div class="custom-control custom-radio">
                     <input type="radio" id="faip_2" name="facilita_accesso_informazioni" class=" custom-control-input" value="2"  <?php echo (isset($data['facilita_accesso_informazioni']) && $data['facilita_accesso_informazioni'] == 2 ? 'checked' : ''); ?>>
-                    <label class="custom-control-label" for="faip_2">Con qualche difficiltà <small>(es. ho trovato alcune delle informazioni di cui avevo bisogno sui siti ufficiali delle amministrazioni, ma ho dovuto richiedere alcune informazioni o documenti ai soggetti coinvolti; non tutte le amministrazioni contattate mi hanno risposto rapidamente o non hanno risposto)</small></label>
+                    <label class="custom-control-label" for="faip_2">Con qualche difficoltà <small>(es. ho trovato alcune delle informazioni di cui avevo bisogno sui siti ufficiali delle amministrazioni, ma ho dovuto richiedere alcune informazioni o documenti ai soggetti coinvolti; non tutte le amministrazioni contattate mi hanno risposto rapidamente o non hanno risposto)</small></label>
                 </div>
                 <div class="custom-control custom-radio">
                     <input type="radio" id="faip_3" name="facilita_accesso_informazioni" class=" custom-control-input" value="3"  <?php echo (isset($data['facilita_accesso_informazioni']) && $data['facilita_accesso_informazioni'] == 3 ? 'checked' : ''); ?>>
@@ -968,7 +968,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>In che modo le Pubbliche Amministrazioni hanno risposto alle tue sollecitazioni o ai problemi che hai sollevato?                    </label>
+                    <label>In che modo le Pubbliche Amministrazioni hanno risposto alle tue sollecitazioni o ai problemi che hai sollevato?</label>
                     <small class="form-text text-muted">Non sono da considerare le interviste allo scopo solamente di raccogliere informazioni sul progetto.</small>
                     <div class="custom-control custom-checkbox">
                         <input class="custom-control-input" type="checkbox" value="1" id="admin_response_no" name="admin_response_no" <?php echo (isset($data['admin_response_no']) && $data['admin_response_no'] == 1 ? 'checked' : ''); ?>>

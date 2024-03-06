@@ -21,9 +21,29 @@
                 <div class="login_prj_inner">
                     <p class="text-muted">sembra tu voglia monitorare questo progetto:</p>
 
+                    <?php if($project['type'] == "s24"): ?>
+                    <h3>
+                        <small><?php echo $project['data']->monithon_tema; ?></small><br />
+                        <a href="<?php echo ($project['type'] == 's24' ? $project['data']->oc_link : $pfurl); ?>" target="_blank"><?php echo $project['data']->oc_titolo_progetto; ?></a>
+                    </h3>
+
+                    <span class="login_prj_dates">
+                        <?php echo (!empty($project['data']->oc_data_inizio_progetto) ? ocDateFormatter($project['data']->oc_data_inizio_progetto) . ( $project['type'] == 's24' ? '' : ' - ' . ocDateFormatter($project['data']->oc_data_fine_progetto_prevista)) : ''); ?>
+                        <?php echo ' (' . $project['data']->oc_stato_progetto . ')'; ?>
+                    </span>
+                        <div class="login_prj_finance">
+
+                        <span class="login_prj_data login_prj_labval">
+                        <?php echo (!empty($project['data']->oc_finanz_tot_pub_netto) ? number_format((float)$project['data']->oc_finanz_tot_pub_netto, 2, ',', '.') . ' &euro;' : ''); ?>
+                        </span>
+                        <span class="login_prj_labval login_prg_label">
+                            Finanziamento Pubblico Netto
+                        </span>
+                    </div>
 
 
 
+                    <?php else: ?>
                     <h3>
                         <small><?php echo $project['data']->oc_tema_sintetico . ' - ' . ($project['type'] == 's24' ? $project['data']->oc_descrizione_programma : $project['data']->cup_descr_tipologia); ?></small><br />
                         <a href="<?php echo ($project['type'] == 's24' ? $project['data']->oc_link : $pfurl); ?>" target="_blank"><?php echo $project['data']->oc_titolo_progetto; ?></a>
@@ -32,16 +52,17 @@
                     <span class="login_prj_dates">
                     <?php echo (!empty($project['data']->oc_data_inizio_progetto) ? ocDateFormatter($project['data']->oc_data_inizio_progetto) . ( $project['type'] == 's24' ? '' : ' - ' . ocDateFormatter($project['data']->oc_data_fine_progetto_prevista)) : ''); ?>
                     <?php echo ' (' . $project['data']->oc_stato_progetto . ')'; ?>
-                </span>
+                    </span>
                     <div class="login_prj_finance">
 
-                    <span class="login_prj_data login_prj_labval">
-                    <?php echo (!empty($project['data']->oc_finanz_tot_pub_netto) ? number_format((float)$project['data']->oc_finanz_tot_pub_netto, 2, ',', '.') . ' &euro;' : ''); ?>
-                    </span>
-                    <span class="login_prj_labval login_prg_label">
-                    Finanziamento Pubblico Netto
-                    </span>
+                        <span class="login_prj_data login_prj_labval">
+                        <?php echo (!empty($project['data']->oc_finanz_tot_pub_netto) ? number_format((float)$project['data']->oc_finanz_tot_pub_netto, 2, ',', '.') . ' &euro;' : ''); ?>
+                        </span>
+                        <span class="login_prj_labval login_prg_label">
+                        Finanziamento Pubblico Netto
+                        </span>
                     </div>
+                    <?php endif; ?>
                 </div>
             </div>
 
