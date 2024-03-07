@@ -1,7 +1,7 @@
 <div class="container">
     <section class="row justify-content-center">
         <div class="col-6">
-          <img src="/images/monithon-logo.png" alt="Monithon" class="mx-auto d-block login-logo" />
+          <img src="/images/monithon-logo-2022.png" alt="Monithon" class="mx-auto d-block login-logo" />
           <h1><?php t('Attivazione Account'); ?></h1>
 
           <?php if($activation){ ?>

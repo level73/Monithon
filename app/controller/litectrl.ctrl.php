@@ -245,11 +245,11 @@ class LiteCtrl extends Ctrl
                             ]
                         ]);
 
-                        $response = @file_get_contents('https://opencoesione.gov.it/it/api/progetti/' . $code . '/?format=json', false, $context);
-                        if (!$response) {
-                            $r['message'] = 'Non trovato';
-                            $r['code'] = '404';
-                            $response = json_encode($r);
+                        $fget = @file_get_contents('https://opencoesione.gov.it/it/api/progetti/' . $code . '/?format=json', false, $context);
+                        if (!$fget) {
+                            $response['message'] = 'Non trovato';
+                            $response['code'] = '404';
+                            $response = json_encode($response);
                         }
                     }
 

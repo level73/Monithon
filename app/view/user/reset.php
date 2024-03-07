@@ -8,7 +8,7 @@
 <div class="container">
   <section class="row justify-content-center">
       <div class="col-6">
-        <img src="/images/monithon-logo.png" alt="Monithon" class="mx-auto d-block login-logo" />
+        <img src="/images/monithon-logo-2022.png" alt="Monithon" class="mx-auto d-block login-logo" />
 
       <?php if($pwd_reset == true){ ?>
       <form action="/user/reset/<?php echo $hash; ?>" method="post" class="login-form">
