@@ -24,7 +24,7 @@
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
                       <input type="radio" id="utype-3" value="3" name="role" class="custom-control-input">
-                      <label class="custom-control-label" for="utype-3">Società Civile</label>
+                      <label class="custom-control-label" for="utype-3">Società Civile/Cittadino</label>
                   </div>
               </div>
           </div>

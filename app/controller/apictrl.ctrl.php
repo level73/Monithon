@@ -602,13 +602,9 @@
           curl_setopt($ch, CURLOPT_URL, "https://api.sogei.it/rgs/opencup/o/extServiceApi/v1/opendataes/cup/" . $cup);
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-          $headers = [
-              'x-ibm-client-id:3fdf5a90-35ca-4822-9dd1-b101f0086d28',
-              'x-ibm-client-secret:A0gX7jC7fA0eC1kO4tM5tB5wE4nT6gN8tY4fH2cN6eS8tX4eJ4',
-              'Accept:application/json'
-          ];
 
-          curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+          curl_setopt($ch, CURLOPT_HTTPHEADER, OPENCUP_API_HEADERS);
           $response = curl_exec($ch);
 
           // Close cURL
