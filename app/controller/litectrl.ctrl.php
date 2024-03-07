@@ -108,7 +108,7 @@ class LiteCtrl extends Ctrl
                     $oc_project_code = $json->cod_locale_progetto;
                     $data['project_code'] = $oc_project_code;
                 }
-                $data['status'] = DRAFT;
+                $data['status'] = (!empty($data['status']) ? PENDING_REVIEW : DRAFT);
                 $data['created_by'] = $this->User->id;
                 $report = $this->Lite->create($data);
 
