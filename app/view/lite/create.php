@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col">
             <h1>Nuovo Report
-                <a class="btn btn-primary float-right" target="_blank" href="https://www.monithon.it/blog/2020/04/24/come-inviare-il-report-di-monitoraggio-tutti-i-nostri-suggerimenti/"><i class="fas fa-info-square"></i> GUIDA ALLA COMPILAZIONE</a>
+                <a class="btn btn-primary float-right" target="_blank" href="https://www.monithon.eu/blog/2024/03/07/guida-al-monitoraggio-civico-semplificato/"><i class="fas fa-info-square"></i> GUIDA ALLA COMPILAZIONE</a>
             </h1>
 
             <form class="" method="post" enctype="multipart/form-data" action="/lite/create">
