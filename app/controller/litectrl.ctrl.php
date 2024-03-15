@@ -26,6 +26,67 @@ class LiteCtrl extends Ctrl
         $this->set('logged', $logged);
     }
 
+
+    public function view($id){
+
+        $Report = $this->Lite->getReport($id);
+
+        $this->set('title', 'Report');
+        $Errors = new Errors();
+        $User = new User();
+
+        $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+
+        $this->set('street_map', true);
+        $this->set('js', array('section/report.js'));
+
+
+        if(!$Report){
+            header('Location: /report/not_found');
+        } else if($Report->status != 7){
+            header('Location: /report/unpublished');
+        }
+        else {
+
+            $this->set('report', $Report);
+
+            $oc = json_decode($Report->api_data);
+            $this->set('oc', $oc);
+
+            $Author = $User->fullProfile(($Report->created_by));
+
+            $this->set('author', $Author);
+
+            $Soggetti = array();
+            if(isset($oc->soggetti)){
+                foreach ($oc->soggetti as $soggetto) {
+                    foreach ($soggetto->ruoli as $ruolo) {
+                        $Soggetti[$ruolo][] = $soggetto;
+                    }
+                }
+            }
+            $this->set('soggetti', $Soggetti);
+
+
+            $Images = array();
+            $Resources = array();
+            if (!empty($Report->files)) {
+                foreach ($Report->files as $file) {
+                    $info = explode('/', $file->info);
+                    if ($info[0] == 'image') {
+                        $Images[] = $file;
+                    } else {
+                        $Resources[] = $file;
+                    }
+                }
+            }
+            $this->set('images', $Images);
+            $this->set('resources', $Resources);
+        }
+
+
+    }
+
     public function create(){
 
         if(isset($_GET['pfurl']) && !empty($_GET['pfurl'])){
@@ -449,18 +510,11 @@ class LiteCtrl extends Ctrl
                             $mailer = true;
                             $subject = "MONITHON - Report Approvato";
 
-                            $message = "Il Report <strong>" . $data['titolo'] . "</strong> è stato approvato, congratulazioni!<br />Puoi vedere il report pubblicato al seguente link: <a href=\"" . APPURL . "/report/view/" . $id . "\">" . APPURL . "/report/view/" . $id . "</a><br />Controlla la pagina dedicata al tuo team e aggiorna bio e social se necessario: <a href=\"/profile/view/" . $creator . "\">Controlla il tuo profilo</a><br />Grazie per aver partecipato!<br /><br />La Redazione di Monithon";
+                            $message = "Il Report <strong>" . $data['titolo'] . "</strong> è stato approvato, congratulazioni!<br />Puoi vedere il report pubblicato al seguente link: <a href=\"" . APPURL . "/lite/view/" . $id . "\">" . APPURL . "/lite/view/" . $id . "</a><br />Controlla la pagina dedicata al tuo team e aggiorna bio e social se necessario: <a href=\"/profile/view/" . $creator . "\">Controlla il tuo profilo</a><br />Grazie per aver partecipato!<br /><br />La Redazione di Monithon";
 
                         }
-                        else if($data['status_tab_3'] == PUBLISHED){
-                            $mailer = true;
-                            $subject = "MONITHON - Step 3 del Report Approvato";
 
-                            $message = "Il terzo step del tuo report è stato approvato, congratulazioni!<br />
-                                Pubblicheremo queste ulteriori informazioni in analisi aggregate o casi studio.<br /><br />                                
-                                La redazione di Monithon";
-                        }
-                        else if($data['status'] == DRAFT || $data['status_tab_3'] == DRAFT){
+                        else if($data['status'] == DRAFT ){
                             $mailer = true;
                             $subject = "MONITHON - Richiesta modifiche al report!";
                             $message = "Durante la revisione da parte della Redazione di Monithon sono emersi alcuni particolari che necessitano il tuo intervento sul report <strong>" . $data['titolo'] . "</strong>!<br />" .
@@ -468,9 +522,7 @@ class LiteCtrl extends Ctrl
 
                         }
                         if($mailer){
-                            if($prev_status_tab_3 != $data['status_tab_3']){
-                                $message .= 'In particolare, rivolgi l\'attenzione al terzo step, Impatto e Risultati.';
-                            }
+
                             $message .= "<br /><br /> - La redazione di Monithon";
                             // Send Email
                             $Emailer = new Emailer();

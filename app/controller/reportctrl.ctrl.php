@@ -188,181 +188,190 @@
       }
 
       else {
-        $logged = true;
-        $this->set('logged', $logged);
-        $this->set('title', 'Nuovo Report');
-        $Errors = new Errors();
-        $this->set('street_map', true);
-        $this->set('js', array('components/oc_api.js?v=140421', 'components/leaflet_location_map.js', 'components/connection-mapper.js?v=002'));
-        //, 'components/connection-mapper.js?v=001'
 
-        /** STATUS VAR -
-          * Used to check if report has been saved - in which case,
-          * redirect user to edit form of said report
-          * transferring updated Error class messages
-        **/
-        $status = 0;
-        $data = null;
-
-        if( httpCheck('post', true) ){
-          $data = $_POST;
-
-          $crt = $data['crt'];
-
-          $videos = $data['video-attachment'];
-          $links = $data['link-attachment'];
-          unset($data['video-attachment']);
-          unset($data['link-attachment']);
-          unset($data['crt']);
+        if($this->User->role == '13'):
+            header('Location: /lite/create');
+        else:
 
 
 
-          /** Check for OC API URL and Data **/
-          if(!empty($data['id_open_coesione']) && empty($data['api_data'])){
 
-              $code_url = explode('/', rtrim($data['id_open_coesione']));
-              $code = end($code_url);
+            $logged = true;
+            $this->set('logged', $logged);
+            $this->set('title', 'Nuovo Report');
+            $Errors = new Errors();
+            $this->set('street_map', true);
+            $this->set('js', array('components/oc_api.js?v=140421', 'components/leaflet_location_map.js', 'components/connection-mapper.js?v=002'));
+            //, 'components/connection-mapper.js?v=001'
+
+            /** STATUS VAR -
+              * Used to check if report has been saved - in which case,
+              * redirect user to edit form of said report
+              * transferring updated Error class messages
+            **/
+            $status = 0;
+            $data = null;
+
+            if( httpCheck('post', true) ){
+              $data = $_POST;
+
+              $crt = $data['crt'];
+
+              $videos = $data['video-attachment'];
+              $links = $data['link-attachment'];
+              unset($data['video-attachment']);
+              unset($data['link-attachment']);
+              unset($data['crt']);
 
 
 
-              $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
-              $context = stream_context_create([
-                  "http" => [
-                      "header" => "Authorization: Basic $auth"
-                  ]
-              ]);
+              /** Check for OC API URL and Data **/
+              if(!empty($data['id_open_coesione']) && empty($data['api_data'])){
+
+                  $code_url = explode('/', rtrim($data['id_open_coesione']));
+                  $code = end($code_url);
 
 
-              $oc_api_data = @file_get_contents('https://opencoesione.gov.it/it/api/progetti/' . $code . '/?format=json', false, $context);
-              if(!$oc_api_data){
-                  $r['message'] = 'Non trovato';
-                  $r['code'] = '404';
-              //    $data = json_encode($r);
-              }
-              else {
-                  $data['api_data'] = $oc_api_data;
-              }
-          }
+
+                  $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
+                  $context = stream_context_create([
+                      "http" => [
+                          "header" => "Authorization: Basic $auth"
+                      ]
+                  ]);
 
 
-          $data = array_filter($data);
-          $data = recursiveStripTags($data);
-
-          if(!empty($data['api_data'])){
-              $json = json_decode($data['api_data']);
-              $oc_project_code = $json->cod_locale_progetto;
-              $data['oc_project_code'] = $oc_project_code;
-          }
-
-          $connections = $data['connection'];
-          unset($data['connection']);
-          unset($connections[0]);
-
-          $data['created_by'] = $this->User->id;
-          $report = $this->Report->create($data);
-
-          if(is_numeric($report)){
-            $status = 1;
-            $_SESSION[APPNAME]['message-log'][] = 21;
-
-            // check for connection meta
-            $Connection = new Meta('connection');
-            $Connection->updateConnections(T_REP_BASIC, $report, $connections);
-
-              // Work out the connection relationship matrix
-              $cnmap = array();
-              $ConnectionMap = new Meta('connection_relationship');
-              foreach($crt as $field => $cn){
-                  if(isset($cn['value']) && $cn['value'] == 1){
-                      $val = array('names' => $cn['names'], 'connection'=> 'yes');
-                      $cnmap[$field] = json_encode($val);
+                  $oc_api_data = @file_get_contents('https://opencoesione.gov.it/it/api/progetti/' . $code . '/?format=json', false, $context);
+                  if(!$oc_api_data){
+                      $r['message'] = 'Non trovato';
+                      $r['code'] = '404';
+                  //    $data = json_encode($r);
+                  }
+                  else {
+                      $data['api_data'] = $oc_api_data;
                   }
               }
-              $ConnectionMap->updateConnectionMap($report, $cnmap);
 
 
+              $data = array_filter($data);
+              $data = recursiveStripTags($data);
 
-
-            // Upload Files
-            if(!empty($_FILES)){
-
-              $files = rearrange_files($_FILES['file-attachment']);
-              $Files = new Meta('file_repository');
-              $File = new Repo();
-
-              $fileInfo = array('title' => 'Report File - ' . $report, 'file_type' => 2, 'disclosure' => 100, 'uid' => $this->User->id);
-              $filelist = array();
-
-              foreach($files as $i => $file){
-                if($file['error'] == 0 ){
-                  $filelist[] = $File->upload($file, $fileInfo);
-                }
-                elseif($file['error'] == 4 ) {
-
-                }
-                else {
-                  $_SESSION[APPNAME]['message-log'][] = 650;
-                  $this->Errors->set(650);
-                }
+              if(!empty($data['api_data'])){
+                  $json = json_decode($data['api_data']);
+                  $oc_project_code = $json->cod_locale_progetto;
+                  $data['oc_project_code'] = $oc_project_code;
               }
 
-              if(count($filelist) > 0) {
-                $f = $Files->updateFileReferences(T_REP_BASIC, $report, $filelist);
+              $connections = $data['connection'];
+              unset($data['connection']);
+              unset($connections[0]);
+
+              $data['created_by'] = $this->User->id;
+              $report = $this->Report->create($data);
+
+              if(is_numeric($report)){
+                $status = 1;
+                $_SESSION[APPNAME]['message-log'][] = 21;
+
+                // check for connection meta
+                $Connection = new Meta('connection');
+                $Connection->updateConnections(T_REP_BASIC, $report, $connections);
+
+                  // Work out the connection relationship matrix
+                  $cnmap = array();
+                  $ConnectionMap = new Meta('connection_relationship');
+                  foreach($crt as $field => $cn){
+                      if(isset($cn['value']) && $cn['value'] == 1){
+                          $val = array('names' => $cn['names'], 'connection'=> 'yes');
+                          $cnmap[$field] = json_encode($val);
+                      }
+                  }
+                  $ConnectionMap->updateConnectionMap($report, $cnmap);
+
+
+
+
+                // Upload Files
+                if(!empty($_FILES)){
+
+                  $files = rearrange_files($_FILES['file-attachment']);
+                  $Files = new Meta('file_repository');
+                  $File = new Repo();
+
+                  $fileInfo = array('title' => 'Report File - ' . $report, 'file_type' => 2, 'disclosure' => 100, 'uid' => $this->User->id);
+                  $filelist = array();
+
+                  foreach($files as $i => $file){
+                    if($file['error'] == 0 ){
+                      $filelist[] = $File->upload($file, $fileInfo);
+                    }
+                    elseif($file['error'] == 4 ) {
+
+                    }
+                    else {
+                      $_SESSION[APPNAME]['message-log'][] = 650;
+                      $this->Errors->set(650);
+                    }
+                  }
+
+                  if(count($filelist) > 0) {
+                    $f = $Files->updateFileReferences(T_REP_BASIC, $report, $filelist);
+                  }
+                  if(!$f instanceof Errors && count($filelist) > 0){
+                    $_SESSION[APPNAME]['message-log'][] = 91;
+                    $this->Errors->set(91);
+                  }
+                }
+
+                // Upload Links
+                if(!empty($links)){
+                  $links = array_filter($links);
+                  $Links = new Meta('link_repository');
+                  $Link = new Link();
+                  $linkList = array();
+                  foreach($links as $link){
+                    $link_id = $Link->create(array('URL' => $link));
+                    $linkList[] = $link_id;
+                  }
+                  $f = $Links->updateReferences(T_REP_BASIC, $report, $linkList);
+                  if(!$f instanceof Errors){
+                    $_SESSION[APPNAME]['message-log'][] = 92;
+                    $this->Errors->set(92);
+                  }
+                }
+
+                // Upload Video Links
+                if(!empty($videos)){
+                  $videos = array_filter($videos);
+                  $Videos = new Meta('video_repository');
+                  $Video  = new Video();
+                  $videoList = array();
+                  foreach($videos as $video){
+                    $video_id = $Video->create(array('URL' => $video));
+                    $videoList[] = $video_id;
+                  }
+                  $f = $Videos->updateReferences(T_REP_BASIC, $report, $videoList);
+                  if(!$f instanceof Errors){
+                    $_SESSION[APPNAME]['message-log'][] = 93;
+                    $this->Errors->set(93);
+                  }
+                }
               }
-              if(!$f instanceof Errors && count($filelist) > 0){
-                $_SESSION[APPNAME]['message-log'][] = 91;
-                $this->Errors->set(91);
+              else {
+                $this->Errors->set(551);
               }
             }
 
-            // Upload Links
-            if(!empty($links)){
-              $links = array_filter($links);
-              $Links = new Meta('link_repository');
-              $Link = new Link();
-              $linkList = array();
-              foreach($links as $link){
-                $link_id = $Link->create(array('URL' => $link));
-                $linkList[] = $link_id;
-              }
-              $f = $Links->updateReferences(T_REP_BASIC, $report, $linkList);
-              if(!$f instanceof Errors){
-                $_SESSION[APPNAME]['message-log'][] = 92;
-                $this->Errors->set(92);
-              }
+            if($status == 1){
+              header('Location: /report/edit/' . $report . '?saved=success');
             }
 
-            // Upload Video Links
-            if(!empty($videos)){
-              $videos = array_filter($videos);
-              $Videos = new Meta('video_repository');
-              $Video  = new Video();
-              $videoList = array();
-              foreach($videos as $video){
-                $video_id = $Video->create(array('URL' => $video));
-                $videoList[] = $video_id;
-              }
-              $f = $Videos->updateReferences(T_REP_BASIC, $report, $videoList);
-              if(!$f instanceof Errors){
-                $_SESSION[APPNAME]['message-log'][] = 93;
-                $this->Errors->set(93);
-              }
-            }
-          }
-          else {
-            $this->Errors->set(551);
-          }
-        }
-
-        if($status == 1){
-          header('Location: /report/edit/' . $report . '?saved=success');
-        }
-
-        /** Connection Type Lexicon **/
-        $ConnectionType = new Meta('connection_type', true);
-        $this->set('connection_type', $ConnectionType->lexiconList);
-        $this->set('data', $data);
-        $this->set('errors', $this->Errors);
+            /** Connection Type Lexicon **/
+            $ConnectionType = new Meta('connection_type', true);
+            $this->set('connection_type', $ConnectionType->lexiconList);
+            $this->set('data', $data);
+            $this->set('errors', $this->Errors);
+        endif;
       }
     }
 
