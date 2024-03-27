@@ -191,8 +191,11 @@
                             </div>
 
                             <div class="mb-4 mt-3">
-                                <h4><?php echo S1SB_LABEL_CONTRACTINTEGRITY; ?> <span id="integrity-profile-score"></span></h4>
 
+                                <?php
+                                $ot_data = json_decode($data->opentender_data);
+                                ?>
+                                <h4><?php echo S1SB_LABEL_CONTRACTINTEGRITY; ?> <span id="integrity-profile-score" class="<?php echo 'score-value-' . round($ot_data->ot->score->INTEGRITY); ?>"><?php echo round($ot_data->ot->score->INTEGRITY, 2); ?></span></h4>
                                 <table class="table-bordered table table-striped" id="imonitor-contract-integrity">
                                     <thead>
                                     <tr>
@@ -202,7 +205,23 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                        foreach($ot_data->indicators as $indicator):
+                                            $indicator_label = explode('_', $indicator->type);
+                                            if($indicator_label[0] === 'INTEGRITY'):
+                                    ?>
+                                        <tr>
+                                            <td><?php echo constant($indicator->type); ?></td>
+                                            <td class="score score-value-<?php echo (isset($indicator->value) ? $indicator->value : 'undefined'); ?>"><?php echo (isset($indicator->value) ? $indicator->value : 'N.D.'); ?></td>
+                                            <td class="raw"><?php echo $indicator->status; ?></td>
+                                        </tr>
 
+
+
+                                    <?php
+                                            endif;
+                                        endforeach;
+                                    ?>
                                     </tbody>
                                 </table>
 
@@ -290,7 +309,6 @@
                                 <div id="imonitor-contract-sites-map"></div>
                             </div>
                             <input type="text"  value="<?php echo htmlspecialchars(cvo($data, 'contract_sites')); ?>" class="d-none" id="imonitor-report-contract-sites" name="imonitor[report][contract_sites]">
-
 
                             <div class="mb-4 mt-3">
                                 <label for="imonitor-report-contract-delivery-schedule"><?php echo S1SB_FIELD_DELIVERYSCHEDULE; ?></label>
@@ -688,9 +706,11 @@
                                 $sites = json_decode($data->inspection_site);
                                 // Generate Sitelist
                                 $siteList = array();
+                                if(!empty($sites)):
                                 foreach($sites as $site):
                                     $siteList[] = $site->site;
                                 endforeach;
+                                endif;
 
                                 if(!empty($sites)):
                                     foreach($sites as $i => $site):
@@ -699,9 +719,9 @@
                                         <div class="row" id="imonitor-report-contract-inspection-<?php echo $i; ?>" data-flat-name="imonitor[report][inspection_site]">
                                             <div class="col">
                                                 <select class="form-control inspection inspection-site" id="imonitor-report-contract-inspection-site-<?php echo $i; ?>" data-flat-name="imonitor[report][inspection_site]" data-particle-name="site" name="imonitor[report][inspection_site][<?php echo $i; ?>][site]" placeholder="inspection site..." aria-label="inspection site" aria-describedby="imonitor-report-inspection_site">
-                                                    <?php foreach($siteList as $s): ?>
+                                                    <?php if(!empty($siteList)) : foreach($siteList as $s): ?>
                                                     <option value="<?php echo $s; ?>" <?php echo ($site->site == $s ? 'selected':''); ?>><?php echo $s; ?></option>
-                                                    <?php endforeach; ?>
+                                                    <?php endforeach; endif; ?>
                                                 </select>
                                             </div>
                                             <div class="col">
@@ -720,9 +740,9 @@
                                     <div class="col">
                                         <select class="form-control inspection inspection-site" id="imonitor-report-contract-inspection-site-0" data-flat-name="imonitor[report][inspection_site]" data-particle-name="site" name="imonitor[report][inspection_site][0][site]" placeholder="inspection site..." aria-label="inspection site" aria-describedby="imonitor-report-inspection_site">
                                             <option></option>
-                                            <?php foreach($siteList as $s): ?>
+                                            <?php if(!empty($siteList)) : foreach($siteList as $s): ?>
                                                 <option value="<?php echo $s; ?>"><?php echo $s; ?></option>
-                                            <?php endforeach; ?>
+                                            <?php endforeach; endif; ?>
                                         </select>
                                     </div>
                                     <div class="col">
@@ -1239,11 +1259,217 @@
 
             </div>
 
+
+            <div class="tab-pane fade" id="results-and-impact-tab-pane" role="tabpanel" aria-labelledby="results-and-impact-tab" tab-index="2">
+                <div class="monitutor">
+                    <h5><?php echo S3_TITLE_LABEL; ?> - <?php echo S3_TITLE_TEXT; ?></h5>
+                </div>
+                <section class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend><span><?php echo S3S_TITLE_CONNECTIONS; ?></span></legend>
+                            <div class="col mt-3 mb-4">
+                                <label class="form-label d-block">
+                                    <?php echo S3S_LABEL_CONNECTIONS; ?>
+                                </label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][dissemination_x]" id="imonitor-report-dissemination_x" value="YES" <?php echo (cvo($data, 'dissemination_x') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-dissemination_x"><?php echo S3S_OPTION_CONNECTIONS_1; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][dissemination_facebook]" id="imonitor-report-dissemination_facebook" value="YES" <?php echo (cvo($data, 'dissemination_facebook') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-dissemination_facebook"><?php echo S3S_OPTION_CONNECTIONS_2; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][dissemination_instagram]" id="imonitor-report-dissemination_instagram" value="YES" <?php echo (cvo($data, 'dissemination_instagram') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-dissemination_instagram"><?php echo S3S_OPTION_CONNECTIONS_3; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][dissemination_events]" id="imonitor-report-dissemination_events" value="YES" <?php echo (cvo($data, 'dissemination_events') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-dissemination_events"><?php echo S3S_OPTION_CONNECTIONS_4; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][dissemination_website]" id="imonitor-report-dissemination_website" value="YES" <?php echo (cvo($data, 'dissemination_website') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-dissemination_website"><?php echo S3S_OPTION_CONNECTIONS_5; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][dissemination_offline]" id="imonitor-report-dissemination_offline" value="YES" <?php echo (cvo($data, 'dissemination_offline') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-dissemination_offline"><?php echo S3S_OPTION_CONNECTIONS_6; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][dissemination_meetings]" id="imonitor-report-dissemination_meetings" value="YES" <?php echo (cvo($data, 'dissemination_meetings') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-dissemination_meetings"><?php echo S3S_OPTION_CONNECTIONS_7; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][dissemination_media]" id="imonitor-report-dissemination_media" value="YES" <?php echo (cvo($data, 'dissemination_media') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-dissemination_media"><?php echo S3S_OPTION_CONNECTIONS_8; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][dissemination_other]" id="imonitor-report-dissemination_other" value="YES" <?php echo (cvo($data, 'dissemination_other') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-dissemination_other"><?php echo GENERIC_LABEL_OTHER; ?></label>
+                                </div>
+                            </div>
+
+
+                            <div id="connections-people" class="mt-3 mb-4">
+                                <div class="form-label"><?php echo S3S_LABEL_CONNECTION_PERSON; ?></div>
+
+                                <?php
+                                    $connections = json_decode($data->connection_subjects);
+
+                                    if(!empty($connections)):
+                                        foreach($connections as $i => $connection):
+                                 ?>
+                                            <div class="row" id="imonitor-report-contract-connectionspeople-<?php echo $i; ?>" data-flat-name="imonitor[report][connectionsubject]">
+                                                <div class="col">
+                                                    <input type="text" class="form-control connectionsubject connectionsubject-name" id="imonitor-report-contract-connectionsubject-name-<?php echo $i; ?>" data-flat-name="imonitor[report][connectionsubject]" data-particle-name="name" name="imonitor[report][connectionsubject][<?php echo $i; ?>][name]" placeholder="<?php placeholderize(S3S_LABEL_CONNECTION_PERSON_NAME); ?>" aria-label="Subcontractor name" aria-describedby="imonitor-report-subcontractor" value="<?php echo $connection->name; ?>">
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control connectionsubject connectionsubject-role" id="imonitor-report-contract-connectionsubject-role-<?php echo $i; ?>" data-flat-name="imonitor[report][connectionsubject]" data-particle-name="role" name="imonitor[report][connectionsubject][<?php echo $i; ?>][role]" placeholder="<?php placeholderize(S3S_LABEL_CONNECTION_PERSON_ROLE); ?>" aria-label="Subcontract value" aria-describedby="imonitor-report-subcontractor"  value="<?php echo $connection->role; ?>">
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control connectionsubject connectionsubject-org" id="imonitor-report-contract-connectionsubject-org-<?php echo $i; ?>" data-flat-name="imonitor[report][connectionsubject]" data-particle-name="org" name="imonitor[report][connectionsubject][<?php echo $i; ?>][org]" placeholder="<?php placeholderize(S3S_LABEL_CONNECTION_PERSON_ORG); ?>" aria-label="Subcontract value" aria-describedby="imonitor-report-subcontractor"  value="<?php echo $connection->org; ?>">
+                                                </div>
+                                                <div class="col">
+                                                    <input type="text" class="form-control connectionsubject connectionsubject-connectiontype" id="imonitor-report-contract-connectionsubject-connectiontype-<?php echo $i; ?>" data-flat-name="imonitor[report][connectionsubject]" data-particle-name="connectiontype" name="imonitor[report][connectionsubject][<?php echo $i; ?>][connectiontype]" placeholder="<?php placeholderize(S3S_LABEL_CONNECTION_PERSON_TYPE); ?>" aria-label="Subcontract value" aria-describedby="imonitor-report-subcontractor"  value="<?php echo $connection->connectiontype; ?>">
+                                                </div>
+                                            </div>
+
+
+                                <?php
+                                        endforeach;
+                                    else:
+                                ?>
+                                <div class="row" id="imonitor-report-contract-connectionspeople-0" data-flat-name="imonitor[report][connectionsubject]">
+                                    <div class="col">
+                                        <input type="text" class="form-control connectionsubject connectionsubject-name" id="imonitor-report-contract-connectionsubject-name-0" data-flat-name="imonitor[report][connectionsubject]" data-particle-name="name" name="imonitor[report][connectionsubject][0][name]" placeholder="<?php placeholderize(S3S_LABEL_CONNECTION_PERSON_NAME); ?>" aria-label="Subcontractor name" aria-describedby="imonitor-report-subcontractor">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control connectionsubject connectionsubject-role" id="imonitor-report-contract-connectionsubject-role-0" data-flat-name="imonitor[report][connectionsubject]" data-particle-name="role" name="imonitor[report][connectionsubject][0][role]" placeholder="<?php placeholderize(S3S_LABEL_CONNECTION_PERSON_ROLE); ?>" aria-label="Subcontract value" aria-describedby="imonitor-report-subcontractor">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control connectionsubject connectionsubject-org" id="imonitor-report-contract-connectionsubject-org-0" data-flat-name="imonitor[report][connectionsubject]" data-particle-name="org" name="imonitor[report][connectionsubject][0][org]" placeholder="<?php placeholderize(S3S_LABEL_CONNECTION_PERSON_ORG); ?>" aria-label="Subcontract value" aria-describedby="imonitor-report-subcontractor">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control connectionsubject connectionsubject-connectiontype" id="imonitor-report-contract-connectionsubject-connectiontype-0" data-flat-name="imonitor[report][connectionsubject]" data-particle-name="connectiontype" name="imonitor[report][connectionsubject][0][connectiontype]" placeholder="<?php placeholderize(S3S_LABEL_CONNECTION_PERSON_TYPE); ?>" aria-label="Subcontract value" aria-describedby="imonitor-report-subcontractor">
+                                    </div>
+                                </div>
+                                <?php endif; ?>
+                                <button class="btn btn-sm btn-outline-secondary repeater mt-2 mb-2" data-repeater-target="#imonitor-report-contract-connectionspeople-0" type="button"><i class="fal fa-plus"></i> <?php echo S3S_BUTTON_ADDCONNECTION; ?></button>
+                            </div>
+
+                            <div class="col mt-3 mb-4">
+                                <div class="form-label"><?php echo S3S_LABEL_MEDIA; ?>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input trigger-display show-dependency" data-target="#shot-by-media" type="radio" name="imonitor[report][media_dissemination]" id="imonitor-report-media-dissemination_1" value="yes" <?php echo (cvo($data, 'media_dissemination') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-media-dissemination_1"><?php echo GENERIC_RADIOLABEL_YES; ?></label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input trigger-display" data-target="#shot-by-media" type="radio" name="imonitor[report][media_dissemination]" id="imonitor-report-media-dissemination_2" value="no" <?php echo (cvo($data, 'media_dissemination') == 'no' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-media-dissemination_2"><?php echo GENERIC_RADIOLABEL_NO; ?></label>
+                                </div>
+                            </div>
+
+                            <div class="col mt-3 mb-4 <?php echo (cvo($data, 'media_dissemination') == 'no' ? 'd-none' : ''); ?>" id="shot-by-media">
+                                <label class="form-label d-block">
+                                    <?php echo S3S_LABEL_WHICHMEDIA; ?>
+                                </label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][shot_by_media_localtv]" id="imonitor-report-shot-by-media-localtv" value="YES" <?php echo (cvo($data, 'shot_by_media_localtv') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-shot-by-media-localtv"><?php echo S3S_OPTION_WHICHMEDIA_1; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][shot_by_media_nationaltv]" id="imonitor-report-shot-by-media-nationaltv" value="YES" <?php echo (cvo($data, 'shot_by_media_nationaltv') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-shot-by-media-nationaltv"><?php echo S3S_OPTION_WHICHMEDIA_2; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][shot_by_media_localpaper]" id="imonitor-report-shot-by-media-localpaper" value="YES" <?php echo (cvo($data, 'shot_by_media_localpaper') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-shot-by-media-localpaper"><?php echo S3S_OPTION_WHICHMEDIA_3; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][shot_by_media_nationalpaper]" id="imonitor-report-shot-by-media-nationalpaper" value="YES" <?php echo (cvo($data, 'shot_by_media_nationalpaper') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-shot-by-media-nationalpaper"><?php echo S3S_OPTION_WHICHMEDIA_4; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][shot_by_media_online]" id="imonitor-report-shot-by-media-online" value="YES" <?php echo (cvo($data, 'shot_by_media_online') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-shot-by-media-online"><?php echo S3S_OPTION_WHICHMEDIA_5; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="imonitor[report][shot_by_media_other]" id="imonitor-report-shot-by-media-other" value="YES" <?php echo (cvo($data, 'shot_by_media_other') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-shot-by-media-other"><?php echo GENERIC_LABEL_OTHER; ?></label>
+                                </div>
+                            </div>
+
+
+                            <div class="col mt-3 mb-4">
+                                <div class="form-label"><?php echo S3S_LABEL_CONTACTWITHADMINISTRATION; ?></div>
+                                <div class="form-check">
+                                    <input class="form-check-input trigger-display show-dependency" data-target="#public-admin-response" type="radio" name="imonitor[report][contact_public_admin]" id="imonitor-report-contact-public-admin_yes" value="yes" <?php echo (cvo($data, 'contact_public_admin') == 'yes' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-contact-public-admin_yes"><?php echo GENERIC_RADIOLABEL_YES; ?></label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input trigger-display" data-target="#public-admin-response" type="radio" name="imonitor[report][contact_public_admin]" id="imonitor-report-contact-public-admin_no" value="no" <?php echo (cvo($data, 'contact_public_admin') == 'no' ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-contact-public-admin_no"><?php echo GENERIC_RADIOLABEL_NO; ?></label>
+                                </div>
+                            </div>
+
+
+                            <div class="col mt-3 mb-4 <?php echo (cvo($data, 'contact_public_admin') == 'no' ? 'd-none' : ''); ?>" id="public-admin-response">
+                                <label class="form-label d-block">
+                                    <?php echo S3S_LABEL_ADMINISTRATIONQUESTIONS; ?>
+                                </label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="imonitor[report][public_admin_response]" id="imonitor-report-public-admin-response-no" value="1" <?php echo (cvo($data, 'public_admin_response') == 1 ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-public-admin-response-no"><?php echo S3S_OPTION_ADMINISTRATIONQUESTIONS_1; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="imonitor[report][public_admin_response]" id="imonitor-report-public-admin-response-some" value="2" <?php echo (cvo($data, 'public_admin_response') == 2 ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-public-admin-response-some"><?php echo S3S_OPTION_ADMINISTRATIONQUESTIONS_2; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="imonitor[report][public_admin_response]" id="imonitor-report-public-admin-response-formal" value="3" <?php echo (cvo($data, 'public_admin_response') == 3 ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-public-admin-response-formal"><?php echo S3S_OPTION_ADMINISTRATIONQUESTIONS_3; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="imonitor[report][public_admin_response]" id="imonitor-report-public-admin-response-concrete" value="4" <?php echo (cvo($data, 'public_admin_response') == 4 ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-public-admin-response-concrete"><?php echo S3S_OPTION_ADMINISTRATIONQUESTIONS_4; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="imonitor[report][public_admin_response]" id="imonitor-report-public-admin-response-intopractice" value="5" <?php echo (cvo($data, 'public_admin_response') == 5 ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-public-admin-response-intopractice"><?php echo S3S_OPTION_ADMINISTRATIONQUESTIONS_5; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="imonitor[report][public_admin_response]" id="imonitor-report-public-admin-response-fix" value="6" <?php echo (cvo($data, 'public_admin_response') == 6 ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-public-admin-response-fix"><?php echo S3S_OPTION_ADMINISTRATIONQUESTIONS_6; ?></label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="imonitor[report][public_admin_response]" id="imonitor-report-public-admin-response-other" value="7" <?php echo (cvo($data, 'public_admin_response') == 7 ? 'checked' : ''); ?>>
+                                    <label class="form-check-label" for="imonitor-report-public-admin-response-other"><?php echo GENERIC_LABEL_OTHER; ?></label>
+                                </div>
+                            </div>
+
+
+                            <div class="col mt-3 mb-4">
+                                <label for="imonitor-report-result-description" class="form-label"><?php echo S3S_LABEL_CASEDESCRIPTION; ?></label>
+                                <textarea class="form-control" id="imonitor-report-result-description" name="imonitor[report][case_description]"><?php echo cvo($data, 'case_description'); ?></textarea>
+                            </div>
+                        </fieldset>
+                    </div>
+                </section>
+            </div>
             <!--EOF TABS -->
         </main>
 
         <div class="row">
             <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="imonitor[report][status]" id="imonitor-report-status" value="<?php echo PENDING_REVIEW; ?>>">
+                    <label class="form-check-label" for="imonitor-report-status">INVIA ALLA REDAZIONE PER LA REVISIONE</label>
+                </div>
+                <br />
                 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-floppy-o"></i> SAVE</button>
             </div>
         </div>

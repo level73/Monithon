@@ -32,7 +32,7 @@ IMNTR_GEO = {
         }).addTo(this.LocationMap);
 
         this.triggerGeocoding();
-
+        this.addSitesToMap();
     },
 
 
@@ -97,6 +97,18 @@ IMNTR_GEO = {
     addMarkerToMap: function(latlng){
         IMNTR_GEO.LocationMarker = new L.marker(latlng, { draggable: true} ).addTo(IMNTR_GEO.LocationMap);
         //IMNTR_GEO.LocationMarker.on('move', function(ev){ setLocationCoords(ev.latlng); });
+    },
+
+    addSitesToMap: function() {
+
+        if ($('body').hasClass('edit') || $('body').hasClass('review') || $('body').hasClass('view')) {
+            let mapCoords = JSON.parse( $('#imonitor-report-contract-sites').val() );
+            mapCoords.forEach( (site) => {
+                console.log(site);
+                IMNTR_GEO.addMarkerToMap([site.lat, site.lng]);
+                IMNTR_GEO.LocationMap.setView([site.lat, site.lng], IMNTR_GEO.config.zoomLevel);
+            } );
+        }
     }
 
 }

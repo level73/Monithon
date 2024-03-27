@@ -1315,6 +1315,10 @@
 
         <div class="row">
             <div class="col">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="imonitor[report][status]" id="imonitor-report-status" value="<?php echo PENDING_REVIEW; ?>>">
+                    <label class="form-check-label" for="imonitor-report-status">INVIA ALLA REDAZIONE PER LA REVISIONE</label>
+                </div>
                 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-floppy-o"></i> SAVE</button>
             </div>
         </div>

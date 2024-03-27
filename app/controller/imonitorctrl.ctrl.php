@@ -64,6 +64,12 @@ class ImonitorCtrl extends Ctrl
                     $interviews = json_encode($data['report']['contract_interviewed']);
                 endif;
 
+                // Set up connection subjects
+                $connections = null;
+                if(!empty($data['report']['connectionsubject'])):
+                    $connections = json_encode($data['report']['connectionsubject']);
+                endif;
+
                 // Setup data mapping
                 $Data = array(
                     'opentender_url'            => $data['contract']['opentender_url'],
@@ -189,6 +195,30 @@ class ImonitorCtrl extends Ctrl
 
                     // STEP 3 - Results & Impact
 
+
+                    'dissemination_x'               => (strtolower($data['report']['dissemination_x']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_facebook'        => (strtolower($data['report']['dissemination_facebook']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_instagram'       => (strtolower($data['report']['dissemination_instagram']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_events'          => (strtolower($data['report']['dissemination_events']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_website'         => (strtolower($data['report']['dissemination_website']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_offline'         => (strtolower($data['report']['dissemination_offline']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_meetings'        => (strtolower($data['report']['dissemination_meetings']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_media'           => (strtolower($data['report']['dissemination_media']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_other'           => (strtolower($data['report']['dissemination_other']) == 'yes' ? 'yes' : 'no'), // CB
+                    'connection_subjects'           => $connections,
+                    'media_dissemination'           =>   (strtolower($data['report']['media_dissemination']) == 'yes' ? 'yes' : 'no'), // CB
+                    'shot_by_media_localtv'         =>   (strtolower($data['report']['shot_by_media_localtv']) == 'yes' ? 'yes' : 'no'), // CB
+                    'shot_by_media_nationaltv'      =>   (strtolower($data['report']['shot_by_media_nationaltv']) == 'yes' ? 'yes' : 'no'), // CB
+                    'shot_by_media_localpaper'      =>   (strtolower($data['report']['shot_by_media_localpaper']) == 'yes' ? 'yes' : 'no'), // CB
+                    'shot_by_media_nationalpaper'   =>   (strtolower($data['report']['shot_by_media_nationalpaper']) == 'yes' ? 'yes' : 'no'), // CB
+                    'shot_by_media_online'          =>   (strtolower($data['report']['shot_by_media_online']) == 'yes' ? 'yes' : 'no'), // CB
+                    'shot_by_media_other'           =>   (strtolower($data['report']['shot_by_media_other']) == 'yes' ? 'yes' : 'no'), // CB
+                    'contact_public_admin'          =>   (strtolower($data['report']['contact_public_admin']) == 'yes' ? 'yes' : 'no'), // CB
+                    'public_admin_response'         =>   $data['report']['public_admin_response'],
+                    'case_description'              =>   $data['report']['case_description'],
+
+
+
                     // Status/Op Fields
                     'created_by' => $this->User->id,
                     'status' => DRAFT
@@ -235,7 +265,7 @@ class ImonitorCtrl extends Ctrl
                 $imonitorId = $_POST['imonitor']['id'];
 
                  $data = $_POST['imonitor'];
-                 // dbga($_POST['imonitor']); die();
+                 //dbga($_POST['imonitor']); die();
 
                 // Set up Subcontractors to JSON
                 $subcontractors = null;
@@ -254,6 +284,12 @@ class ImonitorCtrl extends Ctrl
                 if(!empty($data['report']['contract_interviewed'])):
                     $interviews = array_map('array_filter', $data['report']['contract_interviewed']);
                     $interviews = json_encode($interviews);
+                endif;
+
+                // Set up connection subjects
+                $connections = null;
+                if(!empty($data['report']['connectionsubject'])):
+                    $connections = json_encode($data['report']['connectionsubject']);
                 endif;
 
                 // Setup data mapping
@@ -384,7 +420,26 @@ class ImonitorCtrl extends Ctrl
 
 
                     // STEP 3 - Results & Impact
-
+                    'dissemination_x'               => (strtolower($data['report']['dissemination_x']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_facebook'        => (strtolower($data['report']['dissemination_facebook']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_instagram'       => (strtolower($data['report']['dissemination_instagram']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_events'          => (strtolower($data['report']['dissemination_events']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_website'         => (strtolower($data['report']['dissemination_website']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_offline'         => (strtolower($data['report']['dissemination_offline'])== 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_meetings'        => (strtolower($data['report']['dissemination_meetings']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_media'           => (strtolower($data['report']['dissemination_media']) == 'yes' ? 'yes' : 'no'), // CB
+                    'dissemination_other'           => (strtolower($data['report']['dissemination_other']) == 'yes' ? 'yes' : 'no'), // CB
+                    'connection_subjects'           => $connections,
+                    'media_dissemination'           =>   (strtolower($data['report']['media_dissemination']) == 'yes' ? 'yes' : 'no'), // CB
+                    'shot_by_media_localtv'         =>   (strtolower($data['report']['shot_by_media_localtv']) == 'yes' ? 'yes' : 'no'), // CB
+                    'shot_by_media_nationaltv'      =>   (strtolower($data['report']['shot_by_media_nationaltv']) == 'yes' ? 'yes' : 'no'), // CB
+                    'shot_by_media_localpaper'      =>   (strtolower($data['report']['shot_by_media_localpaper']) == 'yes' ? 'yes' : 'no'), // CB
+                    'shot_by_media_nationalpaper'   =>   (strtolower($data['report']['shot_by_media_nationalpaper']) == 'yes' ? 'yes' : 'no'), // CB
+                    'shot_by_media_online'          =>   (strtolower($data['report']['shot_by_media_online']) == 'yes' ? 'yes' : 'no'), // CB
+                    'shot_by_media_other'           =>   (strtolower($data['report']['shot_by_media_other']) == 'yes' ? 'yes' : 'no'), // CB
+                    'contact_public_admin'          =>   (strtolower($data['report']['contact_public_admin']) == 'yes' ? 'yes' : 'no'), // CB
+                    'public_admin_response'         =>   $data['report']['public_admin_response'],
+                    'case_description'              =>   $data['report']['case_description'],
                     // Status/Op Fields
                     //'created_by' => $this->User->id,
                     'status' => DRAFT
@@ -398,7 +453,7 @@ class ImonitorCtrl extends Ctrl
             endif;
 
             $Data = $Model->find($id);
-            dbga($Data);
+
             $title = $Data->title;
             $this->set('title', $title . ' - iMonitor');
             $this->set('data', $Data);
