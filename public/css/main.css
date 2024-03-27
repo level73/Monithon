@@ -5,6 +5,7 @@
 /** Neutral Stack **/
 /** Likert Scales **/
 /** New Giudizio di Efficacia **/
+/** iMonitor Variables **/
 h1 {
   text-transform: uppercase;
   font-weight: 900;
@@ -714,6 +715,578 @@ body.user.login {
     font-size: 14px; }
   .lite-report#oc_api_content ul li {
     font-size: 12px; }
+
+#disclaimer-banner {
+  background: #fd7e14;
+  text-transform: uppercase; }
+  #disclaimer-banner h3 {
+    font-size: 12px;
+    padding: 5px; }
+
+body.imonitor {
+  font-weight: 300; }
+
+fieldset {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-bottom: none; }
+  fieldset legend {
+    padding: 0px;
+    color: #4d5154;
+    font-family: "IBM Plex Mono", monospace;
+    position: relative; }
+    fieldset legend span {
+      background-color: white;
+      padding-right: 10px; }
+    fieldset legend:after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      border-top: 1px solid #4d5154;
+      z-index: -1; }
+
+label, .form-label {
+  font-weight: bold;
+  font-size: 0.8em;
+  text-transform: uppercase; }
+
+.help {
+  display: block;
+  color: #4d5154;
+  line-height: 130%;
+  font-size: 0.7em;
+  margin-top: 3px;
+  margin-bottom: 3px; }
+
+#imonitor-report-nav a {
+  font-weight: 800;
+  text-transform: uppercase; }
+
+.form-control, .form-select, .btn {
+  border-radius: 0px; }
+
+.score-value-0 {
+  color: red;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-1 {
+  color: #fc0300;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-2 {
+  color: #fa0500;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-3 {
+  color: #f70800;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-4 {
+  color: #f50a00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-5 {
+  color: #f20d00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-6 {
+  color: #f00f00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-7 {
+  color: #ed1200;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-8 {
+  color: #eb1400;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-9 {
+  color: #e81700;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-10 {
+  color: #e61a00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-11 {
+  color: #e31c00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-12 {
+  color: #e01f00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-13 {
+  color: #de2100;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-14 {
+  color: #db2400;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-15 {
+  color: #d92600;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-16 {
+  color: #d62900;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-17 {
+  color: #d42b00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-18 {
+  color: #d12e00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-19 {
+  color: #cf3000;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-20 {
+  color: #cc3300;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-21 {
+  color: #c93600;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-22 {
+  color: #c73800;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-23 {
+  color: #c43b00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-24 {
+  color: #c23d00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-25 {
+  color: #bf4000;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-26 {
+  color: #bd4200;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-27 {
+  color: #ba4500;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-28 {
+  color: #b84700;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-29 {
+  color: #b54a00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-30 {
+  color: #b34d00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-31 {
+  color: #b04f00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-32 {
+  color: #ad5200;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-33 {
+  color: #ab5400;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-34 {
+  color: #a85700;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-35 {
+  color: #a65900;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-36 {
+  color: #a35c00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-37 {
+  color: #a15e00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-38 {
+  color: #9e6100;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-39 {
+  color: #9c6300;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-40 {
+  color: #996600;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-41 {
+  color: #966900;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-42 {
+  color: #946b00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-43 {
+  color: #916e00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-44 {
+  color: #8f7000;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-45 {
+  color: #8c7300;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-46 {
+  color: #8a7500;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-47 {
+  color: #877800;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-48 {
+  color: #857a00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-49 {
+  color: #827d00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-50 {
+  color: olive;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-51 {
+  color: #7d8200;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-52 {
+  color: #7a8500;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-53 {
+  color: #788700;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-54 {
+  color: #758a00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-55 {
+  color: #738c00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-56 {
+  color: #708f00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-57 {
+  color: #6e9100;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-58 {
+  color: #6b9400;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-59 {
+  color: #699600;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-60 {
+  color: #669900;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-61 {
+  color: #639c00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-62 {
+  color: #619e00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-63 {
+  color: #5ea100;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-64 {
+  color: #5ca300;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-65 {
+  color: #59a600;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-66 {
+  color: #57a800;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-67 {
+  color: #54ab00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-68 {
+  color: #52ad00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-69 {
+  color: #4fb000;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-70 {
+  color: #4db300;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-71 {
+  color: #4ab500;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-72 {
+  color: #47b800;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-73 {
+  color: #45ba00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-74 {
+  color: #42bd00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-75 {
+  color: #40bf00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-76 {
+  color: #3dc200;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-77 {
+  color: #3bc400;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-78 {
+  color: #38c700;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-79 {
+  color: #36c900;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-80 {
+  color: #33cc00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-81 {
+  color: #30cf00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-82 {
+  color: #2ed100;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-83 {
+  color: #2bd400;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-84 {
+  color: #29d600;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-85 {
+  color: #26d900;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-86 {
+  color: #24db00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-87 {
+  color: #21de00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-88 {
+  color: #1fe000;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-89 {
+  color: #1ce300;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-90 {
+  color: #1ae600;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-91 {
+  color: #17e800;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-92 {
+  color: #14eb00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-93 {
+  color: #12ed00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-94 {
+  color: #0ff000;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-95 {
+  color: #0df200;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-96 {
+  color: #0af500;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-97 {
+  color: #08f700;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-98 {
+  color: #05fa00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-99 {
+  color: #03fc00;
+  text-align: center;
+  font-weight: bold; }
+
+.score-value-100 {
+  color: lime;
+  text-align: center;
+  font-weight: bold; }
+
+td.score-value-undefined {
+  color: #777777;
+  text-align: center;
+  font-weight: bold; }
+
+#imonitor-contract-sites-map {
+  min-height: 35vh;
+  width: 100%; }
+
+.monitutor {
+  background-color: #E5F1EC;
+  border: 2px solid #aec1b9;
+  padding: 2em; }
 
 footer#main-footer {
   background: #011627;

@@ -1,0 +1,82 @@
+#disclaimer-banner {
+  background: $imonitor-warning;
+  text-transform: uppercase;
+
+  h3 { font-size: 12px; padding: 5px; }
+
+}
+body.imonitor {
+  font-weight: 300;
+}
+
+fieldset {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border-bottom: none;
+  legend {
+    padding: 0px;
+    color: $imonitor-grey-text;
+    font-family: $IBM;
+    position: relative;
+    span {
+      background-color: white;
+      padding-right: 10px;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      display: inline-block;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      border-top: 1px solid $imonitor-grey-text;
+      z-index: -1; }
+  }
+}
+
+
+label, .form-label {
+  font-weight: bold;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+.help {
+  display: block;
+  color: $imonitor-grey-text;
+  line-height: 130%;
+  font-size: 0.7em;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+#imonitor-report-nav a {
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.form-control, .form-select, .btn { border-radius: 0px; }
+@for $i from 0 to 101 {
+  .score-value-#{$i} {
+    color: mix($score-color-100, $score-color-0, $i);
+    text-align: center;
+    font-weight: bold;
+  }
+}
+td.score-value-undefined {
+  color: #777777;
+  text-align: center;
+  font-weight: bold;
+}
+
+
+#imonitor-contract-sites-map {
+  min-height: 35vh;
+  width: 100%;
+}
+
+.monitutor {
+  background-color: $imonitor-info-box;
+  border: 2px solid $imonitor-info-box-dark;
+  padding: 2em;
+}

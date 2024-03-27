@@ -5,6 +5,32 @@
     protected $Auth;
     protected $tbl_sottotemi = 'progetti_sottotemi_20230831';
 
+    protected $opentenderurl = "https://open-api.staging.opentender.eu/search/";
+
+
+      protected $headers = [
+          'x-api-key:' . OPENTENDER_XAPIKEY,
+          'Accept:application/json'
+      ];
+
+      public function getTenderById(){
+          $tender = $_GET['tender'];
+          $url = $this->opentenderurl . 'tender_by_id?tender_id=' . $tender;
+
+          $ch = curl_init();
+          curl_setopt($ch, CURLOPT_URL, $url);
+          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+          curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
+          $response = curl_exec($ch);
+
+          // Close cURL
+          curl_close ($ch);
+
+          echo $response;
+
+
+      }
+
     public function oc_api($code){
       $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
       $context = stream_context_create([

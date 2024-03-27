@@ -478,3 +478,20 @@ function generateGDELabel($gde, $sda, $type, $print = true){
     }
 
 }
+
+/*** iMonitor Helpers **/
+function cvo($object, $prop){
+    return (
+    is_object($object) && isset($object) && (
+    isset($object->{$prop})
+    ) ?
+        $object->{$prop} : null
+    );
+}
+function placeholderize($str){
+    echo ucfirst(strtolower($str)) . '&hellip;';
+}
+
+function evaluateCB($data, $field){
+    return (array_key_exists($field, $data) ?  1 : 0);
+}
