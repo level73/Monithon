@@ -1,13 +1,13 @@
 
 
 
-<div class="container-fluid" id="disclaimer-banner">
+<!-- div class="container-fluid" id="disclaimer-banner">
     <section class="row">
         <div class="col">
             <h3 class="text-center">this is the iMonitor Report Form. This functionality is currently a work in progress.</h3>
         </div>
     </section>
-</div>
+</div -->>
 
 <form class="" method="post" enctype="multipart/form-data" action="/imonitor/create">
     <div class="container">
@@ -605,6 +605,58 @@
 
 
                             </div>
+
+
+                        </fieldset>
+
+
+                    </div>
+                </section>
+                <section class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend><span><?php echo GENERIC_LABEL_FILEUPLOAD; ?></span></legend>
+                            <span class="help"><?php echo GENERIC_HELP_FILEUPLOAD; ?></span>
+
+
+
+
+                            <div class="row mt-4" id="imonitor-files-wrapper-0" data-flat-name="imonitor[files]">
+                                <div class="col">
+                                    <input type="file" placeholder="<?php placeholderize(GENERIC_FIELD_FILENAME); ?>" id="imonitor-files-file-0" name="imonitor[files][0][file]" data-particle-name="file" data-flat-name="imonitor[files]" class="form-control">
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="<?php placeholderize(GENERIC_FIELD_FILEDESCRIPTION); ?>" id="imonitor-files-label-0" name="imonitor[files][0][label]"  data-particle-name="label" data-flat-name="imonitor[files]" class="form-control">
+                                </div>
+                                <div class="col">
+                                    <select class="form-control" id="imonitor-files-type-0" name="imonitor[files][0][type]" data-particle-name="type" data-flat-name="imonitor[files]">
+                                        <option value="contract">Contract</option>
+                                        <option value="contract">Extension</option>
+                                        <option value="contract">Documents</option>
+                                        <option value="contract">Images</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="btn-group" role="group" aria-label="group fields repeater">
+                                <button class="btn btn-sm btn-outline-secondary repeater mt-2 mb-2" data-repeater-target="#imonitor-files-wrapper-0" type="button">
+                                    <i class="fal fa-plus"></i> <?php echo GENERIC_BUTTON_ADDFILEUPLOAD; ?>
+                                </button>
+                            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                         </fieldset>

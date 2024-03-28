@@ -38,6 +38,7 @@ define('ONLY_STEP_ONE', 1);
 const  T_USER = 1;
 const T_REP_BASIC = 2;
 const T_REP_LITE = 3;
+const T_REP_IMONITOR = 4;
 
 /** Default User Role - Change when ASOC starts
  *  ASOC = Role 4
