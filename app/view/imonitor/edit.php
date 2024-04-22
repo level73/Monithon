@@ -143,6 +143,11 @@
                                 </div>
                             </div>
                             <div class="mb-4 mt-3">
+                                <label for="imonitor-report-project-cup">Codice CUP del Progetto</label>
+                                <small class="help">Controlla e verifica che il codice CUP sia corretto. Se è mancante, inserisci qui il codice CUP. Puoi inserire il CUP sulla piattaforma <a href="https://www.opencup.gov.it/portale/web/opencup/home" target="_blank">OpenCUP</a> per ricercare altre informazioni sul progetto.</small>
+                                <input type="text" class="form-control" id="imonitor-report-project-cup" value="<?php echo cvo($data, 'project_cup'); ?>" name="imonitor[report][project_cup]" placeholder="Codice CUP..." aria-label="Codice CUP" aria-describedby="imonitor-report-project-cup">
+                            </div>
+                            <div class="mb-4 mt-3">
                                 <label for="imonitor-report-project-programme"><?php echo S1SA_FIELD_PROGRAMME; ?></label>
                                 <small class="help"><?php echo S1SA_HELP_PROGRAMME; ?></small>
                                 <input type="text" class="form-control" value="<?php echo cvo($data, 'project_programme'); ?>" id="imonitor-report-project-programme" name="imonitor[report][project_programme]" placeholder="Policy Programme..." aria-label="Policy Programme" aria-describedby="imonitor-report-project-programme">
@@ -167,7 +172,11 @@
                                 <small class="help"><?php echo S1SB_HELP_CONTRACTOBJECT; ?></small>
                                 <input type="text" class="form-control" id="imonitor-report-contract-object"  value="<?php echo cvo($data, 'contract_object'); ?>"  name="imonitor[report][contract_object]" placeholder="<?php placeholderize(S1SB_HELP_CONTRACTOBJECT); ?>" aria-label="Contract object" aria-describedby="imonitor-report-contract-object">
                             </div>
-
+                            <div class="mb-4 mt-3">
+                                <label for="imonitor-report-contract-cig">CIG del Contratto</label>
+                                <small class="help">Controlla e verifica che il CIG sia corretto. Se è mancante, inserisci qui il CIG. Puoi cercare il CIG sulla <a href="https://dati.anticorruzione.it/superset/dashboard/appalti/" target="_blank">Banca Dati Nazionale dei COntratti Pubblici (ANAC)</a> per verificare o ricercare informazioni sul contratto.</small>
+                                <input type="text" class="form-control" id="imonitor-report-contract-cig" value="<?php echo cvo($data, 'contract_cig'); ?>" name="imonitor[report][contract_cig]" placeholder="CIG..." aria-label="CIG" aria-describedby="imonitor-report-contract-cig">
+                            </div>
                             <div class="mb-4 mt-3">
                                 <label for="imonitor-report-contract-body"><?php echo S1SB_FIELD_CONTRACTINGBODY; ?></label>
                                 <small class="help"><?php echo S1SB_HELP_CONTRACTINGBODY; ?></small>

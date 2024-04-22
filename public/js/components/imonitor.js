@@ -64,6 +64,10 @@ var IMNTR = {
                     }
                 }
 
+                //CUP Code
+                $('#imonitor-report-project-cup').val(data.lots[0].fundings[0].programme);
+                // CIG Code
+                $('#imonitor-report-contract-cig').val(data.lots[0].contractNumber);
 
                 $('input#imonitor-report-contract-title').val(data.title);
                 $('input#imonitor-report-contract-object').val(data.ot.cpv + ' - ' + data.description);
