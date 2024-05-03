@@ -100,6 +100,13 @@ textarea { min-height: 6em; }
       content: "\f058";
     }
   }
+  &.status-0 {
+    background: $dark;
+    color: darken($dark, 20%);
+    &:before {
+      content: "\f00d";
+    }
+  }
 }
 
 /** STATUS FLAGGER **/
@@ -127,6 +134,7 @@ textarea { min-height: 6em; }
     }
   }
 }
+
 
 /** File Lists **/
 .files {

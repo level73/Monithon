@@ -317,6 +317,10 @@ function status($status){
     case 7:
       $string = 'PUBBLICATO';
       break;
+    default:
+      $status = 0;
+      $string = 'N.A.';
+      break;
   }
   $s = '<div class="status status-' . $status . '" data-toggle="tooltip" data-placement="top" title="' . $string . '"></div>';
   echo $s;

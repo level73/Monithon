@@ -7,7 +7,7 @@
 
             <form class="" method="post" enctype="multipart/form-data" action="/lite/create">
                 <fieldset>
-                    <legend>DATI SUL PROGETTO</legend>
+                    <legend><span>DATI SUL PROGETTO</span></legend>
 
                     <div class="form-group">
                         <label for="oc_api_code">URL del progetto monitorato:</label>
@@ -46,7 +46,7 @@
                     </div>
                 </fieldset>
                 <fieldset>
-                    <legend>Il Titolo del Progetto</legend>
+                    <legend><span>Il Titolo del Progetto</span></legend>
                     <div class="form-group">
                         <label for="titolo">Titolo del progetto:</label>
                         <input type="text" name="titolo" class="form-control" id="titolo"><?php echo ckv($data, 'titolo'); ?></input>
@@ -59,7 +59,7 @@
                     <?php endif; ?>
                 </fieldset>
                 <fieldset>
-                    <legend>La Posizione del Progetto</legend>
+                    <legend><span>La Posizione del Progetto</span></legend>
 
                     <!-- Mappa -->
                     <div class="form-group">
@@ -85,7 +85,7 @@
                 </fieldset>
 
                 <fieldset>
-                    <legend>Le Tue Osservazioni</legend>
+                    <legend><span>Le Tue Osservazioni</span></legend>
                     <?php if($user->role == 13): ?>
                     <div class="form-group">
                         <label for="obiettivi_del_progetto">Obiettivi del progetto monitorato:</label>
@@ -176,7 +176,7 @@
                 </fieldset>
 
                 <fieldset>
-                    <legend>Link, Video, Allegati</legend>
+                    <legend><span>Link, Video, Allegati</span></legend>
                     <div class="alert alert-info" role="alert"><i class="fas fa-exclamation-triangle"></i> <strong>Il peso complessivo dei file che si vogliono caricare non deve eccedere gli 8mb per invio.</strong></div>
                     <small class="form-text">Aggiungi almeno un’immagine per la copertina del report. Inserisci le foto che hai fatto durante la visita di monitoraggio o durante le interviste, o qualunque altra immagine che documenti il tuo monitoraggio civico.</small>
                     <small class="form-text">Se hai somministrato un questionario, carica, in formato PDF, i principali risultati dell’indagine che hai realizzato, con il dettaglio delle risposte ottenute e un tuo commento.</small>
@@ -214,6 +214,38 @@
                     </div>
 
                 </fieldset>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 <div class="form-group">
                     <div class="alert alert-primary"><i class="fa fa-exclamation-circle"></i> Il tuo report è pronto? Puoi inviarlo alla nostra Redazione! Clicca sulla spunta, salva il report, aspetta alcuni giorni e controlla <strong>l’email che hai usato per registrarti</strong>: riceverai i nostri commenti e le istruzioni per effettuare eventuali correzioni.<br />Se invece vuoi poterlo ancora modificare e controllare, puoi salvarlo in bozza. In questo caso <strong>non</strong> cliccare sulla spunta!</strong></div>

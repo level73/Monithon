@@ -398,11 +398,12 @@
     }
 
     /** Report Connections Meta Table */
-      public function getConnections($report){
-        $sql = 'SELECT * FROM meta_connection WHERE report = :report';
+      public function getConnections($report, $entity = T_REP_BASIC){
+        $sql = 'SELECT * FROM meta_connection WHERE report = :report AND `entity` = :entity';
         $stmt = $this->database->prepare($sql);
 
           $stmt->bindParam(':report', $report, PDO::PARAM_INT);
+          $stmt->bindParam(':entity', $entity, PDO::PARAM_INT);
           $query = $stmt->execute();
           if(!$query){
               $this->Errors->set(501);
@@ -415,12 +416,13 @@
           }
       }
 
-      public function unsetConnections($report){
-          $sql = 'DELETE FROM `' . $this->meta_table . '` WHERE `report` = :report ';
+      public function unsetConnections($report, $entity = T_REP_BASIC){
+          $sql = 'DELETE FROM `' . $this->meta_table . '` WHERE `report` = :report AND `entity` = :entity';
 
           $stmt = $this->database->prepare($sql);
 
           $stmt->bindParam(':report', $report, PDO::PARAM_INT);
+          $stmt->bindParam(':entity', $entity, PDO::PARAM_INT);
           $query = $stmt->execute();
           if(!$query){
               $this->Errors->set(501);
@@ -441,10 +443,11 @@
         $holders = query_placeholders($data, true);
         $report = (integer)$report;
 
-        $sql = 'INSERT INTO meta_connection(report, ' . implode(", ", $fields) . ') VALUES (:report, ' . implode(",", $holders) . ')';
+        $sql = 'INSERT INTO meta_connection(entity, report, ' . implode(", ", $fields) . ') VALUES (:entity, :report, ' . implode(",", $holders) . ')';
 
         $stmt = $this->database->prepare($sql);
 
+        $stmt->bindParam(':entity', $entity, PDO::PARAM_INT);
         $stmt->bindParam(':report', $report, PDO::PARAM_INT);
         foreach($data as $field => &$value){
             $stmt->bindParam(':'.$field, $value);

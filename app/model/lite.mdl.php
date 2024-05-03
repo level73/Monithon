@@ -55,7 +55,7 @@ class Lite extends Model
         }
     }
     public function reviewableReports($id_user){
-        $sql = '  SELECT idreport_lite, titolo, username, email, erb.created_at, erb.modified_at, status FROM `' . $this->table . '` AS erb 
+        $sql = '  SELECT idreport_lite, titolo, username, email, erb.created_at, erb.modified_at, status, status_impact FROM `' . $this->table . '` AS erb 
                 INNER JOIN auth ON auth.idauth = created_by 
                 WHERE status = 3 OR status = 7 OR (status = 5 AND reviewed_by = :user_1) OR (created_by = :user_2)                 
                 ORDER BY erb.modified_at DESC';

@@ -694,4 +694,10 @@ class ImonitorCtrl extends Ctrl
             endif;
         endif;
     }
+
+    /** Frontend Views */
+    public function summary($id){
+
+
+    }
 }

@@ -258,6 +258,7 @@
                         <th data-sortable="true" data-field="created_at">Creato</th>
                         <th data-sortable="true" data-field="modified_at">Ultima Modifica</th>
                         <th data-sortable="true" data-field="status"class="text-center">Stato</th>
+                        <th data-sortable="true" data-field="status_impact"class="text-center">Stato (I&R)</th>
                         <th data-field="edit" class="text-center">Modifica</th>
                     </tr>
                     </thead>
@@ -275,18 +276,19 @@
                             <td><?php echo $r->created_at; ?></td>
                             <td><?php echo $r->modified_at; ?></td>
                             <td class="text-center"><?php status($r->status); ?></td>
+                            <td class="text-center"><?php status($r->status_impact); ?></td>
                             <td class="text-center">
 
                                 <?php
                                 // CONDITION 1: (user is at least an editor OR user has permission OR is reviewer) AND (report in pending review)
-                                if( ( $user->role <= 2 || hasPermission($user, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD) ) || $r->reviewed_by == $user->id) && ($r->status == PENDING_REVIEW || $r->status == IN_REVIEW) ){
+                                if( ( $user->role <= 2 || hasPermission($user, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD) ) || $r->reviewed_by == $user->id) && ($r->status == PENDING_REVIEW || $r->status == IN_REVIEW || $r->status_impact == PENDING_REVIEW || $r->status_impact == IN_REVIEW)  ){
                                     ?>
                                     <a href="/lite/review/<?php echo $r->idreport_lite; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
                                     <?php
 
                                 } else {
 
-                                    if($r->status == 1){ ?>
+                                    if($r->status == 1 || ($r->status == PUBLISHED && $r->status_impact == DRAFT && $Profile->role == 13) ){ ?>
                                         <a href="/lite/edit/<?php echo $r->idreport_lite; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
                                         <?php
                                     } else { ?>

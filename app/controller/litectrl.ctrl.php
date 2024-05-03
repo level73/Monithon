@@ -292,7 +292,14 @@ class LiteCtrl extends Ctrl
 
                 if (httpCheck('post', true)) {
                     $data = $_POST;
-                    // $this->set('data', $data);
+
+                  //  die(dbga($data));
+
+                    $connections = $data['connection'];
+                    unset($data['connection']);
+                    unset($connections[0]);
+
+
                     $data = recursiveStripTags($data);
 
                     $code_url = explode('/', rtrim($data['project_url']));
@@ -325,6 +332,13 @@ class LiteCtrl extends Ctrl
                     unset($data['video-attachment']);
                     unset($data['link-attachment']);
                     unset($data['id']);
+
+                    // check for connection meta
+                    //die(dbga($connections));
+                    $Connection = new Meta('connection');
+                    $Connection->updateConnections(T_REP_LITE, $id, $connections);
+
+
                     $update = $this->Lite->update($id, $data);
 
                     if ($update) {
@@ -394,6 +408,12 @@ class LiteCtrl extends Ctrl
 
                 // Load Report
                 $report = $this->Lite->find($id);
+
+                //Load Connection Meta & data
+                $Connections = new Meta('connection');
+                $Ctypes = new Meta('connection_type', true);
+                $this->set('connection_type', $Ctypes->lexiconList);
+                $this->set('connections', $Connections->getConnections($id, T_REP_LITE));
 
                 // Load Comments
                 $this->set('comments', $Comments->findBy(array('entity' => T_REP_LITE, 'record' => $id)));
@@ -468,6 +488,10 @@ class LiteCtrl extends Ctrl
                     $data = recursiveStripTags($data);
                     $data['reviewed_by'] = $reviewer_id;
 
+                    $connections = $data['connection'];
+                    unset($data['connection']);
+                    unset($connections[0]);
+
 
                     $creator = $data['created_by'];
                     $prev_status = $data['current_status'];
@@ -481,6 +505,12 @@ class LiteCtrl extends Ctrl
                     unset($data['video-attachment']);
                     unset($data['link-attachment']);
                     unset($data['id']);
+
+                    // check for connection meta
+                    //die(dbga($connections));
+                    $Connection = new Meta('connection');
+                   // die(dbga($connections));
+                    $Connection->updateConnections(T_REP_LITE, $id, $connections);
 
                     if (isset($data['comment'])) {
                         $comments = $data['comment'];
@@ -544,11 +574,16 @@ class LiteCtrl extends Ctrl
                 $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
                 $report = $this->Lite->find($id);
 
-                // Load Connections
 
+                //Load Connection Meta & data
+                $Connections = new Meta('connection');
+                $Ctypes = new Meta('connection_type', true);
+                $this->set('connection_type', $Ctypes->lexiconList);
+                $this->set('connections', $Connections->getConnections($id, T_REP_LITE));
 
                 // Load Comments
                 $this->set('comments', $Comments->findBy(array('entity' => T_REP_LITE, 'record' => $id)));
+
                 // Load Attachments
                 // Get Files
                 $Files = new Repo();
