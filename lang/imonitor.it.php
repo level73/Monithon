@@ -78,8 +78,8 @@ const S1SB_HELP_CONTRACTTYPE = "Si tratta della categoria principale dell'appalt
 Forniture: Contratti relativi all'acquisto di beni materiali, come forniture per ufficio, veicoli o attrezzature mediche. Ad esempio, se l'amministrazione comunale sta acquistando nuovi mobili per ufficio, questo rientra nella categoria \"forniture\".
 Servizi: Contratti per vari servizi, come consulenza, manutenzione o competenze professionali. Un esempio potrebbe essere un contratto con una società di consulenza per condurre una valutazione di impatto ambientale.
 Lavori: Questi contratti riguardano progetti di costruzione o di infrastrutture, tra cui strade, ponti, edifici pubblici e servizi di pubblica utilità. Ad esempio, se l'amministrazione locale sta costruendo un nuovo parco o ristrutturando una scuola, questo contratto rientra nella categoria \"lavori\".";
-const S1SB_RADIOLABEL_CONTRACTTYPE_1 = "Beni";
-const S1SB_RADIOLABEL_CONTRACTTYPE_2 = "Opere";
+const S1SB_RADIOLABEL_CONTRACTTYPE_1 = "Forniture";
+const S1SB_RADIOLABEL_CONTRACTTYPE_2 = "Lavori";
 const S1SB_RADIOLABEL_CONTRACTTYPE_3 = "Servizi";
 const S1SB_RADIOLABEL_HELP_CONTRACTTYPE_1 = "Contratti relativi all'acquisto di beni materiali, come forniture per ufficio, veicoli o attrezzature mediche. Ad esempio, se l'amministrazione comunale sta acquistando nuovi mobili per ufficio, questo rientra nella categoria \"forniture\".";
 const S1SB_RADIOLABEL_HELP_CONTRACTTYPE_2 = "Questi contratti riguardano progetti di costruzione o di infrastrutture, tra cui strade, ponti, edifici pubblici e servizi di pubblica utilità. Ad esempio, se l'amministrazione locale sta costruendo un nuovo parco o ristrutturando una scuola, questo contratto rientra nella categoria \"lavori\".";
