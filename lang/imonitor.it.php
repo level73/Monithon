@@ -1,14 +1,37 @@
 <?php
 const HEAD_LABEL_CONTRACT = "Monitoraggio dei contratti pubblici";
-const HEAD_PARAGRAPH_MONITUTOR = "Il monitoraggio di un contratto pubblico è un'ulteriore livello del monitoraggio civico che permette ai cittadini di contribuire a garantire che i fondi pubblici stanziati per le loro comunità raggiungano effettivamente le persone che ne dovrebbero beneficiare. 
-I contratti pubblici sono un elemento chiave del modo in cui le risorse pubbliche vengono trasformate in beni, servizi o infrastrutture che impattano direttamente sulla vita dei cittadini. Essi definiscono le condizioni in base alle quali gli appaltatori selezionati, cioè le aziende ingaggiate per fornirli, devono consegnare tali beni, servizi o opere quando e dove ce ne sia necessità.
-Allo stesso tempo, l’attività contrattuale della pubblica amministrazione può essere soggetta a inefficienze e sprechi di risorse dovuti a corruzione e frode, e ciò può verificarsi in molti modi diversi. Ad esempio, idealmente, gli appaltatori vengono selezionati attraverso il principio della concorrenza per consentire alle pubbliche amministrazioni di aggiudicare i contratti a coloro che offrono condizioni più vantaggiose in termini di costi. Tuttavia, se il processo di selezione viene deliberatamente reso meno competitivo per avvantaggiare un particolare fornitore (ad esempio, una impresa legata a funzionari pubblici coinvolti nel processo di selezione), qualcuno può trarre un profitto indebito dai contratti pubblici. Può anche accadere che un fornitore si aggiudichi un contratto a un costo superiore rispetto a quello effettivo o giustificabile dai prezzi di mercato. In alcuni casi, si osservano problemi durante l'esecuzione del contratto: le condizioni stabilite dal contratto non vengono rispettate dall’appaltatore e coloro che dovrebbero beneficiare dei beni, dei servizi o dei lavori oggetto del contratto ne godono in quantità inferiori o di qualità inferiore agli standard, o nei casi più gravi possono non goderne affatto.
-Monithon permette ora di monitorare anche questo aspetto dell'attuazione delle politiche pubbliche. Grazie all'iniziativa iMonitor, gli utenti di Monithon possono accedere a moduli di formazione che aiutano a comprendere gli aspetti fondamentali degli appalti pubblici e come questi possono essere manipolati contro l'interesse pubblico. I moduli mostrano come monitorare sul campo i contratti selezionati, raccogliere evidenze della corretta attuazione di un appalto e segnalare i problemi individuati alle autorità competenti utilizzando questo strumento di monitoraggio. Ciò può aiutare efficacemente a identificare i problemi quando è ancora possibile porvi rimedio, assicurando che i beni, i servizi e le opere siano consegnati ai cittadini in modo efficace.
-Il modello di report comprende tre fasi, seguendo una struttura similare ai progetti di monitoraggio:
-Fase 1 - Analisi desk del quadro di riferimento;
-Fase 2 - Esecuzione del contratto;
-Fase 3 - Risultati e impatto.
-Ciascuna fase contiene istruzioni aggiuntive sulle informazioni che possono essere raccolte, su dove e come raccoglierle, sugli aspetti più rilevanti e su quelli da tenere d'occhio nella ricerca. Il questionario copre molti aspetti del monitoraggio di un contratto, ma tutte le domande sono facoltative e le risposte possono essere modificate prima dell'invio del report. Più informazioni si raccolgono, meglio è! Puoi trovare suggerimenti pratici per scrivere il tuo rapporto nel nostro manuale di iMonitor: Monitoraggio dei contratti pubblici.";
+const HEAD_PARAGRAPH_MONITUTOR = "<p>
+Il <strong>monitoraggio di un contratto pubblico</strong> è un'ulteriore livello del monitoraggio civico che permette ai cittadini di contribuire a garantire che i fondi pubblici stanziati per le loro comunità raggiungano effettivamente le persone che ne dovrebbero beneficiare. 
+</p>
+<p>
+I contratti pubblici sono un elemento chiave del modo in cui le risorse pubbliche vengono trasformate in <strong>beni, servizi o infrastrutture che impattano direttamente sulla vita dei cittadini</strong>. Essi definiscono le condizioni in base alle quali gli appaltatori selezionati, cioè le aziende ingaggiate per fornirli, devono consegnare tali beni, servizi o opere quando e dove ce ne sia necessità.
+</p>
+<p>
+Allo stesso tempo, l’attività contrattuale della pubblica amministrazione può essere soggetta a <strong>inefficienze e sprechi di risorse</strong> dovuti a corruzione e frode, e ciò può verificarsi in molti modi diversi. Ad esempio: idealmente, gli appaltatori vengono selezionati attraverso il <strong>principio della concorrenza</strong> per consentire alle pubbliche amministrazioni di aggiudicare i contratti a coloro che offrono condizioni più vantaggiose in termini di costi. Tuttavia, se il processo di selezione viene <strong>deliberatamente reso meno competitivo per avvantaggiare un particolare fornitore</strong> (ad esempio, una impresa legata a funzionari pubblici coinvolti nel processo di selezione), qualcuno può trarre un profitto indebito dai contratti pubblici. 
+</p>
+<p>
+Può anche accadere che un fornitore si aggiudichi un contratto a un costo superiore rispetto a quello effettivo o giustificabile dai prezzi di mercato. In alcuni casi, si osservano problemi durante l<strong>'esecuzione del contratto</strong>: le condizioni stabilite dal contratto non vengono rispettate dall’appaltatore e coloro che dovrebbero beneficiare dei beni, dei servizi o dei lavori oggetto del contratto ne godono in quantità inferiori o di qualità inferiore agli standard, o nei casi più gravi possono non goderne affatto.
+</p>
+<p>
+<strong>Monithon permette ora di monitorare anche questo aspetto dell'attuazione delle politiche pubbliche</strong>. 
+</p>
+<p>
+Grazie all'iniziativa iMonitor, gli utenti di Monithon possono accedere a <strong>moduli di formazione</strong> che aiutano a comprendere gli aspetti fondamentali degli appalti pubblici e come questi possono essere manipolati contro l'interesse pubblico. I moduli mostrano come monitorare sul campo i contratti selezionati, raccogliere evidenze della corretta attuazione di un appalto e segnalare i problemi individuati alle autorità competenti utilizzando questo strumento di monitoraggio. Ciò può aiutare efficacemente a <strong>identificare i problemi quando è ancora possibile porvi rimedio</strong>, assicurando che i beni, i servizi e le opere siano consegnati ai cittadini in modo efficace.
+</p>
+<p>
+Il <strong>modello di report comprende tre fasi</strong>, seguendo una struttura similare ai progetti di monitoraggio:
+</p>
+<ul>
+<li><strong>Fase 1 - Analisi desk del quadro di riferimento;</strong></li>
+<li><strong>Fase 2 - Esecuzione del contratto;</strong></li>
+<li><strong>Fase 3 - Risultati e impatto.</strong></li>
+</ul>
+<p>
+Ciascuna fase contiene istruzioni aggiuntive sulle informazioni che possono essere raccolte, su dove e come raccoglierle, sugli aspetti più rilevanti e su quelli da tenere d'occhio nella ricerca. 
+</p>
+<p>
+Il questionario copre molti aspetti del monitoraggio di un contratto, ma <strong><em>tutte le domande sono facoltative e le risposte possono essere modificate prima dell'invio del report</em></strong>. Più informazioni si raccolgono, meglio è! Puoi trovare suggerimenti pratici per scrivere il tuo rapporto nel nostro manuale di<em><span style=\"text-decoration:underline;\"> <strong>iMonitor: Monitoraggio dei contratti pubblici</strong>.</span></em> (link: 
+</p>";
 const HEAD_FIELD_OPENTENDER = "Inserire l'URL del contratto da Opentender";
 const HEAD_BUTTON_IMPORTDATA = "Importa i dati";
 const HEAD_TEXT_OPENTENDER = "URL del contratto ...";
@@ -23,25 +46,106 @@ const NAV_TAB_2 = "Esecuzione del contratto";
 const NAV_TAB_3 = "Risultati e impatto";
 const S1_TITLE_LABEL = "Fase 1";
 const S1_TITLE_TEXT = "Analisi desk";
-const S1_PARAGRAPH_TEXT = "Il monitoraggio dell'esecuzione di un contratto consiste essenzialmente nel verificare se ciò che si sta realizzando corrisponde a quanto definito sulla carta, cioè nel contratto. Per valutare questo aspetto, sono importanti alcune informazioni di base contenute nel contratto stesso e in altri documenti correlati. I documenti chiave possono essere:
-contratto;
-estensioni e modifiche del contratto (se applicabile);
-relazioni sull'esecuzione del contratto;
-ordini di pagamento e fatture;
-per progetti di costruzione, documenti tecnici (ad es. documentazione di progetto, specifiche dei materiali e forniture) e relazioni sullo stato di avanzamento.
-Per raccogliere informazioni sulle modalità di selezione del fornitore, possono essere utili anche informazioni di base sul processo di aggiudicazione dell’appalto. A tal fine, un ulteriore documento che può essere ottenuto è il verbale di gara emesso dalla commissione aggiudicatrice. 
-In  Italia, le informazioni sugli appalti pubblici sono disponibili online attraverso le seguenti risorse:
-https://dati.anticorruzione.it/#/home è il sito dell’Autorità nazionale anticorruzione (ANAC), amministrazione statale indipendente a cui il legislatore ha affidato diversi compiti in materia di trasparenza dell’attività delle pubbliche amministrazioni e di contratti pubblici. In particolare, con il nuovo codice appalti del d.lgs. n. 36/2023, l’ANAC coordina il sistema di digitalizzazione del ciclo di vita dei contratti (dalla progettazione alla realizzazione). Oggi rispetto a qualche anno fa è possibile reperire on line tante informazioni sul singolo appalto. 
-A partire dal 1° gennaio 2024, una risorsa informativa importante è la BANCA DATI NAZIONALE DEI CONTRATTI PUBBLICI (BDNCP), il cui link è:
- https://dati.anticorruzione.it/superset/dashboard/appalti.
-Su questa risorsa confluiscono tutti i dati provenienti dalle singole amministrazioni sugli appalti.
-Infatti dal 1° gennaio 2024 le stazioni appaltanti sono tenute a trasmettere tempestivamente alla BDNCP, per il tramite delle piattaforme di approvvigionamento certificate, le informazioni riguardanti: a) programmazione: 1. il programma triennale ed elenchi annuali dei lavori; 2. il programma triennale degli acquisti di servizi e forniture b) progettazione e pubblicazione 1. gli avvisi di pre-informazione 2. i bandi e gli avvisi di gara 3. avvisi relativi alla costituzione di elenchi di operatori economici c) affidamento 1. gli avvisi di aggiudicazione ovvero i dati di aggiudicazione per gli affidamenti non soggetti a pubblicità 2. gli affidamenti diretti d) esecuzione 1. La stipula e l’avvio del contratto 2. gli stati di avanzamento 3. i subappalti 4. le modifiche contrattuali e le proroghe 5. le sospensioni dell’esecuzione 6. gli accordi bonari 7. le istanze di recesso 8. la conclusione del contratto 9. il collaudo finale; e) ogni altra informazione che dovesse rendersi utile per l'assolvimento dei compiti assegnati all’ANAC dal codice e da successive modifiche e integrazioni.
-Altra risorsa informatica è la pagina “Amministrazione trasparente” della singola amministrazione appaltante, e che si ritrova sul relativo sito internet istituzionale. Anche in questo caso il nuovo codice degli appalti definisce nuove regole e pertanto dal 1° gennaio 2024 le stazioni appaltanti inseriscono sul sito istituzionale, nella sezione \"Amministrazione trasparente\", un collegamento ipertestuale che rinvia ai dati relativi all’intero ciclo di vita del contratto contenuti nella BDNCP. Tale collegamento garantisce un accesso immediato e diretto ai dati da consultare riferiti allo specifico contratto della stazione appaltante ed assicura la trasparenza dell’intera procedura contrattuale, dall’avvio all’esecuzione. Le stazioni appaltanti pubblicano nella sezione “Amministrazione Trasparente” del proprio sito istituzionale gli atti, i dati e le informazioni che non devono essere comunicati alla BDNCP e che sono oggetto di pubblicazione obbligatoria come i documenti di gara, che comprendono, almeno: Delibera a contrarre; Bando/avviso di gara/lettera di invito; Disciplinare di gara; Capitolato speciale; Condizioni contrattuali proposte. Composizione delle commissioni giudicatrici e CV dei componenti.
-Occorre comunque evidenziare che la pubblicazione tempestiva sulla BDNCP non significa che i cittadini possano subito accedere a tutti i documenti pubblicati, poiché vi sono le regole sull’accesso agli atti da rispettare, anche queste riformate dal nuovo codice dei contratti pubblici. È logico comprendere che non possano essere accessibili (nemmeno dai concorrenti alla gara) fino all’aggiudicazione gli atti di gara. Fatta questa specificazione, nel nuovo codice dei contratti pubblici è sancito con forza il principio di trasparenza, è previsto l’accesso generalizzato a tutte le informazioni relative ai contratti pubblici, comprese quelle riguardanti la fase esecutiva. 
-Pertanto laddove il cittadino, nel rispetto dei limiti temporali dell’accesso (artt. 35 e 36 d.lgs. n. 36/23 nuovo codice appalti), voglia avere accesso e copia degli atti pertinenti di un contratto pubblico e non siano reperibili sulle risorse informatiche uno o più documenti o informazioni, può presentare una richiesta di accesso alla stazione appaltante che detiene i documenti o le informazioni. Il cittadino dovrà verificare sul sito istituzionale dell’amministrazione di riferimento se esista un modello editabile per l’accesso generalizzato oppure basterà fare una richiesta in carta con i propri dati identificativi e allegando copia del documento di identità. La richiesta deve indicare gli atti, i documenti o le informazioni di cui si vuole l’accesso, e quindi specificare di quale contratto pubblico si tratta (oggetto dell’appalto oppure il CIG codice identificativo gara). Non necessita la richiesta di un motivo, come nel caso dell’accesso tradizionale di tipo documentale previsto dall’art. 22 della legge 241/90, ma è consigliabile inserire la finalità, ad esempio anche indicando che la richiesta è fatta a titolo personale. La richiesta non ha costi.
-Possono essere utili anche altre informazioni aggiuntive. Ad esempio, è possibile effettuare una ricerca sul web sulle parole chiave della descrizione del contratto (ad esempio, realizzazione di un asilo nido nel Comune di Bologna) e dell'acquirente (ad esempio, Comune di Bologna) per trovare informazioni di base pertinenti al contratto o al progetto relativo, che aiutano a capire meglio il contesto di questo particolare contratto e a quale politica pubblica è collegato. Queste informazioni possono essere riportate di seguito, nella sezione A: Informazioni sul progetto/programma. In questa sezione è anche indicato se il contratto è collegato a un progetto finanziato dall'UE e dove è possibile trovare informazioni a riguardo.
-Nella sezione B: Informazioni sul contratto, inserendo il link al contratto selezionato sulla piattaforma opentender.eu nel campo corrispondente, verranno importati automaticamente i dati di base del contratto, compreso un profilo di integrità. È possibile modificare tali informazioni o inserire i dettagli del contratto ottenuti attraverso la documentazione raccolta o i dati ufficiali. Questi offrono una panoramica su cosa l’appaltatore deve consegnare, su quando debba farlo e a quale costo, nonché su alcune condizioni chiave in base alle quali deve avvenire  la consegna del bene/servizio/opera o eventuali modifiche rilevanti a tali termini, che a volte possono essere sintomatiche di qualche tipo di manipolazione.
-Infine, scavando un po' più a fondo, è possibile anche fare delle ricerche sull’appaltatore e aggiungere le informazioni trovate nella Sezione C: Informazioni sull’appaltatore. Queste riguardano le informazioni di contatto e di registrazione dell’appaltatore, oltre ad altre informazioni rilevanti che potrebbero indicare ulteriori rischi di corruzione nelle modalità di aggiudicazione del contratto. Se nel contratto è specificata anche la presenza di subappaltatori, è possibile cercare le stesse informazioni su di loro e incollarle nel report.";
+const S1_PARAGRAPH_TEXT = "<p>Il monitoraggio dell'<strong>esecuzione di un contratto</strong> consiste essenzialmente nel verificare se ciò che si sta realizzando corrisponde a quanto definito sulla carta, cioè nel contratto.</p>
+<p>Per valutare questo aspetto, sono importanti alcune informazioni di base contenute nel contratto stesso e in altri documenti correlati. I documenti chiave possono essere:</p>
+<ul>
+    <li><strong>contratto</strong>;</li>
+    <li><strong>estensioni e modifiche del contratto </strong>(se applicabile);</li>
+    <li><strong>relazioni sull'esecuzione del contratto</strong>;</li>
+    <li><strong>ordini di pagamento </strong>e <strong>fatture</strong>;</li>
+    <li>per progetti di costruzione, <strong>documenti tecnici </strong>(ad es. documentazione di progetto, specifiche dei materiali e forniture) e <strong>relazioni sullo stato di avanzamento;</strong></li>
+    <li>per raccogliere informazioni sulle modalità di selezione del fornitore, possono essere utili anche informazioni di base sul processo di aggiudicazione dell’appalto. A tal fine, un ulteriore documento che può essere ottenuto è il <strong>verbale di gara </strong>emesso dalla commissione aggiudicatrice.</li>
+</ul>
+<p>In  Italia, le informazioni sugli appalti pubblici sono disponibili online attraverso le seguenti risorse:</p>
+<ul>
+    <li><a href=\"https://dati.anticorruzione.it/#/home\">https://dati.anticorruzione.it/#/home</a> è il sito dell’<strong>Autorità nazionale anticorruzione (ANAC)</strong>, amministrazione statale indipendente a cui il legislatore ha affidato diversi compiti in materia di trasparenza dell’attività delle pubbliche amministrazioni e di contratti pubblici. In particolare, con il <strong>nuovo codice appalti del d.lgs. n. 36/2023</strong>, l’ANAC coordina il sistema di <strong>digitalizzazione del ciclo di vita dei contratti</strong> (dalla progettazione alla realizzazione). Oggi rispetto a qualche anno fa è possibile reperire on line tante informazioni sul singolo appalto.</li>
+    <li>A partire dal 1° gennaio 2024, una risorsa informativa importante è la <strong>BANCA DATI NAZIONALE DEI CONTRATTI PUBBLICI (BDNCP)</strong>, il cui link è: <a href=\"https://dati.anticorruzione.it/superset/dashboard/appalti/?native_filters_key=jjc3JL-oMl2PAsdWMUpKL3jAMmtxB3-ZM6TKKfHtarrha_uZOgEBUxxU99n8meCQ\">https://dati.anticorruzione.it/superset/dashboard/appalti</a>. Su questa risorsa confluiscono tutti i dati provenienti dalle singole amministrazioni sugli appalti. Infatti dal 1° gennaio 2024 le stazioni appaltanti sono tenute a trasmettere tempestivamente alla BDNCP, per il tramite delle piattaforme di approvvigionamento certificate, le informazioni riguardanti:
+        <ol>
+            <li>
+                <strong>A) PROGRAMMAZIONE</strong>:
+                <ol>
+                    <li>il programma triennale ed elenchi annuali dei lavori</li>            
+                    <li>il programma triennale degli acquisti di servizi e forniture</li>
+                </ol>
+            </li>
+            <li>
+                <strong>B) PROGETTAZIONE E PUBBLICAZIONE:</strong>
+               <ol>
+                   <li>gli avvisi di pre-informazione</li>
+                   <li>i bandi e gli avvisi di gara</li>
+                   <li>gli avvisi relativi alla costituzione di elenchi di operatori economici</li>
+               </ol>              
+            </li>
+            <li>
+                <strong>C) AFFIDAMENTO:</strong>
+                <ol>
+                    <li>gli avvisi di aggiudicazione ovvero i dati di aggiudicazione per gli affidamenti non soggetti a pubblicità</li>
+                    <li>gli affidamenti diretti</li>                    
+                </ol>
+            </li>    
+            <li>
+                <strong>D) ESECUZIONE:</strong>
+                <ol>
+                    <li>
+                        La stipula e l’avvio del contratto
+                    </li>
+                    <li>
+                        gli stati di avanzamento
+                    </li>
+                    <li>
+                        i subappalti
+                    </li>
+                    <li>
+                        le modifiche contrattuali e le proroghe
+                    </li>
+                    <li>
+                        le sospensioni dell’esecuzione
+                    </li>
+                    <li>
+                        gli accordi bonari
+                    </li>
+                    <li>
+                        le istanze di recesso
+                    </li>
+                    <li>
+                        la conclusione del contratto
+                    </li>
+                    <li>
+                        il collaudo finale
+                    </li>
+                </ol>
+                
+            </li>
+            <li> <strong>E) OGNI ALTRA INFORMAZIONE</strong> che dovesse rendersi utile per l'assolvimento dei compiti assegnati all’ANAC dal codice e da successive modifiche e integrazioni.</li>
+        </ol>
+    </li>
+    <li>Altra risorsa informatica è la pagina <strong>“Amministrazione trasparente”</strong> della singola amministrazione appaltante, che si ritrova sul relativo sito internet istituzionale. Anche in questo caso il nuovo codice degli appalti definisce nuove regole e dal 1° gennaio 2024 le stazioni appaltanti inseriscono sul sito istituzionale, nella sezione \"Amministrazione trasparente\", <strong>un collegamento ipertestuale che rinvia ai dati relativi all’intero ciclo di vita del contratto contenuti nella BDNCP</strong>.<br />Tale collegamento garantisce un accesso immediato e diretto ai dati da consultare riferiti allo specifico contratto della stazione appaltante ed assicura <strong>la trasparenza dell’intera procedura contrattuale</strong>, dall’avvio all’esecuzione. Le stazioni appaltanti pubblicano nella sezione “Amministrazione Trasparente” del proprio sito istituzionale gli atti, i dati e le informazioni che non devono essere comunicati alla BDNCP e che sono oggetto di pubblicazione obbligatoria come i documenti di gara, che comprendono, almeno<strong>: Delibera a contrarre; Bando/avviso di gara/lettera di invito; Disciplinare di gara; Capitolato speciale; Condizioni contrattuali proposte. Composizione delle commissioni giudicatrici e CV dei componenti</strong>.</li>
+</ul>
+    
+<p>
+    Occorre comunque evidenziare che la pubblicazione tempestiva sulla BDNCP non significa che i cittadini possano subito accedere a tutti i documenti pubblicati, poiché vi sono le regole sull’<strong>accesso agli atti</strong> da rispettare, anche queste riformate dal nuovo codice dei contratti pubblici. È logico comprendere che non possano essere accessibili (nemmeno dai concorrenti alla gara) fino all’aggiudicazione gli atti di gara. Fatta questa specificazione, nel nuovo codice dei contratti pubblici è sancito con forza il principio di trasparenza, è previsto l’accesso generalizzato a tutte le informazioni relative ai contratti pubblici, comprese quelle riguardanti la fase esecutiva.
+</p>
+<p>
+    Pertanto laddove il cittadino, nel rispetto dei limiti temporali dell’accesso (artt. 35 e 36 d.lgs. n. 36/23 nuovo codice appalti), voglia avere accesso e copia degli atti pertinenti di un contratto pubblico e non siano reperibili sulle risorse informatiche uno o più documenti o informazioni, può presentare una <strong>richiesta di accesso alla stazione appaltante</strong> che detiene i documenti o le informazioni.
+</p>
+<p>
+    Il cittadino dovrà verificare sul sito istituzionale dell’amministrazione di riferimento se esista un modello editabile per l’accesso generalizzato oppure basterà fare una richiesta in carta con i propri dati identificativi e allegando copia del documento di identità. La richiesta deve indicare gli atti, i documenti o le informazioni di cui si vuole l’accesso, e quindi specificare di quale contratto pubblico si tratta (oggetto dell’appalto oppure il CIG codice identificativo gara). Non necessita la richiesta di un motivo, come nel caso dell’accesso tradizionale di tipo documentale previsto dall’art. 22 della legge 241/90, ma è consigliabile inserire la finalità, ad esempio anche indicando che la richiesta è fatta a titolo personale. La richiesta non ha costi.
+</p>
+<p>
+    Possono essere utili anche altre informazioni aggiuntive. Ad esempio, è possibile effettuare una <strong>ricerca sul web con le parole chiave della descrizione del contratto</strong> (ad esempio, realizzazione di un asilo nido nel Comune di Bologna) e dell'acquirente (ad esempio, Comune di Bologna) per trovare informazioni di base pertinenti al contratto o al progetto relativo, che aiutano a capire meglio il contesto di questo particolare contratto e a quale politica pubblica è collegato.
+</p>
+<p>
+    Queste informazioni possono essere riportate di seguito, nella <strong>Sezione A: Informazioni sul progetto/programma</strong>. In questa sezione è anche indicato se il contratto è collegato a un progetto finanziato dall'UE e dove è possibile trovare informazioni a riguardo.
+</p>
+<p>
+    Nella <strong>sezione B: Informazioni sul contratto</strong>, inserendo il link al contratto selezionato sulla piattaforma opentender.eu nel campo corrispondente, <strong><em>verranno importati automaticamente i dati di base del contratto</em></strong>, <strong>compreso un profilo di integrità</strong>. È possibile modificare tali informazioni o inserire i dettagli del contratto ottenuti attraverso la documentazione raccolta o i dati ufficiali.
+</p>
+<p>
+    Questi offrono una panoramica su <span style=\"text-decoration:underline;\">cosa</span> l’appaltatore deve consegnare, su <span style=\"text-decoration:underline;\">quando</span> debba farlo e <span style=\"text-decoration:underline;\">a quale costo</span>, nonché su alcune condizioni chiave in base alle quali deve avvenire  la consegna del bene/servizio/opera o eventuali modifiche rilevanti a tali termini, che a volte possono essere sintomatiche di qualche tipo di manipolazione.
+</p>
+<p>
+    Infine, scavando un po' più a fondo, è possibile anche fare delle ricerche sull’appaltatore e aggiungere le informazioni trovate nella <strong>Sezione C: Informazioni sull’appaltatore</strong>. Queste riguardano le informazioni di contatto e di registrazione dell’appaltatore, oltre ad altre informazioni rilevanti che potrebbero indicare ulteriori rischi di corruzione nelle modalità di aggiudicazione del contratto. Se nel contratto è specificata anche la presenza di subappaltatori, è possibile cercare le stesse informazioni su di loro e incollarle nel report.
+</p>";
 const S1_FIELD_TITLE = "Titolo del report";
 const S1_HELP_TITLE = "Titolo del report...";
 const S1_FIELD_AUTHOR = "Autore del report";
