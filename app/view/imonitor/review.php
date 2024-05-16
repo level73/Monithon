@@ -1,4 +1,4 @@
-
+<!--
 <div class="container-fluid" id="disclaimer-banner">
     <section class="row">
         <div class="col">
@@ -6,7 +6,7 @@
         </div>
     </section>
 </div>
-
+-->
 <form class="" method="post" enctype="multipart/form-data" action="/imonitor/review/<?php echo $data->idimonitor; ?>">
     <input name="imonitor[id]" type="hidden" value="<?php echo $data->idimonitor; ?>">
     <div class="container">

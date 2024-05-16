@@ -7,7 +7,7 @@
             <h3 class="text-center">this is the iMonitor Report Form. This functionality is currently a work in progress.</h3>
         </div>
     </section>
-</div -->>
+</div -->
 
 <form class="" method="post" enctype="multipart/form-data" action="/imonitor/create">
     <div class="container">

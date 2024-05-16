@@ -5,7 +5,7 @@
     protected $Auth;
     protected $tbl_sottotemi = 'progetti_sottotemi_20230831';
 
-    protected $opentenderurl = "https://open-api.staging.opentender.eu/search/";
+    protected $opentenderurl = "https://open-api.opentender.eu/search/";
 
 
       protected $headers = [
