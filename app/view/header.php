@@ -51,6 +51,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/lite/create">Crea Report (Light)</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/imonitor/create">iMonitor</a>
+                </li>
             <?php
 
             endif;
