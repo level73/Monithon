@@ -5,10 +5,17 @@
     public function index(){
       $this->set('title', 'Homepage');
       $Auth = new Auth();
-/*
-      $this->set('street_map', true);
-      $this->set('js', array('components/leaflet_reports_map.js'));
-*/
+
+
+
+
+      if(isset($_GET['pfurl']) && $_GET['pfurl'] == 'imonitor'){
+          setcookie('tender', $_GET['tender'], strtotime('+1 day'), '/');
+          if($Auth->isLoggedIn()){
+              header('Location: /imonitor/create');
+          }
+      }
+
       $logged = false;
       if($Auth->isLoggedIn()){
         $logged = true;

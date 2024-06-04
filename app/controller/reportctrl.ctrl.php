@@ -166,7 +166,7 @@
     /** New Report **/
     public function create(){
 
-      if(isset($_GET['pfurl']) && !empty($_GET['pfurl'])){
+      if(isset($_GET['pfurl']) && !empty($_GET['pfurl']) && $_GET['pfurl'] !== 'imonitor'){
         setcookie('pfurl', $_GET['pfurl'], strtotime('+1 day'), '/');
         $this->set('pfurl', $_GET['pfurl']);
         if(isset($_GET['ref']) && !empty($_GET['ref']) && $_GET['ref'] == 's24'){
@@ -176,7 +176,7 @@
 
       }
 
-      elseif(isset($_COOKIE['pfurl']) && !empty($_COOKIE['pfurl'])){
+      elseif(isset($_COOKIE['pfurl']) && !empty($_COOKIE['pfurl']) !== 'imonitor'){
           $this->set('pfurl', $_COOKIE['pfurl']);
           if(isset($_COOKIE['ref']) && !empty($_COOKIE['ref'])){
               $this->set('ref', $_COOKIE['ref']);

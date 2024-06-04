@@ -39,6 +39,10 @@ class ImonitorCtrl extends Ctrl
             $Errors = new Errors();
             $this->set('js', array('components/imonitor.js?v=0.2', 'components/imonitor-geo.js?v=0.2'));
 
+            if(isset($_COOKIE['tender'])){
+                $this->set('tender', $_COOKIE['tender']);
+            }
+
             if(httpCheck('post')):
                 // Cleanup POST
                 //dbga($_POST['imonitor']); die();

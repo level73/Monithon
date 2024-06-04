@@ -15,6 +15,7 @@
 
             if( isset($_COOKIE['pfurl']) && !empty($_COOKIE['pfurl']) ){
                 $this->set('pfurl', $_COOKIE['pfurl']);
+
                 $code = $_COOKIE['pfurl'];
 
                 if(isset($_COOKIE['ref']) && $_COOKIE['ref'] == 's24'){
@@ -130,6 +131,9 @@
                                   else {
                                     header('Location: /report/create');
                                   }
+                              }
+                              elseif(isset($_COOKIE['tender']) && !empty($_COOKIE['tender'])){
+                                  header('Location: /imonitor/create');
                               }
                               else {
                                   header('Location: /user/edit');

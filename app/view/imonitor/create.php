@@ -29,7 +29,16 @@
                         <div class="input-group-prepend">
                         <span class="input-group-text" id="imonitor-contract-url-label"><?php echo HEAD_FIELD_OPENTENDER; ?></span>
                         </div>
-                        <input type="text" class="form-control" id="imonitor-contract-url" name="imonitor[contract][opentender_url]" placeholder="<?php echo HEAD_TEXT_OPENTENDER; ?>" aria-label="Contract URL" aria-describedby="imonitor-contract-url-label">
+                        <input
+                                type="text"
+                                class="form-control"
+                                id="imonitor-contract-url"
+                                name="imonitor[contract][opentender_url]"
+                                placeholder="<?php echo HEAD_TEXT_OPENTENDER; ?>"
+                                aria-label="Contract URL"
+                                aria-describedby="imonitor-contract-url-label"
+                                value="<?php if(isset($tender) && $tender != NULL){ echo 'https://opentender.eu/tender/' . $tender; } ?>"
+                                >
                         <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" id="imonitor-opentender-lookup"><i class="fal fa-magnifying-glass"></i> <?php echo HEAD_BUTTON_IMPORTDATA; ?></button>
                         </div>

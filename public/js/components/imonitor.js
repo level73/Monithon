@@ -28,6 +28,13 @@ var IMNTR = {
         // Enable BS Popovers
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+
+        $(document).ready(function() {
+            if($('#imonitor-contract-url').length > 0 && $('#imonitor-contract-url').val() ){
+                let tenderId = IMNTR.parseOpenTenderUrl($('#imonitor-contract-url').val());
+                IMNTR.getTender(tenderId);
+            }
+        });
     },
 
     getTender: function( tenderId ){
