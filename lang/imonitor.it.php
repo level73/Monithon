@@ -1,7 +1,7 @@
 <?php
 const HEAD_LABEL_CONTRACT = "Monitoraggio dei contratti pubblici";
 const HEAD_PARAGRAPH_MONITUTOR = "<p>
-Il <strong>monitoraggio di un contratto pubblico</strong> è un'ulteriore livello del monitoraggio civico che permette ai cittadini di contribuire a garantire che i fondi pubblici stanziati per le loro comunità raggiungano effettivamente le persone che ne dovrebbero beneficiare. 
+Il <strong>monitoraggio di un contratto pubblico</strong> è un ulteriore livello del monitoraggio civico che permette ai cittadini di contribuire a garantire che i fondi pubblici stanziati per le loro comunità raggiungano effettivamente le persone che ne dovrebbero beneficiare. 
 </p>
 <p>
 I contratti pubblici sono un elemento chiave del modo in cui le risorse pubbliche vengono trasformate in <strong>beni, servizi o infrastrutture che impattano direttamente sulla vita dei cittadini</strong>. Essi definiscono le condizioni in base alle quali gli appaltatori selezionati, cioè le aziende ingaggiate per fornirli, devono consegnare tali beni, servizi o opere quando e dove ce ne sia necessità.
@@ -30,8 +30,7 @@ Il <strong>modello di report comprende tre fasi</strong>, seguendo una struttura
 Ciascuna fase contiene istruzioni aggiuntive sulle informazioni che possono essere raccolte, su dove e come raccoglierle, sugli aspetti più rilevanti e su quelli da tenere d'occhio nella ricerca. 
 </p>
 <p>
-Il questionario copre molti aspetti del monitoraggio di un contratto, ma <strong><em>tutte le domande sono facoltative e le risposte possono essere modificate prima dell'invio del report</em></strong>. Più informazioni si raccolgono, meglio è! Puoi trovare suggerimenti pratici per scrivere il tuo rapporto nel nostro manuale di<em><span style=\"text-decoration:underline;\"> <strong>iMonitor: Monitoraggio dei contratti pubblici</strong>.</span></em> (link: 
-</p>";
+Il questionario copre molti aspetti del monitoraggio di un contratto, ma <strong><em>tutte le domande sono facoltative e le risposte possono essere modificate prima dell'invio del report</em></strong>. Più informazioni si raccolgono, meglio è! Puoi trovare suggerimenti pratici per scrivere il tuo report nel nostro manuale di iMonitor: <a href=\"https://drive.google.com/file/d/1dK1gXyXaP21LRr6xDKy4_1zdGS_XwtvX/view?usp=sharing\" target=\"_blank\">\"Manuale guida al monitoraggio civico dei contratti pubblici\"</a>.</p>";
 const HEAD_FIELD_OPENTENDER = "Inserire l'URL del contratto da Opentender";
 const HEAD_BUTTON_IMPORTDATA = "Importa i dati";
 const HEAD_TEXT_OPENTENDER = "URL del contratto ...";
@@ -264,7 +263,7 @@ const S1SC_LABEL_COMPANYOTHERINDIVIDUALS = "Altro/i individuo/i collegato/i";
 const S1SC_LABEL_COMPANYADDITIONALINFO = "Ulteriori informazioni rilevanti";
 const S2_TITLE_LABEL = "Esecuzione del contratto";
 const S2_TITLE_TEXT = "Fase 2 - Esecuzione del contratto";
-const S2_PARAGRAPH_TEXT = "Raccolte le informazioni di base e la documentazione necessaria, è il momento di monitorare l'effettiva esecuzione del contratto. In generale, il modo migliore per farlo è visitare il luogo di esecuzione del contratto, o i siti selezionati, se ce n'è più di uno. Lì si può verificare concretamente se i beni, i servizi o i lavori aggiudicati vengono o sono stati consegnati secondo le condizioni contrattuali. Potete consultare il Manuale iMonitor: Monitoring Public Contracts (Monitoraggio dei contratti pubblici) per una guida pratica su come pianificare e organizzare questa parte del lavoro di monitoraggio, su cosa cercare e su come documentare le prove raccolte.
+const S2_PARAGRAPH_TEXT = "Raccolte le informazioni di base e la documentazione necessaria, è il momento di monitorare l'effettiva esecuzione del contratto. In generale, il modo migliore per farlo è visitare il luogo di esecuzione del contratto, o i siti selezionati, se ce n'è più di uno. Lì si può verificare concretamente se i beni, i servizi o i lavori aggiudicati vengono o sono stati consegnati secondo le condizioni contrattuali. Potete consultare il <a href=\"https://drive.google.com/file/d/1dK1gXyXaP21LRr6xDKy4_1zdGS_XwtvX/view?usp=sharing\" target=\"_blank\">Manuale guida al monitoraggio civico dei contratti pubblici</a> per una guida pratica su come pianificare e organizzare questa parte del lavoro di monitoraggio, su cosa cercare e su come documentare le prove raccolte.
 Nel caso in cui non sia possibile raggiungere il luogo di attuazione, è possibile comunque impostare la valutazione sulla base della documentazione ottenuta durante l’analisi desk. È possibile anche raccogliere informazioni con: interviste ai rappresentanti della stazione appaltante (ad esempio, il supervisore del contratto designato); interviste agli appaltatori o loro rappresentanti; nel caso di un appalto di lavori, nel caso in cui non sia possibile accedere direttamente al cantiere, è possibile intervistare i residenti dell'area circostante.";
 const S2SA_TITLE_TEXT = "Sezione A: esecuzione";
 const S2SA_LABEL_SITEINSPECTION = "Visita sul campo";
