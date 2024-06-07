@@ -449,7 +449,7 @@ class ImonitorCtrl extends Ctrl
                         'case_description'              =>   $data['report']['case_description'],
                         // Status/Op Fields
                         //'created_by' => $this->User->id,
-                        'status' => ( $data['report']['status'] ?? DRAFT )
+                        'status' => ( isset($data['report']['status']) ? $data['report']['status'] : DRAFT )
 
                     );
 
@@ -479,7 +479,7 @@ class ImonitorCtrl extends Ctrl
 
                 $Comments = new Comment();
                 $Errors = new Errors();
-                $Model = new Imonitor();
+
 
                 $logged = true;
                 $this->set('logged', $logged);
@@ -689,13 +689,16 @@ class ImonitorCtrl extends Ctrl
 
                 $Data = $Model->find($id);
 
+
                 // Load Comments
                 $this->set('comments', $Comments->findBy(array('entity' => T_REP_IMONITOR, 'record' => $id)));
 
                 $title = $Data->title;
                 $this->set('title', $title . ' - iMonitor');
                 $this->set('data', $Data);
-            endif;
+            else:
+                header('Location: /user/edit');
+                endif;
         endif;
     }
 

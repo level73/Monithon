@@ -410,6 +410,7 @@
           $Errors     = new Errors();
           $Report     = new Report();
           $Lite       = new Lite();
+          $iMonitor = new Imonitor();
 
 
           if(!$this->Auth->isLoggedIn()){
@@ -582,10 +583,12 @@
               }
               $Reports = $Report->findBy(array('created_by' => $this->user->id));
               $Lites = $Lite->findBy(array('created_by' => $this->user->id));
+              $iMonitors = $iMonitor->findBy(array('created_by' => $this->user->id));
             }
             else {
               $Reports = $Report->reviewableReports($this->user->id);
               $Lites = $Lite->reviewableReports($this->user->id);
+              $iMonitors = $iMonitor->reviewableReports($this->user->id);
             }
 
 
@@ -593,6 +596,7 @@
             $this->set('Profile', $Profile);
             $this->set('reports', $Reports);
             $this->set('lite', $Lites);
+            $this->set('imonitor', $iMonitors);
           }
         }
 

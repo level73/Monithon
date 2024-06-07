@@ -1475,7 +1475,7 @@
         <div class="row">
             <div class="col">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="imonitor[report][status]" id="imonitor-report-status" value="<?php echo PENDING_REVIEW; ?>>">
+                    <input class="form-check-input" type="checkbox" name="imonitor[report][status]" id="imonitor-report-status" value="<?php echo PENDING_REVIEW; ?>">
                     <label class="form-check-label" for="imonitor-report-status">INVIA ALLA REDAZIONE PER LA REVISIONE</label>
                 </div>
                 <br />

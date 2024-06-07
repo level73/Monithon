@@ -309,4 +309,75 @@
 
 
 
+
+    <?php if( count($imonitor) > 0){ ?>
+        <section class="row" id="my-reports-imonitor">
+            <div class="col">
+
+                <h1>I Miei Report (iMonitor)</h1>
+
+                <table class="table table-hover table-sm"
+                       data-toggle="table"
+                       data-pagination="true"
+                       data-search="true"
+                >
+                    <thead class="thead-dark">
+                    <tr>
+                        <th data-sortable="true" data-field="titolo">Titolo</th>
+                        <?php if($Profile->role < 3){ ?>
+                            <th data-sortable="true" data-field="team">Team</th>
+                        <?php } ?>
+                        <th data-sortable="true" data-field="created_at">Creato</th>
+                        <th data-sortable="true" data-field="modified_at">Ultima Modifica</th>
+                        <th data-sortable="true" data-field="status"class="text-center">Stato</th>
+                        <th data-field="edit" class="text-center">Modifica</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach($imonitor as $r){ ?>
+                        <tr>
+                            <td>
+                                <?php
+                                echo ($r->status == 7) ? '<a href="/imonitor/view/' . $r->idimonitor . '">' . $r->title . '</a>' : $r->title;
+                                ?>
+                            </td>
+                            <?php if($Profile->role < 3){ ?>
+                                <td><a href="mailto:<?php echo $r->email; ?>"><?php echo $r->username; ?></a></td>
+                            <?php } ?>
+                            <td><?php echo $r->created_at; ?></td>
+                            <td><?php echo $r->modified_at; ?></td>
+                            <td class="text-center"><?php status($r->status); ?></td>
+
+                            <td class="text-center">
+
+                                <?php
+                                // CONDITION 1: (user is at least an editor OR user has permission OR is reviewer) AND (report in pending review)
+                                if( ( $user->role <= 2 || hasPermission($user, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD) ) || $r->reviewed_by == $user->id) && ($r->status == PENDING_REVIEW || $r->status == IN_REVIEW )  ){
+                                    ?>
+                                    <a href="/imonitor/review/<?php echo $r->idimonitor; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
+                                    <?php
+
+                                } else {
+
+                                    if($r->status == 1  ){ ?>
+                                        <a href="/imonitor/edit/<?php echo $r->idimonitor; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
+                                        <?php
+                                    } else { ?>
+                                        <button type="button" disabled class="btn btn-default btn-sm"><i class="far fa-lock-alt"></i></button>
+                                    <?php } ?>
+
+                                <?php } ?>
+                            </td>
+                        </tr>
+                    <?php } ?>
+                    </tbody>
+                </table>
+
+            </div>
+        </section>
+        <div class="clearfix"></div>
+    <?php } ?>
+
+
+
 </div>
