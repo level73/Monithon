@@ -613,4 +613,16 @@
           echo $response;
       }
 
+
+      public function checkReferrer(){
+        if( httpCheck('get') ) {
+            $response = array();
+            $referrer = $_SERVER['HTTP_REFERER'];
+            $response['code'] = 200;
+            $response['message'] = 'Ok';
+            $response['referrer'] = $referrer;
+            echo json_encode($response);
+        }
+      }
+
   }
