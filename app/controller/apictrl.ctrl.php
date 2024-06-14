@@ -19,6 +19,12 @@
     // Used by report finder app
     public function reportList()
     {
+        $ref = $this->checkReferrer();
+        if($ref['referrer'] == 'https://reports.monithon.eu'):
+            header('Location: https://api.monithon.eu/api/reportList');
+            return true;
+        endif;
+
         if (httpCheck('get', true)) {
             // Init Response Array
             $response = array();
@@ -621,7 +627,7 @@
             $response['code'] = 200;
             $response['message'] = 'Ok';
             $response['referrer'] = $referrer;
-            echo json_encode($response);
+            return $response;
         }
       }
 
