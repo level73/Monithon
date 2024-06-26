@@ -111,7 +111,7 @@
                  WHERE `entity_report_lite`.`status` = 7
                  ) 
                  ORDER BY create_date DESC';
-        echo $sql;
+        // echo $sql;
         if(!is_null($start) && !is_null($limit)){
             $sql .= ' LIMIT ' . $start . ', ' . $limit;
         }
