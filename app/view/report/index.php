@@ -17,7 +17,7 @@
                 <div class="col-12">
                     <small>
                         <span class="report-date"><?php echo strftime('%d/%m/%Y', $report->create_date);?></span> |
-                        <span class="report-author"><a href="/profile/view/<?php echo $report->profile; ?>"><?php echo $report->role==4 ? $report->username: $report->autore; //$author->username; ?></a></span>
+                        <span class="report-author"><a href="/profile/view/<?php echo $report->profile; ?>"><?php echo ($report->role==4 || $report->report_type == 'lite') ? $report->username: $report->autore; //$author->username; ?></a></span>
 
                     </small>
                 </div>
