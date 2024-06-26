@@ -134,76 +134,78 @@
 
 
 
-                    curl_setopt($ch, CURLOPT_HTTPHEADER, OPENCUP_API_HEADERS);
+                   // curl_setopt($ch, CURLOPT_HTTPHEADER, OPENCUP_API_HEADERS);
                     $response = curl_exec($ch);
 
                     // Close cURL
                     curl_close ($ch);
 
-                    echo $response;
-                    return true;
+
+
                 }
+                else {
 
 
-                $report = $Report->find($id);
+                    $report = $Report->find($id);
 
-                // Format date
-                $dataIns = strftime('%Y%m%d', strtotime($report->created_at));
+                    // Format date
+                    $dataIns = strftime('%Y%m%d', strtotime($report->created_at));
 
-                // Get OC Data
-                $ocData = json_decode($report->api_data);
-
-
-                $ocTemaSintetico = ( isset($ocData->oc_cod_tema_sintetico) && !empty($ocData->oc_cod_tema_sintetico) ? $ocData->oc_cod_tema_sintetico : -1);
-                if($ocTemaSintetico == -1 && (isset($ocData->oc_tema_sintetico) && !empty($ocData->oc_tema_sintetico))){
-                    $ocTemaSintetico = themeToCode($ocData->oc_tema_sintetico);
-                }
-                $ocFinanzTotPubNetto = (isset($ocData->oc_finanz_tot_pub_netto) && !empty($ocData->oc_finanz_tot_pub_netto) ? (float)$ocData->oc_finanz_tot_pub_netto : 0);
-
-                if($ocFinanzTotPubNetto === 0){
-                    $ocFinanzTotPubNetto = (isset($ocData->finanz_totale_pubblico) && !empty($ocData->finanz_totale_pubblico) ? (float)$ocData->finanz_totale_pubblico : 0);
-                }
+                    // Get OC Data
+                    $ocData = json_decode($report->api_data);
 
 
-                $ocCodCiclo = (isset($ocData->oc_cod_ciclo) && !empty($ocData->oc_cod_ciclo) ? $ocData->oc_cod_ciclo : -1);
-                if($ocCodCiclo == -1 && (isset($ocData->oc_descr_ciclo) && !empty($ocData->oc_descr_ciclo))){
-                    $cycle = substr($ocData->oc_descr_ciclo, -9);
-                    if($cycle == '2007-2013'){
-                        $ocCodCiclo = 1;
+                    $ocTemaSintetico = ( isset($ocData->oc_cod_tema_sintetico) && !empty($ocData->oc_cod_tema_sintetico) ? $ocData->oc_cod_tema_sintetico : -1);
+                    if($ocTemaSintetico == -1 && (isset($ocData->oc_tema_sintetico) && !empty($ocData->oc_tema_sintetico))){
+                        $ocTemaSintetico = themeToCode($ocData->oc_tema_sintetico);
                     }
-                    else if($cycle == '2014-2020'){
-                        $ocCodCiclo = 2;
-                    }
-                    else {
-                        $ocCodCiclo = -1;
-                    }
-                }
-                $ocProgrammiOperativi = -1;
+                    $ocFinanzTotPubNetto = (isset($ocData->oc_finanz_tot_pub_netto) && !empty($ocData->oc_finanz_tot_pub_netto) ? (float)$ocData->oc_finanz_tot_pub_netto : 0);
 
-                if(isset($ocData->programmi) && is_array($ocData->programmi) && !empty($ocData->programmi)){
-                    $programmi = array();
-                    foreach($ocData->programmi as $programma){
-                        $programmi[] = $programma->codice_programma;
+                    if($ocFinanzTotPubNetto === 0){
+                        $ocFinanzTotPubNetto = (isset($ocData->finanz_totale_pubblico) && !empty($ocData->finanz_totale_pubblico) ? (float)$ocData->finanz_totale_pubblico : 0);
                     }
-                    $ocProgrammiOperativi = implode(':::', $programmi);
+
+
+                    $ocCodCiclo = (isset($ocData->oc_cod_ciclo) && !empty($ocData->oc_cod_ciclo) ? $ocData->oc_cod_ciclo : -1);
+                    if($ocCodCiclo == -1 && (isset($ocData->oc_descr_ciclo) && !empty($ocData->oc_descr_ciclo))){
+                        $cycle = substr($ocData->oc_descr_ciclo, -9);
+                        if($cycle == '2007-2013'){
+                            $ocCodCiclo = 1;
+                        }
+                        else if($cycle == '2014-2020'){
+                            $ocCodCiclo = 2;
+                        }
+                        else {
+                            $ocCodCiclo = -1;
+                        }
+                    }
+                    $ocProgrammiOperativi = -1;
+
+                    if(isset($ocData->programmi) && is_array($ocData->programmi) && !empty($ocData->programmi)){
+                        $programmi = array();
+                        foreach($ocData->programmi as $programma){
+                            $programmi[] = $programma->codice_programma;
+                        }
+                        $ocProgrammiOperativi = implode(':::', $programmi);
+                    }
+                    // check if obiettivi is not empty, check fr descrizione in that case
+                    $desc = (!empty($report->obiettivi) ? $report->obiettivi : $report->descrizione);
+                    $response = array(
+                        "uid"                       => ISO2 . $report->idreport_basic,
+                        "titolo"                    => $report->titolo,
+                        "dataInserimento"           => $dataIns,
+                        "codGiudizioSintetico"      => $report->gs,
+                        //"codGiudizioSintetico"      => GS_to_int($report->giudizio_sintetico),
+                        "codStatoDiAvanzamento"     => $report->stato_di_avanzamento,
+                        "ocCodTemaSintetico"        => $ocTemaSintetico,
+                        "ocFinanzTotPubNetto"       => $ocFinanzTotPubNetto,
+                        "curr"                      => CURRENCY_STR,
+                        "ocCodProgrammaOperativo"   => $ocProgrammiOperativi,
+                        "ocCodCicloProgrammazione"  => $ocCodCiclo,
+                        "sintesi"                   => apiHellip($desc),
+                        "link"                      => APPURL . '/report/view/' . $report->idreport_basic
+                    );
                 }
-                // check if obiettivi is not empty, check fr descrizione in that case
-                $desc = (!empty($report->obiettivi) ? $report->obiettivi : $report->descrizione);
-                $response = array(
-                    "uid"                       => ISO2 . $report->idreport_basic,
-                    "titolo"                    => $report->titolo,
-                    "dataInserimento"           => $dataIns,
-                    "codGiudizioSintetico"      => $report->gs,
-                    //"codGiudizioSintetico"      => GS_to_int($report->giudizio_sintetico),
-                    "codStatoDiAvanzamento"     => $report->stato_di_avanzamento,
-                    "ocCodTemaSintetico"        => $ocTemaSintetico,
-                    "ocFinanzTotPubNetto"       => $ocFinanzTotPubNetto,
-                    "curr"                      => CURRENCY_STR,
-                    "ocCodProgrammaOperativo"   => $ocProgrammiOperativi,
-                    "ocCodCicloProgrammazione"  => $ocCodCiclo,
-                    "sintesi"                   => apiHellip($desc),
-                    "link"                      => APPURL . '/report/view/' . $report->idreport_basic
-                );
 
             }
             else {
