@@ -131,7 +131,9 @@
                 // Check ASOC Exp
                 $list[$i]->ASOC_EXP = in_array($report->id, $this->ASOC_Exp);
                 // Get Files
-                $list[$i]->files = $Files->getFiles(T_REP_BASIC, $report->id, 2);
+                // Check Report Type
+                $file_entity = ($report->report_type=='report' ? T_REP_BASIC : T_REP_LITE);
+                $list[$i]->files = $Files->getFiles($file_entity, $report->id, 2);
                 foreach($list[$i]->files as $l => $file){
                     $file->info = $Files->getInfo(ROOT.DS.'public'.DS.'resources'.DS.$file->file_path);
                     $info = explode('/', $file->info);
