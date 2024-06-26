@@ -122,9 +122,9 @@
 
                 if($instance !== 'it'){
                     // Build endpoint URL
-                    $endpoint = 'https://'.$instance.'monithon.eu/api/reportDetail/'.$id;
+                    $endpoint = 'https://'.$instance.'.monithon.eu/api/reportDetail/'.$id;
 
-
+                   // echo $endpoint;
 
 
                     $ch = curl_init();
@@ -141,6 +141,7 @@
                     curl_close ($ch);
 
                     echo $response;
+                    return true;
                 }
 
 
