@@ -119,6 +119,31 @@
             }
 
             if(is_numeric($id)){
+
+                if($instance !== 'it'){
+                    // Build endpoint URL
+                    $endpoint = 'https://'.$instance.'monithon.eu/api/reportDetail/'.$id;
+
+
+
+
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_VERBOSE, true);
+                    curl_setopt($ch, CURLOPT_URL, $endpoint);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+
+
+                    curl_setopt($ch, CURLOPT_HTTPHEADER, OPENCUP_API_HEADERS);
+                    $response = curl_exec($ch);
+
+                    // Close cURL
+                    curl_close ($ch);
+
+                    echo $response;
+                }
+
+
                 $report = $Report->find($id);
 
                 // Format date
