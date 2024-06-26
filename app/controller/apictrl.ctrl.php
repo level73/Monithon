@@ -140,7 +140,8 @@
                     // Close cURL
                     curl_close ($ch);
 
-                    $response = json_decode($response);
+                    echo $response;
+                    return true;
 
                 }
                 else {
