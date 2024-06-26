@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-9">
                     <h2>
-                        <a href="/report/view/<?php echo $report->id; ?>"><?php echo $report->titolo; ?></a>
+                        <a href="/<?php echo $report->report_type; ?>/view/<?php echo $report->id; ?>"><?php echo $report->titolo; ?></a>
                     </h2>
                     <?php AsocExp($report); ?>
                     <?php if(!empty($report->descrizione)): ?>
@@ -44,7 +44,7 @@
                 </div>
 
             <div class="col-12">
-                <a href="/report/view/<?php echo $report->id; ?>" class="btn btn-primary btn-sm">Leggi il report</a>
+                <a href="/<?php echo $report->report_type; ?>/view/<?php echo $report->id; ?>" class="btn btn-primary btn-sm">Leggi il report</a>
             </div>
 
         </div>

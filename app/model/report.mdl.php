@@ -70,6 +70,7 @@
     public function getReports($start = null, $limit = null){
         $sql = 'SELECT 
                     `' . $this->table . '`.`idreport_basic` AS id,
+                    "report" as report_type, 
                     `' . $this->table . '`.`titolo`,
                     `' . $this->table . '`.`descrizione`,
                     `' . $this->table . '`.`obiettivi`,
@@ -87,7 +88,30 @@
                  FROM  `' . $this->table . '` 
                  INNER JOIN `auth` ON `auth`.`idauth` = `' . $this->table . '`.`created_by` 
                  WHERE `' . $this->table . '`.`status` = 7
-                 ORDER BY `' . $this->table . '`.`created_at` DESC';
+                 UNION ALL (
+                    SELECT 
+                        entity_report_lite.idreport_lite as id,
+                        "lite" as report_type,
+                        entity_report_lite.titolo as titolo,
+                        entity_report_lite.giudizio as descrizione,
+                        entity_report_lite.obiettivi_del_progetto as obiettivi,
+                        NULL as giudizio_sintetico,
+                        entity_report_lite.giudizio_sintetico as gs,
+                        entity_report_lite.stato_di_avanzamento,
+                        entity_report_lite.lat_,
+                        entity_report_lite.lon_,
+                        unix_timestamp(`entity_report_lite`.`modified_at`) AS mod_date,
+                        unix_timestamp(`entity_report_lite`.`created_at`) AS create_date,
+                        NULL as `autore`, 
+                    `auth`.`username`,
+                    `auth`.`idauth` AS profile,
+                    `auth`.`role`
+                 FROM  `entity_report_lite` 
+                 INNER JOIN `auth` ON `auth`.`idauth` = `entity_report_lite`.`created_by` 
+                 WHERE `entity_report_lite`.`status` = 7
+                 ) 
+                 ORDER BY create_date DESC';
+        echo $sql;
         if(!is_null($start) && !is_null($limit)){
             $sql .= ' LIMIT ' . $start . ', ' . $limit;
         }
