@@ -148,6 +148,19 @@
                                             <option value="2"><?php echo S1SA_OPTION_MAINPOLICY_2; ?></option>
                                             <option value="3"><?php echo S1SA_OPTION_MAINPOLICY_3; ?></option>
                                             <option value="4"><?php echo S1SA_OPTION_MAINPOLICY_4; ?></option>
+                                            <option value="4"></option>
+
+
+
+                                            <option value="5">Cultura e turismo</option>
+                                            <option value="6">Inclusione sociale</option>
+                                            <option value="7">Salute</option>
+                                            <option value="8">Energia</option>
+                                            <option value="9">Riqualificazione urbana e rurale</option>
+                                            <option value="10">Competitività delle imprese</option>
+                                            <option value="11">Occupazione e lavoro</option>
+
+
                                         </select>
                                     </div>
                                 </div>

@@ -138,6 +138,13 @@
                                             <option value="2" <?php echo (cvo($data, 'project_policy') == 2 ? 'selected' : ''); ?>><?php echo S1SA_OPTION_MAINPOLICY_2; ?></option>
                                             <option value="3" <?php echo (cvo($data, 'project_policy') == 3 ? 'selected' : ''); ?>><?php echo S1SA_OPTION_MAINPOLICY_3; ?></option>
                                             <option value="4" <?php echo (cvo($data, 'project_policy') == 4 ? 'selected' : ''); ?>><?php echo S1SA_OPTION_MAINPOLICY_4; ?></option>
+                                            <option value="5" <?php echo (cvo($data, 'project_policy') == 5 ? 'selected' : ''); ?>>Cultura e turismo</option>
+                                            <option value="6" <?php echo (cvo($data, 'project_policy') == 6 ? 'selected' : ''); ?>>Inclusione sociale</option>
+                                            <option value="7" <?php echo (cvo($data, 'project_policy') == 7 ? 'selected' : ''); ?>>Salute</option>
+                                            <option value="8" <?php echo (cvo($data, 'project_policy') == 8 ? 'selected' : ''); ?>>Energia</option>
+                                            <option value="9" <?php echo (cvo($data, 'project_policy') == 9 ? 'selected' : ''); ?>>Riqualificazione urbana e rurale</option>
+                                            <option value="10" <?php echo (cvo($data, 'project_policy') == 10 ? 'selected' : ''); ?>>Competitività delle imprese</option>
+                                            <option value="11" <?php echo (cvo($data, 'project_policy') == 11 ? 'selected' : ''); ?>>Occupazione e lavoro</option>
                                         </select>
                                     </div>
                                 </div>

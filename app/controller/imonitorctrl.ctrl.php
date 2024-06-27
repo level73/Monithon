@@ -37,7 +37,7 @@ class ImonitorCtrl extends Ctrl
             $this->set('title', 'Nuovo Report iMonitor');
             $this->set('street_map', array( 'version' => '1.9.4', 'sha' => 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='));
             $Errors = new Errors();
-            $this->set('js', array('components/imonitor.js?v=0.2', 'components/imonitor-geo.js?v=0.2'));
+            $this->set('js', array('components/imonitor.js?v=0.2.1', 'components/imonitor-geo.js?v=0.2'));
 
             if(isset($_COOKIE['tender'])){
                 $this->set('tender', $_COOKIE['tender']);
@@ -261,7 +261,7 @@ class ImonitorCtrl extends Ctrl
             $this->set('logged', $logged);
             $this->set('street_map', array('version' => '1.9.4', 'sha' => 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='));
             $Errors = new Errors();
-            $this->set('js', array('components/imonitor.js?v=0.2', 'components/imonitor-geo.js?v=0.2'));
+            $this->set('js', array('components/imonitor.js?v=0.2.1', 'components/imonitor-geo.js?v=0.2'));
             // Get The Report
             $Model = new Imonitor();
             $r = $Model->find($id);
@@ -484,7 +484,7 @@ class ImonitorCtrl extends Ctrl
                 $logged = true;
                 $this->set('logged', $logged);
                 $this->set('street_map', array('version' => '1.9.4', 'sha' => 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='));
-                $this->set('js', array('components/imonitor.js?v=0.2', 'components/imonitor-geo.js?v=0.2', 'components/imonitor-review.js?v=0.1'));
+                $this->set('js', array('components/imonitor.js?v=0.2.1', 'components/imonitor-geo.js?v=0.2', 'components/imonitor-review.js?v=0.1'));
 
                 if(httpCheck()):
                     $imonitorId = $_POST['imonitor']['id'];

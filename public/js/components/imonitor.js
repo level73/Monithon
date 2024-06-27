@@ -80,9 +80,9 @@ var IMNTR = {
                     $('#imonitor-report-contract-cig').val(data.lots[0].contractNumber);
                 }
 
-                $('input#imonitor-report-contract-title').val(data.title);
-                $('input#imonitor-report-contract-object').val(data.ot.cpv + ' - ' + data.description);
-                $('input#imonitor-report-contract-body').val(data.buyers[0].name);
+                if(data.title !== undefined ) { $('input#imonitor-report-contract-title').val(data.title); }
+                if(data.ot.cpv !== undefined ){ $('input#imonitor-report-contract-object').val(data.ot.cpv + ' - ' + data.description); }
+                if(data.ot.cpv !== undefined ){ $('input#imonitor-report-contract-body').val(data.buyers[0].name); }
 
                 let contractValue = ( ('finalPrice' in data) ? data.finalPrice.netAmountEur : data.digiwhistPrice.netAmountEur );
                 $('input#imonitor-report-contract-value').val(parseInt(contractValue) );
