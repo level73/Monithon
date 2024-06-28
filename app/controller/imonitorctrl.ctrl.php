@@ -519,7 +519,7 @@ class ImonitorCtrl extends Ctrl
                     endif;
 
                     //set up status
-                    $status = $data['report']['status'] ??  DRAFT;
+                    $status = (isset($data['report']['status']) ? $data['report']['status'] : PENDING_REVIEW);
 
                     // Setup data mapping
                     $newData = array(
@@ -671,7 +671,8 @@ class ImonitorCtrl extends Ctrl
                         'case_description'              =>   $data['report']['case_description'],
                         // Status/Op Fields
                         //'created_by' => $this->User->id,
-                        'status' => $status
+                        'status' => $status,
+                        'reviewed_by' => $this->User->id,
 
                     );
 
