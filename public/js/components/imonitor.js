@@ -9,7 +9,22 @@ var IMNTR = {
         //opentenderBaseURL: "http://135.181.208.42:8848/"
     },
 
+    opentenderLabels: {
+        it: {
+            SINGLE_BID: "Singola offerta",
+            ADVERTISEMENT_PERIOD: "Durata del periodo di presentazione delle offerte",
+            DECISION_PERIOD: "Durata del periodo di aggiudicazione",
+            CALL_FOR_TENDER_PUBLICATION: "Pubblicazione del bando di gara",
+            PROCEDURE_TYPE: "Tipo di procedura",
+            TAX_HAVEN: "Paradiso fiscale",
+            BUYER_CONCENTRATION: "Quota contrattuale del fornitore della spesa dell’acquirente per gli appalti pubblici",
+            //"BENFORDS_LAW_FOR_BID_PRICES": "",
+            NEW_COMPANY: "Nuova azienda",
+        }
+    },
+
     init: function(){
+        this.getSubdomain();
         this.openTenderLookup();
 
         this.repeatField();
@@ -35,6 +50,15 @@ var IMNTR = {
                 IMNTR.getTender(tenderId);
             }
         });
+    },
+
+    getSubdomain: function(){
+        let url = window.location.origin;
+        if (url.includes("://")) {
+            domain = url.split('://')[1];
+        }
+        const subdomain = domain.split('.')[0];
+        IMNTR.ISO2 = subdomain;
     },
 
     getTender: function( tenderId ){
@@ -105,7 +129,16 @@ var IMNTR = {
                             indicatorValue = element.value;
                         }
                         indicatorLabel.shift();
-                        let tr = '<tr><td class="indicator">' + indicatorLabel.join(" ") + '</td><td class="score score-value-' + element.value + '">' + indicatorValue + '</td><td class="raw">' + element.status.replace('_', ' ' ) + '</td></tr>';
+
+
+                        let iLabel = indicatorLabel.join( " " );
+                        indicatorLabel = indicatorLabel.join("_");
+                        if(IMNTR.opentenderLabels[IMNTR.ISO2].hasOwnProperty(indicatorLabel)){
+                            iLabel = IMNTR.opentenderLabels[IMNTR.ISO2][indicatorLabel];
+                        }
+
+
+                        let tr = '<tr><td class="indicator">' + iLabel + '</td><td class="score score-value-' + element.value + '">' + indicatorValue + '</td><td class="raw">' + element.status.replace('_', ' ' ) + '</td></tr>';
                         $('table#imonitor-contract-integrity tbody').append(tr);
                     }
 
