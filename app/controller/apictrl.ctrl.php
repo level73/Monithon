@@ -659,5 +659,80 @@
             return $response;
         }
       }
+      
+      public function period_think_tank() {
+        if(httpCheck('get')){
+            /* Mock data
+            {
+                  "uid": *NUMERIC*,
+                  "report_url": *STRING*,
+                  "report_title": *STRING*,
+                  "report_author": *STRING*,
+                  "modified_at": *DATETIME*,
+                  "created_at": *DATETIME*,
+                  "cup": *STRING*,
+                  "project_url": *STRING*,
+                  "project_title": *STRING*,
+                  "has_gender_policy": *BOOLEAN*,
+                  "latitude": *STRING*,
+                  "longitude": *STRING*,
+                  "total_public_funding": *STRING*
+                }
+            */ 
+            
+            // Select reports from 07/09/2022
+            $Model = new Api();
+            $data = $Model->periodReports();
+            // prep Array
+            $response['code'] = 200;
+            $response['message'] = "OK";
+            $response['object_count'] = count($data);
+            $response['data'] = array();
+
+            $total_gender_policy = 0;
+            $total_no_gender_policy = 0;
+            $reports = array();
+            foreach($data as $report):
+                // GET DATA FROM API DATA
+                $api_data = json_decode( $report->api_data, true);
+               // dbga($api_data);
+                $project_cup = (isset($api_data['cup']) ? $api_data['cup'] : '');
+                $project_title = (isset($api_data['oc_titolo_progetto']) ? $api_data['oc_titolo_progetto'] : '');
+                $project_url = isset($api_data['oc_link']) ? "http://" . $api_data['oc_link'] : '';
+                $total_public_funding = isset($api_data['oc_finanz_tot_pub_netto']) ? $api_data['oc_finanz_tot_pub_netto'] : '';
+                $has_gender_policy = ($report->has_gender_policy > 0 ? "true" : "false");
+                if($has_gender_policy == "true"){
+                    $total_gender_policy++;
+                }
+                else{
+                    $total_no_gender_policy++;
+                }
+
+                $report_array = array(
+                    "uid"               => $report->uid,
+                    "report_url"        => "https://it.monithon.eu/report/view/" . $report->uid,
+                    "report_title"      => $report->title,
+                    "report_author"     => $report->author,
+                    "modified_at"       => $report->modified_at,
+                    "created_at"        => $report->created_at,
+                    "cup"               => $project_cup,
+                    "project_url"       => $project_url,
+                    "project_title"     => $project_title,
+                    "has_gender_policy" => $has_gender_policy,
+                    "latitude"          => $report->latitude,
+                    "longitude"         => $report->longitude,
+                    "total_public_funding" => $total_public_funding
+                );
+
+                $reports[] = $report_array;
+            endforeach;
+            $response['total_gender_policy'] = $total_gender_policy;
+            $response['total_no_gender_policy'] = $total_no_gender_policy;
+            $response['data'] = $reports;
+            echo json_encode($response);
+        }
+        
+        
+      }
 
   }
