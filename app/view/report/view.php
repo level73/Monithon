@@ -329,9 +329,9 @@
                     /** CHECK FOR GENDER EQUALITY INFO BOXES */
                     if($report->is_gender_topic > 0):
                     ?>
-                    <div class="report-gender-box">
+                    <div class="report-gender-box" style="margin-top: 20px;">
                         <h3><?php t_report("Parità di Genere"); ?></h3>
-                        
+                        <p>Nel progetto è coinvolta, direttamente o indirettamente, la parità di genere.</p>
 
 
                     </div>
