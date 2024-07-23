@@ -330,8 +330,8 @@
                     if($report->is_gender_topic > 0):
                     ?>
                     <div class="report-gender-box" style="margin-top: 20px;">
-                        <h3><?php t_report("Parità di Genere"); ?></h3>
-                        <p><strong>Nel progetto è coinvolta, direttamente o indirettamente, la parità di genere?</strong></p>
+                        <h2><?php t_report("Parità di Genere"); ?></h2>
+                        <h3><strong>Nel progetto è coinvolta, direttamente o indirettamente, la parità di genere?</strong></h3>
                         <?php
                         switch($report->gender_objectives):
                                 case 1:
@@ -355,8 +355,8 @@
                         elseif($report->gender_objectives == 2): echo "<p>" . $report->gender_objectives_yes_indirect_desc . "</p>";
                         endif;
                         ?>
-                        <hr />
-                        <p><strong>Nel progetto i partecipanti (a volte chiamati beneficiari) sono distinti per genere (donne, uomini, altri), utilizzando - per esempio -parole come donne, bambine, anziane, studentesse, lavoratrici, etc.</strong></p>
+
+                        <h3><strong>Nel progetto i partecipanti (a volte chiamati beneficiari) sono distinti per genere (donne, uomini, altri), utilizzando - per esempio -parole come donne, bambine, anziane, studentesse, lavoratrici, etc.</strong></h3>
                         <?php
                         switch($report->gender_language):
                             case 1:
@@ -375,8 +375,8 @@
                         endswitch;
                         if($report->gender_language == 1): echo "<p>" . $report->gender_language_desc . "</p>"; endif;
                         ?>
-                        <hr />
-                        <p><strong>Il progetto stanzia risorse finanziarie esplicitamente destinate ad azioni che promuovono la parità di genere?</strong></p>
+
+                        <h3><strong>Il progetto stanzia risorse finanziarie esplicitamente destinate ad azioni che promuovono la parità di genere?</strong></h3>
                         <?php
                         switch($report->gender_finance):
                             case 1:
@@ -395,9 +395,8 @@
                         endswitch;
                         if($report->gender_finance == 1): echo "<p>" . $report->gender_finance_desc . "</p>"; endif;
                         ?>
-                        <hr />
-                        <hr />
-                        <p><strong>Sono stati indicati esplicitamente indicatori (es. numero di operatrici formate o percentuale di aumento delle studentesse iscritte a corsi STEM) per monitorare e valutare l’impatto del progetto in termini di promozione della parità di genere?</strong></p>
+
+                        <h3><strong>Sono stati indicati esplicitamente indicatori (es. numero di operatrici formate o percentuale di aumento delle studentesse iscritte a corsi STEM) per monitorare e valutare l’impatto del progetto in termini di promozione della parità di genere?</strong></h3>
                         <?php
                         switch($report->gender_indicators):
                             case 1:
