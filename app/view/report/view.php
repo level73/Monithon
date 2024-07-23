@@ -331,9 +331,91 @@
                     ?>
                     <div class="report-gender-box" style="margin-top: 20px;">
                         <h3><?php t_report("Parità di Genere"); ?></h3>
-                        <p>Nel progetto è coinvolta, direttamente o indirettamente, la parità di genere.</p>
+                        <p><strong>Nel progetto è coinvolta, direttamente o indirettamente, la parità di genere?</strong></p>
+                        <?php
+                        switch($report->gender_objectives):
+                                case 1:
+                                    echo "<p>SI, IMPATTO DI GENERE DIRETTO</p>";
+                                    break;
 
+                                case 2:
+                                    echo "<p>SI, IMPATTO DI GENERE INDIRETTO</p>";
+                                    break;
+                                case 3:
+                                    echo "<p>NO</p>";
+                                    break;
+                                case 4:
+                                    echo "<p>NON SAPREI</p>";
+                                    break;
+                                default:
+                                    echo "<p>N.D.</p>";
+                                    break;
+                        endswitch;
+                        if($report->gender_objectives == 1): echo "<p>" . $report->gender_objectives_yes_direct_desc . "</p>";
+                        elseif($report->gender_objectives == 2): echo "<p>" . $report->gender_objectives_yes_indirect_desc . "</p>";
+                        endif;
+                        ?>
+                        <hr />
+                        <p><strong>Nel progetto i partecipanti (a volte chiamati beneficiari) sono distinti per genere (donne, uomini, altri), utilizzando - per esempio -parole come donne, bambine, anziane, studentesse, lavoratrici, etc.</strong></p>
+                        <?php
+                        switch($report->gender_language):
+                            case 1:
+                                echo "<p>SI</p>";
+                                break;
 
+                            case 2:
+                                echo "<p>NO</p>";
+                                break;
+                            case 3:
+                                echo "<p>NON SAPREI</p>";
+                                break;
+                            default:
+                                echo "<p>N.D.</p>";
+                                break;
+                        endswitch;
+                        if($report->gender_language == 1): echo "<p>" . $report->gender_language_desc . "</p>"; endif;
+                        ?>
+                        <hr />
+                        <p><strong>Il progetto stanzia risorse finanziarie esplicitamente destinate ad azioni che promuovono la parità di genere?</strong></p>
+                        <?php
+                        switch($report->gender_finance):
+                            case 1:
+                                echo "<p>SI</p>";
+                                break;
+
+                            case 2:
+                                echo "<p>NO</p>";
+                                break;
+                            case 3:
+                                echo "<p>NON SAPREI</p>";
+                                break;
+                            default:
+                                echo "<p>N.D.</p>";
+                                break;
+                        endswitch;
+                        if($report->gender_finance == 1): echo "<p>" . $report->gender_finance_desc . "</p>"; endif;
+                        ?>
+                        <hr />
+                        <hr />
+                        <p><strong>Sono stati indicati esplicitamente indicatori (es. numero di operatrici formate o percentuale di aumento delle studentesse iscritte a corsi STEM) per monitorare e valutare l’impatto del progetto in termini di promozione della parità di genere?</strong></p>
+                        <?php
+                        switch($report->gender_indicators):
+                            case 1:
+                                echo "<p>SI</p>";
+                                break;
+
+                            case 2:
+                                echo "<p>NO</p>";
+                                break;
+                            case 3:
+                                echo "<p>NON SAPREI</p>";
+                                break;
+                            default:
+                                echo "<p>N.D.</p>";
+                                break;
+                        endswitch;
+                        if($report->gender_indicators == 1): echo "<p>" . $report->gender_indicators_desc . "</p>"; endif;
+                        ?>
                     </div>
 
 
