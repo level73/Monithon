@@ -12,15 +12,15 @@
                    <br />
                   <div class="custom-control custom-radio custom-control-inline">
                       <input type="radio" id="utype-1" value="10" name="role" class="custom-control-input">
-                      <label class="custom-control-label" for="utype-1">Partecipante ASOC</label>
+                      <label class="custom-control-label" for="utype-1">ASOC Secondo Grado</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
                       <input type="radio" id="utype-4" value="13" name="role" class="custom-control-input">
-                      <label class="custom-control-label" for="utype-4">ASOC Medie</label>
+                      <label class="custom-control-label" for="utype-4">ASOC Primo Grado</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
                       <input type="radio" id="utype-2" value="11" name="role" class="custom-control-input">
-                      <label class="custom-control-label" for="utype-2">Studente Universitario</label>
+                      <label class="custom-control-label" for="utype-2">Student3 Universitari3</label>
                   </div>
                   <div class="custom-control custom-radio custom-control-inline">
                       <input type="radio" id="utype-3" value="3" name="role" class="custom-control-input">
