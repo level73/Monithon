@@ -787,8 +787,41 @@
                         </fieldset>
                     </div>
                 </section>
-            </div>
 
+                <section class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend><span><?php echo GENERIC_LABEL_FILEUPLOAD; ?></span></legend>
+                            <span class="help"><?php echo GENERIC_HELP_FILEUPLOAD; ?></span>
+
+                            <?php if(!empty($files)): ?>
+                            <div class="row mt-4" id="imonitor-files-uplaoded">
+                                <div class="col">
+                                    <?php foreach($files as $file): ?>
+                                        <div class="uploaded-file row mb-2" id="uploaded-<?php echo $file->idfile_imonitor_repository; ?>">
+                                            <div class="col-4">
+                                                <a href="/resources/<?php echo $file->file_path; ?>" id="file-path-<?php echo $file->idfile_imonitor_repository; ?>" target="_blank"><?php echo $file->label; ?></a>
+                                            </div>
+                                            <div class="col-4"><?php echo FileSizeConvert($file->file_size); ?> | <?php echo typeOfFile($file->file_type); ?></div>
+                                            <div class="col-3"><?php echo $file->type; ?></div>
+                                            <div class="col-1 text-right">
+                                                <a href="#" data-resource="<?php echo $file->idfile_imonitor_repository; ?>" class="imonitor-file-deleter"><i class="fal fa-times"></i></a>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                            <?php else: ?>
+                            <div class="col mt-4">
+                                <div class="alert alert-info">
+                                    N.A.
+                                </div>
+                            </div>
+                            <?php endif; ?>
+                        </fieldset>
+                    </div>
+                </section>
+            </div>
 
             <div class="tab-pane fade" id="contract-implementation-tab-pane" role="tabpanel" aria-labelledby="contract-implementation-tab" tabindex="1">
                 <div class="monitutor">

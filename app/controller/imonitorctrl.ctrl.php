@@ -45,8 +45,6 @@ class ImonitorCtrl extends Ctrl
 
             if(httpCheck('post')):
                 // Cleanup POST
-                //dbga($_POST['imonitor']); die();
-                //dbga($_FILES);
 
                 $data = $_POST['imonitor'];
 
@@ -237,6 +235,16 @@ class ImonitorCtrl extends Ctrl
 
                 $creation = $Model->create($Data);
                 if($creation):
+                    $ImonitorFiles = new ImonitorRepo();
+                    // Handle File Uploads
+                    $files = rearrange_files_imonitor($_FILES['imonitor'], $_POST['imonitor']['files']);
+                    foreach($files as $file):
+                        $file['imonitor'] = $creation;
+                        $ImonitorFiles->upload($file);
+                    endforeach;
+
+
+
                     header('Location: /imonitor/edit/' . $creation . '?save=success');
                 else:
                     $this->set('data', $Data);
@@ -456,6 +464,16 @@ class ImonitorCtrl extends Ctrl
 
                     $Model->update($imonitorId, $newData);
 
+                    $ImonitorFiles = new ImonitorRepo();
+                    // Handle File Uploads
+                    $files = rearrange_files_imonitor($_FILES['imonitor'], $_POST['imonitor']['files']);
+                    foreach($files as $file):
+                        if($file['error'] == UPLOAD_ERR_OK):
+                            $file['imonitor'] = $imonitorId;
+                            $ImonitorFiles->upload($file);
+                        endif;
+                    endforeach;
+
                     if($data['report']['status'] == PENDING_REVIEW){
                         // Set up emailer
                         $subject = "iMonitor - Report ready for review";
@@ -476,10 +494,14 @@ class ImonitorCtrl extends Ctrl
                 endif;
             endif;
             $Data = $Model->find($id);
+            $Files = new ImonitorRepo();
+            $files = $Files->getFiles($id);
+
 
             $title = $Data->title;
             $this->set('title', $title . ' - iMonitor');
             $this->set('data', $Data);
+            $this->set('files', $files);
         }
     }
 
@@ -675,8 +697,8 @@ class ImonitorCtrl extends Ctrl
                         'dissemination_media'           => (strtolower($data['report']['dissemination_media']) == 'yes' ? 'yes' : 'no'), // CB
                         'dissemination_other'           => (strtolower($data['report']['dissemination_other']) == 'yes' ? 'yes' : 'no'), // CB
                         'connection_subjects'           => $connections,
-                        'media_dissemination'           =>   (strtolower($data['report']['media_dissemination']) == 'yes' ? 'yes' : 'no'), // CB
-                        'shot_by_media_localtv'         =>   (strtolower($data['report']['shot_by_media_localtv']) == 'yes' ? 'yes' : 'no'), // CB
+                        'media_dissemination'           => (strtolower($data['report']['media_dissemination']) == 'yes' ? 'yes' : 'no'), // CB
+                        'shot_by_media_localtv'         => (strtolower($data['report']['shot_by_media_localtv']) == 'yes' ? 'yes' : 'no'), // CB
                         'shot_by_media_nationaltv'      =>   (strtolower($data['report']['shot_by_media_nationaltv']) == 'yes' ? 'yes' : 'no'), // CB
                         'shot_by_media_localpaper'      =>   (strtolower($data['report']['shot_by_media_localpaper']) == 'yes' ? 'yes' : 'no'), // CB
                         'shot_by_media_nationalpaper'   =>   (strtolower($data['report']['shot_by_media_nationalpaper']) == 'yes' ? 'yes' : 'no'), // CB
@@ -705,6 +727,8 @@ class ImonitorCtrl extends Ctrl
                 endif;
 
                 $Data = $Model->find($id);
+                $Files = new ImonitorRepo();
+                $files = $Files->getFiles($id);
 
 
                 // Load Comments
@@ -713,6 +737,7 @@ class ImonitorCtrl extends Ctrl
                 $title = $Data->title;
                 $this->set('title', $title . ' - iMonitor');
                 $this->set('data', $Data);
+                $this->set('files', $files);
             else:
                 header('Location: /user/edit');
                 endif;

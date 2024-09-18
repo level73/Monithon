@@ -169,6 +169,25 @@ function rearrange_files($file_post) {
     return $file_ary;
 }
 
+function rearrange_files_imonitor($File_Post, $Data_Post){
+    // Get value of keys
+    $keys = array_keys($File_Post['name']['files']);
+   // dbga($keys);
+
+    $files_array = array();
+    foreach($keys as $key){
+        $files_array[$key]['name'] = $File_Post['name']['files'][$key]['file'];
+        $files_array[$key]['full_path'] = $File_Post['full_path']['files'][$key]['file'];
+        $files_array[$key]['file_type'] = $File_Post['type']['files'][$key]['file'];
+        $files_array[$key]['tmp_name'] = $File_Post['tmp_name']['files'][$key]['file'];
+        $files_array[$key]['error'] = $File_Post['error']['files'][$key]['file'];
+        $files_array[$key]['size'] = $File_Post['size']['files'][$key]['file'];
+        $files_array[$key]['label'] = $Data_Post[$key]['label'];
+        $files_array[$key]['type'] = $Data_Post[$key]['type'];
+    }
+    return $files_array;
+}
+
 /** Shorten long titles **/
 function hellip($title, $length = 60){
   return (strlen($title) > $length ? substr($title, 0, $length) . '&hellip;' : $title);

@@ -40,6 +40,8 @@ var IMNTR = {
 
         this.contractModificationsSubdep();
 
+        this.resourceDeleter();
+
         // Enable BS Popovers
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
@@ -375,11 +377,24 @@ var IMNTR = {
                 $('#contract-mdofications-on').addClass('d-none');
             }
         });
+    },
+
+    resourceDeleter: function(){
+        $('.imonitor-file-deleter').click(function(e){
+            e.preventDefault();
+            if( confirm('This cannot be undone. Confirm?') == 1 ){
+                let resource = $(this).data('resource');
+                $.getJSON(
+                    '/ajax/imonitor_resource_deleter', { id: resource }, function(data){
+                        if(data.code == 200){
+                            $('#uploaded-' + resource).remove();
+                        }
+                    }
+                );
+            }
+        });
     }
 }
 
-
 IMNTR.init();
 
-
-//IMNTR.getTender('539ae8e2-6a55-46af-968c-fcfd47792d55');

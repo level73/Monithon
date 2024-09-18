@@ -683,6 +683,59 @@
                         </fieldset>
                     </div>
                 </section>
+                <section class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend><span><?php echo GENERIC_LABEL_FILEUPLOAD; ?></span></legend>
+                            <span class="help"><?php echo GENERIC_HELP_FILEUPLOAD; ?></span>
+
+                            <div class="row mt-4" id="imonitor-files-uplaoded">
+                                <div class="col">
+                                    <?php foreach($files as $file): ?>
+                                    <div class="uploaded-file row mb-2" id="uploaded-<?php echo $file->idfile_imonitor_repository; ?>">
+                                        <div class="col-4">
+                                            <a href="/resources/<?php echo $file->file_path; ?>" id="file-path-<?php echo $file->idfile_imonitor_repository; ?>" target="_blank"><?php echo $file->label; ?></a>
+                                        </div>
+                                        <div class="col-4"><?php echo FileSizeConvert($file->file_size); ?> | <?php echo typeOfFile($file->file_type); ?></div>
+                                        <div class="col-3"><?php echo $file->type; ?></div>
+                                        <div class="col-1 text-right">
+                                            <a href="#" data-resource="<?php echo $file->idfile_imonitor_repository; ?>" class="imonitor-file-deleter"><i class="fal fa-times"></i></a>
+                                        </div>
+
+                                    </div>
+
+
+                                    <?php endforeach; ?>
+
+                                </div>
+                            </div>
+
+                            <div class="row mt-4" id="imonitor-files-wrapper-0" data-flat-name="imonitor[files]">
+                                <div class="col">
+                                    <input type="file" placeholder="<?php placeholderize(GENERIC_FIELD_FILENAME); ?>" id="imonitor-files-file-0" name="imonitor[files][0][file]" data-particle-name="file" data-flat-name="imonitor[files]" class="form-control">
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="<?php placeholderize(GENERIC_FIELD_FILEDESCRIPTION); ?>" id="imonitor-files-label-0" name="imonitor[files][0][label]"  data-particle-name="label" data-flat-name="imonitor[files]" class="form-control">
+                                </div>
+                                <div class="col">
+                                    <select class="form-control" id="imonitor-files-type-0" name="imonitor[files][0][type]" data-particle-name="type" data-flat-name="imonitor[files]">
+                                        <option value="contract">Contract</option>
+                                        <option value="extension">Extension</option>
+                                        <option value="documents">Documents</option>
+                                        <option value="images">Images</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="btn-group" role="group" aria-label="group fields repeater">
+                                <button class="btn btn-sm btn-outline-secondary repeater mt-2 mb-2" data-repeater-target="#imonitor-files-wrapper-0" type="button">
+                                    <i class="fal fa-plus"></i> <?php echo GENERIC_BUTTON_ADDFILEUPLOAD; ?>
+                                </button>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </section>
             </div>
 
 

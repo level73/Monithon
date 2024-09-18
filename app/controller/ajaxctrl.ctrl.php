@@ -162,4 +162,33 @@
             echo json_encode($response);
         }
     }
+    public function imonitor_resource_deleter(){
+        $Auth = new Auth;
+        if( !$Auth->isLoggedIn() || !is_numeric($_GET['id']) ) {
+            return false;
+        } else {
+            $id = $_GET['id'];
+            $User = $Auth->getProfile();
+            $Repo = new ImonitorRepo;
+            if (
+                hasPermission($User, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD))
+                ||
+                $Repo->checkOwner($id, $User)
+            ) {
+                $file = $Repo->getFile($id);
+                $Repo->deleteFile($file);
+                $response = array(
+                    'code' => 200,
+                    'message' => 'Elemento rimosso con successo.',
+                );
+                echo json_encode($response);
+            }
+            else {
+
+                return false;
+            }
+        }
+    }
+
+
   }
