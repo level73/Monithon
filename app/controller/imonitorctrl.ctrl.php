@@ -239,8 +239,10 @@ class ImonitorCtrl extends Ctrl
                     // Handle File Uploads
                     $files = rearrange_files_imonitor($_FILES['imonitor'], $_POST['imonitor']['files']);
                     foreach($files as $file):
-                        $file['imonitor'] = $creation;
-                        $ImonitorFiles->upload($file);
+                        if($file['error'] == UPLOAD_ERR_OK):
+                            $file['imonitor'] = $creation;
+                            $ImonitorFiles->upload($file);
+                        endif;
                     endforeach;
 
 
