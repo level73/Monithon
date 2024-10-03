@@ -32,6 +32,7 @@
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary" type="button" id="imonitor-opentender-lookup"><i class="fal fa-magnifying-glass"></i> <?php echo HEAD_BUTTON_IMPORTDATA; ?></button>
                         </div>
+                        <?php showComment($comments, 'opentender_url'); ?>
 
                     </div>
                 </fieldset>
@@ -62,12 +63,13 @@
                 <div class="mb-4 mt-3">
                     <label for="imonitor-report-title"><?php echo S1_FIELD_TITLE; ?></label>
                     <input type="text" class="form-control" id="imonitor-report-title" name="imonitor[report][title]" placeholder="<?php echo S1_HELP_TITLE; ?>" aria-label="Report title" aria-describedby="imonitor-report-title" value="<?php echo cvo($data, 'title'); ?>">
+                    <?php showComment($comments, 'title'); ?>
                 </div>
                 <div class="mb-4 mt-3">
                     <label for="imonitor-report-author"><?php echo S1_FIELD_AUTHOR; ?></label>
                     <small class="help"><?php echo S1_HELP_AUTHOR; ?></small>
                     <input type="text" class="form-control" id="imonitor-report-author" name="imonitor[report][author]" placeholder="Author..." aria-label="Author of the report" aria-describedby="imonitor-report-author" value="<?php echo cvo($data, 'author'); ?>">
-
+                    <?php showComment($comments, 'author'); ?>
                 </div>
             </div>
         </section>

@@ -268,7 +268,10 @@ class ImonitorCtrl extends Ctrl
             $logged = true;
             $this->set('logged', $logged);
             $this->set('street_map', array('version' => '1.9.4', 'sha' => 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='));
+
+            $Comments = new Comment();
             $Errors = new Errors();
+
             $this->set('js', array('components/imonitor.js?v=0.2.2', 'components/imonitor-geo.js?v=0.2'));
             // Get The Report
             $Model = new Imonitor();
@@ -497,6 +500,8 @@ class ImonitorCtrl extends Ctrl
             $Files = new ImonitorRepo();
             $files = $Files->getFiles($id);
 
+            // Load Comments
+            $this->set('comments', $Comments->findBy(array('entity' => T_REP_IMONITOR, 'record' => $id)));
 
             $title = $Data->title;
             $this->set('title', $title . ' - iMonitor');
