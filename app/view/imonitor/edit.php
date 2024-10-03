@@ -116,19 +116,22 @@
                                     </label>
                                 </div>
 
+                                <?php showComment($comments, 'eu_funded'); ?>
+
                             </div>
 
                             <div class="mb-4 mt-3 eu-funded-eval">
                                 <label for="imonitor-report-project-url"><?php echo S1SA_FIELD_EUFUNDINFO; ?></label>
                                 <small class="help"><?php echo S1SA_HELP_EUFUNDINFO; ?></small>
                                 <input type="text" class="form-control" id="imonitor-report-project-url" name="imonitor[report][project_url]" value="<?php echo cvo($data, 'project_url'); ?>" placeholder="URL..." aria-label="Project URL" aria-describedby="imonitor-report-project-url">
-
+                                <?php showComment($comments, 'project_url'); ?>
                             </div>
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-4 mt-3">
                                         <label for="imonitor-report-project-funding"><?php echo S1SA_FIELD_FUNDINGAMOUNT; ?></label>
                                         <input type="number" step=".01" class="form-control" id="imonitor-report-project-funding" value="<?php echo cvo($data, 'project_funding'); ?>" name="imonitor[report][project_funding]" placeholder="Project funding..." aria-label="Project funding" aria-describedby="imonitor-report-project-funding">
+                                        <?php showComment($comments, 'project_funding'); ?>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -148,6 +151,8 @@
                                             <option value="10" <?php echo (cvo($data, 'project_policy') == 10 ? 'selected' : ''); ?>>Competitività delle imprese</option>
                                             <option value="11" <?php echo (cvo($data, 'project_policy') == 11 ? 'selected' : ''); ?>>Occupazione e lavoro</option>
                                         </select>
+
+                                        <?php showComment($comments, 'project_policy'); ?>
                                     </div>
                                 </div>
                             </div>
@@ -155,11 +160,13 @@
                                 <label for="imonitor-report-project-cup">Codice CUP del Progetto</label>
                                 <small class="help">Controlla e verifica che il codice CUP sia corretto. Se è mancante, inserisci qui il codice CUP. Puoi inserire il CUP sulla piattaforma <a href="https://www.opencup.gov.it/portale/web/opencup/home" target="_blank">OpenCUP</a> per ricercare altre informazioni sul progetto.</small>
                                 <input type="text" class="form-control" id="imonitor-report-project-cup" value="<?php echo cvo($data, 'project_cup'); ?>" name="imonitor[report][project_cup]" placeholder="Codice CUP..." aria-label="Codice CUP" aria-describedby="imonitor-report-project-cup">
+                                <?php showComment($comments, 'project_cup'); ?>
                             </div>
                             <div class="mb-4 mt-3">
                                 <label for="imonitor-report-project-programme"><?php echo S1SA_FIELD_PROGRAMME; ?></label>
                                 <small class="help"><?php echo S1SA_HELP_PROGRAMME; ?></small>
                                 <input type="text" class="form-control" value="<?php echo cvo($data, 'project_programme'); ?>" id="imonitor-report-project-programme" name="imonitor[report][project_programme]" placeholder="Policy Programme..." aria-label="Policy Programme" aria-describedby="imonitor-report-project-programme">
+                                <?php showComment($comments, 'project_programme'); ?>
                             </div>
 
                         </fieldset>
@@ -175,21 +182,25 @@
                             <div class="mb-4 mt-3">
                                 <label for="imonitor-report-contract-title"><?php echo S1SB_FIELD_CONTRACTTITLE; ?></label>
                                 <input type="text" class="form-control" id="imonitor-report-contract-title"  value="<?php echo cvo($data, 'contract_title'); ?>" name="imonitor[report][contract_title]" placeholder="<?php placeholderize(S1SB_FIELD_CONTRACTTITLE); ?>" aria-label="Contract title" aria-describedby="imonitor-report-contract-title">
+                                <?php showComment($comments, 'contract_title'); ?>
                             </div>
                             <div class="mb-4 mt-3">
                                 <label for="imonitor-report-contract-object"><?php echo S1SB_FIELD_CONTRACTOBJECT; ?></label>
                                 <small class="help"><?php echo S1SB_HELP_CONTRACTOBJECT; ?></small>
                                 <input type="text" class="form-control" id="imonitor-report-contract-object"  value="<?php echo cvo($data, 'contract_object'); ?>"  name="imonitor[report][contract_object]" placeholder="<?php placeholderize(S1SB_HELP_CONTRACTOBJECT); ?>" aria-label="Contract object" aria-describedby="imonitor-report-contract-object">
+                                <?php showComment($comments, 'contract_object'); ?>
                             </div>
                             <div class="mb-4 mt-3">
                                 <label for="imonitor-report-contract-cig">CIG del Contratto</label>
                                 <small class="help">Controlla e verifica che il CIG sia corretto. Se è mancante, inserisci qui il CIG. Puoi cercare il CIG sulla <a href="https://dati.anticorruzione.it/superset/dashboard/appalti/" target="_blank">Banca Dati Nazionale dei COntratti Pubblici (ANAC)</a> per verificare o ricercare informazioni sul contratto.</small>
                                 <input type="text" class="form-control" id="imonitor-report-contract-cig" value="<?php echo cvo($data, 'contract_cig'); ?>" name="imonitor[report][contract_cig]" placeholder="CIG..." aria-label="CIG" aria-describedby="imonitor-report-contract-cig">
+                                <?php showComment($comments, 'contract_cig'); ?>
                             </div>
                             <div class="mb-4 mt-3">
                                 <label for="imonitor-report-contract-body"><?php echo S1SB_FIELD_CONTRACTINGBODY; ?></label>
                                 <small class="help"><?php echo S1SB_HELP_CONTRACTINGBODY; ?></small>
                                 <input type="text" class="form-control" id="imonitor-report-contract-body"  value="<?php echo cvo($data, 'contract_body'); ?>"  name="imonitor[report][contract_body]" placeholder="<?php placeholderize(S1SB_FIELD_CONTRACTINGBODY); ?>" aria-label="Contract body" aria-describedby="imonitor-report-contract-body">
+                                <?php showComment($comments, 'contract_body'); ?>
                             </div>
 
                             <div class="mb-4 mt-3">
@@ -197,6 +208,7 @@
                                 <label for="imonitor-report-contract-supplier"><?php echo S1SB_FIELD_SUPPLIER; ?></label>
                                 <small class="help"><?php echo S1SB_HELP_SUPPLIER; ?></small>
                                 <input type="text" class="form-control" id="imonitor-report-contract-supplier"  value="<?php echo cvo($data, 'contract_supplier'); ?>"  name="imonitor[report][contract_supplier]" placeholder="<?php placeholderize(S1SB_FIELD_SUPPLIER); ?>" aria-label="Contract supplier" aria-describedby="imonitor-report-contract-supplier">
+                                <?php showComment($comments, 'contract_supplier'); ?>
                             </div>
 
                             <div class="mb-4 mt-3">
@@ -206,6 +218,7 @@
                                     <div class="input-group-prepend"><span class="input-group-text">€</span></div>
                                     <input type="text" class="form-control" id="imonitor-report-contract-value" value="<?php echo cvo($data, 'contract_value'); ?>"  name="imonitor[report][contract_value]" placeholder="€..." aria-label="Contract value" aria-describedby="imonitor-report-contract-value">
                                 </div>
+                                <?php showComment($comments, 'contract_value'); ?>
                             </div>
 
                             <div class="mb-4 mt-3">
@@ -255,6 +268,7 @@
                                         <?php echo S1SB_RADIOLABEL_CONTRACTTYPE_1; ?><br />
                                         <small class="help"><?php echo S1SB_RADIOLABEL_HELP_CONTRACTTYPE_1; ?></small>
                                     </label>
+
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="imonitor[report][contract_type]" id="imonitor-report-contract-type2" value="Works" <?php echo (cvo($data, 'contract_type') == 'Works' ? 'checked' : ''); ?>>
@@ -270,7 +284,7 @@
                                         <small class="help"><?php echo S1SB_RADIOLABEL_HELP_CONTRACTTYPE_3; ?></small>
                                     </label>
                                 </div>
-
+                                <?php showComment($comments, 'contract_type'); ?>
                             </div>
 
                             <div class="row">
@@ -279,6 +293,7 @@
                                         <label for="imonitor-report-contract-signature-date"><?php echo S1SB_FIELD_SIGNATUREDATE; ?></label>
                                         <input type="date" class="form-control" id="imonitor-report-contract-signature-date" value="<?php echo cvo($data, 'contract_signature_date'); ?>" name="imonitor[report][contract_signature_date]" placeholder="Contract signature date..." aria-label="Contract signature date" aria-describedby="imonitor-report-contract-signature-date">
                                         <small class="help"><?php echo S1SB_HELP_SIGNATUREDATE; ?></small>
+                                        <?php showComment($comments, 'contract_signature_date'); ?>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -286,6 +301,7 @@
                                         <label for="imonitor-report-contract-date-start"><?php echo S1SB_FIELD_STARTDATE; ?></label>
                                         <input type="date" class="form-control" id="imonitor-report-contract-date-start" name="imonitor[report][contract_date_start]" value="<?php echo cvo($data, 'contract_date_start'); ?>" placeholder="Contract start date..." aria-label="Contract start date" aria-describedby="imonitor-report-contract-date-start">
                                         <small class="help"><?php echo S1SB_HELP_STARTDATE; ?></small>
+                                        <?php showComment($comments, 'contract_date_start'); ?>
                                     </div>
                                 </div>
                                 <div class="col">
@@ -293,6 +309,7 @@
                                         <label for="imonitor-report-contract-date-end"><?php echo S1SB_FIELD_ENDDATE; ?></label>
                                         <input type="date" class="form-control" id="imonitor-report-contract-date-end" name="imonitor[report][contract_date_end]" value="<?php echo cvo($data, 'contract_date_end'); ?>" placeholder="Contract end date..." aria-label="Contract end date" aria-describedby="imonitor-report-contract-date-end">
                                         <small clasS="help"><?php echo S1SB_HELP_ENDDATE; ?></small>
+                                        <?php showComment($comments, 'contract_date_end'); ?>
                                     </div>
                                 </div>
                             </div>
@@ -322,6 +339,8 @@
                                     </button>
                                     <button class="btn btn-sm btn-outline-secondary mt-2 mb-2" type="button" id="setMapMarkers"><i class="fal fa-location-dot"></i> <?php echo S1SB_BUTTON_ADDMAPMARKERS; ?></button>
                                 </div>
+
+                                <?php showComment($comments, 'contract_site'); ?>
                             </div>
                             <div class="mt-3 mb-4">
                                 <div id="imonitor-contract-sites-map"></div>
@@ -341,6 +360,7 @@
                                 </label>
                                 <small class="help"><?php echo S1SB_HELP_SUPERVISOR; ?></small>
                                 <input type="text" class="form-control" value="<?php echo cvo($data, 'supervisor'); ?>" id="imonitor-report-contract-supervisor" name="imonitor[report][supervisor]" placeholder="Contract supervisor..." aria-label="Contract supervisor" aria-describedby="imonitor-report-contract-supervisor">
+                                <?php showComment($comments, 'supervisor'); ?>
                             </div>
 
 
@@ -365,6 +385,7 @@
                                     <?php echo GENERIC_RADIOLABEL_UNKNOWN; ?>
                                 </label>
                             </div>
+                            <?php showComment($comments, 'contract_subcontracting'); ?>
 
                             <div class="col <?php echo (cvo($data, 'contract_subcontracting') != 'yes' ? 'd-none' : ''); ?>  mt-3 mb-4" id="subcontractors">
 
@@ -412,6 +433,7 @@
 
 
                                 <button class="btn btn-sm btn-outline-secondary repeater mt-2 mb-2" data-repeater-target="#imonitor-report-contract-subcontractor-0" type="button"><i class="fal fa-plus"></i> <?php echo S1SB_BUTTON_ADDSUBCONTRACTORS; ?></button>
+                                <?php showComment($comments, 'subcontractors'); ?>
 
 
                                 <div class="row">
@@ -424,6 +446,7 @@
                                                 <div class="input-group-append"><button class="btn btn-outline-secondary calcaggro" type="button" data-to-aggregate=".subcontract-value" data-aggro-field="#imonitor-report-contract-subcontracting-value"><i class="fal fa-calculator"></i> <?php echo GENERIC_BUTTON_CALCULATE; ?></button></div>
                                             </div>
                                             <small class="help"><?php echo S1SB_HELP_VALUESUBCONTRACTS; ?></small>
+                                            <?php showComment($comments, 'subcontracting_value'); ?>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -437,6 +460,7 @@
                                                 </div>
                                             </div>
                                             <small class="help"><?php echo S1SB_HELP_PERCENTAGESUBCONTRACTS; ?></small>
+                                            <?php showComment($comments, 'subcontracting_percentage'); ?>
                                         </div>
                                     </div>
                                 </div>
@@ -468,6 +492,7 @@
                                     <?php echo GENERIC_RADIOLABEL_UNKNOWN; ?>
                                 </label>
                             </div>
+                            <?php showComment($comments, 'contract_modifications'); ?>
 
                             <div class="col  <?php echo (cvo($data, 'contract_modifications') != 'yes' ? 'd-none' : ''); ?>  mt-3 mb-4" id="contract-modifications">
                                 <div class="row">
@@ -476,6 +501,7 @@
                                             <label for="imonitor-report-contract-modification-date"><?php echo S1SB_LABEL_EXTENDEDDATE; ?></label>
                                             <input type="date" class="form-control" id="imonitor-report-contract-modification-date" value="<?php echo cvo($data, 'contract_modification_date') ; ?>" name="imonitor[report][contract_modification_date]" placeholder="Contract modification date..." aria-label="Contract modification date" aria-describedby="imonitor-report-contract-modification-date">
                                             <small class="help"><?php echo S1SB_HELP_EXTENDEDDATE; ?></small>
+                                            <?php showComment($comments, 'contract_modification_date'); ?>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -488,6 +514,7 @@
                                                 </div>
                                             </div>
                                             <small class="help"><?php echo S1SB_HELP_DAYSEXTENDED; ?></small>
+                                            <?php showComment($comments, 'contract_modification_days'); ?>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -500,6 +527,7 @@
                                                     <button class="btn btn-outline-secondary calcpercent dates" type="button" data-start-date="#imonitor-report-contract-date-start" data-end-date="#imonitor-report-contract-date-end" data-days-diff="#imonitor-report-contract-modification-days" data-percent-field="#imonitor-report-contract-modification-days-percent"><i class="fal fa-calculator"></i> <?php echo GENERIC_BUTTON_CALCULATE; ?></button>
                                                 </div>
                                             </div>
+                                            <?php showComment($comments, 'contract_modification_days_percent'); ?>
 
                                         </div>
                                     </div>
@@ -516,6 +544,7 @@
                                                 <input type="number" class="form-control" id="imonitor-report-contract-modification-value" value="<?php echo cvo($data, 'contract_modification_value') ; ?>" name="imonitor[report][contract_modification_value]" placeholder="Contract modification value..." aria-label="Contract modification value" aria-describedby="imonitor-report-contract-modification-value">
                                             </div>
                                             <small class="help"><?php echo S1SB_HELP_NEWCONTRACTVALUE; ?></small>
+                                            <?php showComment($comments, 'contract_modification_value'); ?>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -527,6 +556,7 @@
                                                 <div class="input-group-append"><button class="btn btn-outline-secondary calcdiff" type="button" data-fullvalue="#imonitor-report-contract-value" data-newvalue="#imonitor-report-contract-modification-value" data-diff-field="#imonitor-report-contract-modification-value-diff"><i class="fal fa-calculator"></i> <?php echo GENERIC_BUTTON_CALCULATE; ?></button></div>
                                             </div>
                                             <small class="help"><?php echo S1SB_HELP_NEWCONTRACTVALUEDIFF; ?></small>
+                                            <?php showComment($comments, 'contract_modification_value_diff'); ?>
                                         </div>
                                     </div>
                                     <div class="col">
@@ -538,6 +568,7 @@
                                                     <span class="input-group-text">%</span>
                                                     <button class="btn btn-outline-secondary calcpercent" type="button" data-full-percentage="#imonitor-report-contract-value" data-partial-percentage="#imonitor-report-contract-modification-value-diff" data-percent-field="#imonitor-report-contract-modification-value-percent"><i class="fal fa-calculator"></i> <?php echo GENERIC_BUTTON_CALCULATE; ?></button>
                                                 </div>
+                                                <?php showComment($comments, 'contract_modification_value_percent'); ?>
                                             </div>
 
                                         </div>
@@ -560,36 +591,43 @@
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-name" class="form-label"><?php echo S1SC_LABEL_COMPANYNAME; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-name" name="imonitor[report][supplier_name]"  value="<?php echo cvo($data, 'supplier_name') ; ?>">
+                                        <?php showComment($comments, 'supplier_name'); ?>
                                     </div>
 
                                 </div>
                                 <div class="row">
-                                    <div class="col mt-3 mb-4"><label for="imonitor-report-supplier-address" class="form-label"><?php echo S1SC_LABEL_COMPANYADDRESS; ?></label>
+                                    <div class="col mt-3 mb-4">
+                                        <label for="imonitor-report-supplier-address" class="form-label"><?php echo S1SC_LABEL_COMPANYADDRESS; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-address" name="imonitor[report][supplier_address]"  value="<?php echo cvo($data, 'supplier_address') ; ?>">
+                                        <?php showComment($comments, 'supplier_address'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-postcode" class="form-label"><?php echo S1SC_LABEL_COMPANYPOSTALCODE; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-postcode" name="imonitor[report][supplier_postcode]"  value="<?php echo cvo($data, 'supplier_postcode') ; ?>">
+                                        <?php showComment($comments, 'supplier_postcode'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-city" class="form-label"><?php echo S1SC_LABEL_COMPANYCITY; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-city" name="imonitor[report][supplier_city]"  value="<?php echo cvo($data, 'supplier_city') ; ?>" >
+                                        <?php showComment($comments, 'supplier_city'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-nuts" class="form-label"><?php echo S1SC_LABEL_COMPANYNUTSCODE; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-nuts" name="imonitor[report][supplier_nuts]"  value="<?php echo cvo($data, 'supplier_nuts') ; ?>">
+                                        <?php showComment($comments, 'supplier_nuts'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-country" class="form-label"><?php echo S1SC_LABEL_COMPANYCOUNTRY; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-country" name="imonitor[report][supplier_country]" value="<?php echo cvo($data, 'supplier_country') ; ?>">
+                                        <?php showComment($comments, 'supplier_country'); ?>
                                     </div>
                                 </div>
                                 <div class="form-label mt-3 mb-4"><?php echo S1SC_LABEL_COMPANYCONTACTINFO; ?></div>
@@ -597,24 +635,28 @@
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-phone" class="form-label"><?php echo S1SC_LABEL_COMPANYPHONENUMBER; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-phone" name="imonitor[report][supplier_phone]" value="<?php echo cvo($data, 'supplier_phone') ; ?>">
+                                        <?php showComment($comments, 'supplier_phone'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-email" class="form-label"><?php echo S1SC_LABEL_COMPANYEMAIL; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-email" name="imonitor[report][supplier_email]" value="<?php echo cvo($data, 'supplier_email') ; ?>">
+                                        <?php showComment($comments, 'supplier_email'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-website" class="form-label"><?php echo S1SC_LABEL_COMPANYWEBSITE;?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-website" name="imonitor[report][supplier_website]" value="<?php echo cvo($data, 'supplier_website') ; ?>">
+                                        <?php showComment($comments, 'supplier_website'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-other" class="form-label"><?php echo S1SC_LABEL_COMPANYOTHER; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-other" name="imonitor[report][supplier_other]" value="<?php echo cvo($data, 'supplier_other') ; ?>">
+                                        <?php showComment($comments, 'supplier_other'); ?>
                                     </div>
                                 </div>
                                 <div class="form-label mt-3 mb-4"><?php echo S1SC_LABEL_COMPANYREGISTRATIONINFO; ?></div>
@@ -622,6 +664,7 @@
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-company_id" class="form-label"><?php echo S1SC_LABEL_COMPANYREGISTRATIONID; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-company_id" name="imonitor[report][supplier_company_id]" value="<?php echo cvo($data, 'supplier_company_id') ; ?>">
+                                        <?php showComment($comments, 'supplier_company_id'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -636,19 +679,21 @@
                                             <label class="form-check-label" for="imonitor-report-supplier-idtype_registry"><?php echo S1SC_LABEL_COMPANYIDTYPE_2; ?></label>
                                         </div>
 
-
+                                        <?php showComment($comments, 'supplier_id_type'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-activitycodes" class="form-label"><?php echo S1SC_LABEL_COMPANYBUSINESSACTIVITYCODES; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-activitycodes" name="imonitor[report][supplier_activitycodes]" value="<?php echo cvo($data, 'supplier_activitycodes') ; ?>">
+                                        <?php showComment($comments, 'supplier_activitycodes'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-foundation" class="form-label"><?php echo S1SC_LABEL_COMPANYFOUNDATION; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-foundation" name="imonitor[report][supplier_foundation]" value="<?php echo cvo($data, 'supplier_foundation') ; ?>">
+                                        <?php showComment($comments, 'supplier_foundation'); ?>
                                     </div>
                                 </div>
 
@@ -656,25 +701,28 @@
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-legalrep" class="form-label"><?php echo S1SC_LABEL_COMPANYLEGALREP; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-legalrep" name="imonitor[report][supplier_legalrep]"  value="<?php echo cvo($data, 'supplier_legalrep') ; ?>">
+                                        <?php showComment($comments, 'supplier_legalrep'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-shareholder" class="form-label"><?php echo S1SC_LABEL_COMPANYSHAREHOLDERS; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-shareholder" name="imonitor[report][supplier_shareholder]"  value="<?php echo cvo($data, 'supplier_shareholder') ; ?>">
+                                        <?php showComment($comments, 'supplier_shareholder'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-other_individual" class="form-label"><?php echo S1SC_LABEL_COMPANYOTHERINDIVIDUALS; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-other_individual" name="imonitor[report][supplier_otherindividuals]"  value="<?php echo cvo($data, 'supplier_otherindividuals') ; ?>">
+                                        <?php showComment($comments, 'supplier_otherindividuals'); ?>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-additional_info" class="form-label"><?php echo S1SC_LABEL_COMPANYADDITIONALINFO; ?></label>
                                         <textarea class="form-control" id="imonitor-report-supplier-additional_info" name="imonitor[report][supplier_additionalinfo]"><?php echo cvo($data, 'supplier_additionalinfo') ; ?></textarea>
-
+                                        <?php showComment($comments, 'supplier_additionalinfo'); ?>
                                     </div>
                                 </div>
 
@@ -766,6 +814,7 @@
                                     <input class="form-check-input  inspection-sites-trigger" <?php echo (cvo($data, 'site_inspection') == 'no' ? 'checked' : ''); ?> data-target="#imonitor-report-inspection-sites-no" type="radio" name="imonitor[report][site_inspection]" id="imonitor-report-site_inspection_no" value="NO">
                                     <label class="form-check-label" for="imonitor-report-site_inspection_no"><?php echo GENERIC_RADIOLABEL_NO; ?></label>
                                 </div>
+                                <?php showComment($comments, 'site_inspection'); ?>
                             </div>
 
                             <div class="col mt-3 mb-4 inspection-site-wrap <?php echo (cvo($data, 'site_inspection') == 'yes' ? '' : 'd-none'); ?>" id="imonitor-report-inspection-sites-yes">
@@ -825,6 +874,7 @@
                                 <?php endif; ?>
                                 <button class="btn btn-sm btn-outline-secondary repeater mt-2 mb-2" data-repeater-target="#imonitor-report-contract-inspection-0" type="button"><i class="fal fa-plus"></i> <?php echo S2SA_BUTTON_ADDINSPECTION; ?></button>
                                 <button class="btn btn-sm btn-outline-secondary update-inspection-sites mt-2 mb-2" id="update-inspection-sites" type="button"><i class="fal fa-recycle"></i> <?php echo S2SA_BUTTON_UPDATESITELIST; ?></button>
+                                <?php showComment($comments, 'inspection_site'); ?>
                             </div>
 
 
@@ -847,6 +897,7 @@
                                     <input class="form-control" type="text" name="imonitor[report][inspection_fail_other]" id="imonitor-report-inspection_fail_other" <?php echo cvo($data, 'inspection_fail_other'); ?> placeholder="<?php placeholderize(GENERIC_LABEL_OTHER); ?>">
                                     <label class="form-label sr-only" for="imonitor-report-inspection_fail_other"><?php echo GENERIC_LABEL_OTHER; ?></label>
                                 </div>
+                                <?php showComment($comments, 'inspection_fail'); ?>
                             </div>
 
 
@@ -875,12 +926,14 @@
                                         <small><?php echo S2SA_HELP_IMPLEMENTATIONSTATUS_3; ?></small>
                                     </label>
                                 </div>
+                                <?php showComment($comments, 'implementation_status'); ?>
                             </div>
 
                             <!-- BOF Option A -->
                             <div class="col mt-3 mb-4 <?php echo (cvo($data, 'implementation_status') == 1 ? '': 'd-none'); ?> status-dep" id="imonitor-report-status-delay">
                                 <label for="imonitor-report-contract-delay-reason"><?php echo S2SA_LABEL_IMPLEMENTATIONSTATUSINFO; ?></label>
                                 <input type="text" class="form-control" id="imonitor-report-contract-delay-reason" name="imonitor[report][contract_delay_reason]" placeholder="..." aria-label="Delay reasons" aria-describedby="imonitor-report-contract-delay-reason" value="<?php echo cvo($data, 'contract_delay_reason'); ?>">
+                                <?php showComment($comments, 'contract_delay_reason'); ?>
                             </div>
                             <!-- EOF OPTION A -->
 
@@ -892,21 +945,26 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="imonitor[report][contract_following_schedule]" id="imonitor-report-contract_following_schedule_1" value="Yes" <?php echo (cvo($data, 'contract_following_schedule') == 'yes' ? 'checked': ''); ?>>
                                         <label class="form-check-label" for="imonitor-report-contract_following_schedule_1"><?php echo GENERIC_RADIOLABEL_YES; ?></label>
+
                                     </div>
 
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="imonitor[report][contract_following_schedule]" id="imonitor-report-contract_following_schedule_2" value="No" <?php echo (cvo($data, 'contract_following_schedule') == 'no' ? 'checked': ''); ?>>
                                         <label class="form-check-label" for="imonitor-report-contract_following_schedule_2"><?php echo GENERIC_RADIOLABEL_NO; ?></label>
+
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="imonitor[report][contract_following_schedule]" id="imonitor-report-contract_following_schedule_3" value="Unknown" <?php echo (cvo($data, 'contract_following_schedule') == 'unknown' ? 'checked': ''); ?>>
                                         <label class="form-check-label" for="imonitor-report-contract_following_schedule_3"><?php echo GENERIC_RADIOLABEL_UNKNOWN; ?></label>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="imonitor-report-contract-following_schedule-reason"><?php echo GENERIC_LABEL_DETAILEDINFO; ?></label>
                                         <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
                                         <input type="text" class="form-control" id="imonitor-report-contract-following_schedule-reason" name="imonitor[report][contract_following_schedule_reason]" placeholder="..." aria-label="Delay reasons" aria-describedby="imonitor-report-contract-following_schedule-reason" value="<?php echo cvo($data, 'contract_following_schedule_reason'); ?>">
+
                                     </div>
+                                    <?php showComment($comments, 'contract_following_schedule'); ?>
                                 </div>
 
                                 <div class="col mt-3 mb-4">
@@ -929,6 +987,7 @@
                                         <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
                                         <input type="text" class="form-control" id="imonitor-report-contract_quantity_quality-reason" name="imonitor[report][contract_quantity_quality_reason]" placeholder="..." aria-label="Delay reasons" aria-describedby="imonitor-report-contract-following_schedule-reason" value="<?php echo cvo($data, 'contract_quantity_quality_reason'); ?>">
                                     </div>
+                                    <?php showComment($comments, 'contract_quantity_quality'); ?>
                                 </div>
 
                                 <div class="col mt-3 mb-4">
@@ -951,6 +1010,7 @@
                                         <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
                                         <input type="text" class="form-control" id="imonitor-report-contract_payments-reason" name="imonitor[report][contract_payments_reason]" placeholder="..." value="<?php echo cvo($data, 'contract_payments_reason'); ?>" aria-label="Delay reasons" aria-describedby="imonitor-report-contract-following_schedule-reason">
                                     </div>
+                                    <?php showComment($comments, 'contract_payments'); ?>
                                 </div>
 
 
@@ -976,6 +1036,7 @@
                                         <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
                                         <input type="text" class="form-control" id="imonitor-report-contract_modifications_writing-reason" name="imonitor[report][contract_modifications_writing_reason]" value="<?php echo cvo($data, 'contract_modifications_writing_reason'); ?>" placeholder="..." aria-label="Delay reasons" aria-describedby="imonitor-report-contract-following_schedule-reason">
                                     </div>
+                                    <?php showComment($comments, 'contract_modifications_writing'); ?>
                                 </div>
                                 <!-- EOF Subconditional -->
 
@@ -1000,6 +1061,7 @@
                                         <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
                                         <input type="text" class="form-control" id="imonitor-report-contract_provisions_fulfilled-reason" name="imonitor[report][contract_provisions_fulfilled_reason]" value="<?php echo cvo($data, 'contract_provisions_fulfilled_reason'); ?>" placeholder="Delay reasons..." aria-label="Delay reasons" aria-describedby="imonitor-report-contract-following_schedule-reason">
                                     </div>
+                                    <?php showComment($comments, 'contract_provisions_fulfilled'); ?>
                                 </div>
                             </div>
                             <!-- EOF OPTION B -->
@@ -1029,6 +1091,7 @@
                                         <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
                                         <input type="text" class="form-control" id="imonitor-report-contract_supplier_fully_deliver-reason" name="imonitor[report][contract_supplier_fully_deliver_reasons]" value="<?php echo cvo($data,'contract_supplier_fully_deliver_reasons'); ?>" placeholder="..." aria-label="Delay reasons" aria-describedby="imonitor-report-contract-following_schedule-reason">
                                     </div>
+                                    <?php showComment($comments, 'contract_supplier_fully_deliver'); ?>
                                 </div>
 
                                 <div class="col mt-3 mb-4">
@@ -1053,6 +1116,7 @@
                                         <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
                                         <input type="text" class="form-control" id="imonitor-report-contract_supply_acceptable_state-reason" name="imonitor[report][contract_supply_acceptable_reason]" value="<?php echo cvo($data, 'contract_supply_acceptable_reason'); ?>" placeholder="..." aria-label="Delay reasons" aria-describedby="imonitor-report-contract-following_schedule-reason">
                                     </div>
+                                    <?php showComment($comments, 'contract_supply_acceptable_state'); ?>
                                 </div>
 
                                 <div class="col mt-3 mb-4">
@@ -1075,6 +1139,7 @@
                                         <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
                                         <input type="text" class="form-control" id="imonitor-report-contract_procured_goods_intended-reason" name="imonitor[report][contract_procured_goods_intended_reason]" value="<?php echo cvo($data, 'contract_procured_goods_intended_reason'); ?>" placeholder="..." aria-label="Delay reasons" aria-describedby="imonitor-report-contract-following_schedule-reason">
                                     </div>
+                                    <?php showComment($comments, 'contract_procured_goods_intended'); ?>
                                 </div>
 
 
@@ -1101,6 +1166,7 @@
                                         <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
                                         <input type="text" class="form-control" id="imonitor-report-contract_works_project_operational-reason" name="imonitor[report][contract_works_project_operational_reason]" value="<?php echo cvo($data, 'contract_works_project_operational_reason'); ?>" placeholder="..." aria-label="Delay reasons" aria-describedby="imonitor-report-contract-following_schedule-reason">
                                     </div>
+                                    <?php showComment($comments, 'contract_works_project_operational'); ?>
                                 </div>
                             </div>
                             <!--EOF OPTION C - FINISHED -->
@@ -1109,6 +1175,7 @@
                             <div class="col mt-3 mb-4">
                                 <label for="imonitor-report-contract_implementation_additional_information"><?php echo S2SA_LABEL_ADDITIONALINFO; ?></label>
                                 <input type="text" class="form-control" id="imonitor-report-contract_implementation_additional_information" name="imonitor[report][contract_implementation_additional_information]" value="<?php echo cvo($data, 'contract_implementation_additional_information'); ?>" placeholder="<?php placeholderize(S2SA_LABEL_ADDITIONALINFO); ?>" aria-label="Additional information" aria-describedby="imonitor-report-contract-following_schedule-reason">
+                                <?php showComment($comments, 'contract_implementation_additional_information'); ?>
                             </div>
 
 
@@ -1159,6 +1226,8 @@
                                     <label class="form-label" for="imonitor-report-contract_investigation_other"><?php echo GENERIC_LABEL_OTHER; ?></label>
                                     <input class="form-control" type="text" name="imonitor[report][contract_investigation_other]" id="imonitor-report-contract_investigation_other" value="<?php echo cvo($data, 'contract_investigation_other'); ?>">
                                 </div>
+
+                                <?php showComment($comments, 'contract_investigation_interview'); ?>
                             </div>
 
 
@@ -1254,7 +1323,7 @@
                                     </tr>
                                     </tbody>
                                 </table>
-
+                                <?php showComment($comments, 'contract_doctype_access'); ?>
                             </div>
 
                             <div class="col mt-3 mb-4">
@@ -1275,7 +1344,7 @@
                                     <label class="form-label" for="imonitor-report-contract_doctype_access_problem_other"><?php echo GENERIC_LABEL_OTHER; ?></label>
                                     <input class="form-control" type="text" name="imonitor[report][contract_doctype_access_problem_other]" id="imonitor-report-contract_doctype_access_problem_other" value="<?php echo cvo($data, 'contract_doctype_access_problem_other'); ?>">
                                 </div>
-
+                                <?php showComment($comments, 'contract_doctype_access_problem'); ?>
                             </div>
 
                             <div class="col mt-3 mb-4">
@@ -1315,11 +1384,12 @@
                                 endif;
                                 ?>
                                 <button class="btn btn-sm btn-outline-secondary repeater mt-2 mb-2" data-repeater-target="#imonitor-report-contract-interviewed-0" type="button"><i class="fal fa-plus"></i> <?php echo S2SB_BUTTON_ADDINTERVIEW; ?></button>
+                                <?php showComment($comments, 'contract_interviewed'); ?>
                             </div>
                             <div class="col mb-4 mt-3 ">
                                 <label for="imonitor-report-contract_online_sources"><?php echo S2SB_LABEL_ONLINESOURCES; ?></label>
                                 <input type="text" class="form-control" id="imonitor-report-contract_online_sources" name="imonitor[report][contract_online_sources]" value="<?php echo cvo($data, 'contract_online_sources'); ?>" placeholder="..." aria-label="Online sources" aria-describedby="imonitor-report-contract_online_sources">
-
+                                <?php showComment($comments, 'contract_online_sources'); ?>
                             </div>
                         </fieldset>
                     </div>
@@ -1379,6 +1449,7 @@
                                     <input class="form-check-input" type="checkbox" name="imonitor[report][dissemination_other]" id="imonitor-report-dissemination_other" value="YES" <?php echo (cvo($data, 'dissemination_other') == 'yes' ? 'checked' : ''); ?>>
                                     <label class="form-check-label" for="imonitor-report-dissemination_other"><?php echo GENERIC_LABEL_OTHER; ?></label>
                                 </div>
+                                <?php showComment($comments, 'dissemination'); ?>
                             </div>
 
 
@@ -1427,6 +1498,7 @@
                                 </div>
                                 <?php endif; ?>
                                 <button class="btn btn-sm btn-outline-secondary repeater mt-2 mb-2" data-repeater-target="#imonitor-report-contract-connectionspeople-0" type="button"><i class="fal fa-plus"></i> <?php echo S3S_BUTTON_ADDCONNECTION; ?></button>
+                                <?php showComment($comments, 'connectionsubject'); ?>
                             </div>
 
                             <div class="col mt-3 mb-4">
@@ -1441,6 +1513,7 @@
                                     <input class="form-check-input trigger-display" data-target="#shot-by-media" type="radio" name="imonitor[report][media_dissemination]" id="imonitor-report-media-dissemination_2" value="no" <?php echo (cvo($data, 'media_dissemination') == 'no' ? 'checked' : ''); ?>>
                                     <label class="form-check-label" for="imonitor-report-media-dissemination_2"><?php echo GENERIC_RADIOLABEL_NO; ?></label>
                                 </div>
+                                <?php showComment($comments, 'media_dissemination'); ?>
                             </div>
 
                             <div class="col mt-3 mb-4 <?php echo (cvo($data, 'media_dissemination') == 'no' ? 'd-none' : ''); ?>" id="shot-by-media">
@@ -1471,6 +1544,7 @@
                                     <input class="form-check-input" type="checkbox" name="imonitor[report][shot_by_media_other]" id="imonitor-report-shot-by-media-other" value="YES" <?php echo (cvo($data, 'shot_by_media_other') == 'yes' ? 'checked' : ''); ?>>
                                     <label class="form-check-label" for="imonitor-report-shot-by-media-other"><?php echo GENERIC_LABEL_OTHER; ?></label>
                                 </div>
+                                <?php showComment($comments, 'shot_by_media'); ?>
                             </div>
 
 
@@ -1485,6 +1559,7 @@
                                     <input class="form-check-input trigger-display" data-target="#public-admin-response" type="radio" name="imonitor[report][contact_public_admin]" id="imonitor-report-contact-public-admin_no" value="no" <?php echo (cvo($data, 'contact_public_admin') == 'no' ? 'checked' : ''); ?>>
                                     <label class="form-check-label" for="imonitor-report-contact-public-admin_no"><?php echo GENERIC_RADIOLABEL_NO; ?></label>
                                 </div>
+                                <?php showComment($comments, 'contact_public_admin'); ?>
                             </div>
 
 
@@ -1520,12 +1595,14 @@
                                     <input class="form-check-input" type="radio" name="imonitor[report][public_admin_response]" id="imonitor-report-public-admin-response-other" value="7" <?php echo (cvo($data, 'public_admin_response') == 7 ? 'checked' : ''); ?>>
                                     <label class="form-check-label" for="imonitor-report-public-admin-response-other"><?php echo GENERIC_LABEL_OTHER; ?></label>
                                 </div>
+                                <?php showComment($comments, 'public_admin_response'); ?>
                             </div>
 
 
                             <div class="col mt-3 mb-4">
                                 <label for="imonitor-report-result-description" class="form-label"><?php echo S3S_LABEL_CASEDESCRIPTION; ?></label>
                                 <textarea class="form-control" id="imonitor-report-result-description" name="imonitor[report][case_description]"><?php echo cvo($data, 'case_description'); ?></textarea>
+                                <?php showComment($comments, 'case_description'); ?>
                             </div>
                         </fieldset>
                     </div>
