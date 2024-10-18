@@ -518,3 +518,146 @@ function placeholderize($str){
 function evaluateCB($data, $field){
     return (array_key_exists($field, $data) ?  1 : 0);
 }
+
+/** PDF Generation Helpers **/
+
+function setData($label, $value, $options = array()){
+    $html = '';
+    if(!empty( $value )):
+        $html = '<p><strong>' . $label . ':</strong> ';
+        if(in_array('link', $options)):
+            $html .= '<a href="' . $value . '">' . $value . '</a>';
+        elseif(in_array('boolean', $options)):
+            $html .= boolean_flip($value);
+        elseif(in_array('policy', $options)):
+            $html .= policy_map($value);
+        elseif(in_array('contract_type', $options)):
+            $html .= contract_type_map($value);
+        elseif(in_array('date', $options)):
+            $html .= $value;
+        elseif(in_array('triple', $options)):
+            $html .= triple($value);
+        elseif(in_array('sites', $options)):
+            $html .= sites($value);
+        elseif(in_array('inspections', $options)):
+            $html .= inspections($value);
+        elseif(in_array('subcontractors', $options)):
+            $html .= subcontractors($value);
+        elseif(in_array('interviews', $options)):
+            $html .= interviews($value);
+        elseif(in_array('connections', $options)):
+            $html .= connections($value);
+        elseif(in_array('implementation_status', $options)):
+            $html .= implementation_status($value);
+        elseif(in_array('admin_responses', $options)):
+            $html .= admin_responses($value);
+        else:
+            $html .= $value;
+        endif;
+        $html .= '</p>';
+    endif;
+    return $html;
+}
+function boolean_flip($value){
+    return ( $value == 1 || strtolower($value) == 'yes' ?  GENERIC_RADIOLABEL_YES : GENERIC_RADIOLABEL_NO );
+}
+function policy_map($policy){
+    switch($policy):
+        case 1: return S1SA_OPTION_MAINPOLICY_1;
+        case 2: return S1SA_OPTION_MAINPOLICY_2;
+        case 3: return S1SA_OPTION_MAINPOLICY_3;
+        case 4: return S1SA_OPTION_MAINPOLICY_4;
+    endswitch;
+}
+function contract_type_map($type){
+    switch($type):
+        case 'Goods': return S1SB_RADIOLABEL_CONTRACTTYPE_1;
+        case 'Works': return S1SB_RADIOLABEL_CONTRACTTYPE_2;
+        case 'Services': return S1SB_RADIOLABEL_CONTRACTTYPE_3;
+        default: return 'N.A.';
+    endswitch;
+}
+
+function sites($sites){
+    $sites = json_decode($sites, true);
+    $return = '<ul>';
+    foreach($sites as $site){
+        $return .= '<li><a href="https://www.google.com/maps/place/' . $site['lat']. ',' . $site['lng'] . '">' . $site['address'] . '</a> (' . $site['lat']. ', ' . $site['lng'] . ')</li>';
+    }
+    $return .= '</ul>';
+    return $return;
+}
+function subcontractors($subs){
+    $subs = json_decode($subs, true);
+    $return = '<ul>';
+    foreach($subs as $sub){
+        $return .= '<li>' . S1SB_FIELD_SUBCONTRACTORS_NAME . ': ' . $sub['name'] . ' (' .S1SB_FIELD_SUBCONTRACTORS_VALUE. ': ' . $sub['value'] . ' €)</li>';
+    }
+    $return .= '</ul>';
+    return $return;
+}
+
+function connections($connections){
+    $connections = json_decode($connections, true);
+    $return = '<ul>';
+    foreach($connections as $connection){
+        $return .= '<li>['.$connection['connectiontype'].'] - ' . S3S_LABEL_CONNECTION_PERSON_NAME . ': ' . $connection['name'] . ' (' .S3S_LABEL_CONNECTION_PERSON_ROLE. ': ' . $connection['role'] . ' - ' . $connection['org'] . ')</li>';
+    }
+    $return .= '</ul>';
+    return $return;
+}
+
+function interviews($subs){
+    $subs = json_decode($subs, true);
+    $return = '<ul>';
+    foreach($subs as $sub){
+        $return .= '<li>' . $sub['name'] . ' (' . $sub['role'] . ')</li>';
+    }
+    $return .= '</ul>';
+    return $return;
+}
+
+function triple($value){
+    switch($value):
+        case 'yes': return GENERIC_RADIOLABEL_YES;
+        case 'no': return GENERIC_RADIOLABEL_NO;
+        case 'unknown': return GENERIC_RADIOLABEL_UNKNOWN;
+        endswitch;
+}
+
+function inspections($value){
+    $sites = json_decode($value, true);
+    $return = '<ul>';
+    foreach($sites as $site){
+        $return .= '<li>' . $site['site'] . ' (' . $site['date'] . ')</li>';
+    }
+    $return .= '</ul>';
+    return $return;
+}
+
+function implementation_status($value){
+    switch($value):
+        case 1: return S2SA_RADIOLABEL_IMPLEMENTATIONSTATUS_1 . ' - ' . S2SA_HELP_IMPLEMENTATIONSTATUS_1;
+        case 2: return S2SA_RADIOLABEL_IMPLEMENTATIONSTATUS_2 . ' - ' . S2SA_HELP_IMPLEMENTATIONSTATUS_2;
+        case 3: return S2SA_RADIOLABEL_IMPLEMENTATIONSTATUS_3 . ' - ' . S2SA_HELP_IMPLEMENTATIONSTATUS_3;
+    endswitch;
+}
+function admin_responses($value){
+    switch($value):
+        case 1: return S3S_OPTION_ADMINISTRATIONQUESTIONS_1;
+        case 2: return S3S_OPTION_ADMINISTRATIONQUESTIONS_2;
+        case 3: return S3S_OPTION_ADMINISTRATIONQUESTIONS_3;
+        case 4: return S3S_OPTION_ADMINISTRATIONQUESTIONS_4;
+        case 5: return S3S_OPTION_ADMINISTRATIONQUESTIONS_5;
+        case 6: return S3S_OPTION_ADMINISTRATIONQUESTIONS_6;
+    endswitch;
+}
+
+function setDocuments($docs){
+    $return = '<ul>';
+    foreach($docs as $doc){
+        $return .= '<li><a href="' . APPURL .  '/resources/' . $doc->file_path . '">' . $doc->label . '</a> (' . $doc->type . ') - ' . FileSizeConvert($doc->file_size) . '</li>';
+    }
+    $return .= '</ul>';
+    return $return;
+}

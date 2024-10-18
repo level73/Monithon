@@ -12,8 +12,6 @@ class ImonitorCtrl extends Ctrl
         $this->Errors = new Errors;
         $this->Auth = new Auth;
 
-        //$this->Lite = new Lite;
-
         $logged = false;
         if($this->Auth->isLoggedIn()){
             $this->User = $this->Auth->getProfile();
@@ -754,6 +752,236 @@ class ImonitorCtrl extends Ctrl
     /** Frontend Views */
     public function summary($id){
 
+
+    }
+
+    public function pdf($id){
+        if(!$this->Auth->isLoggedIn() ){
+            header('Location: /user/login?r=1');
+        }
+
+        $Report = new Imonitor();
+        $Repo = new ImonitorRepo();
+        $report = $Report->find($id);
+        $documents = $Repo->getFiles($id);
+
+        if($this->User->role <= 2 || $this->User->id == $report->created_by):
+            $tmp = sys_get_temp_dir();
+            $dompdf = new Dompdf\Dompdf([
+                //'isRemoteEnabled' => true,
+                'fontDir' => $tmp,
+                'fontCache' => $tmp,
+                'tempDir' => $tmp,
+                'chroot' => $tmp,
+            ]);
+
+            $html = '<!DOCTYPE html>
+                        <html>
+                        <head>
+                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                        <link rel="preconnect" href="https://fonts.googleapis.com">
+                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">';
+
+
+            $html .= "<style>
+                            @font-face{
+                                font-family: 'IBM Plex Sans';
+                                font-style: normal;
+                                font-weight: 400;
+                                src: url('/public/font/IBMPlexSans/IBMPlexSans-Regular.ttf') format('ttf');
+                            }
+                            h1, h2, h3, h4, h5, h6, p, span, li, dl, td, th { font-family: 'IBM Plex Sans', sans-serif; }
+                            p, span { font-size: 12pt; }       
+                            p strong { color: #292727; }                
+                            p { padding-left: 8pt; }
+                            
+                            h1 { margin-bottom: 20pt; padding: 5pt 10pt; color: white; background-color: #181E27; }
+                            h3 { margin-top: 20pt; color: #181E27; border-bottom: 1px solid #181E27; padding-bottom: 5pt; }
+                          </style></head><body>";
+            $html .= "<span>". date('d/m/Y H:i:s', strtotime($report->modified_at)) . "</span>";
+            $html .= "<h1>".$report->title."</h1>";
+            $html .= '<h3>' . S1SA_LABEL_TEXT . '</h3>';
+            $html .= setData(S1SA_FIELD_EUFUNDED, $report->project_eu_funded, ['boolean']);
+            if($report->project_eu_funded > 0):
+                $html .= setData(S1SA_FIELD_EUFUNDINFO, $report->project_url, ['link']);
+                $html .= setData(S1SA_FIELD_FUNDINGAMOUNT, $report->project_funding . ' €');
+                $html .= setData(S1SA_FIELD_MAINPOLICY, $report->project_policy, ['policy']);
+                $html .= setData(S1SA_FIELD_PROGRAMME, $report->project_programme);
+                //$html .= setData();
+            endif;
+            $html .= '<h3>' . S1SB_LABEL_TEXT . '</h3>';
+            $html .= setData(S1SB_FIELD_CONTRACTTITLE, $report->contract_title);
+            $html .= setData(S1SB_FIELD_CONTRACTOBJECT, $report->contract_object);
+            $html .= setData(S1SB_FIELD_CONTRACTINGBODY, $report->contract_body);
+            $html .= setData(S1SB_FIELD_SUPPLIER, $report->contract_supplier);
+            $html .= setData(S1SB_FIELD_CONTRACTVALUE, $report->contract_value . ' €');
+            $html .= setData(S1SB_FIELD_CONTRACTTYPE, $report->contract_type, ['contract_type']);
+            $html .= setData(S1SB_FIELD_SIGNATUREDATE, $report->contract_signature_date);
+            $html .= setData(S1SB_FIELD_STARTDATE, $report->contract_date_start);
+            $html .= setData(S1SB_FIELD_ENDDATE, $report->contract_date_end);
+            $html .= setData(S1SB_FIELD_DELIVERYSITE, $report->contract_sites, ['sites']);
+            $html .= setData(S1SB_FIELD_DELIVERYSCHEDULE, $report->delivery_schedule);
+            $html .= setData(S1SB_FIELD_SUPERVISOR, $report->supervisor);
+            $html .= setData(S1SB_LABEL_SUBCONTRACTING, $report->contract_subcontracting, ['triple']);
+            if($report->contract_subcontracting == 'yes'):
+                $html .= setData(S1SB_LABEL_SUBCONTRACTORS, $report->contract_subcontractors, ['subcontractors']);
+                $html .= setData(S1SB_LABEL_VALUESUBCONTRACTS, $report->subcontracting_value . ' €');
+                $html .= setData(S1SB_LABEL_PERCENTAGESUBCONTRACTS, $report->subcontracting_percentage . '%');
+            endif;
+            $html .= setData(S1SB_LABEL_CONTRACTMOD, $report->contract_modifications, ['triple']);
+            if($report->contract_modifications == 'yes'):
+                $html .= setData(S1SB_LABEL_EXTENDEDDATE, $report->contract_modification_date);
+                $html .= setData(S1SB_LABEL_DAYSEXTENDED, $report->contract_modification_days);
+                $html .= setData(S1SB_LABEL_PERCENTINCREASEDURATION, $report->contract_modification_days_percent .'%');
+                $html .= setData(S1SB_LABEL_NEWCONTRACTVALUE, $report->contract_modification_value . ' €');
+                $html .= setData(S1SB_LABEL_NEWCONTRACTVALUEDIFF, $report->contract_modification_value_diff . ' €');
+                $html .= setData(S1SB_LABEL_PERCENTINCREASEVALUE, $report->contract_modification_value_percent .'%');
+            endif;
+
+            $html .= '<h3>' . S1SC_LABEL_TEXT . '</h3>';
+
+            $html .= '<h4>' . S1SC_LABEL_COMPANYINFO . '</h4>';
+            $html .= setData(S1SC_LABEL_COMPANYNAME, $report->supplier_name);
+            $html .= setData(S1SC_LABEL_COMPANYADDRESS, $report->supplier_address);
+            $html .= setData(S1SC_LABEL_COMPANYPOSTALCODE, $report->supplier_postcode);
+            $html .= setData(S1SC_LABEL_COMPANYCITY, $report->supplier_city);
+            $html .= setData(S1SC_LABEL_COMPANYNUTSCODE, $report->supplier_nuts);
+            $html .= setData(S1SC_LABEL_COMPANYCOUNTRY, $report->supplier_country);
+
+            $html .= '<h4>' . S1SC_LABEL_COMPANYCONTACTINFO . '</h4>';
+            $html .= setData(S1SC_LABEL_COMPANYPHONENUMBER, $report->supplier_phone);
+            $html .= setData(S1SC_LABEL_COMPANYEMAIL, $report->supplier_email);
+            $html .= setData(S1SC_LABEL_COMPANYWEBSITE, $report->supplier_website);
+            $html .= setData(S1SC_LABEL_COMPANYOTHER, $report->supplier_other);
+
+            $html .= '<h4>' . S1SC_LABEL_COMPANYREGISTRATIONINFO . '</h4>';
+            $html .= setData(S1SC_LABEL_COMPANYREGISTRATIONID, $report->supplier_company_id);
+            $html .= setData(S1SC_LABEL_COMPANYIDTYPE, $report->supplier_id_type);
+            $html .= setData(S1SC_LABEL_COMPANYBUSINESSACTIVITYCODES, $report->supplier_activitycodes);
+            $html .= setData(S1SC_LABEL_COMPANYFOUNDATION, $report->supplier_foundation);
+            $html .= setData(S1SC_LABEL_COMPANYLEGALREP, $report->supplier_legalrep);
+            $html .= setData(S1SC_LABEL_COMPANYSHAREHOLDERS, $report->supplier_shareholder);
+            $html .= setData(S1SC_LABEL_COMPANYOTHERINDIVIDUALS, $report->supplier_otherindividuals);
+            $html .= setData(S1SC_LABEL_COMPANYADDITIONALINFO, $report->supplier_additionalinfo);
+
+            $html .= '<h2>' . S2_TITLE_LABEL . '</h2>';
+            $html .= '<h3>' . S2SA_TITLE_TEXT . '</h3>';
+
+            $html .= setData(S2SA_LABEL_SITEINSPECTION, $report->site_inspection, ['triple']);
+            if($report->site_inspection == 'yes'):
+                $html .= setData(S2SA_LABEL_SITEINSPECTED, $report->inspection_site, ['inspections']);
+            else:
+                $html .= setData(S2SA_OPTION_INSPECTIONFAIL_1, $report->inspection_fail_access_denied, ['boolean']);
+                $html .= setData(S2SA_OPTION_INSPECTIONFAIL_2, $report->inspection_fail_located, ['boolean']);
+                $html .= setData(S2SA_OPTION_INSPECTIONFAIL_3, $report->inspection_fail_resources, ['boolean']);
+                $html .= setData(GENERIC_LABEL_OTHER, $report->inspection_fail_other);
+            endif;
+
+            $html .= setData(S2SA_LABEL_IMPLEMENTATIONSTATUS, $report->implementation_status, ['implementation_status']);
+            if($report->implementation_status == 1):
+                $html .= setData(S2SA_LABEL_IMPLEMENTATIONSTATUSINFO, $report->contract_delay_reason);
+
+            elseif($report->implementation_status == 2):
+                $html .= setData(S2SA_LABEL_IMPLEMENTATIONSCHEDULE, $report->contract_following_schedule, ['triple']);
+                $html .= setData('', $report->contract_following_schedule_reason);
+                $html .= setData(S2SA_LABEL_QUANTITYQUALITY, $report->contract_quantity_quality, ['triple']);
+                $html .= setData('', $report->contract_quantity_quality_reason);
+                $html .= setData(S2SA_LABEL_PAYMENTS, $report->contract_payments, ['triple']);
+                $html .= setData('', $report->contract_payments_reason);
+                if($report->contract_modifications == 'yes'):
+                    $html .= setData(S2SA_LABEL_CONTRACTMODSINWRITING, $report->contract_modifications_writing, ['triple']);
+                    $html .= setData('', $report->contract_modifications_writing_reason);
+                endif;
+                $html .= setData(S2SA_LABEL_CONTRACTPROVISIONSFULFILLED, $report->contract_provisions_fulfilled, ['triple']);
+                $html .= setdata('', $report->contract_provisions_fulfilled_reason);
+
+            elseif($report->implementation_status == 3):
+                $html .= setData(S2SA_LABEL_SUPPLIERDELIVER, $report->contract_supplier_fully_deliver, ['triple']);
+                $html .= setData('', $report->contract_supplier_fully_deliver_reason);
+                $html .= setData(S2SA_LABEL_DELIVEREDGOODS, $report->contract_supply_acceptable_state, ['triple']);
+                $html .= setData('', $report->contract_supply_acceptable_state_reason);
+                $html .= setData(S2SA_LABEL_PROCUREDGOODS, $report->contract_procured_goods_intended, ['triple']);
+                $html .= setData('', $report->contract_procured_goods_intended_reason);
+                $html .= setData(S2SA_LABEL_WORKSCONTRACT, $report->contract_works_project_operational, ['triple']);
+                $html .= setData('', $report->contract_works_project_operational_reason);
+            endif;
+            $html .= setData(S2SA_LABEL_ADDITIONALINFO, $report->contract_implementation_additional_information);
+
+            $html .= '<h3>' . S2SB_TITLE_TEXT . '</h3>';
+            $html .= '<h4>' . S2SB_LABEL_SOURCES . '</h4>';
+            $html .= setData(S2SB_LABEL_SOURCES_WEB, $report->contract_investigation_webresearch, ['boolean']);
+            $html .= setData(S2SB_LABEL_SOURCES_DOCS, $report->contract_investigation_documentation, ['boolean']);
+            $html .= setData(S2SB_LABEL_SOURCES_SITE, $report->contract_investigation_inspection, ['boolean']);
+            $html .= setData(S2SB_LABEL_SOURCES_INTERVIEW_REPS, $report->contract_investigation_interviewcontracting, ['boolean']);
+            $html .= setData(S2SB_LABEL_SOURCES_INTERVIEW_SUPERVISOR, $report->contract_investigation_interviewsupervisor, ['boolean']);
+            $html .= setData(S2SB_LABEL_SOURCES_INTERVIEW_RCI, $report->contract_investigation_interviewresponsible, ['boolean']);
+            $html .= setData(S2SB_LABEL_SOURCES_BENEFICIARIES, $report->contract_investigation_interviewbeneficiaries, ['boolean']);
+            $html .= setData(S2SB_LABEL_SOURCES_OTHER, $report->contract_investigation_interviewother, ['boolean']);
+
+            $html .= '<h4>' . S2SB_LABEL_DOCUMENTATIONACCESS . '</h4>';
+            $html .= setData(S2SB_OPTION_DOCUMENTATIONACCESS_1, $report->contract_doctype_access_contract, ['boolean']);
+            $html .= setData(S2SB_OPTION_DOCUMENTATIONACCESS_2, $report->contract_doctype_access_contract_ext, ['boolean']);
+            $html .= setData(S2SB_OPTION_DOCUMENTATIONACCESS_3, $report->contract_doctype_access_contract_reports, ['boolean']);
+            $html .= setData(S2SB_OPTION_DOCUMENTATIONACCESS_4, $report->contract_doctype_access_pos_invoices, ['boolean']);
+            $html .= setData(S2SB_OPTION_DOCUMENTATIONACCESS_5, $report->contract_doctype_access_technical, ['boolean']);
+            $html .= setData(S2SB_OPTION_DOCUMENTATIONACCESS_6, $report->contract_doctype_access_bid, ['boolean']);
+
+            $html .= '<h4>' . S2SB_LABEL_DOCUMENTATIONACCESSFAIL . '</h4>';
+            $html .= setData(S2SB_OPTION_DOCUMENTATIONACCESSFAIL_1, $report->contract_doctype_access_problem_incomplete, ['boolean']);
+            $html .= setData(S2SB_OPTION_DOCUMENTATIONACCESSFAIL_2, $report->contract_doctype_access_problem_not_obtained, ['boolean']);
+            $html .= setData(S2SB_OPTION_DOCUMENTATIONACCESSFAIL_3, $report->contract_doctype_access_problem_not_granted, ['boolean']);
+            $html .= setData('', $report->contract_doctype_access_problem_other);
+
+            $html .= setData(S2SB_LABEL_INTERVIEWS, $report->contract_interviewed, ['interviews']);
+
+            $html .= setData(S2SB_LABEL_ONLINESOURCES, $report->contract_online_sources);
+
+            $html .= '<h2>' . S3_TITLE_TEXT . '</h2>';
+            $html .= '<h3>' . S3S_TITLE_CONNECTIONS . '</h3>';
+
+            $html .= '<p><strong>' . S3S_LABEL_CONNECTIONS . '</strong></p>';
+            $html .= setData(S3S_OPTION_CONNECTIONS_1,  $report->dissemination_x,           ['boolean']);
+            $html .= setData(S3S_OPTION_CONNECTIONS_2,  $report->dissemination_facebook,    ['boolean']);
+            $html .= setData(S3S_OPTION_CONNECTIONS_3,  $report->dissemination_instagram,   ['boolean']);
+            $html .= setData(S3S_OPTION_CONNECTIONS_4,  $report->dissemination_events,      ['boolean']);
+            $html .= setData(S3S_OPTION_CONNECTIONS_5,  $report->dissemination_website,     ['boolean']);
+            $html .= setData(S3S_OPTION_CONNECTIONS_6,  $report->dissemination_offline,     ['boolean']);
+            $html .= setData(S3S_OPTION_CONNECTIONS_7,  $report->dissemination_meetings,    ['boolean']);
+            $html .= setData(S3S_OPTION_CONNECTIONS_8,  $report->dissemination_media,       ['boolean']);
+            $html .= setData(GENERIC_LABEL_OTHER,       $report->dissemination_other,       ['boolean']);
+
+            $html .= setData(S3S_LABEL_CONNECTION_PERSON, $report->connection_subjects, ['connections']);
+
+            $html .= setData(S3S_LABEL_MEDIA, $report->media_dissemination, ['boolean']);
+            if($report->media_dissemination == 'yes'):
+                $html .= setData(S3S_OPTION_WHICHMEDIA_1, $report->shot_by_media_localtv, ['boolean']);
+                $html .= setData(S3S_OPTION_WHICHMEDIA_2, $report->shot_by_media_nationaltv, ['boolean']);
+                $html .= setData(S3S_OPTION_WHICHMEDIA_3, $report->shot_by_media_localpaper, ['boolean']);
+                $html .= setData(S3S_OPTION_WHICHMEDIA_4, $report->shot_by_media_nationalpaper, ['boolean']);
+                $html .= setData(S3S_OPTION_WHICHMEDIA_5, $report->shot_by_media_online, ['boolean']);
+                $html .= setData(GENERIC_LABEL_OTHER, $report->shot_by_media_other, ['boolean']);
+            endif;
+
+            $html .= setData(S3S_LABEL_CONTACTWITHADMINISTRATION, $report->contact_public_admin, ['boolean']);
+            if($report->contact_public_admin == 'yes'):
+                $html .= setData(S3S_LABEL_ADMINISTRATIONQUESTIONS, $report->public_admin_response, ['admin_responses']);
+            endif;
+            $html .= setData(S3S_LABEL_CASEDESCRIPTION, $report->case_description);
+
+
+            $html .= setDocuments($documents);
+
+            // die($html);
+            $html .= '</body></html>';
+            $dompdf->loadHtml($html);
+            $dompdf->setPaper('A4', 'portrait');
+            $dompdf->render();
+
+            $dompdf->stream();
+        else:
+            header('Location: /user/ops');
+        endif;
 
     }
 }

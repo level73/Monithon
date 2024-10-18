@@ -331,6 +331,7 @@
                         <th data-sortable="true" data-field="modified_at">Ultima Modifica</th>
                         <th data-sortable="true" data-field="status"class="text-center">Stato</th>
                         <th data-field="edit" class="text-center">Modifica</th>
+                        <th data-field="download_pdf"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -352,7 +353,9 @@
 
                                 <?php
                                 // CONDITION 1: (user is at least an editor OR user has permission OR is reviewer) AND (report in pending review)
-                                if( ( $user->role <= 2 || hasPermission($user, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD) ) || $r->reviewed_by == $user->id) && ($r->status == PENDING_REVIEW || $r->status == IN_REVIEW )  ){
+                                if( ( $user->role <= 2 ||
+                                      hasPermission($user, array(P_EDIT_REPORT, P_ASSIGN_REPORT, P_BOUNCE_REPORT, P_COMMENT_REPORT, P_MANAGE_REPORT_CARD) ) ||
+                                        $r->reviewed_by == $user->id) && ($r->status == PENDING_REVIEW || $r->status == IN_REVIEW )  ){
                                     ?>
                                     <a href="/imonitor/review/<?php echo $r->idimonitor; ?>" class="btn btn-default btn-sm"><i class="far fa-pencil"></i></a>
                                     <?php
@@ -367,6 +370,11 @@
                                     <?php } ?>
 
                                 <?php } ?>
+                            </td>
+                            <td>
+                                <?php if($r->status == PUBLISHED): ?>
+                                    <a class="btn btn-primary" href="/imonitor/pdf/<?php echo $r->idimonitor; ?>" target="_blank"><i class="fas fa-file-pdf"></i> DOWNLOAD</a>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php } ?>
