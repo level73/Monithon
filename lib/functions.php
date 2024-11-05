@@ -662,7 +662,7 @@ function setDocuments($docs){
     $return .= '</ul>';
     return $return;
 }
-function imageEmbed($path): false|string
+function imageEmbed($path)
 {
     $type = pathinfo($path, PATHINFO_EXTENSION);
     $data = file_get_contents($path);
