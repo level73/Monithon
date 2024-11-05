@@ -84,28 +84,33 @@ var IMNTR = {
 
                 // Check for EU Funding
                 let euFunding = false;
-                if(data.hasOwnProperty('fundings')){
-                     euFunding = data.fundings[0].isEuFund;
-                }
-                if(!euFunding){
-                    $('input#imonitor-report-eu-funded2').prop('checked', true);
-                }
-                else {
-                    $('input#imonitor-report-eu-funded1').prop('checked', true);
-                    if(data.fundings[0].hasOwnProperty('programme')){
-                        $('input#imonitor-report-project-programme').val(data.fundings[0].programme);
+                let preselectedEuFunding = $("input[type='radio'][name='imonitor[report][eu_funded]']:checked").val();
+                console.log(preselectedEuFunding);
+
+                if(!preselectedEuFunding){
+                    if(data.hasOwnProperty('fundings')){
+                         euFunding = data.fundings[0].isEuFund;
+                    }
+                    if(!euFunding){
+                        $('input#imonitor-report-eu-funded2').prop('checked', true);
+                    }
+                    else {
+                        $('input#imonitor-report-eu-funded1').prop('checked', true);
+                        if(data.fundings[0].hasOwnProperty('programme')){
+                            $('input#imonitor-report-project-programme').val(data.fundings[0].programme);
+                        }
+                    }
+
+
+                    //CUP Code
+                    if(data.lots[0].hasOwnProperty("fundings")){
+                        $('#imonitor-report-project-cup').val(data.lots[0].fundings[0].programme);
+                    }
+                    // CIG Code
+                    if(data.lots[0].hasOwnProperty("contractNumber")){
+                        $('#imonitor-report-contract-cig').val(data.lots[0].contractNumber);
                     }
                 }
-
-                //CUP Code
-                if(data.lots[0].hasOwnProperty("fundings")){
-                    $('#imonitor-report-project-cup').val(data.lots[0].fundings[0].programme);
-                }
-                // CIG Code
-                if(data.lots[0].hasOwnProperty("contractNumber")){
-                    $('#imonitor-report-contract-cig').val(data.lots[0].contractNumber);
-                }
-
                 if(data.title !== undefined ) { $('input#imonitor-report-contract-title').val(data.title); }
                 if(data.ot.cpv !== undefined ){ $('input#imonitor-report-contract-object').val(data.ot.cpv + ' - ' + data.description); }
                 if(data.ot.cpv !== undefined ){ $('input#imonitor-report-contract-body').val(data.buyers[0].name); }

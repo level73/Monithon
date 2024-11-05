@@ -398,8 +398,12 @@
     }
 
     /** Report Connections Meta Table */
-      public function getConnections($report, $entity = T_REP_BASIC){
-        $sql = 'SELECT * FROM meta_connection WHERE report = :report AND `entity` = :entity';
+      public function getConnections($report, $entity = T_REP_BASIC, $lexicon = false){
+        $sql = 'SELECT * FROM meta_connection';
+        if($lexicon):
+            $sql .= ' INNER JOIN lexicon_connection_type AS lct ON lct.idconnection_type = meta_connection.connection_type ';
+        endif;
+          $sql .= ' WHERE report = :report AND `entity` = :entity';
         $stmt = $this->database->prepare($sql);
 
           $stmt->bindParam(':report', $report, PDO::PARAM_INT);
@@ -437,7 +441,7 @@
 
       public function updateConnections($entity, $report, $data){
 
-        self::unsetConnections($report);
+        self::unsetConnections($report, $entity);
         foreach($data as $i => $data){
         $fields = array_keys($data);
         $holders = query_placeholders($data, true);

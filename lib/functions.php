@@ -4,6 +4,7 @@
 
 /** #DEBUGGING **/
 function dbga($array){
+
   echo "<div class=\"clearfix\"><pre>";
   print_r($array);
   echo "</pre></div>";
@@ -660,4 +661,32 @@ function setDocuments($docs){
     }
     $return .= '</ul>';
     return $return;
+}
+function imageEmbed($path): false|string
+{
+    $type = pathinfo($path, PATHINFO_EXTENSION);
+    $data = file_get_contents($path);
+    if(!$data):
+        return false;
+    else:
+        return 'data:image/' . $type . ';base64,' . base64_encode($data);
+    endif;
+}
+
+/** Report Lite View helpers */
+function checkDiffusione($report){
+    if(   $report->diffusione_twitter == 1 ||
+        $report->diffusione_facebook == 1 ||
+        $report->diffusione_instagram == 1 ||
+        $report->diffusione_eventi == 1 ||
+        $report->diffusione_open_admin == 1 ||
+        $report->diffusione_blog == 1 ||
+        $report->diffusione_offline == 1 ||
+        $report->diffusione_incontri == 1 ||
+        $report->diffusione_interviste == 1 ||
+        !empty($report->diffusione_altro) ):
+        return true;
+    else:
+        return false;
+    endif;
 }

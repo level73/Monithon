@@ -896,6 +896,45 @@ body.user.login {
   font-size: 12px;
 }
 
+.checker {
+  margin-bottom: 4px;
+}
+.checker .checker-flag {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 12px;
+  float: left;
+  outline: 1px solid #90afbc;
+}
+.checker .checker-flag.checker-flag-active {
+  border: 2px solid white;
+  background-color: #90afbc;
+}
+.checker .checker-flag.checker-flag-active ~ .checker-label {
+  color: rgb(1, 22, 39);
+}
+.checker .checker-label {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.connection-details {
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #90afbc;
+}
+.connection-details .connection-type {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: rgb(1, 22, 39);
+}
+.connection-details .subject {
+  font-size: 14px;
+  color: #555555;
+}
+
 #disclaimer-banner {
   background: #fd7e14;
   text-transform: uppercase;

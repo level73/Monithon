@@ -3,7 +3,10 @@
 const DEBUG = true;
 /** System status - influences error reporting **/
 const SYSTEM_STATUS = 'development';
-
+if(DEBUG):
+    $err = error_get_last();
+    debug_backtrace();
+    endif;
 /** Define Entities **/
 
 /** Set default controller and route **/

@@ -31,6 +31,10 @@ class LiteCtrl extends Ctrl
 
         $Report = $this->Lite->getReport($id);
 
+        $Connection = new Meta('connection');
+        $Report->connections = $Connection->getConnections($id,T_REP_LITE, true);
+
+
         $this->set('title', 'Report');
         $Errors = new Errors();
         $User = new User();
@@ -516,6 +520,8 @@ class LiteCtrl extends Ctrl
                         $comments = $data['comment'];
                         unset($data['comment']);
                     }
+
+                    //if(!isset($data->status_impact) && $data->status_impact == PUBLISHED ):
 
                     // Save Report
                     $update = $this->Lite->update($id, $data);

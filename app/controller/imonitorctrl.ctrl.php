@@ -35,7 +35,7 @@ class ImonitorCtrl extends Ctrl
             $this->set('title', 'Nuovo Report iMonitor');
             $this->set('street_map', array( 'version' => '1.9.4', 'sha' => 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='));
             $Errors = new Errors();
-            $this->set('js', array('components/imonitor.js?v=0.2.2', 'components/imonitor-geo.js?v=0.2'));
+            $this->set('js', array('components/imonitor.js?v=0.2.3', 'components/imonitor-geo.js?v=0.2'));
 
             if(isset($_COOKIE['tender'])){
                 $this->set('tender', $_COOKIE['tender']);
@@ -272,7 +272,7 @@ class ImonitorCtrl extends Ctrl
             $Comments = new Comment();
             $Errors = new Errors();
 
-            $this->set('js', array('components/imonitor.js?v=0.2.2', 'components/imonitor-geo.js?v=0.2'));
+            $this->set('js', array('components/imonitor.js?v=0.2.3', 'components/imonitor-geo.js?v=0.2'));
             // Get The Report
             $Model = new Imonitor();
             $r = $Model->find($id);
@@ -527,7 +527,7 @@ class ImonitorCtrl extends Ctrl
                 $logged = true;
                 $this->set('logged', $logged);
                 $this->set('street_map', array('version' => '1.9.4', 'sha' => 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='));
-                $this->set('js', array('components/imonitor.js?v=0.2.2', 'components/imonitor-geo.js?v=0.2', 'components/imonitor-review.js?v=0.1'));
+                $this->set('js', array('components/imonitor.js?v=0.2.3', 'components/imonitor-geo.js?v=0.2', 'components/imonitor-review.js?v=0.1'));
 
                 if(httpCheck()):
                     $imonitorId = $_POST['imonitor']['id'];
@@ -775,6 +775,10 @@ class ImonitorCtrl extends Ctrl
                 'chroot' => $tmp,
             ]);
 
+            // Monithon Logo Path
+            $MonithonLogo = ROOT . DS . 'public' . DS . 'images' . DS . 'monithon-logo-2022.png';
+            $iMonitorLogo = ROOT . DS . 'public' . DS . 'images' . DS . 'imonitor.png';
+
             $html = '<!DOCTYPE html>
                         <html>
                         <head>
@@ -791,15 +795,18 @@ class ImonitorCtrl extends Ctrl
                                 font-weight: 400;
                                 src: url('/public/font/IBMPlexSans/IBMPlexSans-Regular.ttf') format('ttf');
                             }
-                            h1, h2, h3, h4, h5, h6, p, span, li, dl, td, th { font-family: 'IBM Plex Sans', sans-serif; }
-                            p, span { font-size: 12pt; }       
+                            h1, h2, h3, h4, h5, h6, p, span, li, dl, td, th, div { font-family: 'IBM Plex Sans', sans-serif; }
+                            p, span { font-size: 12pt; }    
+                            .smalltext{ font-size: 10pt; color: #555555; }   
                             p strong { color: #292727; }                
                             p { padding-left: 8pt; }
                             
                             h1 { margin-bottom: 20pt; padding: 5pt 10pt; color: white; background-color: #181E27; }
                             h3 { margin-top: 20pt; color: #181E27; border-bottom: 1px solid #181E27; padding-bottom: 5pt; }
                           </style></head><body>";
-            $html .= "<span>". date('d/m/Y H:i:s', strtotime($report->modified_at)) . "</span>";
+            $html .= '<img src="' . imageEmbed( $MonithonLogo ). '" width="80" height="80">';
+            $html .= '<img src="' . imageEmbed( $iMonitorLogo ). '" width="249" height="80">';
+            $html .= "<br /><div class='smalltext'>LAST MOD: ". date('d/m/Y H:i:s', strtotime($report->modified_at)) . "</div>";
             $html .= "<h1>".$report->title."</h1>";
             $html .= '<h3>' . S1SA_LABEL_TEXT . '</h3>';
             $html .= setData(S1SA_FIELD_EUFUNDED, $report->project_eu_funded, ['boolean']);
@@ -983,5 +990,9 @@ class ImonitorCtrl extends Ctrl
             header('Location: /user/ops');
         endif;
 
+    }
+
+    public function img_test( ){
+        echo "<img src=" . imageEmbed(ROOT . DS . 'public' . DS . 'images' . DS . 'monithon-logo-2022.png' ) . ">";
     }
 }

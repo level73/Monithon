@@ -188,19 +188,13 @@
         </aside>
 
         <section class="col-sm-12 col-md-8" id="report-view">
-
             <div class="report-body">
-
                 <div class="report-section">
-
-
                     <h1><?php t_report('Cosa abbiamo scoperto'); ?></h1>
                     <?php if(!empty($report->obiettivi_del_progetto)): ?>
                         <h2><?php t_report('Obiettivi del Progetto'); ?> <span class="float-right"><a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></span></h2>
                         <p><?php echo nl2br($report->obiettivi_del_progetto); ?></p>
                     <?php endif; ?>
-
-
                     <?php if(!empty($report->giudizio)){ ?>
                         <h2><?php t_report('Giudizio'); ?> </h2>
                         <p>
@@ -208,12 +202,10 @@
                             <?php echo nl2br($report->giudizio); ?>
                         </p>
                     <?php } ?>
-
                     <?php if(!empty($report->origine)){ ?>
                         <h2><?php t_report('Origine del progetto'); ?></h2>
                         <p> <?php echo nl2br($report->origine); ?></p>
                     <?php } ?>
-
                     <div class="row">
                         <div class="col">
                             <h2><?php t_report('Punti di debolezza'); ?></h2>
@@ -224,19 +216,133 @@
                             <p><?php echo nl2br($report->punti_di_forza); ?></p>
                         </div>
                     </div>
-
                     <h2><?php t_report('Suggerimenti'); ?></h2>
                     <p><?php echo nl2br($report->suggerimenti); ?></p>
-
-
-
-
                 </div>
 
 
+                <?php if($report->status_impact == PUBLISHED): ?>
+                <h1><?php t_report('Impatto & Risultati'); ?></h1>
+                <div class="row">
+                    <?php if(   checkDiffusione($report) ): ?>
+                        <div class="col-md-6">
+                        <h2><?php t_report('Diffusione'); ?></h2>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->diffusione_twitter == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Twitter</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->diffusione_facebook == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Facebook</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->diffusione_instagram == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Instagram</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->diffusione_eventi == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Eventi territoriali organizzati dai team</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->diffusione_open_admin == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Settimana dell'Amministrazione Aperta</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->diffusione_blog == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Blog/Sito web del Team</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->diffusione_offline == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Volantinaggio o altri metodi off-line (non via Internet)</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->diffusione_incontri == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Richiesta di audizioni o incontri a porte chiuse</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->diffusione_interviste == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Interviste ai media</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if(!empty($report->diffusione_altro)): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Altro: <?php echo $report->diffusione_altro; ?></div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
 
+                    <?php if(!empty($report->connections)): ?>
+                    <div class="col-md-6">
+                        <h2>Connessioni</h2>
+                        <?php foreach($report->connections as $connection): ?>
+                        <div class="connection">
+                            <div class="connection-details">
+                                <div class="connection-type"><?php echo $connection->connection_type; ?></div>
+                                <div class="subject"><?php echo $connection->subject . ' (' . $connection->role . ')' . ' - ' . $connection->organisation; ?></div>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <?php endif; ?>
+
+                    <?php if($report->media_connection == 1): ?>
+                    <div class="col-md-6">
+                        <h2>Copertura dei Media</h2>
+                        <div class="checker">
+                            <div class="checker-flag <?php if($report->tv_locali == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">TV Locali</div>
+                        </div>
+                        <div class="checker">
+                            <div class="checker-flag <?php if($report->tv_nazionali == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">TV Nazionali</div>
+                        </div>
+                        <div class="checker">
+                            <div class="checker-flag <?php if($report->giornali_locali == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Giornali Locali</div>
+                        </div>
+                        <div class="checker">
+                            <div class="checker-flag <?php if($report->giornali_nazionali == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Giornali Nazionali</div>
+                        </div>
+                        <div class="checker">
+                            <div class="checker-flag <?php if($report->blog_online == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Blog o altre news outlet online</div>
+                        </div>
+                        <div class="checker">
+                            <div class="checker-flag <?php if($report->media_other == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Altro</div>
+                        </div>
+                    </div>
+
+                    <?php endif; ?>
+
+
+                    <?php if($report->admin_connection == 1): ?>
+                        <div class="col-md-6">
+                            <h2>Risposte dalla Pubblica Amministrazione</h2>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->admin_no == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Non ci hanno risposto</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->admin_response_some == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Abbiamo ottenuto solo risposte parziali</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->admin_response_formal == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Ci hanno dato solo risposte formali o generiche</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->admin_response_promises == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Almeno una tra quelle contattate ci ha fatto promesse concrete</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->admin_response_unlocked == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Hanno messo in pratica i nostri suggerimenti e il progetto ora è "sbloccato" o piùù efficace</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if($report->admin_response_flagged == 1): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Avevamo segnalato un problema che ora è stato risolto</div>
+                            </div>
+                            <div class="checker">
+                                <div class="checker-flag <?php if(!empty($report->admin_altro)): echo "checker-flag-active"; endif; ?>"></div> <div class="checker-label">Altro: <?php echo $report->admin_altro; ?></div>
+                            </div>
+                        </div>
+
+                    <?php endif; ?>
+
+                    <?php if(!empty($report->impact_description)): ?>
+                    <div class="col-md-12">
+                        <h2>Descrizione dell'impatto del monitoraggio</h2>
+                        <?php echo $report->impact_description; ?>
+                    </div>
+                    <?php endif; ?>
+                </div>
+
+                <?php endif; ?>
+            </div>
 
         </section>
+
+
+
 </div>
 
 

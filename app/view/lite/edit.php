@@ -10,7 +10,6 @@
 
                 <fieldset>
                     <legend><span>DATI SUL PROGETTO</span></legend>
-
                     <div class="form-group">
                         <label for="oc_api_code">URL del progetto monitorato:</label>
                         <small class="form-text text-muted">Per agganciare i dati aperti del progetto, incolla qui l'indirizzo (URL) della pagina di OpenCoesione dedicata al singolo progetto che hai scelto di monitorare. Esempio: https://opencoesione.gov.it/it/progetti/1ca1c272007it161po009/</small>
@@ -276,7 +275,7 @@
 
                 <!--Step 3 -->
 
-                <?php if( $user->role == 13 ): ?>
+                <?php if( $user->role == 13 && $data->status >= PUBLISHED): ?>
                 <h2>Impatto & Risultati</h2>
                     <fieldset>
                         <legend><span>Le nuove connessioni che hai generato</span></legend>

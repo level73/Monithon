@@ -528,15 +528,14 @@
                         </div>
                         <div class="custom-control custom-radio">
                             <input class="custom-control-input" type="radio" value="<?php echo PUBLISHED; ?>" id="status-7" name="status" <?php echo ($data->status == PUBLISHED ? 'checked' : ""); ?>>
-                            <label class="custom-control-label" for="status-7">Imposta il report come <strong>APPROVATO</strong></label>
+                            <label class="custom-control-label" for="status-7">Imposta il report come <strong>APPROVATO</strong> </label>
                         </div>
 
-                        <?php /*
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" value="<?php echo ONLY_STEP_ONE; ?>" id="step_1_only" name="step_1_only" <?php echo ($data->step_1_only == ONLY_STEP_ONE ? 'checked' : ""); ?>>
-                            <label class="custom-control-label" for="step_1_only">Pubblica <strong>SOLO LO STEP 1</strong> del Report</label>
+                            <input class="custom-control-input" type="checkbox" value="<?php echo PUBLISHED; ?>" id="status_impact" name="status_impact" <?php echo ($data->status_impact == PUBLISHED ? 'checked' : ""); ?>>
+                            <label class="custom-control-label" for="status_impact">Pubblica <strong>ANCHE L'IMPATTO</strong> del Report</label>
                         </div>
-                        */ ?>
+
                     </div>
                 </div>
                 <div class="form-group">
