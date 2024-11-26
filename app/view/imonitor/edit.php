@@ -150,6 +150,7 @@
                                             <option value="9" <?php echo (cvo($data, 'project_policy') == 9 ? 'selected' : ''); ?>>Riqualificazione urbana e rurale</option>
                                             <option value="10" <?php echo (cvo($data, 'project_policy') == 10 ? 'selected' : ''); ?>>Competitività delle imprese</option>
                                             <option value="11" <?php echo (cvo($data, 'project_policy') == 11 ? 'selected' : ''); ?>>Occupazione e lavoro</option>
+                                            <option value="12" <?php echo (cvo($data, 'project_policy') == 12 ? 'selected' : ''); ?>>Ordine pubblico e sicurezza</option>
                                         </select>
 
                                         <?php showComment($comments, 'project_policy'); ?>

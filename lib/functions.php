@@ -673,6 +673,36 @@ function imageEmbed($path)
     endif;
 }
 
+function colorCalculator($val){
+    if(empty($val)):
+        return 'rgb(111,111,111)';
+    else:
+        $rounded_val = round($val);
+        $colors = array(
+            0 => 'rgb(231,39,14)',
+            1 => 'rgb(246,91,22)',
+            2 => 'rgb(255,148,31)',
+
+            3 => 'rgb(255,202,39)',
+            4 => 'rgb(255,240,44)',
+            5 => 'rgb(255,243,43)',
+
+            6 => 'rgb(171,240,39)',
+            7 => 'rgb(107,220,33)',
+            8 => 'rgb(50,198,26)',
+            9 => 'rgb(2,182,22)'
+        );
+
+        $color_index = ( $rounded_val == 100 ? 9 : $rounded_val/10);
+        $color = $colors[$color_index];
+        return $color;
+    endif;
+}
+
+function generateRadials($val){
+
+}
+
 /** Report Lite View helpers */
 function checkDiffusione($report){
     if(   $report->diffusione_twitter == 1 ||

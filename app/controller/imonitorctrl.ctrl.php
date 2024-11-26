@@ -796,7 +796,12 @@ class ImonitorCtrl extends Ctrl
                                 src: url('/public/font/IBMPlexSans/IBMPlexSans-Regular.ttf') format('ttf');
                             }
                             h1, h2, h3, h4, h5, h6, p, span, li, dl, td, th, div { font-family: 'IBM Plex Sans', sans-serif; }
-                            p, span { font-size: 12pt; }    
+                            td { padding: 2pt; margin-bottom: 3px; border-bottom: 1px dotted #AAAAAA; }
+                            p, span, td { font-size: 12pt; }    
+                            .value_green { color: green; }
+                            .value_yellow{ color: #ffc107; }
+                            .value_red { color:red; }
+                            .value_na { color: #666666; }
                             .smalltext{ font-size: 10pt; color: #555555; }   
                             p strong { color: #292727; }                
                             p { padding-left: 8pt; }
@@ -816,6 +821,26 @@ class ImonitorCtrl extends Ctrl
                 $html .= setData(S1SA_FIELD_MAINPOLICY, $report->project_policy, ['policy']);
                 $html .= setData(S1SA_FIELD_PROGRAMME, $report->project_programme);
                 //$html .= setData();
+            endif;
+            // Integrity Indicators
+            if(!empty($report->opentender_data)):
+                $ot_data = json_decode($report->opentender_data, true);
+                //die(dbga($ot_data));
+                $html .= '<h3>' . S1SB_LABEL_CONTRACTINTEGRITY . ' (<a href="https://opentender.eu" style="font-size: 12pt; ">OpenTender.eu</a> - <span class="integrity_score" style="color: ' . colorCalculator($ot_data['ot']['score']['INTEGRITY']) . '">' . $ot_data['ot']['score']['INTEGRITY'] . '</span>)</h3>';
+                $indicators = $ot_data['ot']['indicators'];
+                $html .= '<table>';
+                foreach($indicators as $indicator):
+                    if(substr($indicator['type'], 0, 5) === 'INTEG'):
+
+                        $color = colorCalculator($indicator['value']);
+                        //dbga($indicator);
+                        //$html .= '<p><strong>' . constant($indicator['type']) . '</strong>: <span class="' . $classCode . '">' . $indicator['value'] .'</span></p>';
+                        $html .= '<tr><td style="padding: 2pt;">' . constant($indicator['type']) . '</td><td><span style="color: '.$color.'">' . $indicator['value'] .'</span></td>';
+                    endif;
+                endforeach;
+                $html.='</table>';
+                //    echo $html;
+                //die();
             endif;
             $html .= '<h3>' . S1SB_LABEL_TEXT . '</h3>';
             $html .= setData(S1SB_FIELD_CONTRACTTITLE, $report->contract_title);
