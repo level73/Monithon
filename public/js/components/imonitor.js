@@ -4,7 +4,7 @@ var IMNTR = {
     InspectionSites: [],
 
     config: {
-        version: '0.0.1',
+        version: '0.1.1',
         opentenderBaseURL: "https://open-api.staging.opentender.eu/search/"
         //opentenderBaseURL: "http://135.181.208.42:8848/"
     },
@@ -46,12 +46,14 @@ var IMNTR = {
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 
+        /** Deactivate autolookup to lock data already set by users
         $(document).ready(function() {
             if($('#imonitor-contract-url').length > 0 && $('#imonitor-contract-url').val() ){
                 let tenderId = IMNTR.parseOpenTenderUrl($('#imonitor-contract-url').val());
                 IMNTR.getTender(tenderId);
             }
         });
+        */
     },
 
     getSubdomain: function(){
