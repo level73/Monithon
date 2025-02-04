@@ -560,7 +560,7 @@ function setData($label, $value, $options = array()){
     return $html;
 }
 function boolean_flip($value){
-    return ( $value == 1 || strtolower($value) == 'yes' ?  GENERIC_RADIOLABEL_YES : GENERIC_RADIOLABEL_NO );
+    return ( $value == 1 || strtolower($value) == 'yes' || $value == 2 ?  GENERIC_RADIOLABEL_YES : GENERIC_RADIOLABEL_NO );
 }
 function policy_map($policy){
     switch($policy):

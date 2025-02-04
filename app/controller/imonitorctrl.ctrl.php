@@ -35,7 +35,7 @@ class ImonitorCtrl extends Ctrl
             $this->set('title', 'Nuovo Report iMonitor');
             $this->set('street_map', array( 'version' => '1.9.4', 'sha' => 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='));
             $Errors = new Errors();
-            $this->set('js', array('components/imonitor.js?v=0.2.3', 'components/imonitor-geo.js?v=0.2'));
+            $this->set('js', array('components/imonitor.js?v=0.2.4', 'components/imonitor-geo.js?v=0.3'));
 
             if(isset($_COOKIE['tender'])){
                 $this->set('tender', $_COOKIE['tender']);
@@ -82,8 +82,10 @@ class ImonitorCtrl extends Ctrl
                     'project_funding'           => $data['report']['project_funding'],
                     'project_policy'            => $data['report']['project_policy'],
                     'project_programme'         => $data['report']['project_programme'],
+                    'project_cup'               => $data['report']['project_cup'],
                     'contract_title'            => $data['report']['contract_title'],
                     'contract_object'           => $data['report']['contract_object'],
+                    'contract_cig'              => $data['report']['contract_cig'],
                     'contract_body'             => $data['report']['contract_body'],
                     'contract_supplier'         => $data['report']['contract_supplier'],
                     'contract_value'            => $data['report']['contract_value'],
@@ -272,7 +274,7 @@ class ImonitorCtrl extends Ctrl
             $Comments = new Comment();
             $Errors = new Errors();
 
-            $this->set('js', array('components/imonitor.js?v=0.2.3', 'components/imonitor-geo.js?v=0.2'));
+            $this->set('js', array('components/imonitor.js?v=0.2.4', 'components/imonitor-geo.js?v=0.3'));
             // Get The Report
             $Model = new Imonitor();
             $r = $Model->find($id);
@@ -322,10 +324,12 @@ class ImonitorCtrl extends Ctrl
                         'project_funding'           => $data['report']['project_funding'],
                         'project_policy'            => $data['report']['project_policy'],
                         'project_programme'         => $data['report']['project_programme'],
+                        'project_cup'               => $data['report']['project_cup'],
 
                         'contract_title'            => $data['report']['contract_title'],
                         'contract_object'           => $data['report']['contract_object'],
                         'contract_body'             => $data['report']['contract_body'],
+                        'contract_cig'              => $data['report']['contract_cig'],
                         'contract_supplier'         => $data['report']['contract_supplier'],
                         'contract_value'            => $data['report']['contract_value'],
                         'contract_type'             => $data['report']['contract_type'],
@@ -527,7 +531,7 @@ class ImonitorCtrl extends Ctrl
                 $logged = true;
                 $this->set('logged', $logged);
                 $this->set('street_map', array('version' => '1.9.4', 'sha' => 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo='));
-                $this->set('js', array('components/imonitor.js?v=0.2.3', 'components/imonitor-geo.js?v=0.2', 'components/imonitor-review.js?v=0.1'));
+                $this->set('js', array('components/imonitor.js?v=0.2.4', 'components/imonitor-geo.js?v=0.3', 'components/imonitor-review.js?v=0.1'));
 
                 if(httpCheck()):
                     $imonitorId = $_POST['imonitor']['id'];
@@ -576,9 +580,11 @@ class ImonitorCtrl extends Ctrl
                         'project_funding'           => $data['report']['project_funding'],
                         'project_policy'            => $data['report']['project_policy'],
                         'project_programme'         => $data['report']['project_programme'],
+                        'project_cup'               => $data['report']['project_cup'],
 
                         'contract_title'            => $data['report']['contract_title'],
                         'contract_object'           => $data['report']['contract_object'],
+                        'contract_cig'              => $data['report']['contract_cig'],
                         'contract_body'             => $data['report']['contract_body'],
                         'contract_supplier'         => $data['report']['contract_supplier'],
                         'contract_value'            => $data['report']['contract_value'],
