@@ -775,6 +775,7 @@ class ImonitorCtrl extends Ctrl
         if($this->User->role <= 2 || $this->User->id == $report->created_by):
             $tmp = sys_get_temp_dir();
             $fontDir = realpath('../../public/font/');
+            die($fontDir);
             $dompdf = new Dompdf\Dompdf([
                 //'isRemoteEnabled' => true,
                 'fontDir' =>   $fontDir,
