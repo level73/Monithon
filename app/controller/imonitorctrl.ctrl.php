@@ -780,10 +780,11 @@ class ImonitorCtrl extends Ctrl
                 'tempDir' => $tmp,
                 'chroot' => $tmp,
             ]);
-/*
-            $defFont = $dompdf->getOptions('defaultFont');
-            die($defFont);
-*/
+
+            $options = $dompdf->getOptions();
+            $options->setDefaultFont('DejaVu Sans');
+            $dompdf->setOptions($options);
+            die($options);
             // Monithon Logo Path
             $MonithonLogo = ROOT . DS . 'public' . DS . 'images' . DS . 'monithon-logo-2022.png';
             $iMonitorLogo = ROOT . DS . 'public' . DS . 'images' . DS . 'imonitor.png';
