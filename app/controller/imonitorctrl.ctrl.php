@@ -820,6 +820,9 @@ class ImonitorCtrl extends Ctrl
             $html .= "<br /><div class='smalltext'>LAST MOD: ". date('d/m/Y H:i:s', strtotime($report->modified_at)) . "</div>";
             $html .= "<h1>".$report->title."</h1>";
             $html .= '<h3>' . S1SA_LABEL_TEXT . '</h3>';
+
+            $html .= "<p>Ă, Â, Î, Ș, and Ț</p>";
+
             $html .= setData(S1SA_FIELD_EUFUNDED, $report->project_eu_funded, ['boolean']);
             if($report->project_eu_funded > 0):
                 $html .= setData(S1SA_FIELD_EUFUNDINFO, $report->project_url, ['link']);
