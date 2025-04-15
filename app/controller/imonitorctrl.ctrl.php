@@ -783,11 +783,7 @@ class ImonitorCtrl extends Ctrl
             ]);
 
             $options = $dompdf->getOptions();
-
-
-
             $options->setDefaultFont('DejaVu Sans');
-            die($options);
             $dompdf->setOptions($options);
 
             // Monithon Logo Path
