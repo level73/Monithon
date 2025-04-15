@@ -799,7 +799,7 @@ class ImonitorCtrl extends Ctrl
                                 font-family: 'IBM Plex Sans';
                                 font-style: normal;
                                 font-weight: 400;
-                                src: url('" . APPURL . "/font/IBMPlexSans/IBMPlexSans-Regular.ttf') format('ttf');
+                                src: url('" . APPURL . "/public/font/IBMPlexSans/IBMPlexSans-Regular.ttf') format('ttf');
                             }
                             h1, h2, h3, h4, h5, h6, p, span, li, dl, td, th, div { font-family: 'IBM Plex Sans', sans-serif; }
                            
