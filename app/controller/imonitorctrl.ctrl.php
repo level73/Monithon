@@ -783,7 +783,7 @@ class ImonitorCtrl extends Ctrl
             ]);
 
             $options = $dompdf->getOptions();
-            $options->setDefaultFont('DejaVu Sans');
+            $options->setDefaultFont('DejaVuSans');
             $dompdf->setOptions($options);
 
             // Monithon Logo Path
@@ -803,7 +803,7 @@ class ImonitorCtrl extends Ctrl
                         <head>
                         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
             $html .= "<style>
-                            
+                            * { font-family: DejaVu Sans; }
                             td { padding: 2pt; margin-bottom: 3px; border-bottom: 1px dotted #AAAAAA; }
                             p, span, td { font-size: 12pt; }    
                             .value_green { color: green; }
