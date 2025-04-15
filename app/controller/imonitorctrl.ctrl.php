@@ -796,7 +796,7 @@ class ImonitorCtrl extends Ctrl
                                 font-family: 'PT Sans';
                                 font-style: normal;
                                 font-weight: 400;     
-                                src: url('" . APPURL . "/public/fonts/PTSans-Regular.ttf') format('truetype');                           
+                                src: url('/public/fonts/PTSans-Regular.ttf') format('truetype');                           
                             }
                             h1, h2, h3, h4, h5, h6, p, span, li, dl, td, th, div { font-family: 'PT Sans'; }
                            
