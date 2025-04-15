@@ -1,4 +1,5 @@
 <?php
+
 class ImonitorCtrl extends Ctrl
 {
 
@@ -774,7 +775,7 @@ class ImonitorCtrl extends Ctrl
         if($this->User->role <= 2 || $this->User->id == $report->created_by):
             $tmp = sys_get_temp_dir();
             $dompdf = new Dompdf\Dompdf([
-                'isRemoteEnabled' => true,
+                //'isRemoteEnabled' => true,
                 'fontDir' => $tmp,
                 'fontCache' => $tmp,
                 'tempDir' => $tmp,
@@ -782,9 +783,13 @@ class ImonitorCtrl extends Ctrl
             ]);
 
             $options = $dompdf->getOptions();
+
+
+
             $options->setDefaultFont('DejaVu Sans');
-            $dompdf->setOptions($options);
             die($options);
+            $dompdf->setOptions($options);
+
             // Monithon Logo Path
             $MonithonLogo = ROOT . DS . 'public' . DS . 'images' . DS . 'monithon-logo-2022.png';
             $iMonitorLogo = ROOT . DS . 'public' . DS . 'images' . DS . 'imonitor.png';
