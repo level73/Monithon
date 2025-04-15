@@ -774,17 +774,16 @@ class ImonitorCtrl extends Ctrl
 
         if($this->User->role <= 2 || $this->User->id == $report->created_by):
             $tmp = sys_get_temp_dir();
+            $fontDir = realpath('../../public/font/');
             $dompdf = new Dompdf\Dompdf([
                 //'isRemoteEnabled' => true,
-                'fontDir' => $tmp,
-                'fontCache' => $tmp,
+                'fontDir' =>   $fontDir,
+                'fontCache' => $fontDir,
                 'tempDir' => $tmp,
                 'chroot' => $tmp,
             ]);
 
-            $options = $dompdf->getOptions();
-            $options->setDefaultFont('DejaVuSans');
-            $dompdf->setOptions($options);
+
 
             // Monithon Logo Path
             $MonithonLogo = ROOT . DS . 'public' . DS . 'images' . DS . 'monithon-logo-2022.png';
