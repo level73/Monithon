@@ -793,19 +793,21 @@ class ImonitorCtrl extends Ctrl
             // Monithon Logo Path
             $MonithonLogo = ROOT . DS . 'public' . DS . 'images' . DS . 'monithon-logo-2022.png';
             $iMonitorLogo = ROOT . DS . 'public' . DS . 'images' . DS . 'imonitor.png';
-
+            /**
+             * @font-face{
+             * font-family: 'PT Sans';
+             * font-style: normal;
+             * font-weight: 400;
+             * src: url('/public/fonts/PTSans-Regular.ttf') format('truetype');
+             * }
+             * h1, h2, h3, h4, h5, h6, p, span, li, dl, td, th, div { font-family: 'PT Sans'; }
+             */
             $html = '<!DOCTYPE html>
                         <html>
                         <head>
                         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
             $html .= "<style>
-                            @font-face{
-                                font-family: 'PT Sans';
-                                font-style: normal;
-                                font-weight: 400;     
-                                src: url('/public/fonts/PTSans-Regular.ttf') format('truetype');                           
-                            }
-                            h1, h2, h3, h4, h5, h6, p, span, li, dl, td, th, div { font-family: 'PT Sans'; }
+                            
                             td { padding: 2pt; margin-bottom: 3px; border-bottom: 1px dotted #AAAAAA; }
                             p, span, td { font-size: 12pt; }    
                             .value_green { color: green; }
