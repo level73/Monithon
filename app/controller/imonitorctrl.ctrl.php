@@ -774,7 +774,6 @@ class ImonitorCtrl extends Ctrl
         if($this->User->role <= 2 || $this->User->id == $report->created_by):
             $tmp = sys_get_temp_dir();
             $dompdf = new Dompdf\Dompdf([
-                'defaultFont' => 'DejaVu Sans',
                 'isRemoteEnabled' => true,
                 'fontDir' => $tmp,
                 'fontCache' => $tmp,
@@ -796,15 +795,15 @@ class ImonitorCtrl extends Ctrl
 
 
             $html .= "<style>
-                            /*@font-face{
+                            @font-face{
                                 font-family: 'IBM Plex Sans';
                                 font-style: normal;
                                 font-weight: 400;
-                                src: url('/public/font/IBMPlexSans/IBMPlexSans-Regular.ttf') format('ttf');
+                                src: url('" . APPURL . "'/font/IBMPlexSans/IBMPlexSans-Regular.ttf') format('ttf');
                             }
                             h1, h2, h3, h4, h5, h6, p, span, li, dl, td, th, div { font-family: 'IBM Plex Sans', sans-serif; }
-                            */
-                           h1, h2, h3, h4, h5, h6, p, span, li, dl, td, th, div { font-family: 'DejaVu Sans'; }
+                           
+                           
                             td { padding: 2pt; margin-bottom: 3px; border-bottom: 1px dotted #AAAAAA; }
                             p, span, td { font-size: 12pt; }    
                             .value_green { color: green; }
