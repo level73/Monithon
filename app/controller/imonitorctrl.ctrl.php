@@ -789,18 +789,16 @@ class ImonitorCtrl extends Ctrl
                         <html>
                         <head>
                         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-                        <link rel="preconnect" href="https://fonts.googleapis.com">
-                        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-                        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">';
-
+                        ';
 
             $html .= "<style>
                             @font-face{
-                                font-family: 'IBM Plex Sans';
+                                font-family: 'PT Sans';
                                 font-style: normal;
-                                font-weight: 400;                                
+                                font-weight: 400;     
+                                src: url('" . APPURL . "/fonts/PTSans_Regular.ttf');                           
                             }
-                            h1, h2, h3, h4, h5, h6, p, span, li, dl, td, th, div { font-family: 'IBM Plex Sans', sans-serif; }
+                            h1, h2, h3, h4, h5, h6, p, span, li, dl, td, th, div { font-family: 'PT Sans'; }
                            
                            
                             td { padding: 2pt; margin-bottom: 3px; border-bottom: 1px dotted #AAAAAA; }
