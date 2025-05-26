@@ -91,7 +91,7 @@
                     <?php foreach($province as $label => $r){ ?>
                         <optgroup label="<?php echo $label; ?>">->
                             <?php foreach($r as $p){ ?>
-                                <option value="<?php echo $p->idprovincia; ?>" data-subtext="<?php echo $p->shorthand; ?>" <?php echo (isset($ASOC_Profile) && $p->idprovincia == $UNI_Profile->provincia ? 'selected': ''); ?>><?php echo $p->provincia; ?></option>
+                                <option value="<?php echo $p->idprovincia; ?>" data-subtext="<?php echo $p->shorthand; ?>" <?php echo (isset($UNI_Profile) && $p->idprovincia == $UNI_Profile->provincia ? 'selected': ''); ?>><?php echo $p->provincia; ?></option>
                             <?php } ?>
                         </optgroup>
                     <?php } ?>
