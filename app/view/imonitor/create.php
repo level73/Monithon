@@ -1407,10 +1407,14 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-5"></div>
+        <div class="col-md-3"></div>
         <div class="col-md-2" style="padding-top: 40px;">
             <img src="/images/eu_imonitor_logo_it.png" class="img-fluid" alt="EU Funded Logo">
         </div>
+        <div class="col-md-4" style="padding-top: 40px;">
+            <small>Finanziato dall'Unione europea. Le opinioni espresse appartengono, tuttavia, al solo o ai soli autori e non riflettono necessariamente le opinioni dell'Unione europea o della Commissione europea. Né l'Unione europea né l'autorità che concede il finanziamento possono esserne ritenute responsabili.</small>
+        </div>
+        <div class="col-md-3"></div>
     </div>
 </form>
 
