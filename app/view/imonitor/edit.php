@@ -585,7 +585,9 @@
                     <div class="col">
                         <fieldset>
                             <legend><span><?php echo S1SC_LABEL_TEXT; ?></span></legend>
-
+                            <small class="help">
+                                <?php echo S1SC_MAIN_HELP; ?>
+                            </small>
                             <div id="supplier-0">
                                 <div class="form-label mt-3 mb-4"><?php echo S1SC_LABEL_COMPANYINFO; ?></div>
                                 <div class="row">
@@ -661,6 +663,7 @@
                                     </div>
                                 </div>
                                 <div class="form-label mt-3 mb-4"><?php echo S1SC_LABEL_COMPANYREGISTRATIONINFO; ?></div>
+                                <small class="help"><?php echo S1SC_COMPANY_HELP; ?></small>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-company_id" class="form-label"><?php echo S1SC_LABEL_COMPANYREGISTRATIONID; ?></label>
@@ -687,6 +690,7 @@
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-activitycodes" class="form-label"><?php echo S1SC_LABEL_COMPANYBUSINESSACTIVITYCODES; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-activitycodes" name="imonitor[report][supplier_activitycodes]" value="<?php echo cvo($data, 'supplier_activitycodes') ; ?>">
+                                        <small class="help"><?php echo S1SC_COMPANY_BUSINESS_CODES; ?></small>
                                         <?php showComment($comments, 'supplier_activitycodes'); ?>
                                     </div>
                                 </div>
@@ -694,6 +698,7 @@
                                     <div class="col mt-3 mb-4">
                                         <label for="imonitor-report-supplier-foundation" class="form-label"><?php echo S1SC_LABEL_COMPANYFOUNDATION; ?></label>
                                         <input class="form-control" type="text" id="imonitor-report-supplier-foundation" name="imonitor[report][supplier_foundation]" value="<?php echo cvo($data, 'supplier_foundation') ; ?>">
+                                        <small class="help"><?php echo S1SC_COMPANY_AGE; ?></small>
                                         <?php showComment($comments, 'supplier_foundation'); ?>
                                     </div>
                                 </div>
@@ -1621,6 +1626,13 @@
                 <br />
                 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-floppy-o"></i> SAVE</button>
             </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2" style="padding-top: 40px;">
+            <img src="/images/eu_imonitor_logo_it.png" class="img-fluid" alt="EU Funded Logo">
         </div>
     </div>
 </form>
