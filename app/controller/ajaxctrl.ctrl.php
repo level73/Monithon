@@ -35,7 +35,8 @@
       $auth = base64_encode(OC_API_USERNAME . ":" . OC_API_PASSWORD);
       $context = stream_context_create([
           "http" => [
-              "header" => "Authorization: Basic $auth"
+              "header" => "Authorization: Basic $auth",
+              "user_agent" => "MonithonWebApp 3.0"
           ]
       ]);
 
