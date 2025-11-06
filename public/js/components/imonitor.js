@@ -102,8 +102,6 @@ var IMNTR = {
                             $('input#imonitor-report-project-programme').val(data.fundings[0].programme);
                         }
                     }
-
-
                     //CUP Code
                     if(data.lots[0].hasOwnProperty("fundings")){
                         $('#imonitor-report-project-cup').val(data.lots[0].fundings[0].programme);
@@ -113,6 +111,21 @@ var IMNTR = {
                         $('#imonitor-report-contract-cig').val(data.lots[0].contractNumber);
                     }
                 }
+
+                // Get the Supply type
+                console.log(data.supplyType);
+                if(data.hasOwnProperty('supplyType')){
+                    if(data.supplyType.toUpperCase()  == 'SUPPLIES'){
+                        document.getElementById('imonitor-report-contract-type1').checked = true;
+                    }
+                    else if(data.supplyType.toUpperCase() == 'WORKS'){
+                        document.getElementById('imonitor-report-contract-type2').checked = true;
+                    }
+                    else if(data.supplyType.toUpperCase() == 'SERVICES'){
+                        document.getElementById('imonitor-report-contract-type3').checked = true;
+                    }
+                }
+
                 if(data.title !== undefined ) { $('input#imonitor-report-contract-title').val(data.title); }
                 if(data.ot.cpv !== undefined ){ $('input#imonitor-report-contract-object').val(data.ot.cpv + ' - ' + data.description); }
                 if(data.ot.cpv !== undefined ){ $('input#imonitor-report-contract-body').val(data.buyers[0].name); }
