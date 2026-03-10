@@ -948,6 +948,16 @@ body.imonitor {
   font-weight: 300;
 }
 
+aside#floater {
+  max-width: 15%;
+  position: fixed;
+  margin-top: 35vh;
+  margin-right: 2%;
+  right: 0;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
 fieldset {
   margin-top: 2em;
   margin-bottom: 2em;
@@ -1626,6 +1636,32 @@ td.score-value-undefined {
   background-color: #E5F1EC;
   border: 2px solid #aec1b9;
   padding: 2em;
+}
+
+body.imonitor input.form-control:user-invalid, body.imonitor select.form-control:user-invalid, body.imonitor textarea.form-control:user-invalid {
+  border: 1px solid #fd7e14 !important;
+}
+body.imonitor input.form-control:user-valid, body.imonitor select.form-control:user-valid, body.imonitor textarea.form-control:user-valid {
+  border: 1px solid #549f0e !important;
+}
+
+.works-box {
+  border: 1px solid rgba(176, 38, 181, 0.93);
+  background: rgba(176, 38, 181, 0.13);
+  padding: 1.8rem 1rem;
+  position: relative;
+}
+.works-box::before {
+  content: "WORKS";
+  padding: 0.5rem;
+  background-color: rgba(176, 38, 181, 0.93);
+  color: white;
+  margin: 0;
+  top: 0;
+  left: 0;
+  font-size: 0.5em;
+  position: absolute;
+  font-weight: 600;
 }
 
 footer#main-footer {

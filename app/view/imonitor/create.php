@@ -1,5 +1,9 @@
 
-
+<?php if(isset($errors)): ?>
+    <?php foreach($errors as $error): ?>
+        <?php dbga($error) ?>
+    <?php endforeach; ?>
+<?php endif; ?>
 
 <!-- div class="container-fluid" id="disclaimer-banner">
     <section class="row">
@@ -10,6 +14,14 @@
 </div -->
 
 <form class="" method="post" enctype="multipart/form-data" action="/imonitor/create">
+    <aside id="floater">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="imonitor[report][status]" id="imonitor-report-status" value="<?php echo PENDING_REVIEW; ?>">
+            <label class="form-check-label" for="imonitor-report-status"><?php echo GENERIC_BUTTON_REVIEW; ?></label>
+            <span class="help"><?php echo GENERIC_HELP_REVIEW; ?></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block"><i class="far fa-floppy-o"></i> <?php echo GENERIC_BUTTON_SAVE; ?></button>
+    </aside>
     <div class="container">
         <section class="row intro">
             <div class="col">
@@ -263,6 +275,13 @@
 
                             </div>
 
+                            <div class="mb-4 mt-3 works-box d-none monitutor">
+                                <h5>Monitutor</h5>
+                                <?php echo S1SB_MONITUTOR1_WORKS; ?>
+                            </div>
+
+
+
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-4 mt-3">
@@ -345,6 +364,12 @@
                                 </label>
                             </div>
 
+                            <div class="form-group">
+                                <label for="imonitor-report-contract_subcontracting_other" class="form-label"><?php echo GENERIC_LABEL_DETAILEDINFO; ?></label>
+                                <input class="form-control" type="text"  name="imonitor[report][contract_subcontracting_other]" id="imonitor-report-contract_subcontracting_other" >
+                                <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
+                            </div>
+
                             <div class="col d-none mt-3 mb-4" id="subcontractors">
 
                                 <div class="form-label"><?php echo S1SB_LABEL_SUBCONTRACTORS; ?> <button type="button" class="btn btn-sm" data-toggle="modal" data-target="#imonitor-modal-contract-subcontractors"><i class="fal fa-question-circle"></i></button></div>
@@ -363,6 +388,10 @@
                                     </div>
                                 </div>
                                 <button class="btn btn-sm btn-outline-secondary repeater mt-2 mb-2" data-repeater-target="#imonitor-report-contract-subcontractor-0" type="button"><i class="fal fa-plus"></i> <?php echo S1SB_BUTTON_ADDSUBCONTRACTORS; ?></button>
+
+
+
+
 
 
                                 <div class="row">
@@ -388,6 +417,98 @@
                                                 </div>
                                             </div>
                                             <small class="help"><?php echo S1SB_HELP_PERCENTAGESUBCONTRACTS; ?></small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row works-box d-none">
+                                    <div class="col">
+                                        <span  class="form-label"><?php echo S1SB_SUBCONTRACTORS_NAMED; ?> </span>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="imonitor[report][contract_subcontractors_named]" id="imonitor-report-contract_subcontractors_named1" value="Yes">
+                                            <label class="form-check-label" for="imonitor-report-contract_subcontractors_named1">
+                                                <?php echo GENERIC_RADIOLABEL_YES; ?>
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="imonitor[report][contract_subcontractors_named]" id="imonitor-report-contract_subcontractors_named2" value="No">
+                                            <label class="form-check-label" for="imonitor-report-contract_subcontractors_named2">
+                                                <?php echo GENERIC_RADIOLABEL_NO; ?>
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio"  name="imonitor[report][contract_subcontractors_named]" id="imonitor-report-contract_subcontractors_named3" value="Unknown">
+                                            <label class="form-check-label" for="imonitor-report-contract_subcontractors_named3">
+                                                <?php echo GENERIC_RADIOLABEL_UNKNOWN; ?>
+                                            </label>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="imonitor-report-contract_subcontractors_named_other" class="form-label"><?php echo GENERIC_LABEL_DETAILEDINFO; ?></label>
+                                            <input class="form-control" type="text"  name="imonitor[report][contract_subcontractors_named_other]" id="imonitor-report-contract_subcontractors_named_other" >
+                                            <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <span  class="form-label"><?php echo S1SB_IMPLEMENTERS; ?> </span>
+                                        <div class="form-check">
+                                            <input class="form-check-input trigger-display show-dependency" data-target="#implementers" type="radio" name="imonitor[report][contract_subcontractors_implementers]" id="imonitor-report-contract_subcontractors_implementers1" value="Yes">
+                                            <label class="form-check-label" for="imonitor-report-contract_subcontractors_implementers1">
+                                                <?php echo GENERIC_RADIOLABEL_YES; ?>
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input trigger-display"  data-target="#implementers" type="radio" name="imonitor[report][contract_subcontractors_implementers]" id="imonitor-report-contract_subcontractors_implementers2" value="No">
+                                            <label class="form-check-label" for="imonitor-report-contract_subcontractors_implementers2">
+                                                <?php echo GENERIC_RADIOLABEL_NO; ?>
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio"  name="imonitor[report][contract_subcontractors_implementers]" id="imonitor-report-contract_subcontractors_implementers3" value="Unknown">
+                                            <label class="form-check-label" for="imonitor-report-contract_subcontractors_implementers3">
+                                                <?php echo GENERIC_RADIOLABEL_UNKNOWN; ?>
+                                            </label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="imonitor-report-contract_subcontractors_implementers_other" class="form-label"><?php echo GENERIC_LABEL_DETAILEDINFO; ?></label>
+                                            <input class="form-control" type="text"  name="imonitor[report][contract_subcontractors_implementers_other]" id="imonitor-report-contract_subcontractors_implementers_other" >
+                                            <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12  d-none" id="implementers">
+                                        <div class="form-group">
+                                            <!-- <input class="form-check-input" type="radio"  name="imonitor[report][contract_subcontractors_named]" id="imonitor-report-contract_subcontractors_named3" value="Unknown"> -->
+                                            <label class="form-check-label" for="imonitor-report-contract_subcontractors_implementers_names">
+                                                <?php echo S1SB_IMPLEMENTERS_COMPANIES; ?>
+                                            </label>
+                                            <input class="form-control" type="text"  name="imonitor[report][contract_subcontractors_implementers_names]" id="imonitor-report-contract_subcontractors_implementers_names" >
+                                        </div>
+                                        <div class="form-group">
+                                            <!-- <input class="form-check-input" type="radio"  name="imonitor[report][contract_subcontractors_named]" id="imonitor-report-contract_subcontractors_named3" value="Unknown"> -->
+                                            <label class="form-check-label" for="imonitor-report-contract_subcontractors_implementers_location">
+                                                <?php echo S1SB_IMPLEMENTERS_LOCATION; ?>
+                                            </label>
+                                            <input class="form-control" type="text"  name="imonitor[report][contract_subcontractors_implementers_location]" id="imonitor-report-contract_subcontractors_implementers_location" >
+                                        </div>
+
+                                        <div class="form-group">
+                                            <!-- <input class="form-check-input" type="radio"  name="imonitor[report][contract_subcontractors_named]" id="imonitor-report-contract_subcontractors_named3" value="Unknown"> -->
+                                            <label class="form-check-label" for="imonitor-report-contract_subcontractors_implementers_datetime">
+                                                <?php echo S1SB_IMPLEMENTERS_DATETIME; ?>
+                                            </label>
+                                            <input class="form-control" type="datetime-local"  name="imonitor[report][contract_subcontractors_implementers_datetime]" id="imonitor-report-contract_subcontractors_implementers_datetime" >
+                                        </div>
+
+                                        <div class="form-group">
+                                            <!-- <input class="form-check-input" type="radio"  name="imonitor[report][contract_subcontractors_named]" id="imonitor-report-contract_subcontractors_named3" value="Unknown"> -->
+                                            <label class="form-check-label" for="imonitor-report-contract_subcontractors_implementers_evidence">
+                                                <?php echo S1SB_IMPLEMENTERS_EVIDENCE; ?>
+                                            </label>
+                                            <input class="form-control" type="text"  name="imonitor[report][contract_subcontractors_implementers_evidence]" id="imonitor-report-contract_subcontractors_implementers_evidence" >
+                                            <small class="help"><?php echo S1SB_IMPLEMENTERS_HELP; ?></small>
                                         </div>
                                     </div>
                                 </div>
@@ -419,8 +540,78 @@
                                     <?php echo GENERIC_RADIOLABEL_UNKNOWN; ?>
                                 </label>
                             </div>
+                            <div class="form-group">
+                                <label for="imonitor-report-contract_modifications_other" class="form-label"><?php echo GENERIC_LABEL_DETAILEDINFO; ?></label>
+                                <input class="form-control" type="text"  name="imonitor[report][contract_modifications_other]" id="imonitor-report-contract_modifications_other" >
+                                <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
+                            </div>
 
                             <div class="col d-none  mt-3 mb-4" id="contract-modifications">
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="mb-4 mt-3">
+                                            <span class="form-label"><?php echo S1SB_MODIFICATIONS; ?></span>
+                                            <div class="form-check">
+                                                <input class="form-check-input trigger-display show-dependency" data-target="#contract-modifications-change" type="radio" name="imonitor[report][contract_modifications_published]" id="imonitor-report-contract-modifications_published1" value="Yes">
+                                                <label class="form-check-label" for="imonitor-report-contract-modifications_published1">
+                                                    <?php echo GENERIC_RADIOLABEL_YES; ?>
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input trigger-display" data-target="#contract-modifications-change" type="radio" name="imonitor[report][contract_modifications_published]" id="imonitor-report-contract-modifications_published2" value="No">
+                                                <label class="form-check-label" for="imonitor-report-contract-modifications_published2">
+                                                    <?php echo GENERIC_RADIOLABEL_NO; ?>
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input trigger-display" data-target="#contract-modifications-change" type="radio"  name="imonitor[report][contract_modifications_published]" id="imonitor-report-contract-modifications_published3" value="Unknown">
+                                                <label class="form-check-label" for="imonitor-report-contract-modifications_published3">
+                                                    <?php echo GENERIC_RADIOLABEL_UNKNOWN; ?>
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="imonitor-report-contract_modifications_published_other" class="form-label"><?php echo GENERIC_LABEL_DETAILEDINFO; ?></label>
+                                                <input class="form-control" type="text"  name="imonitor[report][contract_modifications_published_other]" id="imonitor-report-contract_modifications_published_other" >
+                                                <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                </div>
+
+                                <div id="contract-modifications-change" class="row d-none">
+                                    <div class="col">
+                                        <div class="mb-4 mt-3">
+                                            <span class="form-label"><?php echo S1SB_MODIFICATIONS_CHANGES; ?></span>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="imonitor[report][contract_modifications_change][1]" id="contract_modifications_change_1" value="Value Increase">
+                                                <label class="form-check-label" for="contract_modifications_change_1"><?php echo S1SB_MODIFICATIONS_VALUE; ?></label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="imonitor[report][contract_modifications_change][2]" id="contract_modifications_change_2" value="Scope Change">
+                                                <label class="form-check-label" for="contract_modifications_change_2"><?php echo S1SB_MODIFICATIONS_SCOPE; ?></label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="imonitor[report][contract_modifications_change][3]" id="contract_modifications_change_3" value="Time Estension">
+                                                <label class="form-check-label" for="contract_modifications_change_3"><?php echo S1SB_MODIFICATIONS_TIME; ?></label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-check-label" for="contract_modifications_change_other"><?php echo S1SB_MODIFICATIONS_OTHER; ?></label>
+                                                <input class="form-control" type="text" name="imonitor[report][contract_modifications_change][other]" id="contract_modifications_change_other">
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
                                 <div class="row">
                                     <div class="col">
                                         <div class="mb-4 mt-3">
@@ -628,6 +819,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col mt-3 mb-4">
+                                        <div class="monitutor"><h5>Monitutor</h5><?php echo S1SC_HELP_COMPANYADDITIONALINFO; ?></div>
                                         <label for="imonitor-report-supplier-additional_info" class="form-label"><?php echo S1SC_LABEL_COMPANYADDITIONALINFO; ?></label>
                                         <textarea class="form-control" id="imonitor-report-supplier-additional_info" name="imonitor[report][supplier_additionalinfo]"></textarea>
 
@@ -643,56 +835,7 @@
 
                     </div>
                 </section>
-                <section class="row">
-                    <div class="col">
-                        <fieldset>
-                            <legend><span><?php echo GENERIC_LABEL_FILEUPLOAD; ?></span></legend>
-                            <span class="help"><?php echo GENERIC_HELP_FILEUPLOAD; ?></span>
 
-
-
-
-                            <div class="row mt-4" id="imonitor-files-wrapper-0" data-flat-name="imonitor[files]">
-                                <div class="col">
-                                    <input type="file" placeholder="<?php placeholderize(GENERIC_FIELD_FILENAME); ?>" id="imonitor-files-file-0" name="imonitor[files][0][file]" data-particle-name="file" data-flat-name="imonitor[files]" class="form-control">
-                                </div>
-                                <div class="col">
-                                    <input type="text" placeholder="<?php placeholderize(GENERIC_FIELD_FILEDESCRIPTION); ?>" id="imonitor-files-label-0" name="imonitor[files][0][label]"  data-particle-name="label" data-flat-name="imonitor[files]" class="form-control">
-                                </div>
-                                <div class="col">
-                                    <select class="form-control" id="imonitor-files-type-0" name="imonitor[files][0][type]" data-particle-name="type" data-flat-name="imonitor[files]">
-                                        <option value="contract">Contract</option>
-                                        <option value="contract">Extension</option>
-                                        <option value="contract">Documents</option>
-                                        <option value="contract">Images</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="btn-group" role="group" aria-label="group fields repeater">
-                                <button class="btn btn-sm btn-outline-secondary repeater mt-2 mb-2" data-repeater-target="#imonitor-files-wrapper-0" type="button">
-                                    <i class="fal fa-plus"></i> <?php echo GENERIC_BUTTON_ADDFILEUPLOAD; ?>
-                                </button>
-                            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                        </fieldset>
-                    </div>
-                </section>
             </div>
 
             <div class="tab-pane fade" id="contract-implementation-tab-pane" role="tabpanel" aria-labelledby="contract-implementation-tab" tabindex="1">
@@ -705,12 +848,17 @@
                         <fieldset>
 
                             <legend><span><?php echo S2SA_TITLE_TEXT;?></span></legend>
-
+                            <div class="col  works-box d-none">
+                                <div class="col">
+                                    <h5>Monitutor</h5>
+                                    <?php echo S2_WORKS_MONITUTOR; ?>
+                                </div>
+                            </div>
                             <div class="col mt-3 mb-4">
                                 <label class="form-label d-block">
                                 <?php echo S2SA_LABEL_SITEINSPECTION; ?>
                                 </label>
-                                <small class="help"><?php echo S2SA_HELP_SITEINSPECTION; ?></small>
+                                <small class="help"><?php echo S2_WORKS_HELP_SITE_INSPECTION; ?></small>
 
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input inspection-sites-trigger" data-target="#imonitor-report-inspection-sites-yes" type="radio" name="imonitor[report][site_inspection]" id="imonitor-report-site_inspection_yes" value="YES">
@@ -760,6 +908,11 @@
                                     <input class="form-control" type="text" name="imonitor[report][inspection_fail_other]" id="imonitor-report-inspection_fail_other" value="" placeholder="<?php placeholderize(GENERIC_LABEL_OTHER); ?>">
                                     <label class="form-label sr-only" for="imonitor-report-inspection_fail_other"><?php echo GENERIC_LABEL_OTHER; ?></label>
                                 </div>
+                                <div class="works-box mt-3 mb-4">
+                                    <label class="form-label" for="imonitor-report-inspection_fail_access_denied_info"><?php echo S2SA_LABEL_WHO_REFUSED_ACCESS; ?></label>
+                                    <input class="form-control" type="text" name="imonitor[report][inspection_fail_access_denied_info]" id="imonitor-report-inspection_fail_access_denied_info" value="" >
+
+                                </div>
                             </div>
 
 
@@ -788,6 +941,8 @@
                                         <small><?php echo S2SA_HELP_IMPLEMENTATIONSTATUS_3; ?></small>
                                     </label>
                                 </div>
+
+
                             </div>
 
                             <!-- BOF Option A -->
@@ -889,6 +1044,27 @@
                                         <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
                                         <input type="text" class="form-control" id="imonitor-report-contract_modifications_writing-reason" name="imonitor[report][contract_modifications_writing_reason]" placeholder="..." aria-label="Delay reasons" aria-describedby="imonitor-report-contract-following_schedule-reason">
                                     </div>
+                                    <div class="works-box d-none">
+                                        <span class="form-label"><?php echo S2SA_LABEL_CORRESPOND; ?></span>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="imonitor[report][contract_modifications_correspond]" id="imonitor-report-contract_modifications_correspond_1" value="Yes" >
+                                            <label class="form-check-label" for="imonitor-report-contract_modifications_correspond_1"><?php echo GENERIC_RADIOLABEL_YES; ?></label>
+                                        </div>
+
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="imonitor[report][contract_modifications_correspond]" id="imonitor-report-contract_modifications_correspond_2" value="No">
+                                            <label class="form-check-label" for="imonitor-report-contract_modifications_correspond_2"><?php echo GENERIC_RADIOLABEL_NO; ?></label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="imonitor[report][contract_modifications_correspond]" id="imonitor-report-contract_modifications_correspond_3" value="Unknown">
+                                            <label class="form-check-label" for="imonitor-report-contract_modifications_correspond_3"><?php echo GENERIC_RADIOLABEL_UNKNOWN; ?></label>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="imonitor-report-contract_modifications_correspond-reason"><?php echo GENERIC_LABEL_DETAILEDINFO; ?></label>
+                                            <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
+                                            <input type="text" class="form-control" id="imonitor-report-contract_modifications_correspond-reason" name="imonitor[report][contract_modifications_correspond_other]" placeholder="...">
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- EOF Subconditional -->
 
@@ -913,6 +1089,50 @@
                                         <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
                                         <input type="text" class="form-control" id="imonitor-report-contract_provisions_fulfilled-reason" name="imonitor[report][contract_provisions_fulfilled_reason]" placeholder="Delay reasons..." aria-label="Delay reasons" aria-describedby="imonitor-report-contract-following_schedule-reason">
                                     </div>
+                                </div>
+
+                                <div class="col mt-3 mb-4 works-box d-none">
+                                    <div class="form-label"><?php echo S2SA_LABEL_IDENTIFIERS; ?></div>
+                                    <div class="form-check">
+                                        <input class="form-check-input identicheck" type="radio" name="imonitor[report][contract_company_identifiers]" id="imonitor-report-contract_company_identifiers_1" value="Yes">
+                                        <label class="form-check-label" for="imonitor-report-contract_company_identifiers_1"><?php echo GENERIC_RADIOLABEL_YES; ?></label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input identicheck" type="radio" name="imonitor[report][contract_company_identifiers]" id="imonitor-report-contract_company_identifiers_2" value="No">
+                                        <label class="form-check-label" for="imonitor-report-contract_company_identifiers_2"><?php echo GENERIC_RADIOLABEL_NO; ?></label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input identicheck" type="radio" name="imonitor[report][contract_company_identifiers]" id="imonitor-report-contract_company_identifiers_3" value="Unknown">
+                                        <label class="form-check-label" for="imonitor-report-contract_company_identifiers_3"><?php echo GENERIC_RADIOLABEL_UNKNOWN; ?></label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="imonitor-report-contract_company_identifiers-reason"><?php echo GENERIC_LABEL_DETAILEDINFO; ?></label>
+                                        <small class="help"><?php echo GENERIC_HELP_DETAILEDINFO; ?></small>
+                                        <input type="text" class="form-control" id="imonitor-report-contract_company_identifiers-reason" name="imonitor[report][contract_company_identifiers_reason]" placeholder="...">
+                                    </div>
+
+                                    <div class="form-group d-none" id="identifier-list">
+                                        <label for="imonitor-report-contract_company_identifiers-list"><?php echo S2SA_LABEL_IDENTIFIERS_LIST; ?></label>
+                                        <input type="text" class="form-control" id="imonitor-report-contract_company_identifiers-list" name="imonitor[report][contract_company_identifiers_list]" placeholder="..." >
+                                    </div>
+
+
+                                    <script>
+                                        let fields = document.querySelectorAll(".identicheck");
+                                        fields.forEach(field => {
+                                            field.addEventListener("change", function (event) {
+
+                                                if(event.target.value === "No") {
+                                                    document.querySelector("#identifier-list").classList.remove('d-none');
+                                                }
+                                                else {
+                                                    document.querySelector("#identifier-list").classList.add('d-none');
+                                                }
+                                            })
+                                        })
+
+                                    </script>
                                 </div>
                             </div>
                             <!-- EOF OPTION B -->
@@ -1211,10 +1431,50 @@
                                 <input type="text" class="form-control" id="imonitor-report-contract_online_sources" name="imonitor[report][contract_online_sources]" placeholder="..." aria-label="Online sources" aria-describedby="imonitor-report-contract_online_sources">
 
                             </div>
+                            <div class="col mb-4 mt-3">
+                                <label for="imonitor-report-contract_connect_the_dots"><?php echo S3_LABEL_CONNECT_THE_DOTS; ?></label>
+                                <small class="help"><?php echo S3_HELP_CONNECT_THE_DOTS; ?></small>
+                                <textarea class="form-control" id="imonitor-report-contract_connect_the_dots" name="imonitor[report][contract_connect_the_dots]" placeholder="Connect the dots" aria-label="Connect the dots" aria-describedby="imonitor-report-contract_connect_the_dots"></textarea>
+
+                            </div>
                         </fieldset>
                     </div>
                 </section>
+                <section class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend><span><?php echo GENERIC_LABEL_FILEUPLOAD; ?></span></legend>
+                            <span class="help"><?php echo GENERIC_HELP_FILEUPLOAD; ?></span>
 
+
+
+
+                            <div class="row mt-4" id="imonitor-files-wrapper-0" data-flat-name="imonitor[files]">
+                                <div class="col">
+                                    <input type="file" placeholder="<?php placeholderize(GENERIC_FIELD_FILENAME); ?>" id="imonitor-files-file-0" name="imonitor[files][0][file]" data-particle-name="file" data-flat-name="imonitor[files]" class="form-control">
+                                </div>
+                                <div class="col">
+                                    <input type="text" placeholder="<?php placeholderize(GENERIC_FIELD_FILEDESCRIPTION); ?>" id="imonitor-files-label-0" name="imonitor[files][0][label]"  data-particle-name="label" data-flat-name="imonitor[files]" class="form-control">
+                                </div>
+                                <div class="col">
+                                    <select class="form-control" id="imonitor-files-type-0" name="imonitor[files][0][type]" data-particle-name="type" data-flat-name="imonitor[files]">
+                                        <option value="contract">Contract</option>
+                                        <option value="contract">Extension</option>
+                                        <option value="contract">Documents</option>
+                                        <option value="contract">Images</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="btn-group" role="group" aria-label="group fields repeater">
+                                <button class="btn btn-sm btn-outline-secondary repeater mt-2 mb-2" data-repeater-target="#imonitor-files-wrapper-0" type="button">
+                                    <i class="fal fa-plus"></i> <?php echo GENERIC_BUTTON_ADDFILEUPLOAD; ?>
+                                </button>
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </section>
 
 
 
@@ -1223,7 +1483,37 @@
             <div class="tab-pane fade" id="results-and-impact-tab-pane" role="tabpanel" aria-labelledby="results-and-impact-tab" tab-index="2">
                 <div class="monitutor">
                     <h5><?php echo S3_TITLE_LABEL; ?> - <?php echo S3_TITLE_TEXT; ?></h5>
+                    <?php echo S3_LABEL_HELP_RESULTSANDIMPACT; ?>
                 </div>
+
+
+                <section class="row">
+                    <div class="col">
+                        <fieldset>
+                            <legend><span><?php echo S3_TITLE_PUBLIC_AUTHORITIES; ?></span></legend>
+
+                            <div class="form-label"><?php echo S3_LABEL_FIELD_PUBLIC_AUTHORITIES; ?>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input"  type="radio" name="imonitor[report][public_authorities]" id="imonitor-report-public_authorities_1" value="feedback">
+                                <label class="form-check-label" for="imonitor-report-public_authorities_1"><?php echo S3_LABEL_PUBLIC_AUTHORITIES_OPTION_1; ?></label>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="imonitor[report][public_authorities]" id="imonitor-report-public_authorities_2" value="action">
+                                <label class="form-check-label" for="imonitor-report-public_authorities_2"><?php echo S3_LABEL_PUBLIC_AUTHORITIES_OPTION_2; ?></label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="imonitor[report][public_authorities]" id="imonitor-report-public_authorities_3" value="no">
+                                <label class="form-check-label" for="imonitor-report-public_authorities_3"><?php echo S3_LABEL_PUBLIC_AUTHORITIES_OPTION_3; ?></label>
+                            </div>
+
+
+                        </fieldset>
+                    </div>
+                </section>
+
+
                 <section class="row">
                     <div class="col">
                         <fieldset>
@@ -1405,16 +1695,17 @@
                 <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-floppy-o"></i> SAVE</button>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-2" style="padding-top: 40px;">
-            <img src="/images/eu_imonitor_logo_it.png" class="img-fluid" alt="EU Funded Logo">
+
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-2" style="padding-top: 40px;">
+                <img src="/images/eu_imonitor_logo_it.png" class="img-fluid" alt="EU Funded Logo">
+            </div>
+            <div class="col-md-4" style="padding-top: 40px;">
+                <small>Finanziato dall'Unione europea. Le opinioni espresse appartengono, tuttavia, al solo o ai soli autori e non riflettono necessariamente le opinioni dell'Unione europea o della Commissione europea. Né l'Unione europea né l'autorità che concede il finanziamento possono esserne ritenute responsabili.</small>
+            </div>
+            <div class="col-md-3"></div>
         </div>
-        <div class="col-md-4" style="padding-top: 40px;">
-            <small>Finanziato dall'Unione europea. Le opinioni espresse appartengono, tuttavia, al solo o ai soli autori e non riflettono necessariamente le opinioni dell'Unione europea o della Commissione europea. Né l'Unione europea né l'autorità che concede il finanziamento possono esserne ritenute responsabili.</small>
-        </div>
-        <div class="col-md-3"></div>
     </div>
 </form>
 

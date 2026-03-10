@@ -223,6 +223,33 @@ class ImonitorCtrl extends Ctrl
 
 
 
+                    // New fields, iMonitor 2
+                    'contract_subcontracting_other'                         => $data['report']['contract_subcontracting_other'],
+                    'contract_subcontractors_named'                         => strtolower($data['report']['contract_subcontractors_named']),
+                    'contract_subcontractors_named_other'                   => $data['report']['contract_subcontractors_named_other'],
+                    'contract_subcontractors_implementers'                  => strtolower($data['report']['contract_subcontractors_implementers']),
+                    'contract_subcontractors_implementers_other'            => $data['report']['contract_subcontractors_implementers_other'],
+                    'contract_subcontractors_implementers_names'            => $data['report']['contract_subcontractors_implementers_names'],
+                    'contract_subcontractors_implementers_location'         => $data['report']['contract_subcontractors_implementers_location'],
+                    'contract_subcontractors_implementers_datetime'         => $data['report']['contract_subcontractors_implementers_datetime'],
+                    'contract_subcontractors_implementers_evidence'         => $data['report']['contract_subcontractors_implementers_evidence'],
+                    'contract_modifications_published'                      => strtolower($data['report']['contract_modifications_published']),
+                    'contract_modifications_published_other'                => $data['report']['contract_modifications_published_other'],
+                    'contract_modifications_change'                         => json_encode($data['report']['contract_modifications_change']),
+                    'contract_modifications_justification'                  => strtolower($data['report']['contract_modifications_justification']),
+                    'contract_contract_modifications_justification_other'   => $data['report']['contract_modifications_justification_other'],
+                    'inspection_fail_access_denied_info'                    => $data['report']['inspection_fail_access_denied_info'],
+                    'contract_modifications_correspond'                     => $data['report']['contract_modifications_correspond'],
+                    'contract_company_identifiers'                          => strtolower($data['report']['contract_company_identifiers']),
+                    'contract_company_identifiers_reason'                   => $data['report']['contract_company_identifiers_reason'],
+                    'contract_company_identifiers_list'                     => $data['report']['contract_company_identifiers_list'],
+                    'contract_supplier_fully_deliver_reasons'               => $data['report']['contract_supplier_fully_deliver_reasons'],
+                    'contract_supply_acceptable_reason'                     => $data['report']['contract_supply_acceptable_reason'],
+                    'contract_connect_the_dots'                             => $data['report']['contract_connect_the_dots'],
+                    'public_authorities'                                    => strtolower($data['report']['public_authorities']),
+
+
+
                     // Status/Op Fields
                     'created_by' => $this->User->id,
                     'status' => DRAFT
@@ -463,6 +490,34 @@ class ImonitorCtrl extends Ctrl
                         'contact_public_admin'          =>   (strtolower($data['report']['contact_public_admin']) == 'yes' ? 'yes' : 'no'), // CB
                         'public_admin_response'         =>   $data['report']['public_admin_response'],
                         'case_description'              =>   $data['report']['case_description'],
+
+                        // New fields, iMonitor 2
+                        'contract_subcontracting_other' => $data['report']['contract_subcontracting_other'],
+                        'contract_subcontractors_named' => strtolower($data['report']['contract_subcontractors_named']),
+                        'contract_subcontractors_named_other' => $data['report']['contract_subcontractors_named_other'],
+                        'contract_subcontractors_implementers' => strtolower($data['report']['contract_subcontractors_implementers']),
+                        'contract_subcontractors_implementers_other' => $data['report']['contract_subcontractors_implementers_other'],
+                        'contract_subcontractors_implementers_names' => $data['report']['contract_subcontractors_implementers_names'],
+                        'contract_subcontractors_implementers_location' => $data['report']['contract_subcontractors_implementers_location'],
+                        'contract_subcontractors_implementers_datetime' => $data['report']['contract_subcontractors_implementers_datetime'],
+                        'contract_subcontractors_implementers_evidence' => $data['report']['contract_subcontractors_implementers_evidence'],
+                        'contract_modifications_published' => strtolower($data['report']['contract_modifications_published']),
+                        'contract_modifications_published_other' => $data['report']['contract_modifications_published_other'],
+                        'contract_modifications_change' => json_encode($data['report']['contract_modifications_change']),
+                        'contract_modifications_justification' => strtolower($data['report']['contract_modifications_justification']),
+                        'contract_contract_modifications_justification_other' => $data['report']['contract_modifications_justification_other'],
+                        'inspection_fail_access_denied_info' => $data['report']['inspection_fail_access_denied_info'],
+                        'contract_modifications_correspond' => strtolower($data['report']['contract_modifications_correspond']),
+                        'contract_modifications_correspond_other' => $data['report']['contract_modifications_correspond_other'],
+                        'contract_company_identifiers' => strtolower($data['report']['contract_company_identifiers']),
+                        'contract_company_identifiers_reason' => $data['report']['contract_company_identifiers_reason'],
+                        'contract_company_identifiers_list' => $data['report']['contract_company_identifiers_list'],
+                        'contract_supplier_fully_deliver_reasons' => $data['report']['contract_supplier_fully_deliver_reasons'],
+                        'contract_supply_acceptable_reason' => $data['report']['contract_supply_acceptable_reason'],
+                        'contract_connect_the_dots' => $data['report']['contract_connect_the_dots'],
+                        'public_authorities' => strtolower($data['report']['public_authorities']),
+
+
                         // Status/Op Fields
                         //'created_by' => $this->User->id,
                         'status' => ( isset($data['report']['status']) ? $data['report']['status'] : DRAFT )

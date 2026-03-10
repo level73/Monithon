@@ -42,6 +42,8 @@ var IMNTR = {
 
         this.resourceDeleter();
 
+        this.switchWorks();
+
         // Enable BS Popovers
         const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
         const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
@@ -412,6 +414,20 @@ var IMNTR = {
                     }
                 );
             }
+        });
+    },
+
+    /** Works Switcher **/
+    switchWorks: function() {
+        $('[name="imonitor[report][contract_type]"]').change(function(e){
+            console.log($(this).val());
+            if( $(this).val() === 'Works' ){
+                $('.works-box').removeClass('d-none');
+            }
+            else {
+                $('.works-box').addClass('d-none');
+            }
+
         });
     }
 }

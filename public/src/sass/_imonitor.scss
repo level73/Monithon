@@ -8,6 +8,15 @@
 body.imonitor {
   font-weight: 300;
 }
+aside#floater{
+  max-width: 15%;
+  position: fixed;
+  margin-top: 35vh;
+  margin-right: 2%;
+  right: 0;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
 
 fieldset {
   margin-top: 2em;
@@ -84,4 +93,37 @@ td.score-value-undefined {
   background-color: $imonitor-info-box;
   border: 2px solid $imonitor-info-box-dark;
   padding: 2em;
+}
+
+
+body.imonitor {
+
+  input, select, textarea {
+
+    &.form-control:user-invalid {
+      border: 1px solid $imonitor-warning !important;
+    }
+    &.form-control:user-valid {
+      border: 1px solid $imonitor-success !important;
+    }
+
+  }
+}
+
+.works-box {
+  border: 1px solid $imonitor-works;
+  background: fade-out($imonitor-works, 0.8);
+  padding: 1.8rem 1rem;
+  position: relative;
+  &::before {
+    content: "WORKS";
+    padding: 0.5rem;
+    background-color: $imonitor-works;
+    color: white;
+    margin: 0;
+    top: 0; left: 0;
+    font-size: 0.5em;
+    position: absolute;
+    font-weight: 600;
+  }
 }
