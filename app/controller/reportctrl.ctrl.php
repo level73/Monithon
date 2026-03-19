@@ -278,6 +278,7 @@
                 $Connection->updateConnections(T_REP_BASIC, $report, $connections);
 
                   // Work out the connection relationship matrix
+                  /*
                   $cnmap = array();
                   $ConnectionMap = new Meta('connection_relationship');
                   foreach($crt as $field => $cn){
@@ -287,7 +288,7 @@
                       }
                   }
                   $ConnectionMap->updateConnectionMap($report, $cnmap);
-
+                  */
 
 
 
