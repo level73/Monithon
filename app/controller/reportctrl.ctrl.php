@@ -6,11 +6,13 @@
   **/
 
   class ReportCtrl extends Ctrl {
-    protected $Auth;
+    protected Auth $Auth;
     protected $User;
-    public    $Errors;
+    public    Errors $Errors;
 
-    public $pager = 25;
+    public int $pager = 25;
+
+    public Report $Report;
 
     public function __construct($model, $controller, $action){
       parent::__construct($model, $controller, $action);
@@ -22,6 +24,9 @@
         $this->User = $this->Auth->getProfile();
         $this->set('user', $this->User);
         $logged = true;
+
+        $this->Report = new Report;
+
       }
       $this->set('logged', $logged);
     }
@@ -36,23 +41,60 @@
         $start = 0;
         $end = $this->pager;
 
-        if(isset($_GET['p']) && !empty($_GET['p']) && is_numeric($_GET['p'])){
-            $p = filter_var($_GET['p'], FILTER_SANITIZE_NUMBER_INT);
+        if(isset($_GET['report-search']) && !empty($_GET['report-search']) && strlen($_GET['report-search']) == 24){
+            /** Clean up params */
+            $Params = [];
+            if(!empty($_GET['report-title'])):
+                $report_title = strtolower($_GET['report-title']);
+                $Params['titolo'] = '%'.$report_title.'%';
+            endif;
+            if(!empty($_GET['report-theme'])):
+                $report_theme = $_GET['report-theme'];
+                $Params['theme'] = $report_theme;
+            endif;
+            if(!empty($_GET['report-gde'])):
+                $report_gde = $_GET['report-gde'];
+                $Params['gs'] = $report_gde;
+            endif;
+            if(!empty($_GET['report-sda'])):
+                $report_sda = $_GET['report-sda'];
+                $Params['stato_di_avanzamento'] = $report_sda;
+            endif;
 
-            $this->set('curr_page', $p);
-            $this->set('next_page', ($p < ceil($report_count / $this->pager)) ? $p + 1 : null);
-            $this->set('prev_page', ($p - 1 > 0 ) ? $p - 1 : null);
+            $reports = $this->Report->searchReports($Params);
+            $search_params = [
+                'report-title' => $_GET['report-title'],
+                'report-theme' => $_GET['report-theme'],
+                'report-gde' => $_GET['report-gde'],
+                'report-sda' => $_GET['report-sda'],
+            ];
+            $this->set('search_params', $search_params);
 
-            $p = $p - 1;
-            $start = ($p > 0 ? $p * $this->pager : $p);
         }
         else {
-            $this->set('curr_page', 1);
-            $this->set('next_page', 2);
-            $this->set('prev_page', null);
+            if(isset($_GET['p']) && !empty($_GET['p']) && is_numeric($_GET['p'])){
+                $p = filter_var($_GET['p'], FILTER_SANITIZE_NUMBER_INT);
+
+                $this->set('curr_page', $p);
+                $this->set('next_page', ($p < ceil($report_count / $this->pager)) ? $p + 1 : null);
+                $this->set('prev_page', ($p - 1 > 0 ) ? $p - 1 : null);
+
+                $p = $p - 1;
+                $start = ($p > 0 ? $p * $this->pager : $p);
+            }
+            else {
+                $this->set('curr_page', 1);
+                $this->set('next_page', 2);
+                $this->set('prev_page', null);
+            }
+            $reports = $this->Report->getReports($start, $end);
         }
+
+
+
+
         // Get Report List
-        $this->set('reports', $this->Report->getReports($start, $end));
+        $this->set('reports', $reports);
 
     }
 

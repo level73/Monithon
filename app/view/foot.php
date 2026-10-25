@@ -27,6 +27,12 @@
           <script src="<?php echo $charts; ?>"></script>
       <?php } ?>
       <?php loadJS($js); ?>
+
+      <script>
+          $('button[type="reset"]').click(function(e){
+              $('select').val('').selectpicker('refresh');
+          });
+      </script>
     </div>
   </body>
 </html>

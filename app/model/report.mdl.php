@@ -146,6 +146,120 @@
         }
         
     }
+
+      public function searchReports($Params, $start = null, $limit = null)
+      {
+          $sql = "SELECT * FROM (SELECT 
+                    `" . $this->table . "`.`idreport_basic` AS id,
+                    \"report\" as report_type, 
+                    `" . $this->table . "`.`titolo`,
+                    `" . $this->table . "`.`descrizione`,
+                    `" . $this->table . "`.`obiettivi`,
+                    `" . $this->table . "`.`giudizio_sintetico`,
+                    `" . $this->table . "`.`gs`,
+                    `" . $this->table . "`.`stato_di_avanzamento`,
+                    `" . $this->table . "`.`lat_`,
+                    `" . $this->table . "`.`lon_`,
+                    CASE
+                       WHEN JSON_VALID(`api_data`) THEN
+                           JSON_UNQUOTE(JSON_EXTRACT(`api_data`, '$.oc_cod_tema_sintetico'))
+                       ELSE NULL
+                   END AS `theme`,
+                    UNIX_TIMESTAMP(`" . $this->table . "`.`modified_at`) AS mod_date,
+                    UNIX_TIMESTAMP(`" . $this->table . "`.`created_at`) AS create_date,
+                    `" . $this->table . "`.`autore`, 
+                    `auth`.`username`,
+                    `auth`.`idauth` AS profile,
+                    `auth`.`role`
+                 FROM  `" . $this->table . "` 
+                 INNER JOIN `auth` ON `auth`.`idauth` = `" . $this->table . "`.`created_by` 
+                 WHERE `" . $this->table . "`.`status` = 7
+                 UNION ALL (
+                    SELECT 
+                        entity_report_lite.idreport_lite as id,
+                        \"lite\" as report_type,
+                        entity_report_lite.titolo as titolo,
+                        entity_report_lite.giudizio as descrizione,
+                        entity_report_lite.obiettivi_del_progetto as obiettivi,
+                        NULL as giudizio_sintetico,
+                        entity_report_lite.giudizio_sintetico as gs,
+                        entity_report_lite.stato_di_avanzamento,
+                        entity_report_lite.lat_,
+                        entity_report_lite.lon_,
+                        CASE
+                       WHEN JSON_VALID(`api_data`) THEN
+                           JSON_UNQUOTE(JSON_EXTRACT(`api_data`, '$.oc_cod_tema_sintetico'))
+                       ELSE NULL
+                   END AS `theme`,
+                        unix_timestamp(`entity_report_lite`.`modified_at`) AS mod_date,
+                        unix_timestamp(`entity_report_lite`.`created_at`) AS create_date,
+                        NULL as `autore`, 
+                    `auth`.`username`,
+                    `auth`.`idauth` AS profile,
+                    `auth`.`role`
+                 FROM  `entity_report_lite` 
+                 INNER JOIN `auth` ON `auth`.`idauth` = `entity_report_lite`.`created_by` 
+                 WHERE `entity_report_lite`.`status` = 7
+                 ) 
+                 ) AS search
+                 WHERE ";
+
+         $sql_params = [];
+         foreach($Params as $key => $value){
+             if($key == 'titolo'):
+                 $sql_params[] .= ' LOWER(`' . $key . '`) LIKE  :titolo ';
+             else:
+                 $sql_params[] = $key . ' = :' . $key ;
+             endif;
+
+         }
+         $sql .= implode(' AND ', $sql_params);
+         $sql .= ' ORDER BY create_date DESC';
+
+
+         if (!is_null($start) && !is_null($limit)) {
+              $sql .= ' LIMIT ' . $start . ', ' . $limit;
+         }
+
+         $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+         $stmt = $this->database->prepare($sql);
+
+         foreach($Params as $key => $value){
+            $stmt->bindValue(':' . $key, $value);
+         }
+
+          $query = $stmt->execute();
+          if(!$query){
+              $this->Errors->set(501);
+              if(SYSTEM_STATUS == 'development'){
+                  dbga($stmt->errorInfo());
+              }
+              return $this->Errors;
+          } else {
+              $list = $stmt->fetchAll(PDO::FETCH_OBJ);
+              $Files = new Repo();
+              foreach($list as $i => $report){
+                  // Check ASOC Exp
+                  $list[$i]->ASOC_EXP = in_array($report->id, $this->ASOC_Exp);
+                  // Get Files
+                  // Check Report Type
+                  $file_entity = ($report->report_type=='report' ? T_REP_BASIC : T_REP_LITE);
+                  $list[$i]->files = $Files->getFiles($file_entity, $report->id, 2);
+                  foreach($list[$i]->files as $l => $file){
+                      $file->info = $Files->getInfo(ROOT.DS.'public'.DS.'resources'.DS.$file->file_path);
+                      $info = explode('/', $file->info);
+                      if ($info[0] == 'image') {
+                          $list[$i]->images[] = $file;
+                      }
+                  }
+              }
+              return $list;
+          }
+      }
+
+
+
+
     public function counter($status = null){
         $sql = 'SELECT COUNT(idreport_basic) AS counter FROM ' . $this->table;
         if(!is_null($status)){
