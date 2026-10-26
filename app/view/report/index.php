@@ -120,7 +120,7 @@
 
                 <div class="col-3">
                     <?php if(isset($report->images) && !empty($report->images)){ ?>
-                    <div class="img-holder" style="background-image: url('<?php echo image($report->images[0]); ?>');"></div>
+                    <div class="img-holder" style="background-image: url('<?php echo image($report->images[0], 'cropx180'); ?>');"></div>
                     <?php } else { ?>
                     <div class="img-holder img-placeholder"><i class="fal fa-image-polaroid fa-3x"></i></div>
                     <?php } ?>
