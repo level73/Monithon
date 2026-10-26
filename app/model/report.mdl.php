@@ -149,31 +149,85 @@
 
       public function searchReports($Params, $start = null, $limit = null)
       {
-          $sql = "SELECT * FROM view_report_search AS search
-                 WHERE ";
+          $sql_basic_report =
+              "select `it_monithon`.`entity_report_basic`.`idreport_basic`              AS `id`,
+                       'report'                                                          AS `report_type`,
+                       `it_monithon`.`entity_report_basic`.`titolo`                      AS `titolo`,
+                       `it_monithon`.`entity_report_basic`.`descrizione`                 AS `descrizione`,
+                       `it_monithon`.`entity_report_basic`.`obiettivi`                   AS `obiettivi`,
+                       `it_monithon`.`entity_report_basic`.`giudizio_sintetico`          AS `giudizio_sintetico`,
+                       `it_monithon`.`entity_report_basic`.`gs`                          AS `gs`,
+                       `it_monithon`.`entity_report_basic`.`stato_di_avanzamento`        AS `stato_di_avanzamento`,
+                       `it_monithon`.`entity_report_basic`.`lat_`                        AS `lat_`,
+                       `it_monithon`.`entity_report_basic`.`lon_`                        AS `lon_`,
+                       `it_monithon`.`entity_report_basic`.`codice_tema`                 AS `theme`,
+                       unix_timestamp(`it_monithon`.`entity_report_basic`.`modified_at`) AS `mod_date`,
+                       unix_timestamp(`it_monithon`.`entity_report_basic`.`created_at`)  AS `create_date`,
+                       `it_monithon`.`entity_report_basic`.`autore`                      AS `autore`,
+                       `it_monithon`.`auth`.`username`                                   AS `username`,
+                       `it_monithon`.`auth`.`idauth`                                     AS `profile`,
+                       `it_monithon`.`auth`.`role`                                       AS `role`
+                from (`it_monithon`.`entity_report_basic` join `it_monithon`.`auth`
+                      on ((`it_monithon`.`auth`.`idauth` = `it_monithon`.`entity_report_basic`.`created_by`)))
+                where (`it_monithon`.`entity_report_basic`.`status` = 7) ";
+              if($Params['titolo']):
+                  $sql_basic_report .= '  AND MATCH(titolo) AGAINST(LOWER(:titolo_1) IN BOOLEAN MODE) ';
+              endif;
+
+          $sql_lite_report = "
+                select `it_monithon`.`entity_report_lite`.`idreport_lite`               AS `id`,
+                       'lite'                                                           AS `report_type`,
+                       `it_monithon`.`entity_report_lite`.`titolo`                      AS `titolo`,
+                       `it_monithon`.`entity_report_lite`.`giudizio`                    AS `descrizione`,
+                       `it_monithon`.`entity_report_lite`.`obiettivi_del_progetto`      AS `obiettivi`,
+                       NULL                                                             AS `giudizio_sintetico`,
+                       `it_monithon`.`entity_report_lite`.`giudizio_sintetico`          AS `gs`,
+                       `it_monithon`.`entity_report_lite`.`stato_di_avanzamento`        AS `stato_di_avanzamento`,
+                       `it_monithon`.`entity_report_lite`.`lat_`                        AS `lat_`,
+                       `it_monithon`.`entity_report_lite`.`lon_`                        AS `lon_`,
+                       `it_monithon`.`entity_report_lite`.`codice_tema`                 AS `theme`,
+                       unix_timestamp(`it_monithon`.`entity_report_lite`.`modified_at`) AS `mod_date`,
+                       unix_timestamp(`it_monithon`.`entity_report_lite`.`created_at`)  AS `create_date`,
+                       NULL                                                             AS `autore`,
+                       `it_monithon`.`auth`.`username`                                  AS `username`,
+                       `it_monithon`.`auth`.`idauth`                                    AS `profile`,
+                       `it_monithon`.`auth`.`role`                                      AS `role`
+                from (`it_monithon`.`entity_report_lite` join `it_monithon`.`auth`
+                      on ((`it_monithon`.`auth`.`idauth` = `it_monithon`.`entity_report_lite`.`created_by`)))
+                where (`it_monithon`.`entity_report_lite`.`status` = 7)
+          ";
+          if($Params['titolo']):
+              $sql_lite_report .= '  AND MATCH(titolo) AGAINST(LOWER(:titolo_2) IN BOOLEAN MODE) ';
+          endif;
+
+         $fullSQL = 'SELECT * FROM (' . $sql_basic_report . ' UNION ALL ' . $sql_lite_report . ') AS search ';
+
 
          $sql_params = [];
          foreach($Params as $key => $value){
-             if($key == 'titolo'):
-                 $sql_params[] .= ' LOWER(`' . $key . '`) LIKE  :titolo ';
-             else:
+             if($key != 'titolo'):
                  $sql_params[] = $key . ' = :' . $key ;
              endif;
 
          }
-         $sql .= implode(' AND ', $sql_params);
-         $sql .= ' ORDER BY create_date DESC';
+         if(!empty($sql_params)):
+             $fullSQL .= ' WHERE ' . implode(' AND ',$sql_params);
+         endif;
+         $fullSQL .= ' ORDER BY create_date DESC';
 
 
-         if (!is_null($start) && !is_null($limit)) {
-              $sql .= ' LIMIT ' . $start . ', ' . $limit;
-         }
 
+        //echo $fullSQL;
          $this->database->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-         $stmt = $this->database->prepare($sql);
+         $stmt = $this->database->prepare($fullSQL);
 
          foreach($Params as $key => $value){
-            $stmt->bindValue(':' . $key, $value);
+             if($key == 'titolo'):
+                 $stmt->bindValue(':titolo_1', $value);
+                 $stmt->bindValue(':titolo_2', $value);
+             else:
+                $stmt->bindValue(':' . $key, $value);
+             endif;
          }
 
           $query = $stmt->execute();

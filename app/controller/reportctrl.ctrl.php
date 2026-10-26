@@ -46,7 +46,7 @@
             $Params = [];
             if(!empty($_GET['report-title'])):
                 $report_title = strtolower($_GET['report-title']);
-                $Params['titolo'] = '%'.$report_title.'%';
+                $Params['titolo'] = $report_title;
             endif;
             if(!empty($_GET['report-theme'])):
                 $report_theme = $_GET['report-theme'];
