@@ -31,19 +31,19 @@
                             <label for="report-title">Tema</label>
                             <select class="form-control selectpicker" id="report-theme" name="report-theme" data-placeholder="Scegli il Tema...">
                                 <option></option>
-                                <option value="01" data-subtext="01"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "01" ? ' selected': ''; ?>>Ricerca e innovazione</option>
-                                <option value="02" data-subtext="02"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "02" ? ' selected': ''; ?>>Reti e servizi digitali</option>
-                                <option value="03" data-subtext="03"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "03" ? ' selected': ''; ?>>Competitività delle imprese</option>
-                                <option value="04" data-subtext="04"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "04" ? ' selected': ''; ?>>Energia</option>
-                                <option value="05" data-subtext="05"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "05" ? ' selected': ''; ?>>Ambiente</option>
-                                <option value="06" data-subtext="06"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "06" ? ' selected': ''; ?>>Cultura e turismo</option>
-                                <option value="07" data-subtext="07"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "07" ? ' selected': ''; ?>>Trasporti e mobilità</option>
-                                <option value="08" data-subtext="08"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "08" ? ' selected': ''; ?>>Occupazione e lavoro</option>
-                                <option value="09" data-subtext="09"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "09" ? ' selected': ''; ?>>Inclusione sociale e salute</option>
-                                <option value="10" data-subtext="10"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "10" ? ' selected': ''; ?>>Servizi di cura infanzia e anziani</option>
-                                <option value="11" data-subtext="11"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "11" ? ' selected': ''; ?>>Istruzione e formazione</option>
-                                <option value="12" data-subtext="12"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "12" ? ' selected': ''; ?>>Rinnovamento urbano e rurale</option>
-                                <option value="13" data-subtext="13"<?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "13" ? ' selected': ''; ?>>Rafforzamento capacità della PA</option>
+                                <option value="01" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "01" ? ' selected': ''; ?>>Ricerca e innovazione</option>
+                                <option value="02" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "02" ? ' selected': ''; ?>>Reti e servizi digitali</option>
+                                <option value="03" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "03" ? ' selected': ''; ?>>Competitività delle imprese</option>
+                                <option value="04" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "04" ? ' selected': ''; ?>>Energia</option>
+                                <option value="05" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "05" ? ' selected': ''; ?>>Ambiente</option>
+                                <option value="06" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "06" ? ' selected': ''; ?>>Cultura e turismo</option>
+                                <option value="07" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "07" ? ' selected': ''; ?>>Trasporti e mobilità</option>
+                                <option value="08" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "08" ? ' selected': ''; ?>>Occupazione e lavoro</option>
+                                <option value="09" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "09" ? ' selected': ''; ?>>Inclusione sociale e salute</option>
+                                <option value="10" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "10" ? ' selected': ''; ?>>Servizi di cura infanzia e anziani</option>
+                                <option value="11" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "11" ? ' selected': ''; ?>>Istruzione e formazione</option>
+                                <option value="12" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "12" ? ' selected': ''; ?>>Rinnovamento urbano e rurale</option>
+                                <option value="13" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "13" ? ' selected': ''; ?>>Rafforzamento capacità della PA</option>
 
                             </select>
 
@@ -82,9 +82,10 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-md-offset-9">
+                    <div class="col-md-8">
                         <button type="submit" class="btn btn-primary">Cerca</button>
                         <button type="reset" class="btn btn-secondary">Reset</button>
+                        <a class="btn btn-secondary" href="/report">Tutti i report</a>
                     </div>
                 </div>
 

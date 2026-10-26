@@ -149,59 +149,7 @@
 
       public function searchReports($Params, $start = null, $limit = null)
       {
-          $sql = "SELECT * FROM (SELECT 
-                    `" . $this->table . "`.`idreport_basic` AS id,
-                    \"report\" as report_type, 
-                    `" . $this->table . "`.`titolo`,
-                    `" . $this->table . "`.`descrizione`,
-                    `" . $this->table . "`.`obiettivi`,
-                    `" . $this->table . "`.`giudizio_sintetico`,
-                    `" . $this->table . "`.`gs`,
-                    `" . $this->table . "`.`stato_di_avanzamento`,
-                    `" . $this->table . "`.`lat_`,
-                    `" . $this->table . "`.`lon_`,
-                    CASE
-                       WHEN JSON_VALID(`api_data`) THEN
-                           JSON_UNQUOTE(JSON_EXTRACT(`api_data`, '$.oc_cod_tema_sintetico'))
-                       ELSE NULL
-                   END AS `theme`,
-                    UNIX_TIMESTAMP(`" . $this->table . "`.`modified_at`) AS mod_date,
-                    UNIX_TIMESTAMP(`" . $this->table . "`.`created_at`) AS create_date,
-                    `" . $this->table . "`.`autore`, 
-                    `auth`.`username`,
-                    `auth`.`idauth` AS profile,
-                    `auth`.`role`
-                 FROM  `" . $this->table . "` 
-                 INNER JOIN `auth` ON `auth`.`idauth` = `" . $this->table . "`.`created_by` 
-                 WHERE `" . $this->table . "`.`status` = 7
-                 UNION ALL (
-                    SELECT 
-                        entity_report_lite.idreport_lite as id,
-                        \"lite\" as report_type,
-                        entity_report_lite.titolo as titolo,
-                        entity_report_lite.giudizio as descrizione,
-                        entity_report_lite.obiettivi_del_progetto as obiettivi,
-                        NULL as giudizio_sintetico,
-                        entity_report_lite.giudizio_sintetico as gs,
-                        entity_report_lite.stato_di_avanzamento,
-                        entity_report_lite.lat_,
-                        entity_report_lite.lon_,
-                        CASE
-                       WHEN JSON_VALID(`api_data`) THEN
-                           JSON_UNQUOTE(JSON_EXTRACT(`api_data`, '$.oc_cod_tema_sintetico'))
-                       ELSE NULL
-                   END AS `theme`,
-                        unix_timestamp(`entity_report_lite`.`modified_at`) AS mod_date,
-                        unix_timestamp(`entity_report_lite`.`created_at`) AS create_date,
-                        NULL as `autore`, 
-                    `auth`.`username`,
-                    `auth`.`idauth` AS profile,
-                    `auth`.`role`
-                 FROM  `entity_report_lite` 
-                 INNER JOIN `auth` ON `auth`.`idauth` = `entity_report_lite`.`created_by` 
-                 WHERE `entity_report_lite`.`status` = 7
-                 ) 
-                 ) AS search
+          $sql = "SELECT * FROM view_report_search AS search
                  WHERE ";
 
          $sql_params = [];
