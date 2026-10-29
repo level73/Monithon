@@ -30,7 +30,7 @@
                         <div class="form-group">
                             <label for="report-title">Tema</label>
                             <select class="form-control selectpicker" id="report-theme" name="report-theme" data-placeholder="Scegli il Tema...">
-                                <option></option>
+                                <option value="">Nessun Filtro</option>
                                 <option value="01" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "01" ? ' selected': ''; ?>>Ricerca e innovazione</option>
                                 <option value="02" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "02" ? ' selected': ''; ?>>Reti e servizi digitali</option>
                                 <option value="03" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "03" ? ' selected': ''; ?>>Competitività delle imprese</option>
@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <label for="report-title">Giudizio di Efficacia</label>
                             <select class="form-control selectpicker" id="report-gde" name="report-gde">
-                                <option></option>
+                                <option value="">Nessun Filtro</option>
                                 <option value="1"<?php echo isset($search_params['report-gde']) && $search_params['report-gde'] == 1 ? ' selected': ''; ?>>Efficace</option>
                                 <option value="2"<?php echo isset($search_params['report-gde']) && $search_params['report-gde'] == 2 ? ' selected': ''; ?>>Utile ma con problemi</option>
                                 <option value="3"<?php echo isset($search_params['report-gde']) && $search_params['report-gde'] == 3 ? ' selected': ''; ?>>Inefficace o dannoso</option>
@@ -66,7 +66,7 @@
                         <div class="form-group">
                             <label for="report-title">Stato di Avanzamento*</label>
                             <select class="form-control selectpicker" id="report-sda" name="report-sda">
-                                <option></option>
+                                <option value="">Nessun Filtro</option>
                                 <option value="1"<?php echo isset($search_params['report-sda']) && $search_params['report-sda'] == 1 ? ' selected': ''; ?>>Appena avviato</option>
                                 <option value="2"<?php echo isset($search_params['report-sda']) && $search_params['report-sda'] == 2 ? ' selected': ''; ?>>Mai partito</option>
                                 <option value="3"<?php echo isset($search_params['report-sda']) && $search_params['report-sda'] == 3 ? ' selected': ''; ?>>In corso senza particolari intoppi</option>
