@@ -28,7 +28,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="report-title">Tema</label>
+                            <label for="report-theme">Tema</label>
                             <select class="form-control selectpicker" id="report-theme" name="report-theme" data-placeholder="Scegli il Tema...">
                                 <option value="">Nessun Filtro</option>
                                 <option value="01" <?php echo isset($search_params['report-theme']) && $search_params['report-theme'] == "01" ? ' selected': ''; ?>>Ricerca e innovazione</option>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="report-title">Giudizio di Efficacia</label>
+                            <label for="report-gde">Giudizio di Efficacia</label>
                             <select class="form-control selectpicker" id="report-gde" name="report-gde">
                                 <option value="">Nessun Filtro</option>
                                 <option value="1"<?php echo isset($search_params['report-gde']) && $search_params['report-gde'] == 1 ? ' selected': ''; ?>>Efficace</option>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
-                            <label for="report-title">Stato di Avanzamento*</label>
+                            <label for="report-sda">Stato di Avanzamento*</label>
                             <select class="form-control selectpicker" id="report-sda" name="report-sda">
                                 <option value="">Nessun Filtro</option>
                                 <option value="1"<?php echo isset($search_params['report-sda']) && $search_params['report-sda'] == 1 ? ' selected': ''; ?>>Appena avviato</option>
