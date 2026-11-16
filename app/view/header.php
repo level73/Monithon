@@ -28,37 +28,39 @@
           </li>
 
         <?php if(isset($logged) && $logged == true){ ?>
-        <?php
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="reportCreation" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Crea un Report
+                </a>
+                <div class="dropdown-menu" aria-labelledby="reportCreation">
+            <?php
             // Check if ASOC Medie || Reporter
             if($user->role == 13):
         ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="/lite/create">Crea Report</a>
-                </li>
+
+                    <a class="dropdown-item" href="/lite/create">Crea Report sul Progetto</a>
+
         <?php
             // User is ASOC
             elseif($user->role > 3 && $user->role < 11):
         ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="/report/create">Crea Report</a>
-                </li>
+
+                    <a class="dropdown-item" href="/report/create">Crea Report su un Progetto</a>
+
         <?php
             else:
         ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="/report/create">Crea Report</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/lite/create">Crea Report (Light)</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/imonitor/create">iMonitor</a>
-                </li>
+
+                    <a class="dropdown-item" href="/report/create">Crea Report su un Progetto</a>
+                    <a class="dropdown-item" href="/lite/create">Crea Report Semplificato su un Progetto</a>
+                    <a class="dropdown-item" href="/imonitor/create">Crea Report su un Appalto</a>
+
             <?php
 
             endif;
         ?>
-
+                </div>
+            </li>
 
         <?php } ?>
       </ul>
