@@ -50,7 +50,8 @@ var OpenCoesione = {
         $.getJSON('/ajax/oc_api/' + oc_api_code, {'code': oc_api_code}, function(data){
           console.log(data);
           if(data.code == '404'){
-            alert('Non trovo il progetto! Controlla di aver copiato ed incollato la URL correttamente, e riprova.');
+            // Removed: 16112026
+            // alert('Non trovo il progetto! Controlla di aver copiato ed incollato la URL correttamente, e riprova.');
             $('#oc_api_content_s1, #oc_api_content_s2').addClass('d-none');
           }
           else {
